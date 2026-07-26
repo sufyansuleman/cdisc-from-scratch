@@ -4,26 +4,81 @@ title: "Exercise 3 — ADSL"
 
 ## Goal
 
-TODO: one sentence.
+Extend the ADSL from [the ADSL session](../sessions/adsl.qmd) with a
+second age grouping and an analysis age, then construct the case the
+GLPX-001 data never gives you: population flags that legitimately
+disagree.
 
 ## Setup
 
-TODO: starting code.
+Work from the project root. The finished SDTM is the input:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(sdtm.terminology)
+
+dm <- read_csv("data/sdtm/dm.csv", show_col_types = FALSE,
+               col_types = cols(.default = col_character()))
+```
+
+Build the ADSL spine as in Example 1 before starting, or read the
+persisted copy from `data/adam/adsl.csv`.
 
 ## Task
 
-1. TODO
-2. TODO
+1. **(Guided) A second age grouping.** Add `AGEGR2` and `AGEGR2N` using
+   three bands — `<50`, `50-64`, `>=65`. Confirm the one-to-one
+   relationship holds and that the two variables are null on exactly the
+   same rows. Why is there no `is_term()` check to run on `AGEGR2`?
+
+2. **(The trap) Analysis age.** Four subjects have a null `AGE` because
+   their birth dates were incomplete. Suppose the SAP specifies that for
+   subjects with a year-only birth date, age is computed from 30 June of
+   that year. Derive `AAGE` implementing that rule, leaving `AGE`
+   untouched.
+
+   Two things to get right, and both are the point of the task: say
+   which ADaMIG rule stops you writing the imputed value into `AGE`
+   itself, and check whether the ADaMIG's condition for including `AAGE`
+   is actually met here.
+
+3. **(Semi-guided) Flags that disagree.** In GLPX-001 every randomized
+   subject was dosed, so `RANDFL`, `ITTFL` and `SAFFL` are all `"Y"` for
+   all 400. Take subject `GLPX001-101-010`, construct the scenario where
+   they were randomized but never received a dose, and show what each of
+   the three flags becomes.
+
+   Then answer in one sentence each: which population would that subject
+   be counted in for an efficacy table, which for a safety table, and
+   why a null flag would be wrong for either.
 
 ## Acceptance criteria
 
-- [ ] TODO
-- [ ] TODO
+- [ ] `AGEGR2`/`AGEGR2N` one-to-one, null on the same rows, and the
+      no-codelist reasoning stated
+- [ ] `AAGE` derived under the SAP rule with `AGE` unmodified; the
+      governing rule named and `AAGE`'s conditional requirement checked
+- [ ] The randomized-not-dosed scenario produces `RANDFL = "Y"`,
+      `ITTFL = "Y"`, `SAFFL = "N"` — with no nulls
+- [ ] Efficacy vs safety population membership explained
 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-TODO: hint.
+Task 1: the same structural rule you used for `AGEGR1`/`AGEGR1N` in the
+session applies (ADaMIG v1.3, §3.2). For the second part, recall what
+made `PARAMCD` uncheckable in [ADaM
+Concepts](../sessions/adam-concepts.qmd).
+
+Task 2: look up `AAGE` in ADaMIG v1.3 §3.2 — read its Core designation
+and the exact wording of when it is required. The rule preventing you
+from writing into `AGE` is in §3.1.1, and the session quotes it.
+
+Task 3: you are changing one input, not one flag. Ask which condition
+each flag is derived *from* — `SAFFL`'s condition is about exposure, the
+other two are about randomization — then let the derivations you already
+wrote produce the three values themselves.
 :::
 
 > Solutions are in the paid tier.

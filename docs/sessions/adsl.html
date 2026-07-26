@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -304,22 +339,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#when-do-you-use-this" id="toc-when-do-you-use-this" class="nav-link active" data-scroll-target="#when-do-you-use-this"><span class="header-section-number">10.1</span> When Do You Use This?</a></li>
+  <li><a href="#sec-adsl" id="toc-sec-adsl" class="nav-link active" data-scroll-target="#sec-adsl"><span class="header-section-number">10.1</span> When Do You Use This?</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">10.2</span> Learning Objectives</a></li>
-  <li><a href="#background-todo-the-one-core-idea" id="toc-background-todo-the-one-core-idea" class="nav-link" data-scroll-target="#background-todo-the-one-core-idea"><span class="header-section-number">10.3</span> Background: TODO (the one core idea)</a></li>
-  <li><a href="#example-1-todo" id="toc-example-1-todo" class="nav-link" data-scroll-target="#example-1-todo"><span class="header-section-number">10.4</span> Example 1: TODO</a>
+  <li><a href="#background-the-roster-every-analysis-starts-from" id="toc-background-the-roster-every-analysis-starts-from" class="nav-link" data-scroll-target="#background-the-roster-every-analysis-starts-from"><span class="header-section-number">10.3</span> Background: The Roster Every Analysis Starts From</a>
   <ul class="collapse">
-  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">10.4.1</span> Run It Yourself</a></li>
-  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">10.4.2</span> Reading the Output Line by Line</a></li>
+  <li><a href="#two-kinds-of-variable-two-different-rules" id="toc-two-kinds-of-variable-two-different-rules" class="nav-link" data-scroll-target="#two-kinds-of-variable-two-different-rules"><span class="header-section-number">10.3.1</span> Two kinds of variable, two different rules</a></li>
+  <li><a href="#treatment-planned-actual-and-why-the-distinction-is-conditional" id="toc-treatment-planned-actual-and-why-the-distinction-is-conditional" class="nav-link" data-scroll-target="#treatment-planned-actual-and-why-the-distinction-is-conditional"><span class="header-section-number">10.3.2</span> Treatment: planned, actual, and why the distinction is conditional</a></li>
+  <li><a href="#dates-and-duration" id="toc-dates-and-duration" class="nav-link" data-scroll-target="#dates-and-duration"><span class="header-section-number">10.3.3</span> Dates and duration</a></li>
+  <li><a href="#population-flags-belong-to-adam" id="toc-population-flags-belong-to-adam" class="nav-link" data-scroll-target="#population-flags-belong-to-adam"><span class="header-section-number">10.3.4</span> Population flags belong to ADaM</a></li>
+  <li><a href="#a-scope-limit-worth-naming" id="toc-a-scope-limit-worth-naming" class="nav-link" data-scroll-target="#a-scope-limit-worth-naming"><span class="header-section-number">10.3.5</span> A scope limit worth naming</a></li>
   </ul></li>
-  <li><a href="#example-2-todo" id="toc-example-2-todo" class="nav-link" data-scroll-target="#example-2-todo"><span class="header-section-number">10.5</span> Example 2: TODO</a>
+  <li><a href="#example-1-the-adsl-spine" id="toc-example-1-the-adsl-spine" class="nav-link" data-scroll-target="#example-1-the-adsl-spine"><span class="header-section-number">10.4</span> Example 1: The ADSL Spine</a></li>
+  <li><a href="#example-2-population-flags-and-disposition" id="toc-example-2-population-flags-and-disposition" class="nav-link" data-scroll-target="#example-2-population-flags-and-disposition"><span class="header-section-number">10.5</span> Example 2: Population Flags and Disposition</a>
   <ul class="collapse">
-  <li><a href="#run-it-yourself-1" id="toc-run-it-yourself-1" class="nav-link" data-scroll-target="#run-it-yourself-1"><span class="header-section-number">10.5.1</span> Run It Yourself</a></li>
+  <li><a href="#persisting-adsl" id="toc-persisting-adsl" class="nav-link" data-scroll-target="#persisting-adsl"><span class="header-section-number">10.5.1</span> Persisting ADSL</a></li>
   </ul></li>
-  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">10.6</span> What Can Go Wrong</a>
-  <ul class="collapse">
-  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">10.6.1</span> Common misinterpretations</a></li>
-  </ul></li>
+  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">10.6</span> What Can Go Wrong</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.7</span> Exercises</a></li>
   <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">10.8</span> Comprehension Check</a></li>
   </ul>
@@ -357,8 +392,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Total core time: about TODO minutes.</strong></p>
+<p><strong>Total core time: about 90 minutes.</strong></p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Section</th>
@@ -369,42 +409,37 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>When Do You Use This? + Learning Objectives</td>
-<td>TODO</td>
+<td>5 min</td>
 <td>Reading</td>
 </tr>
 <tr class="even">
-<td>Background</td>
-<td>TODO</td>
+<td>Background: the roster every analysis starts from</td>
+<td>20 min</td>
 <td>Reading</td>
 </tr>
 <tr class="odd">
-<td>Example 1</td>
-<td>TODO</td>
+<td>Example 1: The ADSL spine — subjects, treatment, dates</td>
+<td>25 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="even">
-<td>Example 2</td>
-<td>TODO</td>
+<td>Example 2: Population flags and disposition</td>
+<td>20 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="odd">
 <td>What Can Go Wrong</td>
-<td>TODO</td>
+<td>10 min</td>
 <td>Reading</td>
 </tr>
 <tr class="even">
-<td>Exercises</td>
-<td>TODO</td>
-<td>Practice</td>
-</tr>
-<tr class="odd">
-<td>Comprehension Check</td>
-<td>TODO</td>
-<td>Self-test</td>
+<td>Exercises + Comprehension Check</td>
+<td>10 min</td>
+<td>Practice / Self-test</td>
 </tr>
 </tbody>
 </table>
-<p>TODO: how the session splits across sittings for self-paced study.</p>
+<p>Builds the course’s first real ADaM dataset — one row per subject — from the persisted SDTM. For self-paced study, split after Example 1.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -417,11 +452,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Where you see a “Run It Yourself” box, stop and run the code above it before reading the explanation that follows.</p>
+<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Run R from the project root, as in earlier sessions.</p>
+<p>This session reads <code>data/sdtm/dm.csv</code> and <code>data/sdtm/vs.csv</code> — the finished SDTM from Part 2 — and writes the first dataset in <code>data/adam/</code>. The whole chain is now visible: raw → SDTM → ADaM.</p>
 </div>
 </div>
-<section id="when-do-you-use-this" class="level2" data-number="10.1">
-<h2 data-number="10.1" class="anchored" data-anchor-id="when-do-you-use-this"><span class="header-section-number">10.1</span> When Do You Use This?</h2>
+<section id="sec-adsl" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="sec-adsl"><span class="header-section-number">10.1</span> When Do You Use This?</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -432,7 +468,9 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TODO: two or three concrete scenarios that this session answers, ending with the single question it addresses in bold. Cross-link the session(s) this one builds on.</p>
+<p>Every table in a clinical study report needs a denominator: <em>how many subjects, in which population?</em> Every by-treatment summary needs to know each subject’s treatment and when they were on it. Every safety listing needs to know who was dosed. A reviewer opening the submission needs one authoritative answer to “who was in this trial?”</p>
+<p>Ask each of those questions of SDTM and you get a different, partial answer from a different domain. That is the gap this session closes, and it raises one question: <strong>what is the one dataset that every other analysis dataset and every table depends on?</strong></p>
+<p>Builds on <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, where you saw the ADSL <em>shape</em>, and on the persisted SDTM DM from <a href="../sessions/sdtm-dm.html">The DM Domain</a>.</p>
 </div>
 </div>
 </section>
@@ -440,53 +478,521 @@ Tip
 <h2 data-number="10.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">10.2</span> Learning Objectives</h2>
 <p>After completing this session you will be able to:</p>
 <ul>
-<li>TODO</li>
-<li>TODO</li>
-<li>TODO</li>
+<li>Build an ADSL with exactly one row per subject from SDTM DM</li>
+<li>Derive the treatment variables (<code>TRT01P</code>, <code>TRT01A</code>) and treatment dates (<code>TRTSDT</code>, <code>TRTEDT</code>, <code>TRTDURD</code>) and say where each comes from</li>
+<li>Derive subject-level population flags and explain why they are ADaM’s rather than SDTM’s</li>
+<li>Distinguish a variable <em>carried</em> from SDTM from one <em>derived</em> for analysis, and know which rule governs each</li>
+<li>Recognise where a dataset’s derivations rest on assumptions that must be documented rather than assumed away</li>
 </ul>
 </section>
-<section id="background-todo-the-one-core-idea" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="background-todo-the-one-core-idea"><span class="header-section-number">10.3</span> Background: TODO (the one core idea)</h2>
-<p><em>Estimated time: ~TODO minutes (reading)</em></p>
-<p>TODO: introduce the single idea that ties the session together, concept before formula.</p>
+<section id="background-the-roster-every-analysis-starts-from" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="background-the-roster-every-analysis-starts-from"><span class="header-section-number">10.3</span> Background: The Roster Every Analysis Starts From</h2>
+<p><em>Estimated time: ~20 minutes (reading)</em></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The one thing to remember
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>ADSL is the trial’s roster: exactly one row per subject that every analysis starts from — which population, which treatment, from when to when — each value carried or derived from SDTM and traceable to it.</strong></p>
+</div>
+</div>
+<p>An ADaM-compliant ADSL is <strong>required in a CDISC-based submission even if no other ADaM datasets are submitted</strong>, and its structure is one record per subject regardless of trial design (ADaMIG v1.3, §3.2). That is a strong claim, and it follows from what ADSL is for. <code>USUBJID</code> is the key variable that links ADSL to every other dataset, SDTM and ADaM alike (ADaMIG v1.3, §3.2). Filter a BDS dataset to a population, split a table by treatment, count a denominator — all of it comes back to ADSL.</p>
+<p>The corollary matters as much: ADSL holds subject-level facts only. Anything that varies over time belongs in a BDS dataset (ADaMIG v1.3, §2.3.1). A week-26 HbA1c is not an ADSL variable, however convenient it would be to put it there.</p>
+<section id="two-kinds-of-variable-two-different-rules" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="two-kinds-of-variable-two-different-rules"><span class="header-section-number">10.3.1</span> Two kinds of variable, two different rules</h3>
+<p>Almost every ADSL variable is one of two things, and confusing them is the most common way to get ADSL wrong.</p>
+<p>Some variables are <strong>carried from SDTM</strong>. <code>STUDYID</code>, <code>USUBJID</code>, <code>SUBJID</code> and <code>SITEID</code> are all Required in ADSL and sourced directly from DM; note that <code>SUBJID</code> and <code>SITEID</code> are <em>required in ADSL</em> though merely permissible in other datasets (ADaMIG v1.3, §3.2). The demographics follow the same pattern: <code>AGE</code>, <code>AGEU</code>, <code>SEX</code> and <code>RACE</code> are Required and sourced from <code>DM.AGE</code>, <code>DM.AGEU</code>, <code>DM.SEX</code>, <code>DM.RACE</code> (ADaMIG v1.3, §3.2).</p>
+<p>When you carry a variable across, one rule governs it absolutely:</p>
+<blockquote class="blockquote">
+<p>Any variable in an ADaM dataset whose name is the same as an SDTM variable must be a copy of the SDTM variable, and its label, meaning, and values must not be modified — a principle of harmonization known as <strong>“same name, same meaning, same values”</strong> (ADaMIG v1.3, §3.1.1, item 3).</p>
+</blockquote>
+<p>So if <code>SEX</code> appears in ADSL it <em>is</em> <code>DM.SEX</code>, untouched. If you need a modified version, it is mandatory to do that in an ADaM variable with a different name; changing the value under an SDTM name is prohibited (ADaMIG v1.3, §3.1.1, item 3).</p>
+<p>This rule also explains something the ADSL variable tables do not: our ADSL carries <code>ETHNIC</code> and <code>COUNTRY</code>, but <strong>neither appears anywhere in the ADaMIG’s ADSL variable tables</strong>. They are not ADaM standard variables. They are legitimate all the same — as SDTM variables copied in under the same-name rule, which is exactly what §2.2 asks for when it says all SDTM variables used in ADaM derivations should be included when practical, for traceability. The lesson generalises: <em>not everything in a conformant ADSL is an ADaM standard variable</em>, and the standard tells you how to include the rest rather than forbidding it.</p>
+<p>Other variables are <strong>derived for the analysis</strong>. <code>AGEGR1</code> — an age grouping such as <code>&lt;65</code> / <code>&gt;=65</code> — is the clearest case. The ADaMIG defines <code>AGEGRy</code> as “a character description of a grouping or pooling of the subject’s age for analysis purposes” and offers <code>"&lt;18"</code>, <code>"18-65"</code>, <code>"&gt;65"</code> only as <em>examples</em> (ADaMIG v1.3, §3.2). The cut point is a sponsor decision recorded in the statistical analysis plan, not a standard value. As with <code>PARAMCD</code> in the last session, <strong>there is no codelist to check <code>AGEGR1</code> against</strong>, because it is a design decision.</p>
+<p>Grouping variables carry one structural rule worth internalising: a numeric counterpart such as <code>AGEGR1N</code> must have a one-to-one relationship with <code>AGEGR1</code>, cannot be present unless <code>AGEGR1</code> is, and on any given row <strong>either both are populated or both are null</strong> (ADaMIG v1.3, §3.2).</p>
 </section>
-<section id="example-1-todo" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="example-1-todo"><span class="header-section-number">10.4</span> Example 1: TODO</h2>
-<p>TODO: worked example on GLPX-001 data. Show the code, then the output, then explain it.</p>
-<section id="run-it-yourself" class="level3" data-number="10.4.1">
-<h3 data-number="10.4.1" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">10.4.1</span> Run It Yourself</h3>
-<p>TODO: the exact code block the learner should execute before reading on.</p>
+<section id="treatment-planned-actual-and-why-the-distinction-is-conditional" class="level3" data-number="10.3.2">
+<h3 data-number="10.3.2" class="anchored" data-anchor-id="treatment-planned-actual-and-why-the-distinction-is-conditional"><span class="header-section-number">10.3.2</span> Treatment: planned, actual, and why the distinction is conditional</h3>
+<p><code>ARM</code> is Required in ADSL and sourced from <code>DM.ARM</code>; <code>ACTARM</code> is Permissible, from <code>DM.ACTARM</code> (ADaMIG v1.3, §3.2). Alongside them sit the ADaM treatment variables, which are period-aware:</p>
+<ul>
+<li><strong><code>TRTxxP</code></strong> — planned treatment for period <code>xx</code>. In a one-period randomized trial <code>TRT01P</code> is the treatment the subject was randomized to, and it may be derived from <code>DM.ARM</code>. <strong>At least <code>TRT01P</code> is required</strong> (ADaMIG v1.3, §3.2).</li>
+<li><strong><code>TRTxxA</code></strong> — actual treatment for period <code>xx</code>. This one is <em>conditionally</em> required: required when actual treatment does not match planned <strong>and</strong> there is an analysis of the data as treated (ADaMIG v1.3, §3.2).</li>
+</ul>
+<p>GLPX-001 is single-period, and no subject received the wrong treatment, so <code>TRT01A</code> is not strictly required here. We include it anyway — a safety analysis is conventionally “as treated”, and carrying the variable makes that explicit rather than implied. Knowing it is <em>conditional</em>, and why, is the point.</p>
 </section>
-<section id="reading-the-output-line-by-line" class="level3" data-number="10.4.2">
-<h3 data-number="10.4.2" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">10.4.2</span> Reading the Output Line by Line</h3>
-<p>TODO: map each line of output to its plain-English meaning.</p>
+<section id="dates-and-duration" class="level3" data-number="10.3.3">
+<h3 data-number="10.3.3" class="anchored" data-anchor-id="dates-and-duration"><span class="header-section-number">10.3.3</span> Dates and duration</h3>
+<p><code>TRTSDT</code> (date of first exposure) and <code>TRTEDT</code> (date of last exposure) are each conditionally required — required if there is an investigational product (ADaMIG v1.3, §3.2). They come from SDTM DM’s <code>RFXSTDTC</code> and <code>RFXENDTC</code>, which SDTMIG v3.4 §5.2 defines as the earliest and latest exposure datetimes. That is a clean, documented SDTM→ADaM derivation.</p>
+<p><code>TRTDURD</code> — total treatment duration in days — is Permissible (ADaMIG v1.3, §3.2). Note what the guide does <em>not</em> do: it defines the variable as “total treatment duration, as measured in days” but does not fix the formula. Whether you count <code>TRTEDT − TRTSDT</code> or <code>TRTEDT − TRTSDT + 1</code> is the sponsor’s convention, and it must be documented. We use the inclusive form (both endpoints count), so a subject dosed on one single day has a duration of 1, not 0.</p>
+</section>
+<section id="population-flags-belong-to-adam" class="level3" data-number="10.3.4">
+<h3 data-number="10.3.4" class="anchored" data-anchor-id="population-flags-belong-to-adam"><span class="header-section-number">10.3.4</span> Population flags belong to ADaM</h3>
+<p>At least one population flag is required by ADaM, and a minimum of one subject-level population flag variable is required in ADSL (ADaMIG v1.3, §3.2, Table 3.2.3). The flags are character <code>Y</code>/<code>N</code>, Conditional, and named to a convention: character subject-level flags end in <code>FL</code>, their numeric counterparts in <code>FN</code> (ADaMIG v1.3, §3.1.4, item 3). The standard list includes <code>SAFFL</code>, <code>ITTFL</code>, <code>FASFL</code>, <code>PPROTFL</code>, <code>COMPLFL</code>, <code>RANDFL</code> and <code>ENRLFL</code> — and is explicitly <em>not</em> meant to be all-inclusive (ADaMIG v1.3, §3.2, Table 3.2.3).</p>
+<p>Which of them you include is not a matter of taste. A character indicator variable is required for <strong>every population defined in the statistical analysis plan</strong>, and all applicable subject-level population flags must be present in ADSL (ADaMIG v1.3, §3.1.4, item 2). The SAP drives the variable list.</p>
+<p>Two precise rules make these flags unlike almost everything else in ADaM. First, on Core attributes generally: “unless otherwise specified, all ADaM variables are populated as appropriate, meaning <strong>nulls are allowed</strong>” (ADaMIG v1.3, §3). Population flags are the “otherwise specified” — for subject-level character population flags, <code>N</code> = not in the population, <code>Y</code> = in it, and <strong>null values are not allowed</strong> (ADaMIG v1.3, §3.1.4, item 4). A subject-level population flag must commit, every time.</p>
+<p>Second, and closing the thread opened in <a href="../sessions/sdtm-findings.html">Findings</a> and <a href="../sessions/adam-concepts.html">ADaM Concepts</a>: whenever population or baseline flags are needed for analyses, <strong>the ADaM variables must be used</strong> (ADaMIG v1.3, §3.5). SDTM carries some conceptually-parallel flags as Supplemental Qualifiers — <code>SAFETY</code> maps to <code>SAFFL</code>, <code>ITT</code> to <code>ITTFL</code>, <code>FULLSET</code> to <code>FASFL</code>, <code>PPROT</code> to <code>PPROTFL</code>, <code>COMPLT</code> to <code>COMPLFL</code> — but the guide is blunt that they might not match:</p>
+<blockquote class="blockquote">
+<p>It is possible that ADaM subject-level population flags might not match their conceptual counterparts in the SDTM… It is not incumbent on those creating ADaM datasets to go back and “fix” the SDTM population supplemental qualifiers (ADaMIG v1.3, §3.5).</p>
+</blockquote>
+<p>So the flags are re-derived in ADaM from stated conditions. They are never copied across, even when they would come out identical.</p>
+</section>
+<section id="a-scope-limit-worth-naming" class="level3" data-number="10.3.5">
+<h3 data-number="10.3.5" class="anchored" data-anchor-id="a-scope-limit-worth-naming"><span class="header-section-number">10.3.5</span> A scope limit worth naming</h3>
+<p>Two ADSL variables in this course have <strong>no SDTM source</strong>, because GLPX-001’s SDTM stops at DM, AE, LB and VS and never builds <strong>DS (Disposition)</strong> — the domain where a real trial records randomization and end-of-study.</p>
+<ul>
+<li><strong><code>RANDDT</code></strong> (date of randomization) is conditionally required: “Required in randomized trials” (ADaMIG v1.3, §3.2). In a real submission it comes from DS. Here we set it equal to <code>TRTSDT</code>.</li>
+<li><strong><code>EOSSTT</code></strong> (end-of-study status) and <strong><code>EOSDT</code></strong> (end-of-study date) are both Permissible (ADaMIG v1.3, §3.2). In a real submission they come from DS too. Here we derive them from visit attendance.</li>
+</ul>
+<p>Example 1 checks the first of these against the data rather than assuming it, and both are labelled as what they are. Say this plainly now, because it is the kind of thing a course can quietly teach wrong: <strong><code>RANDDT = TRTSDT</code> is not a general rule.</strong> Randomization and first dose are distinct events, and in most trials they differ by days. Treat both derivations here as scaffolding that a real study would replace with DS.</p>
 </section>
 </section>
-<section id="example-2-todo" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="example-2-todo"><span class="header-section-number">10.5</span> Example 2: TODO</h2>
-<p>TODO: a second worked example.</p>
-<section id="run-it-yourself-1" class="level3" data-number="10.5.1">
-<h3 data-number="10.5.1" class="anchored" data-anchor-id="run-it-yourself-1"><span class="header-section-number">10.5.1</span> Run It Yourself</h3>
-<p>TODO.</p>
+<section id="example-1-the-adsl-spine" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="example-1-the-adsl-spine"><span class="header-section-number">10.4</span> Example 1: The ADSL Spine</h2>
+<p><em>Estimated time: ~25 minutes (worked example)</em></p>
+<p>Start from the persisted SDTM DM — one row per subject already, because that is what DM is:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/sdtm/dm.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_character</span>()))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">rows =</span> <span class="fu">nrow</span>(dm), <span class="at">subjects =</span> <span class="fu">n_distinct</span>(dm<span class="sc">$</span>USUBJID))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    rows subjects 
+     400      400 </code></pre>
+</div>
+</div>
+<p>Before deriving <code>RANDDT</code> from <code>TRTSDT</code>, check whether the two actually coincide in this trial. The raw EDC file recorded a randomization date; it never reached SDTM, because DM has no randomization-date variable — but it is still there to test against:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>dm_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/dm_raw.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_character</span>()))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>randdt_check <span class="ot">&lt;-</span> dm_raw <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(SUBJID, RANDDT) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(SUBJID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(SUBJID, RANDDT) <span class="sc">|&gt;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(dm <span class="sc">|&gt;</span> <span class="fu">select</span>(SUBJID, RFXSTDTC), <span class="at">by =</span> <span class="st">"SUBJID"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">diff_days =</span> <span class="fu">as.integer</span>(<span class="fu">as.Date</span>(RFXSTDTC) <span class="sc">-</span> <span class="fu">as.Date</span>(RANDDT)))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(randdt_check, diff_days)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  diff_days     n
+      &lt;int&gt; &lt;int&gt;
+1         0   400</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Run the chunk. Every one of the 400 subjects has <code>diff_days = 0</code>: first dose fell on the randomization date, for all of them. That makes <code>RANDDT = TRTSDT</code> <strong>true in this dataset</strong> — which is exactly why it needs saying out loud that it is an artefact of how the trial was simulated, not a property of randomized trials. A real study would take <code>RANDDT</code> from DS and would find the two dates differing routinely.</p>
+</div>
+</div>
+<p>Now the spine. Identifiers and demographics are carried; treatment variables and dates are derived:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>adsl_spine <span class="ot">&lt;-</span> dm <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRTSDT  =</span> <span class="fu">as.Date</span>(RFXSTDTC),                       <span class="co"># DM.RFXSTDTC</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRTEDT  =</span> <span class="fu">as.Date</span>(RFXENDTC),                       <span class="co"># DM.RFXENDTC</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRTDURD =</span> <span class="fu">as.integer</span>(TRTEDT <span class="sc">-</span> TRTSDT) <span class="sc">+</span> <span class="dv">1</span>L,        <span class="co"># inclusive convention</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">RANDDT  =</span> TRTSDT,                                  <span class="co"># scope limit: real source is DS</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">AGE     =</span> <span class="fu">as.numeric</span>(AGE),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">AGEGR1  =</span> <span class="fu">case_when</span>(AGE <span class="sc">&lt;</span>  <span class="dv">65</span> <span class="sc">~</span> <span class="st">"&lt;65"</span>,             <span class="co"># sponsor-defined grouping</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                        AGE <span class="sc">&gt;=</span> <span class="dv">65</span> <span class="sc">~</span> <span class="st">"&gt;=65"</span>),</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">AGEGR1N =</span> <span class="fu">case_when</span>(AGEGR1 <span class="sc">==</span> <span class="st">"&lt;65"</span>  <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                        AGEGR1 <span class="sc">==</span> <span class="st">"&gt;=65"</span> <span class="sc">~</span> <span class="dv">2</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRT01P  =</span> ARM,                                     <span class="co"># planned, period 1</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRT01PN =</span> <span class="fu">if_else</span>(ARMCD <span class="sc">==</span> <span class="st">"GLPX10"</span>, <span class="dv">1</span>, <span class="dv">2</span>),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRT01A  =</span> ACTARM                                   <span class="co"># actual, period 1</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(STUDYID, USUBJID, SUBJID, SITEID,</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>         AGE, AGEU, AGEGR1, AGEGR1N, SEX, RACE, ETHNIC, COUNTRY,</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>         ARM, ARMCD, ACTARM, ACTARMCD, TRT01P, TRT01PN, TRT01A,</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>         RANDDT, TRTSDT, TRTEDT, TRTDURD)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">rows =</span> <span class="fu">nrow</span>(adsl_spine), <span class="at">subjects =</span> <span class="fu">n_distinct</span>(adsl_spine<span class="sc">$</span>USUBJID))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    rows subjects 
+     400      400 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>adsl_spine <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, SITEID, AGE, AGEGR1, SEX, TRT01P, TRTSDT, TRTEDT, TRTDURD) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 9
+  USUBJID         SITEID   AGE AGEGR1 SEX   TRT01P TRTSDT     TRTEDT     TRTDURD
+  &lt;chr&gt;           &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;       &lt;int&gt;
+1 GLPX001-101-010 101       58 &lt;65    M     Place… 2024-03-28 2024-09-26     183
+2 GLPX001-101-012 101       59 &lt;65    M     Place… 2024-03-06 2024-09-04     183
+3 GLPX001-101-026 101       65 &gt;=65   F     Place… 2024-05-06 2024-11-04     183</code></pre>
+</div>
+</div>
+<p>The age grouping is worth a second look, because GLPX-001’s deliberate data defects reach it:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(adsl_spine, AGEGR1, AGEGR1N)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  AGEGR1 AGEGR1N     n
+  &lt;chr&gt;    &lt;dbl&gt; &lt;int&gt;
+1 &lt;65          1   303
+2 &gt;=65         2    93
+3 &lt;NA&gt;        NA     4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>adsl_spine <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(AGE)) <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, AGE, AGEU, AGEGR1, AGEGR1N)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  USUBJID           AGE AGEU  AGEGR1 AGEGR1N
+  &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;
+1 GLPX001-102-005    NA &lt;NA&gt;  &lt;NA&gt;        NA
+2 GLPX001-103-141    NA &lt;NA&gt;  &lt;NA&gt;        NA
+3 GLPX001-110-023    NA &lt;NA&gt;  &lt;NA&gt;        NA
+4 GLPX001-111-057    NA &lt;NA&gt;  &lt;NA&gt;        NA</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Run both chunks. 303 subjects are <code>&lt;65</code>, 93 are <code>&gt;=65</code> — and <strong>four are null</strong>. Those are the four subjects from <a href="../sessions/sdtm-dm.html">The DM Domain</a> whose birth dates were incomplete, so <code>AGE</code> could not be derived without imputing. That null propagates: no age, no age group.</p>
+<p>This is legal. Nulls are allowed in ADaM variables unless otherwise specified (ADaMIG v1.3, §3), and <code>AGE</code> being Required means the <em>variable</em> must be present, not that every value is populated. But legal is not the same as decided — see the note below.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reading the Output Line by Line
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you see</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>400 rows, 400 subjects</td>
+<td>One row per subject, the defining ADSL structure (ADaMIG v1.3, §3.2). DM was already subject-level, so no collapsing was needed.</td>
+</tr>
+<tr class="even">
+<td><code>SITEID</code>, <code>SUBJID</code> carried</td>
+<td>Required <em>in ADSL</em>, permissible elsewhere (ADaMIG v1.3, §3.2). Carried unmodified under the same-name rule.</td>
+</tr>
+<tr class="odd">
+<td><code>AGEGR1</code> / <code>AGEGR1N</code></td>
+<td>Sponsor-defined grouping and its numeric counterpart. One-to-one, and null together on the same four rows — the rule from §3.2 holds.</td>
+</tr>
+<tr class="even">
+<td><code>TRT01P</code> from <code>ARM</code></td>
+<td>Planned treatment for period 1, derived from <code>DM.ARM</code> (ADaMIG v1.3, §3.2). <code>TRT01P</code> is required; <code>ARM</code> is carried alongside it.</td>
+</tr>
+<tr class="odd">
+<td><code>TRTSDT</code> / <code>TRTEDT</code></td>
+<td>First and last exposure, from <code>DM.RFXSTDTC</code> / <code>DM.RFXENDTC</code> (SDTMIG v3.4, §5.2). Both conditionally required because there is an investigational product.</td>
+</tr>
+<tr class="even">
+<td><code>TRTDURD = 183</code></td>
+<td>The planned 26-week treatment period, counted inclusively. Discontinuing subjects have shorter durations — you will see them in Example 2.</td>
+</tr>
+<tr class="odd">
+<td>Four null <code>AGEGR1</code></td>
+<td>Missing data flowing through a derivation, honestly.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The decision the nulls force.</strong> Four subjects have no age group, so every age-subgroup table will have a fourth category or a dropped denominator. Which of those happens is a decision, and it belongs in the statistical analysis plan <em>before</em> the analysis runs — an explicit “Missing” category, or documented exclusion from age-subgroup summaries. Leaving it to whatever <code>count()</code> happens to do is how a table quietly loses four subjects. ADaM’s job here is not to hide the gap but to carry it forward visibly.</p>
+</div>
+</div>
+<p>The carried columns are still governed by SDTM controlled terminology — the same-name rule means they must be the SDTM values, so they must still be valid ones. Check rather than assume:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ct_check <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"SEX"</span>, <span class="st">"RACE"</span>, <span class="st">"ETHNIC"</span>, <span class="st">"AGEU"</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">codelist =</span> <span class="fu">c</span>(<span class="st">"C66731"</span>, <span class="st">"C74457"</span>, <span class="st">"C66790"</span>, <span class="st">"C66781"</span>),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">values   =</span> <span class="fu">list</span>(<span class="fu">unique</span>(adsl_spine<span class="sc">$</span>SEX),</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">unique</span>(adsl_spine<span class="sc">$</span>RACE),</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">unique</span>(adsl_spine<span class="sc">$</span>ETHNIC),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">unique</span>(<span class="fu">na.omit</span>(adsl_spine<span class="sc">$</span>AGEU)))</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">n_values  =</span> <span class="fu">lengths</span>(values),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">all_valid =</span> <span class="fu">map2_lgl</span>(values, codelist,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                              \(v, cl) <span class="fu">all</span>(<span class="fu">is_term</span>(v, <span class="at">clst_code =</span> cl))))</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>ct_check <span class="sc">|&gt;</span> <span class="fu">select</span>(variable, codelist, n_values, all_valid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  variable codelist n_values all_valid
+  &lt;chr&gt;    &lt;chr&gt;       &lt;int&gt; &lt;lgl&gt;    
+1 SEX      C66731          2 TRUE     
+2 RACE     C74457          4 TRUE     
+3 ETHNIC   C66790          2 TRUE     
+4 AGEU     C66781          1 TRUE     </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>All four come back <code>TRUE</code>. Nothing new was introduced — that is the point. Because these values were carried unmodified from SDTM, they remain valid CT; had we “tidied” <code>RACE</code> into nicer labels under the same variable name, we would have broken both the codelist and §3.1.1’s same-name rule in one move.</p>
+</div>
+</div>
+</section>
+<section id="example-2-population-flags-and-disposition" class="level2" data-number="10.5">
+<h2 data-number="10.5" class="anchored" data-anchor-id="example-2-population-flags-and-disposition"><span class="header-section-number">10.5</span> Example 2: Population Flags and Disposition</h2>
+<p><em>Estimated time: ~20 minutes (worked example)</em></p>
+<p>Population flags are derived from <em>conditions</em>, never copied and never hard-coded. GLPX-001 makes this feel almost too easy — every randomized subject was dosed, so every flag comes out <code>"Y"</code> — but writing the condition is what makes the dataset defensible, and it is what would catch the subject who was randomized and never dosed:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>adsl_flags <span class="ot">&lt;-</span> adsl_spine <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">RANDFL =</span> <span class="fu">if_else</span>(<span class="sc">!</span><span class="fu">is.na</span>(RANDDT), <span class="st">"Y"</span>, <span class="st">"N"</span>),   <span class="co"># randomized</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">ITTFL  =</span> <span class="fu">if_else</span>(<span class="sc">!</span><span class="fu">is.na</span>(RANDDT), <span class="st">"Y"</span>, <span class="st">"N"</span>),   <span class="co"># ITT: analyse as randomized</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">SAFFL  =</span> <span class="fu">if_else</span>(<span class="sc">!</span><span class="fu">is.na</span>(TRTSDT), <span class="st">"Y"</span>, <span class="st">"N"</span>)    <span class="co"># safety: received &gt;= 1 dose</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(adsl_flags, RANDFL, ITTFL, SAFFL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  RANDFL ITTFL SAFFL     n
+  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
+1 Y      Y     Y       400</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># subject-level population flags may never be null (ADaMIG v1.3, §3.1.4)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>adsl_flags <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">c</span>(RANDFL, ITTFL, SAFFL), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.x))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+  RANDFL ITTFL SAFFL
+   &lt;int&gt; &lt;int&gt; &lt;int&gt;
+1      0     0     0</code></pre>
+</div>
+</div>
+<p>Now disposition. SDTM DM does not record whether a subject finished the trial, so derive it from what the trial observed — the last visit each subject actually attended:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>vs <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/sdtm/vs.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_character</span>()))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>eos <span class="ot">&lt;-</span> vs <span class="sc">|&gt;</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(USUBJID) <span class="sc">|&gt;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">last_visitnum =</span> <span class="fu">max</span>(<span class="fu">as.integer</span>(VISITNUM)),</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">EOSDT         =</span> <span class="fu">as.Date</span>(<span class="fu">max</span>(VSDTC)),</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.groups       =</span> <span class="st">"drop"</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">EOSSTT =</span> <span class="fu">if_else</span>(last_visitnum <span class="sc">==</span> <span class="dv">8</span>L, <span class="st">"COMPLETED"</span>, <span class="st">"DISCONTINUED"</span>))</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>adsl <span class="ot">&lt;-</span> adsl_flags <span class="sc">|&gt;</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(eos <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, EOSSTT, EOSDT), <span class="at">by =</span> <span class="st">"USUBJID"</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(adsl, EOSSTT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  EOSSTT           n
+  &lt;chr&gt;        &lt;int&gt;
+1 COMPLETED      367
+2 DISCONTINUED    33</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>adsl <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(EOSSTT) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">min_days =</span> <span class="fu">min</span>(TRTDURD), <span class="at">median_days =</span> <span class="fu">median</span>(TRTDURD),</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">max_days =</span> <span class="fu">max</span>(TRTDURD), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  EOSSTT           n min_days median_days max_days
+  &lt;chr&gt;        &lt;int&gt;    &lt;int&gt;       &lt;int&gt;    &lt;int&gt;
+1 COMPLETED      367      183         183      183
+2 DISCONTINUED    33       41          86      169</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Run both chunks. All 400 subjects are <code>"Y"</code> on all three flags, with no nulls. Then 367 subjects completed and 33 discontinued — and the duration summary shows why that distinction matters: completers all sit at 183 days, while discontinuing subjects range from 41 to 169. Those 33 are exactly the dropouts you first counted back in <a href="../sessions/the-trial-glpx001.html">The GLPX-001 Trial</a>. The number has survived the whole pipeline intact.</p>
+</div>
+</div>
+<p>One more check, because it exposes a distinction that is easy to collapse:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>adsl <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_differ =</span> <span class="fu">sum</span>(EOSDT <span class="sc">!=</span> TRTEDT),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_same   =</span> <span class="fu">sum</span>(EOSDT <span class="sc">==</span> TRTEDT))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  n_differ n_same
+     &lt;int&gt;  &lt;int&gt;
+1       30    370</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>adsl <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(EOSDT <span class="sc">!=</span> TRTEDT) <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, TRTEDT, EOSDT, EOSSTT, TRTDURD) <span class="sc">|&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  USUBJID         TRTEDT     EOSDT      EOSSTT       TRTDURD
+  &lt;chr&gt;           &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;          &lt;int&gt;
+1 GLPX001-101-139 2024-09-20 2024-09-06 DISCONTINUED      72
+2 GLPX001-101-309 2024-05-21 2024-05-04 DISCONTINUED      47
+3 GLPX001-101-400 2024-08-01 2024-07-20 DISCONTINUED     126
+4 GLPX001-102-105 2024-12-13 2024-11-16 DISCONTINUED     169</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reading the Output Line by Line
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you see</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>All flags <code>"Y"</code>, no nulls</td>
+<td>The derivation is conditional, not hard-coded. Null is not an option for subject-level population flags (ADaMIG v1.3, §3.1.4, item 4).</td>
+</tr>
+<tr class="even">
+<td><code>RANDFL</code> and <code>ITTFL</code> identical</td>
+<td>In this trial the ITT population <em>is</em> the randomized population. That is a design fact worth stating in the SAP, not a redundancy to delete — the two flags answer different questions and could diverge in another trial.</td>
+</tr>
+<tr class="odd">
+<td>367 / 33</td>
+<td>Completers and discontinuers, reconciling with the trial overview from Part 1.</td>
+</tr>
+<tr class="even">
+<td><code>EOSDT != TRTEDT</code> for 30 subjects</td>
+<td>End of <em>study</em> is not end of <em>treatment</em>. These subjects stopped attending visits before their exposure record ended. Two variables, two questions.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>On the disposition derivation.</strong> <code>EOSSTT</code> and <code>EOSDT</code> here are derived from visit attendance because this course’s SDTM has no DS domain. In a real trial, disposition is <em>collected</em> — the site records why and when a subject came off study — and ADSL reads it from DS. Attendance is a reasonable proxy and it is right for this dataset, but it is a proxy, and it is documented as one. If a subject skipped the final visit yet formally completed the study, this derivation would misclassify them; DS would not.</p>
+<p>Note also that <code>EOSSTT</code> is Permissible, with the codelist <code>SBJTSTAT</code> and the ADaMIG’s own examples being <code>COMPLETED</code> and <code>DISCONTINUED</code> (ADaMIG v1.3, §3.2) — which is where our two values come from.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Why there is no <code>is_term()</code> check here
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>SBJTSTAT</code> is an <strong>ADaM</strong> codelist, and the <code>sdtm.terminology</code> package this course uses carries <strong>SDTM</strong> controlled terminology. Search it and <code>SBJTSTAT</code> is absent; the term <code>DISCONTINUED</code> does not appear in any SDTM codelist at all. So the honest position is: our two values are taken from the ADaMIG’s own stated examples for <code>EOSSTT</code>, and verifying them against the published <code>SBJTSTAT</code> codelist needs the ADaM CT package, which is a separate release from NCI EVS.</p>
+<p>Worth knowing in its own right — <strong>ADaM has its own controlled terminology, distinct from SDTM’s</strong>, and a tool that validates one will silently tell you nothing about the other. “The codelist wasn’t found” and “the value is invalid” are different findings, and conflating them is how a validation report becomes decoration.</p>
+</div>
+</div>
+<section id="persisting-adsl" class="level3" data-number="10.5.1">
+<h3 data-number="10.5.1" class="anchored" data-anchor-id="persisting-adsl"><span class="header-section-number">10.5.1</span> Persisting ADSL</h3>
+<p>As with SDTM in Part 2, the derivations above are reified in a script so later sessions do not rebuild the chain. <code>R/build_adam.R</code> reads <code>data/sdtm/</code> and writes <code>data/adam/adsl.csv</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/build_adam.R"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">main</span>()</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; adsl: 400 rows x 28 cols</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>It is deterministic — its inputs are the committed SDTM CSVs, which are themselves fixed-seed output of <code>simulate_trial.R</code> and <code>build_sdtm.R</code>. The whole chain reproduces from three scripts, and <code>data/adam/adsl.csv</code> is committed so the <a href="../sessions/tlf.html">TLF</a> session can read a finished ADSL directly. That is the same reproducibility argument that justified committing <code>data/sdtm/</code>, one link further along.</p>
 </section>
 </section>
 <section id="what-can-go-wrong" class="level2" data-number="10.6">
 <h2 data-number="10.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">10.6</span> What Can Go Wrong</h2>
-<p>TODO: failure modes and misuse patterns.</p>
-<section id="common-misinterpretations" class="level3" data-number="10.6.1">
-<h3 data-number="10.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">10.6.1</span> Common misinterpretations</h3>
-<p>TODO.</p>
-</section>
+<p><em>Estimated time: ~10 minutes (reading)</em></p>
+<p><strong>More than one row per subject</strong></p>
+<p>ADSL is one record per subject, full stop (ADaMIG v1.3, §3.2). The usual culprit is a join to a multi-record source — a subject with two enrolment records, two exposure periods, two disposition events — that silently fans the dataset out. Every downstream denominator inherits the error. Check <code>nrow()</code> against <code>n_distinct(USUBJID)</code> after every join, and remember it was a real risk here: subject <code>101-012</code> has two raw enrolment records, resolved back in <a href="../sessions/sdtm-dm.html">The DM Domain</a>.</p>
+<p><strong>Copying SDTM’s population flags</strong></p>
+<p>The SDTM Supplemental Qualifier flags are not the analysis flags. Whenever a flag is needed for analysis, the ADaM variable must be used and re-derived (ADaMIG v1.3, §3.5) — and the guide explicitly allows the two to disagree. Copying <code>SAFETY</code> into <code>SAFFL</code> skips the derivation ADSL exists to record.</p>
+<p><strong>Hard-coding a flag because “they’re all Y”</strong></p>
+<p>Writing <code>SAFFL = "Y"</code> produces the right column for this trial and no defensible answer to “how was it derived?” It also breaks silently the moment one subject is randomized but never dosed. Derive from the condition; let the data produce the uniformity.</p>
+<p><strong>Leaving a population flag null</strong></p>
+<p>Subject-level population flags do not permit nulls (ADaMIG v1.3, §3.1.4, item 4). A subject is either in the population or not. This is a genuine exception to ADaM’s general “nulls are allowed” (ADaMIG v1.3, §3), and it is deliberate: a null denominator is not a denominator.</p>
+<p><strong>Modifying a value under an SDTM variable name</strong></p>
+<p>Relabelling <code>RACE</code>, recoding <code>SEX</code>, tidying <code>COUNTRY</code> — all prohibited under the same-name rule (ADaMIG v1.3, §3.1.1, item 3). Whenever values are modified it is mandatory to do so in an ADaM variable with its own name, such as <code>RACEGR1</code>.</p>
+<p><strong>Deriving <code>TRTSDT</code> from the wrong date</strong></p>
+<p><code>TRTSDT</code> is first <em>exposure</em>, from <code>RFXSTDTC</code> — not consent, not randomization, not the first visit. Using the wrong reference date shifts every study day and every treatment-emergent classification built on it downstream.</p>
+<p><strong>Putting time-varying data in ADSL</strong></p>
+<p>Anything that changes over time belongs in BDS (ADaMIG v1.3, §2.3.1). The pressure to add “just the week-26 value” to ADSL is real; resist it.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Common misinterpretations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>“Every variable in ADSL is an ADaM standard variable”</strong> No.&nbsp;Our <code>ETHNIC</code> and <code>COUNTRY</code> appear in no ADaMIG ADSL table. They are conformant as SDTM variables carried in under the same-name rule (ADaMIG v1.3, §3.1.1, item 3), which §2.2 encourages for traceability. A variable’s absence from the tables is not a prohibition.</p>
+<p><strong>“<code>Required</code> means the value can never be missing”</strong> <code>Req</code> means the <em>variable</em> must be included in the dataset (ADaMIG v1.3, §3). Unless otherwise specified, nulls are allowed. <code>AGE</code> is Required and is null for four GLPX subjects — legitimately, because their birth dates were incomplete and nothing was imputed.</p>
+<p><strong>“<code>RANDDT</code> equals <code>TRTSDT</code>”</strong> It does in this simulated trial, for all 400 subjects — and that is a property of the simulator, not of randomized trials. Randomization and first dose are distinct events, normally days apart, and <code>RANDDT</code>’s real source is the DS domain.</p>
+<p><strong>“<code>AGEGR1</code> is controlled terminology”</strong> It is sponsor-defined for the analysis (ADaMIG v1.3, §3.2). The ADaMIG’s <code>"&lt;18"</code> / <code>"18-65"</code> / <code>"&gt;65"</code> are examples, not a codelist. Same lesson as <code>PARAMCD</code> in <a href="../sessions/adam-concepts.html">ADaM Concepts</a>: there is no <code>is_term()</code> check for a design decision.</p>
+<p><strong>“If a value passes no validation check, it must be fine”</strong> <code>EOSSTT</code> in this session passes no CT check — not because it is valid, but because the tool covers SDTM terminology and <code>SBJTSTAT</code> is an ADaM codelist. An unchecked value is unchecked, not verified.</p>
+</div>
+</div>
 </section>
 <section id="exercises" class="level2" data-number="10.7">
 <h2 data-number="10.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.7</span> Exercises</h2>
-<p>TODO: link the exercise file(s) for this session, or state that this session has no exercise.</p>
+<p>Work through <a href="../exercises/adsl.html">Exercise 3 — ADSL</a>, which extends this ADSL with a second age grouping and an analysis-age case, and asks you to construct a population-flag scenario where the flags legitimately disagree.</p>
 </section>
 <section id="comprehension-check" class="level2" data-number="10.8">
 <h2 data-number="10.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">10.8</span> Comprehension Check</h2>
-<p>TODO: three to five short self-test questions.</p>
+<p><em>Estimated time: ~5 minutes</em></p>
+<ol type="1">
+<li>ADSL has 400 rows and 400 subjects. After joining an exposure dataset it has 412 rows. What has gone wrong, and which ADaMIG requirement does the result now violate?</li>
+<li><code>AGE</code> is Required in ADSL, yet four GLPX subjects have a null <code>AGE</code>. Is the dataset non-conformant? Explain.</li>
+<li>Your SDTM has a <code>SAFETY</code> Supplemental Qualifier for every subject. Can you use it to populate <code>SAFFL</code>? Why or why not?</li>
+<li>Why does <code>ETHNIC</code> appear in this ADSL even though it is not listed in any ADaMIG ADSL variable table — and what rule constrains its values?</li>
+<li><code>EOSSTT</code> was not checked with <code>is_term()</code>. Does that mean its values are unverified, invalid, or standard-compliant? Explain the distinction.</li>
+</ol>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -495,9 +1001,15 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO: answers, collapsed.</p>
+<ol type="1">
+<li><p>A one-to-many join fanned the dataset out — most likely to a source with more than one record for some subjects (multiple exposure periods, a re-enrolment). ADSL must have exactly one record per subject (ADaMIG v1.3, §3.2), so 412 rows for 400 subjects is structurally non-conformant, and every denominator computed from it would be wrong.</p></li>
+<li><p>It is conformant. <code>Req</code> means the <em>variable</em> must be included in the dataset (ADaMIG v1.3, §3); it does not require every value to be populated, since “unless otherwise specified, all ADaM variables are populated as appropriate, meaning nulls are allowed.” The four nulls follow from incomplete birth dates that were deliberately not imputed. What <em>is</em> required is that the SAP says how those subjects are handled in age-subgroup analyses.</p></li>
+<li><p>No — not by copying it. Whenever population flags are needed for analysis, the ADaM variables must be used (ADaMIG v1.3, §3.5), and the guide explicitly allows the SDTM Supplemental Qualifier and the ADaM flag to disagree, without obliging you to “fix” the SDTM. Derive <code>SAFFL</code> in ADaM from its stated condition; the SDTM qualifier may inform the definition, but it is not the source of the value.</p></li>
+<li><p>Because a variable that is not an ADaM standard variable may still be carried from SDTM — §2.2 encourages including the SDTM variables used in ADaM for traceability. Its values are constrained by the same-name rule: an ADaM variable whose name matches an SDTM variable must be a copy, with label, meaning and values unmodified (ADaMIG v1.3, §3.1.1, item 3). So <code>ETHNIC</code> must remain exactly <code>DM.ETHNIC</code>, valid against the SDTM <code>ETHNIC</code> codelist.</p></li>
+<li><p><strong>Unverified.</strong> <code>EOSSTT</code> uses the <code>SBJTSTAT</code> codelist, which belongs to ADaM controlled terminology; the <code>sdtm.terminology</code> package carries SDTM terminology only, so the codelist is not there to check against. The values are taken from the ADaMIG’s own examples for <code>EOSSTT</code> (ADaMIG v1.3, §3.2), which is good evidence but not a codelist check. “No check was possible” is a different finding from “the check passed” — and reporting it as the latter is how validation becomes theatre.</p></li>
+</ol>
 </div>
 </div>
 </div>

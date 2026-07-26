@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -335,24 +370,37 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="goal" class="level2" data-number="18.1">
 <h2 data-number="18.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">18.1</span> Goal</h2>
-<p>TODO: one sentence.</p>
+<p>Extend the ADSL from <a href="../sessions/adsl.html">the ADSL session</a> with a second age grouping and an analysis age, then construct the case the GLPX-001 data never gives you: population flags that legitimately disagree.</p>
 </section>
 <section id="setup" class="level2" data-number="18.2">
 <h2 data-number="18.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">18.2</span> Setup</h2>
-<p>TODO: starting code.</p>
+<p>Work from the project root. The finished SDTM is the input:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdtm.terminology)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/sdtm/dm.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_character</span>()))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Build the ADSL spine as in Example 1 before starting, or read the persisted copy from <code>data/adam/adsl.csv</code>.</p>
 </section>
 <section id="task" class="level2" data-number="18.3">
 <h2 data-number="18.3" class="anchored" data-anchor-id="task"><span class="header-section-number">18.3</span> Task</h2>
 <ol type="1">
-<li>TODO</li>
-<li>TODO</li>
+<li><p><strong>(Guided) A second age grouping.</strong> Add <code>AGEGR2</code> and <code>AGEGR2N</code> using three bands — <code>&lt;50</code>, <code>50-64</code>, <code>&gt;=65</code>. Confirm the one-to-one relationship holds and that the two variables are null on exactly the same rows. Why is there no <code>is_term()</code> check to run on <code>AGEGR2</code>?</p></li>
+<li><p><strong>(The trap) Analysis age.</strong> Four subjects have a null <code>AGE</code> because their birth dates were incomplete. Suppose the SAP specifies that for subjects with a year-only birth date, age is computed from 30 June of that year. Derive <code>AAGE</code> implementing that rule, leaving <code>AGE</code> untouched.</p>
+<p>Two things to get right, and both are the point of the task: say which ADaMIG rule stops you writing the imputed value into <code>AGE</code> itself, and check whether the ADaMIG’s condition for including <code>AAGE</code> is actually met here.</p></li>
+<li><p><strong>(Semi-guided) Flags that disagree.</strong> In GLPX-001 every randomized subject was dosed, so <code>RANDFL</code>, <code>ITTFL</code> and <code>SAFFL</code> are all <code>"Y"</code> for all 400. Take subject <code>GLPX001-101-010</code>, construct the scenario where they were randomized but never received a dose, and show what each of the three flags becomes.</p>
+<p>Then answer in one sentence each: which population would that subject be counted in for an efficacy table, which for a safety table, and why a null flag would be wrong for either.</p></li>
 </ol>
 </section>
 <section id="acceptance-criteria" class="level2" data-number="18.4">
 <h2 data-number="18.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">18.4</span> Acceptance criteria</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">TODO</label></li>
-<li><label><input type="checkbox">TODO</label></li>
+<li><label><input type="checkbox"><code>AGEGR2</code>/<code>AGEGR2N</code> one-to-one, null on the same rows, and the no-codelist reasoning stated</label></li>
+<li><label><input type="checkbox"><code>AAGE</code> derived under the SAP rule with <code>AGE</code> unmodified; the governing rule named and <code>AAGE</code>’s conditional requirement checked</label></li>
+<li><label><input type="checkbox">The randomized-not-dosed scenario produces <code>RANDFL = "Y"</code>, <code>ITTFL = "Y"</code>, <code>SAFFL = "N"</code> — with no nulls</label></li>
+<li><label><input type="checkbox">Efficacy vs safety population membership explained</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -366,7 +414,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO: hint.</p>
+<p>Task 1: the same structural rule you used for <code>AGEGR1</code>/<code>AGEGR1N</code> in the session applies (ADaMIG v1.3, §3.2). For the second part, recall what made <code>PARAMCD</code> uncheckable in <a href="../sessions/adam-concepts.html">ADaM Concepts</a>.</p>
+<p>Task 2: look up <code>AAGE</code> in ADaMIG v1.3 §3.2 — read its Core designation and the exact wording of when it is required. The rule preventing you from writing into <code>AGE</code> is in §3.1.1, and the session quotes it.</p>
+<p>Task 3: you are changing one input, not one flag. Ask which condition each flag is derived <em>from</em> — <code>SAFFL</code>’s condition is about exposure, the other two are about randomization — then let the derivations you already wrote produce the three values themselves.</p>
 </div>
 </div>
 </div>
