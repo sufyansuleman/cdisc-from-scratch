@@ -132,9 +132,17 @@ flag. Example 2 turns on exactly this distinction.
 One more, because it recurs: a value produced by a central lab
 following its own procedures is considered **collected, not derived**,
 so its `LBDRVFL` (derived flag) is null (SDTMIG v3.4, §6.3.5.6,
-assumption 6; §4.1.8.1). That is why a byte-perfect duplicate from the
-vendor is a *transmission artefact* to remove — not a real second
-measurement to keep.
+assumption 6). The same fact is recorded a second time, in a different
+place: in the **Define-XML origin metadata**, where each variable's
+origin is declared as collected, derived or assigned, a central-lab
+result's origin is *Collected* (SDTMIG v3.4, §4.1.8.1). Note the
+division of labour — `LBDRVFL` is a variable in the dataset, while
+origin is metadata *about* the variable in define.xml; they agree here,
+but they are not the same artefact.
+
+That is why a byte-perfect duplicate from the vendor is a *transmission
+artefact* to remove — not a real second measurement to keep. Nothing
+derived it, so nothing could legitimately have produced it twice.
 
 ## Example 1: Building LB — Results, Units, and a Duplicate
 
