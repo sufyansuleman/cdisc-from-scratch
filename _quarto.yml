@@ -30,7 +30,8 @@ book:
     chapters:
     - sessions/adam-concepts.qmd
     - sessions/adsl.qmd
-    - sessions/adae-adlb.qmd
+    - sessions/adae.qmd
+    - sessions/adlb.qmd
   - part: "Part 4: Outputs and Submission"
     chapters:
     - sessions/tlf.qmd
@@ -42,7 +43,8 @@ book:
     - exercises/sdtm-events.qmd
     - exercises/sdtm-findings.qmd
     - exercises/adsl.qmd
-    - exercises/adae-adlb.qmd
+    - exercises/adae.qmd
+    - exercises/adlb.qmd
     - exercises/tlf.qmd
 
 bibliography:

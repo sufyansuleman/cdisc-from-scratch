@@ -23,8 +23,9 @@ library(tidyverse)
 | Comprehension Check | 5 min | Self-test |
 
 The first session of Part 3. It has no exercise set — it is the mental
-model for [ADSL](adsl.qmd) and [ADAE / ADLB](adae-adlb.qmd), which build
-the real analysis datasets. For self-paced study it fits one sitting.
+model for [ADSL](adsl.qmd), [ADAE](adae.qmd) and [ADLB](adlb.qmd), which
+build the real analysis datasets. For self-paced study it fits one
+sitting.
 :::
 
 ::: {.callout-tip}
@@ -150,7 +151,7 @@ Findings record could hold.
 There is a third ADaM structure, **OCCDS** (the Occurrence Data
 Structure), used for adverse events. It is specified in a *separate*
 CDISC document, not the ADaMIG (ADaMIG v1.3, §2.3), so this course
-introduces it in [ADAE / ADLB](adae-adlb.qmd) and cites it there.
+introduces it in [ADAE](adae.qmd) and cites it there.
 
 ### What a parameter is
 
@@ -206,9 +207,9 @@ on different rows for the same subject.
 *Estimated time: ~20 minutes (worked example)*
 
 Read the finished SDTM and shape a small preview of each ADaM structure
-— not the full builds (those are [ADSL](adsl.qmd) and [ADAE /
-ADLB](adae-adlb.qmd)), just enough to *see* the difference in what one
-row is.
+— not the full builds (those are [ADSL](adsl.qmd), [ADAE](adae.qmd) and
+[ADLB](adlb.qmd)), just enough to *see* the difference in what one row
+is.
 
 First, an ADSL-shaped preview: one row per subject, with a planned
 treatment and a population flag:
@@ -277,7 +278,7 @@ row per subject; BDS is one row per subject per parameter per timepoint.
 These are previews: `SAFFL` here is a simplification (every GLPX
 subject was dosed, so all are `"Y"`), and the real derivations — from
 EX, from the population definitions — are the work of the [ADSL](adsl.qmd)
-and [ADLB](adae-adlb.qmd) sessions. The point now is only the *shape*.
+and [ADLB](adlb.qmd) sessions. The point now is only the *shape*.
 :::
 
 ## Example 2: Baseline Is an ADaM Decision

@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sufyan Suleman">
 
-<title>CDISC with R</title>
+<title>21&nbsp; Exercise 5 — ADLB – CDISC with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,25 +23,26 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./sessions/setup.html" rel="next">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../exercises/tlf.html" rel="next">
+<link href="../exercises/adae.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -72,8 +72,8 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <meta name="description" content="A free, self-paced, hands-on course on CDISC clinical data standards in R: building SDTM domains, ADaM datasets, and tables, listings and figures from scratch using a simulated Phase III trial.">
 <meta name="keywords" content="CDISC, SDTM, ADaM, define-XML, Dataset-JSON, TLF, clinical trials, clinical data standards, R programming, pharmaverse, regulatory submission, clinical programming">
-<meta property="og:description" content="SDTM, ADaM and TLFs from scratch using a simulated Phase III trial">
-<meta name="twitter:description" content="SDTM, ADaM and TLFs from scratch using a simulated Phase III trial">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
 <script data-goatcounter="https://cdiscwithr.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
 
 
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Welcome</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/adlb.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5 — ADLB</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -103,7 +103,7 @@ ul.task-list li input[type="checkbox"] {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">CDISC with R</a> 
+      <a href="../">CDISC with R</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -115,13 +115,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/setup.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></span></a>
   </div>
 </li>
@@ -136,13 +136,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/why-standards.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/why-standards.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Why Standards</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
   </div>
 </li>
@@ -159,31 +159,31 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/sdtm-concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/sdtm-concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">SDTM Concepts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/sdtm-dm.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/sdtm-dm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">SDTM: The DM Domain</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/sdtm-events.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/sdtm-events.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SDTM: Events (Adverse Events)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/sdtm-findings.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/sdtm-findings.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/define-xml.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/define-xml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Define-XML</span></span></a>
   </div>
 </li>
@@ -200,25 +200,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/adam-concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/adam-concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ADaM Concepts</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/adsl.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/adsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ADSL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/adae.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/adae.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADAE</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/adlb.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/adlb.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ADLB</span></span></a>
   </div>
 </li>
@@ -235,19 +235,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/tlf.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/tlf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tables, Listings and Figures</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/adrg-and-submission.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/adrg-and-submission.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The ADRG and Submission</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sessions/dataset-json.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/dataset-json.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Dataset-JSON</span></span></a>
   </div>
 </li>
@@ -264,43 +264,43 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises/sdtm-dm.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/sdtm-dm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Exercise 1 — SDTM: The DM Domain</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises/sdtm-events.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/sdtm-events.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exercise — SDTM: Events (Adverse Events)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises/sdtm-findings.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/sdtm-findings.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise — SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises/adsl.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/adsl.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 3 — ADSL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises/adae.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/adae.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 4 — ADAE</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises/adlb.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/adlb.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5 — ADLB</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./exercises/tlf.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/tlf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exercise 5 — Tables, Listings and Figures</span></span></a>
   </div>
 </li>
@@ -316,34 +316,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
-  <ul class="collapse">
-  <li><a href="#who-this-course-is-for" id="toc-who-this-course-is-for" class="nav-link" data-scroll-target="#who-this-course-is-for">Who This Course Is For</a></li>
-  <li><a href="#what-this-course-expects-from-you" id="toc-what-this-course-expects-from-you" class="nav-link" data-scroll-target="#what-this-course-expects-from-you">What This Course Expects From You</a></li>
-  <li><a href="#how-the-course-is-organised" id="toc-how-the-course-is-organised" class="nav-link" data-scroll-target="#how-the-course-is-organised">How the Course Is Organised</a></li>
-  </ul></li>
+  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal"><span class="header-section-number">21.1</span> Goal</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">21.2</span> Setup</a></li>
+  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task"><span class="header-section-number">21.3</span> Task</a></li>
+  <li><a href="#acceptance-criteria" id="toc-acceptance-criteria" class="nav-link" data-scroll-target="#acceptance-criteria"><span class="header-section-number">21.4</span> Acceptance criteria</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/adlb.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5 — ADLB</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">CDISC with R</h1>
-<p class="subtitle lead">SDTM, ADaM and TLFs from scratch using a simulated Phase III trial</p>
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5 — ADLB</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Sufyan Suleman <a href="https://orcid.org/0000-0001-6612-6915" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
-          </div>
-  </div>
     
   
     
@@ -354,60 +345,48 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="welcome" class="level1 unnumbered">
-<h1 class="unnumbered">Welcome</h1>
-<p>TODO: opening hook, two or three sentences, in the house register (concrete, second person — see the reference course’s “Most statistics courses start with theory. This one starts with your data.”).</p>
-<p>This course teaches CDISC clinical data standards by building them: you take raw data from a simulated Phase III trial (codename <strong>GLPX-001</strong>) and carry it all the way to submission-ready datasets and outputs, in R.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Before You Start: Set Up Your Tools
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Go to <a href="./sessions/setup.html"><strong>Before You Begin: Setup</strong></a> and follow the steps there. This course pins its package versions with <code>renv</code>; the setup session explains why and gets you restored and rendering in a few minutes. Nothing else in the course will work until you have done this.</p>
-</div>
-</div>
-<section id="who-this-course-is-for" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="who-this-course-is-for">Who This Course Is For</h2>
-<p>TODO: audience description — statistical programmers, biostatisticians, data managers and researchers moving into clinical trial work in the pharmaceutical industry.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Scope and level
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TODO: what this course is and deliberately is not.</p>
-</div>
-</div>
+<section id="goal" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">21.1</span> Goal</h2>
+<p>TODO: one sentence.</p>
 </section>
-<section id="what-this-course-expects-from-you" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="what-this-course-expects-from-you">What This Course Expects From You</h2>
-<p>TODO: prerequisites (working R, comfort with the tidyverse, no prior CDISC knowledge assumed).</p>
+<section id="setup" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">21.2</span> Setup</h2>
+<p>TODO: starting code.</p>
 </section>
-<section id="how-the-course-is-organised" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="how-the-course-is-organised">How the Course Is Organised</h2>
-<p>TODO: one short paragraph per part:</p>
-<ul>
-<li><strong>Part 1: Foundations</strong> — why standards exist, and the GLPX-001 trial you will work with throughout.</li>
-<li><strong>Part 2: SDTM</strong> — TODO.</li>
-<li><strong>Part 3: ADaM</strong> — TODO.</li>
-<li><strong>Part 4: Outputs and Submission</strong> — TODO.</li>
+<section id="task" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="task"><span class="header-section-number">21.3</span> Task</h2>
+<ol type="1">
+<li>TODO</li>
+<li>TODO</li>
+</ol>
+</section>
+<section id="acceptance-criteria" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">21.4</span> Acceptance criteria</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">TODO</label></li>
+<li><label><input type="checkbox">TODO</label></li>
 </ul>
-<p>All data in this course is <strong>synthetic</strong>, generated by <a href="https://github.com/sufyansuleman/cdisc-with-r/blob/main/R/simulate_trial.R"><code>R/simulate_trial.R</code></a>. No real patient information is used anywhere.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Hint
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>TODO: hint.</p>
+</div>
+</div>
+</div>
 <blockquote class="blockquote">
-<p>Exercises are included in this book. Solutions, extra exercises and instructor material are available in the paid tier.</p>
+<p>Solutions are in the paid tier.</p>
 </blockquote>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -813,10 +792,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="../exercises/adae.html" class="pagination-link" aria-label="Exercise 4 — ADAE">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 4 — ADAE</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./sessions/setup.html" class="pagination-link" aria-label="Before You Begin: Setup">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exercises/tlf.html" class="pagination-link" aria-label="Exercise 5 — Tables, Listings and Figures">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exercise 5 — Tables, Listings and Figures</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

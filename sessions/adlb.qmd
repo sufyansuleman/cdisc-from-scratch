@@ -1,5 +1,5 @@
 ---
-title: "ADAE and ADLB"
+title: "ADLB"
 ---
 
 ::: {.callout-note}
@@ -34,7 +34,9 @@ before reading the explanation that follows.
 ::: {.callout-tip}
 TODO: two or three concrete scenarios that this session answers, ending
 with the single question it addresses in bold. Cross-link the
-session(s) this one builds on.
+session(s) this one builds on — [ADaM Concepts](adam-concepts.qmd),
+[ADSL](adsl.qmd), and [Findings](sdtm-findings.qmd), where the
+authoritative baseline was deferred to ADaM.
 :::
 
 ## Learning Objectives
@@ -48,6 +50,11 @@ After completing this session you will be able to:
 ## Background: TODO (the one core idea)
 
 *Estimated time: ~TODO minutes (reading)*
+
+<!-- The BDS session. Sole source = ADaMIG v1.3. This is where PARAM,
+  PARAMCD, AVAL, ABLFL, BASE and CHG are actually built, and where the
+  baseline thread that runs DM -> Findings (LBLOBXFL deferral) ->
+  adam-concepts -> ADSL finally lands. -->
 
 TODO: introduce the single idea that ties the session together, concept
 before formula.
@@ -83,8 +90,7 @@ TODO.
 
 ## Exercises
 
-TODO: link the exercise file(s) for this session, or state that this
-session has no exercise.
+TODO: link [Exercise 5 — ADLB](../exercises/adlb.qmd).
 
 ## Comprehension Check
 

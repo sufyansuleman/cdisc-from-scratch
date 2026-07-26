@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>19&nbsp; Exercise 4 — ADAE and ADLB – CDISC with R</title>
+<title>11&nbsp; ADAE – CDISC with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercises/tlf.html" rel="next">
-<link href="../exercises/adsl.html" rel="prev">
+<link href="../sessions/adlb.html" rel="next">
+<link href="../sessions/adsl.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -88,7 +88,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/adae-adlb.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 4 — ADAE and ADLB</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/adam-concepts.html">Part 3: ADaM</a></li><li class="breadcrumb-item"><a href="../sessions/adae.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADAE</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -212,8 +212,14 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sessions/adae-adlb.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADAE and ADLB</span></span></a>
+  <a href="../sessions/adae.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADAE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/adlb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ADLB</span></span></a>
   </div>
 </li>
       </ul>
@@ -230,19 +236,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/tlf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Tables, Listings and Figures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tables, Listings and Figures</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/adrg-and-submission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">The ADRG and Submission</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The ADRG and Submission</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/dataset-json.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Dataset-JSON</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Dataset-JSON</span></span></a>
   </div>
 </li>
       </ul>
@@ -259,37 +265,43 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-dm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Exercise 1 — SDTM: The DM Domain</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Exercise 1 — SDTM: The DM Domain</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-events.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Exercise — SDTM: Events (Adverse Events)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exercise — SDTM: Events (Adverse Events)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-findings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exercise — SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise — SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/adsl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise 3 — ADSL</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 3 — ADSL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/adae-adlb.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 4 — ADAE and ADLB</span></span></a>
+  <a href="../exercises/adae.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 4 — ADAE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/adlb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5 — ADLB</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/tlf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 5 — Tables, Listings and Figures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exercise 5 — Tables, Listings and Figures</span></span></a>
   </div>
 </li>
       </ul>
@@ -304,19 +316,26 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal"><span class="header-section-number">19.1</span> Goal</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">19.2</span> Setup</a></li>
-  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task"><span class="header-section-number">19.3</span> Task</a></li>
-  <li><a href="#acceptance-criteria" id="toc-acceptance-criteria" class="nav-link" data-scroll-target="#acceptance-criteria"><span class="header-section-number">19.4</span> Acceptance criteria</a></li>
+  <li><a href="#sec-adae" id="toc-sec-adae" class="nav-link active" data-scroll-target="#sec-adae"><span class="header-section-number">11.1</span> When Do You Use This?</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">11.2</span> Learning Objectives</a></li>
+  <li><a href="#background-todo-counting-events-not-measuring-them" id="toc-background-todo-counting-events-not-measuring-them" class="nav-link" data-scroll-target="#background-todo-counting-events-not-measuring-them"><span class="header-section-number">11.3</span> Background: TODO — Counting Events, Not Measuring Them</a></li>
+  <li><a href="#example-1-todo-the-adae-spine-and-treatment-emergence" id="toc-example-1-todo-the-adae-spine-and-treatment-emergence" class="nav-link" data-scroll-target="#example-1-todo-the-adae-spine-and-treatment-emergence"><span class="header-section-number">11.4</span> Example 1: TODO — The ADAE Spine and Treatment Emergence</a></li>
+  <li><a href="#example-2-todo-occurrence-flags-and-the-denominator-trap" id="toc-example-2-todo-occurrence-flags-and-the-denominator-trap" class="nav-link" data-scroll-target="#example-2-todo-occurrence-flags-and-the-denominator-trap"><span class="header-section-number">11.5</span> Example 2: TODO — Occurrence Flags and the Denominator Trap</a></li>
+  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">11.6</span> What Can Go Wrong</a>
+  <ul class="collapse">
+  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">11.6.1</span> Common misinterpretations</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.7</span> Exercises</a></li>
+  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">11.8</span> Comprehension Check</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/adae-adlb.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 4 — ADAE and ADLB</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/adam-concepts.html">Part 3: ADaM</a></li><li class="breadcrumb-item"><a href="../sessions/adae.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADAE</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 4 — ADAE and ADLB</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADAE</span></h1>
 </div>
 
 
@@ -333,46 +352,353 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="goal" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">19.1</span> Goal</h2>
-<p>TODO: one sentence.</p>
-</section>
-<section id="setup" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">19.2</span> Setup</h2>
-<p>TODO: starting code.</p>
-</section>
-<section id="task" class="level2" data-number="19.3">
-<h2 data-number="19.3" class="anchored" data-anchor-id="task"><span class="header-section-number">19.3</span> Task</h2>
-<ol type="1">
-<li>TODO</li>
-<li>TODO</li>
-</ol>
-</section>
-<section id="acceptance-criteria" class="level2" data-number="19.4">
-<h2 data-number="19.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">19.4</span> Acceptance criteria</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">TODO</label></li>
-<li><label><input type="checkbox">TODO</label></li>
-</ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<!--
+========================================================================
+SKELETON + VERIFY LIST — prose NOT yet written. DO NOT COMMIT as final.
+
+Third Part 3 session, and the course's FIRST OCCDS-cited session. Sole
+source for OCCDS specifics = ADaM OCCDS Implementation Guide v1.1 PDF
+(local, gitignored). Every [OCCDS] claim PRE-CITED to its section;
+author spot-checks. ADaM-general claims still cite ADaMIG v1.3.
+
+Reads persisted SDTM data/sdtm/ae.csv + persisted ADaM data/adam/adsl.csv
+— the first session where an ADaM dataset is an INPUT, which is itself
+the point (OCCDS §3.2.1: merge subject-level variables from ADSL).
+
+PROPOSED CENTRAL INTUITION (for approval):
+  "ADAE is one row per adverse event, carried from SDTM and answered
+   against the treatment window: not what value was measured, but
+   whether this event counts for this analysis — was it treatment
+   emergent, and is it this subject's first of its kind?"
+
+========================================================================
+VERIFY LIST — every OCCDS/ADaM specific this session intends to assert.
+
+--- Structure, and why OCCDS is not BDS ---
+
+O1 [OCCDS v1.1 §1.1.2, Principles 1-3] OCCDS applies when: (1) there is
+   NO need for AVAL/AVALC because occurrences are COUNTED, not
+   measured; (2) a dictionary hierarchy is typically used and remapping
+   it to PARAM/*CAT would lose its structure and meaning; (3) data
+   content is typically not modified for analysis. Also §1.1.2:
+   "typically, findings data fit nicely into BDS, and events and
+   interventions fit nicely into OCCDS."
+
+O2 [OCCDS v1.1 §3.2] OCCDS is explicitly different from BDS: "There is
+   no PARAM nor AVAL, for example." Some BDS variables may still be
+   used in OCCDS, and some OCCDS variables (e.g. TRTEMFL) may be used
+   outside OCCDS.
+
+O3 [OCCDS v1.1 §3.1.2] Datasets of SubClass ADVERSE EVENT must have
+   Class = OCCURRENCE DATA STRUCTURE; structure is usually 1 record per
+   record in the corresponding SDTM domain; SDTM input is always AE
+   (plus SUPPAE, FA, ADSL); MH/CE data are NOT included in the
+   SubClass. And the escape hatch: "Not all OCCDS datasets that contain
+   adverse event data will necessarily be of SubClass ADVERSE EVENT."
+
+--- The MedDRA constraint (author-approved framing) ---
+
+O4 [OCCDS v1.1 §3.2.3] For SubClass ADVERSE EVENT it is REQUIRED that
+   all levels of the MedDRA primary path — SOC, HLGT, HLT, LLT, PT — be
+   included. "For other OCCDS datasets, these variables are recommended
+   ... but not required." GLPX AEDECOD is null for all 389 rows
+   (MedDRA is licensed; the course never fakes coded terms), so the
+   SubClass is structurally unreachable and this ADAE is built as
+   Class = OCCURRENCE DATA STRUCTURE.
+
+O5 [OCCDS v1.1 §1.1.2, Principle 2 parenthetical] THE KEY SANCTION —
+   the IG addresses our exact case directly: "Data for a particular
+   study that could have been coded but was not should use this
+   structure because analysis results are similar, and this will allow
+   analysis programming to work the same way." So building ADAE as
+   OCCDS without coded terms is not a workaround; it is what the guide
+   says to do. NOTE: this is a stronger and more precise warrant than
+   the §3.1.2 escape hatch I cited when proposing the split — lead with
+   O5, support with O3.
+
+O6 [OCCDS v1.1 §3.2, Table 3.2.6.1 vs Table 3.2.6.2] The occurrence
+   flags split cleanly along the MedDRA line, and the IG's own table
+   titles do the work:
+     Table 3.2.6.1 (general): AOCCFL (1st within subject) and AOCCIFL
+       (1st max severity within subject) -> BUILDABLE here; AOCCPFL and
+       AOCCPIFL need --DECOD (PT) -> NOT buildable.
+     Table 3.2.6.2 "MedDRA Occurrence Flag Variables": AOCCSFL (1st per
+       SOC), AOCCSIFL -> NOT buildable.
+   All are Core = Perm. Taught as cited fact; never fabricated.
+   CORRECTION TO MY OWN SPLIT MEMO: I told the author only AOCCFL was
+   buildable. AOCCIFL is buildable too — it keys on maximum severity,
+   which GLPX has (AESEV), not on a coded term.
+
+--- Treatment emergence (the centrepiece) ---
+
+O7 [OCCDS v1.1 §3.2, Table 3.2.5.3] TRTEMFL "Treatment Emergent
+   Analysis Flag", Char, Core = Cond (Req for SubClass ADVERSE EVENT).
+   Example derivation, verbatim: "If ADSL.TRTSDT<=ASTDT<=ADSL.TRTEDT +
+   x days then TRTEMFL='Y'", where x is producer-defined and "often
+   incorporates the known half-life of the drug". For non-SubClass
+   datasets it is "conditional on whether the concept of treatment
+   emergent is a key feature of the analysis" — it is the key feature
+   here, so the condition is met.
+   AUTHOR'S QUESTION ANSWERED: TRTEMFL is a PURE TIMING derivation —
+   ASTDT against ADSL.TRTSDT/TRTEDT. No coded term, no MedDRA
+   dependency anywhere in its definition. Nothing about what is
+   buildable changes.
+
+O8 [OCCDS v1.1 §3.2, Table 3.2.5.3] AETRTEM is the SDTM treatment-
+   emergent flag from SUPPAE (QNAM="AETRTEM"), Core = Perm. "TRTEMFL
+   may differ from AETRTEM due to different definitions, date
+   imputation, and other analysis rules." GLPX has no SUPPAE, so
+   AETRTEM is absent — stated, not faked. Same ADaM-re-derives-flags
+   lesson as ADSL's population flags (ADaMIG v1.3, §3.5).
+
+--- Timing ---
+
+O9 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDT = "Analysis Start Date",
+   Core = Cond, "created from converting XX.--STDTC from character ISO
+   8601 format to numeric date format, applying imputation rules if
+   specified in the statistical analysis plan (SAP) or metadata".
+   AENDT likewise from --ENDTC. --STDTC/--ENDTC are themselves copied
+   in for traceability.
+
+O10 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDTF "Analysis Start Date
+    Imputation Flag", Char, codelist DATEFL, Core = Cond — "conditional
+    on whether ASTDT (or the date part of ASTDTM) was imputed".
+    GLPX D4: subject 103-199 has a NULL AESTDTC. We do NOT impute it,
+    so ASTDT is null and ASTDTF stays null — and TRTEMFL cannot be
+    evaluated for that record. This is the session's honest-missingness
+    example, mirroring ADSL's four null AGEs.
+
+O11 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDY "Analysis Start Relative
+    Day", Core = Cond, derivation given: "ASTDT - ADSL.TRTSDT + 1 if
+    ASTDT >= ADSL.TRTSDT, else ASTDT - ADSL.TRTSDT" — the SAME no-day-0
+    rule as SDTMIG v3.4 §4.4.4, but anchored to ADSL.TRTSDT rather than
+    DM.RFSTDTC. AESTDY may be copied alongside: "ASTDY may differ from
+    --STDY due to date imputation and the option in ADaM to use a
+    reference date other than SDTM's RFSTDTC."
+
+--- Identifiers, the ADSL merge, traceability ---
+
+O12 [OCCDS v1.1 §3.2.2, Table 3.2.2.1] STUDYID, USUBJID Req; SUBJID,
+    SITEID Perm — and sourced ADSL.SUBJID / ADSL.SITEID, i.e. from
+    ADSL, not from the SDTM domain.
+
+O13 [OCCDS v1.1 §3.2.2] Row identifiers give datapoint traceability:
+    where rows come from a single SDTM domain, --SEQ (here AESEQ)
+    supplies it all; SRCDOM + SRCSEQ are the alternative for
+    multi-domain sources. Explicit: BDS's SRCVAR is NOT used in OCCDS,
+    because SRCVAR names the variable deriving AVAL/AVALC and those do
+    not exist here.
+
+O14 [OCCDS v1.1 §3.2.1] "Merge any subject-level variables needed for
+    analysis or reference." And the denominator warning, which is the
+    reason ADSL exists: "only subjects with a record in an input SDTM
+    domain would have a record in the analysis dataset ... population
+    indicators and denominator counts for percentages [should] be
+    derived from ADSL and not from the occurrence analysis dataset."
+    GLPX: 389 AE rows over 262 subjects, but the safety denominator is
+    400 from ADSL. Single most consequential sentence in the session.
+
+--- Severity ---
+
+O15 [OCCDS v1.1 §3.2, Table 3.2.5.2] --SEV copied from AE.AESEV; ASEV
+    "Analysis Severity/Intensity" is the analysis version and ASEVN its
+    numeric counterpart (Core = Perm, values 1/2/3). The IG's worked
+    example maps MILD/MODERATE/SEVERE to Mild/Moderate/Severe. The
+    same-name rule still governs (ADaMIG v1.3, §3.1.1 item 3): AESEV
+    must stay the SDTM value; any recoding goes in ASEV.
+    VERIFY AT PROSE TIME: confirm the exact table number for the
+    severity block (read as 3.2.5.2, adjacent to 3.2.5.3 Adverse Events
+    Indicator Variables) before citing it.
+
+--- Version pairing (author-supplied; must be disclosed) ---
+
+O16 OCCDS v1.1 front matter states it is "based on the Analysis Data
+    Model (ADaM) v2.1 and the ADaM Implementation Guide (ADaMIG) v1.2",
+    and it cites SDTMIG v3.3 and ADaMIG v1.2 section numbers
+    throughout. Author-confirmed disclosure to make in prose: v1.1
+    references v1.2/v3.3 in its front matter but IS CDISC's designated
+    companion to ADaMIG v1.3 — the ADaMIG v1.3 page states OCCDS "is
+    described in ADaM OCCDS v1.1", and the v1.3 Release Package ships
+    it. A small teaching point about staggered CDISC versioning.
+
+--- [CT] to confirm live at prose time ---
+C1 AESEV values MILD/MODERATE/SEVERE against the AESEV codelist.
+C2 NY codelist (C66742). NOTE a precision to get right: OCCDS Table
+   3.2.5.3 lists TRTEMFL's controlled terms as bare "Y", whereas
+   AETRTEM is codelist (NY). Confirm and state precisely; do not blur
+   the two.
+C3 AEOUT / AESER already confirmed in sdtm-events; re-checked here.
+ADaM-derived values (mixed-case ASEV, TRTEMFL) are analysis decisions,
+not CT — same point as AGEGR1 in ADSL.
+All pasted as real output; none recalled.
+
+--- Explicitly NOT asserted / deferred ---
+- SMQ variables (§3.2.9) — need MedDRA; named, not built.
+- Original/prior coding variables (§3.2.10) — out of scope.
+- Concomitant medications and medical history OCCDS uses — named in O1
+  only, not built (no CM/MH domains in this course).
+- BDS labs -> adlb.qmd.
+========================================================================
+
+GLPX AE DATA REALITY (probed, for sizing the examples):
+  389 rows, 262 subjects, 25 distinct AETERM, AEDECOD null on all 389.
+  AESEV: MILD 243 / MODERATE 124 / SEVERE 22. AESER: Y 1 / N 388.
+  1 null AESTDTC (D4, subject 103-199). Zero ongoing AEs (E8 — all
+  RECOVERED; the ongoing case stays concept-only, never fabricated).
+
+INFRASTRUCTURE: build_adam.R gains build_adae() -> committed
+data/adam/adae.csv, mirroring the approved ADSL pattern.
+
+OPEN DECISION FOR THE AUTHOR: the value of x in TRTEMFL's
+ADSL.TRTEDT + x days. Proposal: x = 0 (the treatment window is exactly
+first dose to last dose inclusive), stated explicitly as a sponsor
+choice with the IG's half-life rationale explained but not invented for
+a fictional compound. Alternative: pick a GLPX-plausible x and document
+it. Recommend x = 0 — it keeps the fiction honest.
+-->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Hint
+<span class="screen-reader-only">Note</span>Session at a Glance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Total core time: about 85 minutes.</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Time</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>When Do You Use This? + Learning Objectives</td>
+<td>5 min</td>
+<td>Reading</td>
+</tr>
+<tr class="even">
+<td>Background: counting events, not measuring them</td>
+<td>20 min</td>
+<td>Reading</td>
+</tr>
+<tr class="odd">
+<td>Example 1: The ADAE spine and treatment emergence</td>
+<td>25 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="even">
+<td>Example 2: Occurrence flags and the denominator trap</td>
+<td>20 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="odd">
+<td>What Can Go Wrong</td>
+<td>10 min</td>
+<td>Reading</td>
+</tr>
+<tr class="even">
+<td>Exercises + Comprehension Check</td>
+<td>5 min</td>
+<td>Practice / Self-test</td>
+</tr>
+</tbody>
+</table>
+<p>The course’s first OCCDS dataset, and the first session that reads an ADaM dataset (ADSL) as an input. For self-paced study, split after Example 1.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How to Use the Code in This Session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Run R from the project root, as in earlier sessions.</p>
+<p>This session reads <code>data/sdtm/ae.csv</code> and — for the first time — <code>data/adam/adsl.csv</code>. Treatment emergence cannot be decided without the treatment dates ADSL carries, which is why ADSL came first.</p>
+</div>
+</div>
+<section id="sec-adae" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="sec-adae"><span class="header-section-number">11.1</span> When Do You Use This?</h2>
+<p>TODO (prose pass): scenarios — a safety table needs every event classified as treatment emergent or not; a reviewer asks which subjects had their first severe event while on drug; someone needs adverse-event percentages with the <em>right</em> denominator. Ends with the bold question: <strong>what does an analysis dataset look like when there is nothing to measure — only occurrences to count?</strong> Builds on <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, <a href="../sessions/adsl.html">ADSL</a> and <a href="../sessions/sdtm-events.html">Events</a>.</p>
+</section>
+<section id="learning-objectives" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">11.2</span> Learning Objectives</h2>
+<p>TODO after approval — recognise when OCCDS rather than BDS is the right structure; carry AE data and merge ADSL; derive <code>ASTDT</code>/<code>ASTDY</code> and <code>TRTEMFL</code>; derive occurrence flags and know which ones dictionary coding puts out of reach; take denominators from ADSL, not from the event data.</p>
+</section>
+<section id="background-todo-counting-events-not-measuring-them" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="background-todo-counting-events-not-measuring-them"><span class="header-section-number">11.3</span> Background: TODO — Counting Events, Not Measuring Them</h2>
+<!-- Prose pass: OCCDS vs BDS by what is analysed [O1, O2]; the AE
+  SubClass and why this ADAE is Class-only [O3, O4, O5]; treatment
+  emergence as the central analysis question [O7]; timing [O9-O11];
+  the ADSL merge and the denominator [O14]; version-pairing disclosure
+  [O16]. Central intuition callout. -->
+</section>
+<section id="example-1-todo-the-adae-spine-and-treatment-emergence" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="example-1-todo-the-adae-spine-and-treatment-emergence"><span class="header-section-number">11.4</span> Example 1: TODO — The ADAE Spine and Treatment Emergence</h2>
+<!-- Plan (code executed; reads data/sdtm/ae.csv + data/adam/adsl.csv):
+  carry STUDYID/USUBJID/AESEQ/AETERM/AESEV/AESER [O12, O13]; merge
+  TRTSDT/TRTEDT/TRT01A/SAFFL from ADSL [O14]; ASTDT/AENDT from
+  AESTDTC/AEENDTC [O9]; ASTDY [O11]; ASEV/ASEVN [O15]; TRTEMFL with a
+  stated x [O7]. Show the D4 null-start-date record and what it does to
+  TRTEMFL [O10]. CT-check AESEV [C1]. -->
+</section>
+<section id="example-2-todo-occurrence-flags-and-the-denominator-trap" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="example-2-todo-occurrence-flags-and-the-denominator-trap"><span class="header-section-number">11.5</span> Example 2: TODO — Occurrence Flags and the Denominator Trap</h2>
+<!-- Plan: AOCCFL and AOCCIFL derived [O6]; state plainly which flags
+  MedDRA puts out of reach, citing Table 3.2.6.2 by its title [O4, O6];
+  then the denominator: 262 subjects have AEs but the safety
+  denominator is 400 from ADSL [O14]. An incidence table done wrong and
+  done right. -->
+</section>
+<section id="what-can-go-wrong" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">11.6</span> What Can Go Wrong</h2>
+<!-- Candidates: computing percentages off the AE dataset instead of
+  ADSL [O14]; treating TRTEMFL as copied from SDTM rather than
+  re-derived [O8]; silently imputing a missing start date [O10];
+  recoding AESEV in place instead of into ASEV [O15]; expecting
+  PARAM/AVAL in OCCDS [O2]; claiming SubClass ADVERSE EVENT without the
+  MedDRA hierarchy [O4]. -->
+<section id="common-misinterpretations" class="level3" data-number="11.6.1">
+<h3 data-number="11.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">11.6.1</span> Common misinterpretations</h3>
+<!-- TODO prose pass. -->
+</section>
+</section>
+<section id="exercises" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.7</span> Exercises</h2>
+<!-- Public: exercises/adae.qmd (stub). Solutions -> private repo. -->
+</section>
+<section id="comprehension-check" class="level2" data-number="11.8">
+<h2 data-number="11.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">11.8</span> Comprehension Check</h2>
+<!-- TODO prose pass: 5 questions. Answers collapsed. -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answers
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO: hint.</p>
+<!-- TODO prose pass. -->
 </div>
 </div>
 </div>
-<blockquote class="blockquote">
-<p>Solutions are in the paid tier.</p>
-</blockquote>
 
 
 </section>
@@ -780,13 +1106,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/adsl.html" class="pagination-link" aria-label="Exercise 3 — ADSL">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise 3 — ADSL</span></span>
+      <a href="../sessions/adsl.html" class="pagination-link" aria-label="ADSL">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ADSL</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercises/tlf.html" class="pagination-link" aria-label="Exercise 5 — Tables, Listings and Figures">
-        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 5 — Tables, Listings and Figures</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../sessions/adlb.html" class="pagination-link" aria-label="ADLB">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ADLB</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

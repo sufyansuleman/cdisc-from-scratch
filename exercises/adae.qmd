@@ -1,5 +1,5 @@
 ---
-title: "Exercise 4 — ADAE and ADLB"
+title: "Exercise 4 — ADAE"
 ---
 
 ## Goal
