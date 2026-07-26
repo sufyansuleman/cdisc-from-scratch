@@ -33,10 +33,13 @@ persisted copy from `data/adam/adsl.csv`.
    same rows. Why is there no `is_term()` check to run on `AGEGR2`?
 
 2. **(The trap) Analysis age.** Four subjects have a null `AGE` because
-   their birth dates were incomplete. Suppose the SAP specifies that for
-   subjects with a year-only birth date, age is computed from 30 June of
-   that year. Derive `AAGE` implementing that rule, leaving `AGE`
-   untouched.
+   their birth dates were incomplete. Suppose the SAP specifies an
+   imputation for age-subgroup analyses: a missing **day** becomes the
+   15th of the month, and a missing **month and day** become 30 June.
+   Derive `AAGE` implementing that rule, leaving `AGE` untouched.
+
+   Note how many of the four subjects the rule actually rescues, and
+   what happens to the one it does not.
 
    Two things to get right, and both are the point of the task: say
    which ADaMIG rule stops you writing the imputed value into `AGE`
