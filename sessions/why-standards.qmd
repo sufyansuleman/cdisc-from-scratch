@@ -189,14 +189,21 @@ chain behind it is short and worth knowing. Four documents do the work:
   every submitted dataset's metadata. You will build one in
   [define.xml](define-xml.qmd).
 - **The Technical Rejection Criteria (TRC)** make part of this
-  automatic. The Conformance Guide defines validation on receipt and
-  names the eCTD Technical Rejection Criteria as the rules applied at
-  that gate (TCG §8.1–8.2) [@fdatcg]. FDA's self-check worksheet
-  enumerates them: every study must include a trial summary dataset
-  (`ts.xpt`); SDTM data must include a DM dataset and its `define.xml`;
-  ADaM data must include ADSL and its `define.xml` (validation rules
-  1734–1736) [@fdatrc]. Fail these and the submission can be rejected
-  before a human reviewer ever sees it.
+  automatic. The TRC is not a separate document — it lives inside the
+  Conformance Guide (TCG v6.0, §8.1.2.1–8.1.2.3) [@fdatcg], and the
+  clinical-drug case this course works in is §8.1.2.1. The mechanism is
+  worth knowing precisely, because it is mechanical: the check operates
+  through the study tagging file and the **trial summary dataset**,
+  `ts.xpt`. A *full* `ts.xpt` is expected when a study's type and
+  initiation date meet the Data Standards Catalog's criteria for
+  requiring SDTM and ADaM; a *simplified* `ts.xpt` (TCG Appendix G)
+  covers studies where those standards are not required.
+
+  That closes the chain: **the Catalog sets the requirement → the TRC
+  enforces it via the `ts.xpt` check → non-conformance triggers
+  rejection**, before a human reviewer ever opens the submission. You
+  will meet `ts.xpt` again in [ADRG and
+  Submission](adrg-and-submission.qmd).
 
 Two cautions. The dates above attach to *study start*, not submission
 date. And the Catalog is a living document — versions of SDTM, ADaM and
