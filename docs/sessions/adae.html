@@ -557,18 +557,12 @@ Tip
 <p>Data for a particular study that could have been coded but was not <strong>should use this structure</strong>, because analysis results are similar, and this will allow analysis programming to work the same way (OCCDS v1.1, §1.1.2).</p>
 </blockquote>
 <p>That sentence is doing real work. It says uncoded occurrence data belongs in OCCDS, so that the analysis code you write today keeps working when the data <em>is</em> coded tomorrow. The supporting point is in §3.1.2: “not all OCCDS datasets that contain adverse event data will necessarily be of SubClass ADVERSE EVENT.” Uncoded is a legitimate state, not a broken one.</p>
-<p>What it costs is specific, and CDISC has already drawn the line for you. The occurrence flags are split across <strong>two tables</strong>, and the second one is titled <em>MedDRA Occurrence Flag Variables</em> (OCCDS v1.1, §3.2, Table 3.2.6.2). Every flag we cannot build is in that table or depends on the preferred term:</p>
+<p>What it costs is specific, and it is worth working out precisely rather than by feel. The occurrence flags sit in two tables — the general ones in Table 3.2.6.1, and a second table titled <em>MedDRA Occurrence Flag Variables</em> (OCCDS v1.1, §3.2, Table 3.2.6.2). Whether we can build each one depends on what its derivation <em>keys on</em>:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Flag</th>
-<th>What it marks</th>
+<th>Keys on</th>
 <th>Where CDISC files it</th>
 <th>Buildable here</th>
 </tr>
@@ -576,43 +570,45 @@ Tip
 <tbody>
 <tr class="odd">
 <td><code>AOCCFL</code></td>
-<td>1st occurrence within subject</td>
+<td>first treatment-emergent record</td>
 <td>Table 3.2.6.1</td>
 <td><strong>Yes</strong></td>
 </tr>
 <tr class="even">
 <td><code>AOCCIFL</code></td>
-<td>1st max-severity occurrence within subject</td>
+<td>maximum severity (<code>ASEVN</code>)</td>
 <td>Table 3.2.6.1</td>
 <td><strong>Yes</strong></td>
 </tr>
 <tr class="odd">
 <td><code>AOCCPFL</code></td>
-<td>1st occurrence of a preferred term</td>
-<td>Table 3.2.6.1, keyed on <code>--DECOD</code></td>
+<td>preferred term (<code>--DECOD</code>)</td>
+<td>Table 3.2.6.1</td>
 <td>No</td>
 </tr>
 <tr class="even">
 <td><code>AOCCPIFL</code></td>
-<td>1st max severity within a preferred term</td>
-<td>Table 3.2.6.1, keyed on <code>--DECOD</code></td>
+<td>preferred term + severity</td>
+<td>Table 3.2.6.1</td>
 <td>No</td>
 </tr>
 <tr class="odd">
 <td><code>AOCCSFL</code></td>
-<td>1st occurrence within a system organ class</td>
-<td><strong>Table 3.2.6.2 (MedDRA)</strong></td>
+<td>system organ class</td>
+<td>Table 3.2.6.2</td>
 <td>No</td>
 </tr>
 <tr class="even">
 <td><code>AOCCSIFL</code></td>
-<td>1st max severity within an SOC</td>
-<td><strong>Table 3.2.6.2 (MedDRA)</strong></td>
+<td>system organ class + severity</td>
+<td>Table 3.2.6.2</td>
 <td>No</td>
 </tr>
 </tbody>
 </table>
-<p>The boundary is not an interpretation of ours. It is CDISC’s own organisation of the standard: the flags that need a dictionary are grouped under a heading that says so. Read that table of contents and you can predict, before writing a line of code, exactly which analyses a licensing constraint will cost you.</p>
+<p>Read the middle column and the boundary is obvious. Read the right-hand one and it is not — <strong>the line falls across the two tables, not along them.</strong> <code>AOCCPFL</code> and <code>AOCCPIFL</code> sit in the <em>general</em> table, yet we cannot build them, because their derivations key on <code>--DECOD</code>. The table titled “MedDRA” contains some of what a dictionary costs you, not all of it.</p>
+<p>So the rule to carry away is about derivations, not headings: <strong>the buildable set is bounded by which coded terms we lack — preferred term and system organ class — and that boundary cuts across CDISC’s table structure rather than following it.</strong> <code>AOCCFL</code> and <code>AOCCIFL</code> survive because they key on record order and on <code>ASEVN</code>, which come from severity and dates that GLPX-001 has. Everything keyed on a dictionary term goes, wherever it happens to be filed.</p>
+<p>That is the general habit worth building. When a constraint bites — licensing, a domain you did not collect, a variable the vendor never sent — work out what each derivation <em>depends on</em>. Grouping in the standard is a useful signpost and an unreliable rule.</p>
 </section>
 <section id="treatment-emergence-the-question-adae-exists-to-answer" class="level3" data-number="11.3.2">
 <h3 data-number="11.3.2" class="anchored" data-anchor-id="treatment-emergence-the-question-adae-exists-to-answer"><span class="header-section-number">11.3.2</span> Treatment emergence: the question ADAE exists to answer</h3>
@@ -647,7 +643,9 @@ Tip
 <blockquote class="blockquote">
 <p><code>ASTDT - ADSL.TRTSDT + 1</code> if <code>ASTDT &gt;= ADSL.TRTSDT</code>, else <code>ASTDT - ADSL.TRTSDT</code> (OCCDS v1.1, §3.2, Table 3.2.4.1)</p>
 </blockquote>
-<p>That is the no-day-zero convention from SDTMIG v3.4 §4.4.4 — the same two-branch shape you implemented in <a href="../sessions/sdtm-dm.html">The DM Domain</a>. But the anchor has moved. SDTM’s <code>--DY</code> counts from <code>DM.RFSTDTC</code>; ADaM’s <code>ASTDY</code> counts from <code>ADSL.TRTSDT</code>, and the guide notes that <code>ASTDY</code> “may differ from <code>--STDY</code> due to date imputation and the option in ADaM to use a reference date other than SDTM’s <code>RFSTDTC</code>.” Same arithmetic, deliberately different origin, because analysis gets to choose its own reference point and must then say so.</p>
+<p>That is the no-day-zero convention from SDTMIG v3.4 §4.4.4 — the same two-branch shape you implemented in <a href="../sessions/sdtm-dm.html">The DM Domain</a>. But the anchor has moved, and OCCDS says so in the variable’s own definition: <code>ASTDY</code> is “the number of days from an anchor date <strong>(not necessarily <code>DM.RFSTDTC</code>)</strong> to <code>ASTDT</code>” (OCCDS v1.1, §3.2, Table 3.2.4.1).</p>
+<p>SDTM’s <code>--DY</code> counts from <code>DM.RFSTDTC</code>; ADaM’s <code>ASTDY</code> counts from whatever the analysis nominates, here <code>ADSL.TRTSDT</code>. The guide adds that <code>ASTDY</code> “may differ from <code>--STDY</code> due to date imputation and the option in ADaM to use a reference date other than SDTM’s <code>RFSTDTC</code>,” and recommends carrying <code>AESTDY</code> alongside when it exists, so both are visible. Same arithmetic, deliberately different origin, because analysis gets to choose its own reference point — and must then say which one it chose.</p>
+<p>That parenthesis closes an arc this course has been building since <a href="../sessions/sdtm-dm.html">The DM Domain</a>. The study-day rule is fixed; the day it counts from is not.</p>
 </section>
 <section id="where-denominators-come-from" class="level3" data-number="11.3.4">
 <h3 data-number="11.3.4" class="anchored" data-anchor-id="where-denominators-come-from"><span class="header-section-number">11.3.4</span> Where denominators come from</h3>
@@ -1070,7 +1068,7 @@ Tip
 <li><strong>400</strong>, the safety population from ADSL. 262 counts only subjects who had an event, which excludes the 138 event-free subjects from the denominator and inflates every percentage. 389 counts <em>events</em>, not subjects, and a subject with four events would be counted four times. OCCDS v1.1, §3.2.1 states the rule directly.</li>
 <li><code>TRTSDT</code> and <code>TRTEDT</code> come from ADSL; only <code>ASTDT</code> derives from the AE domain. SDTM AE has no knowledge of when the subject was dosed, so ADSL must exist before ADAE can be built. Analysis datasets are a dependency graph, and ADSL is at its root — which is why it is required in a submission even when nothing else is.</li>
 <li>Because <code>ASTDTF</code> records the <em>level of imputation applied</em>, and nothing was imputed — this study specified no imputation rule (OCCDS v1.1, §3.2, Table 3.2.4.1). The flag describes what the derivation did, not what the data lacks. Populating it would claim an imputation that never happened.</li>
-<li><code>AOCCPFL</code> and <code>AOCCPIFL</code> (keyed on the preferred term, <code>--DECOD</code>), plus <code>AOCCSFL</code> and <code>AOCCSIFL</code> (keyed on system organ class). The last two are in Table 3.2.6.2, titled <em>MedDRA Occurrence Flag Variables</em> — CDISC groups the dictionary-dependent flags under a heading that names the dependency. Coded data would also make SubClass ADVERSE EVENT reachable (OCCDS v1.1, §3.2.3).</li>
+<li><code>AOCCPFL</code> and <code>AOCCPIFL</code> (keyed on the preferred term, <code>--DECOD</code>), plus <code>AOCCSFL</code> and <code>AOCCSIFL</code> (keyed on system organ class). Look in <strong>both</strong> occurrence-flag tables, not just the one titled <em>MedDRA Occurrence Flag Variables</em>: <code>AOCCSFL</code> and <code>AOCCSIFL</code> are in Table 3.2.6.2, but <code>AOCCPFL</code> and <code>AOCCPIFL</code> sit in the general Table 3.2.6.1 and are dictionary-dependent all the same. The reliable test is what each derivation keys on, not which table it appears in. Coded data would also make SubClass ADVERSE EVENT reachable (OCCDS v1.1, §3.2.3).</li>
 <li>“Same name, same meaning, same values” (ADaMIG v1.3, §3.1.1, item 3): a variable carrying an SDTM name must be a copy of the SDTM variable, values unmodified. It would also break the <code>AESEV</code> codelist (C66769), whose submission values are uppercase. The recased version belongs in <code>ASEV</code>, which is producer-defined terminology and carries no CDISC codelist to violate.</li>
 </ol>
 </div>

@@ -173,26 +173,40 @@ working when the data *is* coded tomorrow. The supporting point is in
 necessarily be of SubClass ADVERSE EVENT." Uncoded is a legitimate
 state, not a broken one.
 
-What it costs is specific, and CDISC has already drawn the line for you.
-The occurrence flags are split across **two tables**, and the second one
-is titled *MedDRA Occurrence Flag Variables* (OCCDS v1.1, §3.2, Table
-3.2.6.2). Every flag we cannot build is in that table or depends on the
-preferred term:
+What it costs is specific, and it is worth working out precisely rather
+than by feel. The occurrence flags sit in two tables — the general ones
+in Table 3.2.6.1, and a second table titled *MedDRA Occurrence Flag
+Variables* (OCCDS v1.1, §3.2, Table 3.2.6.2). Whether we can build each
+one depends on what its derivation *keys on*:
 
-| Flag | What it marks | Where CDISC files it | Buildable here |
+| Flag | Keys on | Where CDISC files it | Buildable here |
 |---|---|---|---|
-| `AOCCFL` | 1st occurrence within subject | Table 3.2.6.1 | **Yes** |
-| `AOCCIFL` | 1st max-severity occurrence within subject | Table 3.2.6.1 | **Yes** |
-| `AOCCPFL` | 1st occurrence of a preferred term | Table 3.2.6.1, keyed on `--DECOD` | No |
-| `AOCCPIFL` | 1st max severity within a preferred term | Table 3.2.6.1, keyed on `--DECOD` | No |
-| `AOCCSFL` | 1st occurrence within a system organ class | **Table 3.2.6.2 (MedDRA)** | No |
-| `AOCCSIFL` | 1st max severity within an SOC | **Table 3.2.6.2 (MedDRA)** | No |
+| `AOCCFL` | first treatment-emergent record | Table 3.2.6.1 | **Yes** |
+| `AOCCIFL` | maximum severity (`ASEVN`) | Table 3.2.6.1 | **Yes** |
+| `AOCCPFL` | preferred term (`--DECOD`) | Table 3.2.6.1 | No |
+| `AOCCPIFL` | preferred term + severity | Table 3.2.6.1 | No |
+| `AOCCSFL` | system organ class | Table 3.2.6.2 | No |
+| `AOCCSIFL` | system organ class + severity | Table 3.2.6.2 | No |
 
-The boundary is not an interpretation of ours. It is CDISC's own
-organisation of the standard: the flags that need a dictionary are
-grouped under a heading that says so. Read that table of contents and
-you can predict, before writing a line of code, exactly which analyses a
-licensing constraint will cost you.
+Read the middle column and the boundary is obvious. Read the right-hand
+one and it is not — **the line falls across the two tables, not along
+them.** `AOCCPFL` and `AOCCPIFL` sit in the *general* table, yet we
+cannot build them, because their derivations key on `--DECOD`. The
+table titled "MedDRA" contains some of what a dictionary costs you, not
+all of it.
+
+So the rule to carry away is about derivations, not headings: **the
+buildable set is bounded by which coded terms we lack — preferred term
+and system organ class — and that boundary cuts across CDISC's table
+structure rather than following it.** `AOCCFL` and `AOCCIFL` survive
+because they key on record order and on `ASEVN`, which come from
+severity and dates that GLPX-001 has. Everything keyed on a dictionary
+term goes, wherever it happens to be filed.
+
+That is the general habit worth building. When a constraint bites —
+licensing, a domain you did not collect, a variable the vendor never
+sent — work out what each derivation *depends on*. Grouping in the
+standard is a useful signpost and an unreliable rule.
 
 ### Treatment emergence: the question ADAE exists to answer
 
@@ -265,12 +279,23 @@ already met:
 
 That is the no-day-zero convention from SDTMIG v3.4 §4.4.4 — the same
 two-branch shape you implemented in [The DM Domain](sdtm-dm.qmd). But
-the anchor has moved. SDTM's `--DY` counts from `DM.RFSTDTC`; ADaM's
-`ASTDY` counts from `ADSL.TRTSDT`, and the guide notes that `ASTDY` "may
-differ from `--STDY` due to date imputation and the option in ADaM to
-use a reference date other than SDTM's `RFSTDTC`." Same arithmetic,
-deliberately different origin, because analysis gets to choose its own
-reference point and must then say so.
+the anchor has moved, and OCCDS says so in the variable's own
+definition: `ASTDY` is "the number of days from an anchor date **(not
+necessarily `DM.RFSTDTC`)** to `ASTDT`" (OCCDS v1.1, §3.2, Table
+3.2.4.1).
+
+SDTM's `--DY` counts from `DM.RFSTDTC`; ADaM's `ASTDY` counts from
+whatever the analysis nominates, here `ADSL.TRTSDT`. The guide adds that
+`ASTDY` "may differ from `--STDY` due to date imputation and the option
+in ADaM to use a reference date other than SDTM's `RFSTDTC`," and
+recommends carrying `AESTDY` alongside when it exists, so both are
+visible. Same arithmetic, deliberately different origin, because
+analysis gets to choose its own reference point — and must then say
+which one it chose.
+
+That parenthesis closes an arc this course has been building since
+[The DM Domain](sdtm-dm.qmd). The study-day rule is fixed; the day it
+counts from is not.
 
 ### Where denominators come from
 
@@ -760,11 +785,14 @@ Practice: [Exercise 4 — ADAE](../exercises/adae.qmd).
    derivation did, not what the data lacks. Populating it would claim an
    imputation that never happened.
 4. `AOCCPFL` and `AOCCPIFL` (keyed on the preferred term, `--DECOD`),
-   plus `AOCCSFL` and `AOCCSIFL` (keyed on system organ class). The last
-   two are in Table 3.2.6.2, titled *MedDRA Occurrence Flag Variables*
-   — CDISC groups the dictionary-dependent flags under a heading that
-   names the dependency. Coded data would also make SubClass ADVERSE
-   EVENT reachable (OCCDS v1.1, §3.2.3).
+   plus `AOCCSFL` and `AOCCSIFL` (keyed on system organ class). Look in
+   **both** occurrence-flag tables, not just the one titled *MedDRA
+   Occurrence Flag Variables*: `AOCCSFL` and `AOCCSIFL` are in Table
+   3.2.6.2, but `AOCCPFL` and `AOCCPIFL` sit in the general Table
+   3.2.6.1 and are dictionary-dependent all the same. The reliable test
+   is what each derivation keys on, not which table it appears in.
+   Coded data would also make SubClass ADVERSE EVENT reachable (OCCDS
+   v1.1, §3.2.3).
 5. "Same name, same meaning, same values" (ADaMIG v1.3, §3.1.1, item 3):
    a variable carrying an SDTM name must be a copy of the SDTM variable,
    values unmodified. It would also break the `AESEV` codelist (C66769),
