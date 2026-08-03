@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -318,9 +353,24 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#sec-adae" id="toc-sec-adae" class="nav-link active" data-scroll-target="#sec-adae"><span class="header-section-number">11.1</span> When Do You Use This?</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">11.2</span> Learning Objectives</a></li>
-  <li><a href="#background-todo-counting-events-not-measuring-them" id="toc-background-todo-counting-events-not-measuring-them" class="nav-link" data-scroll-target="#background-todo-counting-events-not-measuring-them"><span class="header-section-number">11.3</span> Background: TODO — Counting Events, Not Measuring Them</a></li>
-  <li><a href="#example-1-todo-the-adae-spine-and-treatment-emergence" id="toc-example-1-todo-the-adae-spine-and-treatment-emergence" class="nav-link" data-scroll-target="#example-1-todo-the-adae-spine-and-treatment-emergence"><span class="header-section-number">11.4</span> Example 1: TODO — The ADAE Spine and Treatment Emergence</a></li>
-  <li><a href="#example-2-todo-occurrence-flags-and-the-denominator-trap" id="toc-example-2-todo-occurrence-flags-and-the-denominator-trap" class="nav-link" data-scroll-target="#example-2-todo-occurrence-flags-and-the-denominator-trap"><span class="header-section-number">11.5</span> Example 2: TODO — Occurrence Flags and the Denominator Trap</a></li>
+  <li><a href="#background-counting-events-not-measuring-them" id="toc-background-counting-events-not-measuring-them" class="nav-link" data-scroll-target="#background-counting-events-not-measuring-them"><span class="header-section-number">11.3</span> Background: Counting Events, Not Measuring Them</a>
+  <ul class="collapse">
+  <li><a href="#the-adverse-event-subclass-and-an-honest-constraint" id="toc-the-adverse-event-subclass-and-an-honest-constraint" class="nav-link" data-scroll-target="#the-adverse-event-subclass-and-an-honest-constraint"><span class="header-section-number">11.3.1</span> The adverse event SubClass, and an honest constraint</a></li>
+  <li><a href="#treatment-emergence-the-question-adae-exists-to-answer" id="toc-treatment-emergence-the-question-adae-exists-to-answer" class="nav-link" data-scroll-target="#treatment-emergence-the-question-adae-exists-to-answer"><span class="header-section-number">11.3.2</span> Treatment emergence: the question ADAE exists to answer</a></li>
+  <li><a href="#timing-and-what-a-missing-date-is-allowed-to-mean" id="toc-timing-and-what-a-missing-date-is-allowed-to-mean" class="nav-link" data-scroll-target="#timing-and-what-a-missing-date-is-allowed-to-mean"><span class="header-section-number">11.3.3</span> Timing, and what a missing date is allowed to mean</a></li>
+  <li><a href="#where-denominators-come-from" id="toc-where-denominators-come-from" class="nav-link" data-scroll-target="#where-denominators-come-from"><span class="header-section-number">11.3.4</span> Where denominators come from</a></li>
+  </ul></li>
+  <li><a href="#example-1-the-adae-spine-and-treatment-emergence" id="toc-example-1-the-adae-spine-and-treatment-emergence" class="nav-link" data-scroll-target="#example-1-the-adae-spine-and-treatment-emergence"><span class="header-section-number">11.4</span> Example 1: The ADAE Spine and Treatment Emergence</a>
+  <ul class="collapse">
+  <li><a href="#severity-the-same-name-rule-once-more" id="toc-severity-the-same-name-rule-once-more" class="nav-link" data-scroll-target="#severity-the-same-name-rule-once-more"><span class="header-section-number">11.4.1</span> Severity: the same-name rule, once more</a></li>
+  <li><a href="#the-flag-itself" id="toc-the-flag-itself" class="nav-link" data-scroll-target="#the-flag-itself"><span class="header-section-number">11.4.2</span> The flag itself</a></li>
+  <li><a href="#the-event-with-no-start-date" id="toc-the-event-with-no-start-date" class="nav-link" data-scroll-target="#the-event-with-no-start-date"><span class="header-section-number">11.4.3</span> The event with no start date</a></li>
+  </ul></li>
+  <li><a href="#example-2-occurrence-flags-and-the-denominator" id="toc-example-2-occurrence-flags-and-the-denominator" class="nav-link" data-scroll-target="#example-2-occurrence-flags-and-the-denominator"><span class="header-section-number">11.5</span> Example 2: Occurrence Flags and the Denominator</a>
+  <ul class="collapse">
+  <li><a href="#the-denominator" id="toc-the-denominator" class="nav-link" data-scroll-target="#the-denominator"><span class="header-section-number">11.5.1</span> The denominator</a></li>
+  <li><a href="#conformance" id="toc-conformance" class="nav-link" data-scroll-target="#conformance"><span class="header-section-number">11.5.2</span> Conformance</a></li>
+  </ul></li>
   <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">11.6</span> What Can Go Wrong</a>
   <ul class="collapse">
   <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">11.6.1</span> Common misinterpretations</a></li>
@@ -352,210 +402,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!--
-========================================================================
-SKELETON + VERIFY LIST — prose NOT yet written. DO NOT COMMIT as final.
-
-Third Part 3 session, and the course's FIRST OCCDS-cited session. Sole
-source for OCCDS specifics = ADaM OCCDS Implementation Guide v1.1 PDF
-(local, gitignored). Every [OCCDS] claim PRE-CITED to its section;
-author spot-checks. ADaM-general claims still cite ADaMIG v1.3.
-
-Reads persisted SDTM data/sdtm/ae.csv + persisted ADaM data/adam/adsl.csv
-— the first session where an ADaM dataset is an INPUT, which is itself
-the point (OCCDS §3.2.1: merge subject-level variables from ADSL).
-
-PROPOSED CENTRAL INTUITION (for approval):
-  "ADAE is one row per adverse event, carried from SDTM and answered
-   against the treatment window: not what value was measured, but
-   whether this event counts for this analysis — was it treatment
-   emergent, and is it this subject's first of its kind?"
-
-========================================================================
-VERIFY LIST — every OCCDS/ADaM specific this session intends to assert.
-
---- Structure, and why OCCDS is not BDS ---
-
-O1 [OCCDS v1.1 §1.1.2, Principles 1-3] OCCDS applies when: (1) there is
-   NO need for AVAL/AVALC because occurrences are COUNTED, not
-   measured; (2) a dictionary hierarchy is typically used and remapping
-   it to PARAM/*CAT would lose its structure and meaning; (3) data
-   content is typically not modified for analysis. Also §1.1.2:
-   "typically, findings data fit nicely into BDS, and events and
-   interventions fit nicely into OCCDS."
-
-O2 [OCCDS v1.1 §3.2] OCCDS is explicitly different from BDS: "There is
-   no PARAM nor AVAL, for example." Some BDS variables may still be
-   used in OCCDS, and some OCCDS variables (e.g. TRTEMFL) may be used
-   outside OCCDS.
-
-O3 [OCCDS v1.1 §3.1.2] Datasets of SubClass ADVERSE EVENT must have
-   Class = OCCURRENCE DATA STRUCTURE; structure is usually 1 record per
-   record in the corresponding SDTM domain; SDTM input is always AE
-   (plus SUPPAE, FA, ADSL); MH/CE data are NOT included in the
-   SubClass. And the escape hatch: "Not all OCCDS datasets that contain
-   adverse event data will necessarily be of SubClass ADVERSE EVENT."
-
---- The MedDRA constraint (author-approved framing) ---
-
-O4 [OCCDS v1.1 §3.2.3] For SubClass ADVERSE EVENT it is REQUIRED that
-   all levels of the MedDRA primary path — SOC, HLGT, HLT, LLT, PT — be
-   included. "For other OCCDS datasets, these variables are recommended
-   ... but not required." GLPX AEDECOD is null for all 389 rows
-   (MedDRA is licensed; the course never fakes coded terms), so the
-   SubClass is structurally unreachable and this ADAE is built as
-   Class = OCCURRENCE DATA STRUCTURE.
-
-O5 [OCCDS v1.1 §1.1.2, Principle 2 parenthetical] THE KEY SANCTION —
-   the IG addresses our exact case directly: "Data for a particular
-   study that could have been coded but was not should use this
-   structure because analysis results are similar, and this will allow
-   analysis programming to work the same way." So building ADAE as
-   OCCDS without coded terms is not a workaround; it is what the guide
-   says to do. NOTE: this is a stronger and more precise warrant than
-   the §3.1.2 escape hatch I cited when proposing the split — lead with
-   O5, support with O3.
-
-O6 [OCCDS v1.1 §3.2, Table 3.2.6.1 vs Table 3.2.6.2] The occurrence
-   flags split cleanly along the MedDRA line, and the IG's own table
-   titles do the work:
-     Table 3.2.6.1 (general): AOCCFL (1st within subject) and AOCCIFL
-       (1st max severity within subject) -> BUILDABLE here; AOCCPFL and
-       AOCCPIFL need --DECOD (PT) -> NOT buildable.
-     Table 3.2.6.2 "MedDRA Occurrence Flag Variables": AOCCSFL (1st per
-       SOC), AOCCSIFL -> NOT buildable.
-   All are Core = Perm. Taught as cited fact; never fabricated.
-   CORRECTION TO MY OWN SPLIT MEMO: I told the author only AOCCFL was
-   buildable. AOCCIFL is buildable too — it keys on maximum severity,
-   which GLPX has (AESEV), not on a coded term.
-
---- Treatment emergence (the centrepiece) ---
-
-O7 [OCCDS v1.1 §3.2, Table 3.2.5.3] TRTEMFL "Treatment Emergent
-   Analysis Flag", Char, Core = Cond (Req for SubClass ADVERSE EVENT).
-   Example derivation, verbatim: "If ADSL.TRTSDT<=ASTDT<=ADSL.TRTEDT +
-   x days then TRTEMFL='Y'", where x is producer-defined and "often
-   incorporates the known half-life of the drug". For non-SubClass
-   datasets it is "conditional on whether the concept of treatment
-   emergent is a key feature of the analysis" — it is the key feature
-   here, so the condition is met.
-   AUTHOR'S QUESTION ANSWERED: TRTEMFL is a PURE TIMING derivation —
-   ASTDT against ADSL.TRTSDT/TRTEDT. No coded term, no MedDRA
-   dependency anywhere in its definition. Nothing about what is
-   buildable changes.
-
-O8 [OCCDS v1.1 §3.2, Table 3.2.5.3] AETRTEM is the SDTM treatment-
-   emergent flag from SUPPAE (QNAM="AETRTEM"), Core = Perm. "TRTEMFL
-   may differ from AETRTEM due to different definitions, date
-   imputation, and other analysis rules." GLPX has no SUPPAE, so
-   AETRTEM is absent — stated, not faked. Same ADaM-re-derives-flags
-   lesson as ADSL's population flags (ADaMIG v1.3, §3.5).
-
---- Timing ---
-
-O9 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDT = "Analysis Start Date",
-   Core = Cond, "created from converting XX.--STDTC from character ISO
-   8601 format to numeric date format, applying imputation rules if
-   specified in the statistical analysis plan (SAP) or metadata".
-   AENDT likewise from --ENDTC. --STDTC/--ENDTC are themselves copied
-   in for traceability.
-
-O10 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDTF "Analysis Start Date
-    Imputation Flag", Char, codelist DATEFL, Core = Cond — "conditional
-    on whether ASTDT (or the date part of ASTDTM) was imputed".
-    GLPX D4: subject 103-199 has a NULL AESTDTC. We do NOT impute it,
-    so ASTDT is null and ASTDTF stays null — and TRTEMFL cannot be
-    evaluated for that record. This is the session's honest-missingness
-    example, mirroring ADSL's four null AGEs.
-
-O11 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDY "Analysis Start Relative
-    Day", Core = Cond, derivation given: "ASTDT - ADSL.TRTSDT + 1 if
-    ASTDT >= ADSL.TRTSDT, else ASTDT - ADSL.TRTSDT" — the SAME no-day-0
-    rule as SDTMIG v3.4 §4.4.4, but anchored to ADSL.TRTSDT rather than
-    DM.RFSTDTC. AESTDY may be copied alongside: "ASTDY may differ from
-    --STDY due to date imputation and the option in ADaM to use a
-    reference date other than SDTM's RFSTDTC."
-
---- Identifiers, the ADSL merge, traceability ---
-
-O12 [OCCDS v1.1 §3.2.2, Table 3.2.2.1] STUDYID, USUBJID Req; SUBJID,
-    SITEID Perm — and sourced ADSL.SUBJID / ADSL.SITEID, i.e. from
-    ADSL, not from the SDTM domain.
-
-O13 [OCCDS v1.1 §3.2.2] Row identifiers give datapoint traceability:
-    where rows come from a single SDTM domain, --SEQ (here AESEQ)
-    supplies it all; SRCDOM + SRCSEQ are the alternative for
-    multi-domain sources. Explicit: BDS's SRCVAR is NOT used in OCCDS,
-    because SRCVAR names the variable deriving AVAL/AVALC and those do
-    not exist here.
-
-O14 [OCCDS v1.1 §3.2.1] "Merge any subject-level variables needed for
-    analysis or reference." And the denominator warning, which is the
-    reason ADSL exists: "only subjects with a record in an input SDTM
-    domain would have a record in the analysis dataset ... population
-    indicators and denominator counts for percentages [should] be
-    derived from ADSL and not from the occurrence analysis dataset."
-    GLPX: 389 AE rows over 262 subjects, but the safety denominator is
-    400 from ADSL. Single most consequential sentence in the session.
-
---- Severity ---
-
-O15 [OCCDS v1.1 §3.2, Table 3.2.5.2] --SEV copied from AE.AESEV; ASEV
-    "Analysis Severity/Intensity" is the analysis version and ASEVN its
-    numeric counterpart (Core = Perm, values 1/2/3). The IG's worked
-    example maps MILD/MODERATE/SEVERE to Mild/Moderate/Severe. The
-    same-name rule still governs (ADaMIG v1.3, §3.1.1 item 3): AESEV
-    must stay the SDTM value; any recoding goes in ASEV.
-    VERIFY AT PROSE TIME: confirm the exact table number for the
-    severity block (read as 3.2.5.2, adjacent to 3.2.5.3 Adverse Events
-    Indicator Variables) before citing it.
-
---- Version pairing (author-supplied; must be disclosed) ---
-
-O16 OCCDS v1.1 front matter states it is "based on the Analysis Data
-    Model (ADaM) v2.1 and the ADaM Implementation Guide (ADaMIG) v1.2",
-    and it cites SDTMIG v3.3 and ADaMIG v1.2 section numbers
-    throughout. Author-confirmed disclosure to make in prose: v1.1
-    references v1.2/v3.3 in its front matter but IS CDISC's designated
-    companion to ADaMIG v1.3 — the ADaMIG v1.3 page states OCCDS "is
-    described in ADaM OCCDS v1.1", and the v1.3 Release Package ships
-    it. A small teaching point about staggered CDISC versioning.
-
---- [CT] to confirm live at prose time ---
-C1 AESEV values MILD/MODERATE/SEVERE against the AESEV codelist.
-C2 NY codelist (C66742). NOTE a precision to get right: OCCDS Table
-   3.2.5.3 lists TRTEMFL's controlled terms as bare "Y", whereas
-   AETRTEM is codelist (NY). Confirm and state precisely; do not blur
-   the two.
-C3 AEOUT / AESER already confirmed in sdtm-events; re-checked here.
-ADaM-derived values (mixed-case ASEV, TRTEMFL) are analysis decisions,
-not CT — same point as AGEGR1 in ADSL.
-All pasted as real output; none recalled.
-
---- Explicitly NOT asserted / deferred ---
-- SMQ variables (§3.2.9) — need MedDRA; named, not built.
-- Original/prior coding variables (§3.2.10) — out of scope.
-- Concomitant medications and medical history OCCDS uses — named in O1
-  only, not built (no CM/MH domains in this course).
-- BDS labs -> adlb.qmd.
-========================================================================
-
-GLPX AE DATA REALITY (probed, for sizing the examples):
-  389 rows, 262 subjects, 25 distinct AETERM, AEDECOD null on all 389.
-  AESEV: MILD 243 / MODERATE 124 / SEVERE 22. AESER: Y 1 / N 388.
-  1 null AESTDTC (D4, subject 103-199). Zero ongoing AEs (E8 — all
-  RECOVERED; the ongoing case stays concept-only, never fabricated).
-
-INFRASTRUCTURE: build_adam.R gains build_adae() -> committed
-data/adam/adae.csv, mirroring the approved ADSL pattern.
-
-OPEN DECISION FOR THE AUTHOR: the value of x in TRTEMFL's
-ADSL.TRTEDT + x days. Proposal: x = 0 (the treatment window is exactly
-first dose to last dose inclusive), stated explicitly as a sponsor
-choice with the IG's half-life rationale explained but not invented for
-a fictional compound. Alternative: pick a GLPX-plausible x and document
-it. Recommend x = 0 — it keeps the fiction honest.
--->
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -597,7 +443,7 @@ it. Recommend x = 0 — it keeps the fiction honest.
 <td>Worked example</td>
 </tr>
 <tr class="even">
-<td>Example 2: Occurrence flags and the denominator trap</td>
+<td>Example 2: Occurrence flags and the denominator</td>
 <td>20 min</td>
 <td>Worked example</td>
 </tr>
@@ -613,7 +459,7 @@ it. Recommend x = 0 — it keeps the fiction honest.
 </tr>
 </tbody>
 </table>
-<p>The course’s first OCCDS dataset, and the first session that reads an ADaM dataset (ADSL) as an input. For self-paced study, split after Example 1.</p>
+<p>The course’s first OCCDS dataset, and the first session that reads an ADaM dataset as an input. For self-paced study, split after Example 1.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -632,59 +478,584 @@ it. Recommend x = 0 — it keeps the fiction honest.
 </div>
 <section id="sec-adae" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="sec-adae"><span class="header-section-number">11.1</span> When Do You Use This?</h2>
-<p>TODO (prose pass): scenarios — a safety table needs every event classified as treatment emergent or not; a reviewer asks which subjects had their first severe event while on drug; someone needs adverse-event percentages with the <em>right</em> denominator. Ends with the bold question: <strong>what does an analysis dataset look like when there is nothing to measure — only occurrences to count?</strong> Builds on <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, <a href="../sessions/adsl.html">ADSL</a> and <a href="../sessions/sdtm-events.html">Events</a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A safety table needs every adverse event classified as treatment emergent or not, because an event that began before the first dose is not evidence about the drug. A reviewer asks which subjects had their first <em>severe</em> event while on treatment. Someone needs the percentage of subjects who experienced nausea — and gets a different answer depending on what they divide by.</p>
+<p>None of those questions is about a measured <em>value</em>. There is no result to record, no unit, no change from baseline. There is only a list of things that happened, and questions about which of them count. That raises the question this session answers: <strong>what does an analysis dataset look like when there is nothing to measure — only occurrences to count?</strong></p>
+<p>Builds on <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, <a href="../sessions/adsl.html">ADSL</a>, and the SDTM AE domain from <a href="../sessions/sdtm-events.html">Events</a>.</p>
+</div>
+</div>
 </section>
 <section id="learning-objectives" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">11.2</span> Learning Objectives</h2>
-<p>TODO after approval — recognise when OCCDS rather than BDS is the right structure; carry AE data and merge ADSL; derive <code>ASTDT</code>/<code>ASTDY</code> and <code>TRTEMFL</code>; derive occurrence flags and know which ones dictionary coding puts out of reach; take denominators from ADSL, not from the event data.</p>
+<p>After completing this session you will be able to:</p>
+<ul>
+<li>Recognise when OCCDS rather than BDS is the right analysis structure, and say why in terms of what is being analysed</li>
+<li>Build an ADAE from SDTM AE with the subject-level variables merged from ADSL</li>
+<li>Derive <code>ASTDT</code>, <code>ASTDY</code> and <code>TRTEMFL</code>, and explain why treatment emergence is an ADaM derivation rather than an SDTM fact</li>
+<li>Derive occurrence flags, and identify which ones dictionary licensing puts out of reach</li>
+<li>Take an incidence denominator from ADSL rather than from the event data, and explain what goes wrong otherwise</li>
+</ul>
 </section>
-<section id="background-todo-counting-events-not-measuring-them" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="background-todo-counting-events-not-measuring-them"><span class="header-section-number">11.3</span> Background: TODO — Counting Events, Not Measuring Them</h2>
-<!-- Prose pass: OCCDS vs BDS by what is analysed [O1, O2]; the AE
-  SubClass and why this ADAE is Class-only [O3, O4, O5]; treatment
-  emergence as the central analysis question [O7]; timing [O9-O11];
-  the ADSL merge and the denominator [O14]; version-pairing disclosure
-  [O16]. Central intuition callout. -->
+<section id="background-counting-events-not-measuring-them" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="background-counting-events-not-measuring-them"><span class="header-section-number">11.3</span> Background: Counting Events, Not Measuring Them</h2>
+<p><em>Estimated time: ~20 minutes (reading)</em></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The one thing to remember
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>ADAE is one row per adverse event, carried from SDTM and answered against the treatment window: not what value was measured, but whether this event counts for this analysis — was it treatment emergent, and is it this subject’s first of its kind?</strong></p>
+</div>
+</div>
+<p>Every ADaM dataset you have met so far has been built around a measured value. In BDS there is <code>AVAL</code>, a <code>PARAM</code> that says what it is, and a baseline to compare it against. Adverse events have none of that. You do not measure an adverse event; you record that one occurred. Analysis then <em>counts</em> occurrences.</p>
+<p>That difference is not cosmetic, and CDISC gives it its own structure and its own document. The <strong>Occurrence Data Structure (OCCDS)</strong> applies when three things hold (OCCDS v1.1, §1.1.2):</p>
+<ol type="1">
+<li>There is <strong>no need for <code>AVAL</code> or <code>AVALC</code></strong>, because “occurrences are counted in analysis.”</li>
+<li>A <strong>dictionary hierarchy</strong> is typically used for coding, and “remapping this hierarchy to BDS variables PARAM and generic *CAT variables would lose the structure and meaning of the dictionary.”</li>
+<li>The data content is <strong>typically not modified</strong> for analysis.</li>
+</ol>
+<p>The guide summarises the division in one sentence: “typically, findings data fit nicely into BDS, and events and interventions fit nicely into OCCDS” (OCCDS v1.1, §1.1.2). And it states the structural consequence bluntly — in OCCDS “there is no <code>PARAM</code> nor <code>AVAL</code>, for example” (OCCDS v1.1, §3.2). If you go looking for the variables that organised the last session, they are not here, and their absence is the design.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>A note on versions worth understanding
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>OCCDS v1.1’s own front matter says it is “based on the Analysis Data Model (ADaM) v2.1 and the ADaM Implementation Guide (ADaMIG) v1.2,” and it cites SDTMIG v3.3 section numbers throughout. This course targets ADaMIG v1.3 and SDTMIG v3.4, so that looks like a mismatch.</p>
+<p>It is not. <strong>OCCDS v1.1 is CDISC’s designated companion to ADaMIG v1.3</strong> — the ADaMIG v1.3 documentation points to OCCDS v1.1 for occurrence data, and the v1.3 release package ships it. CDISC’s foundational standards are versioned on staggered cycles: a companion document is not reissued merely because the document it references moved on. Read the front matter as telling you when OCCDS was last revised, not as telling you which ADaMIG to pair it with.</p>
+<p>This is worth internalising because you will meet it again. “The version numbers do not match” is rarely the same thing as “these documents do not go together.”</p>
+</div>
+</div>
+<section id="the-adverse-event-subclass-and-an-honest-constraint" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="the-adverse-event-subclass-and-an-honest-constraint"><span class="header-section-number">11.3.1</span> The adverse event SubClass, and an honest constraint</h3>
+<p>OCCDS defines a <strong>SubClass ADVERSE EVENT</strong> for the standard AE analyses. A dataset in it must have Class <code>OCCURRENCE DATA STRUCTURE</code>, is usually one record per record in the corresponding SDTM domain, and always takes AE as its SDTM input, with additional information from SUPPAE, FA and ADSL (OCCDS v1.1, §3.1.2).</p>
+<p>It also carries a requirement this course cannot meet:</p>
+<blockquote class="blockquote">
+<p>For the SubClass ADVERSE EVENT, it is required that all levels of terms for the primary path in the MedDRA hierarchy — System Organ Class (SOC), High Level Group Term (HLGT), High Level Term (HLT), Lowest Level Term (LLT), and Preferred Term (PT) — be included. For other OCCDS datasets, these variables are recommended… but not required (OCCDS v1.1, §3.2.3).</p>
+</blockquote>
+<p>GLPX-001 has no MedDRA coding at all. <code>AEDECOD</code> is null on every row, because MedDRA is a licensed dictionary and this course does not fabricate coded terms — the same discipline that keeps it from inventing lab reference ranges or a half-life for a fictional compound. So the SubClass is out of reach.</p>
+<p>The right response is not to fake the codes, and not to abandon the dataset. It is to build ADAE with Class <code>OCCURRENCE DATA STRUCTURE</code> and no SubClass — and the guide is unusually direct that this is correct rather than merely tolerated:</p>
+<blockquote class="blockquote">
+<p>Data for a particular study that could have been coded but was not <strong>should use this structure</strong>, because analysis results are similar, and this will allow analysis programming to work the same way (OCCDS v1.1, §1.1.2).</p>
+</blockquote>
+<p>That sentence is doing real work. It says uncoded occurrence data belongs in OCCDS, so that the analysis code you write today keeps working when the data <em>is</em> coded tomorrow. The supporting point is in §3.1.2: “not all OCCDS datasets that contain adverse event data will necessarily be of SubClass ADVERSE EVENT.” Uncoded is a legitimate state, not a broken one.</p>
+<p>What it costs is specific, and CDISC has already drawn the line for you. The occurrence flags are split across <strong>two tables</strong>, and the second one is titled <em>MedDRA Occurrence Flag Variables</em> (OCCDS v1.1, §3.2, Table 3.2.6.2). Every flag we cannot build is in that table or depends on the preferred term:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Flag</th>
+<th>What it marks</th>
+<th>Where CDISC files it</th>
+<th>Buildable here</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>AOCCFL</code></td>
+<td>1st occurrence within subject</td>
+<td>Table 3.2.6.1</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr class="even">
+<td><code>AOCCIFL</code></td>
+<td>1st max-severity occurrence within subject</td>
+<td>Table 3.2.6.1</td>
+<td><strong>Yes</strong></td>
+</tr>
+<tr class="odd">
+<td><code>AOCCPFL</code></td>
+<td>1st occurrence of a preferred term</td>
+<td>Table 3.2.6.1, keyed on <code>--DECOD</code></td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td><code>AOCCPIFL</code></td>
+<td>1st max severity within a preferred term</td>
+<td>Table 3.2.6.1, keyed on <code>--DECOD</code></td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td><code>AOCCSFL</code></td>
+<td>1st occurrence within a system organ class</td>
+<td><strong>Table 3.2.6.2 (MedDRA)</strong></td>
+<td>No</td>
+</tr>
+<tr class="even">
+<td><code>AOCCSIFL</code></td>
+<td>1st max severity within an SOC</td>
+<td><strong>Table 3.2.6.2 (MedDRA)</strong></td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p>The boundary is not an interpretation of ours. It is CDISC’s own organisation of the standard: the flags that need a dictionary are grouped under a heading that says so. Read that table of contents and you can predict, before writing a line of code, exactly which analyses a licensing constraint will cost you.</p>
 </section>
-<section id="example-1-todo-the-adae-spine-and-treatment-emergence" class="level2" data-number="11.4">
-<h2 data-number="11.4" class="anchored" data-anchor-id="example-1-todo-the-adae-spine-and-treatment-emergence"><span class="header-section-number">11.4</span> Example 1: TODO — The ADAE Spine and Treatment Emergence</h2>
-<!-- Plan (code executed; reads data/sdtm/ae.csv + data/adam/adsl.csv):
-  carry STUDYID/USUBJID/AESEQ/AETERM/AESEV/AESER [O12, O13]; merge
-  TRTSDT/TRTEDT/TRT01A/SAFFL from ADSL [O14]; ASTDT/AENDT from
-  AESTDTC/AEENDTC [O9]; ASTDY [O11]; ASEV/ASEVN [O15]; TRTEMFL with a
-  stated x [O7]. Show the D4 null-start-date record and what it does to
-  TRTEMFL [O10]. CT-check AESEV [C1]. -->
+<section id="treatment-emergence-the-question-adae-exists-to-answer" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="treatment-emergence-the-question-adae-exists-to-answer"><span class="header-section-number">11.3.2</span> Treatment emergence: the question ADAE exists to answer</h3>
+<p>An adverse event that began before the first dose tells you about the subject, not the drug. <strong><code>TRTEMFL</code></strong> is the flag that makes the distinction, and it is the central derivation of this dataset. The IG gives the derivation directly (OCCDS v1.1, §3.2, Table 3.2.5.3):</p>
+<blockquote class="blockquote">
+<p>If <code>ADSL.TRTSDT &lt;= ASTDT &lt;= ADSL.TRTEDT + x days</code> then <code>TRTEMFL = "Y"</code></p>
+</blockquote>
+<p>where “the number <em>x</em> in this derivation is defined by the producer and often incorporates the known half-life of the drug.” <code>TRTEMFL</code> is Conditional in OCCDS generally and Required for the SubClass; for a dataset outside the SubClass it is “conditional on whether the concept of treatment emergent is a key feature of the analysis,” which for a safety dataset it plainly is.</p>
+<p>Notice what that derivation depends on: three dates. <strong>No coded term appears anywhere in it.</strong> Treatment emergence is a pure timing question, which is why it remains fully available to us when the dictionary-based flags are not.</p>
+<p>Notice also where two of those three dates come from: <code>ADSL</code>. You cannot decide whether an event was treatment emergent from the AE domain alone — SDTM AE does not know when the subject was dosed. This is the first time in the course that an ADaM dataset is an <em>input</em> to another ADaM dataset, and it is not incidental. It is why ADSL is built first and why it is required in a submission even when nothing else is.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span><code>TRTEMFL</code> is not <code>AETRTEM</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>SDTM can carry its own treatment-emergent flag as a Supplemental Qualifier, <code>AETRTEM</code> in SUPPAE (OCCDS v1.1, §3.2, Table 3.2.5.3). Where it exists, including it alongside <code>TRTEMFL</code> adds traceability — but the guide is explicit that “<code>TRTEMFL</code> may differ from <code>AETRTEM</code> due to different definitions, date imputation, and other analysis rules.”</p>
+<p>This is the same lesson as ADSL’s population flags, which ADaM re-derives rather than copying from SDTM’s Supplemental Qualifiers (ADaMIG v1.3, §3.5). The analysis flag is the analysis’s own. GLPX-001 has no SUPPAE, so <code>AETRTEM</code> simply does not exist here — stated rather than invented.</p>
+</div>
+</div>
 </section>
-<section id="example-2-todo-occurrence-flags-and-the-denominator-trap" class="level2" data-number="11.5">
-<h2 data-number="11.5" class="anchored" data-anchor-id="example-2-todo-occurrence-flags-and-the-denominator-trap"><span class="header-section-number">11.5</span> Example 2: TODO — Occurrence Flags and the Denominator Trap</h2>
-<!-- Plan: AOCCFL and AOCCIFL derived [O6]; state plainly which flags
-  MedDRA puts out of reach, citing Table 3.2.6.2 by its title [O4, O6];
-  then the denominator: 262 subjects have AEs but the safety
-  denominator is 400 from ADSL [O14]. An incidence table done wrong and
-  done right. -->
+<section id="timing-and-what-a-missing-date-is-allowed-to-mean" class="level3" data-number="11.3.3">
+<h3 data-number="11.3.3" class="anchored" data-anchor-id="timing-and-what-a-missing-date-is-allowed-to-mean"><span class="header-section-number">11.3.3</span> Timing, and what a missing date is allowed to mean</h3>
+<p><code>ASTDT</code> (“Analysis Start Date”) is “created from converting <code>XX.--STDTC</code> from character ISO 8601 format to numeric date format, applying imputation rules if specified in the statistical analysis plan (SAP) or metadata”; <code>AENDT</code> follows from <code>--ENDTC</code> (OCCDS v1.1, §3.2, Table 3.2.4.1). The original <code>--STDTC</code> and <code>--ENDTC</code> are carried across unchanged alongside them, for traceability.</p>
+<p>Two consequences follow, and both matter.</p>
+<p>First, <strong>imputation is a documented decision, not a default.</strong> If a partial or missing date is imputed, <code>ASTDTF</code> records the level of imputation, from the <code>DATEFL</code> codelist, and it is conditional precisely “on whether <code>ASTDT</code> (or the date part of <code>ASTDTM</code>) was imputed” (OCCDS v1.1, §3.2, Table 3.2.4.1). No imputation rule, no imputation — and <code>ASTDTF</code> stays null because nothing was imputed.</p>
+<p>Second, <code>ASTDY</code> (“Analysis Start Relative Day”) uses a rule you have already met:</p>
+<blockquote class="blockquote">
+<p><code>ASTDT - ADSL.TRTSDT + 1</code> if <code>ASTDT &gt;= ADSL.TRTSDT</code>, else <code>ASTDT - ADSL.TRTSDT</code> (OCCDS v1.1, §3.2, Table 3.2.4.1)</p>
+</blockquote>
+<p>That is the no-day-zero convention from SDTMIG v3.4 §4.4.4 — the same two-branch shape you implemented in <a href="../sessions/sdtm-dm.html">The DM Domain</a>. But the anchor has moved. SDTM’s <code>--DY</code> counts from <code>DM.RFSTDTC</code>; ADaM’s <code>ASTDY</code> counts from <code>ADSL.TRTSDT</code>, and the guide notes that <code>ASTDY</code> “may differ from <code>--STDY</code> due to date imputation and the option in ADaM to use a reference date other than SDTM’s <code>RFSTDTC</code>.” Same arithmetic, deliberately different origin, because analysis gets to choose its own reference point and must then say so.</p>
+</section>
+<section id="where-denominators-come-from" class="level3" data-number="11.3.4">
+<h3 data-number="11.3.4" class="anchored" data-anchor-id="where-denominators-come-from"><span class="header-section-number">11.3.4</span> Where denominators come from</h3>
+<p>One sentence in OCCDS is worth more than any variable definition in it (OCCDS v1.1, §3.2.1):</p>
+<blockquote class="blockquote">
+<p>Be aware that <strong>only subjects with a record in an input SDTM domain would have a record in the analysis dataset</strong>. For this reason, it is recommended that population indicators and denominator counts for percentages be derived from ADSL and not from the occurrence analysis dataset.</p>
+</blockquote>
+<p>A subject who had no adverse events has no row in ADAE. They still belong in the denominator of every incidence percentage, because they were dosed and observed and nothing happened. Compute “percent of subjects with nausea” from the event dataset and you have silently restricted the population to subjects who had <em>some</em> event — inflating every percentage in the table. Example 2 puts real numbers on how large that error is.</p>
+</section>
+</section>
+<section id="example-1-the-adae-spine-and-treatment-emergence" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="example-1-the-adae-spine-and-treatment-emergence"><span class="header-section-number">11.4</span> Example 1: The ADAE Spine and Treatment Emergence</h2>
+<p><em>Estimated time: ~25 minutes (worked example)</em></p>
+<p>Start with both inputs. This is the shape of every OCCDS build: the event records from SDTM, and the subject-level context from ADSL.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>ae <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/sdtm/ae.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_character</span>()))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>adsl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/adam/adsl.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">ae_rows          =</span> <span class="fu">nrow</span>(ae),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">subjects_with_ae =</span> <span class="fu">n_distinct</span>(ae<span class="sc">$</span>USUBJID),</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">adsl_subjects    =</span> <span class="fu">nrow</span>(adsl))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         ae_rows subjects_with_ae    adsl_subjects 
+             389              262              400 </code></pre>
+</div>
+</div>
+<p>Hold on to those three numbers. 389 event records belong to 262 subjects, but the trial has 400. The 138 subjects who had no adverse event are absent from AE entirely — and that gap is the denominator problem, visible before we have derived anything.</p>
+<p>Now merge the subject-level variables and derive the analysis dates. <code>AESEQ</code> is what makes each row traceable back to its source: where rows come from a single SDTM domain, <code>--SEQ</code> supplies the whole row identifier, and the <code>SRCDOM</code>/<code>SRCSEQ</code> pair is the alternative for multi-domain sources (OCCDS v1.1, §3.2.2).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>adae_spine <span class="ot">&lt;-</span> ae <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    adsl <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, SUBJID, SITEID, TRT01A, TRTSDT, TRTEDT, SAFFL),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">"USUBJID"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">AESEQ =</span> <span class="fu">as.integer</span>(AESEQ),</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">ASTDT =</span> <span class="fu">as.Date</span>(AESTDTC),          <span class="co"># OCCDS §3.2, Table 3.2.4.1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">AENDT =</span> <span class="fu">as.Date</span>(AEENDTC),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ASTDTF =</span> <span class="cn">NA_character_</span>,            <span class="co"># nothing imputed, so nothing to flag</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">ASTDY =</span> <span class="fu">if_else</span>(ASTDT <span class="sc">&gt;=</span> TRTSDT,   <span class="co"># no day 0; anchored to ADSL.TRTSDT</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">as.integer</span>(ASTDT <span class="sc">-</span> TRTSDT) <span class="sc">+</span> <span class="dv">1</span>L,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">as.integer</span>(ASTDT <span class="sc">-</span> TRTSDT))</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>adae_spine <span class="sc">|&gt;</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, AESEQ, AETERM, AESTDTC, ASTDT, TRTSDT, ASTDY) <span class="sc">|&gt;</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+  USUBJID         AESEQ AETERM          AESTDTC    ASTDT      TRTSDT     ASTDY
+  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;     &lt;int&gt;
+1 GLPX001-101-010     1 Constipation    2024-05-23 2024-05-23 2024-03-28    57
+2 GLPX001-101-010     2 Nasopharyngitis 2024-06-23 2024-06-23 2024-03-28    88
+3 GLPX001-101-027     1 Hypoglycaemia   2024-05-01 2024-05-01 2024-04-14    18
+4 GLPX001-101-037     1 Diarrhoea       2024-07-05 2024-07-05 2024-04-19    78</code></pre>
+</div>
+</div>
+<p>Note that <code>AEDECOD</code> came across in the join and is null throughout — that is the licensing constraint, present in the data rather than described in the abstract:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">rows =</span> <span class="fu">nrow</span>(adae_spine),</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">aedecod_populated =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(adae_spine<span class="sc">$</span>AEDECOD)),</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">distinct_aeterm   =</span> <span class="fu">n_distinct</span>(adae_spine<span class="sc">$</span>AETERM))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             rows aedecod_populated   distinct_aeterm 
+              389                 0                25 </code></pre>
+</div>
+</div>
+<p>25 distinct verbatim terms, zero coded terms. Every analysis that needs a preferred term or a system organ class is unavailable, and every analysis that needs only timing and severity is unaffected.</p>
+<section id="severity-the-same-name-rule-once-more" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="severity-the-same-name-rule-once-more"><span class="header-section-number">11.4.1</span> Severity: the same-name rule, once more</h3>
+<p><code>AESEV</code> is copied from SDTM untouched. The analysis version — recased for presentation — goes in <code>ASEV</code>, with <code>ASEVN</code> as its numeric counterpart, and the guide notes low intensity should correspond to a low value (OCCDS v1.1, §3.2, Table 3.2.8.1).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>adae_spine <span class="ot">&lt;-</span> adae_spine <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">ASEV  =</span> <span class="fu">recode</span>(AESEV, <span class="at">MILD =</span> <span class="st">"Mild"</span>, <span class="at">MODERATE =</span> <span class="st">"Moderate"</span>,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                   <span class="at">SEVERE =</span> <span class="st">"Severe"</span>),</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">ASEVN =</span> <span class="fu">case_when</span>(ASEV <span class="sc">==</span> <span class="st">"Mild"</span>     <span class="sc">~</span> <span class="dv">1</span>L,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                      ASEV <span class="sc">==</span> <span class="st">"Moderate"</span> <span class="sc">~</span> <span class="dv">2</span>L,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                      ASEV <span class="sc">==</span> <span class="st">"Severe"</span>   <span class="sc">~</span> <span class="dv">3</span>L)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(adae_spine, AESEV, ASEV, ASEVN)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  AESEV    ASEV     ASEVN     n
+  &lt;chr&gt;    &lt;chr&gt;    &lt;int&gt; &lt;int&gt;
+1 MILD     Mild         1   243
+2 MODERATE Moderate     2   124
+3 SEVERE   Severe       3    22</code></pre>
+</div>
+</div>
+<p>This is the “same name, same meaning, same values” rule from <a href="../sessions/adsl.html">ADSL</a> doing its job (ADaMIG v1.3, §3.1.1, item 3). We wanted mixed case for the tables; <code>AESEV</code> carries an SDTM name, so it may not be touched, and the recased values go somewhere else. The controlled terminology confirms why that matters:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sev_code <span class="ot">&lt;-</span> (<span class="fu">ct</span>(<span class="st">"list"</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"AESEV"</span>))<span class="sc">$</span>clst_code[<span class="dv">1</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>ny_code  <span class="ot">&lt;-</span> (<span class="fu">ct</span>(<span class="st">"list"</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"NY"</span>))<span class="sc">$</span>clst_code[<span class="dv">1</span>]</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">variable =</span> <span class="fu">c</span>(<span class="st">"AESEV"</span>, <span class="st">"ASEV"</span>, <span class="st">"AESER"</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">codelist =</span> <span class="fu">c</span>(sev_code, sev_code, ny_code),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">values   =</span> <span class="fu">c</span>(<span class="st">"MILD/MODERATE/SEVERE"</span>, <span class="st">"Mild/Moderate/Severe"</span>, <span class="st">"N/Y"</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">all_valid =</span> <span class="fu">c</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(<span class="fu">is_term</span>(<span class="fu">unique</span>(adae_spine<span class="sc">$</span>AESEV), <span class="at">clst_code =</span> sev_code)),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(<span class="fu">is_term</span>(<span class="fu">unique</span>(adae_spine<span class="sc">$</span>ASEV),  <span class="at">clst_code =</span> sev_code)),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(<span class="fu">is_term</span>(<span class="fu">unique</span>(adae_spine<span class="sc">$</span>AESER), <span class="at">clst_code =</span> ny_code))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 4
+  variable codelist values               all_valid
+  &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt;                &lt;lgl&gt;    
+1 AESEV    C66769   MILD/MODERATE/SEVERE TRUE     
+2 ASEV     C66769   Mild/Moderate/Severe FALSE    
+3 AESER    C66742   N/Y                  TRUE     </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>AESEV</code> and <code>AESER</code> come back <code>TRUE</code>. <strong><code>ASEV</code> comes back <code>FALSE</code>, and that is the correct result.</strong> OCCDS marks <code>ASEV</code> with an asterisk meaning “variable may be subject to producer-defined controlled terminology” (OCCDS v1.1, §3.2, Table 3.2.8.1, footnote b). <code>Mild</code> is not a CDISC submission value and was never meant to be — it is the sponsor’s presentation choice, defined in the metadata rather than checked against a codelist.</p>
+<p>This is the same point <code>AGEGR1</code> made in <a href="../sessions/adsl.html">ADSL</a> and <code>PARAMCD</code> made in <a href="../sessions/adam-concepts.html">ADaM Concepts</a>. A <code>FALSE</code> from <code>is_term()</code> means “not CDISC CT,” which is a finding only if the variable was supposed to be CDISC CT. Knowing which variables those are is the skill.</p>
+</div>
+</div>
+</section>
+<section id="the-flag-itself" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="the-flag-itself"><span class="header-section-number">11.4.2</span> The flag itself</h3>
+<p>Now treatment emergence. We must choose the <em>x</em> in <code>TRTEDT + x days</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>TRTEM_WINDOW_DAYS <span class="ot">&lt;-</span> <span class="dv">0</span>L   <span class="co"># sponsor decision — see the note below</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>adae_spine <span class="ot">&lt;-</span> adae_spine <span class="sc">|&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRTEMFL =</span> <span class="fu">case_when</span>(</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is.na</span>(ASTDT) <span class="sc">~</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>      ASTDT <span class="sc">&gt;=</span> TRTSDT <span class="sc">&amp;</span> ASTDT <span class="sc">&lt;=</span> TRTEDT <span class="sc">+</span> TRTEM_WINDOW_DAYS <span class="sc">~</span> <span class="st">"Y"</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">.default =</span> <span class="st">"N"</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(adae_spine, TRTEMFL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  TRTEMFL     n
+  &lt;chr&gt;   &lt;int&gt;
+1 Y         388
+2 &lt;NA&gt;        1</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Two honest results in one table
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>On <em>x</em> = 0.</strong> The IG says <em>x</em> “often incorporates the known half-life of the drug” — a real trial commonly counts events for some days after the last dose, because the drug is still present. GLPX-001 is a fictional compound, and inventing a half-life for it would be inventing a pharmacological fact to dress up an example. So the window here is exactly first dose to last dose inclusive, declared as a sponsor decision. <strong>Do not read <em>x</em> = 0 as the norm.</strong> In a real study <em>x</em> is a protocol- or SAP-level decision with a clinical justification behind it, and it is often greater than zero.</p>
+<p><strong>On the absence of any <code>"N"</code>.</strong> Every one of the 388 datable events in GLPX-001 falls inside the treatment window — the earliest begins one day after first dose, the latest a week before last dose. So the flag comes out <code>"Y"</code> for all of them, and this trial contains <strong>no non-emergent event to show you</strong>. The simulator generated on-treatment events only.</p>
+<p>That is a limitation of the data, not of the concept, and the honest move is to say so rather than manufacture a pre-treatment event to make a prettier demonstration. Real trials routinely have them: an event recorded at screening, a condition present before the first dose. The derivation above would assign those <code>"N"</code>, and the safety tables would exclude them. In GLPX-001, <em>x</em> = 0 and <em>x</em> = 30 would give identical results — which itself tells you the window choice cannot be validated against this dataset, only declared.</p>
+</div>
+</div>
+</section>
+<section id="the-event-with-no-start-date" class="level3" data-number="11.4.3">
+<h3 data-number="11.4.3" class="anchored" data-anchor-id="the-event-with-no-start-date"><span class="header-section-number">11.4.3</span> The event with no start date</h3>
+<p>One row behaves differently, and it is the defect you met in <a href="../sessions/sdtm-events.html">Events</a>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>adae_spine <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">is.na</span>(ASTDT)) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, AESEQ, AETERM, AESTDTC, ASTDT, ASTDY, ASTDTF, TRTEMFL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 8
+  USUBJID         AESEQ AETERM       AESTDTC ASTDT  ASTDY ASTDTF TRTEMFL
+  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;   &lt;date&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;  
+1 GLPX001-103-199     1 Constipation &lt;NA&gt;    NA        NA &lt;NA&gt;   &lt;NA&gt;   </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Subject <code>GLPX001-103-199</code> has an adverse event — constipation — with no recorded start date. Follow the consequences across the row:</p>
+<ul>
+<li><code>ASTDT</code> is null, because there was nothing to convert and <strong>no imputation rule was specified</strong> for this study.</li>
+<li><code>ASTDTF</code> is null too, and that is the correct value. The imputation flag records <em>the level of imputation applied</em>. Nothing was imputed, so there is nothing to record. A populated <code>ASTDTF</code> here would be a lie about what we did.</li>
+<li><code>ASTDY</code> is null, because it is arithmetic on a date we do not have.</li>
+<li><code>TRTEMFL</code> is null — <strong>not <code>"N"</code></strong>.</li>
+</ul>
+<p>That last one is the judgement call, and it is worth being deliberate about. <code>"N"</code> asserts that the event was <em>not</em> treatment emergent. We do not know that. Absence of a date is not evidence of a date outside the window; it is absence of evidence. Coding it <code>"N"</code> would quietly move an unknown into the “not the drug’s problem” column, which is exactly the direction of error a safety analysis must not make by accident.</p>
+<p>Null says what is true: this event cannot be classified. A real study would resolve it — query the site for the date, or apply the SAP’s imputation rule and set <code>ASTDTF</code> accordingly. Both are decisions someone must make and document. Neither is a default.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="example-2-occurrence-flags-and-the-denominator" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="example-2-occurrence-flags-and-the-denominator"><span class="header-section-number">11.5</span> Example 2: Occurrence Flags and the Denominator</h2>
+<p><em>Estimated time: ~20 minutes (worked example)</em></p>
+<p>Occurrence flags answer “is this row the first of its kind for this subject?” They exist because a subject who reports nausea four times should count once in an incidence table. The derivation given for <code>AOCCFL</code> is “sort the data in the required order and flag the first treatment emergent record for each subject” (OCCDS v1.1, §3.2, Table 3.2.6.1) — so the sort comes first, and the flags key on <code>TRTEMFL</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>adae <span class="ot">&lt;-</span> adae_spine <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(USUBJID, ASTDT, AESEQ) <span class="sc">|&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(USUBJID) <span class="sc">|&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">te_     =</span> <span class="sc">!</span><span class="fu">is.na</span>(TRTEMFL) <span class="sc">&amp;</span> TRTEMFL <span class="sc">==</span> <span class="st">"Y"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">maxsev_ =</span> <span class="cf">if</span> (<span class="fu">any</span>(te_)) <span class="fu">max</span>(ASEVN[te_], <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="cf">else</span> <span class="cn">NA_integer_</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">ismax_  =</span> te_ <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(ASEVN) <span class="sc">&amp;</span> <span class="sc">!</span><span class="fu">is.na</span>(maxsev_) <span class="sc">&amp;</span> ASEVN <span class="sc">==</span> maxsev_,</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">AOCCFL  =</span> <span class="fu">if_else</span>(te_ <span class="sc">&amp;</span> <span class="fu">cumsum</span>(te_) <span class="sc">==</span> <span class="dv">1</span>L, <span class="st">"Y"</span>, <span class="cn">NA_character_</span>),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">AOCCIFL =</span> <span class="fu">if_else</span>(ismax_ <span class="sc">&amp;</span> <span class="fu">cumsum</span>(ismax_) <span class="sc">==</span> <span class="dv">1</span>L, <span class="st">"Y"</span>, <span class="cn">NA_character_</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>te_, <span class="sc">-</span>maxsev_, <span class="sc">-</span>ismax_)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">AOCCFL_Y  =</span> <span class="fu">sum</span>(adae<span class="sc">$</span>AOCCFL  <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">AOCCIFL_Y =</span> <span class="fu">sum</span>(adae<span class="sc">$</span>AOCCIFL <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">subjects_with_te_event =</span> <span class="fu">n_distinct</span>(adae<span class="sc">$</span>USUBJID[<span class="sc">!</span><span class="fu">is.na</span>(adae<span class="sc">$</span>TRTEMFL)]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>              AOCCFL_Y              AOCCIFL_Y subjects_with_te_event 
+                   261                    261                    261 </code></pre>
+</div>
+</div>
+<p>261 subjects have at least one treatment-emergent event, and each gets exactly one <code>AOCCFL</code> and one <code>AOCCIFL</code>. Not 262 — subject <code>103-199</code>, whose only event has no date, has no classifiable event and therefore no first occurrence to flag. The missing date propagates all the way to the occurrence flags, which is what a missing date should do.</p>
+<p>The two flags are easiest to understand on a subject with several events:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>adae <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-147"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AESEQ, AETERM, ASTDT, ASTDY, ASEV, ASEVN, TRTEMFL, AOCCFL, AOCCIFL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 9
+  AESEQ AETERM          ASTDT      ASTDY ASEV     ASEVN TRTEMFL AOCCFL AOCCIFL
+  &lt;int&gt; &lt;chr&gt;           &lt;date&gt;     &lt;int&gt; &lt;chr&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;  
+1     1 Diarrhoea       2024-04-28    51 Mild         1 Y       Y      &lt;NA&gt;   
+2     2 Nausea          2024-05-09    62 Mild         1 Y       &lt;NA&gt;   &lt;NA&gt;   
+3     3 Dizziness       2024-05-12    65 Mild         1 Y       &lt;NA&gt;   &lt;NA&gt;   
+4     4 Nasopharyngitis 2024-07-20   134 Moderate     2 Y       &lt;NA&gt;   Y      </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reading the Output Line by Line
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you see</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Four events, all <code>TRTEMFL = "Y"</code></td>
+<td>All began during the treatment window.</td>
+</tr>
+<tr class="even">
+<td><code>AOCCFL = "Y"</code> on the diarrhoea at day 51</td>
+<td>The subject’s <strong>first</strong> treatment-emergent event, by date. This is the row an “any adverse event” incidence count uses.</td>
+</tr>
+<tr class="odd">
+<td><code>AOCCIFL = "Y"</code> on the nasopharyngitis at day 134</td>
+<td>The subject’s first event at their <strong>maximum severity</strong> — the only Moderate one among four. This is the row a “worst severity per subject” table uses.</td>
+</tr>
+<tr class="even">
+<td>The two flags on <strong>different rows</strong></td>
+<td>The point of having both. “First event” and “worst event” are different questions, and a table that answers one must not be built from the other’s flag.</td>
+</tr>
+</tbody>
+</table>
+<p>Had this subject’s severities run the other way — Moderate first — both flags would have landed on the same row. That they can coincide is exactly why the distinction is easy to miss and worth deriving explicitly.</p>
+</div>
+</div>
+<section id="the-denominator" class="level3" data-number="11.5.1">
+<h3 data-number="11.5.1" class="anchored" data-anchor-id="the-denominator"><span class="header-section-number">11.5.1</span> The denominator</h3>
+<p>Now the error OCCDS warns about (OCCDS v1.1, §3.2.1). Here are the same subjects counted two ways:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>with_ae <span class="ot">&lt;-</span> adae <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(TRTEMFL <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(USUBJID, TRT01A) <span class="sc">|&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(TRT01A, <span class="at">name =</span> <span class="st">"subjects_with_ae"</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>safety_n <span class="ot">&lt;-</span> adsl <span class="sc">|&gt;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SAFFL <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(TRT01A, <span class="at">name =</span> <span class="st">"safety_population"</span>)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>with_ae <span class="sc">|&gt;</span></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(safety_n, <span class="at">by =</span> <span class="st">"TRT01A"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">correct =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> subjects_with_ae <span class="sc">/</span> safety_population, <span class="dv">1</span>),</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">wrong   =</span> <span class="fu">round</span>(<span class="dv">100</span> <span class="sc">*</span> subjects_with_ae <span class="sc">/</span> <span class="fu">sum</span>(subjects_with_ae), <span class="dv">1</span>)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 5
+  TRT01A     subjects_with_ae safety_population correct wrong
+  &lt;chr&gt;                 &lt;int&gt;             &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;
+1 GLPX 10 mg              151               200    75.5  57.9
+2 Placebo                 110               200    55    42.1</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Run the chunk and compare the last two columns.</p>
+<p>The <strong>correct</strong> column divides by the safety population from ADSL — 200 subjects per arm — giving 75.5% on GLPX 10 mg and 55.0% on placebo. Those are incidence rates: the proportion of <em>dosed subjects</em> who had an event. A 20-point difference between arms, which is the finding.</p>
+<p>The <strong>wrong</strong> column divides by the number of subjects who had events at all, giving 57.9% and 42.1%. Those two figures sum to 100%, which is the tell: it is not incidence at all but a <em>share of affected subjects</em>. It answers “of the people who had events, what fraction were on drug?” — a question nobody asked, that looks like the one they did ask, and that mechanically shrinks the apparent gap between the arms.</p>
+<p>The 138 subjects with no adverse events never appear in ADAE. They are the entire difference, and they exist only in ADSL. This is why OCCDS tells you to take denominators from ADSL, and why ADSL is required in a submission even when nothing else is.</p>
+</div>
+</div>
+</section>
+<section id="conformance" class="level3" data-number="11.5.2">
+<h3 data-number="11.5.2" class="anchored" data-anchor-id="conformance"><span class="header-section-number">11.5.2</span> Conformance</h3>
+<p>Finally, check the dataset against what OCCDS says it should be:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="fu">c</span>(<span class="st">"one row per source AE record"</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>            <span class="st">"AESEQ + USUBJID unique (datapoint traceability)"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>            <span class="st">"every row joins to an ADSL subject"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"TRTEMFL null only where ASTDT is null"</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"at most one AOCCFL per subject"</span>),</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">pass =</span> <span class="fu">c</span>(</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nrow</span>(adae) <span class="sc">==</span> <span class="fu">nrow</span>(ae),</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nrow</span>(<span class="fu">distinct</span>(adae, USUBJID, AESEQ)) <span class="sc">==</span> <span class="fu">nrow</span>(adae),</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(adae<span class="sc">$</span>USUBJID <span class="sc">%in%</span> adsl<span class="sc">$</span>USUBJID),</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(<span class="fu">is.na</span>(adae<span class="sc">$</span>TRTEMFL) <span class="sc">==</span> <span class="fu">is.na</span>(adae<span class="sc">$</span>ASTDT)),</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">max</span>(<span class="fu">tapply</span>(adae<span class="sc">$</span>AOCCFL, adae<span class="sc">$</span>USUBJID,</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>               \(x) <span class="fu">sum</span>(x <span class="sc">==</span> <span class="st">"Y"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))) <span class="sc">==</span> <span class="dv">1</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  check                                           pass 
+  &lt;chr&gt;                                           &lt;lgl&gt;
+1 one row per source AE record                    TRUE 
+2 AESEQ + USUBJID unique (datapoint traceability) TRUE 
+3 every row joins to an ADSL subject              TRUE 
+4 TRTEMFL null only where ASTDT is null           TRUE 
+5 at most one AOCCFL per subject                  TRUE </code></pre>
+</div>
+</div>
+<p>All five pass. The first is the OCCDS structural claim — one record per record in the source SDTM domain (OCCDS v1.1, §3.1.2) — and the second is what makes each of those records traceable back to the exact SDTM row it came from.</p>
+<p>This dataset is written to <code>data/adam/adae.csv</code> by <code>R/build_adam.R</code>, alongside ADSL, and the TLF sessions read it from there.</p>
+</section>
 </section>
 <section id="what-can-go-wrong" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">11.6</span> What Can Go Wrong</h2>
-<!-- Candidates: computing percentages off the AE dataset instead of
-  ADSL [O14]; treating TRTEMFL as copied from SDTM rather than
-  re-derived [O8]; silently imputing a missing start date [O10];
-  recoding AESEV in place instead of into ASEV [O15]; expecting
-  PARAM/AVAL in OCCDS [O2]; claiming SubClass ADVERSE EVENT without the
-  MedDRA hierarchy [O4]. -->
+<p><em>Estimated time: ~10 minutes (reading)</em></p>
+<p><strong>Computing percentages from the event dataset.</strong> The single most consequential error in this session, and the easiest to make because the code runs and returns plausible numbers. Denominators come from ADSL (OCCDS v1.1, §3.2.1). If a percentage’s denominator was not counted in ADSL, check it again.</p>
+<p><strong>Treating <code>TRTEMFL</code> as an SDTM fact.</strong> It is derived in ADaM, from ADSL’s dates and the sponsor’s window. Where SDTM carries <code>AETRTEM</code>, the two “may differ due to different definitions, date imputation, and other analysis rules” (OCCDS v1.1, §3.2, Table 3.2.5.3) — and the analysis uses the ADaM one.</p>
+<p><strong>Coding an unclassifiable event as <code>"N"</code>.</strong> A missing date means “we do not know,” not “not treatment emergent.” Null is the honest value, and it keeps the row visible as something requiring resolution.</p>
+<p><strong>Imputing silently.</strong> If you apply an imputation rule, <code>ASTDTF</code> must record the level of imputation (OCCDS v1.1, §3.2, Table 3.2.4.1). An imputed date with no flag is an assertion presented as an observation.</p>
+<p><strong>Recoding <code>AESEV</code> in place.</strong> Same-name variables must keep SDTM’s values (ADaMIG v1.3, §3.1.1, item 3). Recased or regrouped severity goes in <code>ASEV</code>, <code>ASEVN</code> or <code>SEVGRy</code>.</p>
+<p><strong>Expecting <code>PARAM</code> and <code>AVAL</code>.</strong> They do not exist in OCCDS (OCCDS v1.1, §3.2). Reaching for them is a sign the data might belong in BDS — or that the analysis question has been misread.</p>
+<p><strong>Claiming SubClass ADVERSE EVENT without the MedDRA hierarchy.</strong> The SubClass requires all five levels of the primary path (OCCDS v1.1, §3.2.3). A dataset labelled with a SubClass it does not satisfy is a metadata error a validator will find.</p>
 <section id="common-misinterpretations" class="level3" data-number="11.6.1">
 <h3 data-number="11.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">11.6.1</span> Common misinterpretations</h3>
-<!-- TODO prose pass. -->
+<p><strong>“OCCDS is just BDS without the value column.”</strong> It is a different structure for a different kind of question. BDS analyses measurements against a baseline; OCCDS counts occurrences within a population. The absence of <code>AVAL</code> follows from that, rather than defining it.</p>
+<p><strong>“<code>AOCCFL</code> marks the first adverse event.”</strong> It marks the first <em>treatment-emergent</em> one. Events outside the window are not candidates, which is why the flags are derived after <code>TRTEMFL</code> and not before.</p>
+<p><strong>“Uncoded data means we cannot build ADAE.”</strong> OCCDS says the opposite: data that could have been coded but was not <em>should</em> use this structure (OCCDS v1.1, §1.1.2). What is lost is the dictionary-keyed subset of analyses, and CDISC tells you exactly which those are.</p>
+<p><strong>“Every ADaM dataset is built from SDTM.”</strong> ADAE is built from SDTM AE <em>and</em> from ADSL. Analysis datasets feed each other, and ADSL feeds almost everything.</p>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="11.7">
 <h2 data-number="11.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.7</span> Exercises</h2>
-<!-- Public: exercises/adae.qmd (stub). Solutions -> private repo. -->
+<p>Practice: <a href="../exercises/adae.html">Exercise 4 — ADAE</a>.</p>
 </section>
 <section id="comprehension-check" class="level2" data-number="11.8">
 <h2 data-number="11.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">11.8</span> Comprehension Check</h2>
-<!-- TODO prose pass: 5 questions. Answers collapsed. -->
+<ol type="1">
+<li>GLPX-001’s ADAE has 389 rows covering 262 subjects, and ADSL has 400. Which number is the denominator for “percentage of subjects with a treatment-emergent adverse event,” and why are the other two wrong?</li>
+<li><code>TRTEMFL</code> needs <code>ASTDT</code>, <code>TRTSDT</code> and <code>TRTEDT</code>. Which of those three come from ADSL, and what does that tell you about the order in which analysis datasets must be built?</li>
+<li>Why is <code>ASTDTF</code> null for subject <code>103-199</code>’s undated event, when the date is certainly not known?</li>
+<li>Your study’s AE data is fully MedDRA coded. Which occurrence flags become available that GLPX-001 cannot derive, and where in OCCDS would you look to confirm the list?</li>
+<li>A colleague recases <code>AESEV</code> from <code>MILD</code> to <code>Mild</code> directly, arguing the meaning is unchanged. Which rule does this break, and what should they do instead?</li>
+</ol>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -693,9 +1064,15 @@ it. Recommend x = 0 — it keeps the fiction honest.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- TODO prose pass. -->
+<ol type="1">
+<li><strong>400</strong>, the safety population from ADSL. 262 counts only subjects who had an event, which excludes the 138 event-free subjects from the denominator and inflates every percentage. 389 counts <em>events</em>, not subjects, and a subject with four events would be counted four times. OCCDS v1.1, §3.2.1 states the rule directly.</li>
+<li><code>TRTSDT</code> and <code>TRTEDT</code> come from ADSL; only <code>ASTDT</code> derives from the AE domain. SDTM AE has no knowledge of when the subject was dosed, so ADSL must exist before ADAE can be built. Analysis datasets are a dependency graph, and ADSL is at its root — which is why it is required in a submission even when nothing else is.</li>
+<li>Because <code>ASTDTF</code> records the <em>level of imputation applied</em>, and nothing was imputed — this study specified no imputation rule (OCCDS v1.1, §3.2, Table 3.2.4.1). The flag describes what the derivation did, not what the data lacks. Populating it would claim an imputation that never happened.</li>
+<li><code>AOCCPFL</code> and <code>AOCCPIFL</code> (keyed on the preferred term, <code>--DECOD</code>), plus <code>AOCCSFL</code> and <code>AOCCSIFL</code> (keyed on system organ class). The last two are in Table 3.2.6.2, titled <em>MedDRA Occurrence Flag Variables</em> — CDISC groups the dictionary-dependent flags under a heading that names the dependency. Coded data would also make SubClass ADVERSE EVENT reachable (OCCDS v1.1, §3.2.3).</li>
+<li>“Same name, same meaning, same values” (ADaMIG v1.3, §3.1.1, item 3): a variable carrying an SDTM name must be a copy of the SDTM variable, values unmodified. It would also break the <code>AESEV</code> codelist (C66769), whose submission values are uppercase. The recased version belongs in <code>ASEV</code>, which is producer-defined terminology and carries no CDISC codelist to violate.</li>
+</ol>
 </div>
 </div>
 </div>

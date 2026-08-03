@@ -16,7 +16,8 @@
 # Derivations follow ADaMIG v1.3 and the decisions recorded in the
 # sessions. Datasets grow as their sessions are written:
 #   ADSL -> sessions/adsl.qmd
-#   ADAE, ADLB -> sessions/adae-adlb.qmd   (added when that session lands)
+#   ADAE -> sessions/adae.qmd
+#   ADLB -> sessions/adlb.qmd              (added when that session lands)
 
 suppressPackageStartupMessages({
   library(dplyr)
@@ -107,13 +108,113 @@ build_adsl <- function() {
     arrange(USUBJID)
 }
 
+# ---- ADAE (Adverse Events analysis dataset) --------------------------------
+# OCCDS v1.1: one record per adverse event record in SDTM AE, plus the
+# subject-level variables merged from ADSL (OCCDS v1.1 §3.2.1).
+# See sessions/adae.qmd for the reasoning behind each derivation.
+#
+# CLASS NOTE. This is Class = OCCURRENCE DATA STRUCTURE, and deliberately
+# NOT SubClass ADVERSE EVENT. The SubClass requires every level of the
+# MedDRA primary path — SOC, HLGT, HLT, LLT, PT (OCCDS v1.1 §3.2.3) — and
+# GLPX-001 has no MedDRA coding at all, because MedDRA is licensed and
+# this course does not fabricate coded terms. OCCDS v1.1 §1.1.2 sanctions
+# exactly this: data "that could have been coded but was not should use
+# this structure". The MedDRA-dependent occurrence flags (AOCCSFL,
+# AOCCSIFL, AOCCPFL, AOCCPIFL) are therefore NOT derived here. They are
+# not omitted by oversight; they are unbuildable without a dictionary.
+#
+# TREATMENT WINDOW. TRTEMFL uses ADSL.TRTSDT <= ASTDT <= ADSL.TRTEDT + x
+# with x = 0 (OCCDS v1.1 §3.2, Table 3.2.5.3). Real trials commonly set
+# x > 0 from the drug's half-life; GLPX-001 is fictional and inventing a
+# half-life for it would be inventing a pharmacological fact, so the
+# window is exactly first dose to last dose inclusive. Sponsor choice,
+# documented here and in the session.
+
+TRTEM_WINDOW_DAYS <- 0L   # the "x" in TRTEDT + x days
+
+build_adae <- function(adsl) {
+  ae <- read_sdtm("ae")
+
+  ae |>
+    left_join(
+      adsl |> select(USUBJID, SUBJID, SITEID, TRT01A, TRTSDT, TRTEDT, SAFFL),
+      by = "USUBJID"
+    ) |>
+    mutate(
+      AESEQ = as.integer(AESEQ),
+
+      # Analysis dates from the SDTM ISO 8601 strings. No imputation rule
+      # is specified for this study, so a missing AESTDTC yields a missing
+      # ASTDT — and ASTDTF stays null, because nothing was imputed
+      # (OCCDS v1.1 §3.2, Table 3.2.4.1). Subject 103-199 is that case.
+      ASTDT  = as.Date(AESTDTC),
+      AENDT  = as.Date(AEENDTC),
+      ASTDTF = NA_character_,
+
+      # Study day relative to first dose, no day 0 — the SDTMIG §4.4.4
+      # rule, but anchored to ADSL.TRTSDT rather than DM.RFSTDTC
+      # (OCCDS v1.1 §3.2, Table 3.2.4.1).
+      ASTDY = if_else(ASTDT >= TRTSDT,
+                      as.integer(ASTDT - TRTSDT) + 1L,
+                      as.integer(ASTDT - TRTSDT)),
+      AENDY = if_else(AENDT >= TRTSDT,
+                      as.integer(AENDT - TRTSDT) + 1L,
+                      as.integer(AENDT - TRTSDT)),
+
+      # Analysis severity. AESEV keeps the SDTM value untouched; the
+      # recased analysis version goes in ASEV, which is producer-defined
+      # terminology, not CDISC CT (OCCDS v1.1 §3.2, Table 3.2.8.1).
+      ASEV  = recode(AESEV, MILD = "Mild", MODERATE = "Moderate",
+                     SEVERE = "Severe"),
+      ASEVN = case_when(ASEV == "Mild"     ~ 1L,
+                        ASEV == "Moderate" ~ 2L,
+                        ASEV == "Severe"   ~ 3L),
+
+      # Treatment emergent: a pure timing derivation. No coded term is
+      # involved anywhere. Null ASTDT cannot be classified, so TRTEMFL is
+      # null there rather than "N" — absence of a date is not evidence
+      # that the event was non-emergent.
+      TRTEMFL = case_when(
+        is.na(ASTDT) ~ NA_character_,
+        ASTDT >= TRTSDT & ASTDT <= TRTEDT + TRTEM_WINDOW_DAYS ~ "Y",
+        .default = "N"
+      )
+    ) |>
+    arrange(USUBJID, ASTDT, AESEQ) |>
+    # Occurrence flags. Both key on timing and severity, never on a coded
+    # term, and both flag the FIRST TREATMENT-EMERGENT record only
+    # (OCCDS v1.1 §3.2, Table 3.2.6.1).
+    group_by(USUBJID) |>
+    mutate(
+      # A subject with no classifiable event (103-199, whose only AE has
+      # no start date) has no first occurrence to flag: every flag below
+      # stays null for them rather than defaulting to a row.
+      te_      = !is.na(TRTEMFL) & TRTEMFL == "Y",
+      maxsev_  = if (any(te_)) max(ASEVN[te_], na.rm = TRUE) else NA_integer_,
+      ismax_   = te_ & !is.na(ASEVN) & !is.na(maxsev_) & ASEVN == maxsev_,
+      AOCCFL   = if_else(te_ & cumsum(te_) == 1L, "Y", NA_character_),
+      AOCCIFL  = if_else(ismax_ & cumsum(ismax_) == 1L, "Y", NA_character_)
+    ) |>
+    ungroup() |>
+    select(-te_, -maxsev_, -ismax_) |>
+    select(
+      STUDYID, USUBJID, SUBJID, SITEID, AESEQ,
+      AETERM, AEDECOD,
+      TRT01A, TRTSDT, TRTEDT, SAFFL,
+      AESTDTC, AEENDTC, ASTDT, ASTDTF, AENDT, ASTDY, AENDY,
+      AESEV, ASEV, ASEVN, AESER, AEOUT,
+      TRTEMFL, AOCCFL, AOCCIFL
+    )
+}
+
 # ---- entry point -----------------------------------------------------------
 
 main <- function(out_dir = file.path("data", "adam")) {
   dir.create(out_dir, recursive = TRUE, showWarnings = FALSE)
 
   adsl <- build_adsl()
-  adam <- list(adsl = adsl)
+  adae <- build_adae(adsl)
+  adam <- list(adsl = adsl, adae = adae)
 
   iwalk(adam, \(df, name) {
     write_csv(df, file.path(out_dir, paste0(name, ".csv")), na = "")

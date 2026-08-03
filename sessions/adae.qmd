@@ -2,210 +2,12 @@
 title: "ADAE"
 ---
 
-<!--
-========================================================================
-SKELETON + VERIFY LIST — prose NOT yet written. DO NOT COMMIT as final.
-
-Third Part 3 session, and the course's FIRST OCCDS-cited session. Sole
-source for OCCDS specifics = ADaM OCCDS Implementation Guide v1.1 PDF
-(local, gitignored). Every [OCCDS] claim PRE-CITED to its section;
-author spot-checks. ADaM-general claims still cite ADaMIG v1.3.
-
-Reads persisted SDTM data/sdtm/ae.csv + persisted ADaM data/adam/adsl.csv
-— the first session where an ADaM dataset is an INPUT, which is itself
-the point (OCCDS §3.2.1: merge subject-level variables from ADSL).
-
-PROPOSED CENTRAL INTUITION (for approval):
-  "ADAE is one row per adverse event, carried from SDTM and answered
-   against the treatment window: not what value was measured, but
-   whether this event counts for this analysis — was it treatment
-   emergent, and is it this subject's first of its kind?"
-
-========================================================================
-VERIFY LIST — every OCCDS/ADaM specific this session intends to assert.
-
---- Structure, and why OCCDS is not BDS ---
-
-O1 [OCCDS v1.1 §1.1.2, Principles 1-3] OCCDS applies when: (1) there is
-   NO need for AVAL/AVALC because occurrences are COUNTED, not
-   measured; (2) a dictionary hierarchy is typically used and remapping
-   it to PARAM/*CAT would lose its structure and meaning; (3) data
-   content is typically not modified for analysis. Also §1.1.2:
-   "typically, findings data fit nicely into BDS, and events and
-   interventions fit nicely into OCCDS."
-
-O2 [OCCDS v1.1 §3.2] OCCDS is explicitly different from BDS: "There is
-   no PARAM nor AVAL, for example." Some BDS variables may still be
-   used in OCCDS, and some OCCDS variables (e.g. TRTEMFL) may be used
-   outside OCCDS.
-
-O3 [OCCDS v1.1 §3.1.2] Datasets of SubClass ADVERSE EVENT must have
-   Class = OCCURRENCE DATA STRUCTURE; structure is usually 1 record per
-   record in the corresponding SDTM domain; SDTM input is always AE
-   (plus SUPPAE, FA, ADSL); MH/CE data are NOT included in the
-   SubClass. And the escape hatch: "Not all OCCDS datasets that contain
-   adverse event data will necessarily be of SubClass ADVERSE EVENT."
-
---- The MedDRA constraint (author-approved framing) ---
-
-O4 [OCCDS v1.1 §3.2.3] For SubClass ADVERSE EVENT it is REQUIRED that
-   all levels of the MedDRA primary path — SOC, HLGT, HLT, LLT, PT — be
-   included. "For other OCCDS datasets, these variables are recommended
-   ... but not required." GLPX AEDECOD is null for all 389 rows
-   (MedDRA is licensed; the course never fakes coded terms), so the
-   SubClass is structurally unreachable and this ADAE is built as
-   Class = OCCURRENCE DATA STRUCTURE.
-
-O5 [OCCDS v1.1 §1.1.2, Principle 2 parenthetical] THE KEY SANCTION —
-   the IG addresses our exact case directly: "Data for a particular
-   study that could have been coded but was not should use this
-   structure because analysis results are similar, and this will allow
-   analysis programming to work the same way." So building ADAE as
-   OCCDS without coded terms is not a workaround; it is what the guide
-   says to do. NOTE: this is a stronger and more precise warrant than
-   the §3.1.2 escape hatch I cited when proposing the split — lead with
-   O5, support with O3.
-
-O6 [OCCDS v1.1 §3.2, Table 3.2.6.1 vs Table 3.2.6.2] The occurrence
-   flags split cleanly along the MedDRA line, and the IG's own table
-   titles do the work:
-     Table 3.2.6.1 (general): AOCCFL (1st within subject) and AOCCIFL
-       (1st max severity within subject) -> BUILDABLE here; AOCCPFL and
-       AOCCPIFL need --DECOD (PT) -> NOT buildable.
-     Table 3.2.6.2 "MedDRA Occurrence Flag Variables": AOCCSFL (1st per
-       SOC), AOCCSIFL -> NOT buildable.
-   All are Core = Perm. Taught as cited fact; never fabricated.
-   CORRECTION TO MY OWN SPLIT MEMO: I told the author only AOCCFL was
-   buildable. AOCCIFL is buildable too — it keys on maximum severity,
-   which GLPX has (AESEV), not on a coded term.
-
---- Treatment emergence (the centrepiece) ---
-
-O7 [OCCDS v1.1 §3.2, Table 3.2.5.3] TRTEMFL "Treatment Emergent
-   Analysis Flag", Char, Core = Cond (Req for SubClass ADVERSE EVENT).
-   Example derivation, verbatim: "If ADSL.TRTSDT<=ASTDT<=ADSL.TRTEDT +
-   x days then TRTEMFL='Y'", where x is producer-defined and "often
-   incorporates the known half-life of the drug". For non-SubClass
-   datasets it is "conditional on whether the concept of treatment
-   emergent is a key feature of the analysis" — it is the key feature
-   here, so the condition is met.
-   AUTHOR'S QUESTION ANSWERED: TRTEMFL is a PURE TIMING derivation —
-   ASTDT against ADSL.TRTSDT/TRTEDT. No coded term, no MedDRA
-   dependency anywhere in its definition. Nothing about what is
-   buildable changes.
-
-O8 [OCCDS v1.1 §3.2, Table 3.2.5.3] AETRTEM is the SDTM treatment-
-   emergent flag from SUPPAE (QNAM="AETRTEM"), Core = Perm. "TRTEMFL
-   may differ from AETRTEM due to different definitions, date
-   imputation, and other analysis rules." GLPX has no SUPPAE, so
-   AETRTEM is absent — stated, not faked. Same ADaM-re-derives-flags
-   lesson as ADSL's population flags (ADaMIG v1.3, §3.5).
-
---- Timing ---
-
-O9 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDT = "Analysis Start Date",
-   Core = Cond, "created from converting XX.--STDTC from character ISO
-   8601 format to numeric date format, applying imputation rules if
-   specified in the statistical analysis plan (SAP) or metadata".
-   AENDT likewise from --ENDTC. --STDTC/--ENDTC are themselves copied
-   in for traceability.
-
-O10 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDTF "Analysis Start Date
-    Imputation Flag", Char, codelist DATEFL, Core = Cond — "conditional
-    on whether ASTDT (or the date part of ASTDTM) was imputed".
-    GLPX D4: subject 103-199 has a NULL AESTDTC. We do NOT impute it,
-    so ASTDT is null and ASTDTF stays null — and TRTEMFL cannot be
-    evaluated for that record. This is the session's honest-missingness
-    example, mirroring ADSL's four null AGEs.
-
-O11 [OCCDS v1.1 §3.2, Table 3.2.4.1] ASTDY "Analysis Start Relative
-    Day", Core = Cond, derivation given: "ASTDT - ADSL.TRTSDT + 1 if
-    ASTDT >= ADSL.TRTSDT, else ASTDT - ADSL.TRTSDT" — the SAME no-day-0
-    rule as SDTMIG v3.4 §4.4.4, but anchored to ADSL.TRTSDT rather than
-    DM.RFSTDTC. AESTDY may be copied alongside: "ASTDY may differ from
-    --STDY due to date imputation and the option in ADaM to use a
-    reference date other than SDTM's RFSTDTC."
-
---- Identifiers, the ADSL merge, traceability ---
-
-O12 [OCCDS v1.1 §3.2.2, Table 3.2.2.1] STUDYID, USUBJID Req; SUBJID,
-    SITEID Perm — and sourced ADSL.SUBJID / ADSL.SITEID, i.e. from
-    ADSL, not from the SDTM domain.
-
-O13 [OCCDS v1.1 §3.2.2] Row identifiers give datapoint traceability:
-    where rows come from a single SDTM domain, --SEQ (here AESEQ)
-    supplies it all; SRCDOM + SRCSEQ are the alternative for
-    multi-domain sources. Explicit: BDS's SRCVAR is NOT used in OCCDS,
-    because SRCVAR names the variable deriving AVAL/AVALC and those do
-    not exist here.
-
-O14 [OCCDS v1.1 §3.2.1] "Merge any subject-level variables needed for
-    analysis or reference." And the denominator warning, which is the
-    reason ADSL exists: "only subjects with a record in an input SDTM
-    domain would have a record in the analysis dataset ... population
-    indicators and denominator counts for percentages [should] be
-    derived from ADSL and not from the occurrence analysis dataset."
-    GLPX: 389 AE rows over 262 subjects, but the safety denominator is
-    400 from ADSL. Single most consequential sentence in the session.
-
---- Severity ---
-
-O15 [OCCDS v1.1 §3.2, Table 3.2.5.2] --SEV copied from AE.AESEV; ASEV
-    "Analysis Severity/Intensity" is the analysis version and ASEVN its
-    numeric counterpart (Core = Perm, values 1/2/3). The IG's worked
-    example maps MILD/MODERATE/SEVERE to Mild/Moderate/Severe. The
-    same-name rule still governs (ADaMIG v1.3, §3.1.1 item 3): AESEV
-    must stay the SDTM value; any recoding goes in ASEV.
-    VERIFY AT PROSE TIME: confirm the exact table number for the
-    severity block (read as 3.2.5.2, adjacent to 3.2.5.3 Adverse Events
-    Indicator Variables) before citing it.
-
---- Version pairing (author-supplied; must be disclosed) ---
-
-O16 OCCDS v1.1 front matter states it is "based on the Analysis Data
-    Model (ADaM) v2.1 and the ADaM Implementation Guide (ADaMIG) v1.2",
-    and it cites SDTMIG v3.3 and ADaMIG v1.2 section numbers
-    throughout. Author-confirmed disclosure to make in prose: v1.1
-    references v1.2/v3.3 in its front matter but IS CDISC's designated
-    companion to ADaMIG v1.3 — the ADaMIG v1.3 page states OCCDS "is
-    described in ADaM OCCDS v1.1", and the v1.3 Release Package ships
-    it. A small teaching point about staggered CDISC versioning.
-
---- [CT] to confirm live at prose time ---
-C1 AESEV values MILD/MODERATE/SEVERE against the AESEV codelist.
-C2 NY codelist (C66742). NOTE a precision to get right: OCCDS Table
-   3.2.5.3 lists TRTEMFL's controlled terms as bare "Y", whereas
-   AETRTEM is codelist (NY). Confirm and state precisely; do not blur
-   the two.
-C3 AEOUT / AESER already confirmed in sdtm-events; re-checked here.
-ADaM-derived values (mixed-case ASEV, TRTEMFL) are analysis decisions,
-not CT — same point as AGEGR1 in ADSL.
-All pasted as real output; none recalled.
-
---- Explicitly NOT asserted / deferred ---
-- SMQ variables (§3.2.9) — need MedDRA; named, not built.
-- Original/prior coding variables (§3.2.10) — out of scope.
-- Concomitant medications and medical history OCCDS uses — named in O1
-  only, not built (no CM/MH domains in this course).
-- BDS labs -> adlb.qmd.
-========================================================================
-
-GLPX AE DATA REALITY (probed, for sizing the examples):
-  389 rows, 262 subjects, 25 distinct AETERM, AEDECOD null on all 389.
-  AESEV: MILD 243 / MODERATE 124 / SEVERE 22. AESER: Y 1 / N 388.
-  1 null AESTDTC (D4, subject 103-199). Zero ongoing AEs (E8 — all
-  RECOVERED; the ongoing case stays concept-only, never fabricated).
-
-INFRASTRUCTURE: build_adam.R gains build_adae() -> committed
-data/adam/adae.csv, mirroring the approved ADSL pattern.
-
-OPEN DECISION FOR THE AUTHOR: the value of x in TRTEMFL's
-ADSL.TRTEDT + x days. Proposal: x = 0 (the treatment window is exactly
-first dose to last dose inclusive), stated explicitly as a sponsor
-choice with the IG's half-life rationale explained but not invented for
-a fictional compound. Alternative: pick a GLPX-plausible x and document
-it. Recommend x = 0 — it keeps the fiction honest.
--->
+```{r setup}
+#| include: false
+#| eval: true
+library(tidyverse)
+library(sdtm.terminology)
+```
 
 ::: {.callout-note}
 ### Session at a Glance
@@ -217,13 +19,12 @@ it. Recommend x = 0 — it keeps the fiction honest.
 | When Do You Use This? + Learning Objectives | 5 min | Reading |
 | Background: counting events, not measuring them | 20 min | Reading |
 | Example 1: The ADAE spine and treatment emergence | 25 min | Worked example |
-| Example 2: Occurrence flags and the denominator trap | 20 min | Worked example |
+| Example 2: Occurrence flags and the denominator | 20 min | Worked example |
 | What Can Go Wrong | 10 min | Reading |
 | Exercises + Comprehension Check | 5 min | Practice / Self-test |
 
 The course's first OCCDS dataset, and the first session that reads an
-ADaM dataset (ADSL) as an input. For self-paced study, split after
-Example 1.
+ADaM dataset as an input. For self-paced study, split after Example 1.
 :::
 
 ::: {.callout-tip}
@@ -240,71 +41,734 @@ treatment dates ADSL carries, which is why ADSL came first.
 
 ## When Do You Use This? {#sec-adae}
 
-TODO (prose pass): scenarios — a safety table needs every event
-classified as treatment emergent or not; a reviewer asks which subjects
-had their first severe event while on drug; someone needs adverse-event
-percentages with the *right* denominator. Ends with the bold question:
-**what does an analysis dataset look like when there is nothing to
-measure — only occurrences to count?** Builds on [ADaM
-Concepts](adam-concepts.qmd), [ADSL](adsl.qmd) and
-[Events](sdtm-events.qmd).
+::: {.callout-tip}
+A safety table needs every adverse event classified as treatment
+emergent or not, because an event that began before the first dose is
+not evidence about the drug. A reviewer asks which subjects had their
+first *severe* event while on treatment. Someone needs the percentage of
+subjects who experienced nausea — and gets a different answer depending
+on what they divide by.
+
+None of those questions is about a measured *value*. There is no result
+to record, no unit, no change from baseline. There is only a list of
+things that happened, and questions about which of them count. That
+raises the question this session answers: **what does an analysis
+dataset look like when there is nothing to measure — only occurrences to
+count?**
+
+Builds on [ADaM Concepts](adam-concepts.qmd), [ADSL](adsl.qmd), and the
+SDTM AE domain from [Events](sdtm-events.qmd).
+:::
 
 ## Learning Objectives
 
-TODO after approval — recognise when OCCDS rather than BDS is the right
-structure; carry AE data and merge ADSL; derive `ASTDT`/`ASTDY` and
-`TRTEMFL`; derive occurrence flags and know which ones dictionary
-coding puts out of reach; take denominators from ADSL, not from the
-event data.
+After completing this session you will be able to:
 
-## Background: TODO — Counting Events, Not Measuring Them
+- Recognise when OCCDS rather than BDS is the right analysis structure,
+  and say why in terms of what is being analysed
+- Build an ADAE from SDTM AE with the subject-level variables merged
+  from ADSL
+- Derive `ASTDT`, `ASTDY` and `TRTEMFL`, and explain why treatment
+  emergence is an ADaM derivation rather than an SDTM fact
+- Derive occurrence flags, and identify which ones dictionary licensing
+  puts out of reach
+- Take an incidence denominator from ADSL rather than from the event
+  data, and explain what goes wrong otherwise
 
-<!-- Prose pass: OCCDS vs BDS by what is analysed [O1, O2]; the AE
-  SubClass and why this ADAE is Class-only [O3, O4, O5]; treatment
-  emergence as the central analysis question [O7]; timing [O9-O11];
-  the ADSL merge and the denominator [O14]; version-pairing disclosure
-  [O16]. Central intuition callout. -->
+## Background: Counting Events, Not Measuring Them
 
-## Example 1: TODO — The ADAE Spine and Treatment Emergence
+*Estimated time: ~20 minutes (reading)*
 
-<!-- Plan (code executed; reads data/sdtm/ae.csv + data/adam/adsl.csv):
-  carry STUDYID/USUBJID/AESEQ/AETERM/AESEV/AESER [O12, O13]; merge
-  TRTSDT/TRTEDT/TRT01A/SAFFL from ADSL [O14]; ASTDT/AENDT from
-  AESTDTC/AEENDTC [O9]; ASTDY [O11]; ASEV/ASEVN [O15]; TRTEMFL with a
-  stated x [O7]. Show the D4 null-start-date record and what it does to
-  TRTEMFL [O10]. CT-check AESEV [C1]. -->
+::: {.callout-important}
+### The one thing to remember
 
-## Example 2: TODO — Occurrence Flags and the Denominator Trap
+**ADAE is one row per adverse event, carried from SDTM and answered
+against the treatment window: not what value was measured, but whether
+this event counts for this analysis — was it treatment emergent, and is
+it this subject's first of its kind?**
+:::
 
-<!-- Plan: AOCCFL and AOCCIFL derived [O6]; state plainly which flags
-  MedDRA puts out of reach, citing Table 3.2.6.2 by its title [O4, O6];
-  then the denominator: 262 subjects have AEs but the safety
-  denominator is 400 from ADSL [O14]. An incidence table done wrong and
-  done right. -->
+Every ADaM dataset you have met so far has been built around a measured
+value. In BDS there is `AVAL`, a `PARAM` that says what it is, and a
+baseline to compare it against. Adverse events have none of that. You do
+not measure an adverse event; you record that one occurred. Analysis
+then *counts* occurrences.
+
+That difference is not cosmetic, and CDISC gives it its own structure
+and its own document. The **Occurrence Data Structure (OCCDS)** applies
+when three things hold (OCCDS v1.1, §1.1.2):
+
+1. There is **no need for `AVAL` or `AVALC`**, because "occurrences are
+   counted in analysis."
+2. A **dictionary hierarchy** is typically used for coding, and
+   "remapping this hierarchy to BDS variables PARAM and generic \*CAT
+   variables would lose the structure and meaning of the dictionary."
+3. The data content is **typically not modified** for analysis.
+
+The guide summarises the division in one sentence: "typically, findings
+data fit nicely into BDS, and events and interventions fit nicely into
+OCCDS" (OCCDS v1.1, §1.1.2). And it states the structural consequence
+bluntly — in OCCDS "there is no `PARAM` nor `AVAL`, for example" (OCCDS
+v1.1, §3.2). If you go looking for the variables that organised the last
+session, they are not here, and their absence is the design.
+
+::: {.callout-note}
+### A note on versions worth understanding
+
+OCCDS v1.1's own front matter says it is "based on the Analysis Data
+Model (ADaM) v2.1 and the ADaM Implementation Guide (ADaMIG) v1.2," and
+it cites SDTMIG v3.3 section numbers throughout. This course targets
+ADaMIG v1.3 and SDTMIG v3.4, so that looks like a mismatch.
+
+It is not. **OCCDS v1.1 is CDISC's designated companion to ADaMIG
+v1.3** — the ADaMIG v1.3 documentation points to OCCDS v1.1 for
+occurrence data, and the v1.3 release package ships it. CDISC's
+foundational standards are versioned on staggered cycles: a companion
+document is not reissued merely because the document it references moved
+on. Read the front matter as telling you when OCCDS was last revised,
+not as telling you which ADaMIG to pair it with.
+
+This is worth internalising because you will meet it again. "The version
+numbers do not match" is rarely the same thing as "these documents do
+not go together."
+:::
+
+### The adverse event SubClass, and an honest constraint
+
+OCCDS defines a **SubClass ADVERSE EVENT** for the standard AE analyses.
+A dataset in it must have Class `OCCURRENCE DATA STRUCTURE`, is usually
+one record per record in the corresponding SDTM domain, and always takes
+AE as its SDTM input, with additional information from SUPPAE, FA and
+ADSL (OCCDS v1.1, §3.1.2).
+
+It also carries a requirement this course cannot meet:
+
+> For the SubClass ADVERSE EVENT, it is required that all levels of
+> terms for the primary path in the MedDRA hierarchy — System Organ
+> Class (SOC), High Level Group Term (HLGT), High Level Term (HLT),
+> Lowest Level Term (LLT), and Preferred Term (PT) — be included. For
+> other OCCDS datasets, these variables are recommended… but not
+> required (OCCDS v1.1, §3.2.3).
+
+GLPX-001 has no MedDRA coding at all. `AEDECOD` is null on every row,
+because MedDRA is a licensed dictionary and this course does not
+fabricate coded terms — the same discipline that keeps it from inventing
+lab reference ranges or a half-life for a fictional compound. So the
+SubClass is out of reach.
+
+The right response is not to fake the codes, and not to abandon the
+dataset. It is to build ADAE with Class `OCCURRENCE DATA STRUCTURE` and
+no SubClass — and the guide is unusually direct that this is correct
+rather than merely tolerated:
+
+> Data for a particular study that could have been coded but was not
+> **should use this structure**, because analysis results are similar,
+> and this will allow analysis programming to work the same way (OCCDS
+> v1.1, §1.1.2).
+
+That sentence is doing real work. It says uncoded occurrence data
+belongs in OCCDS, so that the analysis code you write today keeps
+working when the data *is* coded tomorrow. The supporting point is in
+§3.1.2: "not all OCCDS datasets that contain adverse event data will
+necessarily be of SubClass ADVERSE EVENT." Uncoded is a legitimate
+state, not a broken one.
+
+What it costs is specific, and CDISC has already drawn the line for you.
+The occurrence flags are split across **two tables**, and the second one
+is titled *MedDRA Occurrence Flag Variables* (OCCDS v1.1, §3.2, Table
+3.2.6.2). Every flag we cannot build is in that table or depends on the
+preferred term:
+
+| Flag | What it marks | Where CDISC files it | Buildable here |
+|---|---|---|---|
+| `AOCCFL` | 1st occurrence within subject | Table 3.2.6.1 | **Yes** |
+| `AOCCIFL` | 1st max-severity occurrence within subject | Table 3.2.6.1 | **Yes** |
+| `AOCCPFL` | 1st occurrence of a preferred term | Table 3.2.6.1, keyed on `--DECOD` | No |
+| `AOCCPIFL` | 1st max severity within a preferred term | Table 3.2.6.1, keyed on `--DECOD` | No |
+| `AOCCSFL` | 1st occurrence within a system organ class | **Table 3.2.6.2 (MedDRA)** | No |
+| `AOCCSIFL` | 1st max severity within an SOC | **Table 3.2.6.2 (MedDRA)** | No |
+
+The boundary is not an interpretation of ours. It is CDISC's own
+organisation of the standard: the flags that need a dictionary are
+grouped under a heading that says so. Read that table of contents and
+you can predict, before writing a line of code, exactly which analyses a
+licensing constraint will cost you.
+
+### Treatment emergence: the question ADAE exists to answer
+
+An adverse event that began before the first dose tells you about the
+subject, not the drug. **`TRTEMFL`** is the flag that makes the
+distinction, and it is the central derivation of this dataset. The IG
+gives the derivation directly (OCCDS v1.1, §3.2, Table 3.2.5.3):
+
+> If `ADSL.TRTSDT <= ASTDT <= ADSL.TRTEDT + x days` then
+> `TRTEMFL = "Y"`
+
+where "the number *x* in this derivation is defined by the producer and
+often incorporates the known half-life of the drug." `TRTEMFL` is
+Conditional in OCCDS generally and Required for the SubClass; for a
+dataset outside the SubClass it is "conditional on whether the concept
+of treatment emergent is a key feature of the analysis," which for a
+safety dataset it plainly is.
+
+Notice what that derivation depends on: three dates. **No coded term
+appears anywhere in it.** Treatment emergence is a pure timing question,
+which is why it remains fully available to us when the dictionary-based
+flags are not.
+
+Notice also where two of those three dates come from: `ADSL`. You cannot
+decide whether an event was treatment emergent from the AE domain alone
+— SDTM AE does not know when the subject was dosed. This is the first
+time in the course that an ADaM dataset is an *input* to another ADaM
+dataset, and it is not incidental. It is why ADSL is built first and why
+it is required in a submission even when nothing else is.
+
+::: {.callout-note}
+### `TRTEMFL` is not `AETRTEM`
+
+SDTM can carry its own treatment-emergent flag as a Supplemental
+Qualifier, `AETRTEM` in SUPPAE (OCCDS v1.1, §3.2, Table 3.2.5.3). Where
+it exists, including it alongside `TRTEMFL` adds traceability — but the
+guide is explicit that "`TRTEMFL` may differ from `AETRTEM` due to
+different definitions, date imputation, and other analysis rules."
+
+This is the same lesson as ADSL's population flags, which ADaM
+re-derives rather than copying from SDTM's Supplemental Qualifiers
+(ADaMIG v1.3, §3.5). The analysis flag is the analysis's own. GLPX-001
+has no SUPPAE, so `AETRTEM` simply does not exist here — stated rather
+than invented.
+:::
+
+### Timing, and what a missing date is allowed to mean
+
+`ASTDT` ("Analysis Start Date") is "created from converting `XX.--STDTC`
+from character ISO 8601 format to numeric date format, applying
+imputation rules if specified in the statistical analysis plan (SAP) or
+metadata"; `AENDT` follows from `--ENDTC` (OCCDS v1.1, §3.2, Table
+3.2.4.1). The original `--STDTC` and `--ENDTC` are carried across
+unchanged alongside them, for traceability.
+
+Two consequences follow, and both matter.
+
+First, **imputation is a documented decision, not a default.** If a
+partial or missing date is imputed, `ASTDTF` records the level of
+imputation, from the `DATEFL` codelist, and it is conditional precisely
+"on whether `ASTDT` (or the date part of `ASTDTM`) was imputed" (OCCDS
+v1.1, §3.2, Table 3.2.4.1). No imputation rule, no imputation — and
+`ASTDTF` stays null because nothing was imputed.
+
+Second, `ASTDY` ("Analysis Start Relative Day") uses a rule you have
+already met:
+
+> `ASTDT - ADSL.TRTSDT + 1` if `ASTDT >= ADSL.TRTSDT`, else
+> `ASTDT - ADSL.TRTSDT` (OCCDS v1.1, §3.2, Table 3.2.4.1)
+
+That is the no-day-zero convention from SDTMIG v3.4 §4.4.4 — the same
+two-branch shape you implemented in [The DM Domain](sdtm-dm.qmd). But
+the anchor has moved. SDTM's `--DY` counts from `DM.RFSTDTC`; ADaM's
+`ASTDY` counts from `ADSL.TRTSDT`, and the guide notes that `ASTDY` "may
+differ from `--STDY` due to date imputation and the option in ADaM to
+use a reference date other than SDTM's `RFSTDTC`." Same arithmetic,
+deliberately different origin, because analysis gets to choose its own
+reference point and must then say so.
+
+### Where denominators come from
+
+One sentence in OCCDS is worth more than any variable definition in it
+(OCCDS v1.1, §3.2.1):
+
+> Be aware that **only subjects with a record in an input SDTM domain
+> would have a record in the analysis dataset**. For this reason, it is
+> recommended that population indicators and denominator counts for
+> percentages be derived from ADSL and not from the occurrence analysis
+> dataset.
+
+A subject who had no adverse events has no row in ADAE. They still
+belong in the denominator of every incidence percentage, because they
+were dosed and observed and nothing happened. Compute "percent of
+subjects with nausea" from the event dataset and you have silently
+restricted the population to subjects who had *some* event — inflating
+every percentage in the table. Example 2 puts real numbers on how large
+that error is.
+
+## Example 1: The ADAE Spine and Treatment Emergence
+
+*Estimated time: ~25 minutes (worked example)*
+
+Start with both inputs. This is the shape of every OCCDS build: the
+event records from SDTM, and the subject-level context from ADSL.
+
+```{r read-inputs}
+#| eval: true
+
+ae <- read_csv("data/sdtm/ae.csv", show_col_types = FALSE,
+               col_types = cols(.default = col_character()))
+
+adsl <- read_csv("data/adam/adsl.csv", show_col_types = FALSE)
+
+c(ae_rows          = nrow(ae),
+  subjects_with_ae = n_distinct(ae$USUBJID),
+  adsl_subjects    = nrow(adsl))
+```
+
+Hold on to those three numbers. 389 event records belong to 262
+subjects, but the trial has 400. The 138 subjects who had no adverse
+event are absent from AE entirely — and that gap is the denominator
+problem, visible before we have derived anything.
+
+Now merge the subject-level variables and derive the analysis dates.
+`AESEQ` is what makes each row traceable back to its source: where rows
+come from a single SDTM domain, `--SEQ` supplies the whole row
+identifier, and the `SRCDOM`/`SRCSEQ` pair is the alternative for
+multi-domain sources (OCCDS v1.1, §3.2.2).
+
+```{r adae-spine}
+#| eval: true
+
+adae_spine <- ae |>
+  left_join(
+    adsl |> select(USUBJID, SUBJID, SITEID, TRT01A, TRTSDT, TRTEDT, SAFFL),
+    by = "USUBJID"
+  ) |>
+  mutate(
+    AESEQ = as.integer(AESEQ),
+
+    ASTDT = as.Date(AESTDTC),          # OCCDS §3.2, Table 3.2.4.1
+    AENDT = as.Date(AEENDTC),
+    ASTDTF = NA_character_,            # nothing imputed, so nothing to flag
+
+    ASTDY = if_else(ASTDT >= TRTSDT,   # no day 0; anchored to ADSL.TRTSDT
+                    as.integer(ASTDT - TRTSDT) + 1L,
+                    as.integer(ASTDT - TRTSDT))
+  )
+
+adae_spine |>
+  select(USUBJID, AESEQ, AETERM, AESTDTC, ASTDT, TRTSDT, ASTDY) |>
+  head(4)
+```
+
+Note that `AEDECOD` came across in the join and is null throughout —
+that is the licensing constraint, present in the data rather than
+described in the abstract:
+
+```{r decod-null}
+#| eval: true
+
+c(rows = nrow(adae_spine),
+  aedecod_populated = sum(!is.na(adae_spine$AEDECOD)),
+  distinct_aeterm   = n_distinct(adae_spine$AETERM))
+```
+
+25 distinct verbatim terms, zero coded terms. Every analysis that needs
+a preferred term or a system organ class is unavailable, and every
+analysis that needs only timing and severity is unaffected.
+
+### Severity: the same-name rule, once more
+
+`AESEV` is copied from SDTM untouched. The analysis version — recased
+for presentation — goes in `ASEV`, with `ASEVN` as its numeric
+counterpart, and the guide notes low intensity should correspond to a
+low value (OCCDS v1.1, §3.2, Table 3.2.8.1).
+
+```{r severity}
+#| eval: true
+
+adae_spine <- adae_spine |>
+  mutate(
+    ASEV  = recode(AESEV, MILD = "Mild", MODERATE = "Moderate",
+                   SEVERE = "Severe"),
+    ASEVN = case_when(ASEV == "Mild"     ~ 1L,
+                      ASEV == "Moderate" ~ 2L,
+                      ASEV == "Severe"   ~ 3L)
+  )
+
+count(adae_spine, AESEV, ASEV, ASEVN)
+```
+
+This is the "same name, same meaning, same values" rule from
+[ADSL](adsl.qmd) doing its job (ADaMIG v1.3, §3.1.1, item 3). We wanted
+mixed case for the tables; `AESEV` carries an SDTM name, so it may not
+be touched, and the recased values go somewhere else. The controlled
+terminology confirms why that matters:
+
+```{r ct-check}
+#| eval: true
+
+sev_code <- (ct("list") |> filter(term == "AESEV"))$clst_code[1]
+ny_code  <- (ct("list") |> filter(term == "NY"))$clst_code[1]
+
+tibble(
+  variable = c("AESEV", "ASEV", "AESER"),
+  codelist = c(sev_code, sev_code, ny_code),
+  values   = c("MILD/MODERATE/SEVERE", "Mild/Moderate/Severe", "N/Y"),
+  all_valid = c(
+    all(is_term(unique(adae_spine$AESEV), clst_code = sev_code)),
+    all(is_term(unique(adae_spine$ASEV),  clst_code = sev_code)),
+    all(is_term(unique(adae_spine$AESER), clst_code = ny_code))
+  )
+)
+```
+
+::: {.callout-tip}
+### Run It Yourself
+
+`AESEV` and `AESER` come back `TRUE`. **`ASEV` comes back `FALSE`, and
+that is the correct result.** OCCDS marks `ASEV` with an asterisk
+meaning "variable may be subject to producer-defined controlled
+terminology" (OCCDS v1.1, §3.2, Table 3.2.8.1, footnote b). `Mild` is
+not a CDISC submission value and was never meant to be — it is the
+sponsor's presentation choice, defined in the metadata rather than
+checked against a codelist.
+
+This is the same point `AGEGR1` made in [ADSL](adsl.qmd) and `PARAMCD`
+made in [ADaM Concepts](adam-concepts.qmd). A `FALSE` from `is_term()`
+means "not CDISC CT," which is a finding only if the variable was
+supposed to be CDISC CT. Knowing which variables those are is the skill.
+:::
+
+### The flag itself
+
+Now treatment emergence. We must choose the *x* in `TRTEDT + x days`:
+
+```{r trtemfl}
+#| eval: true
+
+TRTEM_WINDOW_DAYS <- 0L   # sponsor decision — see the note below
+
+adae_spine <- adae_spine |>
+  mutate(
+    TRTEMFL = case_when(
+      is.na(ASTDT) ~ NA_character_,
+      ASTDT >= TRTSDT & ASTDT <= TRTEDT + TRTEM_WINDOW_DAYS ~ "Y",
+      .default = "N"
+    )
+  )
+
+count(adae_spine, TRTEMFL)
+```
+
+::: {.callout-important}
+### Two honest results in one table
+
+**On *x* = 0.** The IG says *x* "often incorporates the known half-life
+of the drug" — a real trial commonly counts events for some days after
+the last dose, because the drug is still present. GLPX-001 is a
+fictional compound, and inventing a half-life for it would be inventing
+a pharmacological fact to dress up an example. So the window here is
+exactly first dose to last dose inclusive, declared as a sponsor
+decision. **Do not read *x* = 0 as the norm.** In a real study *x* is a
+protocol- or SAP-level decision with a clinical justification behind it,
+and it is often greater than zero.
+
+**On the absence of any `"N"`.** Every one of the 388 datable events in
+GLPX-001 falls inside the treatment window — the earliest begins one day
+after first dose, the latest a week before last dose. So the flag comes
+out `"Y"` for all of them, and this trial contains **no non-emergent
+event to show you**. The simulator generated on-treatment events only.
+
+That is a limitation of the data, not of the concept, and the honest
+move is to say so rather than manufacture a pre-treatment event to make
+a prettier demonstration. Real trials routinely have them: an event
+recorded at screening, a condition present before the first dose. The
+derivation above would assign those `"N"`, and the safety tables would
+exclude them. In GLPX-001, *x* = 0 and *x* = 30 would give identical
+results — which itself tells you the window choice cannot be validated
+against this dataset, only declared.
+:::
+
+### The event with no start date
+
+One row behaves differently, and it is the defect you met in
+[Events](sdtm-events.qmd):
+
+```{r missing-date}
+#| eval: true
+
+adae_spine |>
+  filter(is.na(ASTDT)) |>
+  select(USUBJID, AESEQ, AETERM, AESTDTC, ASTDT, ASTDY, ASTDTF, TRTEMFL)
+```
+
+::: {.callout-tip}
+### Run It Yourself
+
+Subject `GLPX001-103-199` has an adverse event — constipation — with no
+recorded start date. Follow the consequences across the row:
+
+- `ASTDT` is null, because there was nothing to convert and **no
+  imputation rule was specified** for this study.
+- `ASTDTF` is null too, and that is the correct value. The imputation
+  flag records *the level of imputation applied*. Nothing was imputed,
+  so there is nothing to record. A populated `ASTDTF` here would be a
+  lie about what we did.
+- `ASTDY` is null, because it is arithmetic on a date we do not have.
+- `TRTEMFL` is null — **not `"N"`**.
+
+That last one is the judgement call, and it is worth being deliberate
+about. `"N"` asserts that the event was *not* treatment emergent. We do
+not know that. Absence of a date is not evidence of a date outside the
+window; it is absence of evidence. Coding it `"N"` would quietly move an
+unknown into the "not the drug's problem" column, which is exactly the
+direction of error a safety analysis must not make by accident.
+
+Null says what is true: this event cannot be classified. A real study
+would resolve it — query the site for the date, or apply the SAP's
+imputation rule and set `ASTDTF` accordingly. Both are decisions someone
+must make and document. Neither is a default.
+:::
+
+## Example 2: Occurrence Flags and the Denominator
+
+*Estimated time: ~20 minutes (worked example)*
+
+Occurrence flags answer "is this row the first of its kind for this
+subject?" They exist because a subject who reports nausea four times
+should count once in an incidence table. The derivation given for
+`AOCCFL` is "sort the data in the required order and flag the first
+treatment emergent record for each subject" (OCCDS v1.1, §3.2, Table
+3.2.6.1) — so the sort comes first, and the flags key on `TRTEMFL`.
+
+```{r occurrence-flags}
+#| eval: true
+
+adae <- adae_spine |>
+  arrange(USUBJID, ASTDT, AESEQ) |>
+  group_by(USUBJID) |>
+  mutate(
+    te_     = !is.na(TRTEMFL) & TRTEMFL == "Y",
+    maxsev_ = if (any(te_)) max(ASEVN[te_], na.rm = TRUE) else NA_integer_,
+    ismax_  = te_ & !is.na(ASEVN) & !is.na(maxsev_) & ASEVN == maxsev_,
+
+    AOCCFL  = if_else(te_ & cumsum(te_) == 1L, "Y", NA_character_),
+    AOCCIFL = if_else(ismax_ & cumsum(ismax_) == 1L, "Y", NA_character_)
+  ) |>
+  ungroup() |>
+  select(-te_, -maxsev_, -ismax_)
+
+c(AOCCFL_Y  = sum(adae$AOCCFL  == "Y", na.rm = TRUE),
+  AOCCIFL_Y = sum(adae$AOCCIFL == "Y", na.rm = TRUE),
+  subjects_with_te_event = n_distinct(adae$USUBJID[!is.na(adae$TRTEMFL)]))
+```
+
+261 subjects have at least one treatment-emergent event, and each gets
+exactly one `AOCCFL` and one `AOCCIFL`. Not 262 — subject `103-199`,
+whose only event has no date, has no classifiable event and therefore no
+first occurrence to flag. The missing date propagates all the way to the
+occurrence flags, which is what a missing date should do.
+
+The two flags are easiest to understand on a subject with several
+events:
+
+```{r one-subject}
+#| eval: true
+
+adae |>
+  filter(USUBJID == "GLPX001-101-147") |>
+  select(AESEQ, AETERM, ASTDT, ASTDY, ASEV, ASEVN, TRTEMFL, AOCCFL, AOCCIFL)
+```
+
+::: {.callout-note}
+### Reading the Output Line by Line
+
+| What you see | What it means |
+|---|---|
+| Four events, all `TRTEMFL = "Y"` | All began during the treatment window. |
+| `AOCCFL = "Y"` on the diarrhoea at day 51 | The subject's **first** treatment-emergent event, by date. This is the row an "any adverse event" incidence count uses. |
+| `AOCCIFL = "Y"` on the nasopharyngitis at day 134 | The subject's first event at their **maximum severity** — the only Moderate one among four. This is the row a "worst severity per subject" table uses. |
+| The two flags on **different rows** | The point of having both. "First event" and "worst event" are different questions, and a table that answers one must not be built from the other's flag. |
+
+Had this subject's severities run the other way — Moderate first — both
+flags would have landed on the same row. That they can coincide is
+exactly why the distinction is easy to miss and worth deriving
+explicitly.
+:::
+
+### The denominator
+
+Now the error OCCDS warns about (OCCDS v1.1, §3.2.1). Here are the same
+subjects counted two ways:
+
+```{r denominator}
+#| eval: true
+
+with_ae <- adae |>
+  filter(TRTEMFL == "Y") |>
+  distinct(USUBJID, TRT01A) |>
+  count(TRT01A, name = "subjects_with_ae")
+
+safety_n <- adsl |>
+  filter(SAFFL == "Y") |>
+  count(TRT01A, name = "safety_population")
+
+with_ae |>
+  left_join(safety_n, by = "TRT01A") |>
+  mutate(
+    correct = round(100 * subjects_with_ae / safety_population, 1),
+    wrong   = round(100 * subjects_with_ae / sum(subjects_with_ae), 1)
+  )
+```
+
+::: {.callout-tip}
+### Run It Yourself
+
+Run the chunk and compare the last two columns.
+
+The **correct** column divides by the safety population from ADSL — 200
+subjects per arm — giving 75.5% on GLPX 10 mg and 55.0% on placebo.
+Those are incidence rates: the proportion of *dosed subjects* who had an
+event. A 20-point difference between arms, which is the finding.
+
+The **wrong** column divides by the number of subjects who had events at
+all, giving 57.9% and 42.1%. Those two figures sum to 100%, which is the
+tell: it is not incidence at all but a *share of affected subjects*. It
+answers "of the people who had events, what fraction were on drug?" —
+a question nobody asked, that looks like the one they did ask, and that
+mechanically shrinks the apparent gap between the arms.
+
+The 138 subjects with no adverse events never appear in ADAE. They are
+the entire difference, and they exist only in ADSL. This is why OCCDS
+tells you to take denominators from ADSL, and why ADSL is required in a
+submission even when nothing else is.
+:::
+
+### Conformance
+
+Finally, check the dataset against what OCCDS says it should be:
+
+```{r conformance}
+#| eval: true
+
+tibble(
+  check = c("one row per source AE record",
+            "AESEQ + USUBJID unique (datapoint traceability)",
+            "every row joins to an ADSL subject",
+            "TRTEMFL null only where ASTDT is null",
+            "at most one AOCCFL per subject"),
+  pass = c(
+    nrow(adae) == nrow(ae),
+    nrow(distinct(adae, USUBJID, AESEQ)) == nrow(adae),
+    all(adae$USUBJID %in% adsl$USUBJID),
+    all(is.na(adae$TRTEMFL) == is.na(adae$ASTDT)),
+    max(tapply(adae$AOCCFL, adae$USUBJID,
+               \(x) sum(x == "Y", na.rm = TRUE))) == 1
+  )
+)
+```
+
+All five pass. The first is the OCCDS structural claim — one record per
+record in the source SDTM domain (OCCDS v1.1, §3.1.2) — and the second
+is what makes each of those records traceable back to the exact SDTM row
+it came from.
+
+This dataset is written to `data/adam/adae.csv` by `R/build_adam.R`,
+alongside ADSL, and the TLF sessions read it from there.
 
 ## What Can Go Wrong
 
-<!-- Candidates: computing percentages off the AE dataset instead of
-  ADSL [O14]; treating TRTEMFL as copied from SDTM rather than
-  re-derived [O8]; silently imputing a missing start date [O10];
-  recoding AESEV in place instead of into ASEV [O15]; expecting
-  PARAM/AVAL in OCCDS [O2]; claiming SubClass ADVERSE EVENT without the
-  MedDRA hierarchy [O4]. -->
+*Estimated time: ~10 minutes (reading)*
+
+**Computing percentages from the event dataset.** The single most
+consequential error in this session, and the easiest to make because the
+code runs and returns plausible numbers. Denominators come from ADSL
+(OCCDS v1.1, §3.2.1). If a percentage's denominator was not counted in
+ADSL, check it again.
+
+**Treating `TRTEMFL` as an SDTM fact.** It is derived in ADaM, from
+ADSL's dates and the sponsor's window. Where SDTM carries `AETRTEM`, the
+two "may differ due to different definitions, date imputation, and other
+analysis rules" (OCCDS v1.1, §3.2, Table 3.2.5.3) — and the analysis
+uses the ADaM one.
+
+**Coding an unclassifiable event as `"N"`.** A missing date means "we do
+not know," not "not treatment emergent." Null is the honest value, and
+it keeps the row visible as something requiring resolution.
+
+**Imputing silently.** If you apply an imputation rule, `ASTDTF` must
+record the level of imputation (OCCDS v1.1, §3.2, Table 3.2.4.1). An
+imputed date with no flag is an assertion presented as an observation.
+
+**Recoding `AESEV` in place.** Same-name variables must keep SDTM's
+values (ADaMIG v1.3, §3.1.1, item 3). Recased or regrouped severity goes
+in `ASEV`, `ASEVN` or `SEVGRy`.
+
+**Expecting `PARAM` and `AVAL`.** They do not exist in OCCDS (OCCDS
+v1.1, §3.2). Reaching for them is a sign the data might belong in BDS —
+or that the analysis question has been misread.
+
+**Claiming SubClass ADVERSE EVENT without the MedDRA hierarchy.** The
+SubClass requires all five levels of the primary path (OCCDS v1.1,
+§3.2.3). A dataset labelled with a SubClass it does not satisfy is a
+metadata error a validator will find.
 
 ### Common misinterpretations
 
-<!-- TODO prose pass. -->
+**"OCCDS is just BDS without the value column."** It is a different
+structure for a different kind of question. BDS analyses measurements
+against a baseline; OCCDS counts occurrences within a population. The
+absence of `AVAL` follows from that, rather than defining it.
+
+**"`AOCCFL` marks the first adverse event."** It marks the first
+*treatment-emergent* one. Events outside the window are not candidates,
+which is why the flags are derived after `TRTEMFL` and not before.
+
+**"Uncoded data means we cannot build ADAE."** OCCDS says the opposite:
+data that could have been coded but was not *should* use this structure
+(OCCDS v1.1, §1.1.2). What is lost is the dictionary-keyed subset of
+analyses, and CDISC tells you exactly which those are.
+
+**"Every ADaM dataset is built from SDTM."** ADAE is built from SDTM AE
+*and* from ADSL. Analysis datasets feed each other, and ADSL feeds
+almost everything.
 
 ## Exercises
 
-<!-- Public: exercises/adae.qmd (stub). Solutions -> private repo. -->
+Practice: [Exercise 4 — ADAE](../exercises/adae.qmd).
 
 ## Comprehension Check
 
-<!-- TODO prose pass: 5 questions. Answers collapsed. -->
+1. GLPX-001's ADAE has 389 rows covering 262 subjects, and ADSL has 400.
+   Which number is the denominator for "percentage of subjects with a
+   treatment-emergent adverse event," and why are the other two wrong?
+2. `TRTEMFL` needs `ASTDT`, `TRTSDT` and `TRTEDT`. Which of those three
+   come from ADSL, and what does that tell you about the order in which
+   analysis datasets must be built?
+3. Why is `ASTDTF` null for subject `103-199`'s undated event, when the
+   date is certainly not known?
+4. Your study's AE data is fully MedDRA coded. Which occurrence flags
+   become available that GLPX-001 cannot derive, and where in OCCDS
+   would you look to confirm the list?
+5. A colleague recases `AESEV` from `MILD` to `Mild` directly, arguing
+   the meaning is unchanged. Which rule does this break, and what should
+   they do instead?
 
 ::: {.callout-note collapse="true"}
 ### Answers
 
-<!-- TODO prose pass. -->
+1. **400**, the safety population from ADSL. 262 counts only subjects
+   who had an event, which excludes the 138 event-free subjects from the
+   denominator and inflates every percentage. 389 counts *events*, not
+   subjects, and a subject with four events would be counted four times.
+   OCCDS v1.1, §3.2.1 states the rule directly.
+2. `TRTSDT` and `TRTEDT` come from ADSL; only `ASTDT` derives from the
+   AE domain. SDTM AE has no knowledge of when the subject was dosed, so
+   ADSL must exist before ADAE can be built. Analysis datasets are a
+   dependency graph, and ADSL is at its root — which is why it is
+   required in a submission even when nothing else is.
+3. Because `ASTDTF` records the *level of imputation applied*, and
+   nothing was imputed — this study specified no imputation rule
+   (OCCDS v1.1, §3.2, Table 3.2.4.1). The flag describes what the
+   derivation did, not what the data lacks. Populating it would claim an
+   imputation that never happened.
+4. `AOCCPFL` and `AOCCPIFL` (keyed on the preferred term, `--DECOD`),
+   plus `AOCCSFL` and `AOCCSIFL` (keyed on system organ class). The last
+   two are in Table 3.2.6.2, titled *MedDRA Occurrence Flag Variables*
+   — CDISC groups the dictionary-dependent flags under a heading that
+   names the dependency. Coded data would also make SubClass ADVERSE
+   EVENT reachable (OCCDS v1.1, §3.2.3).
+5. "Same name, same meaning, same values" (ADaMIG v1.3, §3.1.1, item 3):
+   a variable carrying an SDTM name must be a copy of the SDTM variable,
+   values unmodified. It would also break the `AESEV` codelist (C66769),
+   whose submission values are uppercase. The recased version belongs in
+   `ASEV`, which is producer-defined terminology and carries no CDISC
+   codelist to violate.
 :::

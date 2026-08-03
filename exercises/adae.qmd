@@ -4,26 +4,98 @@ title: "Exercise 4 — ADAE"
 
 ## Goal
 
-TODO: one sentence.
+Extend the ADAE from [the ADAE session](../sessions/adae.qmd) with a
+severity grouping and a second treatment-emergent window, then build the
+non-emergent event GLPX-001 never gives you — and see what it does to
+the safety table.
 
 ## Setup
 
-TODO: starting code.
+Work from the project root. Both inputs are persisted:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(sdtm.terminology)
+
+ae <- read_csv("data/sdtm/ae.csv", show_col_types = FALSE,
+               col_types = cols(.default = col_character()))
+
+adsl <- read_csv("data/adam/adsl.csv", show_col_types = FALSE)
+```
+
+Build the ADAE spine as in Example 1 before starting, or read the
+persisted copy from `data/adam/adae.csv`.
 
 ## Task
 
-1. TODO
-2. TODO
+1. **(Guided) Pooled severity.** Add `SEVGR1` and `SEVGR1N`, pooling
+   severity into two groups: `Mild/Moderate` and `Severe`. Look up
+   `SEVGRy` in OCCDS v1.1 §3.2 (Table 3.2.8.1) and note its Core
+   designation before you start.
+
+   Then answer: is `SEVGR1` checkable against a CDISC codelist? Give the
+   same reasoning you would give for `ASEV`, and name the marker in the
+   OCCDS table that tells you.
+
+2. **(The trap) A window that changes the answer.** The session used
+   *x* = 0 in `TRTSDT <= ASTDT <= TRTEDT + x`. Suppose the SAP asks for
+   a second flag using a 30-day follow-up window, alongside the first.
+
+   Start by finding the variable OCCDS provides for exactly this
+   situation — a second treatment-emergent flag with a different
+   cut-off — in §3.2, Table 3.2.5.3. Two similar-looking variables sit
+   just below `TRTEMFL`; only one is for different cut-offs rather than
+   for multiple periods. Derive the flag under **that** name, leaving
+   `TRTEMFL` untouched.
+
+   Then compare the two flags and explain the result — carefully,
+   because it is not the result the exercise appears to be fishing for.
+   What does it tell you about validating a window choice against this
+   dataset?
+
+3. **(Semi-guided) The event that came first.** Take subject
+   `GLPX001-101-147`, whose four events you saw in the session. Construct
+   the scenario where their first event — the diarrhoea at day 51 — had
+   instead started 10 days *before* first dose.
+
+   Re-derive `TRTEMFL`, `AOCCFL` and `AOCCIFL` for that subject and show
+   all three columns. Then answer in one sentence each:
+
+   - Which row now carries `AOCCFL`, and why did it move?
+   - Does `AOCCIFL` move, and why or why not?
+   - The subject still had four adverse events. Does the count of
+     subjects in a treatment-emergent incidence table change?
 
 ## Acceptance criteria
 
-- [ ] TODO
-- [ ] TODO
+- [ ] `SEVGR1`/`SEVGR1N` one-to-one, with the no-codelist reasoning
+      stated and the OCCDS marker named
+- [ ] The correct OCCDS variable for a second cut-off identified, and
+      the derivation written under that name with `TRTEMFL` unmodified
+- [ ] The comparison result correctly explained rather than assumed
+- [ ] The modified subject yields `TRTEMFL = "N"` on the pre-treatment
+      row, with `AOCCFL` moved and `AOCCIFL` unchanged
+- [ ] All three follow-up questions answered
 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-TODO: hint.
+Task 1: the structural rule for a grouping and its numeric counterpart
+is the same one `AGEGR1`/`AGEGR1N` followed in [ADSL](../sessions/adsl.qmd).
+For the codelist question, look at the footnote attached to the asterisk
+in the OCCDS table.
+
+Task 2: derive it, then `count()` both flags together before writing any
+explanation. Every GLPX-001 event sits well inside the treatment window
+— the session says so explicitly. For the variable name, read the rows
+immediately below `TRTEMFL` in Table 3.2.5.3.
+
+Task 3: you are changing one date, not three flags. Shift `ASTDT` for
+that one row, then re-run the derivations you already wrote and let them
+produce the answers. `AOCCFL` keys on the first *treatment-emergent*
+record; ask what the flags are sorted and filtered by before they are
+assigned.
 :::
 
 > Solutions are in the paid tier.

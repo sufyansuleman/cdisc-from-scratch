@@ -1,0 +1,189 @@
+# Course Strategy — CDISC with R
+
+**Governs positioning, licensing and tiering.** Pair with `AGENT-CONTENT-PROMPT.md` (content) and `COURSE-SCAFFOLD-SPEC.md` (structure).
+
+Decided 31 July 2026. Supersedes any earlier instruction to keep the repository private.
+
+---
+
+## 1. The decision
+
+**Two repositories, as already built. Keep both.**
+
+| Repo | Visibility | Contents |
+|---|---|---|
+| `cdisc-with-r` | **Public**, CC BY-NC-SA 4.0 + MIT | The book: sessions, worked examples, GLPX-001 data and build scripts, exercises **without** solutions, Zenodo DOI |
+| `cdisc-with-r-solutions` | **Private**, paid tier | Solutions, extra exercises, specs, slides, instructor material |
+
+The commercial offering is the objective; the free book is the acquisition channel for it.
+
+### Why two repos is correct here
+
+An earlier draft of this document said "one repo, do not create a second." **That was wrong and is superseded.** The solutions repo already exists and is well architected:
+
+- **Access control is the entire point of a paid tier.** You cannot sell access to a folder inside a public repo — git history exposes everything and there is no per-purchaser entitlement mechanism. A private repo with collaborator invites is a working entitlement system at low volume.
+- **The drift objection is already solved.** The solutions README states: *"Everything here is additive to the public course — nothing is duplicated from it, so the two repositories cannot drift."* That is the correct architecture. Solutions also render against the public repo's pinned `renv` library rather than duplicating the environment.
+- **Two commercial tiers are already distinguished** — *Paid* (solutions, extra exercises, specs) and *Workshop* (slides, instructor notes). That separation supports selling self-paced access and live delivery at different prices.
+
+### Why the public repo stays public
+
+- **Discovery.** A fully private course has no route to buyers. The author has no training brand yet and would be selling CDISC training, in competition with CDISC's own, to an audience that does not know he exists.
+- **Precedent.** `InsuSensCalc` reached 4,500+ CRAN downloads by being free. Adoption produced authority; authority sells training.
+- **Academic value.** A Zenodo-archived, citable open educational resource is a CV asset during an active job search. A private repo is not.
+- **Protection already exists.** `CC BY-NC-SA 4.0` forbids commercial reuse by anyone else.
+
+### Why public — the reasoning the agent should preserve
+
+- **Discovery.** A private paid course has no route to buyers. The author has no training brand yet and would be selling CDISC training in competition with CDISC's own training, to an audience that does not know he exists. The free book is how that audience arrives.
+- **Precedent.** The author's `InsuSensCalc` reached 4,500+ CRAN downloads by being free. Adoption produced authority; authority is what sells training. Same mechanism here.
+- **Academic value.** A Zenodo-archived, citable open educational resource is a CV asset and supports an active job search. A private repo is not.
+- **Protection already exists.** `CC BY-NC-SA 4.0` forbids commercial reuse by anyone else. The free book cannot be resold against the author.
+
+### ⚠️ Correcting a misconception
+
+Publishing this course does **not** breach CDISC's licence. That licence restricts redistributing **CDISC's own documents** — the SDTMIG PDF, IG tables, specification text. It does not restrict the author writing and publishing his own explanation of how the standards work. Facts, methods and standards logic are not copyrightable; only CDISC's specific expression is.
+
+The repository already implements the compliant pattern (see §4). Do not weaken it, and do not use it as an argument for going private.
+
+---
+
+## 2. Free vs. paid — the boundary
+
+**`cdisc-with-r` (public, free):**
+
+- All conceptual sessions and worked examples
+- The GLPX-001 simulated trial: `simulate_trial.R`, `build_sdtm.R`, `build_adam.R`, and the generated datasets
+- Exercises **without** worked solutions
+- Comprehension checks
+- `renv.lock` and the reproducible setup
+- Zenodo DOI, minted at first release
+
+**`cdisc-with-r-solutions` (private, paid):**
+
+- Worked solutions — structure: *Approach → Code → Why this way → Variations worth knowing*
+- Extra exercises not in the public book
+- ADaM, define-XML and TLF-shell specs
+- The GLPX-001 defect registry answer key
+- Slides and facilitation notes (workshop tier)
+
+**Not in either repo:** live cohort delivery, corporate training, assessment and certification. These are services, not files.
+
+**Rule for the agent:** never place solutions, instructor notes, specs or the defect registry in the public repo. If a session needs a solution written, write it in `cdisc-with-r-solutions` and say so explicitly.
+
+---
+
+## 3. Changes required to existing files
+
+The repo currently describes itself as free but references a "private paid-tier repository" that does not exist. Reconcile as follows.
+
+### `README.md`
+
+- Keep *"A free, self-paced, hands-on course."* This is accurate and is the positioning.
+- Keep the *Exercises and solutions* paragraph — the private paid-tier repo it references **does exist**. Reword only to add a purchase/contact route, since a reader currently has no way to act on it.
+- **Add** a short *Training and consulting* section: live cohorts, corporate/on-site training, contact route. This is the commercial funnel and the README is the highest-traffic page.
+- **Add** a non-affiliation line: *"This course is an independent work. It is not affiliated with, endorsed by, or certified by CDISC."*
+- Add the Zenodo DOI badge once minted (the existing TODO).
+
+### `.zenodo.json`
+
+- Keep `"access_right": "open"` and `"license": "cc-by-nc-sa-4.0"`. Both are correct under this strategy.
+- Bump `"version"` when the first complete release is cut.
+
+### `_quarto.yml`
+
+- Add a persistent link in the navbar or sidebar footer to the course website / training enquiries.
+- Keep GoatCounter — privacy-friendly and GDPR-appropriate.
+
+### Licensing
+
+- No change. `CC BY-NC-SA 4.0` for prose, `MIT` for code, is the correct combination.
+- **Add a contributor policy.** The README currently invites PRs. Accepting prose contributions without an agreement means that content is not solely the author's, which blocks commercial licensing later. Restrict PRs to typo, bug and clarity fixes, and state that substantive content contributions are not accepted. Put this in `CONTRIBUTING.md`.
+
+---
+
+## 4. CDISC compliance — preserve exactly as-is
+
+These are already correct. Do not relax them.
+
+- **Never commit CDISC PDFs.** `.gitignore` excludes SDTMIG, ADaMIG, OCCDS IG and SDTM Terminology. They are local reference only.
+- **Cite by section, never quote.** Reference "SDTMIG v3.4 §6.2" rather than reproducing text.
+- **Never reproduce codelists or specification tables in bulk.** Check controlled terminology programmatically via the `sdtm.terminology` package, as the repo already does.
+- **Never imply CDISC endorsement, affiliation or certification.**
+- **All data synthetic, always.** GLPX-001 only.
+- **Keep the `VERIFY` callout discipline** from `AGENT-CONTENT-PROMPT.md`. It is the single most valuable safeguard in this project — a pharma audience will find any invented specific, and the author's credibility does not survive it.
+
+FDA documents in the repo (Technical Conformance Guide, Electronic Submissions guidance) are US government works and carry no such restriction — but they are gitignored anyway, which is fine.
+
+---
+
+## 5. Naming
+
+Keep **"CDISC with R"** for the free book. It is accurate descriptive use, it is how the audience searches, and nominative use of a standard's name in an educational title is defensible.
+
+Two safeguards:
+
+1. The non-affiliation statement in §3, visible on the README and the book's landing page.
+2. For **paid corporate training**, prefer a title that does not lead with the mark — e.g. *Clinical Data Standards with R* — with CDISC named in the description. Trademark exposure rises when money changes hands under the mark.
+
+Worth considering separately: applying to become a **CDISC Authorized Instructor**. That converts the residual risk into a credential.
+
+---
+
+## 6. Work priority
+
+Parts 1–3 are substantially written. Part 4 is stubbed and is the commercially important half.
+
+| Order | Task | Note |
+|---|---|---|
+| 1 | `sessions/tlf.qmd` | Currently a template. **Highest priority** — TLFs are a core selling point |
+| 2 | `sessions/define-xml.qmd` | Template |
+| 3 | `sessions/dataset-json.qmd` | Template. Differentiator: little training covers it |
+| 4 | `sessions/adlb.qmd` | Thin (103 lines) vs. ADAE (310) |
+| 5 | `sessions/adrg-and-submission.qmd` | Template. **See scope warning below** |
+| 6 | README / licensing changes from §3 | Small, do alongside |
+| 7 | Cut a release and mint the Zenodo DOI | After Part 4 is complete |
+
+### ⚠️ Scope warning — `adrg-and-submission.qmd`
+
+The author's expertise is **reproducible R engineering applied to clinical data standards**, not regulatory submission practice. He has not run a submission.
+
+Write this session to teach **what the ADRG is, what it must contain, and how to generate its data-driven components from R**. Do **not** write about agency interaction, submission strategy, review expectations, or "what the FDA will look for."
+
+Where the material would require submission experience the author does not have, use a `VERIFY` callout rather than writing plausible prose. Scoping this honestly in the course description is a credibility signal to an audience of experienced programmers — pretending otherwise is the fastest way to lose them.
+
+---
+
+## 6b. Cleanup needed in `cdisc-with-r-solutions`
+
+Real issues found on review, in priority order:
+
+1. **Two competing solution formats coexist.** Every `solution.qmd` is a 19-line stub, while the actual content sits in `exercise-solution.md` / `exercise-1-solution.md` files (48–196 lines). **Pick one convention** — `.qmd` is the better choice, since it renders against the pinned library and can execute code — and migrate the `.md` content into it. This is internal drift and it will get worse with every session added.
+2. **`solutions/sdtm-events-findings/` is stale.** Left over from before the events/findings split; separate `sdtm-events/` and `sdtm-findings/` directories now hold the real content. Delete the combined directory.
+3. **`solutions/tlf/solution.qmd` exists but the public `sessions/tlf.qmd` is still a stub** — a solution to an exercise that has not been written. Write the public session first.
+4. **Empty placeholders:** `extra-exercises/`, `slides/`, `specs/adam/`, `specs/define-xml/`, `specs/tlf-shells/` are all `.gitkeep` only. Fine for now, but nothing can be sold as a "specs" tier until they exist.
+5. **`instructor/facilitation-notes.md` and `timings.md` are TODO skeletons.** These gate the workshop tier — no live delivery without them.
+6. **Harden `.gitignore`.** Unlike the public repo, this one does not exclude PDFs. Add the same PDF exclusions as a safety net: private today does not guarantee private forever.
+
+---
+
+## 7. Do not
+
+- Do not merge the two repositories.
+- Do not make `cdisc-with-r` private.
+- Do not make `cdisc-with-r-solutions` public.
+- Do not duplicate public-repo content into the solutions repo — it must stay **additive**, which is what prevents drift.
+- Do not put solutions, specs, instructor notes or the defect registry in the public repo.
+- Do not commit CDISC copyrighted documents to **either** repo.
+- Do not state CDISC specifics from memory — `VERIFY` instead.
+- Do not accept substantive prose contributions via PR.
+- Do not describe the course as CDISC-endorsed, certified or affiliated.
+
+---
+
+## 8. Unrelated: `r_for_clinical_data` is not the author's work
+
+`C:\Courses\r_for_clinical_data` is the **R/Medicine 2026 pre-conference workshop** *"R/Medicine 101: Intro to R for Clinical Data"* by **Rich Hanna** and **Ezra Porter** (Children's Hospital of Philadelphia). It has no commits and appears to be a clone of workshop material.
+
+It is licensed **CC BY-SA 4.0**, which permits reuse and adaptation — including commercially — but **requires attribution and requires that derivatives carry the same ShareAlike licence.**
+
+⚠️ **Do not copy material from it into either CDISC repo.** ShareAlike would force the derivative work under CC BY-SA 4.0, which drops the NonCommercial protection on the paid tier and would let anyone resell it. Keep it entirely separate; treat it as reference reading only.
