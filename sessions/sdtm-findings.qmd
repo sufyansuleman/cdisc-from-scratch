@@ -490,7 +490,7 @@ pipeline exists to provide; the way to change it is to change
 ## Exercises
 
 The Findings exercise builds the **VS** domain — the structural twin of
-LB, with one deliberate difference to catch: [Exercise — SDTM: Findings
+LB, with one deliberate difference to catch: [Exercise 3 — SDTM: Findings
 (Labs & Vital Signs)](../exercises/sdtm-findings.qmd). Solutions are in
 the paid tier.
 

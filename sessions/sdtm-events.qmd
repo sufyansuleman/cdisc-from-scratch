@@ -400,7 +400,7 @@ the verbatim originals. Editing `AETERM` throws away the source.
 
 ## Exercises
 
-The AE exercise set is in [Exercise — SDTM:
+The AE exercise set is in [Exercise 2 — SDTM:
 Events](../exercises/sdtm-events.qmd): completing the domain slice,
 deriving the study days, and articulating the severity/seriousness
 distinction on real rows. Solutions are in the paid tier.

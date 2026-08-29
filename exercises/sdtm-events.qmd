@@ -1,5 +1,5 @@
 ---
-title: "Exercise — SDTM: Events (Adverse Events)"
+title: "Exercise 2 — SDTM: Events (Adverse Events)"
 ---
 
 ## Goal

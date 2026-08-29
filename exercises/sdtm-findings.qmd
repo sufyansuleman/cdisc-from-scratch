@@ -1,5 +1,5 @@
 ---
-title: "Exercise — SDTM: Findings (Labs & Vital Signs)"
+title: "Exercise 3 — SDTM: Findings (Labs & Vital Signs)"
 ---
 
 ## Goal

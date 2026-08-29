@@ -1,5 +1,5 @@
 ---
-title: "Exercise 5 — Tables, Listings and Figures"
+title: "Exercise 7 — Tables, Listings and Figures"
 ---
 
 ## Goal

@@ -587,7 +587,7 @@
     "href": "sessions/sdtm-events.html#exercises",
     "title": "6  SDTM: Events (Adverse Events)",
     "section": "6.7 Exercises",
-    "text": "6.7 Exercises\nThe AE exercise set is in Exercise — SDTM: Events: completing the domain slice, deriving the study days, and articulating the severity/seriousness distinction on real rows. Solutions are in the paid tier.",
+    "text": "6.7 Exercises\nThe AE exercise set is in Exercise 2 — SDTM: Events: completing the domain slice, deriving the study days, and articulating the severity/seriousness distinction on real rows. Solutions are in the paid tier.",
     "crumbs": [
       "Part 2: SDTM",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>SDTM: Events (Adverse Events)</span>"
@@ -697,7 +697,7 @@
     "href": "sessions/sdtm-findings.html#exercises",
     "title": "7  SDTM: Findings (Labs & Vital Signs)",
     "section": "7.8 Exercises",
-    "text": "7.8 Exercises\nThe Findings exercise builds the VS domain — the structural twin of LB, with one deliberate difference to catch: Exercise — SDTM: Findings (Labs & Vital Signs). Solutions are in the paid tier.",
+    "text": "7.8 Exercises\nThe Findings exercise builds the VS domain — the structural twin of LB, with one deliberate difference to catch: Exercise 3 — SDTM: Findings (Labs & Vital Signs). Solutions are in the paid tier.",
     "crumbs": [
       "Part 2: SDTM",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>SDTM: Findings (Labs & Vital Signs)</span>"
@@ -983,7 +983,7 @@
     "href": "sessions/adsl.html#exercises",
     "title": "10  ADSL",
     "section": "10.7 Exercises",
-    "text": "10.7 Exercises\nWork through Exercise 3 — ADSL, which extends this ADSL with a second age grouping and an analysis-age case, and asks you to construct a population-flag scenario where the flags legitimately disagree.",
+    "text": "10.7 Exercises\nWork through Exercise 4 — ADSL, which extends this ADSL with a second age grouping and an analysis-age case, and asks you to construct a population-flag scenario where the flags legitimately disagree.",
     "crumbs": [
       "Part 3: ADaM",
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>ADSL</span>"
@@ -1082,7 +1082,7 @@
     "href": "sessions/adae.html#exercises",
     "title": "11  ADAE",
     "section": "11.7 Exercises",
-    "text": "11.7 Exercises\nPractice: Exercise 4 — ADAE.",
+    "text": "11.7 Exercises\nPractice: Exercise 5 — ADAE.",
     "crumbs": [
       "Part 3: ADaM",
       "<span class='chapter-number'>11</span>  <span class='chapter-title'>ADAE</span>"
@@ -1531,265 +1531,265 @@
   {
     "objectID": "exercises/sdtm-events.html",
     "href": "exercises/sdtm-events.html",
-    "title": "17  Exercise — SDTM: Events (Adverse Events)",
+    "title": "17  Exercise 2 — SDTM: Events (Adverse Events)",
     "section": "",
     "text": "17.1 Goal\nFinish the AE domain slice from The Events session and use it to answer the questions a safety reviewer actually asks.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise — SDTM: Events (Adverse Events)</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise 2 — SDTM: Events (Adverse Events)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-events.html#setup",
     "href": "exercises/sdtm-events.html#setup",
-    "title": "17  Exercise — SDTM: Events (Adverse Events)",
+    "title": "17  Exercise 2 — SDTM: Events (Adverse Events)",
     "section": "17.2 Setup",
     "text": "17.2 Setup\nWork from the project root. The AE raw file and the DM dataset you built last session are both inputs:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nae_raw &lt;- read_csv(\"data/raw/ae_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nDo the tasks in order. The Events session is the reference; try each task before looking back.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise — SDTM: Events (Adverse Events)</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise 2 — SDTM: Events (Adverse Events)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-events.html#task",
     "href": "exercises/sdtm-events.html#task",
-    "title": "17  Exercise — SDTM: Events (Adverse Events)",
+    "title": "17  Exercise 2 — SDTM: Events (Adverse Events)",
     "section": "17.3 Task",
     "text": "17.3 Task\n\n(Guided) Build the spine. Reproduce the session’s AE build: USUBJID from DM, AESEQ per subject, verbatim AETERM, empty AEDECOD. Confirm with code that AESEQ is unique within each USUBJID and that every AETERM value is preserved exactly as in the raw file.\n(Guided) Study days. Derive AESTDTC, AEENDTC, AESTDY and AEENDY. Find every row where AESTDY is null and explain, for each, why.\n(Semi-guided) Severity vs seriousness. Produce a table of event counts by AESEV and AESER. Then answer, with the numbers: how many serious adverse events were there, how many severe, and why are those two counts different?\n(Open-ended) The outcome column. The raw AEOUT value RECOVERED is not controlled terminology. Find the correct codelist value (codelist C66768), map it, and check it with is_term(). Then write one sentence a reviewer would accept explaining why the raw value could not be submitted as-is.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise — SDTM: Events (Adverse Events)</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise 2 — SDTM: Events (Adverse Events)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-events.html#acceptance-criteria",
     "href": "exercises/sdtm-events.html#acceptance-criteria",
-    "title": "17  Exercise — SDTM: Events (Adverse Events)",
+    "title": "17  Exercise 2 — SDTM: Events (Adverse Events)",
     "section": "17.4 Acceptance criteria",
     "text": "17.4 Acceptance criteria\n\nAESEQ unique within USUBJID; AETERM values identical to raw\nNull AESTDY rows identified, each with a stated reason\nSerious-vs-severe counts reported with the correct column for each\nAEOUT mapped to a value that passes is_term(..., \"C66768\")\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 2: AESTDY is null wherever AESTDTC is null — you cannot count days from a reference date without a date. There is exactly one such event in GLPX-001 (defect D4).\nTask 3: the serious count comes only from AESER == \"Y\"; the severe count from AESEV == \"SEVERE\". If those two numbers are equal, you have counted the same column twice.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise — SDTM: Events (Adverse Events)</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise 2 — SDTM: Events (Adverse Events)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-findings.html",
     "href": "exercises/sdtm-findings.html",
-    "title": "18  Exercise — SDTM: Findings (Labs & Vital Signs)",
+    "title": "18  Exercise 3 — SDTM: Findings (Labs & Vital Signs)",
     "section": "",
     "text": "18.1 Goal\nBuild the Vital Signs (VS) domain slice — the structural twin of the LB domain from The Findings session — and catch its one deliberate difference from LB.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise — SDTM: Findings (Labs & Vital Signs)</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise 3 — SDTM: Findings (Labs & Vital Signs)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-findings.html#setup",
     "href": "exercises/sdtm-findings.html#setup",
-    "title": "18  Exercise — SDTM: Findings (Labs & Vital Signs)",
+    "title": "18  Exercise 3 — SDTM: Findings (Labs & Vital Signs)",
     "section": "18.2 Setup",
     "text": "18.2 Setup\nWork from the project root. The VS raw file and the DM dataset you built earlier are the inputs:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nvs_raw &lt;- read_csv(\"data/raw/vs_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nDo the tasks in order. The Findings session is the reference; try each task before looking back.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise — SDTM: Findings (Labs & Vital Signs)</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise 3 — SDTM: Findings (Labs & Vital Signs)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-findings.html#task",
     "href": "exercises/sdtm-findings.html#task",
-    "title": "18  Exercise — SDTM: Findings (Labs & Vital Signs)",
+    "title": "18  Exercise 3 — SDTM: Findings (Labs & Vital Signs)",
     "section": "18.3 Task",
     "text": "18.3 Task\n\n(Guided) The result quartet. Build VSTESTCD, VSORRES, VSORRESU, VSSTRESC and VSSTRESN from the raw file, joining USUBJID from DM. Confirm every VSTESTCD value is valid controlled terminology.\n(The trap) Units. VSORRESU does not use the same units codelist as LB’s LBORRESU. Find the codelist VS uses, and check the trial’s vital-sign units against it — not against the generic UNIT codelist. Explain in one sentence why checking against the wrong codelist would have looked fine but been meaningless.\n(Semi-guided) Timing and structure. Derive VSDY from each subject’s RFSTDTC, and assign VSSEQ uniquely within USUBJID. How many rows does HEIGHT contribute per subject, and why does that differ from the other vitals?",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise — SDTM: Findings (Labs & Vital Signs)</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise 3 — SDTM: Findings (Labs & Vital Signs)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-findings.html#acceptance-criteria",
     "href": "exercises/sdtm-findings.html#acceptance-criteria",
-    "title": "18  Exercise — SDTM: Findings (Labs & Vital Signs)",
+    "title": "18  Exercise 3 — SDTM: Findings (Labs & Vital Signs)",
     "section": "18.4 Acceptance criteria",
     "text": "18.4 Acceptance criteria\n\nVSTESTCD values all valid CT; USUBJID joined from DM\nVSORRESU checked against the VS units codelist, not UNIT\nVSDY derived with the no-day-0 rule; VSSEQ unique within USUBJID\nThe height-versus-other-vitals row-count difference explained\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 2: the LB session used codelist C71620 (UNIT) for lab units. VS has its own. Search the terminology for the VS results-unit codelist by name (ct(\"list\") filtered on something like “Vital Signs” or “VSRESU”) — the point of the exercise is that you look it up rather than assume LB’s codelist carries over.\nTask 3: height is measured once, at screening; the other vitals are measured at every visit. So height contributes one row per subject and the others many.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise — SDTM: Findings (Labs & Vital Signs)</span>"
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise 3 — SDTM: Findings (Labs & Vital Signs)</span>"
     ]
   },
   {
     "objectID": "exercises/adsl.html",
     "href": "exercises/adsl.html",
-    "title": "19  Exercise 3 — ADSL",
+    "title": "19  Exercise 4 — ADSL",
     "section": "",
     "text": "19.1 Goal\nExtend the ADSL from the ADSL session with a second age grouping and an analysis age, then construct the case the GLPX-001 data never gives you: population flags that legitimately disagree.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 3 — ADSL</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 4 — ADSL</span>"
     ]
   },
   {
     "objectID": "exercises/adsl.html#setup",
     "href": "exercises/adsl.html#setup",
-    "title": "19  Exercise 3 — ADSL",
+    "title": "19  Exercise 4 — ADSL",
     "section": "19.2 Setup",
     "text": "19.2 Setup\nWork from the project root. The finished SDTM is the input:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nBuild the ADSL spine as in Example 1 before starting, or read the persisted copy from data/adam/adsl.csv.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 3 — ADSL</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 4 — ADSL</span>"
     ]
   },
   {
     "objectID": "exercises/adsl.html#task",
     "href": "exercises/adsl.html#task",
-    "title": "19  Exercise 3 — ADSL",
+    "title": "19  Exercise 4 — ADSL",
     "section": "19.3 Task",
     "text": "19.3 Task\n\n(Guided) A second age grouping. Add AGEGR2 and AGEGR2N using three bands — &lt;50, 50-64, &gt;=65. Confirm the one-to-one relationship holds and that the two variables are null on exactly the same rows. Why is there no is_term() check to run on AGEGR2?\n(The trap) Analysis age. Four subjects have a null AGE because their birth dates were incomplete. Suppose the SAP specifies an imputation for age-subgroup analyses: a missing day becomes the 15th of the month, and a missing month and day become 30 June. Derive AAGE implementing that rule, leaving AGE untouched.\nNote how many of the four subjects the rule actually rescues, and what happens to the one it does not.\nTwo things to get right, and both are the point of the task: say which ADaMIG rule stops you writing the imputed value into AGE itself, and check whether the ADaMIG’s condition for including AAGE is actually met here.\n(Semi-guided) Flags that disagree. In GLPX-001 every randomized subject was dosed, so RANDFL, ITTFL and SAFFL are all \"Y\" for all 400. Take subject GLPX001-101-010, construct the scenario where they were randomized but never received a dose, and show what each of the three flags becomes.\nThen answer in one sentence each: which population would that subject be counted in for an efficacy table, which for a safety table, and why a null flag would be wrong for either.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 3 — ADSL</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 4 — ADSL</span>"
     ]
   },
   {
     "objectID": "exercises/adsl.html#acceptance-criteria",
     "href": "exercises/adsl.html#acceptance-criteria",
-    "title": "19  Exercise 3 — ADSL",
+    "title": "19  Exercise 4 — ADSL",
     "section": "19.4 Acceptance criteria",
     "text": "19.4 Acceptance criteria\n\nAGEGR2/AGEGR2N one-to-one, null on the same rows, and the no-codelist reasoning stated\nAAGE derived under the SAP rule with AGE unmodified; the governing rule named and AAGE’s conditional requirement checked\nThe randomized-not-dosed scenario produces RANDFL = \"Y\", ITTFL = \"Y\", SAFFL = \"N\" — with no nulls\nEfficacy vs safety population membership explained\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: the same structural rule you used for AGEGR1/AGEGR1N in the session applies (ADaMIG v1.3, §3.2). For the second part, recall what made PARAMCD uncheckable in ADaM Concepts.\nTask 2: look up AAGE in ADaMIG v1.3 §3.2 — read its Core designation and the exact wording of when it is required. The rule preventing you from writing into AGE is in §3.1.1, and the session quotes it.\nTask 3: you are changing one input, not one flag. Ask which condition each flag is derived from — SAFFL’s condition is about exposure, the other two are about randomization — then let the derivations you already wrote produce the three values themselves.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 3 — ADSL</span>"
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 4 — ADSL</span>"
     ]
   },
   {
     "objectID": "exercises/adae.html",
     "href": "exercises/adae.html",
-    "title": "20  Exercise 4 — ADAE",
+    "title": "20  Exercise 5 — ADAE",
     "section": "",
     "text": "20.1 Goal\nExtend the ADAE from the ADAE session with a severity grouping and a second treatment-emergent window, then build the non-emergent event GLPX-001 never gives you — and see what it does to the safety table.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 4 — ADAE</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 5 — ADAE</span>"
     ]
   },
   {
     "objectID": "exercises/adae.html#setup",
     "href": "exercises/adae.html#setup",
-    "title": "20  Exercise 4 — ADAE",
+    "title": "20  Exercise 5 — ADAE",
     "section": "20.2 Setup",
     "text": "20.2 Setup\nWork from the project root. Both inputs are persisted:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nae &lt;- read_csv(\"data/sdtm/ae.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nadsl &lt;- read_csv(\"data/adam/adsl.csv\", show_col_types = FALSE)\n\nBuild the ADAE spine as in Example 1 before starting, or read the persisted copy from data/adam/adae.csv.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 4 — ADAE</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 5 — ADAE</span>"
     ]
   },
   {
     "objectID": "exercises/adae.html#task",
     "href": "exercises/adae.html#task",
-    "title": "20  Exercise 4 — ADAE",
+    "title": "20  Exercise 5 — ADAE",
     "section": "20.3 Task",
     "text": "20.3 Task\n\n(Guided) Pooled severity. Add SEVGR1 and SEVGR1N, pooling severity into two groups: Mild/Moderate and Severe. Look up SEVGRy in OCCDS v1.1 §3.2 (Table 3.2.8.1) and note its Core designation before you start.\nThen answer: is SEVGR1 checkable against a CDISC codelist? Give the same reasoning you would give for ASEV, and name the marker in the OCCDS table that tells you.\n(The trap) A window that changes the answer. The session used x = 0 in TRTSDT &lt;= ASTDT &lt;= TRTEDT + x. Suppose the SAP asks for a second flag using a 30-day follow-up window, alongside the first.\nStart by finding the variable OCCDS provides for exactly this situation — a second treatment-emergent flag with a different cut-off — in §3.2, Table 3.2.5.3. Two similar-looking variables sit just below TRTEMFL; only one is for different cut-offs rather than for multiple periods. Derive the flag under that name, leaving TRTEMFL untouched.\nThen compare the two flags and explain the result — carefully, because it is not the result the exercise appears to be fishing for. What does it tell you about validating a window choice against this dataset?\n(Semi-guided) The event that came first. Take subject GLPX001-101-147, whose four events you saw in the session. Construct the scenario where their first event — the diarrhoea at day 51 — had instead started 10 days before first dose.\nRe-derive TRTEMFL, AOCCFL and AOCCIFL for that subject and show all three columns. Then answer in one sentence each:\n\nWhich row now carries AOCCFL, and why did it move?\nDoes AOCCIFL move, and why or why not?\nThe subject still had four adverse events. Does the count of subjects in a treatment-emergent incidence table change?",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 4 — ADAE</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 5 — ADAE</span>"
     ]
   },
   {
     "objectID": "exercises/adae.html#acceptance-criteria",
     "href": "exercises/adae.html#acceptance-criteria",
-    "title": "20  Exercise 4 — ADAE",
+    "title": "20  Exercise 5 — ADAE",
     "section": "20.4 Acceptance criteria",
     "text": "20.4 Acceptance criteria\n\nSEVGR1/SEVGR1N one-to-one, with the no-codelist reasoning stated and the OCCDS marker named\nThe correct OCCDS variable for a second cut-off identified, and the derivation written under that name with TRTEMFL unmodified\nThe comparison result correctly explained rather than assumed\nThe modified subject yields TRTEMFL = \"N\" on the pre-treatment row, with AOCCFL moved and AOCCIFL unchanged\nAll three follow-up questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: the structural rule for a grouping and its numeric counterpart is the same one AGEGR1/AGEGR1N followed in ADSL. For the codelist question, look at the footnote attached to the asterisk in the OCCDS table.\nTask 2: derive it, then count() both flags together before writing any explanation. Every GLPX-001 event sits well inside the treatment window — the session says so explicitly. For the variable name, read the rows immediately below TRTEMFL in Table 3.2.5.3.\nTask 3: you are changing one date, not three flags. Shift ASTDT for that one row, then re-run the derivations you already wrote and let them produce the answers. AOCCFL keys on the first treatment-emergent record; ask what the flags are sorted and filtered by before they are assigned.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 4 — ADAE</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 5 — ADAE</span>"
     ]
   },
   {
     "objectID": "exercises/adlb.html",
     "href": "exercises/adlb.html",
-    "title": "21  Exercise 5 — ADLB",
+    "title": "21  Exercise 6 — ADLB",
     "section": "",
     "text": "21.1 Goal\nTODO: one sentence.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 5 — ADLB</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 6 — ADLB</span>"
     ]
   },
   {
     "objectID": "exercises/adlb.html#setup",
     "href": "exercises/adlb.html#setup",
-    "title": "21  Exercise 5 — ADLB",
+    "title": "21  Exercise 6 — ADLB",
     "section": "21.2 Setup",
     "text": "21.2 Setup\nTODO: starting code.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 5 — ADLB</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 6 — ADLB</span>"
     ]
   },
   {
     "objectID": "exercises/adlb.html#task",
     "href": "exercises/adlb.html#task",
-    "title": "21  Exercise 5 — ADLB",
+    "title": "21  Exercise 6 — ADLB",
     "section": "21.3 Task",
     "text": "21.3 Task\n\nTODO\nTODO",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 5 — ADLB</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 6 — ADLB</span>"
     ]
   },
   {
     "objectID": "exercises/adlb.html#acceptance-criteria",
     "href": "exercises/adlb.html#acceptance-criteria",
-    "title": "21  Exercise 5 — ADLB",
+    "title": "21  Exercise 6 — ADLB",
     "section": "21.4 Acceptance criteria",
     "text": "21.4 Acceptance criteria\n\nTODO\nTODO\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTODO: hint.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 5 — ADLB</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 6 — ADLB</span>"
     ]
   },
   {
     "objectID": "exercises/tlf.html",
     "href": "exercises/tlf.html",
-    "title": "22  Exercise 5 — Tables, Listings and Figures",
+    "title": "22  Exercise 7 — Tables, Listings and Figures",
     "section": "",
     "text": "22.1 Goal\nTODO: one sentence.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 5 — Tables, Listings and Figures</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 7 — Tables, Listings and Figures</span>"
     ]
   },
   {
     "objectID": "exercises/tlf.html#setup",
     "href": "exercises/tlf.html#setup",
-    "title": "22  Exercise 5 — Tables, Listings and Figures",
+    "title": "22  Exercise 7 — Tables, Listings and Figures",
     "section": "22.2 Setup",
     "text": "22.2 Setup\nTODO: starting code.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 5 — Tables, Listings and Figures</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 7 — Tables, Listings and Figures</span>"
     ]
   },
   {
     "objectID": "exercises/tlf.html#task",
     "href": "exercises/tlf.html#task",
-    "title": "22  Exercise 5 — Tables, Listings and Figures",
+    "title": "22  Exercise 7 — Tables, Listings and Figures",
     "section": "22.3 Task",
     "text": "22.3 Task\n\nTODO\nTODO",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 5 — Tables, Listings and Figures</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 7 — Tables, Listings and Figures</span>"
     ]
   },
   {
     "objectID": "exercises/tlf.html#acceptance-criteria",
     "href": "exercises/tlf.html#acceptance-criteria",
-    "title": "22  Exercise 5 — Tables, Listings and Figures",
+    "title": "22  Exercise 7 — Tables, Listings and Figures",
     "section": "22.4 Acceptance criteria",
     "text": "22.4 Acceptance criteria\n\nTODO\nTODO\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTODO: hint.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 5 — Tables, Listings and Figures</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 7 — Tables, Listings and Figures</span>"
     ]
   }
 ]

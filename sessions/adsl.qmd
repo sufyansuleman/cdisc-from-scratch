@@ -650,7 +650,7 @@ codelist. An unchecked value is unchecked, not verified.
 
 ## Exercises
 
-Work through [Exercise 3 — ADSL](../exercises/adsl.qmd), which extends
+Work through [Exercise 4 — ADSL](../exercises/adsl.qmd), which extends
 this ADSL with a second age grouping and an analysis-age case, and asks
 you to construct a population-flag scenario where the flags legitimately
 disagree.

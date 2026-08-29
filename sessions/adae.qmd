@@ -747,7 +747,7 @@ almost everything.
 
 ## Exercises
 
-Practice: [Exercise 4 — ADAE](../exercises/adae.qmd).
+Practice: [Exercise 5 — ADAE](../exercises/adae.qmd).
 
 ## Comprehension Check
 
