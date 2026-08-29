@@ -20,7 +20,10 @@ exercises/*_files/
 # every code chunk in the course depends on. Only per-user IDE state
 # (.Rproj.user, ignored above) is local.
 
-# renv (mode PINNED only; renv.lock IS committed)
+# renv: renv.lock, renv/activate.R and renv/settings.json ARE committed
+# (a fresh clone needs them to bootstrap). Only the local library and
+# renv's working directories are ignored. Snapshot type is "implicit":
+# renv derives dependencies by scanning the project's code.
 renv/library/
 renv/staging/
 renv/local/
