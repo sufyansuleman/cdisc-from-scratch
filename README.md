@@ -29,6 +29,27 @@ New here? Go through it in this order:
 5. **Part 4 — Outputs and Submission** — TLFs, the ADRG, and
    Dataset-JSON
 
+## Status
+
+This book is being written in the open, session by session.
+
+**Complete** — prose written, every code chunk executed against the
+repository's data, every standards claim cited to its Implementation
+Guide section:
+
+- Setup
+- Part 1: Why Standards, The GLPX-001 Trial
+- Part 2: SDTM Concepts, DM, Events (AE), Findings (LB/VS)
+- Part 3: ADaM Concepts, ADSL, ADAE
+
+**In progress** — outlined but not yet written: ADLB, Define-XML, and
+all of Part 4 (TLFs, ADRG, Dataset-JSON). Those pages exist in the
+book's navigation but are largely empty.
+
+The course targets the standard versions a 2024 study start would be
+held to: **SDTMIG v3.4** (with SDTM v2.0), **ADaMIG v1.3** (with ADaM
+v2.1), and **OCCDS v1.1** for adverse events.
+
 ## Who this is for
 
 - Statistical programmers and biostatisticians moving into clinical
