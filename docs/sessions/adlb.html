@@ -316,18 +316,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#when-do-you-use-this" id="toc-when-do-you-use-this" class="nav-link active" data-scroll-target="#when-do-you-use-this"><span class="header-section-number">12.1</span> When Do You Use This?</a></li>
+  <li><a href="#sec-adlb" id="toc-sec-adlb" class="nav-link active" data-scroll-target="#sec-adlb"><span class="header-section-number">12.1</span> When Do You Use This?</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">12.2</span> Learning Objectives</a></li>
-  <li><a href="#background-todo-the-one-core-idea" id="toc-background-todo-the-one-core-idea" class="nav-link" data-scroll-target="#background-todo-the-one-core-idea"><span class="header-section-number">12.3</span> Background: TODO (the one core idea)</a></li>
-  <li><a href="#example-1-todo" id="toc-example-1-todo" class="nav-link" data-scroll-target="#example-1-todo"><span class="header-section-number">12.4</span> Example 1: TODO</a>
-  <ul class="collapse">
-  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">12.4.1</span> Run It Yourself</a></li>
-  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">12.4.2</span> Reading the Output Line by Line</a></li>
-  </ul></li>
-  <li><a href="#example-2-todo" id="toc-example-2-todo" class="nav-link" data-scroll-target="#example-2-todo"><span class="header-section-number">12.5</span> Example 2: TODO</a>
-  <ul class="collapse">
-  <li><a href="#run-it-yourself-1" id="toc-run-it-yourself-1" class="nav-link" data-scroll-target="#run-it-yourself-1"><span class="header-section-number">12.5.1</span> Run It Yourself</a></li>
-  </ul></li>
+  <li><a href="#background-todo-one-row-per-subject-parameter-timepoint" id="toc-background-todo-one-row-per-subject-parameter-timepoint" class="nav-link" data-scroll-target="#background-todo-one-row-per-subject-parameter-timepoint"><span class="header-section-number">12.3</span> Background: TODO — One Row per Subject, Parameter, Timepoint</a></li>
+  <li><a href="#example-1-todo-parameters-values-and-analysis-timing" id="toc-example-1-todo-parameters-values-and-analysis-timing" class="nav-link" data-scroll-target="#example-1-todo-parameters-values-and-analysis-timing"><span class="header-section-number">12.4</span> Example 1: TODO — Parameters, Values and Analysis Timing</a></li>
+  <li><a href="#example-2-todo-baseline-change-and-the-flag-that-matters" id="toc-example-2-todo-baseline-change-and-the-flag-that-matters" class="nav-link" data-scroll-target="#example-2-todo-baseline-change-and-the-flag-that-matters"><span class="header-section-number">12.5</span> Example 2: TODO — Baseline, Change, and the Flag That Matters</a></li>
   <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">12.6</span> What Can Go Wrong</a>
   <ul class="collapse">
   <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">12.6.1</span> Common misinterpretations</a></li>
@@ -359,6 +352,233 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<!--
+========================================================================
+SKELETON + VERIFY LIST — prose NOT yet written. DO NOT COMMIT as final.
+
+Fourth and final Part 3 session. Sole source = ADaMIG v1.3 (BDS is IN
+the ADaMIG, unlike OCCDS). Every [IG] claim PRE-CITED; author
+spot-checks. Reads data/sdtm/lb.csv + data/adam/adsl.csv.
+
+This is the payoff of the baseline thread the course has been building
+since sdtm-dm: DM -> Findings (LBLOBXFL deferral) -> adam-concepts A13
+-> ADSL S5 -> here, where ABLFL is finally derived and the two flags
+are shown disagreeing on real data.
+
+PROPOSED CENTRAL INTUITION (for approval):
+  "ADLB is one row per subject, per parameter, per timepoint: PARAM says
+   what was measured, AVAL says what it was, and ABLFL nominates the one
+   row the analysis calls baseline — so that every change in the trial
+   is measured from a point the SAP chose, not one the lab happened to
+   flag."
+
+========================================================================
+VERIFY LIST — every ADaM specific this session intends to assert.
+
+--- Structure ---
+
+L1 [ADaMIG v1.3 §2.3.2] BDS contains "1 or more records per subject, per
+   analysis parameter, per analysis timepoint." Analysis timepoint is
+   CONDITIONALLY required depending on the analysis; with no timepoint
+   the structure is one or more records per subject per parameter.
+   Also §2.3.2: BDS datasets "do not have counterparts in SDTM" — the
+   resemblance to the Findings class is superficial, since BDS may be
+   derived from Findings, Events, Interventions, Special-purpose
+   domains, other ADaM datasets, or any combination.
+
+L2 [ADaMIG v1.3 §2.3.2] "Although the ADSL is a source for
+   subject-level variables used in BDS datasets, this does not mean that
+   every ADSL variable should be included in the BDS dataset." Carry
+   what the analysis needs, not everything.
+
+--- Parameters ---
+
+L3 [ADaMIG v1.3 §3.3.4.1, Table 3.3.4.1.1] PARAM (Req) "must include all
+   descriptive and qualifying information relevant to the analysis
+   purpose of the parameter" and "should be sufficient to describe
+   unambiguously the contents of AVAL and/or AVALC". Units are named as
+   a candidate qualifier. Max 200 chars (40 if it will become a variable
+   label in a transposed dataset). "In contrast to SDTM --TEST, no
+   additional variable is needed to further qualify PARAM." PARAM must
+   be present and populated on EVERY record.
+
+L4 [ADaMIG v1.3 §3.3.4.1] PARAMCD (Req): <=8 characters, must START WITH
+   A LETTER (not underscore), comprised only of A-Z, underscore and 0-9
+   — so that a transposed dataset yields valid variable names. One-to-one
+   with PARAM within a dataset. Populated on every record. PARAMN (Perm)
+   one-to-one with PARAM; if populated on any record for a PARAM it must
+   be populated on every record for that PARAM. PARCATy (Perm) is a
+   categorisation, many-to-one, NOT a qualifier for PARAM.
+   (Re-cited from adam-concepts, which previewed these constraints.)
+
+L5 [ADaMIG v1.3 §3.3.4.1] AVAL (Num, Cond) and AVALC (Char, Cond):
+   "either AVAL or AVALC must be present in the dataset"; AVAL is
+   required if AVALC is not present and vice versa. On a given record it
+   is permissible for either or both to be null. If both are populated
+   within a parameter there must be a one-to-one relationship between
+   them; AVALC "should not be used to categorize the values of AVAL"
+   (AVALCATy is for that).
+
+--- Baseline: the thread's payoff ---
+
+L6 [ADaMIG v1.3 §3.3.8, Table 3.3.8.1] ABLFL (Char, value "Y", Cond)
+   identifies "the baseline record for each subject, parameter, and
+   baseline type (BASETYPE) combination". Conditionality is exact:
+   "ABLFL is required if BASE is present in the dataset." Also: "a
+   baseline record may be derived (e.g., it may be an average), in which
+   case DTYPE must also be populated." ABLFN (Perm) is its numeric
+   counterpart, one-to-one, both-or-neither populated.
+
+L7 [ADaMIG v1.3 §3.3.4.1] BASE (Num, Cond) "contains the value of AVAL
+   copied from a record within the parameter on which ABLFL = 'Y'".
+   Required if the dataset supports analysis or review of numeric
+   baseline value or functions of it. And the integrity rule: "if BASE
+   is populated for a parameter, and BASE is non-null for a subject for
+   that parameter, then there must be a record flagged by ABLFL for that
+   subject and parameter."
+
+L8 [ADaMIG v1.3 §3.3.4.1] CHG (Perm) "Equal to AVAL-BASE"; PCHG (Perm)
+   "Equal to ((AVAL-BASE)/BASE)*100". Both "should be populated for all
+   post-baseline records of that PARAM regardless of whether that record
+   is used for analysis", and — a precision worth teaching — "the
+   decision on how to populate pre-baseline and baseline values of CHG
+   is left to producer choice." So CHG at baseline being 0 vs null is a
+   documented sponsor decision, not a rule.
+   AUTHOR DECISION NEEDED (see decision 2 below).
+
+L9 [ADaMIG v1.3 §3.3.4.1] BASETYPE (Char, Cond) is "producer-defined
+   text describing the definition of baseline relevant to the value of
+   BASE on the current record", "required when there are multiple ways
+   that baseline is defined", and if used for any PARAM must be non-null
+   for ALL records of that PARAM where BASE or BASEC is non-null.
+   GLPX-001 has ONE baseline definition, so BASETYPE is not required and
+   is not built — taught as concept, with the pointer to §4.2.1.6 Rule 6
+   for the multiple-baseline case.
+
+L10 [ADaMIG v1.3 §3.3.5, Table 3.3.5.1] DTYPE (Char, codelist DTYPE,
+    extensible, Cond) "is used to denote, and must be populated, when
+    the value of AVAL or AVALC has been imputed or derived differently
+    than the other analysis values within the parameter", and is
+    "required to be populated even if AVAL and AVALC are null on the
+    derived record". For each DTYPE value "the precise derivation
+    algorithm must be defined in analysis variable metadata, even for
+    DTYPE values in the CDISC Controlled Terminology."
+    GLPX-001: every AVAL is an observed lab result and the baseline is
+    an observed record, so DTYPE is NULL throughout — which is itself
+    the lesson (null DTYPE = "this row is what was measured").
+
+--- Timing ---
+
+L11 [ADaMIG v1.3 §3.3.3, Table 3.3.3.1] ADT (Cond) "the date associated
+    with AVAL and/or AVALC"; ADY (Cond) "the relative day of AVAL and/or
+    AVALC. The number of days from an anchor date (NOT NECESSARILY
+    DM.RFSTDTC) to ADT." — the SAME parenthesis as OCCDS's ASTDY, so the
+    ADAE lesson transfers exactly. Also: "if a dataset contains more than
+    one record per parameter per subject, then an SDTM or ADaM relative
+    timing variable must be present (ADY would meet this requirement)"
+    — which for ADLB makes ADY effectively mandatory. ADTF (Cond,
+    DATEFL) required if ADT was imputed.
+
+L12 [ADaMIG v1.3 §3.3.3, Table 3.3.3.1] AVISIT (Char, Cond) "required if
+    an analysis is done by nominal, assigned or analysis visit". Key
+    precisions: "AVISIT is a derived field and does not have to map to
+    VISIT from the SDTM"; "AVISIT represents the analysis visit of the
+    record, but it does not mean that the record was analyzed"; "values
+    of AVISIT are producer-defined"; and its derivation "should be
+    indicated in the variable metadata". AVISITN (Perm) numeric
+    counterpart.
+
+--- Ranges ---
+
+L13 [ADaMIG v1.3 §3.3.7, Table 3.3.7.1] ANRLO/ANRHI (analysis normal
+    range lower/upper), ANRIND (Analysis Reference Range Indicator), and
+    BNRIND ("ANRIND of the baseline record identified by ABLFL").
+    These are the ADaM analysis versions of SDTM's LBORNRLO/LBORNRHI and
+    LBNRIND — same re-derivation principle as the flags.
+    VERIFY AT PROSE TIME: confirm each Core designation from the table
+    (read as Perm) before citing; I have not yet read the Core column
+    for every row of 3.3.7.1.
+
+--- Identifiers, treatment, traceability ---
+
+L14 [ADaMIG v1.3 §3.3.1, Table 3.3.1.1] STUDYID, USUBJID Req; SUBJID,
+    SITEID Perm ("required in ADSL, but permissible in other datasets"
+    — the mirror of the ADSL claim S2). ASEQ (Perm) "sequence number
+    given to ensure uniqueness of subject records within an ADaM
+    dataset", useful "when the dataset is used as input to another ADaM
+    dataset".
+
+L15 [ADaMIG v1.3 §3.3.2, Table 3.3.2.1] TRTP (Cond) / TRTA are
+    record-level treatment variables; "at least one treatment variable
+    is required even in non-randomized trials", satisfied by any
+    subject- or record-level treatment variable (TRTxxP, TRTP, TRTA).
+    If populated, TRTP "must match at least one value of the character
+    planned treatment variables in ADSL". GLPX is single-period, so
+    TRTP = ADSL.TRT01P and TRTA = ADSL.TRT01A on every row.
+
+L16 [ADaMIG v1.3 §3.3.9, Table 3.3.9.1] SRCDOM / SRCVAR / SRCSEQ (all
+    Perm) give datapoint traceability: source domain, source variable,
+    source sequence number. Note the contrast with ADAE — OCCDS
+    explicitly EXCLUDES SRCVAR because it names the variable deriving
+    AVAL/AVALC and OCCDS has no AVAL (OCCDS v1.1, §3.2.2). Here AVAL
+    exists, so SRCVAR is meaningful: SRCDOM="LB", SRCVAR="LBSTRESN",
+    SRCSEQ=LBSEQ.
+
+L17 [ADaMIG v1.3 §3.3.8] ANLzzFL (Cond) is "to be used in addition to
+    other selection variables when the other selection variables in
+    combination are insufficient to identify the exact set of records
+    used for one or more analyses". GLPX-001 has exactly one row per
+    subject per parameter per visit (verified: TRUE), so USUBJID +
+    PARAMCD + AVISIT already identify records uniquely and ANL01FL is
+    NOT required. Taught as concept + why it is absent here.
+
+--- [CT] to confirm live at prose time ---
+C1 DTYPE codelist — confirm it exists in sdtm.terminology and is
+   extensible; we populate none, so this is a "what it would be" check.
+C2 NRIND codelist for ANRIND values (NORMAL/HIGH/LOW), same codelist
+   SDTM's LBNRIND used in Findings.
+C3 PARAM/PARAMCD are SPONSOR-DEFINED — no codelist, the AGEGR1/ASEV
+   point for the third time. Demonstrate with is_term() returning FALSE
+   or simply state it; decide at prose time which is less repetitive.
+All pasted as real output; none recalled.
+
+--- Explicitly NOT asserted / deferred ---
+- Time-to-event variables (§3.3.6) — named, not built.
+- Criteria variables CRITy/CRITyFL (§3.3.4.3) — out of scope.
+- Analysis visit WINDOWING (§3.3.5, Table 3.3.5.2) — GLPX visits are
+  already clean nominal visits; windowing named, not built.
+- VS (vital signs) — this session is labs only.
+========================================================================
+
+GLPX LB DATA REALITY (probed, for sizing):
+  12388 rows, 400 subjects, 4 tests (ALT/CREAT/GLUC/HBA1C), 8 visits
+  (SCREENING, BASELINE, WEEK 4/8/12/16/20/26). 3097 rows per test.
+  One row per subject/test/visit — VERIFIED unique, no duplicates
+  (D6 was removed during the SDTM build).
+  No null LBSTRESN. D7 (blank unit) was resolved in SDTM: units are
+  populated for 101-037.
+  LBNRIND: HIGH 6520 / NORMAL 5774 / LOW 94.
+  D5 lives at SCREENING: 101-052, HbA1c 13.9%, HIGH (range 4.0-5.6).
+
+  *** THE BASELINE PAYOFF, QUANTIFIED ***
+  1600 subject-test pairs. SDTM LBLOBXFL lands on SCREENING for 1300
+  of them (81.2%) and on BASELINE for 300. So an ABLFL defined as "the
+  BASELINE visit record" DISAGREES with LBLOBXFL on 1300 pairs.
+  Every one of the 400 subjects has at least one test that disagrees
+  (165 disagree on all four; 235 on some).
+  Screening and baseline values coincide for only 86 of 1600 pairs, so
+  the disagreement is almost always a different NUMBER, not just a
+  different row.
+  Impact on the headline result (HbA1c, week 26 mean change):
+    ABLFL baseline  : GLPX -1.363, Placebo -0.294, difference -1.069
+    LBLOBXFL instead: GLPX -1.440, Placebo -0.306, difference -1.138
+  A 0.069 %-point shift in the primary endpoint from choosing the wrong
+  baseline flag. Small, real, and not the number the SAP defined —
+  frame it exactly that way, do NOT overclaim it as decisive.
+
+INFRASTRUCTURE: build_adam.R gains build_adlb() -> committed
+data/adam/adlb.csv, completing data/adam/ for the TLF sessions.
+-->
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -369,8 +589,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Total core time: about TODO minutes.</strong></p>
+<p><strong>Total core time: about 95 minutes.</strong></p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Section</th>
@@ -381,128 +606,103 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>When Do You Use This? + Learning Objectives</td>
-<td>TODO</td>
+<td>5 min</td>
 <td>Reading</td>
 </tr>
 <tr class="even">
-<td>Background</td>
-<td>TODO</td>
+<td>Background: one row per subject, parameter, timepoint</td>
+<td>25 min</td>
 <td>Reading</td>
 </tr>
 <tr class="odd">
-<td>Example 1</td>
-<td>TODO</td>
+<td>Example 1: Parameters, values and analysis timing</td>
+<td>25 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="even">
-<td>Example 2</td>
-<td>TODO</td>
+<td>Example 2: Baseline, change, and the flag that matters</td>
+<td>25 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="odd">
 <td>What Can Go Wrong</td>
-<td>TODO</td>
+<td>10 min</td>
 <td>Reading</td>
 </tr>
 <tr class="even">
-<td>Exercises</td>
-<td>TODO</td>
-<td>Practice</td>
-</tr>
-<tr class="odd">
-<td>Comprehension Check</td>
-<td>TODO</td>
-<td>Self-test</td>
+<td>Exercises + Comprehension Check</td>
+<td>5 min</td>
+<td>Practice / Self-test</td>
 </tr>
 </tbody>
 </table>
-<p>TODO: how the session splits across sittings for self-paced study.</p>
+<p>The last session of Part 3, and the one the baseline thread has been building towards since Part 2. For self-paced study, split after Example 1.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>How to Use the Code in This Session
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Where you see a “Run It Yourself” box, stop and run the code above it before reading the explanation that follows.</p>
-</div>
-</div>
-<section id="when-do-you-use-this" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="when-do-you-use-this"><span class="header-section-number">12.1</span> When Do You Use This?</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>TODO: two or three concrete scenarios that this session answers, ending with the single question it addresses in bold. Cross-link the session(s) this one builds on — <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, <a href="../sessions/adsl.html">ADSL</a>, and <a href="../sessions/sdtm-findings.html">Findings</a>, where the authoritative baseline was deferred to ADaM.</p>
-</div>
-</div>
+<section id="sec-adlb" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="sec-adlb"><span class="header-section-number">12.1</span> When Do You Use This?</h2>
+<p>TODO (prose pass): scenarios — the primary endpoint is a <em>change</em> from baseline, so something must define baseline; a safety review needs every lab value classified against its reference range at every visit; a reviewer needs to see the measured value and the analysis value side by side. Ends with the bold question: <strong>when the whole trial is measured as change from baseline, who decides which value baseline is?</strong> Builds on <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, <a href="../sessions/adsl.html">ADSL</a>, and <a href="../sessions/sdtm-findings.html">Findings</a> where <code>LBLOBXFL</code> was deliberately left unfinished.</p>
 </section>
 <section id="learning-objectives" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">12.2</span> Learning Objectives</h2>
-<p>After completing this session you will be able to:</p>
-<ul>
-<li>TODO</li>
-<li>TODO</li>
-<li>TODO</li>
-</ul>
+<p>TODO after approval — build a BDS dataset one row per subject per parameter per timepoint; define PARAM/PARAMCD and know why they carry no codelist; derive AVAL, ADT, ADY and AVISIT; derive ABLFL from the SAP’s definition and BASE/CHG/PCHG from it; explain why ADaM’s baseline flag and SDTM’s may disagree, and show what that costs.</p>
 </section>
-<section id="background-todo-the-one-core-idea" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="background-todo-the-one-core-idea"><span class="header-section-number">12.3</span> Background: TODO (the one core idea)</h2>
-<p><em>Estimated time: ~TODO minutes (reading)</em></p>
-<!-- The BDS session. Sole source = ADaMIG v1.3. This is where PARAM,
-  PARAMCD, AVAL, ABLFL, BASE and CHG are actually built, and where the
-  baseline thread that runs DM -> Findings (LBLOBXFL deferral) ->
-  adam-concepts -> ADSL finally lands. -->
-<p>TODO: introduce the single idea that ties the session together, concept before formula.</p>
+<section id="background-todo-one-row-per-subject-parameter-timepoint" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="background-todo-one-row-per-subject-parameter-timepoint"><span class="header-section-number">12.3</span> Background: TODO — One Row per Subject, Parameter, Timepoint</h2>
+<!-- Prose pass: BDS structure and why it is not the Findings class
+  [L1, L2]; parameters as the organising idea [L3, L4, L5]; timing
+  [L11, L12]; ranges [L13]; treatment and traceability [L14, L15, L16];
+  then baseline as the SAP's decision [L6, L7, L8, L9, L10] and the
+  §4.5.9 contrast with LBLOBXFL. Central intuition callout. -->
 </section>
-<section id="example-1-todo" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="example-1-todo"><span class="header-section-number">12.4</span> Example 1: TODO</h2>
-<p>TODO: worked example on GLPX-001 data. Show the code, then the output, then explain it.</p>
-<section id="run-it-yourself" class="level3" data-number="12.4.1">
-<h3 data-number="12.4.1" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">12.4.1</span> Run It Yourself</h3>
-<p>TODO: the exact code block the learner should execute before reading on.</p>
+<section id="example-1-todo-parameters-values-and-analysis-timing" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="example-1-todo-parameters-values-and-analysis-timing"><span class="header-section-number">12.4</span> Example 1: TODO — Parameters, Values and Analysis Timing</h2>
+<!-- Plan (code executed; reads data/sdtm/lb.csv + data/adam/adsl.csv):
+  PARAM/PARAMCD/PARAMN for the 4 tests, units inside PARAM [L3, L4];
+  AVAL from LBSTRESN [L5]; ADT/ADY anchored to ADSL.TRTSDT [L11];
+  AVISIT/AVISITN from VISIT [L12]; TRTP/TRTA from ADSL [L15];
+  SRCDOM/SRCVAR/SRCSEQ [L16]; ANRLO/ANRHI/ANRIND [L13]. Show the BDS
+  shape: 12388 rows, one per subject/param/visit. Note ANL01FL not
+  required and why [L17]. -->
 </section>
-<section id="reading-the-output-line-by-line" class="level3" data-number="12.4.2">
-<h3 data-number="12.4.2" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">12.4.2</span> Reading the Output Line by Line</h3>
-<p>TODO: map each line of output to its plain-English meaning.</p>
-</section>
-</section>
-<section id="example-2-todo" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="example-2-todo"><span class="header-section-number">12.5</span> Example 2: TODO</h2>
-<p>TODO: a second worked example.</p>
-<section id="run-it-yourself-1" class="level3" data-number="12.5.1">
-<h3 data-number="12.5.1" class="anchored" data-anchor-id="run-it-yourself-1"><span class="header-section-number">12.5.1</span> Run It Yourself</h3>
-<p>TODO.</p>
-</section>
+<section id="example-2-todo-baseline-change-and-the-flag-that-matters" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="example-2-todo-baseline-change-and-the-flag-that-matters"><span class="header-section-number">12.5</span> Example 2: TODO — Baseline, Change, and the Flag That Matters</h2>
+<!-- Plan: derive ABLFL = the BASELINE visit record per subject/param
+  [L6]; BASE copied from the ABLFL row [L7]; CHG/PCHG [L8]; DTYPE null
+  and what that means [L10]; BASETYPE not needed and why [L9].
+  Then THE PAYOFF: compare ABLFL against SDTM LBLOBXFL — 1300 of 1600
+  subject-test pairs disagree; recompute the week-26 HbA1c result both
+  ways (-1.069 vs -1.138) and frame it as "not the number the SAP
+  defined", without overclaiming. Close the thread opened in Findings.
+  Conformance: one row per subject/param/visit; BASE non-null implies an
+  ABLFL row; PARAM/PARAMCD one-to-one and populated everywhere. -->
 </section>
 <section id="what-can-go-wrong" class="level2" data-number="12.6">
 <h2 data-number="12.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">12.6</span> What Can Go Wrong</h2>
-<p>TODO: failure modes and misuse patterns.</p>
+<!-- Candidates: using LBLOBXFL as the analysis baseline [L6, §4.5.9];
+  BASE populated with no ABLFL row [L7]; deriving a baseline without
+  setting DTYPE [L6, L10]; assuming AVISIT must equal VISIT [L12];
+  putting units in a separate variable instead of PARAM [L3]; PARAMCD
+  starting with a digit or exceeding 8 chars [L4]; adding a second
+  baseline definition without BASETYPE [L9]; carrying all of ADSL into
+  BDS [L2]. -->
 <section id="common-misinterpretations" class="level3" data-number="12.6.1">
 <h3 data-number="12.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">12.6.1</span> Common misinterpretations</h3>
-<p>TODO.</p>
+<!-- TODO prose pass. -->
 </section>
 </section>
 <section id="exercises" class="level2" data-number="12.7">
 <h2 data-number="12.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.7</span> Exercises</h2>
-<p>TODO: link <a href="../exercises/adlb.html">Exercise 5 — ADLB</a>.</p>
+<!-- Public: exercises/adlb.qmd (stub, to be written). Solutions ->
+  private repo. Planned: a second baseline definition requiring
+  BASETYPE (§4.2.1.6 Rule 6); a derived baseline (mean of screening and
+  baseline) forcing DTYPE; PCHG at baseline. -->
 </section>
 <section id="comprehension-check" class="level2" data-number="12.8">
 <h2 data-number="12.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">12.8</span> Comprehension Check</h2>
-<p>TODO: three to five short self-test questions.</p>
+<!-- TODO prose pass: 5 questions. Answers collapsed. -->
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -511,9 +711,9 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO: answers, collapsed.</p>
+<!-- TODO prose pass. -->
 </div>
 </div>
 </div>

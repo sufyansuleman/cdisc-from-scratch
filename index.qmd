@@ -1,12 +1,19 @@
 # Welcome {.unnumbered}
 
-TODO: opening hook, two or three sentences, in the house register
-(concrete, second person — see the reference course's "Most statistics
-courses start with theory. This one starts with your data.").
+Most CDISC courses hand you a finished SDTM domain and walk you through
+its columns. This one hands you the raw export instead — five files,
+five different date formats, one subject enrolled twice — and has you
+build the domain yourself, decide what to do about the duplicate, and
+defend the decision.
 
 This course teaches CDISC clinical data standards by building them: you
 take raw data from a simulated Phase III trial (codename **GLPX-001**)
 and carry it all the way to submission-ready datasets and outputs, in R.
+
+Every claim about a standard in this book is cited to the section of the
+Implementation Guide it comes from — `SDTMIG v3.4, §4.4.4`, `ADaMIG
+v1.3, §3.3.8` — so you can check it, and so you learn where to look when
+the next question arrives.
 
 ::: callout-important
 ### Before You Start: Set Up Your Tools
@@ -19,34 +26,87 @@ minutes. Nothing else in the course will work until you have done this.
 
 ## Who This Course Is For {.unnumbered}
 
-TODO: audience description — statistical programmers, biostatisticians,
-data managers and researchers moving into clinical trial work in the
-pharmaceutical industry.
+- **Statistical programmers and biostatisticians** moving into clinical
+  trial work in the pharmaceutical industry
+- **R users in clinical research** who need to produce or consume
+  CDISC-standard datasets
+- **Data managers and researchers** preparing data for a regulatory
+  submission who want to understand the pipeline end to end
+
+You do not need any prior CDISC knowledge. The course assumes you have
+never opened an Implementation Guide.
 
 ::: callout-note
 ### Scope and level
 
-TODO: what this course is and deliberately is not.
+**This course is** a hands-on build of one trial's data, from raw
+export to analysis datasets and outputs, against the versions of the
+standards a 2024 study start would actually be held to: SDTMIG v3.4
+(with SDTM v2.0), ADaMIG v1.3 (with ADaM v2.1), the OCCDS v1.1
+structure for adverse events, Define-XML and Dataset-JSON.
+
+**This course is not** a reference manual, a substitute for the
+Implementation Guides, or a survey of every domain and variable. It
+builds a small number of domains and datasets properly — DM, AE, LB,
+VS, then ADSL, ADAE, ADLB — and teaches you to read the guides for the
+rest.
+
+It is also not a statistics course. The analyses here exist to give the
+data somewhere to go.
 :::
 
 ## What This Course Expects From You {.unnumbered}
 
-TODO: prerequisites (working R, comfort with the tidyverse, no prior
-CDISC knowledge assumed).
+- **Working R and RStudio**, and comfort running code you did not write
+- **Basic tidyverse** — `dplyr` verbs, pipes, `ggplot2` at the level of
+  "I can read this plot's code"
+- **No CDISC knowledge**, and no clinical trials background beyond
+  knowing roughly what a randomised trial is
+
+Every code chunk is written to be copied into your console and run in
+the order shown, against data that ships with the repository.
 
 ## How the Course Is Organised {.unnumbered}
 
-TODO: one short paragraph per part:
+**Part 1: Foundations** — why clinical data standards exist at all,
+argued from a real mess in GLPX-001's raw files rather than asserted;
+then the trial itself, its design, and what its data should look like
+if the design is respected.
 
-- **Part 1: Foundations** — why standards exist, and the GLPX-001 trial
-  you will work with throughout.
-- **Part 2: SDTM** — TODO.
-- **Part 3: ADaM** — TODO.
-- **Part 4: Outputs and Submission** — TODO.
+**Part 2: SDTM** — the tabulation standard. Observation classes and
+controlled terminology, then building DM (identifiers, treatment
+dates, the study-day rule), an Events domain (AE), and Findings
+domains (LB and VS) — including what to do with a duplicate record, a
+missing unit, and an implausible lab value. Closes with Define-XML.
+
+**Part 3: ADaM** — the analysis standard. Why analysis datasets are not
+just SDTM rearranged, then ADSL (one row per subject: populations,
+treatment, dates), ADAE (occurrence data: treatment emergence and
+incidence denominators), and ADLB (basic data structure: parameters,
+analysis values, and the baseline every change is measured from).
+
+**Part 4: Outputs and Submission** — tables, listings and figures; the
+Analysis Data Reviewer's Guide; and Dataset-JSON.
+
+::: callout-note
+### Current status
+
+This book is being written in the open, session by session. **Parts 1
+and 2 are complete, and Part 3 is complete through ADAE.** Those nine
+sessions are finished: prose written, every code chunk executed against
+the repository's data, every standards claim cited and checked.
+
+Still in progress: ADLB, Define-XML, and all of Part 4. Their pages
+exist in the navigation but are outlines rather than sessions — you
+will find them largely empty if you visit them now.
+:::
 
 All data in this course is **synthetic**, generated by
 [`R/simulate_trial.R`](https://github.com/sufyansuleman/cdisc-with-r/blob/main/R/simulate_trial.R).
-No real patient information is used anywhere.
+No real patient information is used anywhere. The simulator also plants
+a small number of deliberate data defects — a duplicated lab record, a
+missing start date, a sex value that disagrees between two sources —
+because learning to find and resolve those is most of the job.
 
 > Exercises are included in this book. Solutions, extra exercises and
 > instructor material are available in the paid tier.

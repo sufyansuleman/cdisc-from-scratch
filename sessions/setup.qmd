@@ -5,49 +5,178 @@ title: "Before You Begin: Setup"
 ::: {.callout-note}
 ### Session at a Glance
 
-**Total core time: about TODO minutes.**
+**Total core time: about 30 minutes**, most of it waiting for packages
+to install.
 
 | Section | Time | Type |
 |---|---|---|
-| Install the tools | TODO | Hands-on |
-| Restore the course library | TODO | Hands-on |
-| Check you are ready | TODO | Hands-on |
+| What you will install | 10 min | Hands-on |
+| Get the course repository | 5 min | Hands-on |
+| Restore the course library | 10 min | Hands-on |
+| Check you are ready | 5 min | Hands-on |
 
-TODO: fill in the time budget once the session is written.
+Do this once. Everything else in the course assumes it is done.
 :::
 
 ## What You Will Install
 
-TODO: R, an IDE (RStudio or Positron), Quarto, and Git.
+Four tools, in this order. If you already have one, skip it.
+
+| Tool | Why | Where |
+|---|---|---|
+| **R** (4.4.0 or later) | The language everything is written in | [cran.r-project.org](https://cran.r-project.org) |
+| **RStudio** or **Positron** | An IDE. Either works; the course shows RStudio | [posit.co/downloads](https://posit.co/downloads/) |
+| **Quarto** | Renders the book and runs the code chunks | [quarto.org/docs/get-started](https://quarto.org/docs/get-started/) |
+| **Git** | Gets you the repository and its history | [git-scm.com](https://git-scm.com/downloads) |
+
+::: {.callout-warning}
+### Windows: install Rtools too
+
+On Windows, install **Rtools44** to match R 4.4.x, from
+[cran.r-project.org/bin/windows/Rtools](https://cran.r-project.org/bin/windows/Rtools/).
+Without it, any package that needs compiling will fail to install, and
+the error message will not obviously say why.
+
+macOS and Linux users do not need this step.
+:::
 
 ## Why This Course Pins Its Packages
 
-TODO: explain that reproducibility is part of the subject matter in
-regulated clinical work, and that this repository practises what it
-teaches: `renv.lock` records the exact version of every package the
-course uses, and restoring it is your first taste of a reproducible
-pipeline. The lockfile is a teaching artifact, not overhead.
+In regulated clinical work, "it worked on my machine" is not a defence.
+A submission has to be reproducible years after it was built, by
+somebody who is not you, on a machine that does not exist yet. That is
+not a nice-to-have — it is what the whole apparatus of standards,
+define.xml and reviewer guides exists to support.
+
+So this course practises what it teaches. It uses
+[**renv**](https://rstudio.github.io/renv/) to record the exact version
+of every package it depends on in a file called `renv.lock`. When you
+restore that lockfile, you get the same package versions the author had,
+not whatever CRAN is serving today.
+
+`renv.lock` is a teaching artifact, not overhead. It is the smallest
+honest example of the thing the rest of the course is about: **a result
+you can hand to someone else and have them reproduce exactly.**
+
+## Get the Course Repository
+
+Clone it, or download it as a ZIP from
+[github.com/sufyansuleman/cdisc-with-r](https://github.com/sufyansuleman/cdisc-with-r).
+
+```bash
+git clone https://github.com/sufyansuleman/cdisc-with-r.git
+cd cdisc-with-r
+```
+
+Then open **`cdisc-with-r.Rproj`** in RStudio. This matters more than it
+looks: opening the project sets R's working directory to the project
+root, which is what every code chunk in the course assumes. Paths in the
+sessions are written as `data/sdtm/dm.csv`, not
+`../data/sdtm/dm.csv` — they only resolve if you are at the root.
+
+If you use Positron or run R from a terminal, `cd` to the repository
+root before starting R, and confirm with:
+
+```r
+getwd()   # should end in /cdisc-with-r
+```
 
 ## Restore the Course Library
 
-TODO: walk through cloning the repo and running, once, in R at the
-project root:
+Opening the project runs `.Rprofile`, which activates renv and points
+your session at [Posit Public Package
+Manager](https://packagemanager.posit.co/) for precompiled binaries.
+You will usually see renv announce itself, and often a note that the
+library is out of sync — that is expected on a fresh clone.
+
+Run this once, in the R console at the project root:
 
 ```r
 renv::restore()
 ```
 
-TODO: show what a successful restore looks like, and note the expected
-duration (minutes, not tens of minutes — the project's `.Rprofile`
-points Linux machines at precompiled binaries; macOS and Windows get
-binaries by default).
+renv lists what it is about to install and asks you to confirm. Say yes.
+
+**What to expect.** Several minutes, and a lot of output. Binaries make
+this fast on Windows and macOS by default, and on Linux via the
+`__linux__/jammy` P3M repository the `.Rprofile` selects. If it starts
+compiling packages from source and crawling, that is the signal
+something is off with the repository configuration rather than with
+you — see the troubleshooting section below.
+
+A successful restore ends quietly, with no error, and:
+
+```r
+renv::status()
+#> No issues found -- the project is in a consistent state.
+```
+
+That message is the goal. If you get anything else, fix it here rather
+than discovering it three sessions in.
 
 ## Check You Are Ready
 
-TODO: a short self-test snippet the learner runs to confirm the
-environment works, with the expected output shown.
+Run this snippet. It loads what the course loads, reads a file the way
+the sessions read files, and checks the controlled-terminology package
+can answer a question:
+
+```r
+library(tidyverse)
+library(sdtm.terminology)
+
+# 1. the data ships with the repo — this should print 401 rows
+dm_raw <- read_csv("data/raw/dm_raw.csv", show_col_types = FALSE)
+nrow(dm_raw)
+
+# 2. controlled terminology is available
+ct("list") |> dplyr::filter(term == "SEX")
+
+# 3. Quarto is on your PATH
+Sys.which("quarto")
+```
+
+You are ready when all three run without error: the read returns **401
+rows** (yes, 401 — 400 subjects and one duplicate enrolment, which you
+will meet in [Why Standards](why-standards.qmd)), the codelist lookup
+returns the `SEX` codelist `C66731`, and `Sys.which()` returns a path
+rather than an empty string.
+
+To confirm the whole book builds, run this in a terminal at the project
+root:
+
+```bash
+quarto render
+```
 
 ## If Something Went Wrong
 
-TODO: the most common failure modes, each with its one-line fix
-(Windows: install Rtools44; all platforms: `renv::status()` first).
+**`renv::restore()` fails on Windows, mentioning compilation.**
+Rtools44 is missing or does not match your R version. Install it, restart
+R, try again.
+
+**Packages compile from source and take forever.** Check that
+`.Rprofile` ran — `getOption("repos")` should show a
+`packagemanager.posit.co` entry. If it does not, you probably opened R
+somewhere other than the project root.
+
+**`renv::restore()` reports nothing to do, but `library(tidyverse)`
+then fails.** The lockfile and your library disagree. Run
+`renv::status()` first and read what it says before installing anything
+by hand — that message is the diagnosis.
+
+**A code chunk says it cannot find `data/raw/dm_raw.csv`.** Your working
+directory is not the project root. Run `getwd()` and, if needed, reopen
+`cdisc-with-r.Rproj`.
+
+**Everything installs but the book will not render.** Check Quarto is on
+your PATH with `quarto --version` in a terminal. RStudio bundles its own
+Quarto, which can differ from the one your terminal sees.
+
+::: {.callout-tip}
+### Still stuck?
+
+Open an issue at
+[github.com/sufyansuleman/cdisc-with-r/issues](https://github.com/sufyansuleman/cdisc-with-r/issues)
+with the output of `renv::status()` and `sessionInfo()`. Those two
+together identify almost every setup problem.
+:::

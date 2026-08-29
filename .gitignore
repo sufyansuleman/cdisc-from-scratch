@@ -15,8 +15,10 @@ rendered.log
 sessions/*_files/
 exercises/*_files/
 
-# RStudio project file (local IDE settings)
-*.Rproj
+# RStudio project file IS committed: the setup session tells learners to
+# open it, and it fixes the working directory to the project root, which
+# every code chunk in the course depends on. Only per-user IDE state
+# (.Rproj.user, ignored above) is local.
 
 # renv (mode PINNED only; renv.lock IS committed)
 renv/library/
