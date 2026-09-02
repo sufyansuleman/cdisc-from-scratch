@@ -4,26 +4,115 @@ title: "Exercise 6 — ADLB"
 
 ## Goal
 
-TODO: one sentence.
+Extend the ADLB from [the ADLB session](../sessions/adlb.qmd) with a
+categorised change, then build the two things GLPX-001's single baseline
+definition never forces you to build: a derived baseline that requires
+`DTYPE`, and a second baseline definition that requires `BASETYPE`.
 
 ## Setup
 
-TODO: starting code.
+Work from the project root. Both inputs are persisted:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(sdtm.terminology)
+
+lb   <- read_csv("data/sdtm/lb.csv", show_col_types = FALSE,
+                 col_types = cols(.default = col_character()))
+adlb <- read_csv("data/adam/adlb.csv", show_col_types = FALSE)
+adsl <- read_csv("data/adam/adsl.csv", show_col_types = FALSE)
+```
+
+Build the ADLB as in the session before starting, or read the persisted
+copy from `data/adam/adlb.csv`.
 
 ## Task
 
-1. TODO
-2. TODO
+1. **(Guided) Categorised change.** For `PARAMCD == "HBA1C"` at
+   `AVISIT == "WEEK 26"`, add `CHGCAT1` grouping `CHG` into three bands:
+   `"Reduction >= 1%"`, `"Reduction 0 to <1%"`, and `"No reduction"`.
+   Add its numeric counterpart `CHGCAT1N`.
+
+   Look up `CHGCATy` in ADaMIG v1.3 §3.3.4.1 before you start and note
+   its Core designation. Then answer: which structural rule ties
+   `CHGCAT1N` to `CHGCAT1`, and is `CHGCAT1` checkable against a CDISC
+   codelist?
+
+   Cross-tabulate the result by `TRTA`. The clinically meaningful number
+   should be obvious.
+
+2. **(The trap) A derived baseline.** Suppose the SAP is amended: for
+   HbA1c only, baseline becomes the **average of the screening and the
+   last pre-dose value**, rather than the single last pre-dose value.
+
+   Re-derive `ABLFL`, `BASE` and `CHG` for HbA1c under this definition.
+   Getting the arithmetic right is the easy part; the exercise is about
+   what else must change.
+
+   Two requirements, and both are the point:
+   - The averaged baseline is a *new record*, not an edit to an existing
+     one. Add it as a row, and set `DTYPE` on it, choosing a value the
+     ADaMIG itself gives as an example.
+   - State what `AVISIT` should be on that row, and why the answer is
+     not obvious.
+   - Report how many subjects actually have two pre-dose HbA1c values.
+     Not all of them do, and what you decide to do about the rest is
+     part of the answer.
+
+   Then recompute the week-26 treatment difference and compare it with
+   the session's -1.116. Report the number you get, whatever it is.
+
+3. **(Semi-guided) Two baselines at once.** Now suppose the study report
+   needs *both* definitions side by side: the session's last-pre-dose
+   baseline and task 2's averaged baseline, for the same parameter, in
+   the same dataset.
+
+   Restructure so both coexist, and answer in one sentence each:
+
+   - Which variable becomes required, and what exactly does it have to
+     be populated on?
+   - Why can you not simply add a second column called `BASE2`?
+   - How many rows does HbA1c now have per subject, and what does that
+     do to the "one row per subject per parameter per timepoint"
+     description of BDS?
 
 ## Acceptance criteria
 
-- [ ] TODO
-- [ ] TODO
+- [ ] `CHGCAT1`/`CHGCAT1N` one-to-one, null on the same rows, with the
+      no-codelist reasoning stated
+- [ ] The averaged baseline exists as a **new row** with `DTYPE`
+      populated, not as a modified original record
+- [ ] The `AVISIT` decision for the derived row is stated and justified
+- [ ] The recomputed week-26 difference is reported as obtained
+- [ ] `BASETYPE` identified, with the scope of "must be non-null"
+      stated precisely
+- [ ] All three follow-up questions in task 3 answered
 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-TODO: hint.
+Task 1: the structural rule for a category and its numeric counterpart
+is the one `AGEGR1`/`AGEGR1N` followed in [ADSL](../sessions/adsl.qmd)
+and `SEVGR1` followed in [Exercise 5](adae.qmd). For the codelist
+question, ask what kind of variable `CHGCATy` is rather than searching
+for a codelist name.
+
+Task 2: `DTYPE` is in ADaMIG v1.3 §3.3.5, which lists example values
+directly; one of them is exactly this case. Note that `sdtm.terminology`
+cannot help you here, because it packages **SDTM** controlled
+terminology and `DTYPE` is an **ADaM** codelist. Knowing which
+terminology a variable belongs to is part of the skill. For `AVISIT`,
+re-read
+the three precisions quoted in the session's Timing section, especially
+the one about what `AVISIT` does *not* mean. There is no single right
+answer, but there is a wrong one: silently reusing `BASELINE` when a row
+belongs to no visit.
+
+Task 3: ADaMIG v1.3 §4.2.1.6, Rule 6 is the worked example for exactly
+this situation. Read it before restructuring. The answer to "why not
+`BASE2`" is in what BDS does with additional analysis concepts: it adds
+rows, not columns.
 :::
 
 > Solutions are in the paid tier.

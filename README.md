@@ -67,10 +67,10 @@ Guide section:
 - Setup
 - Part 1: Why Standards, The GLPX-001 Trial
 - Part 2: SDTM Concepts, DM, Events (AE), Findings (LB/VS)
-- Part 3: ADaM Concepts, ADSL, ADAE
+- Part 3: ADaM Concepts, ADSL, ADAE, ADLB
 
-**In progress.** Outlined but not yet written: ADLB, Define-XML, and all
-of Part 4 (TLFs, ADRG, Dataset-JSON). Those pages exist in the book's
+**In progress.** Outlined but not yet written: Define-XML, and all of
+Part 4 (TLFs, ADRG, Dataset-JSON). Those pages exist in the book's
 navigation but are largely empty.
 
 The course targets the standard versions a 2024 study start would be

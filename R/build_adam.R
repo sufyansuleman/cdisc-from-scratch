@@ -17,7 +17,7 @@
 # sessions. Datasets grow as their sessions are written:
 #   ADSL -> sessions/adsl.qmd
 #   ADAE -> sessions/adae.qmd
-#   ADLB -> sessions/adlb.qmd              (added when that session lands)
+#   ADLB -> sessions/adlb.qmd
 
 suppressPackageStartupMessages({
   library(dplyr)
@@ -207,6 +207,114 @@ build_adae <- function(adsl) {
     )
 }
 
+# ---- ADLB (Laboratory analysis dataset, BDS) -------------------------------
+# ADaMIG v1.3 §2.3.2: one or more records per subject, per analysis
+# parameter, per analysis timepoint. See sessions/adlb.qmd.
+#
+# BASELINE DEFINITION (sponsor decision, see sessions/adlb.qmd).
+# The SAP defines baseline as the last non-missing value ON OR BEFORE the
+# first dose of study drug. That is the standard wording, and it matters
+# here: GLPX-001's BASELINE visit is scheduled in a window that lands
+# AFTER first dose for 958 of 1600 subject-parameter pairs, so flagging
+# "the BASELINE visit" would make most baseline values post-dose.
+#
+# This still disagrees with SDTM's LBLOBXFL, on 342 pairs, and the reason
+# is exactly the distinction worth teaching: LBLOBXFL is the last value
+# STRICTLY PRIOR TO first exposure (SDTMIG v3.4 §4.5.9), so it excludes a
+# pre-dose draw taken on the dosing day itself, which the SAP includes.
+# Only ABLFL is used for analysis (ADaMIG v1.3 §3.5).
+#
+# CHG CONVENTION. The ADaMIG leaves the population of CHG and PCHG at the
+# baseline record and before it to producer choice (§3.3.4.1). This study
+# sets CHG = PCHG = 0 on the baseline record and leaves both null on any
+# record earlier than baseline, where a change from baseline is not
+# defined. Sponsor decision, documented here and in the session.
+#
+# DTYPE is null throughout: every AVAL is an observed lab result and the
+# baseline is an observed record, so nothing is imputed or derived
+# differently from the other values within its parameter (§3.3.5).
+
+# PARAM must describe AVAL unambiguously and carries its own units
+# (ADaMIG v1.3 §3.3.4.1); PARAMCD is <= 8 chars and starts with a letter.
+adlb_params <- tibble::tribble(
+  ~LBTESTCD, ~PARAMCD,  ~PARAM,                            ~PARAMN,
+  "HBA1C",   "HBA1C",   "Hemoglobin A1C (%)",                    1L,
+  "GLUC",    "GLUC",    "Glucose (mmol/L)",                      2L,
+  "ALT",     "ALT",     "Alanine Aminotransferase (U/L)",        3L,
+  "CREAT",   "CREAT",   "Creatinine (umol/L)",                   4L
+)
+
+build_adlb <- function(adsl) {
+  lb <- read_sdtm("lb")
+
+  lb |>
+    inner_join(adlb_params, by = "LBTESTCD") |>
+    left_join(
+      adsl |> select(USUBJID, SUBJID, SITEID, TRT01P, TRT01A, TRTSDT, SAFFL),
+      by = "USUBJID"
+    ) |>
+    mutate(
+      LBSEQ = as.integer(LBSEQ),
+      AVAL  = as.numeric(LBSTRESN),
+
+      AVISIT  = VISIT,
+      AVISITN = as.integer(VISITNUM),
+
+      ADT = as.Date(LBDTC),
+      # No day 0, anchored to ADSL.TRTSDT rather than DM.RFSTDTC
+      # (ADaMIG v1.3 §3.3.3: "not necessarily DM.RFSTDTC").
+      ADY = if_else(ADT >= TRTSDT,
+                    as.integer(ADT - TRTSDT) + 1L,
+                    as.integer(ADT - TRTSDT)),
+
+      # Analysis versions of the range variables (§3.3.7). Here they are
+      # carried unchanged from SDTM, but they are ADaM's to re-derive.
+      ANRLO  = as.numeric(LBSTNRLO),
+      ANRHI  = as.numeric(LBSTNRHI),
+      ANRIND = LBNRIND,
+
+      TRTP = TRT01P,
+      TRTA = TRT01A,
+
+      # Datapoint traceability (§3.3.9). Unlike OCCDS, BDS uses SRCVAR,
+      # because there is an AVAL for it to name the source of.
+      SRCDOM = "LB",
+      SRCVAR = "LBSTRESN",
+      SRCSEQ = LBSEQ,
+
+      DTYPE = NA_character_
+    ) |>
+    arrange(USUBJID, PARAMN, AVISITN) |>
+    group_by(USUBJID, PARAMCD) |>
+    mutate(
+      # Baseline = the LAST record on or before first dose. ADY == 1 is the
+      # dosing day itself under the no-day-0 rule, so "on or before" is
+      # ADY <= 1. Flag the latest such record for this subject-parameter.
+      bl_ady_ = if (any(ADY <= 1L)) max(ADY[ADY <= 1L]) else NA_integer_,
+      ABLFL   = if_else(!is.na(bl_ady_) & ADY == bl_ady_, "Y", NA_character_),
+      BASE    = AVAL[match("Y", ABLFL)],
+      BNRIND  = ANRIND[match("Y", ABLFL)],
+      # Records earlier than baseline get no change. See CHG CONVENTION.
+      CHG  = if_else(ADY >= bl_ady_, AVAL - BASE, NA_real_),
+      PCHG = if_else(ADY >= bl_ady_ & BASE != 0,
+                     100 * (AVAL - BASE) / BASE, NA_real_)
+    ) |>
+    ungroup() |>
+    select(-bl_ady_) |>
+    group_by(USUBJID) |>
+    mutate(ASEQ = row_number()) |>
+    ungroup() |>
+    select(
+      STUDYID, USUBJID, SUBJID, SITEID, ASEQ,
+      TRTP, TRTA, SAFFL, TRTSDT,
+      PARAM, PARAMCD, PARAMN,
+      AVISIT, AVISITN, ADT, ADY,
+      AVAL, BASE, CHG, PCHG, DTYPE,
+      ABLFL, ANRLO, ANRHI, ANRIND, BNRIND,
+      SRCDOM, SRCVAR, SRCSEQ
+    )
+}
+
 # ---- entry point -----------------------------------------------------------
 
 main <- function(out_dir = file.path("data", "adam")) {
@@ -214,7 +322,8 @@ main <- function(out_dir = file.path("data", "adam")) {
 
   adsl <- build_adsl()
   adae <- build_adae(adsl)
-  adam <- list(adsl = adsl, adae = adae)
+  adlb <- build_adlb(adsl)
+  adam <- list(adsl = adsl, adae = adae, adlb = adlb)
 
   iwalk(adam, \(df, name) {
     write_csv(df, file.path(out_dir, paste0(name, ".csv")), na = "")

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -318,9 +353,26 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#sec-adlb" id="toc-sec-adlb" class="nav-link active" data-scroll-target="#sec-adlb"><span class="header-section-number">12.1</span> When Do You Use This?</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">12.2</span> Learning Objectives</a></li>
-  <li><a href="#background-todo-one-row-per-subject-parameter-timepoint" id="toc-background-todo-one-row-per-subject-parameter-timepoint" class="nav-link" data-scroll-target="#background-todo-one-row-per-subject-parameter-timepoint"><span class="header-section-number">12.3</span> Background: TODO — One Row per Subject, Parameter, Timepoint</a></li>
-  <li><a href="#example-1-todo-parameters-values-and-analysis-timing" id="toc-example-1-todo-parameters-values-and-analysis-timing" class="nav-link" data-scroll-target="#example-1-todo-parameters-values-and-analysis-timing"><span class="header-section-number">12.4</span> Example 1: TODO — Parameters, Values and Analysis Timing</a></li>
-  <li><a href="#example-2-todo-baseline-change-and-the-flag-that-matters" id="toc-example-2-todo-baseline-change-and-the-flag-that-matters" class="nav-link" data-scroll-target="#example-2-todo-baseline-change-and-the-flag-that-matters"><span class="header-section-number">12.5</span> Example 2: TODO — Baseline, Change, and the Flag That Matters</a></li>
+  <li><a href="#background-one-row-per-subject-parameter-timepoint" id="toc-background-one-row-per-subject-parameter-timepoint" class="nav-link" data-scroll-target="#background-one-row-per-subject-parameter-timepoint"><span class="header-section-number">12.3</span> Background: One Row per Subject, Parameter, Timepoint</a>
+  <ul class="collapse">
+  <li><a href="#parameters-what-was-measured" id="toc-parameters-what-was-measured" class="nav-link" data-scroll-target="#parameters-what-was-measured"><span class="header-section-number">12.3.1</span> Parameters: what was measured</a></li>
+  <li><a href="#timing-the-anchor-moves-again" id="toc-timing-the-anchor-moves-again" class="nav-link" data-scroll-target="#timing-the-anchor-moves-again"><span class="header-section-number">12.3.2</span> Timing: the anchor moves again</a></li>
+  <li><a href="#ranges" id="toc-ranges" class="nav-link" data-scroll-target="#ranges"><span class="header-section-number">12.3.3</span> Ranges</a></li>
+  <li><a href="#baseline-and-the-decision-the-sap-has-to-make" id="toc-baseline-and-the-decision-the-sap-has-to-make" class="nav-link" data-scroll-target="#baseline-and-the-decision-the-sap-has-to-make"><span class="header-section-number">12.3.4</span> Baseline, and the decision the SAP has to make</a></li>
+  </ul></li>
+  <li><a href="#example-1-parameters-values-and-analysis-timing" id="toc-example-1-parameters-values-and-analysis-timing" class="nav-link" data-scroll-target="#example-1-parameters-values-and-analysis-timing"><span class="header-section-number">12.4</span> Example 1: Parameters, Values and Analysis Timing</a>
+  <ul class="collapse">
+  <li><a href="#traceability-and-a-contrast-with-adae" id="toc-traceability-and-a-contrast-with-adae" class="nav-link" data-scroll-target="#traceability-and-a-contrast-with-adae"><span class="header-section-number">12.4.1</span> Traceability, and a contrast with ADAE</a></li>
+  <li><a href="#check-the-shape" id="toc-check-the-shape" class="nav-link" data-scroll-target="#check-the-shape"><span class="header-section-number">12.4.2</span> Check the shape</a></li>
+  <li><a href="#reference-ranges-and-controlled-terminology" id="toc-reference-ranges-and-controlled-terminology" class="nav-link" data-scroll-target="#reference-ranges-and-controlled-terminology"><span class="header-section-number">12.4.3</span> Reference ranges and controlled terminology</a></li>
+  </ul></li>
+  <li><a href="#example-2-baseline-change-and-the-flag-that-matters" id="toc-example-2-baseline-change-and-the-flag-that-matters" class="nav-link" data-scroll-target="#example-2-baseline-change-and-the-flag-that-matters"><span class="header-section-number">12.5</span> Example 2: Baseline, Change, and the Flag That Matters</a>
+  <ul class="collapse">
+  <li><a href="#the-flag-that-matters" id="toc-the-flag-that-matters" class="nav-link" data-scroll-target="#the-flag-that-matters"><span class="header-section-number">12.5.1</span> The flag that matters</a></li>
+  <li><a href="#what-the-choice-costs" id="toc-what-the-choice-costs" class="nav-link" data-scroll-target="#what-the-choice-costs"><span class="header-section-number">12.5.2</span> What the choice costs</a></li>
+  <li><a href="#one-subject-where-the-baseline-choice-really-matters" id="toc-one-subject-where-the-baseline-choice-really-matters" class="nav-link" data-scroll-target="#one-subject-where-the-baseline-choice-really-matters"><span class="header-section-number">12.5.3</span> One subject where the baseline choice really matters</a></li>
+  <li><a href="#the-finished-dataset" id="toc-the-finished-dataset" class="nav-link" data-scroll-target="#the-finished-dataset"><span class="header-section-number">12.5.4</span> The finished dataset</a></li>
+  </ul></li>
   <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">12.6</span> What Can Go Wrong</a>
   <ul class="collapse">
   <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">12.6.1</span> Common misinterpretations</a></li>
@@ -352,233 +404,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!--
-========================================================================
-SKELETON + VERIFY LIST — prose NOT yet written. DO NOT COMMIT as final.
-
-Fourth and final Part 3 session. Sole source = ADaMIG v1.3 (BDS is IN
-the ADaMIG, unlike OCCDS). Every [IG] claim PRE-CITED; author
-spot-checks. Reads data/sdtm/lb.csv + data/adam/adsl.csv.
-
-This is the payoff of the baseline thread the course has been building
-since sdtm-dm: DM -> Findings (LBLOBXFL deferral) -> adam-concepts A13
--> ADSL S5 -> here, where ABLFL is finally derived and the two flags
-are shown disagreeing on real data.
-
-PROPOSED CENTRAL INTUITION (for approval):
-  "ADLB is one row per subject, per parameter, per timepoint: PARAM says
-   what was measured, AVAL says what it was, and ABLFL nominates the one
-   row the analysis calls baseline — so that every change in the trial
-   is measured from a point the SAP chose, not one the lab happened to
-   flag."
-
-========================================================================
-VERIFY LIST — every ADaM specific this session intends to assert.
-
---- Structure ---
-
-L1 [ADaMIG v1.3 §2.3.2] BDS contains "1 or more records per subject, per
-   analysis parameter, per analysis timepoint." Analysis timepoint is
-   CONDITIONALLY required depending on the analysis; with no timepoint
-   the structure is one or more records per subject per parameter.
-   Also §2.3.2: BDS datasets "do not have counterparts in SDTM" — the
-   resemblance to the Findings class is superficial, since BDS may be
-   derived from Findings, Events, Interventions, Special-purpose
-   domains, other ADaM datasets, or any combination.
-
-L2 [ADaMIG v1.3 §2.3.2] "Although the ADSL is a source for
-   subject-level variables used in BDS datasets, this does not mean that
-   every ADSL variable should be included in the BDS dataset." Carry
-   what the analysis needs, not everything.
-
---- Parameters ---
-
-L3 [ADaMIG v1.3 §3.3.4.1, Table 3.3.4.1.1] PARAM (Req) "must include all
-   descriptive and qualifying information relevant to the analysis
-   purpose of the parameter" and "should be sufficient to describe
-   unambiguously the contents of AVAL and/or AVALC". Units are named as
-   a candidate qualifier. Max 200 chars (40 if it will become a variable
-   label in a transposed dataset). "In contrast to SDTM --TEST, no
-   additional variable is needed to further qualify PARAM." PARAM must
-   be present and populated on EVERY record.
-
-L4 [ADaMIG v1.3 §3.3.4.1] PARAMCD (Req): <=8 characters, must START WITH
-   A LETTER (not underscore), comprised only of A-Z, underscore and 0-9
-   — so that a transposed dataset yields valid variable names. One-to-one
-   with PARAM within a dataset. Populated on every record. PARAMN (Perm)
-   one-to-one with PARAM; if populated on any record for a PARAM it must
-   be populated on every record for that PARAM. PARCATy (Perm) is a
-   categorisation, many-to-one, NOT a qualifier for PARAM.
-   (Re-cited from adam-concepts, which previewed these constraints.)
-
-L5 [ADaMIG v1.3 §3.3.4.1] AVAL (Num, Cond) and AVALC (Char, Cond):
-   "either AVAL or AVALC must be present in the dataset"; AVAL is
-   required if AVALC is not present and vice versa. On a given record it
-   is permissible for either or both to be null. If both are populated
-   within a parameter there must be a one-to-one relationship between
-   them; AVALC "should not be used to categorize the values of AVAL"
-   (AVALCATy is for that).
-
---- Baseline: the thread's payoff ---
-
-L6 [ADaMIG v1.3 §3.3.8, Table 3.3.8.1] ABLFL (Char, value "Y", Cond)
-   identifies "the baseline record for each subject, parameter, and
-   baseline type (BASETYPE) combination". Conditionality is exact:
-   "ABLFL is required if BASE is present in the dataset." Also: "a
-   baseline record may be derived (e.g., it may be an average), in which
-   case DTYPE must also be populated." ABLFN (Perm) is its numeric
-   counterpart, one-to-one, both-or-neither populated.
-
-L7 [ADaMIG v1.3 §3.3.4.1] BASE (Num, Cond) "contains the value of AVAL
-   copied from a record within the parameter on which ABLFL = 'Y'".
-   Required if the dataset supports analysis or review of numeric
-   baseline value or functions of it. And the integrity rule: "if BASE
-   is populated for a parameter, and BASE is non-null for a subject for
-   that parameter, then there must be a record flagged by ABLFL for that
-   subject and parameter."
-
-L8 [ADaMIG v1.3 §3.3.4.1] CHG (Perm) "Equal to AVAL-BASE"; PCHG (Perm)
-   "Equal to ((AVAL-BASE)/BASE)*100". Both "should be populated for all
-   post-baseline records of that PARAM regardless of whether that record
-   is used for analysis", and — a precision worth teaching — "the
-   decision on how to populate pre-baseline and baseline values of CHG
-   is left to producer choice." So CHG at baseline being 0 vs null is a
-   documented sponsor decision, not a rule.
-   AUTHOR DECISION NEEDED (see decision 2 below).
-
-L9 [ADaMIG v1.3 §3.3.4.1] BASETYPE (Char, Cond) is "producer-defined
-   text describing the definition of baseline relevant to the value of
-   BASE on the current record", "required when there are multiple ways
-   that baseline is defined", and if used for any PARAM must be non-null
-   for ALL records of that PARAM where BASE or BASEC is non-null.
-   GLPX-001 has ONE baseline definition, so BASETYPE is not required and
-   is not built — taught as concept, with the pointer to §4.2.1.6 Rule 6
-   for the multiple-baseline case.
-
-L10 [ADaMIG v1.3 §3.3.5, Table 3.3.5.1] DTYPE (Char, codelist DTYPE,
-    extensible, Cond) "is used to denote, and must be populated, when
-    the value of AVAL or AVALC has been imputed or derived differently
-    than the other analysis values within the parameter", and is
-    "required to be populated even if AVAL and AVALC are null on the
-    derived record". For each DTYPE value "the precise derivation
-    algorithm must be defined in analysis variable metadata, even for
-    DTYPE values in the CDISC Controlled Terminology."
-    GLPX-001: every AVAL is an observed lab result and the baseline is
-    an observed record, so DTYPE is NULL throughout — which is itself
-    the lesson (null DTYPE = "this row is what was measured").
-
---- Timing ---
-
-L11 [ADaMIG v1.3 §3.3.3, Table 3.3.3.1] ADT (Cond) "the date associated
-    with AVAL and/or AVALC"; ADY (Cond) "the relative day of AVAL and/or
-    AVALC. The number of days from an anchor date (NOT NECESSARILY
-    DM.RFSTDTC) to ADT." — the SAME parenthesis as OCCDS's ASTDY, so the
-    ADAE lesson transfers exactly. Also: "if a dataset contains more than
-    one record per parameter per subject, then an SDTM or ADaM relative
-    timing variable must be present (ADY would meet this requirement)"
-    — which for ADLB makes ADY effectively mandatory. ADTF (Cond,
-    DATEFL) required if ADT was imputed.
-
-L12 [ADaMIG v1.3 §3.3.3, Table 3.3.3.1] AVISIT (Char, Cond) "required if
-    an analysis is done by nominal, assigned or analysis visit". Key
-    precisions: "AVISIT is a derived field and does not have to map to
-    VISIT from the SDTM"; "AVISIT represents the analysis visit of the
-    record, but it does not mean that the record was analyzed"; "values
-    of AVISIT are producer-defined"; and its derivation "should be
-    indicated in the variable metadata". AVISITN (Perm) numeric
-    counterpart.
-
---- Ranges ---
-
-L13 [ADaMIG v1.3 §3.3.7, Table 3.3.7.1] ANRLO/ANRHI (analysis normal
-    range lower/upper), ANRIND (Analysis Reference Range Indicator), and
-    BNRIND ("ANRIND of the baseline record identified by ABLFL").
-    These are the ADaM analysis versions of SDTM's LBORNRLO/LBORNRHI and
-    LBNRIND — same re-derivation principle as the flags.
-    VERIFY AT PROSE TIME: confirm each Core designation from the table
-    (read as Perm) before citing; I have not yet read the Core column
-    for every row of 3.3.7.1.
-
---- Identifiers, treatment, traceability ---
-
-L14 [ADaMIG v1.3 §3.3.1, Table 3.3.1.1] STUDYID, USUBJID Req; SUBJID,
-    SITEID Perm ("required in ADSL, but permissible in other datasets"
-    — the mirror of the ADSL claim S2). ASEQ (Perm) "sequence number
-    given to ensure uniqueness of subject records within an ADaM
-    dataset", useful "when the dataset is used as input to another ADaM
-    dataset".
-
-L15 [ADaMIG v1.3 §3.3.2, Table 3.3.2.1] TRTP (Cond) / TRTA are
-    record-level treatment variables; "at least one treatment variable
-    is required even in non-randomized trials", satisfied by any
-    subject- or record-level treatment variable (TRTxxP, TRTP, TRTA).
-    If populated, TRTP "must match at least one value of the character
-    planned treatment variables in ADSL". GLPX is single-period, so
-    TRTP = ADSL.TRT01P and TRTA = ADSL.TRT01A on every row.
-
-L16 [ADaMIG v1.3 §3.3.9, Table 3.3.9.1] SRCDOM / SRCVAR / SRCSEQ (all
-    Perm) give datapoint traceability: source domain, source variable,
-    source sequence number. Note the contrast with ADAE — OCCDS
-    explicitly EXCLUDES SRCVAR because it names the variable deriving
-    AVAL/AVALC and OCCDS has no AVAL (OCCDS v1.1, §3.2.2). Here AVAL
-    exists, so SRCVAR is meaningful: SRCDOM="LB", SRCVAR="LBSTRESN",
-    SRCSEQ=LBSEQ.
-
-L17 [ADaMIG v1.3 §3.3.8] ANLzzFL (Cond) is "to be used in addition to
-    other selection variables when the other selection variables in
-    combination are insufficient to identify the exact set of records
-    used for one or more analyses". GLPX-001 has exactly one row per
-    subject per parameter per visit (verified: TRUE), so USUBJID +
-    PARAMCD + AVISIT already identify records uniquely and ANL01FL is
-    NOT required. Taught as concept + why it is absent here.
-
---- [CT] to confirm live at prose time ---
-C1 DTYPE codelist — confirm it exists in sdtm.terminology and is
-   extensible; we populate none, so this is a "what it would be" check.
-C2 NRIND codelist for ANRIND values (NORMAL/HIGH/LOW), same codelist
-   SDTM's LBNRIND used in Findings.
-C3 PARAM/PARAMCD are SPONSOR-DEFINED — no codelist, the AGEGR1/ASEV
-   point for the third time. Demonstrate with is_term() returning FALSE
-   or simply state it; decide at prose time which is less repetitive.
-All pasted as real output; none recalled.
-
---- Explicitly NOT asserted / deferred ---
-- Time-to-event variables (§3.3.6) — named, not built.
-- Criteria variables CRITy/CRITyFL (§3.3.4.3) — out of scope.
-- Analysis visit WINDOWING (§3.3.5, Table 3.3.5.2) — GLPX visits are
-  already clean nominal visits; windowing named, not built.
-- VS (vital signs) — this session is labs only.
-========================================================================
-
-GLPX LB DATA REALITY (probed, for sizing):
-  12388 rows, 400 subjects, 4 tests (ALT/CREAT/GLUC/HBA1C), 8 visits
-  (SCREENING, BASELINE, WEEK 4/8/12/16/20/26). 3097 rows per test.
-  One row per subject/test/visit — VERIFIED unique, no duplicates
-  (D6 was removed during the SDTM build).
-  No null LBSTRESN. D7 (blank unit) was resolved in SDTM: units are
-  populated for 101-037.
-  LBNRIND: HIGH 6520 / NORMAL 5774 / LOW 94.
-  D5 lives at SCREENING: 101-052, HbA1c 13.9%, HIGH (range 4.0-5.6).
-
-  *** THE BASELINE PAYOFF, QUANTIFIED ***
-  1600 subject-test pairs. SDTM LBLOBXFL lands on SCREENING for 1300
-  of them (81.2%) and on BASELINE for 300. So an ABLFL defined as "the
-  BASELINE visit record" DISAGREES with LBLOBXFL on 1300 pairs.
-  Every one of the 400 subjects has at least one test that disagrees
-  (165 disagree on all four; 235 on some).
-  Screening and baseline values coincide for only 86 of 1600 pairs, so
-  the disagreement is almost always a different NUMBER, not just a
-  different row.
-  Impact on the headline result (HbA1c, week 26 mean change):
-    ABLFL baseline  : GLPX -1.363, Placebo -0.294, difference -1.069
-    LBLOBXFL instead: GLPX -1.440, Placebo -0.306, difference -1.138
-  A 0.069 %-point shift in the primary endpoint from choosing the wrong
-  baseline flag. Small, real, and not the number the SAP defined —
-  frame it exactly that way, do NOT overclaim it as decisive.
-
-INFRASTRUCTURE: build_adam.R gains build_adlb() -> committed
-data/adam/adlb.csv, completing data/adam/ for the TLF sessions.
--->
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -639,70 +464,678 @@ data/adam/adlb.csv, completing data/adam/ for the TLF sessions.
 <p>The last session of Part 3, and the one the baseline thread has been building towards since Part 2. For self-paced study, split after Example 1.</p>
 </div>
 </div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How to Use the Code in This Session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Run R from the project root, as in earlier sessions.</p>
+<p>This session reads <code>data/sdtm/lb.csv</code> and <code>data/adam/adsl.csv</code>.</p>
+</div>
+</div>
 <section id="sec-adlb" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="sec-adlb"><span class="header-section-number">12.1</span> When Do You Use This?</h2>
-<p>TODO (prose pass): scenarios — the primary endpoint is a <em>change</em> from baseline, so something must define baseline; a safety review needs every lab value classified against its reference range at every visit; a reviewer needs to see the measured value and the analysis value side by side. Ends with the bold question: <strong>when the whole trial is measured as change from baseline, who decides which value baseline is?</strong> Builds on <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, <a href="../sessions/adsl.html">ADSL</a>, and <a href="../sessions/sdtm-findings.html">Findings</a> where <code>LBLOBXFL</code> was deliberately left unfinished.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The primary endpoint of GLPX-001 is a <em>change</em> from baseline in HbA1c. Before anyone can compute it, something has to decide which value baseline is. A safety review needs every lab result classified against its reference range at every visit. A reviewer needs to see the measured value and the analysis value side by side, and to know which record the change was measured from.</p>
+<p>All three need the same thing: a dataset where each row is one measurement, described well enough to stand on its own, with the baseline it is compared against carried alongside it. That raises the question this session answers: <strong>when the whole trial is measured as change from baseline, who decides which value baseline is?</strong></p>
+<p>Builds on <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, <a href="../sessions/adsl.html">ADSL</a>, and <a href="../sessions/sdtm-findings.html">Findings</a>, where <code>LBLOBXFL</code> was deliberately left unfinished.</p>
+</div>
+</div>
 </section>
 <section id="learning-objectives" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">12.2</span> Learning Objectives</h2>
-<p>TODO after approval — build a BDS dataset one row per subject per parameter per timepoint; define PARAM/PARAMCD and know why they carry no codelist; derive AVAL, ADT, ADY and AVISIT; derive ABLFL from the SAP’s definition and BASE/CHG/PCHG from it; explain why ADaM’s baseline flag and SDTM’s may disagree, and show what that costs.</p>
+<p>After completing this session you will be able to:</p>
+<ul>
+<li>Build a BDS dataset with one row per subject, per parameter, per timepoint, and say why that is the structure</li>
+<li>Define <code>PARAM</code> and <code>PARAMCD</code> correctly, and explain why neither has a codelist to check against</li>
+<li>Derive <code>AVAL</code>, <code>ADT</code>, <code>ADY</code> and <code>AVISIT</code>, and know which of them the analysis is free to define</li>
+<li>Derive <code>ABLFL</code> from a stated baseline definition, and <code>BASE</code>, <code>CHG</code> and <code>PCHG</code> from it</li>
+<li>Explain why ADaM’s baseline flag and SDTM’s may disagree, and measure what that disagreement costs</li>
+</ul>
 </section>
-<section id="background-todo-one-row-per-subject-parameter-timepoint" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="background-todo-one-row-per-subject-parameter-timepoint"><span class="header-section-number">12.3</span> Background: TODO — One Row per Subject, Parameter, Timepoint</h2>
-<!-- Prose pass: BDS structure and why it is not the Findings class
-  [L1, L2]; parameters as the organising idea [L3, L4, L5]; timing
-  [L11, L12]; ranges [L13]; treatment and traceability [L14, L15, L16];
-  then baseline as the SAP's decision [L6, L7, L8, L9, L10] and the
-  §4.5.9 contrast with LBLOBXFL. Central intuition callout. -->
+<section id="background-one-row-per-subject-parameter-timepoint" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="background-one-row-per-subject-parameter-timepoint"><span class="header-section-number">12.3</span> Background: One Row per Subject, Parameter, Timepoint</h2>
+<p><em>Estimated time: ~25 minutes (reading)</em></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The one thing to remember
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>ADLB is one row per subject, per parameter, per timepoint: <code>PARAM</code> says what was measured, <code>AVAL</code> says what it was, and <code>ABLFL</code> nominates the one row the analysis calls baseline, so that every change in the trial is measured from a point the SAP chose rather than one the lab happened to flag.</strong></p>
+</div>
+</div>
+<p>The Basic Data Structure is the workhorse of ADaM, and its shape is stated precisely: a BDS dataset contains “1 or more records per subject, per analysis parameter, per analysis timepoint” (ADaMIG v1.3, §2.3.2). Analysis timepoint is conditionally required; where an analysis has no timepoint, the structure is one or more records per subject per parameter.</p>
+<p>That is a vertical shape, and it invites a comparison the guide explicitly warns against:</p>
+<blockquote class="blockquote">
+<p>ADaM dataset structures do not have counterparts in SDTM. Because the BDS tends toward a vertical design, some might perceive it as similar to the SDTM Findings class. However, BDS datasets may be derived from Findings, Events, Interventions and Special-purpose SDTM domains, other ADaM datasets, or any combination thereof (ADaMIG v1.3, §2.3.2).</p>
+</blockquote>
+<p>Our ADLB does happen to come from a Findings domain, which makes the resemblance easy to over-read. Resist it. BDS is defined by what it is <em>for</em>, not by which SDTM class it happened to come from.</p>
+<p>One more caution before the variables, because it is easy to get wrong in the opposite direction. ADSL is a source of subject-level variables for BDS, but “this does not mean that every ADSL variable should be included in the BDS dataset” (ADaMIG v1.3, §2.3.2). Carry what the analysis needs. A BDS dataset with all 28 ADSL columns bolted on is not more traceable, only wider.</p>
+<section id="parameters-what-was-measured" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="parameters-what-was-measured"><span class="header-section-number">12.3.1</span> Parameters: what was measured</h3>
+<p>In SDTM, a lab result needs <code>LBTESTCD</code>, <code>LBTEST</code> and <code>LBSTRESU</code> before you know what it is. In BDS, one variable does that work. <code>PARAM</code> is Required, and it “must include all descriptive and qualifying information relevant to the analysis purpose of the parameter” and “should be sufficient to describe unambiguously the contents of <code>AVAL</code> and/or <code>AVALC</code>” (ADaMIG v1.3, §3.3.4.1). Units are named as a candidate qualifier, which is why our parameters read <code>Hemoglobin A1C (%)</code> rather than <code>Hemoglobin A1C</code> with the unit parked in a neighbouring column.</p>
+<p>The guide is explicit about the contrast: “in contrast to SDTM <code>--TEST</code>, no additional variable is needed to further qualify <code>PARAM</code>” (ADaMIG v1.3, §3.3.4.1). <code>PARAM</code> is limited to 200 characters, and the guide suggests keeping it to 40 if it will be used as a variable label in a transposed dataset.</p>
+<p><code>PARAMCD</code> is its short form, also Required, and it carries constraints that look fussy until you know their purpose:</p>
+<blockquote class="blockquote">
+<p>The values of <code>PARAMCD</code> must be no more than 8 characters in length, start with a letter (not underscore), and be comprised only of letters (A-Z), underscore (_), and numerals (0-9) (ADaMIG v1.3, §3.3.4.1).</p>
+</blockquote>
+<p>The reason is given in the next sentence: those are exactly the constraints that let a BDS dataset be transposed so that values of <code>PARAMCD</code> become valid variable names. There must be a one-to-one relationship between <code>PARAM</code> and <code>PARAMCD</code> within a dataset, and both must be present and populated on every record.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>There is no codelist for <code>PARAMCD</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You met this with <code>AGEGR1</code> in <a href="../sessions/adsl.html">ADSL</a> and <code>ASEV</code> in <a href="../sessions/adae.html">ADAE</a>, and it is worth stating a third time because it is the single most common misunderstanding about ADaM: <strong>analysis parameters are sponsor-defined.</strong> There is no CDISC codelist of <code>PARAMCD</code> values to validate against. What governs them is the character constraint above and the requirement that <code>PARAM</code> describe <code>AVAL</code> unambiguously.</p>
+<p>Our <code>PARAMCD</code> values happen to read <code>HBA1C</code>, <code>GLUC</code>, <code>ALT</code> and <code>CREAT</code>, which are also <code>LBTESTCD</code> submission values. That is a deliberate convenience for readability, not a requirement, and it is worth not being misled by it: nothing obliges an analysis parameter to be named after the SDTM test it came from, and a highly derived parameter has no SDTM test to be named after at all.</p>
+</div>
+</div>
+<p><code>AVAL</code> (numeric) and <code>AVALC</code> (character) hold the value itself. Both are Conditional, and the condition is mutual: “either <code>AVAL</code> or <code>AVALC</code> must be present in the dataset”, each being required if the other is absent (ADaMIG v1.3, §3.3.4.1). Where both are populated within a parameter there must be a one-to-one relationship between them, and <code>AVALC</code> “should not be used to categorize the values of <code>AVAL</code>”. Categorising is what <code>AVALCATy</code> is for.</p>
 </section>
-<section id="example-1-todo-parameters-values-and-analysis-timing" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="example-1-todo-parameters-values-and-analysis-timing"><span class="header-section-number">12.4</span> Example 1: TODO — Parameters, Values and Analysis Timing</h2>
-<!-- Plan (code executed; reads data/sdtm/lb.csv + data/adam/adsl.csv):
-  PARAM/PARAMCD/PARAMN for the 4 tests, units inside PARAM [L3, L4];
-  AVAL from LBSTRESN [L5]; ADT/ADY anchored to ADSL.TRTSDT [L11];
-  AVISIT/AVISITN from VISIT [L12]; TRTP/TRTA from ADSL [L15];
-  SRCDOM/SRCVAR/SRCSEQ [L16]; ANRLO/ANRHI/ANRIND [L13]. Show the BDS
-  shape: 12388 rows, one per subject/param/visit. Note ANL01FL not
-  required and why [L17]. -->
+<section id="timing-the-anchor-moves-again" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="timing-the-anchor-moves-again"><span class="header-section-number">12.3.2</span> Timing: the anchor moves again</h3>
+<p><code>ADT</code> is “the date associated with <code>AVAL</code> and/or <code>AVALC</code>”, and <code>ADY</code> is its relative day. If you read <a href="../sessions/adae.html">ADAE</a>, the definition of <code>ADY</code> will look familiar:</p>
+<blockquote class="blockquote">
+<p>The number of days from an anchor date (<strong>not necessarily <code>DM.RFSTDTC</code></strong>) to <code>ADT</code> (ADaMIG v1.3, §3.3.3).</p>
+</blockquote>
+<p>That is the same parenthesis OCCDS used for <code>ASTDY</code>, and it makes the same point. The study-day arithmetic is fixed and has no day zero. The day it counts <em>from</em> is the analysis’s choice, and must be documented. We anchor to <code>ADSL.TRTSDT</code>, first dose.</p>
+<p>There is also a structural requirement hiding in that table: “if a dataset contains more than one record per parameter per subject, then an SDTM or ADaM relative timing variable must be present (<code>ADY</code> would meet this requirement)” (ADaMIG v1.3, §3.3.3). ADLB has eight records per parameter per subject, so <code>ADY</code> is not optional decoration.</p>
+<p><code>AVISIT</code> is Conditional, “required if an analysis is done by nominal, assigned or analysis visit”, and it comes with three precisions that matter more than they look:</p>
+<ul>
+<li>“<code>AVISIT</code> is a derived field and <strong>does not have to map to <code>VISIT</code> from the SDTM</strong>”</li>
+<li>“<code>AVISIT</code> represents the analysis visit of the record, but <strong>it does not mean that the record was analyzed</strong>”</li>
+<li>“Values of <code>AVISIT</code> are producer-defined” (all ADaMIG v1.3, §3.3.3)</li>
+</ul>
+<p>GLPX-001 has a clean nominal visit schedule, so our <code>AVISIT</code> copies <code>VISIT</code> unchanged. That is a defensible choice for this trial, not a general rule. In studies where subjects attend outside the protocol window, <code>AVISIT</code> is where windowing decisions get recorded, and it can differ from <code>VISIT</code> on most rows.</p>
 </section>
-<section id="example-2-todo-baseline-change-and-the-flag-that-matters" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="example-2-todo-baseline-change-and-the-flag-that-matters"><span class="header-section-number">12.5</span> Example 2: TODO — Baseline, Change, and the Flag That Matters</h2>
-<!-- Plan: derive ABLFL = the BASELINE visit record per subject/param
-  [L6]; BASE copied from the ABLFL row [L7]; CHG/PCHG [L8]; DTYPE null
-  and what that means [L10]; BASETYPE not needed and why [L9].
-  Then THE PAYOFF: compare ABLFL against SDTM LBLOBXFL — 1300 of 1600
-  subject-test pairs disagree; recompute the week-26 HbA1c result both
-  ways (-1.069 vs -1.138) and frame it as "not the number the SAP
-  defined", without overclaiming. Close the thread opened in Findings.
-  Conformance: one row per subject/param/visit; BASE non-null implies an
-  ABLFL row; PARAM/PARAMCD one-to-one and populated everywhere. -->
+<section id="ranges" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="ranges"><span class="header-section-number">12.3.3</span> Ranges</h3>
+<p>The reference range you built in <a href="../sessions/sdtm-findings.html">Findings</a> has ADaM counterparts: <code>ANRLO</code> and <code>ANRHI</code> for the limits, <code>ANRIND</code> for the indicator, and <code>BNRIND</code> for the indicator on the baseline record. All four are Permissible (ADaMIG v1.3, §3.3.7).</p>
+<p>Note how they are described. <code>ANRIND</code> “indicates where <code>AVAL</code> or <code>AVALC</code> falls with respect to the normal reference range for analysis; <strong>may be based on SDTM <code>--NRIND</code> or an imputed or assigned value</strong>”, and <code>BNRIND</code> is “<code>ANRIND</code> of the baseline record identified by <code>ABLFL</code>” (ADaMIG v1.3, §3.3.7). The pattern is the one you have now seen for population flags, for baseline, and for treatment emergence: SDTM’s version is available and often correct, and the analysis variable is still the analysis’s own to derive.</p>
+</section>
+<section id="baseline-and-the-decision-the-sap-has-to-make" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="baseline-and-the-decision-the-sap-has-to-make"><span class="header-section-number">12.3.4</span> Baseline, and the decision the SAP has to make</h3>
+<p>Now the centre of the session.</p>
+<p><code>ABLFL</code> “identifies the baseline record for each subject, parameter, and baseline type (<code>BASETYPE</code>) combination”, and its conditionality is precise: <strong>“<code>ABLFL</code> is required if <code>BASE</code> is present in the dataset”</strong> (ADaMIG v1.3, §3.3.8). <code>BASE</code> in turn “contains the value of <code>AVAL</code> copied from a record within the parameter on which <code>ABLFL = "Y"</code>”, and the two are locked together by an integrity rule: if <code>BASE</code> is populated for a parameter and is non-null for a subject, “then there must be a record flagged by <code>ABLFL</code> for that subject and parameter” (ADaMIG v1.3, §3.3.4.1).</p>
+<p>From there the derived columns follow mechanically. <code>CHG</code> is “equal to <code>AVAL-BASE</code>” and <code>PCHG</code> is “equal to <code>((AVAL-BASE)/BASE)*100</code>”, both Permissible, and both “should be populated for all post-baseline records of that <code>PARAM</code> regardless of whether that record is used for analysis” (ADaMIG v1.3, §3.3.4.1).</p>
+<p>What the guide does <em>not</em> do is tell you what baseline is. It gives you the machinery to record a decision, and leaves the decision to the statistical analysis plan. Two further variables mark the edges of that freedom:</p>
+<ul>
+<li><strong><code>BASETYPE</code></strong> is “producer-defined text describing the definition of baseline relevant to the value of <code>BASE</code> on the current record”, and is “required when there are multiple ways that baseline is defined” (ADaMIG v1.3, §3.3.4.1). GLPX-001 has one definition, so <code>BASETYPE</code> is not required here and is not built. A study with a screening baseline, a double-blind baseline and an open-label-extension baseline needs it on every affected row (see ADaMIG v1.3, §4.2.1.6, Rule 6).</li>
+<li><strong><code>DTYPE</code></strong> “is used to denote, and must be populated, when the value of <code>AVAL</code> or <code>AVALC</code> has been imputed or derived differently than the other analysis values within the parameter” (ADaMIG v1.3, §3.3.5). A baseline record “may be derived (e.g., it may be an average), in which case <code>DTYPE</code> must also be populated” (ADaMIG v1.3, §3.3.8). Every <code>AVAL</code> in our ADLB is an observed lab result, so <code>DTYPE</code> is null throughout. Null <code>DTYPE</code> is a statement, not an omission: it says this row is what was measured.</li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>GLPX-001’s baseline definition, and why it is not “the BASELINE visit”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The obvious definition is “the record at the visit named BASELINE.” For this trial that would be wrong, and the data says so.</p>
+<p>GLPX-001’s baseline visit is scheduled in a window that, for many subjects, falls <em>after</em> the first dose. Flagging the BASELINE visit record would make <strong>958 of 1600</strong> subject-parameter baselines post-dose: values measured after the subject had already started study drug, used as the anchor for measuring the drug’s effect.</p>
+<p>So the SAP for this course defines baseline the way real protocols usually word it: <strong>the last non-missing value on or before the first dose of study drug.</strong> Example 1 checks that this produces zero post-dose baselines, and Example 2 shows what it costs and what it buys.</p>
+<p>The general lesson is the one worth carrying: a baseline definition is a claim about which measurement is untreated. Check it against the dosing dates rather than trusting the visit label.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="example-1-parameters-values-and-analysis-timing" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="example-1-parameters-values-and-analysis-timing"><span class="header-section-number">12.4</span> Example 1: Parameters, Values and Analysis Timing</h2>
+<p><em>Estimated time: ~25 minutes (worked example)</em></p>
+<p>Both inputs, as in ADAE: the measurements from SDTM, the subject-level context from ADSL.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>lb <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/sdtm/lb.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_character</span>()))</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>adsl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/adam/adsl.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">lb_rows =</span> <span class="fu">nrow</span>(lb), <span class="at">subjects =</span> <span class="fu">n_distinct</span>(lb<span class="sc">$</span>USUBJID),</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">tests =</span> <span class="fu">n_distinct</span>(lb<span class="sc">$</span>LBTESTCD))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> lb_rows subjects    tests 
+   12388      400        4 </code></pre>
+</div>
+</div>
+<p>Parameters first, because in BDS the parameter is the organising idea. Define them in one place, with the units inside <code>PARAM</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>adlb_params <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>LBTESTCD, <span class="sc">~</span>PARAMCD, <span class="sc">~</span>PARAM,                           <span class="sc">~</span>PARAMN,</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"HBA1C"</span>,   <span class="st">"HBA1C"</span>,  <span class="st">"Hemoglobin A1C (%)"</span>,                   <span class="dv">1</span>L,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GLUC"</span>,    <span class="st">"GLUC"</span>,   <span class="st">"Glucose (mmol/L)"</span>,                     <span class="dv">2</span>L,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ALT"</span>,     <span class="st">"ALT"</span>,    <span class="st">"Alanine Aminotransferase (U/L)"</span>,       <span class="dv">3</span>L,</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"CREAT"</span>,   <span class="st">"CREAT"</span>,  <span class="st">"Creatinine (umol/L)"</span>,                  <span class="dv">4</span>L</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># PARAMCD constraints (ADaMIG v1.3, §3.3.4.1): &lt;= 8 chars, starts with a</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># letter, letters/underscore/digits only.</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>adlb_params <span class="sc">|&gt;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">chars =</span> <span class="fu">nchar</span>(PARAMCD),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>         <span class="at">ok    =</span> chars <span class="sc">&lt;=</span> <span class="dv">8</span> <span class="sc">&amp;</span> <span class="fu">grepl</span>(<span class="st">"^[A-Za-z][A-Za-z0-9_]*$"</span>, PARAMCD))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 6
+  LBTESTCD PARAMCD PARAM                          PARAMN chars ok   
+  &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;                           &lt;int&gt; &lt;int&gt; &lt;lgl&gt;
+1 HBA1C    HBA1C   Hemoglobin A1C (%)                  1     5 TRUE 
+2 GLUC     GLUC    Glucose (mmol/L)                    2     4 TRUE 
+3 ALT      ALT     Alanine Aminotransferase (U/L)      3     3 TRUE 
+4 CREAT    CREAT   Creatinine (umol/L)                 4     5 TRUE </code></pre>
+</div>
+</div>
+<p>Now the spine: values, timing, ranges, treatment and traceability.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>adlb_spine <span class="ot">&lt;-</span> lb <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(adlb_params, <span class="at">by =</span> <span class="st">"LBTESTCD"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    adsl <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, SUBJID, SITEID, TRT01P, TRT01A, TRTSDT, SAFFL),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">by =</span> <span class="st">"USUBJID"</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">LBSEQ =</span> <span class="fu">as.integer</span>(LBSEQ),</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">AVAL  =</span> <span class="fu">as.numeric</span>(LBSTRESN),</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">AVISIT  =</span> VISIT,                       <span class="co"># producer-defined; VISIT is clean here</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">AVISITN =</span> <span class="fu">as.integer</span>(VISITNUM),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">ADT =</span> <span class="fu">as.Date</span>(LBDTC),</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">ADY =</span> <span class="fu">if_else</span>(ADT <span class="sc">&gt;=</span> TRTSDT,           <span class="co"># no day 0, anchored to ADSL.TRTSDT</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">as.integer</span>(ADT <span class="sc">-</span> TRTSDT) <span class="sc">+</span> <span class="dv">1</span>L,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">as.integer</span>(ADT <span class="sc">-</span> TRTSDT)),</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">ANRLO  =</span> <span class="fu">as.numeric</span>(LBSTNRLO),         <span class="co"># analysis versions of the range</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">ANRHI  =</span> <span class="fu">as.numeric</span>(LBSTNRHI),</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">ANRIND =</span> LBNRIND,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRTP =</span> TRT01P,                         <span class="co"># record-level treatment</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">TRTA =</span> TRT01A,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">SRCDOM =</span> <span class="st">"LB"</span>,                         <span class="co"># datapoint traceability</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">SRCVAR =</span> <span class="st">"LBSTRESN"</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">SRCSEQ =</span> LBSEQ,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">DTYPE =</span> <span class="cn">NA_character_</span>                  <span class="co"># every AVAL is observed</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>adlb_spine <span class="sc">|&gt;</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-010"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PARAM, AVISIT, ADT, ADY, AVAL, ANRLO, ANRHI, ANRIND)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 8
+  PARAM              AVISIT    ADT          ADY  AVAL ANRLO ANRHI ANRIND
+  &lt;chr&gt;              &lt;chr&gt;     &lt;date&gt;     &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt; 
+1 Hemoglobin A1C (%) SCREENING 2024-03-12   -16   8.2     4   5.6 HIGH  
+2 Hemoglobin A1C (%) BASELINE  2024-03-28     1   8.6     4   5.6 HIGH  
+3 Hemoglobin A1C (%) WEEK 4    2024-04-26    30   8.1     4   5.6 HIGH  
+4 Hemoglobin A1C (%) WEEK 8    2024-05-25    59   8.3     4   5.6 HIGH  
+5 Hemoglobin A1C (%) WEEK 12   2024-06-21    86   8.1     4   5.6 HIGH  
+6 Hemoglobin A1C (%) WEEK 16   2024-07-20   115   8.2     4   5.6 HIGH  
+7 Hemoglobin A1C (%) WEEK 20   2024-08-18   144   8.3     4   5.6 HIGH  
+8 Hemoglobin A1C (%) WEEK 26   2024-09-24   181   7.8     4   5.6 HIGH  </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Run both chunks. Eight rows for one subject and one parameter, which is the BDS shape in miniature: same subject, same <code>PARAM</code>, one row per timepoint.</p>
+<p>Look at <code>ADY</code>. Screening is negative at -16, and the sequence steps up to 181 by week 26 without ever passing through zero. That is the study-day rule from <a href="../sessions/sdtm-dm.html">The DM Domain</a>, now anchored to first dose rather than to <code>RFSTDTC</code>.</p>
+</div>
+</div>
+<section id="traceability-and-a-contrast-with-adae" class="level3" data-number="12.4.1">
+<h3 data-number="12.4.1" class="anchored" data-anchor-id="traceability-and-a-contrast-with-adae"><span class="header-section-number">12.4.1</span> Traceability, and a contrast with ADAE</h3>
+<p><code>SRCDOM</code>, <code>SRCVAR</code> and <code>SRCSEQ</code> record where each analysis value came from (ADaMIG v1.3, §3.3.9). It is worth pausing on <code>SRCVAR</code>, because <a href="../sessions/adae.html">ADAE</a> explicitly did not have it: OCCDS excludes <code>SRCVAR</code> because it names the variable that derives <code>AVAL</code> or <code>AVALC</code>, and OCCDS has no <code>AVAL</code> (OCCDS v1.1, §3.2.2).</p>
+<p>Here there is an <code>AVAL</code>, so naming its source variable is meaningful: every row records that its value came from <code>LB.LBSTRESN</code>, at the sequence number in <code>SRCSEQ</code>. Any number in a table built from this dataset can be walked back to one row of one SDTM domain.</p>
+</section>
+<section id="check-the-shape" class="level3" data-number="12.4.2">
+<h3 data-number="12.4.2" class="anchored" data-anchor-id="check-the-shape"><span class="header-section-number">12.4.2</span> Check the shape</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">rows            =</span> <span class="fu">nrow</span>(adlb_spine),</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">subjects        =</span> <span class="fu">n_distinct</span>(adlb_spine<span class="sc">$</span>USUBJID),</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">parameters      =</span> <span class="fu">n_distinct</span>(adlb_spine<span class="sc">$</span>PARAMCD),</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">one_row_per_key =</span> <span class="fu">nrow</span>(<span class="fu">distinct</span>(adlb_spine, USUBJID, PARAMCD, AVISITN)) <span class="sc">==</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                    <span class="fu">nrow</span>(adlb_spine))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           rows        subjects      parameters one_row_per_key 
+          12388             400               4               1 </code></pre>
+</div>
+</div>
+<p>12,388 rows, one per subject per parameter per visit, with no duplicates. That last check matters for a reason worth naming.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why <code>ANL01FL</code> is absent
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>ANLzzFL</code> is a conditionally required flag, “to be used in addition to other selection variables when the other selection variables in combination are insufficient to identify the exact set of records used for one or more analyses” (ADaMIG v1.3, §3.3.8).</p>
+<p>The check above is exactly that condition, tested. <code>USUBJID</code> plus <code>PARAMCD</code> plus <code>AVISIT</code> already identify one record, so nothing is ambiguous and no analysis flag is needed. Added to a dataset like this, <code>ANL01FL</code> would be noise.</p>
+<p>The condition fails as soon as a subject has two records for the same parameter and visit, which happens routinely: an unscheduled repeat, a record windowed into the same visit, a derived row sitting beside the observed one. Then something has to say which record the analysis used, and <code>ANLzzFL</code> is that something.</p>
+</div>
+</div>
+</section>
+<section id="reference-ranges-and-controlled-terminology" class="level3" data-number="12.4.3">
+<h3 data-number="12.4.3" class="anchored" data-anchor-id="reference-ranges-and-controlled-terminology"><span class="header-section-number">12.4.3</span> Reference ranges and controlled terminology</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>nrind_code <span class="ot">&lt;-</span> (<span class="fu">ct</span>(<span class="st">"list"</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"NRIND"</span>))<span class="sc">$</span>clst_code[<span class="dv">1</span>]</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>adlb_spine <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(PARAMCD, ANRIND) <span class="sc">|&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> ANRIND, <span class="at">values_from =</span> n, <span class="at">values_fill =</span> <span class="dv">0</span>L)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 4
+  PARAMCD  HIGH   LOW NORMAL
+  &lt;chr&gt;   &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+1 ALT       280    24   2793
+2 CREAT      76    70   2951
+3 GLUC     3084     0     13
+4 HBA1C    3080     0     17</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">codelist  =</span> nrind_code,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">all_valid =</span> <span class="fu">all</span>(<span class="fu">is_term</span>(<span class="fu">unique</span>(adlb_spine<span class="sc">$</span>ANRIND), <span class="at">clst_code =</span> nrind_code)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> codelist all_valid 
+ "C78736"    "TRUE" </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>ANRIND</code> validates against <code>NRIND</code> (<code>C78736</code>), whose members are <code>ABNORMAL</code>, <code>HIGH</code>, <code>LOW</code> and <code>NORMAL</code>.</p>
+<p>Then read the counts, because they are a reminder of what trial this is. HbA1c is <code>HIGH</code> on 3,080 of 3,097 records and <code>NORMAL</code> on 17; glucose is <code>HIGH</code> on 3,084. In a type 2 diabetes trial that is not a data problem, it is the disease. ALT and creatinine, which are safety labs rather than efficacy ones, sit mostly <code>NORMAL</code>, as you would hope.</p>
+<p>A reference-range indicator answers “is this value inside the normal range.” It does not answer “is this value concerning,” and in a population selected for an abnormal lab it will say <code>HIGH</code> almost everywhere.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="example-2-baseline-change-and-the-flag-that-matters" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="example-2-baseline-change-and-the-flag-that-matters"><span class="header-section-number">12.5</span> Example 2: Baseline, Change, and the Flag That Matters</h2>
+<p><em>Estimated time: ~25 minutes (worked example)</em></p>
+<p>Now derive baseline from the SAP’s definition: the last non-missing value on or before first dose. Under the no-day-zero rule, <code>ADY == 1</code> is the dosing day itself, so “on or before” is <code>ADY &lt;= 1</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>adlb <span class="ot">&lt;-</span> adlb_spine <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(USUBJID, PARAMN, AVISITN) <span class="sc">|&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(USUBJID, PARAMCD) <span class="sc">|&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">bl_ady =</span> <span class="cf">if</span> (<span class="fu">any</span>(ADY <span class="sc">&lt;=</span> <span class="dv">1</span>L)) <span class="fu">max</span>(ADY[ADY <span class="sc">&lt;=</span> <span class="dv">1</span>L]) <span class="cf">else</span> <span class="cn">NA_integer_</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ABLFL  =</span> <span class="fu">if_else</span>(<span class="sc">!</span><span class="fu">is.na</span>(bl_ady) <span class="sc">&amp;</span> ADY <span class="sc">==</span> bl_ady, <span class="st">"Y"</span>, <span class="cn">NA_character_</span>),</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">BASE   =</span> AVAL[<span class="fu">match</span>(<span class="st">"Y"</span>, ABLFL)],</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">BNRIND =</span> ANRIND[<span class="fu">match</span>(<span class="st">"Y"</span>, ABLFL)],</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">CHG    =</span> <span class="fu">if_else</span>(ADY <span class="sc">&gt;=</span> bl_ady, AVAL <span class="sc">-</span> BASE, <span class="cn">NA_real_</span>),</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">PCHG   =</span> <span class="fu">if_else</span>(ADY <span class="sc">&gt;=</span> bl_ady <span class="sc">&amp;</span> BASE <span class="sc">!=</span> <span class="dv">0</span>,</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                     <span class="dv">100</span> <span class="sc">*</span> (AVAL <span class="sc">-</span> BASE) <span class="sc">/</span> BASE, <span class="cn">NA_real_</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>bl_ady)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Which visit does the baseline land on, and is any of it post-dose?</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>adlb <span class="sc">|&gt;</span> <span class="fu">filter</span>(ABLFL <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">|&gt;</span> <span class="fu">count</span>(AVISIT, <span class="at">post_dose =</span> ADY <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  AVISIT    post_dose     n
+  &lt;chr&gt;     &lt;lgl&gt;     &lt;int&gt;
+1 BASELINE  FALSE       642
+2 SCREENING FALSE       958</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Two things to read here.</p>
+<p>First, <strong>no baseline is post-dose</strong>. That was the point of defining baseline by dosing date rather than by visit label, and the check confirms the definition did what it claimed.</p>
+<p>Second, the baseline is not at the same visit for everyone: 642 subject-parameter pairs take it from the BASELINE visit and 958 from SCREENING. That is not an inconsistency. It is one rule, applied to subjects whose visits happened on different days relative to their own first dose, which is what a real schedule looks like.</p>
+</div>
+</div>
+<p>Now the conformance rules the ADaMIG states for these variables:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>bl <span class="ot">&lt;-</span> adlb <span class="sc">|&gt;</span> <span class="fu">filter</span>(ABLFL <span class="sc">==</span> <span class="st">"Y"</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="fu">c</span>(<span class="st">"exactly one ABLFL per subject and parameter (3.3.8)"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="st">"BASE non-null implies an ABLFL record exists (3.3.4.1)"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"CHG is 0 on the baseline record (sponsor convention)"</span>,</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">"DTYPE null: every AVAL observed, none derived (3.3.5)"</span>),</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">pass =</span> <span class="fu">c</span>(</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(<span class="fu">count</span>(bl, USUBJID, PARAMCD)<span class="sc">$</span>n <span class="sc">==</span> <span class="dv">1</span>),</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(<span class="sc">!</span><span class="fu">is.na</span>(adlb<span class="sc">$</span>BASE)),</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(bl<span class="sc">$</span>CHG <span class="sc">==</span> <span class="dv">0</span>),</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">all</span>(<span class="fu">is.na</span>(adlb<span class="sc">$</span>DTYPE))</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  check                                                  pass 
+  &lt;chr&gt;                                                  &lt;lgl&gt;
+1 exactly one ABLFL per subject and parameter (3.3.8)    TRUE 
+2 BASE non-null implies an ABLFL record exists (3.3.4.1) TRUE 
+3 CHG is 0 on the baseline record (sponsor convention)   TRUE 
+4 DTYPE null: every AVAL observed, none derived (3.3.5)  TRUE </code></pre>
+</div>
+</div>
+<section id="the-flag-that-matters" class="level3" data-number="12.5.1">
+<h3 data-number="12.5.1" class="anchored" data-anchor-id="the-flag-that-matters"><span class="header-section-number">12.5.1</span> The flag that matters</h3>
+<p>Here is the payoff of a thread that started in <a href="../sessions/sdtm-dm.html">The DM Domain</a> and was deliberately left open in <a href="../sessions/sdtm-findings.html">Findings</a>. SDTM has its own baseline flag, <code>LBLOBXFL</code>. ADaM has <code>ABLFL</code>. Compare them on real data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>sdtm_baseline <span class="ot">&lt;-</span> lb <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(LBLOBXFL <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transmute</span>(USUBJID, <span class="at">PARAMCD =</span> LBTESTCD, <span class="at">sdtm_visit =</span> VISIT,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">BASE_sdtm =</span> <span class="fu">as.numeric</span>(LBSTRESN))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>comparison <span class="ot">&lt;-</span> bl <span class="sc">|&gt;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, PARAMCD, <span class="at">adam_visit =</span> AVISIT, <span class="at">adam_ady =</span> ADY, BASE) <span class="sc">|&gt;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">inner_join</span>(sdtm_baseline, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"USUBJID"</span>, <span class="st">"PARAMCD"</span>))</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(comparison, adam_visit, sdtm_visit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  adam_visit sdtm_visit     n
+  &lt;chr&gt;      &lt;chr&gt;      &lt;int&gt;
+1 BASELINE   BASELINE     300
+2 BASELINE   SCREENING    342
+3 SCREENING  SCREENING    958</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>comparison <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(adam_visit <span class="sc">!=</span> sdtm_visit) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(adam_ady, <span class="at">name =</span> <span class="st">"disagreements"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  adam_ady disagreements
+     &lt;int&gt;         &lt;int&gt;
+1        1           342</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>The two flags disagree on 342 of 1,600 pairs, for exactly one reason
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Read the second table. <strong>Every single disagreement is at <code>ADY == 1</code></strong>, and that is the whole story.</p>
+<p>SDTM defines <code>--LOBXFL</code> as the last non-missing value <strong>strictly prior to</strong> <code>RFXSTDTC</code> (SDTMIG v3.4, §4.5.9). The SAP defines baseline as the last value <strong>on or before</strong> the first dose. Those differ on exactly one kind of record: a lab drawn on the dosing day itself, before the dose was given.</p>
+<p>Clinically that draw is unambiguously a baseline measurement, since the subject had not yet received study drug. But it is not <em>prior to</em> first exposure by the date comparison SDTM uses, so <code>LBLOBXFL</code> skips it and reaches back to screening instead.</p>
+<p>Neither flag is wrong. They answer different questions. <code>LBLOBXFL</code> is operationally derived and describes the data as collected; <code>ABLFL</code> records an analysis decision. Which is why the ADaMIG is blunt that only the ADaM variable <code>ABLFL</code> is used to signify baseline for analysis.</p>
+</div>
+</div>
+<p>Seeing it on one subject makes the mechanism concrete. Subject <code>101-010</code>, whom you met in <a href="../sessions/sdtm-findings.html">Findings</a> as the duplicate-record case:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>adlb <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-010"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AVISIT, ADY, AVAL, ABLFL, BASE, CHG, PCHG) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 7
+  AVISIT      ADY  AVAL ABLFL  BASE    CHG  PCHG
+  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+1 SCREENING   -16   8.2 &lt;NA&gt;    8.6 NA     NA   
+2 BASELINE      1   8.6 Y       8.6  0      0   
+3 WEEK 4       30   8.1 &lt;NA&gt;    8.6 -0.5   -5.81
+4 WEEK 8       59   8.3 &lt;NA&gt;    8.6 -0.300 -3.49</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lb <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-010"</span>, LBTESTCD <span class="sc">==</span> <span class="st">"HBA1C"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>         VISIT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"SCREENING"</span>, <span class="st">"BASELINE"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(VISIT, LBDTC, LBSTRESN, LBLOBXFL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  VISIT     LBDTC      LBSTRESN LBLOBXFL
+  &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;    &lt;chr&gt;   
+1 SCREENING 2024-03-12 8.2      Y       
+2 BASELINE  2024-03-28 8.6      &lt;NA&gt;    </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Reading the Output Line by Line
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What you see</th>
+<th>What it means</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BASELINE at <code>ADY = 1</code>, <code>AVAL = 8.6</code>, <code>ABLFL = "Y"</code></td>
+<td>The lab was drawn on the day of first dose, before dosing. The SAP counts it, so it is this subject’s baseline.</td>
+</tr>
+<tr class="even">
+<td>SCREENING at <code>ADY = -16</code>, <code>AVAL = 8.2</code>, no flag</td>
+<td>Sixteen days before dosing. A real measurement, but not the most recent one on or before first dose.</td>
+</tr>
+<tr class="odd">
+<td>In SDTM, <code>LBLOBXFL = "Y"</code> on <strong>SCREENING</strong></td>
+<td>Strictly prior to first exposure, so SDTM reaches back past the dosing-day draw.</td>
+</tr>
+<tr class="even">
+<td><code>BASE = 8.6</code>, not 8.2</td>
+<td>The analysis uses 8.6. Had it used SDTM’s flag, every <code>CHG</code> for this subject would be 0.4 larger.</td>
+</tr>
+<tr class="odd">
+<td><code>CHG = 0</code> and <code>PCHG = 0</code> on the baseline row</td>
+<td>A sponsor convention. The ADaMIG leaves the baseline and pre-baseline values of <code>CHG</code> to producer choice (§3.3.4.1), so this is documented, not derived from a rule.</td>
+</tr>
+<tr class="even">
+<td><code>CHG</code> null at SCREENING</td>
+<td>A change from baseline is not defined before baseline.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="what-the-choice-costs" class="level3" data-number="12.5.2">
+<h3 data-number="12.5.2" class="anchored" data-anchor-id="what-the-choice-costs"><span class="header-section-number">12.5.2</span> What the choice costs</h3>
+<p>A 0.4 difference for one subject is easy to wave away. Measure it on the primary endpoint instead:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>week26 <span class="ot">&lt;-</span> adlb <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>, AVISIT <span class="sc">==</span> <span class="st">"WEEK 26"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(sdtm_baseline <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, PARAMCD, BASE_sdtm),</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"USUBJID"</span>, <span class="st">"PARAMCD"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">CHG_sdtm =</span> AVAL <span class="sc">-</span> BASE_sdtm)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> week26 <span class="sc">|&gt;</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(TRTA) <span class="sc">|&gt;</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_CHG_adam =</span> <span class="fu">round</span>(<span class="fu">mean</span>(CHG), <span class="dv">3</span>),</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_CHG_sdtm =</span> <span class="fu">round</span>(<span class="fu">mean</span>(CHG_sdtm), <span class="dv">3</span>),</span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>)</span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 4
+  TRTA           n mean_CHG_adam mean_CHG_sdtm
+  &lt;chr&gt;      &lt;int&gt;         &lt;dbl&gt;         &lt;dbl&gt;
+1 GLPX 10 mg   181        -1.41         -1.44 
+2 Placebo      186        -0.298        -0.306</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">difference_adam =</span> <span class="fu">round</span>(result<span class="sc">$</span>mean_CHG_adam[<span class="dv">1</span>] <span class="sc">-</span> result<span class="sc">$</span>mean_CHG_adam[<span class="dv">2</span>], <span class="dv">3</span>),</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">difference_sdtm =</span> <span class="fu">round</span>(result<span class="sc">$</span>mean_CHG_sdtm[<span class="dv">1</span>] <span class="sc">-</span> result<span class="sc">$</span>mean_CHG_sdtm[<span class="dv">2</span>], <span class="dv">3</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>difference_adam difference_sdtm 
+         -1.116          -1.138 </code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Run It Yourself
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The week-26 treatment difference in HbA1c is <strong>-1.116</strong> using the SAP’s baseline and <strong>-1.138</strong> using SDTM’s operational flag. A gap of 0.022 percentage points.</p>
+<p>Be careful how you read that. It is <strong>small</strong>, and this course is not going to claim a trial would turn on it. It is also <strong>real</strong>, it is <strong>not the number the SAP defined</strong>, and nothing in the code would have told you it was wrong. It came from using an operational flag to answer an analysis question, and 75 of 400 subjects had a different baseline HbA1c as a result.</p>
+<p>Errors of this shape do not announce themselves. They produce plausible numbers, slightly wrong, from code that runs cleanly. That is why the standard puts the decision in a variable with a name, and why “which flag did you use” is a reasonable question to be asked at a review.</p>
+</div>
+</div>
+</section>
+<section id="one-subject-where-the-baseline-choice-really-matters" class="level3" data-number="12.5.3">
+<h3 data-number="12.5.3" class="anchored" data-anchor-id="one-subject-where-the-baseline-choice-really-matters"><span class="header-section-number">12.5.3</span> One subject where the baseline choice really matters</h3>
+<p><code>101-052</code> is the subject from <a href="../sessions/sdtm-findings.html">Findings</a> whose screening HbA1c came back at 13.9%, tripped an edit check, was investigated, and was confirmed as a real value:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>adlb <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-052"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AVISIT, ADY, AVAL, ABLFL, BASE, CHG)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 8 × 6
+  AVISIT      ADY  AVAL ABLFL  BASE   CHG
+  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt;
+1 SCREENING   -15  13.9 Y      13.9   0  
+2 BASELINE      4   9   &lt;NA&gt;   13.9  -4.9
+3 WEEK 4       31   8.6 &lt;NA&gt;   13.9  -5.3
+4 WEEK 8       58   8   &lt;NA&gt;   13.9  -5.9
+5 WEEK 12      88   8.6 &lt;NA&gt;   13.9  -5.3
+6 WEEK 16     113   7.6 &lt;NA&gt;   13.9  -6.3
+7 WEEK 20     141   7.7 &lt;NA&gt;   13.9  -6.2
+8 WEEK 26     185   7.4 &lt;NA&gt;   13.9  -6.5</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>One real value, anchoring everything after it
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>That 13.9% is this subject’s most recent result on or before first dose, so it is their baseline. Every <code>CHG</code> in the column below it is measured from 13.9, and the week-26 change is <strong>-6.5</strong> against a study mean of about -1.4.</p>
+<p>Nothing here is wrong. The value is real, the definition was applied correctly, and the subject genuinely improved a great deal. But it shows how much weight a single baseline record carries: one measurement sets the reference point for a subject’s entire change profile, and an extreme baseline produces an extreme change.</p>
+<p>This is why baseline definitions are argued over in statistical analysis plans rather than chosen casually, and why some studies define baseline as an average of two pre-dose measurements. That is a legitimate alternative, and the ADaMIG accommodates it directly: the derived average becomes the baseline record, and <code>DTYPE</code> must be populated to say so (ADaMIG v1.3, §3.3.8).</p>
+</div>
+</div>
+</section>
+<section id="the-finished-dataset" class="level3" data-number="12.5.4">
+<h3 data-number="12.5.4" class="anchored" data-anchor-id="the-finished-dataset"><span class="header-section-number">12.5.4</span> The finished dataset</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>adlb_final <span class="ot">&lt;-</span> adlb <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(USUBJID) <span class="sc">|&gt;</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ASEQ =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(STUDYID, USUBJID, SUBJID, SITEID, ASEQ,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>         TRTP, TRTA, SAFFL, TRTSDT,</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>         PARAM, PARAMCD, PARAMN,</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>         AVISIT, AVISITN, ADT, ADY,</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>         AVAL, BASE, CHG, PCHG, DTYPE,</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>         ABLFL, ANRLO, ANRHI, ANRIND, BNRIND,</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>         SRCDOM, SRCVAR, SRCSEQ)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>adlb_final <span class="sc">|&gt;</span></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>, AVISIT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"BASELINE"</span>, <span class="st">"WEEK 26"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(AVISIT, TRTA) <span class="sc">|&gt;</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(), <span class="at">mean_AVAL =</span> <span class="fu">round</span>(<span class="fu">mean</span>(AVAL), <span class="dv">2</span>),</span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_CHG =</span> <span class="fu">round</span>(<span class="fu">mean</span>(CHG), <span class="dv">3</span>), <span class="at">.groups =</span> <span class="st">"drop"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 5
+  AVISIT   TRTA           n mean_AVAL mean_CHG
+  &lt;chr&gt;    &lt;chr&gt;      &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+1 BASELINE GLPX 10 mg   200      8.28   -0.051
+2 BASELINE Placebo      200      8.45   -0.003
+3 WEEK 26  GLPX 10 mg   181      6.9    -1.41 
+4 WEEK 26  Placebo      186      8.14   -0.298</code></pre>
+</div>
+</div>
+<p>This is written to <code>data/adam/adlb.csv</code> by <code>R/build_adam.R</code>, and it is what the TLF sessions read. With ADSL, ADAE and ADLB in place, Part 3 is complete: a subject-level dataset, an occurrence dataset, and a basic data structure, each built from persisted SDTM and each traceable back to it.</p>
+</section>
 </section>
 <section id="what-can-go-wrong" class="level2" data-number="12.6">
 <h2 data-number="12.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">12.6</span> What Can Go Wrong</h2>
-<!-- Candidates: using LBLOBXFL as the analysis baseline [L6, §4.5.9];
-  BASE populated with no ABLFL row [L7]; deriving a baseline without
-  setting DTYPE [L6, L10]; assuming AVISIT must equal VISIT [L12];
-  putting units in a separate variable instead of PARAM [L3]; PARAMCD
-  starting with a digit or exceeding 8 chars [L4]; adding a second
-  baseline definition without BASETYPE [L9]; carrying all of ADSL into
-  BDS [L2]. -->
+<p><em>Estimated time: ~10 minutes (reading)</em></p>
+<p><strong>Using the SDTM baseline flag for analysis.</strong> <code>--LOBXFL</code> is operationally derived; <code>ABLFL</code> records the SAP’s decision, and only <code>ABLFL</code> signifies baseline for analysis (ADaMIG v1.3, §3.5; SDTMIG v3.4, §4.5.9). In this dataset the two disagree on 21% of subject-parameter pairs.</p>
+<p><strong>Trusting the visit label.</strong> Defining baseline as “the BASELINE visit” would have made 958 of 1,600 baselines post-dose here. Check a baseline definition against the dosing dates, not the visit name.</p>
+<p><strong><code>BASE</code> populated with no <code>ABLFL</code> record.</strong> Explicitly prohibited (ADaMIG v1.3, §3.3.4.1), and easy to introduce by joining a baseline value in from elsewhere rather than copying it from a flagged row.</p>
+<p><strong>A derived baseline with null <code>DTYPE</code>.</strong> If the baseline is an average or an imputed value, <code>DTYPE</code> must be populated on that record (ADaMIG v1.3, §3.3.8). A derived value that looks observed is a traceability failure.</p>
+<p><strong>A second baseline definition without <code>BASETYPE</code>.</strong> Required as soon as there is more than one, and required on <em>every</em> record of the affected parameter where <code>BASE</code> is non-null (ADaMIG v1.3, §3.3.4.1).</p>
+<p><strong><code>PARAMCD</code> that will not transpose.</strong> Over 8 characters, or starting with a digit or an underscore, breaks the property the constraint exists to protect (ADaMIG v1.3, §3.3.4.1).</p>
+<p><strong>Units in a separate column.</strong> <code>PARAM</code> must describe <code>AVAL</code> unambiguously and needs no further qualifying variable (ADaMIG v1.3, §3.3.4.1). A <code>PARAM</code> of <code>Glucose</code> with the unit elsewhere is not analysis-ready.</p>
+<p><strong>Copying all of ADSL into BDS.</strong> ADSL is a source of subject-level variables, which “does not mean that every ADSL variable should be included” (ADaMIG v1.3, §2.3.2).</p>
 <section id="common-misinterpretations" class="level3" data-number="12.6.1">
 <h3 data-number="12.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">12.6.1</span> Common misinterpretations</h3>
-<!-- TODO prose pass. -->
+<p><strong>“BDS is the ADaM version of the Findings class.”</strong> BDS datasets may be derived from Findings, Events, Interventions, Special-purpose domains, other ADaM datasets, or any combination (ADaMIG v1.3, §2.3.2). Ours happens to come from LB, which makes the resemblance a coincidence rather than a rule.</p>
+<p><strong>“<code>AVISIT</code> must match <code>VISIT</code>.”</strong> <code>AVISIT</code> is derived and producer-defined and “does not have to map to <code>VISIT</code> from the SDTM” (ADaMIG v1.3, §3.3.3). It matches here because this trial’s visits are clean.</p>
+<p><strong>“A row in ADLB is a row that was analysed.”</strong> <code>AVISIT</code> “does not mean that the record was analyzed” (ADaMIG v1.3, §3.3.3). Selection for a particular analysis is what <code>ANLzzFL</code> and the population flags are for.</p>
+<p><strong>“There must be a codelist for <code>PARAMCD</code> somewhere.”</strong> There is not. Analysis parameters are sponsor-defined, like <code>AGEGR1</code> and <code>ASEV</code> before them.</p>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="12.7">
 <h2 data-number="12.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.7</span> Exercises</h2>
-<!-- Public: exercises/adlb.qmd (stub, to be written). Solutions ->
-  private repo. Planned: a second baseline definition requiring
-  BASETYPE (§4.2.1.6 Rule 6); a derived baseline (mean of screening and
-  baseline) forcing DTYPE; PCHG at baseline. -->
+<p>Practice: <a href="../exercises/adlb.html">Exercise 6 — ADLB</a>.</p>
 </section>
 <section id="comprehension-check" class="level2" data-number="12.8">
 <h2 data-number="12.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">12.8</span> Comprehension Check</h2>
-<!-- TODO prose pass: 5 questions. Answers collapsed. -->
+<ol type="1">
+<li>GLPX-001’s <code>ABLFL</code> lands on SCREENING for 958 subject-parameter pairs and on BASELINE for 642. Is that an inconsistency? Explain in one sentence.</li>
+<li>Every disagreement between <code>ABLFL</code> and <code>LBLOBXFL</code> in this dataset is at <code>ADY == 1</code>. What is it about <code>ADY == 1</code> that causes this, and which definition does each flag use?</li>
+<li><code>DTYPE</code> is null on all 12,388 records of our ADLB. Under what change to the baseline definition would it stop being null, and on which rows?</li>
+<li>Your ADLB has <code>BASE</code> populated but you removed <code>ABLFL</code> because “the baseline value is already there.” Which rule does that break, and what can a reviewer no longer do?</li>
+<li>A colleague proposes the <code>PARAMCD</code> values <code>HBA1C_PCT</code> and <code>2HRGLUC</code>. What, if anything, is wrong with each?</li>
+</ol>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -711,9 +1144,15 @@ data/adam/adlb.csv, completing data/adam/ for the TLF sessions.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<!-- TODO prose pass. -->
+<ol type="1">
+<li><strong>No.</strong> It is one rule, “the last non-missing value on or before first dose”, applied to subjects whose visits fell on different days relative to their own first dose. Where the BASELINE visit happened on or before dosing it supplies the baseline; where it happened after dosing, the most recent qualifying value is the screening draw. A consistent definition does not imply a consistent visit.</li>
+<li><code>ADY == 1</code> is the day of first dose, under the no-day-zero rule. A lab drawn that morning, before dosing, is <strong>on or before</strong> first dose, so the SAP’s definition counts it, but it is not <strong>strictly prior to</strong> first exposure, which is how SDTM defines <code>--LOBXFL</code> (SDTMIG v3.4, §4.5.9). So <code>ABLFL</code> flags it and <code>LBLOBXFL</code> reaches back to screening.</li>
+<li>If baseline were defined as, say, the average of the screening and pre-dose values, that average would be a new derived record, and <code>DTYPE</code> “must also be populated” on the baseline record it creates (ADaMIG v1.3, §3.3.8). It would be populated on the derived baseline rows only, not across the dataset.</li>
+<li>“If <code>BASE</code> is populated for a parameter, and <code>BASE</code> is non-null for a subject for that parameter, then there must be a record flagged by <code>ABLFL</code> for that subject and parameter” (ADaMIG v1.3, §3.3.4.1). With the flag gone, <code>BASE</code> is a number with no visible provenance: a reviewer can no longer see <em>which</em> record it came from, so they cannot check that the baseline definition was applied correctly. Traceability is broken even if every value is right.</li>
+<li><strong>Both are invalid, for different reasons</strong> (ADaMIG v1.3, §3.3.4.1). <code>HBA1C_PCT</code> is 9 characters, one over the 8-character limit. <code>2HRGLUC</code> is 7 characters and so passes that test, but it starts with a digit rather than a letter. Both constraints exist so the values can serve as variable names in a transposed dataset, which is why checking beats eyeballing: the second one looks fine until you read the rule.</li>
+</ol>
 </div>
 </div>
 </div>
