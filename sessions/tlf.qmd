@@ -3,31 +3,17 @@ title: "Tables, Listings and Figures"
 ---
 
 <!--
-========================================================================
-DRAFT — background, learning objectives, three worked examples, What
-Can Go Wrong and Comprehension Check written with real executed output.
-Exercises section deliberately left as a placeholder: per the working
-method, exercises are drafted separately after this core content is
-reviewed. DO NOT COMMIT the exercises/tlf.qmd stub as final yet.
-
-SCOPE, as approved: TLF format has no CDISC Implementation Guide the
-way SDTM/ADaM do. Every dataset-level claim below cites back to
+SCOPE NOTE: TLF format has no CDISC Implementation Guide the way
+SDTM/ADaM do. Every dataset-level claim in this session cites back to
 ADaMIG v1.3 / OCCDS v1.1 sections already verified in adsl/adae/adlb.
 The one exception is the AE-frequency-display convention, which OCCDS
 v1.1 itself attributes to ICH Guideline E3 Sections 12.2.2 and 14.3.1
 (OCCDS v1.1, §4, opening line of Example 1) — cited as OCCDS reporting
-what E3 says, NOT as a direct E3 citation, since ICH E3 has not been
-read directly. If the author's ICH E3 PDF arrives, upgrade this to a
-direct citation and add any further E3-specific claims then.
+what E3 says, NOT a direct E3 citation, since ICH E3 has not been read
+directly. If the ICH E3 PDF arrives, upgrade this to a direct citation.
 
-No new package added to renv.lock. Tables are tidy tibbles rendered
-with knitr::kable(). Session states explicitly why (traceability is
-the lesson, not typesetting) and names gt/flextable/rtables as the
-production formatting layer over the same numbers.
-
-No p-values, no inferential statistics — descriptive TLFs only,
-matching index.qmd's existing scope note.
-========================================================================
+Deliberately no gt/flextable/rtables in renv.lock — tables are tidy
+tibbles rendered with knitr::kable(); no inferential statistics.
 -->
 
 ```{r setup}
@@ -661,8 +647,7 @@ table with one fewer `group_by()`.
 
 ## Exercises
 
-TODO: link the exercise file for this session, drafted separately
-following the working method.
+Practice: [Exercise 7 — Tables, Listings and Figures](../exercises/tlf.qmd).
 
 ## Comprehension Check
 

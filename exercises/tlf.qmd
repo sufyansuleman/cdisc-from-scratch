@@ -4,26 +4,107 @@ title: "Exercise 7 — Tables, Listings and Figures"
 
 ## Goal
 
-TODO: one sentence.
+Extend the demographics table from [the TLF session](../sessions/tlf.qmd)
+with an age-group row, then attempt the AE summary table the session's
+own citation calls for — and find out, on real data, exactly what a
+missing MedDRA coding costs a submission-ready report.
 
 ## Setup
 
-TODO: starting code.
+Work from the project root. All three inputs are persisted:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(knitr)
+
+adsl <- read_csv("data/adam/adsl.csv", show_col_types = FALSE)
+adae <- read_csv("data/adam/adae.csv", show_col_types = FALSE)
+adlb <- read_csv("data/adam/adlb.csv", show_col_types = FALSE)
+```
 
 ## Task
 
-1. TODO
-2. TODO
+1. **(Guided) An age-group row.** Add an `AGEGR1` row to the
+   demographics table from Example 1, showing n (%) by arm the same way
+   `SEX` and `RACE` do.
+
+   Two subjects per arm have no `AGEGR1`, because they have no `AGE`
+   (the D1 defect from [The DM Domain](sdtm-dm.qmd)). Decide how those
+   four subjects should appear in your table — as a stated `Missing`
+   row, folded silently into one of the age bands, or dropped — and
+   justify the choice in one sentence. There is a wrong answer among
+   those three; say which one and why.
+
+2. **(The trap) The table the session's own citation calls for.** OCCDS
+   v1.1 §4 opens Example 1 by citing ICH E3 §12.2.2 and §14.3.1 for "the
+   basic summary of adverse event frequencies," displayed by **System
+   Organ Class and Preferred Term**. Build that table for GLPX-001.
+
+   You will not be able to. Find out precisely why, using the data
+   rather than assuming it — check what columns actually exist in ADAE,
+   and what is populated in them. State the reason in one sentence,
+   citing back to the constraint established in [ADAE](../sessions/adae.qmd).
+
+   Now build the closest thing you *can* build: the same summary at the
+   level of the verbatim `AETERM` instead of the coded preferred term.
+   Look at your result closely — several clinical concepts appear more
+   than once, under slightly different spellings or capitalisation.
+   Count how many distinct `AETERM` values there are, and how many
+   remain after folding case. Then answer: why would a real submission
+   reject a table built this way, even though every number in it is
+   arithmetically correct?
+
+3. **(Semi-guided) The tabular twin of the figure, and one more listing.**
+   The session's figure shows the full HbA1c trajectory. A study report
+   also needs the single-timepoint version: a table of mean (SD) change
+   from baseline in HbA1c at Week 26, by arm, with `n`.
+
+   Build it. Then, separately, build a listing of the four subjects
+   with missing `AGE` — one row each, with `USUBJID`, `TRT01P`, `SEX`
+   and `AGEGR1`.
+
+   Answer in one sentence each:
+
+   - What does the Week 26 table tell a reader that the full-trajectory
+     figure does not, and vice versa?
+   - Why is a listing, not a table, the right artifact for the four
+     missing-age subjects?
 
 ## Acceptance criteria
 
-- [ ] TODO
-- [ ] TODO
+- [ ] `AGEGR1` row added with a stated, justified treatment of the four
+      missing-age subjects
+- [ ] The SOC/PT table is attempted, found impossible, and the reason is
+      stated precisely (which column, and why it is empty)
+- [ ] The `AETERM`-level alternative is built, with the raw and
+      case-folded distinct-value counts both reported
+- [ ] A one-sentence explanation of why the `AETERM` table is not an
+      acceptable substitute, grounded in what was actually observed in
+      the data (not just "it's not coded")
+- [ ] Week 26 table built with correct `n`, mean and SD per arm
+- [ ] Missing-age listing built, with both follow-up questions answered
 
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-TODO: hint.
+Task 1: reuse the pattern the session used for `SEX` and `RACE` —
+`count()`, join the arm `N`, format, `pivot_wider()`. For the missing
+subjects, think about what a null percentage would even mean: 2 out of
+what denominator?
+
+Task 2: start by checking `names(adae)` for the column the SOC display
+would need, before writing any summarising code. [ADAE](../sessions/adae.qmd)
+already told you which coded-term columns exist and which don't, and
+why. For the `AETERM` table, group and count exactly as the session did
+for `AOCCFL`, just keyed on `AETERM` instead. The fragmentation you are
+looking for is visible the moment you `arrange()` the result
+alphabetically.
+
+Task 3: the Week 26 table is one `filter()` and one `summarise()` on
+`adlb`, not a new derivation — every value it needs already exists on
+each row. The listing is a `filter()` and a `select()` on `adsl`, no
+`count()` involved.
 :::
 
 > Solutions are in the paid tier.
