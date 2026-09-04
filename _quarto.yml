@@ -35,6 +35,7 @@ book:
   - part: "Part 4: Outputs and Submission"
     chapters:
     - sessions/tlf.qmd
+    - sessions/define-from-specs.qmd
     - sessions/adrg-and-submission.qmd
     - sessions/dataset-json.qmd
   - part: "Exercises"
@@ -46,6 +47,7 @@ book:
     - exercises/adae.qmd
     - exercises/adlb.qmd
     - exercises/tlf.qmd
+    - exercises/define-xml.qmd
 
 bibliography:
   - references.bib

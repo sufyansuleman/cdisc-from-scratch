@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Before You Begin: Setup – CDISC with R</title>
+<title>24&nbsp; Exercise 8 — Define-XML – CDISC with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../sessions/why-standards.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../exercises/tlf.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -123,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/setup.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/define-xml.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sessions/setup.html" class="sidebar-item-text sidebar-link active">
+  <a href="../sessions/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></span></a>
   </div>
 </li>
@@ -347,7 +346,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/define-xml.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/define-xml.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></span></a>
   </div>
 </li>
@@ -363,21 +362,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-you-will-install" id="toc-what-you-will-install" class="nav-link active" data-scroll-target="#what-you-will-install"><span class="header-section-number">1.1</span> What You Will Install</a></li>
-  <li><a href="#why-this-course-pins-its-packages" id="toc-why-this-course-pins-its-packages" class="nav-link" data-scroll-target="#why-this-course-pins-its-packages"><span class="header-section-number">1.2</span> Why This Course Pins Its Packages</a></li>
-  <li><a href="#get-the-course-repository" id="toc-get-the-course-repository" class="nav-link" data-scroll-target="#get-the-course-repository"><span class="header-section-number">1.3</span> Get the Course Repository</a></li>
-  <li><a href="#restore-the-course-library" id="toc-restore-the-course-library" class="nav-link" data-scroll-target="#restore-the-course-library"><span class="header-section-number">1.4</span> Restore the Course Library</a></li>
-  <li><a href="#check-you-are-ready" id="toc-check-you-are-ready" class="nav-link" data-scroll-target="#check-you-are-ready"><span class="header-section-number">1.5</span> Check You Are Ready</a></li>
-  <li><a href="#if-something-went-wrong" id="toc-if-something-went-wrong" class="nav-link" data-scroll-target="#if-something-went-wrong"><span class="header-section-number">1.6</span> If Something Went Wrong</a></li>
+  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal"><span class="header-section-number">24.1</span> Goal</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">24.2</span> Setup</a></li>
+  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task"><span class="header-section-number">24.3</span> Task</a></li>
+  <li><a href="#acceptance-criteria" id="toc-acceptance-criteria" class="nav-link" data-scroll-target="#acceptance-criteria"><span class="header-section-number">24.4</span> Acceptance criteria</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/define-xml.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></h1>
+<h1 class="title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></h1>
 </div>
 
 
@@ -394,166 +391,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Session at a Glance
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><strong>Total core time: about 30 minutes</strong>, most of it waiting for packages to install.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Section</th>
-<th>Time</th>
-<th>Type</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>What you will install</td>
-<td>10 min</td>
-<td>Hands-on</td>
-</tr>
-<tr class="even">
-<td>Get the course repository</td>
-<td>5 min</td>
-<td>Hands-on</td>
-</tr>
-<tr class="odd">
-<td>Restore the course library</td>
-<td>10 min</td>
-<td>Hands-on</td>
-</tr>
-<tr class="even">
-<td>Check you are ready</td>
-<td>5 min</td>
-<td>Hands-on</td>
-</tr>
-</tbody>
-</table>
-<p>Do this once. Everything else in the course assumes it is done.</p>
-</div>
-</div>
-<section id="what-you-will-install" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="what-you-will-install"><span class="header-section-number">1.1</span> What You Will Install</h2>
-<p>Four tools, in this order. If you already have one, skip it.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Why</th>
-<th>Where</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>R</strong> (4.4.0 or later)</td>
-<td>The language everything is written in</td>
-<td><a href="https://cran.r-project.org">cran.r-project.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>RStudio</strong> or <strong>Positron</strong></td>
-<td>An IDE. Either works; the course shows RStudio</td>
-<td><a href="https://posit.co/downloads/">posit.co/downloads</a></td>
-</tr>
-<tr class="odd">
-<td><strong>Quarto</strong></td>
-<td>Renders the book and runs the code chunks</td>
-<td><a href="https://quarto.org/docs/get-started/">quarto.org/docs/get-started</a></td>
-</tr>
-<tr class="even">
-<td><strong>Git</strong></td>
-<td>Gets you the repository and its history</td>
-<td><a href="https://git-scm.com/downloads">git-scm.com</a></td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Windows: install Rtools too
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>On Windows, install <strong>Rtools44</strong> to match R 4.4.x, from <a href="https://cran.r-project.org/bin/windows/Rtools/">cran.r-project.org/bin/windows/Rtools</a>. Without it, any package that needs compiling will fail to install, and the error message will not obviously say why.</p>
-<p>macOS and Linux users do not need this step.</p>
-</div>
-</div>
+<section id="goal" class="level2" data-number="24.1">
+<h2 data-number="24.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">24.1</span> Goal</h2>
+<p>Take the schema-valid but non-conformant document from <a href="../sessions/define-xml.html">the Define-XML session</a> and make it conformant, then extend it to describe the one thing an SDTM variable cannot describe with a single origin — and the one variable this course cannot populate at all.</p>
 </section>
-<section id="why-this-course-pins-its-packages" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="why-this-course-pins-its-packages"><span class="header-section-number">1.2</span> Why This Course Pins Its Packages</h2>
-<p>In regulated clinical work, “it worked on my machine” is not a defence. A submission has to be reproducible years after it was built, by somebody who is not you, on a machine that does not exist yet. That is not a nice-to-have — it is what the whole apparatus of standards, define.xml and reviewer guides exists to support.</p>
-<p>So this course practises what it teaches. It uses <a href="https://rstudio.github.io/renv/"><strong>renv</strong></a> to record the exact version of every package it depends on in a file called <code>renv.lock</code>. When you restore that lockfile, you get the same package versions the author had, not whatever CRAN is serving today.</p>
-<p><code>renv.lock</code> is a teaching artifact, not overhead. It is the smallest honest example of the thing the rest of the course is about: <strong>a result you can hand to someone else and have them reproduce exactly.</strong></p>
+<section id="setup" class="level2" data-number="24.2">
+<h2 data-number="24.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">24.2</span> Setup</h2>
+<p>Work from the project root. You need the CDISC Define-XML v2.1 package unzipped into <code>refs/</code>, as the session’s opening callout describes:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dx     <span class="ot">&lt;-</span> <span class="st">"refs/DefineV2111_0"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>schema <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="fu">file.path</span>(dx, <span class="st">"schema/cdisc-define-2.1/define2-1-0.xsd"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Rebuild the DM document from the session’s Example 1 before you start, or keep the R session open from where the session left off.</p>
 </section>
-<section id="get-the-course-repository" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="get-the-course-repository"><span class="header-section-number">1.3</span> Get the Course Repository</h2>
-<p>Clone it, or download it as a ZIP from <a href="https://github.com/sufyansuleman/cdisc-with-r">github.com/sufyansuleman/cdisc-with-r</a>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sufyansuleman/cdisc-with-r.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cdisc-with-r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then open <strong><code>cdisc-with-r.Rproj</code></strong> in RStudio. This matters more than it looks: opening the project sets R’s working directory to the project root, which is what every code chunk in the course assumes. Paths in the sessions are written as <code>data/sdtm/dm.csv</code>, not <code>../data/sdtm/dm.csv</code> — they only resolve if you are at the root.</p>
-<p>If you use Positron or run R from a terminal, <code>cd</code> to the repository root before starting R, and confirm with:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()   <span class="co"># should end in /cdisc-with-r</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="task" class="level2" data-number="24.3">
+<h2 data-number="24.3" class="anchored" data-anchor-id="task"><span class="header-section-number">24.3</span> Task</h2>
+<ol type="1">
+<li><p><strong>(Guided) Resolve rule 73.</strong> The session’s document declares <code>USUBJID</code> with <code>Origin Type="Derived"</code> and no <code>MethodOID</code>, which violates conformance rule 73.</p>
+<p>Fix it properly. That means two additions, not one: a <code>MethodDef</code> element that states how <code>USUBJID</code> is derived, and a <code>MethodOID</code> attribute on the <code>ItemRef</code> that points at it. GLPX-001 builds <code>USUBJID</code> by concatenating the study identifier, the site and the subject number — check <code>R/build_sdtm.R</code> and describe what it actually does, not what you assume it does.</p>
+<p>Re-run <code>xml_validate()</code> and re-run the rule 73 check from the session. Then answer: the document validated <code>TRUE</code> <em>before</em> this fix and validates <code>TRUE</code> after. What changed, and who benefits?</p></li>
+<li><p><strong>(The trap) Value-level metadata for LB.</strong> Add an <code>ItemGroupDef</code> for LB, and define <code>LBSTRESN</code>.</p>
+<p>You will find you cannot. Not because anything is missing from your toolkit, but because a single <code>ItemDef</code> for <code>LBSTRESN</code> cannot say what the variable means: in GLPX-001’s LB, <code>LBSTRESN</code> holds HbA1c in percent on some rows and fasting plasma glucose in mmol/L on others. One variable, one <code>ItemDef</code>, two meanings, two units, two reference ranges.</p>
+<p>Find out how Define-XML resolves this. Read §4.5 of the specification, and look at how <code>IT.LB.LBORRES</code> is defined in the package’s own example at <code>refs/DefineV2111_0/examples/DefineXML-2-1-SDTM/defineV21-SDTM.xml</code>.</p>
+<p>Build it: a <code>def:ValueListRef</code> on the <code>ItemDef</code>, a <code>def:ValueListDef</code> containing one <code>ItemRef</code> per parameter, and a <code>def:WhereClauseDef</code> for each that says which rows it applies to. Use the two <code>LBTESTCD</code> values GLPX-001 actually contains — read them from <code>data/sdtm/lb.csv</code> rather than assuming.</p>
+<p>Then answer, in one sentence each:</p>
+<ul>
+<li>What does a <code>def:WhereClauseDef</code> actually express, in plain English?</li>
+<li>Value-level metadata adds rows to the metadata document rather than columns to the dataset. Where have you seen that same move before in this course?</li>
+</ul></li>
+<li><p><strong>(Semi-guided) The variable with no values.</strong> Add an <code>ItemGroupDef</code> for ADAE’s source AE domain, and define <code>AEDECOD</code>.</p>
+<p><code>AEDECOD</code> is null on all 389 rows, for the reason <a href="../sessions/adae.html">ADAE</a> established: this study’s adverse events were never coded, because MedDRA is a licensed dictionary.</p>
+<p>Define-XML v2.1 has a specific mechanism for this, and using it triggers a second requirement. Find both. Search the conformance rules workbook for <code>HasNoData</code> — rules 76 and 242 are the two you need, and note that both have Source Type <code>Specification</code>.</p>
+<p>Implement both, then answer:</p>
+<ul>
+<li>Why is declaring “this variable has no data” better than simply omitting the variable from the <code>ItemGroupDef</code>?</li>
+<li>Rule 242 requires a comment whenever <code>def:HasNoData="Yes"</code>. Write the comment you would actually submit for <code>AEDECOD</code>. It should be readable by a reviewer who has never heard of this course.</li>
+</ul></li>
+</ol>
 </section>
-<section id="restore-the-course-library" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="restore-the-course-library"><span class="header-section-number">1.4</span> Restore the Course Library</h2>
-<p>Opening the project runs <code>.Rprofile</code>, which activates renv and points your session at <a href="https://packagemanager.posit.co/">Posit Public Package Manager</a> for precompiled binaries. You will usually see renv announce itself, and often a note that the library is out of sync — that is expected on a fresh clone.</p>
-<p>Run this once, in the R console at the project root:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>renv lists what it is about to install and asks you to confirm. Say yes.</p>
-<p><strong>What to expect.</strong> Several minutes, and a lot of output. Binaries make this fast on Windows and macOS by default, and on Linux via the <code>__linux__/jammy</code> P3M repository the <code>.Rprofile</code> selects. If it starts compiling packages from source and crawling, that is the signal something is off with the repository configuration rather than with you — see the troubleshooting section below.</p>
-<p>A successful restore ends quietly, with no error, and:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">status</span>()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No issues found -- the project is in a consistent state.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>That message is the goal. If you get anything else, fix it here rather than discovering it three sessions in.</p>
-</section>
-<section id="check-you-are-ready" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="check-you-are-ready"><span class="header-section-number">1.5</span> Check You Are Ready</h2>
-<p>Run this snippet. It loads what the course loads, reads a file the way the sessions read files, and checks the controlled-terminology package can answer a question:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdtm.terminology)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. the data ships with the repo — this should print 401 rows</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>dm_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/dm_raw.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dm_raw)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. controlled terminology is available</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ct</span>(<span class="st">"list"</span>) <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"SEX"</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Quarto is on your PATH</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.which</span>(<span class="st">"quarto"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You are ready when all three run without error: the read returns <strong>401 rows</strong> (yes, 401 — 400 subjects and one duplicate enrolment, which you will meet in <a href="../sessions/why-standards.html">Why Standards</a>), the codelist lookup returns the <code>SEX</code> codelist <code>C66731</code>, and <code>Sys.which()</code> returns a path rather than an empty string.</p>
-<p>To confirm the whole book builds, run this in a terminal at the project root:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="if-something-went-wrong" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="if-something-went-wrong"><span class="header-section-number">1.6</span> If Something Went Wrong</h2>
-<p><strong><code>renv::restore()</code> fails on Windows, mentioning compilation.</strong> Rtools44 is missing or does not match your R version. Install it, restart R, try again.</p>
-<p><strong>Packages compile from source and take forever.</strong> Check that <code>.Rprofile</code> ran — <code>getOption("repos")</code> should show a <code>packagemanager.posit.co</code> entry. If it does not, you probably opened R somewhere other than the project root.</p>
-<p><strong><code>renv::restore()</code> reports nothing to do, but <code>library(tidyverse)</code> then fails.</strong> The lockfile and your library disagree. Run <code>renv::status()</code> first and read what it says before installing anything by hand — that message is the diagnosis.</p>
-<p><strong>A code chunk says it cannot find <code>data/raw/dm_raw.csv</code>.</strong> Your working directory is not the project root. Run <code>getwd()</code> and, if needed, reopen <code>cdisc-with-r.Rproj</code>.</p>
-<p><strong>Everything installs but the book will not render.</strong> Check Quarto is on your PATH with <code>quarto --version</code> in a terminal. RStudio bundles its own Quarto, which can differ from the one your terminal sees.</p>
+<section id="acceptance-criteria" class="level2" data-number="24.4">
+<h2 data-number="24.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">24.4</span> Acceptance criteria</h2>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>MethodDef</code> added and referenced by <code>MethodOID</code>; the rule 73 check returns an empty result</label></li>
+<li><label><input type="checkbox">The derivation description matches what <code>R/build_sdtm.R</code> actually does</label></li>
+<li><label><input type="checkbox"><code>def:ValueListDef</code> and <code>def:WhereClauseDef</code> built for <code>LBSTRESN</code>, using the <code>LBTESTCD</code> values read from the data</label></li>
+<li><label><input type="checkbox">The whole document still validates against the schema after every addition</label></li>
+<li><label><input type="checkbox"><code>def:HasNoData</code> set on the <code>AEDECOD</code> <code>ItemRef</code>, with a <code>def:CommentOID</code> on the <code>ItemDef</code> and a <code>def:CommentDef</code> that a reviewer could act on</label></li>
+<li><label><input type="checkbox">All five follow-up questions answered</label></li>
+</ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Still stuck?
+<span class="screen-reader-only">Tip</span>Hint
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Open an issue at <a href="https://github.com/sufyansuleman/cdisc-with-r/issues">github.com/sufyansuleman/cdisc-with-r/issues</a> with the output of <code>renv::status()</code> and <code>sessionInfo()</code>. Those two together identify almost every setup problem.</p>
+<p>Task 1: <code>MethodDef</code> goes at the <code>MetaDataVersion</code> level, beside <code>ItemDef</code> and <code>CodeList</code> — same Def/Ref pattern as everything else. It needs <code>OID</code>, <code>Name</code>, <code>Type</code> and a <code>Description</code>. If the schema rejects your placement, remember that element order is an absolute requirement (§3.6) and the error message names what it expected instead.</p>
+<p>Task 2: the chain is <code>ItemDef</code> → <code>def:ValueListRef</code> → <code>def:ValueListDef</code> → <code>ItemRef</code> → <code>def:WhereClauseRef</code> → <code>def:WhereClauseDef</code> → <code>RangeCheck</code>. Six links, and every one is an OID pointing at something declared elsewhere — this task is the central intuition of the session made tedious on purpose. Note that the value-level <code>ItemDef</code>s are separate <code>ItemDef</code> elements with their own OIDs; the example’s naming (<code>IT.LB.LBORRES.SET1.LBSPEC.BLOOD</code>) shows the convention, though as the session established, the convention is not the standard.</p>
+<p>Task 3: <code>def:HasNoData</code> goes on the <code>ItemRef</code>, not the <code>ItemDef</code> — read rule 76’s XPath column carefully, because getting this backwards is the most common way to fail it. Rule 242 then tells you what else becomes required, and the <code>def:CommentDef</code> element is documented in §4.8.</p>
 </div>
 </div>
+<blockquote class="blockquote">
+<p>Solutions are in the paid tier.</p>
+</blockquote>
 
 
 </section>
@@ -961,14 +867,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../exercises/tlf.html" class="pagination-link" aria-label="Exercise 7 — Tables, Listings and Figures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Exercise 7 — Tables, Listings and Figures</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../sessions/why-standards.html" class="pagination-link" aria-label="Why Standards">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Why Standards</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

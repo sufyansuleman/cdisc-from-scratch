@@ -1,0 +1,129 @@
+---
+title: "Define-XML from a Specification Workbook"
+---
+
+<!-- SCOPE NOTE (not rendered)
+This session is the second half of the Define-XML material, split out of
+sessions/define-xml.qmd deliberately.
+
+  - define-xml.qmd  = hand-rolled Define-XML v2.1 with xml2. Teaching path.
+  - this session    = the spec-driven production route.
+
+Decisions already taken, do not relitigate:
+
+  * defineR 0.0.6 supports Define-XML 2.0 ONLY. Its inst/extdata has a single
+    version directory, 2.0.0/. There is no 2.1 schema, stylesheet or template.
+    Define-XML 2.0 is April 2014; 2.1 is the current standard. The session must
+    teach this gap explicitly rather than paper over it - the version lag between
+    live tooling and the published standard IS the lesson.
+  * defineR is pre-1.0 (0.0.6). Say so in the session. Do not present it as
+    settled infrastructure.
+  * Build cost: this session needs an artifact the repo does not have - a GLPX-001
+    SDTM specification workbook. Do NOT invent the format: defineR ships templates
+    at inst/extdata/2.0.0/metadata/templates/SDTM_METADATA.xlsx. Fill those in.
+  * Pipeline convention applies: R/build_define.R alongside build_sdtm.R and
+    build_adam.R, deterministic, output committed.
+  * Closing move: metacore::define_to_metacore() reads the generated define.xml
+    back, demonstrating the metadata round-trip. Exported and verified available.
+  * defineR also ships define2-0.xsl; the xslt package (already a defineR
+    dependency) can render define.xml to the browsable HTML a reviewer opens.
+    The v2.1 package ships the matching define2-1.xsl.
+
+Packages verified installed and loading: metacore 0.3.0, metatools 0.3.0,
+defineR 0.0.6, xml2 1.6.0. renv.lock needs a snapshot once this session lands.
+-->
+
+
+::: {.callout-note}
+### Session at a Glance
+
+**Total core time: about TODO minutes.**
+
+| Section | Time | Type |
+|---|---|---|
+| When Do You Use This? + Learning Objectives | TODO | Reading |
+| Background | TODO | Reading |
+| Example 1 | TODO | Worked example |
+| Example 2 | TODO | Worked example |
+| What Can Go Wrong | TODO | Reading |
+| Exercises | TODO | Practice |
+| Comprehension Check | TODO | Self-test |
+
+TODO: how the session splits across sittings for self-paced study.
+:::
+
+::: {.callout-tip}
+### How to Use the Code in This Session
+
+Every code chunk below is written so you can copy it into your R
+console (or an R script) and run it yourself, in the order shown.
+Where you see a "Run It Yourself" box, stop and run the code above it
+before reading the explanation that follows.
+:::
+
+## When Do You Use This?
+
+::: {.callout-tip}
+TODO: two or three concrete scenarios that this session answers, ending
+with the single question it addresses in bold. Cross-link the
+session(s) this one builds on.
+:::
+
+## Learning Objectives
+
+After completing this session you will be able to:
+
+- TODO
+- TODO
+- TODO
+
+## Background: TODO (the one core idea)
+
+*Estimated time: ~TODO minutes (reading)*
+
+TODO: introduce the single idea that ties the session together, concept
+before formula.
+
+## Example 1: TODO
+
+TODO: worked example on GLPX-001 data. Show the code, then the output,
+then explain it.
+
+### Run It Yourself
+
+TODO: the exact code block the learner should execute before reading on.
+
+### Reading the Output Line by Line
+
+TODO: map each line of output to its plain-English meaning.
+
+## Example 2: TODO
+
+TODO: a second worked example.
+
+### Run It Yourself
+
+TODO.
+
+## What Can Go Wrong
+
+TODO: failure modes and misuse patterns.
+
+### Common misinterpretations
+
+TODO.
+
+## Exercises
+
+TODO: link the exercise file(s) for this session, or state that this
+session has no exercise.
+
+## Comprehension Check
+
+TODO: three to five short self-test questions.
+
+::: {.callout-note collapse="true"}
+### Answers
+
+TODO: answers, collapsed.
+:::

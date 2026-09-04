@@ -1,0 +1,134 @@
+---
+title: "Exercise 8 — Define-XML"
+---
+
+## Goal
+
+Take the schema-valid but non-conformant document from
+[the Define-XML session](../sessions/define-xml.qmd) and make it
+conformant, then extend it to describe the one thing an SDTM variable
+cannot describe with a single origin — and the one variable this course
+cannot populate at all.
+
+## Setup
+
+Work from the project root. You need the CDISC Define-XML v2.1 package
+unzipped into `refs/`, as the session's opening callout describes:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(xml2)
+
+dx     <- "refs/DefineV2111_0"
+schema <- read_xml(file.path(dx, "schema/cdisc-define-2.1/define2-1-0.xsd"))
+```
+
+Rebuild the DM document from the session's Example 1 before you start,
+or keep the R session open from where the session left off.
+
+## Task
+
+1. **(Guided) Resolve rule 73.** The session's document declares
+   `USUBJID` with `Origin Type="Derived"` and no `MethodOID`, which
+   violates conformance rule 73.
+
+   Fix it properly. That means two additions, not one: a `MethodDef`
+   element that states how `USUBJID` is derived, and a `MethodOID`
+   attribute on the `ItemRef` that points at it. GLPX-001 builds
+   `USUBJID` by concatenating the study identifier, the site and the
+   subject number — check `R/build_sdtm.R` and describe what it
+   actually does, not what you assume it does.
+
+   Re-run `xml_validate()` and re-run the rule 73 check from the
+   session. Then answer: the document validated `TRUE` *before* this
+   fix and validates `TRUE` after. What changed, and who benefits?
+
+2. **(The trap) Value-level metadata for LB.** Add an `ItemGroupDef`
+   for LB, and define `LBSTRESN`.
+
+   You will find you cannot. Not because anything is missing from your
+   toolkit, but because a single `ItemDef` for `LBSTRESN` cannot say
+   what the variable means: in GLPX-001's LB, `LBSTRESN` holds HbA1c in
+   percent on some rows and fasting plasma glucose in mmol/L on others.
+   One variable, one `ItemDef`, two meanings, two units, two reference
+   ranges.
+
+   Find out how Define-XML resolves this. Read §4.5 of the
+   specification, and look at how `IT.LB.LBORRES` is defined in the
+   package's own example at
+   `refs/DefineV2111_0/examples/DefineXML-2-1-SDTM/defineV21-SDTM.xml`.
+
+   Build it: a `def:ValueListRef` on the `ItemDef`, a `def:ValueListDef`
+   containing one `ItemRef` per parameter, and a `def:WhereClauseDef`
+   for each that says which rows it applies to. Use the two `LBTESTCD`
+   values GLPX-001 actually contains — read them from `data/sdtm/lb.csv`
+   rather than assuming.
+
+   Then answer, in one sentence each:
+
+   - What does a `def:WhereClauseDef` actually express, in plain English?
+   - Value-level metadata adds rows to the metadata document rather than
+     columns to the dataset. Where have you seen that same move before
+     in this course?
+
+3. **(Semi-guided) The variable with no values.** Add an `ItemGroupDef`
+   for ADAE's source AE domain, and define `AEDECOD`.
+
+   `AEDECOD` is null on all 389 rows, for the reason
+   [ADAE](../sessions/adae.qmd) established: this study's adverse events
+   were never coded, because MedDRA is a licensed dictionary.
+
+   Define-XML v2.1 has a specific mechanism for this, and using it
+   triggers a second requirement. Find both. Search the conformance
+   rules workbook for `HasNoData` — rules 76 and 242 are the two you
+   need, and note that both have Source Type `Specification`.
+
+   Implement both, then answer:
+
+   - Why is declaring "this variable has no data" better than simply
+     omitting the variable from the `ItemGroupDef`?
+   - Rule 242 requires a comment whenever `def:HasNoData="Yes"`. Write
+     the comment you would actually submit for `AEDECOD`. It should be
+     readable by a reviewer who has never heard of this course.
+
+## Acceptance criteria
+
+- [ ] `MethodDef` added and referenced by `MethodOID`; the rule 73 check
+      returns an empty result
+- [ ] The derivation description matches what `R/build_sdtm.R` actually
+      does
+- [ ] `def:ValueListDef` and `def:WhereClauseDef` built for `LBSTRESN`,
+      using the `LBTESTCD` values read from the data
+- [ ] The whole document still validates against the schema after every
+      addition
+- [ ] `def:HasNoData` set on the `AEDECOD` `ItemRef`, with a
+      `def:CommentOID` on the `ItemDef` and a `def:CommentDef` that a
+      reviewer could act on
+- [ ] All five follow-up questions answered
+
+::: {.callout-tip}
+## Hint
+
+Task 1: `MethodDef` goes at the `MetaDataVersion` level, beside
+`ItemDef` and `CodeList` — same Def/Ref pattern as everything else. It
+needs `OID`, `Name`, `Type` and a `Description`. If the schema rejects
+your placement, remember that element order is an absolute requirement
+(§3.6) and the error message names what it expected instead.
+
+Task 2: the chain is `ItemDef` → `def:ValueListRef` → `def:ValueListDef`
+→ `ItemRef` → `def:WhereClauseRef` → `def:WhereClauseDef` → `RangeCheck`.
+Six links, and every one is an OID pointing at something declared
+elsewhere — this task is the central intuition of the session made
+tedious on purpose. Note that the value-level `ItemDef`s are separate
+`ItemDef` elements with their own OIDs; the example's naming
+(`IT.LB.LBORRES.SET1.LBSPEC.BLOOD`) shows the convention, though as the
+session established, the convention is not the standard.
+
+Task 3: `def:HasNoData` goes on the `ItemRef`, not the `ItemDef` — read
+rule 76's XPath column carefully, because getting this backwards is the
+most common way to fail it. Rule 242 then tells you what else becomes
+required, and the `def:CommentDef` element is documented in §4.8.
+:::
+
+> Solutions are in the paid tier.

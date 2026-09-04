@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Before You Begin: Setup – CDISC with R</title>
+<title>14&nbsp; Define-XML from a Specification Workbook – CDISC with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../sessions/why-standards.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../sessions/adrg-and-submission.html" rel="next">
+<link href="../sessions/tlf.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -123,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/setup.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/tlf.html">Part 4: Outputs and Submission</a></li><li class="breadcrumb-item"><a href="../sessions/define-from-specs.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Define-XML from a Specification Workbook</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,7 +121,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sessions/setup.html" class="sidebar-item-text sidebar-link active">
+  <a href="../sessions/setup.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></span></a>
   </div>
 </li>
@@ -276,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sessions/define-from-specs.html" class="sidebar-item-text sidebar-link">
+  <a href="../sessions/define-from-specs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Define-XML from a Specification Workbook</span></span></a>
   </div>
 </li>
@@ -363,21 +328,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#what-you-will-install" id="toc-what-you-will-install" class="nav-link active" data-scroll-target="#what-you-will-install"><span class="header-section-number">1.1</span> What You Will Install</a></li>
-  <li><a href="#why-this-course-pins-its-packages" id="toc-why-this-course-pins-its-packages" class="nav-link" data-scroll-target="#why-this-course-pins-its-packages"><span class="header-section-number">1.2</span> Why This Course Pins Its Packages</a></li>
-  <li><a href="#get-the-course-repository" id="toc-get-the-course-repository" class="nav-link" data-scroll-target="#get-the-course-repository"><span class="header-section-number">1.3</span> Get the Course Repository</a></li>
-  <li><a href="#restore-the-course-library" id="toc-restore-the-course-library" class="nav-link" data-scroll-target="#restore-the-course-library"><span class="header-section-number">1.4</span> Restore the Course Library</a></li>
-  <li><a href="#check-you-are-ready" id="toc-check-you-are-ready" class="nav-link" data-scroll-target="#check-you-are-ready"><span class="header-section-number">1.5</span> Check You Are Ready</a></li>
-  <li><a href="#if-something-went-wrong" id="toc-if-something-went-wrong" class="nav-link" data-scroll-target="#if-something-went-wrong"><span class="header-section-number">1.6</span> If Something Went Wrong</a></li>
+  <li><a href="#when-do-you-use-this" id="toc-when-do-you-use-this" class="nav-link active" data-scroll-target="#when-do-you-use-this"><span class="header-section-number">14.1</span> When Do You Use This?</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">14.2</span> Learning Objectives</a></li>
+  <li><a href="#background-todo-the-one-core-idea" id="toc-background-todo-the-one-core-idea" class="nav-link" data-scroll-target="#background-todo-the-one-core-idea"><span class="header-section-number">14.3</span> Background: TODO (the one core idea)</a></li>
+  <li><a href="#example-1-todo" id="toc-example-1-todo" class="nav-link" data-scroll-target="#example-1-todo"><span class="header-section-number">14.4</span> Example 1: TODO</a>
+  <ul class="collapse">
+  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">14.4.1</span> Run It Yourself</a></li>
+  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">14.4.2</span> Reading the Output Line by Line</a></li>
+  </ul></li>
+  <li><a href="#example-2-todo" id="toc-example-2-todo" class="nav-link" data-scroll-target="#example-2-todo"><span class="header-section-number">14.5</span> Example 2: TODO</a>
+  <ul class="collapse">
+  <li><a href="#run-it-yourself-1" id="toc-run-it-yourself-1" class="nav-link" data-scroll-target="#run-it-yourself-1"><span class="header-section-number">14.5.1</span> Run It Yourself</a></li>
+  </ul></li>
+  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">14.6</span> What Can Go Wrong</a>
+  <ul class="collapse">
+  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">14.6.1</span> Common misinterpretations</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.7</span> Exercises</a></li>
+  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">14.8</span> Comprehension Check</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/tlf.html">Part 4: Outputs and Submission</a></li><li class="breadcrumb-item"><a href="../sessions/define-from-specs.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Define-XML from a Specification Workbook</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Define-XML from a Specification Workbook</span></h1>
 </div>
 
 
@@ -394,6 +371,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<!-- SCOPE NOTE (not rendered)
+This session is the second half of the Define-XML material, split out of
+sessions/define-xml.qmd deliberately.
+
+  - define-xml.qmd  = hand-rolled Define-XML v2.1 with xml2. Teaching path.
+  - this session    = the spec-driven production route.
+
+Decisions already taken, do not relitigate:
+
+  * defineR 0.0.6 supports Define-XML 2.0 ONLY. Its inst/extdata has a single
+    version directory, 2.0.0/. There is no 2.1 schema, stylesheet or template.
+    Define-XML 2.0 is April 2014; 2.1 is the current standard. The session must
+    teach this gap explicitly rather than paper over it - the version lag between
+    live tooling and the published standard IS the lesson.
+  * defineR is pre-1.0 (0.0.6). Say so in the session. Do not present it as
+    settled infrastructure.
+  * Build cost: this session needs an artifact the repo does not have - a GLPX-001
+    SDTM specification workbook. Do NOT invent the format: defineR ships templates
+    at inst/extdata/2.0.0/metadata/templates/SDTM_METADATA.xlsx. Fill those in.
+  * Pipeline convention applies: R/build_define.R alongside build_sdtm.R and
+    build_adam.R, deterministic, output committed.
+  * Closing move: metacore::define_to_metacore() reads the generated define.xml
+    back, demonstrating the metadata round-trip. Exported and verified available.
+  * defineR also ships define2-0.xsl; the xslt package (already a defineR
+    dependency) can render define.xml to the browsable HTML a reviewer opens.
+    The v2.1 package ships the matching define2-1.xsl.
+
+Packages verified installed and loading: metacore 0.3.0, metatools 0.3.0,
+defineR 0.0.6, xml2 1.6.0. renv.lock needs a snapshot once this session lands.
+-->
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -404,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Total core time: about 30 minutes</strong>, most of it waiting for packages to install.</p>
+<p><strong>Total core time: about TODO minutes.</strong></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -415,143 +422,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>What you will install</td>
-<td>10 min</td>
-<td>Hands-on</td>
+<td>When Do You Use This? + Learning Objectives</td>
+<td>TODO</td>
+<td>Reading</td>
 </tr>
 <tr class="even">
-<td>Get the course repository</td>
-<td>5 min</td>
-<td>Hands-on</td>
+<td>Background</td>
+<td>TODO</td>
+<td>Reading</td>
 </tr>
 <tr class="odd">
-<td>Restore the course library</td>
-<td>10 min</td>
-<td>Hands-on</td>
+<td>Example 1</td>
+<td>TODO</td>
+<td>Worked example</td>
 </tr>
 <tr class="even">
-<td>Check you are ready</td>
-<td>5 min</td>
-<td>Hands-on</td>
+<td>Example 2</td>
+<td>TODO</td>
+<td>Worked example</td>
+</tr>
+<tr class="odd">
+<td>What Can Go Wrong</td>
+<td>TODO</td>
+<td>Reading</td>
+</tr>
+<tr class="even">
+<td>Exercises</td>
+<td>TODO</td>
+<td>Practice</td>
+</tr>
+<tr class="odd">
+<td>Comprehension Check</td>
+<td>TODO</td>
+<td>Self-test</td>
 </tr>
 </tbody>
 </table>
-<p>Do this once. Everything else in the course assumes it is done.</p>
+<p>TODO: how the session splits across sittings for self-paced study.</p>
 </div>
 </div>
-<section id="what-you-will-install" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="what-you-will-install"><span class="header-section-number">1.1</span> What You Will Install</h2>
-<p>Four tools, in this order. If you already have one, skip it.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Tool</th>
-<th>Why</th>
-<th>Where</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>R</strong> (4.4.0 or later)</td>
-<td>The language everything is written in</td>
-<td><a href="https://cran.r-project.org">cran.r-project.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>RStudio</strong> or <strong>Positron</strong></td>
-<td>An IDE. Either works; the course shows RStudio</td>
-<td><a href="https://posit.co/downloads/">posit.co/downloads</a></td>
-</tr>
-<tr class="odd">
-<td><strong>Quarto</strong></td>
-<td>Renders the book and runs the code chunks</td>
-<td><a href="https://quarto.org/docs/get-started/">quarto.org/docs/get-started</a></td>
-</tr>
-<tr class="even">
-<td><strong>Git</strong></td>
-<td>Gets you the repository and its history</td>
-<td><a href="https://git-scm.com/downloads">git-scm.com</a></td>
-</tr>
-</tbody>
-</table>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Windows: install Rtools too
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>On Windows, install <strong>Rtools44</strong> to match R 4.4.x, from <a href="https://cran.r-project.org/bin/windows/Rtools/">cran.r-project.org/bin/windows/Rtools</a>. Without it, any package that needs compiling will fail to install, and the error message will not obviously say why.</p>
-<p>macOS and Linux users do not need this step.</p>
-</div>
-</div>
-</section>
-<section id="why-this-course-pins-its-packages" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="why-this-course-pins-its-packages"><span class="header-section-number">1.2</span> Why This Course Pins Its Packages</h2>
-<p>In regulated clinical work, “it worked on my machine” is not a defence. A submission has to be reproducible years after it was built, by somebody who is not you, on a machine that does not exist yet. That is not a nice-to-have — it is what the whole apparatus of standards, define.xml and reviewer guides exists to support.</p>
-<p>So this course practises what it teaches. It uses <a href="https://rstudio.github.io/renv/"><strong>renv</strong></a> to record the exact version of every package it depends on in a file called <code>renv.lock</code>. When you restore that lockfile, you get the same package versions the author had, not whatever CRAN is serving today.</p>
-<p><code>renv.lock</code> is a teaching artifact, not overhead. It is the smallest honest example of the thing the rest of the course is about: <strong>a result you can hand to someone else and have them reproduce exactly.</strong></p>
-</section>
-<section id="get-the-course-repository" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="get-the-course-repository"><span class="header-section-number">1.3</span> Get the Course Repository</h2>
-<p>Clone it, or download it as a ZIP from <a href="https://github.com/sufyansuleman/cdisc-with-r">github.com/sufyansuleman/cdisc-with-r</a>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sufyansuleman/cdisc-with-r.git</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cdisc-with-r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then open <strong><code>cdisc-with-r.Rproj</code></strong> in RStudio. This matters more than it looks: opening the project sets R’s working directory to the project root, which is what every code chunk in the course assumes. Paths in the sessions are written as <code>data/sdtm/dm.csv</code>, not <code>../data/sdtm/dm.csv</code> — they only resolve if you are at the root.</p>
-<p>If you use Positron or run R from a terminal, <code>cd</code> to the repository root before starting R, and confirm with:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()   <span class="co"># should end in /cdisc-with-r</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="restore-the-course-library" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="restore-the-course-library"><span class="header-section-number">1.4</span> Restore the Course Library</h2>
-<p>Opening the project runs <code>.Rprofile</code>, which activates renv and points your session at <a href="https://packagemanager.posit.co/">Posit Public Package Manager</a> for precompiled binaries. You will usually see renv announce itself, and often a note that the library is out of sync — that is expected on a fresh clone.</p>
-<p>Run this once, in the R console at the project root:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>renv lists what it is about to install and asks you to confirm. Say yes.</p>
-<p><strong>What to expect.</strong> Several minutes, and a lot of output. Binaries make this fast on Windows and macOS by default, and on Linux via the <code>__linux__/jammy</code> P3M repository the <code>.Rprofile</code> selects. If it starts compiling packages from source and crawling, that is the signal something is off with the repository configuration rather than with you — see the troubleshooting section below.</p>
-<p>A successful restore ends quietly, with no error, and:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">status</span>()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No issues found -- the project is in a consistent state.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>That message is the goal. If you get anything else, fix it here rather than discovering it three sessions in.</p>
-</section>
-<section id="check-you-are-ready" class="level2" data-number="1.5">
-<h2 data-number="1.5" class="anchored" data-anchor-id="check-you-are-ready"><span class="header-section-number">1.5</span> Check You Are Ready</h2>
-<p>Run this snippet. It loads what the course loads, reads a file the way the sessions read files, and checks the controlled-terminology package can answer a question:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdtm.terminology)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. the data ships with the repo — this should print 401 rows</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>dm_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/dm_raw.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dm_raw)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. controlled terminology is available</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ct</span>(<span class="st">"list"</span>) <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">filter</span>(term <span class="sc">==</span> <span class="st">"SEX"</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Quarto is on your PATH</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.which</span>(<span class="st">"quarto"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You are ready when all three run without error: the read returns <strong>401 rows</strong> (yes, 401 — 400 subjects and one duplicate enrolment, which you will meet in <a href="../sessions/why-standards.html">Why Standards</a>), the codelist lookup returns the <code>SEX</code> codelist <code>C66731</code>, and <code>Sys.which()</code> returns a path rather than an empty string.</p>
-<p>To confirm the whole book builds, run this in a terminal at the project root:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</section>
-<section id="if-something-went-wrong" class="level2" data-number="1.6">
-<h2 data-number="1.6" class="anchored" data-anchor-id="if-something-went-wrong"><span class="header-section-number">1.6</span> If Something Went Wrong</h2>
-<p><strong><code>renv::restore()</code> fails on Windows, mentioning compilation.</strong> Rtools44 is missing or does not match your R version. Install it, restart R, try again.</p>
-<p><strong>Packages compile from source and take forever.</strong> Check that <code>.Rprofile</code> ran — <code>getOption("repos")</code> should show a <code>packagemanager.posit.co</code> entry. If it does not, you probably opened R somewhere other than the project root.</p>
-<p><strong><code>renv::restore()</code> reports nothing to do, but <code>library(tidyverse)</code> then fails.</strong> The lockfile and your library disagree. Run <code>renv::status()</code> first and read what it says before installing anything by hand — that message is the diagnosis.</p>
-<p><strong>A code chunk says it cannot find <code>data/raw/dm_raw.csv</code>.</strong> Your working directory is not the project root. Run <code>getwd()</code> and, if needed, reopen <code>cdisc-with-r.Rproj</code>.</p>
-<p><strong>Everything installs but the book will not render.</strong> Check Quarto is on your PATH with <code>quarto --version</code> in a terminal. RStudio bundles its own Quarto, which can differ from the one your terminal sees.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Still stuck?
+<span class="screen-reader-only">Tip</span>How to Use the Code in This Session
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Open an issue at <a href="https://github.com/sufyansuleman/cdisc-with-r/issues">github.com/sufyansuleman/cdisc-with-r/issues</a> with the output of <code>renv::status()</code> and <code>sessionInfo()</code>. Those two together identify almost every setup problem.</p>
+<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Where you see a “Run It Yourself” box, stop and run the code above it before reading the explanation that follows.</p>
+</div>
+</div>
+<section id="when-do-you-use-this" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="when-do-you-use-this"><span class="header-section-number">14.1</span> When Do You Use This?</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>TODO: two or three concrete scenarios that this session answers, ending with the single question it addresses in bold. Cross-link the session(s) this one builds on.</p>
+</div>
+</div>
+</section>
+<section id="learning-objectives" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">14.2</span> Learning Objectives</h2>
+<p>After completing this session you will be able to:</p>
+<ul>
+<li>TODO</li>
+<li>TODO</li>
+<li>TODO</li>
+</ul>
+</section>
+<section id="background-todo-the-one-core-idea" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="background-todo-the-one-core-idea"><span class="header-section-number">14.3</span> Background: TODO (the one core idea)</h2>
+<p><em>Estimated time: ~TODO minutes (reading)</em></p>
+<p>TODO: introduce the single idea that ties the session together, concept before formula.</p>
+</section>
+<section id="example-1-todo" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="example-1-todo"><span class="header-section-number">14.4</span> Example 1: TODO</h2>
+<p>TODO: worked example on GLPX-001 data. Show the code, then the output, then explain it.</p>
+<section id="run-it-yourself" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">14.4.1</span> Run It Yourself</h3>
+<p>TODO: the exact code block the learner should execute before reading on.</p>
+</section>
+<section id="reading-the-output-line-by-line" class="level3" data-number="14.4.2">
+<h3 data-number="14.4.2" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">14.4.2</span> Reading the Output Line by Line</h3>
+<p>TODO: map each line of output to its plain-English meaning.</p>
+</section>
+</section>
+<section id="example-2-todo" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="example-2-todo"><span class="header-section-number">14.5</span> Example 2: TODO</h2>
+<p>TODO: a second worked example.</p>
+<section id="run-it-yourself-1" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="run-it-yourself-1"><span class="header-section-number">14.5.1</span> Run It Yourself</h3>
+<p>TODO.</p>
+</section>
+</section>
+<section id="what-can-go-wrong" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">14.6</span> What Can Go Wrong</h2>
+<p>TODO: failure modes and misuse patterns.</p>
+<section id="common-misinterpretations" class="level3" data-number="14.6.1">
+<h3 data-number="14.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">14.6.1</span> Common misinterpretations</h3>
+<p>TODO.</p>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.7</span> Exercises</h2>
+<p>TODO: link the exercise file(s) for this session, or state that this session has no exercise.</p>
+</section>
+<section id="comprehension-check" class="level2" data-number="14.8">
+<h2 data-number="14.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">14.8</span> Comprehension Check</h2>
+<p>TODO: three to five short self-test questions.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>TODO: answers, collapsed.</p>
+</div>
 </div>
 </div>
 
@@ -961,13 +962,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../sessions/tlf.html" class="pagination-link" aria-label="Tables, Listings and Figures">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tables, Listings and Figures</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../sessions/why-standards.html" class="pagination-link" aria-label="Why Standards">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Why Standards</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../sessions/adrg-and-submission.html" class="pagination-link" aria-label="The ADRG and Submission">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The ADRG and Submission</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -241,14 +276,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../sessions/define-from-specs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Define-XML from a Specification Workbook</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../sessions/adrg-and-submission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">The ADRG and Submission</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The ADRG and Submission</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/dataset-json.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Dataset-JSON</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dataset-JSON</span></span></a>
   </div>
 </li>
       </ul>
@@ -265,43 +306,49 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-dm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Exercise 1 — SDTM: The DM Domain</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exercise 1 — SDTM: The DM Domain</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-events.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exercise 2 — SDTM: Events (Adverse Events)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise 2 — SDTM: Events (Adverse Events)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-findings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise 3 — SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 3 — SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/adsl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 4 — ADSL</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 4 — ADSL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/adae.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 5 — ADAE</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5 — ADAE</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/adlb.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 6 — ADLB</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exercise 6 — ADLB</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/tlf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exercise 7 — Tables, Listings and Figures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Exercise 7 — Tables, Listings and Figures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/define-xml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></span></a>
   </div>
 </li>
       </ul>
@@ -318,22 +365,39 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#when-do-you-use-this" id="toc-when-do-you-use-this" class="nav-link active" data-scroll-target="#when-do-you-use-this"><span class="header-section-number">8.1</span> When Do You Use This?</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">8.2</span> Learning Objectives</a></li>
-  <li><a href="#background-todo-the-one-core-idea" id="toc-background-todo-the-one-core-idea" class="nav-link" data-scroll-target="#background-todo-the-one-core-idea"><span class="header-section-number">8.3</span> Background: TODO (the one core idea)</a></li>
-  <li><a href="#example-1-todo" id="toc-example-1-todo" class="nav-link" data-scroll-target="#example-1-todo"><span class="header-section-number">8.4</span> Example 1: TODO</a>
+  <li><a href="#background-a-web-held-together-by-arbitrary-names" id="toc-background-a-web-held-together-by-arbitrary-names" class="nav-link" data-scroll-target="#background-a-web-held-together-by-arbitrary-names"><span class="header-section-number">8.3</span> Background: A Web Held Together by Arbitrary Names</a>
   <ul class="collapse">
-  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">8.4.1</span> Run It Yourself</a></li>
-  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">8.4.2</span> Reading the Output Line by Line</a></li>
+  <li><a href="#defs-and-refs" id="toc-defs-and-refs" class="nav-link" data-scroll-target="#defs-and-refs"><span class="header-section-number">8.3.1</span> Defs and Refs</a></li>
+  <li><a href="#the-central-intuition" id="toc-the-central-intuition" class="nav-link" data-scroll-target="#the-central-intuition"><span class="header-section-number">8.3.2</span> The central intuition</a></li>
   </ul></li>
-  <li><a href="#example-2-todo" id="toc-example-2-todo" class="nav-link" data-scroll-target="#example-2-todo"><span class="header-section-number">8.5</span> Example 2: TODO</a>
+  <li><a href="#example-1-a-define.xml-for-dm-built-by-hand" id="toc-example-1-a-define.xml-for-dm-built-by-hand" class="nav-link" data-scroll-target="#example-1-a-define.xml-for-dm-built-by-hand"><span class="header-section-number">8.4</span> Example 1: A define.xml for DM, Built by Hand</a>
   <ul class="collapse">
-  <li><a href="#run-it-yourself-1" id="toc-run-it-yourself-1" class="nav-link" data-scroll-target="#run-it-yourself-1"><span class="header-section-number">8.5.1</span> Run It Yourself</a></li>
+  <li><a href="#the-document-shell" id="toc-the-document-shell" class="nav-link" data-scroll-target="#the-document-shell"><span class="header-section-number">8.4.1</span> The document shell</a></li>
+  <li><a href="#declaring-which-standards-you-followed" id="toc-declaring-which-standards-you-followed" class="nav-link" data-scroll-target="#declaring-which-standards-you-followed"><span class="header-section-number">8.4.2</span> Declaring which standards you followed</a></li>
+  <li><a href="#the-dataset-and-pointers-to-its-variables" id="toc-the-dataset-and-pointers-to-its-variables" class="nav-link" data-scroll-target="#the-dataset-and-pointers-to-its-variables"><span class="header-section-number">8.4.3</span> The dataset, and pointers to its variables</a></li>
+  <li><a href="#the-variable-definitions" id="toc-the-variable-definitions" class="nav-link" data-scroll-target="#the-variable-definitions"><span class="header-section-number">8.4.4</span> The variable definitions</a></li>
+  <li><a href="#the-codelist" id="toc-the-codelist" class="nav-link" data-scroll-target="#the-codelist"><span class="header-section-number">8.4.5</span> The codelist</a></li>
+  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">8.4.6</span> Run It Yourself</a></li>
+  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">8.4.7</span> Reading the Output Line by Line</a></li>
   </ul></li>
-  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">8.6</span> What Can Go Wrong</a>
+  <li><a href="#example-2-origin-grows-a-second-attribute" id="toc-example-2-origin-grows-a-second-attribute" class="nav-link" data-scroll-target="#example-2-origin-grows-a-second-attribute"><span class="header-section-number">8.5</span> Example 2: Origin Grows a Second Attribute</a>
   <ul class="collapse">
-  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">8.6.1</span> Common misinterpretations</a></li>
+  <li><a href="#the-table-that-decides-it" id="toc-the-table-that-decides-it" class="nav-link" data-scroll-target="#the-table-that-decides-it"><span class="header-section-number">8.5.1</span> The table that decides it</a></li>
+  <li><a href="#run-it-yourself-1" id="toc-run-it-yourself-1" class="nav-link" data-scroll-target="#run-it-yourself-1"><span class="header-section-number">8.5.2</span> Run It Yourself</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.7</span> Exercises</a></li>
-  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">8.8</span> Comprehension Check</a></li>
+  <li><a href="#example-3-declaring-the-standard-and-a-decision-made-three-sessions-ago" id="toc-example-3-declaring-the-standard-and-a-decision-made-three-sessions-ago" class="nav-link" data-scroll-target="#example-3-declaring-the-standard-and-a-decision-made-three-sessions-ago"><span class="header-section-number">8.6</span> Example 3: Declaring the Standard, and a Decision Made Three Sessions Ago</a>
+  <ul class="collapse">
+  <li><a href="#the-version-trap" id="toc-the-version-trap" class="nav-link" data-scroll-target="#the-version-trap"><span class="header-section-number">8.6.1</span> The version trap</a></li>
+  </ul></li>
+  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">8.7</span> What Can Go Wrong</a>
+  <ul class="collapse">
+  <li><a href="#three-failures-the-schema-does-catch" id="toc-three-failures-the-schema-does-catch" class="nav-link" data-scroll-target="#three-failures-the-schema-does-catch"><span class="header-section-number">8.7.1</span> Three failures the schema does catch</a></li>
+  <li><a href="#the-failure-the-schema-does-not-catch" id="toc-the-failure-the-schema-does-not-catch" class="nav-link" data-scroll-target="#the-failure-the-schema-does-not-catch"><span class="header-section-number">8.7.2</span> The failure the schema does not catch</a></li>
+  <li><a href="#the-one-your-own-file-already-fails" id="toc-the-one-your-own-file-already-fails" class="nav-link" data-scroll-target="#the-one-your-own-file-already-fails"><span class="header-section-number">8.7.3</span> The one your own file already fails</a></li>
+  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">8.7.4</span> Common misinterpretations</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.8</span> Exercises</a></li>
+  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">8.9</span> Comprehension Check</a></li>
   </ul>
 </nav>
     </div>
@@ -369,8 +433,13 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Total core time: about TODO minutes.</strong></p>
+<p><strong>Total core time: about 95 minutes.</strong></p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Section</th>
@@ -381,42 +450,65 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>When Do You Use This? + Learning Objectives</td>
-<td>TODO</td>
+<td>5 min</td>
 <td>Reading</td>
 </tr>
 <tr class="even">
-<td>Background</td>
-<td>TODO</td>
+<td>Background: a web held together by arbitrary names</td>
+<td>20 min</td>
 <td>Reading</td>
 </tr>
 <tr class="odd">
-<td>Example 1</td>
-<td>TODO</td>
+<td>Example 1: A define.xml for DM, built by hand</td>
+<td>25 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="even">
-<td>Example 2</td>
-<td>TODO</td>
+<td>Example 2: Origin grows a second attribute</td>
+<td>15 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="odd">
+<td>Example 3: Declaring the standard, and a decision made three sessions ago</td>
+<td>15 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="even">
 <td>What Can Go Wrong</td>
-<td>TODO</td>
+<td>10 min</td>
 <td>Reading</td>
 </tr>
-<tr class="even">
-<td>Exercises</td>
-<td>TODO</td>
-<td>Practice</td>
-</tr>
 <tr class="odd">
-<td>Comprehension Check</td>
-<td>TODO</td>
-<td>Self-test</td>
+<td>Exercises + Comprehension Check</td>
+<td>15 min</td>
+<td>Practice / Self-test</td>
 </tr>
 </tbody>
 </table>
-<p>TODO: how the session splits across sittings for self-paced study.</p>
+<p>The session that closes Part 2. Everything built in <a href="../sessions/sdtm-dm.html">DM</a>, <a href="../sessions/sdtm-events.html">Events</a> and <a href="../sessions/sdtm-findings.html">Findings</a> is a dataset; this session builds the document that <em>describes</em> those datasets, and it is the first time the course writes something that is not a data frame. Split after Example 1 for self-paced study.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>You Need the Define-XML Package Before You Start
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Unlike every earlier session, this one reads files that this repository cannot ship. The Define-XML v2.1 package is copyright CDISC and licensed to you, not redistributable by a course.</p>
+<p>Download it yourself. It is free — a CDISC account, not a paid membership:</p>
+<ul>
+<li><strong>Define-XML v2.1</strong> — <a href="https://www.cdisc.org/standards/data-exchange/define-xml/define-xml-v2-1" class="uri">https://www.cdisc.org/standards/data-exchange/define-xml/define-xml-v2-1</a></li>
+</ul>
+<p>Unzip it into a <code>refs/</code> folder at the project root, so that the schema sits at <code>refs/DefineV2111_0/schema/cdisc-define-2.1/</code>. Every chunk below assumes:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dx <span class="ot">&lt;-</span> <span class="st">"refs/DefineV2111_0"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Adjust that one line if you put it somewhere else. <code>refs/</code> is gitignored in this repository for exactly this reason.</p>
+<p>The package used to write this session is <strong>v2.1.11</strong>, whose <code>README.md</code> is dated 2026-03-27. The specification PDF inside it is <strong>Version 2.1 (Final), 2019-05-15</strong> — the point releases update the schemas, not the prose. That gap between a frozen document and a maintained schema turns out to matter, and Example 3 is where it bites.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -429,7 +521,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Where you see a “Run It Yourself” box, stop and run the code above it before reading the explanation that follows.</p>
+<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Where you see a “Run It Yourself” box, stop and run the code above it before reading the explanation that follows. Run R from the project root, as in earlier sessions.</p>
+<p>The only package this session needs beyond the tidyverse is <strong><code>xml2</code></strong>, which you already have — it is a tidyverse dependency. We build the XML by hand, element by element. That is slower than the tools a sponsor would actually use, and it is the point: you cannot review a define.xml you have never assembled.</p>
 </div>
 </div>
 <section id="when-do-you-use-this" class="level2" data-number="8.1">
@@ -444,7 +537,13 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TODO: two or three concrete scenarios that this session answers, ending with the single question it addresses in bold. Cross-link the session(s) this one builds on.</p>
+<p>You have built DM, AE, LB and VS. Then:</p>
+<ul>
+<li>A reviewer opens <code>lb.xpt</code> and sees a column called <code>LBSTRESN</code>. Nothing in the file says what it is, where it came from, or what its units mean. Where do they look?</li>
+<li>Your SAP defines HbA1c baseline one way; a second study defined it another. Both submissions contain a variable called <code>BASE</code>. How does anyone downstream tell them apart?</li>
+<li>You coded <code>SEX</code> against a CDISC codelist in <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a>. How does a reviewer <em>verify</em> that, without taking your word for it?</li>
+</ul>
+<p><strong>Where does the meaning of a submitted dataset live, if not in the dataset?</strong></p>
 </div>
 </div>
 </section>
@@ -452,53 +551,624 @@ Tip
 <h2 data-number="8.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">8.2</span> Learning Objectives</h2>
 <p>After completing this session you will be able to:</p>
 <ul>
-<li>TODO</li>
-<li>TODO</li>
-<li>TODO</li>
+<li>Explain what a define.xml document is for, and why a submission is incomplete without one</li>
+<li>Describe how <code>Def</code> and <code>Ref</code> elements and their OIDs turn a flat list of definitions into a linked document</li>
+<li>Build a schema-valid Define-XML v2.1 document for an SDTM domain using <code>xml2</code>, from <code>ODM</code> down to <code>CodeList</code></li>
+<li>Populate <code>def:Origin</code> with both its <code>Type</code> and <code>Source</code> attributes, and justify the combination for a collected lab result</li>
+<li>Validate a document against the CDISC schema in R, and explain why a document that validates can still be wrong</li>
 </ul>
 </section>
-<section id="background-todo-the-one-core-idea" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="background-todo-the-one-core-idea"><span class="header-section-number">8.3</span> Background: TODO (the one core idea)</h2>
-<p><em>Estimated time: ~TODO minutes (reading)</em></p>
-<p>TODO: introduce the single idea that ties the session together, concept before formula.</p>
+<section id="background-a-web-held-together-by-arbitrary-names" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="background-a-web-held-together-by-arbitrary-names"><span class="header-section-number">8.3</span> Background: A Web Held Together by Arbitrary Names</h2>
+<p><em>Estimated time: ~20 minutes (reading)</em></p>
+<p>Everything Part 2 has produced so far is a table. <code>dm.csv</code> has 400 rows and 27 columns; <code>lb.csv</code> has rows of results with units and reference ranges. A regulatory reviewer receiving those tables would know the column names and nothing else. Not what <code>LBNRIND</code> means. Not whether <code>AGE</code> was collected or derived. Not which version of the SDTMIG the sponsor was implementing when they chose those columns.</p>
+<p><strong>define.xml is where all of that lives.</strong> It is a single XML document submitted alongside the datasets, and it carries the metadata: every dataset, every variable, every codelist, every derivation, and — the part this session keeps coming back to — where each value came from.</p>
+<p>The specification is blunt about the purpose:</p>
+<blockquote class="blockquote">
+<p>The purpose of Define-XML is to support the interchange of dataset metadata for clinical research applications in a machine-readable format (Define-XML v2.1, §4)</p>
+</blockquote>
+<p><strong>Machine-readable</strong> is doing real work in that sentence. A PDF describing your datasets would be readable. It would not be <em>checkable</em>. Everything this session does in its last third — validating against a schema, running conformance rules — is possible only because the format was designed for a program to read first and a person second.</p>
+<section id="defs-and-refs" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="defs-and-refs"><span class="header-section-number">8.3.1</span> Defs and Refs</h3>
+<p>The structure has one organising idea, and once you see it the rest of the document stops looking arbitrary:</p>
+<blockquote class="blockquote">
+<p>In Define-XML, an element whose name ends with “Def” is the declaration of an object instance. An element whose name ends with “Ref” is a reference to that object from some other entity (Define-XML v2.1, §3.5)</p>
+</blockquote>
+<p>So a variable is <em>declared once</em>, in an <code>ItemDef</code>. A dataset that contains that variable does not repeat the declaration — it points at it, with an <code>ItemRef</code>. The link is carried by an identifier called an <strong>OID</strong>.</p>
+<p>This is why <code>STUDYID</code> is not defined twenty times in a submission with twenty domains. It is defined once, and every <code>ItemGroupDef</code> references the same <code>ItemDef</code>:</p>
+<blockquote class="blockquote">
+<p>By defining STUDYID outside of any dataset context, we can define it only once and reference the definition from every dataset that contains the variable. In this sense, the STUDYID definition is being shared or reused by all the datasets (Define-XML v2.1, §3.5.1)</p>
+</blockquote>
 </section>
-<section id="example-1-todo" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="example-1-todo"><span class="header-section-number">8.4</span> Example 1: TODO</h2>
-<p>TODO: worked example on GLPX-001 data. Show the code, then the output, then explain it.</p>
-<section id="run-it-yourself" class="level3" data-number="8.4.1">
-<h3 data-number="8.4.1" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">8.4.1</span> Run It Yourself</h3>
-<p>TODO: the exact code block the learner should execute before reading on.</p>
-</section>
-<section id="reading-the-output-line-by-line" class="level3" data-number="8.4.2">
-<h3 data-number="8.4.2" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">8.4.2</span> Reading the Output Line by Line</h3>
-<p>TODO: map each line of output to its plain-English meaning.</p>
-</section>
-</section>
-<section id="example-2-todo" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="example-2-todo"><span class="header-section-number">8.5</span> Example 2: TODO</h2>
-<p>TODO: a second worked example.</p>
-<section id="run-it-yourself-1" class="level3" data-number="8.5.1">
-<h3 data-number="8.5.1" class="anchored" data-anchor-id="run-it-yourself-1"><span class="header-section-number">8.5.1</span> Run It Yourself</h3>
-<p>TODO.</p>
-</section>
-</section>
-<section id="what-can-go-wrong" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">8.6</span> What Can Go Wrong</h2>
-<p>TODO: failure modes and misuse patterns.</p>
-<section id="common-misinterpretations" class="level3" data-number="8.6.1">
-<h3 data-number="8.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">8.6.1</span> Common misinterpretations</h3>
-<p>TODO.</p>
+<section id="the-central-intuition" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="the-central-intuition"><span class="header-section-number">8.3.2</span> The central intuition</h3>
+<p>Here is the part that surprises people, and it is worth sitting with before writing any code.</p>
+<p><strong>The OIDs mean nothing.</strong></p>
+<blockquote class="blockquote">
+<p>This Define-XML specification does not mandate a format for OIDs. OIDs are only intended as a mechanism for unambiguously linking between a definition of an object and references to it. The examples in this document use prefixes at the start of OIDs to indicate the object type. However, this is not required; it is equally valid to use randomly generated identifiers (Define-XML v2.1, §3.5.1)</p>
+</blockquote>
+<p>And, in case that was not clear enough:</p>
+<blockquote class="blockquote">
+<p>The value of an OID attribute has no intrinsic meaning (Define-XML v2.1, §3.5.1)</p>
+</blockquote>
+<p>Every define.xml you will ever open uses OIDs like <code>IT.DM.USUBJID</code> and <code>IG.LB</code> and <code>CL.SEX</code>. It looks like a naming standard. It is not one. It is a convention that implementers adopted because it makes the file readable to humans, and the standard permits it the same way it would permit <code>a7f3b91c</code>.</p>
+<p>So the intuition to carry through the rest of this session:</p>
+<blockquote class="blockquote">
+<p><strong>A define.xml is a web of definitions held together by names that are deliberately meaningless. The structure lives entirely in which name points at which — not in what the names say.</strong></p>
+</blockquote>
+<p>That has a practical consequence you will hit in Example 1 and again in “What Can Go Wrong”: if an <code>ItemRef</code> points at an OID that no <code>ItemDef</code> declares, nothing about the <em>name</em> will tell you. The link is either there or it is not, and only checking finds out.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.7</span> Exercises</h2>
-<p>TODO: link the exercise file(s) for this session, or state that this session has no exercise.</p>
+<section id="example-1-a-define.xml-for-dm-built-by-hand" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="example-1-a-define.xml-for-dm-built-by-hand"><span class="header-section-number">8.4</span> Example 1: A define.xml for DM, Built by Hand</h2>
+<p><em>Estimated time: ~25 minutes (worked example)</em></p>
+<p>We will build a small but genuinely valid Define-XML v2.1 document describing GLPX-001’s DM domain, with three variables and one codelist. Small, but not a toy: it validates against the same CDISC schema a submission would be checked with.</p>
+<p>The document nests like this, outermost first:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Element</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>ODM</code></td>
+<td>The file itself. Define-XML is an extension of CDISC ODM.</td>
+</tr>
+<tr class="even">
+<td><code>Study</code></td>
+<td>The study being described</td>
+</tr>
+<tr class="odd">
+<td><code>GlobalVariables</code></td>
+<td>Study name, description, protocol name</td>
+</tr>
+<tr class="even">
+<td><code>MetaDataVersion</code></td>
+<td>The container for everything below</td>
+</tr>
+<tr class="odd">
+<td><code>def:Standards</code></td>
+<td>Which published standards this submission follows</td>
+</tr>
+<tr class="even">
+<td><code>ItemGroupDef</code></td>
+<td>A dataset (here, DM)</td>
+</tr>
+<tr class="odd">
+<td><code>ItemDef</code></td>
+<td>A variable</td>
+</tr>
+<tr class="even">
+<td><code>CodeList</code></td>
+<td>A set of permitted values</td>
+</tr>
+</tbody>
+</table>
+<p>Note where <code>ItemDef</code> sits: <strong>beside</strong> <code>ItemGroupDef</code>, not inside it. That is the Def/Ref idea made concrete — the dataset holds <code>ItemRef</code> pointers, and the definitions live at the same level as the dataset, available to be shared.</p>
+<section id="the-document-shell" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="the-document-shell"><span class="header-section-number">8.4.1</span> The document shell</h3>
+<p><code>xml2</code> builds a tree by adding children to nodes. <code>xml_new_root()</code> creates the outermost element, and the three <code>xmlns</code> attributes declare the namespaces: the ODM one for standard elements, the <code>def</code> one for the Define-XML extensions, and <code>xlink</code> for links to external files.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>NS_ODM <span class="ot">&lt;-</span> <span class="st">"http://www.cdisc.org/ns/odm/v1.3"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>NS_DEF <span class="ot">&lt;-</span> <span class="st">"http://www.cdisc.org/ns/def/v2.1"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>odm <span class="ot">&lt;-</span> <span class="fu">xml_new_root</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"ODM"</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"xmlns"</span>       <span class="ot">=</span> NS_ODM,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"xmlns:def"</span>   <span class="ot">=</span> NS_DEF,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"xmlns:xlink"</span> <span class="ot">=</span> <span class="st">"http://www.w3.org/1999/xlink"</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ODMVersion       =</span> <span class="st">"1.3.2"</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">FileType         =</span> <span class="st">"Snapshot"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">FileOID          =</span> <span class="st">"GLPX001.define.sdtm.v1"</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">CreationDateTime =</span> <span class="st">"2026-09-04T10:00:00"</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Originator       =</span> <span class="st">"CDISC with R course"</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"def:Context"</span>    <span class="ot">=</span> <span class="st">"Other"</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>study <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(odm, <span class="st">"Study"</span>, <span class="at">OID =</span> <span class="st">"STDY.GLPX001"</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>gv    <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(study, <span class="st">"GlobalVariables"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(gv, <span class="st">"StudyName"</span>, <span class="st">"GLPX-001"</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(gv, <span class="st">"StudyDescription"</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>              <span class="st">"A simulated Phase III trial of GLPX 10 mg in type 2 diabetes"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(gv, <span class="st">"ProtocolName"</span>, <span class="st">"GLPX-001"</span>)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>mdv <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  study, <span class="st">"MetaDataVersion"</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">OID  =</span> <span class="st">"MDV.GLPX001.SDTMIG.3.4"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> <span class="st">"GLPX-001 SDTM Data Definitions"</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"def:DefineVersion"</span> <span class="ot">=</span> <span class="st">"2.1.11"</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Two attributes are worth pausing on. <code>FileType="Snapshot"</code> says this document describes data as of a moment, rather than a set of changes — which is what a submission always is. And <code>def:DefineVersion</code> is the document declaring which version of Define-XML <em>it</em> is written to; not which version of SDTM it describes. Those are different things, and the next chunk handles the other one.</p>
 </section>
-<section id="comprehension-check" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">8.8</span> Comprehension Check</h2>
-<p>TODO: three to five short self-test questions.</p>
+<section id="declaring-which-standards-you-followed" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="declaring-which-standards-you-followed"><span class="header-section-number">8.4.2</span> Declaring which standards you followed</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>std <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(mdv, <span class="st">"def:Standards"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(std, <span class="st">"def:Standard"</span>, <span class="at">OID =</span> <span class="st">"STD.1"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">Name =</span> <span class="st">"SDTMIG"</span>, <span class="at">Type =</span> <span class="st">"IG"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">Version =</span> <span class="st">"3.4"</span>, <span class="at">Status =</span> <span class="st">"Final"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(std, <span class="st">"def:Standard"</span>, <span class="at">OID =</span> <span class="st">"STD.2"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">Name =</span> <span class="st">"CDISC/NCI"</span>, <span class="at">Type =</span> <span class="st">"CT"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">PublishingSet =</span> <span class="st">"SDTM"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">Version =</span> <span class="st">"2023-12-15"</span>, <span class="at">Status =</span> <span class="st">"Final"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This is the machine-readable version of a claim the course has been making in prose since <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a>: GLPX-001 implements <strong>SDTMIG v3.4</strong> with SDTM CT. Until now that claim lived in a sentence. Here it becomes an attribute a validator can check the rest of the document against.</p>
+<p><code>def:Standards</code> is new in v2.1, and it replaced something:</p>
+<blockquote class="blockquote">
+<p>Note: The def:Standards and def:Standard elements replace the def:StandardName and def:StandardVersion attributes used in Define-XML Version 2.0 (Define-XML v2.1, §4.1)</p>
+</blockquote>
+<p>The reason for the change is visible in the shape: 2.0 had <em>attributes</em>, so a document could name one standard. 2.1 has <em>elements</em>, so a document can list several — which a real submission needs when some domains were built to one SDTMIG version and some to another.</p>
+</section>
+<section id="the-dataset-and-pointers-to-its-variables" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="the-dataset-and-pointers-to-its-variables"><span class="header-section-number">8.4.3</span> The dataset, and pointers to its variables</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>igd <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  mdv, <span class="st">"ItemGroupDef"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">OID =</span> <span class="st">"IG.DM"</span>, <span class="at">Name =</span> <span class="st">"DM"</span>, <span class="at">Domain =</span> <span class="st">"DM"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Repeating =</span> <span class="st">"No"</span>, <span class="at">IsReferenceData =</span> <span class="st">"No"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">SASDatasetName =</span> <span class="st">"DM"</span>, <span class="at">Purpose =</span> <span class="st">"Tabulation"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"def:Structure"</span>          <span class="ot">=</span> <span class="st">"One record per subject"</span>,</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"def:StandardOID"</span>        <span class="ot">=</span> <span class="st">"STD.1"</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"def:ArchiveLocationID"</span>  <span class="ot">=</span> <span class="st">"LF.DM"</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(igd, <span class="st">"Description"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(d, <span class="st">"TranslatedText"</span>, <span class="st">"Demographics"</span>, <span class="st">"xml:lang"</span> <span class="ot">=</span> <span class="st">"en"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(igd, <span class="st">"ItemRef"</span>, <span class="at">ItemOID =</span> <span class="st">"IT.STUDYID"</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>              <span class="at">Mandatory =</span> <span class="st">"Yes"</span>, <span class="at">OrderNumber =</span> <span class="st">"1"</span>, <span class="at">KeySequence =</span> <span class="st">"1"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(igd, <span class="st">"ItemRef"</span>, <span class="at">ItemOID =</span> <span class="st">"IT.DM.USUBJID"</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>              <span class="at">Mandatory =</span> <span class="st">"Yes"</span>, <span class="at">OrderNumber =</span> <span class="st">"2"</span>, <span class="at">KeySequence =</span> <span class="st">"2"</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(igd, <span class="st">"ItemRef"</span>, <span class="at">ItemOID =</span> <span class="st">"IT.DM.SEX"</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>              <span class="at">Mandatory =</span> <span class="st">"Yes"</span>, <span class="at">OrderNumber =</span> <span class="st">"3"</span>)</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(igd, <span class="st">"def:Class"</span>, <span class="at">Name =</span> <span class="st">"SPECIAL PURPOSE"</span>)</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>lf <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(igd, <span class="st">"def:leaf"</span>, <span class="at">ID =</span> <span class="st">"LF.DM"</span>, <span class="st">"xlink:href"</span> <span class="ot">=</span> <span class="st">"dm.xpt"</span>)</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(lf, <span class="st">"def:title"</span>, <span class="st">"dm.xpt"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Read the <code>ItemRef</code> lines and notice what is <em>not</em> there: no label, no data type, no length, no origin. An <code>ItemRef</code> says “this dataset contains that variable, in this position, and it is a key” — nothing about what the variable <em>is</em>. <code>def:StandardOID="STD.1"</code> points back at the <code>def:Standard</code> declared a moment ago, so this dataset is explicitly an SDTMIG v3.4 dataset.</p>
+<p><code>def:Class="SPECIAL PURPOSE"</code> is DM’s SDTM class, the same classification <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a> introduced. Keep an eye on that element — Example 3 comes back to it.</p>
+<p><code>def:leaf</code> is the link to the actual data file. This is the line that connects the metadata document to <code>dm.xpt</code> sitting beside it in the submission folder.</p>
+</section>
+<section id="the-variable-definitions" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="the-variable-definitions"><span class="header-section-number">8.4.4</span> The variable definitions</h3>
+<p>Three variables, and a small helper so the pattern is visible rather than buried in repetition:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>add_item <span class="ot">&lt;-</span> <span class="cf">function</span>(parent, oid, name, type, len, label,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                     origin_type, <span class="at">origin_source =</span> <span class="cn">NULL</span>, <span class="at">codelist =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  it <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(parent, <span class="st">"ItemDef"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">OID =</span> oid, <span class="at">Name =</span> name, <span class="at">DataType =</span> type,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">Length =</span> <span class="fu">as.character</span>(len), <span class="at">SASFieldName =</span> name)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  dd <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(it, <span class="st">"Description"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xml_add_child</span>(dd, <span class="st">"TranslatedText"</span>, label, <span class="st">"xml:lang"</span> <span class="ot">=</span> <span class="st">"en"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(codelist)) {</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xml_add_child</span>(it, <span class="st">"CodeListRef"</span>, <span class="at">CodeListOID =</span> codelist)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  args <span class="ot">&lt;-</span> <span class="fu">list</span>(it, <span class="st">"def:Origin"</span>, <span class="at">Type =</span> origin_type)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.null</span>(origin_source)) args<span class="sc">$</span>Source <span class="ot">&lt;-</span> origin_source</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">do.call</span>(xml_add_child, args)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">invisible</span>(it)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="fu">add_item</span>(mdv, <span class="st">"IT.STUDYID"</span>, <span class="st">"STUDYID"</span>, <span class="st">"text"</span>, <span class="dv">8</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Study Identifier"</span>, <span class="st">"Protocol"</span>, <span class="st">"Sponsor"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="fu">add_item</span>(mdv, <span class="st">"IT.DM.USUBJID"</span>, <span class="st">"USUBJID"</span>, <span class="st">"text"</span>, <span class="dv">15</span>,</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>         <span class="st">"Unique Subject Identifier"</span>, <span class="st">"Derived"</span>, <span class="st">"Sponsor"</span>)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>sex_item <span class="ot">&lt;-</span> <span class="fu">add_item</span>(mdv, <span class="st">"IT.DM.SEX"</span>, <span class="st">"SEX"</span>, <span class="st">"text"</span>, <span class="dv">1</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>                     <span class="st">"Sex"</span>, <span class="st">"Collected"</span>, <span class="st">"Investigator"</span>, <span class="at">codelist =</span> <span class="st">"CL.SEX"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Now the <code>ItemRef</code>s from the previous chunk have something to point at. <code>IT.DM.SEX</code> also carries a <code>CodeListRef</code>, which is the third kind of link in the document: variable to codelist.</p>
+</section>
+<section id="the-codelist" class="level3" data-number="8.4.5">
+<h3 data-number="8.4.5" class="anchored" data-anchor-id="the-codelist"><span class="header-section-number">8.4.5</span> The codelist</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>cl <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(mdv, <span class="st">"CodeList"</span>, <span class="at">OID =</span> <span class="st">"CL.SEX"</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">Name =</span> <span class="st">"Sex"</span>, <span class="at">DataType =</span> <span class="st">"text"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (v <span class="cf">in</span> <span class="fu">c</span>(<span class="st">"F"</span>, <span class="st">"M"</span>)) {</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  ei <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(cl, <span class="st">"EnumeratedItem"</span>, <span class="at">CodedValue =</span> v)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xml_add_child</span>(ei, <span class="st">"Alias"</span>, <span class="at">Context =</span> <span class="st">"nci:ExtCodeID"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="at">Name =</span> <span class="cf">if</span> (v <span class="sc">==</span> <span class="st">"F"</span>) <span class="st">"C16576"</span> <span class="cf">else</span> <span class="st">"C20197"</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(cl, <span class="st">"Alias"</span>, <span class="at">Context =</span> <span class="st">"nci:ExtCodeID"</span>, <span class="at">Name =</span> <span class="st">"C66731"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>That <code>C66731</code> should look familiar — it is the NCI code for the CDISC <code>SEX</code> codelist, the same one checked programmatically with <code>sdtm.terminology</code> back in <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a>. The <code>Alias</code> elements on each <code>EnumeratedItem</code> carry the codes for the individual terms.</p>
+<p>This is the answer to the third scenario at the top of the session. A reviewer does not take the sponsor’s word that <code>SEX</code> was coded to CDISC terminology. They read <code>C66731</code> out of the define.xml and look it up.</p>
+</section>
+<section id="run-it-yourself" class="level3" data-number="8.4.6">
+<h3 data-number="8.4.6" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">8.4.6</span> Run It Yourself</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>out <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"define_glpx.xml"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xml</span>(odm, out)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>schema <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="fu">file.path</span>(dx, <span class="st">"schema/cdisc-define-2.1/define2-1-0.xsd"</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">xml_validate</span>(<span class="fu">read_xml</span>(out), schema)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="reading-the-output-line-by-line" class="level3" data-number="8.4.7">
+<h3 data-number="8.4.7" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">8.4.7</span> Reading the Output Line by Line</h3>
+<p><code>TRUE</code>. The document you just assembled is a schema-valid Define-XML v2.1 document.</p>
+<p>That is worth a moment. <code>xml_validate()</code> checked your file against <code>define2-1-0.xsd</code> — the same schema CDISC publishes and the same one a sponsor’s validation software loads. Nothing about this was simulated or approximated. Roughly forty lines of R produced a file a validator accepts.</p>
+<p>Which raises the obvious question, and it is the one the rest of the session is about: <strong>if it validates, is it right?</strong></p>
+</section>
+</section>
+<section id="example-2-origin-grows-a-second-attribute" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="example-2-origin-grows-a-second-attribute"><span class="header-section-number">8.5</span> Example 2: Origin Grows a Second Attribute</h2>
+<p><em>Estimated time: ~15 minutes (worked example)</em></p>
+<p><a href="../sessions/sdtm-findings.html">Findings</a> made a claim about GLPX-001’s central lab data that this session can now finish. It said that a central lab result has <code>LBDRVFL</code> null because the value was not derived, and that the same fact is recorded a second time in the Define-XML origin metadata, where the origin is <em>Collected</em>.</p>
+<p>That was right, and it was incomplete. In Define-XML v2.1, origin is not one value:</p>
+<blockquote class="blockquote">
+<p>The def:Origin element includes the Type and Source attributes. The Type attribute indicates how the data originated. The Source attribute identifies the party responsible for the data’s origin (Define-XML v2.1, §4.3.2)</p>
+</blockquote>
+<p>And for SDTM, you do not get to skip one:</p>
+<blockquote class="blockquote">
+<p>For SDTM datasets, both Type and Source attributes are required, except in the case of Predecessor where the Source attribute is not used (Define-XML v2.1, §4.3.2.1)</p>
+</blockquote>
+<p>So <code>Collected</code> is only half an answer. Collected <em>by whom</em>?</p>
+<section id="the-table-that-decides-it" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="the-table-that-decides-it"><span class="header-section-number">8.5.1</span> The table that decides it</h3>
+<p>§4.3.2.1 gives a grid of Type against Source, with <code>X</code> marking combinations that are not valid. Two rows matter for LB:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Subject</th>
+<th>Investigator</th>
+<th>Vendor</th>
+<th>Sponsor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>Collected</code></td>
+<td>ePro</td>
+<td>CRF</td>
+<td><strong>Lab data, ECG</strong></td>
+<td>X</td>
+</tr>
+<tr class="even">
+<td><code>Derived</code></td>
+<td>X</td>
+<td>X</td>
+<td>Lab data, ECG</td>
+<td><strong>SDTM</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Read the <code>Collected</code> row. A central lab result is not collected by the investigator — it is produced by the laboratory, which is a <strong>Vendor</strong>. The spec’s own example in that cell is literally “Lab data, ECG”. And <code>Collected</code> + <code>Sponsor</code> is marked <code>X</code>: invalid, because the sponsor observes nothing.</p>
+<p>Now read the <code>Derived</code> row for <code>LBDY</code>. §4.3.2.1’s note says derivation examples include “calculations performed during data collection (e.g., <code>--DY</code>)”. <code>LBDY</code> was computed by the sponsor’s SDTM programming, so it is <code>Derived</code> + <code>Sponsor</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>lb_origin <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>variable,   <span class="sc">~</span>type,        <span class="sc">~</span>source,        <span class="sc">~</span>why,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"LBORRES"</span>,   <span class="st">"Collected"</span>,  <span class="st">"Investigator"</span>, <span class="st">"Result as reported on the CRF"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"LBSTRESN"</span>,  <span class="st">"Collected"</span>,  <span class="st">"Vendor"</span>,       <span class="st">"Central lab result, standardised"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"LBDY"</span>,      <span class="st">"Derived"</span>,    <span class="st">"Sponsor"</span>,      <span class="st">"Study day, computed in SDTM"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"LBTESTCD"</span>,  <span class="st">"Assigned"</span>,   <span class="st">"Sponsor"</span>,      <span class="st">"Set to complete the SDTM structure"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"DOMAIN"</span>,    <span class="st">"Assigned"</span>,   <span class="st">"Sponsor"</span>,      <span class="st">"Set to complete the SDTM structure"</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(lb_origin, <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"Variable"</span>, <span class="st">"Type"</span>, <span class="st">"Source"</span>, <span class="st">"Why"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Type</th>
+<th style="text-align: left;">Source</th>
+<th style="text-align: left;">Why</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">LBORRES</td>
+<td style="text-align: left;">Collected</td>
+<td style="text-align: left;">Investigator</td>
+<td style="text-align: left;">Result as reported on the CRF</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LBSTRESN</td>
+<td style="text-align: left;">Collected</td>
+<td style="text-align: left;">Vendor</td>
+<td style="text-align: left;">Central lab result, standardised</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">LBDY</td>
+<td style="text-align: left;">Derived</td>
+<td style="text-align: left;">Sponsor</td>
+<td style="text-align: left;">Study day, computed in SDTM</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LBTESTCD</td>
+<td style="text-align: left;">Assigned</td>
+<td style="text-align: left;">Sponsor</td>
+<td style="text-align: left;">Set to complete the SDTM structure</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">DOMAIN</td>
+<td style="text-align: left;">Assigned</td>
+<td style="text-align: left;">Sponsor</td>
+<td style="text-align: left;">Set to complete the SDTM structure</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><code>LBTESTCD</code> and <code>DOMAIN</code> are <code>Assigned</code>, which the spec defines to include “values set independently of any subject-related data value in order to complete a dataset” — and names <code>DOMAIN</code> and <code>--TESTCD</code> as its examples (§4.3.2.1).</p>
+</section>
+<section id="run-it-yourself-1" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="run-it-yourself-1"><span class="header-section-number">8.5.2</span> Run It Yourself</h3>
+<p>Add the LB variable that Part 2 spent the most time on, and confirm the <code>Collected</code>/<code>Vendor</code> pairing survives a schema check:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>new_item <span class="ot">&lt;-</span> <span class="fu">xml_add_sibling</span>(</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  sex_item, <span class="st">"ItemDef"</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">OID =</span> <span class="st">"IT.LB.LBSTRESN"</span>, <span class="at">Name =</span> <span class="st">"LBSTRESN"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">DataType =</span> <span class="st">"float"</span>, <span class="at">Length =</span> <span class="st">"8"</span>, <span class="at">SASFieldName =</span> <span class="st">"LBSTRESN"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">.where =</span> <span class="st">"after"</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>dd <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(new_item, <span class="st">"Description"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(dd, <span class="st">"TranslatedText"</span>,</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>              <span class="st">"Numeric Result/Finding in Standard Units"</span>, <span class="st">"xml:lang"</span> <span class="ot">=</span> <span class="st">"en"</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(new_item, <span class="st">"def:Origin"</span>, <span class="at">Type =</span> <span class="st">"Collected"</span>, <span class="at">Source =</span> <span class="st">"Vendor"</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>out2 <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"define_glpx2.xml"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xml</span>(odm, out2)</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(<span class="fu">xml_validate</span>(<span class="fu">read_xml</span>(out2), schema))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Note what that chunk does <strong>not</strong> do: call <code>add_item()</code>. The helper appends its <code>ItemDef</code> to the end of <code>MetaDataVersion</code>, which by now means <em>after</em> the <code>CodeList</code> — and the schema requires every <code>ItemDef</code> to precede every <code>CodeList</code>. Appending returns <code>FALSE</code>, for exactly the reason “What Can Go Wrong” is about to demonstrate deliberately.</p>
+<p>So the new <code>ItemDef</code> is inserted as a <strong>sibling immediately after an existing one</strong>, using the node <code>add_item()</code> returned in Example 1. This is the practical face of §3.6’s “the correct ordering of elements within a document is an absolute requirement”: in a hand-built define.xml, <em>where you attach a node is part of whether the document is valid</em>, and a convenience helper that always appends will eventually betray you.</p>
+<p>The refinement to carry away: <strong><code>LBDRVFL</code> and <code>def:Origin</code> are not two records of the same fact after all.</strong> <code>LBDRVFL</code> says the value was not derived. <code>def:Origin</code> says it was collected <em>and that a vendor collected it</em>. The second is strictly more information, and it is information the dataset has no column for.</p>
+</section>
+</section>
+<section id="example-3-declaring-the-standard-and-a-decision-made-three-sessions-ago" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="example-3-declaring-the-standard-and-a-decision-made-three-sessions-ago"><span class="header-section-number">8.6</span> Example 3: Declaring the Standard, and a Decision Made Three Sessions Ago</h2>
+<p><em>Estimated time: ~15 minutes (worked example)</em></p>
+<p><a href="../sessions/adae.html">ADAE</a> made a structural decision that mattered enough to argue about at length: ADAE is built as <strong>Class = OCCURRENCE DATA STRUCTURE</strong>, not as SubClass = ADVERSE EVENT. At the time, that decision lived in the session’s prose and in the way the variables were derived.</p>
+<p>Define-XML is where it becomes a fact in a file.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>enum <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="fu">file.path</span>(dx, <span class="st">"schema/cdisc-define-2.1/define-enumerations.xsd"</span>))</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>get_enum <span class="ot">&lt;-</span> <span class="cf">function</span>(doc, name) {</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  node <span class="ot">&lt;-</span> <span class="fu">xml_find_first</span>(doc, <span class="fu">sprintf</span>(<span class="st">"//xs:simpleType[@name='%s']"</span>, name),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ns =</span> <span class="fu">c</span>(<span class="at">xs =</span> <span class="st">"http://www.w3.org/2001/XMLSchema"</span>))</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xml_attr</span>(<span class="fu">xml_find_all</span>(node, <span class="st">".//xs:enumeration"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">ns =</span> <span class="fu">c</span>(<span class="at">xs =</span> <span class="st">"http://www.w3.org/2001/XMLSchema"</span>)), <span class="st">"value"</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="fu">get_enum</span>(enum, <span class="st">"ItemGroupClass"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ADAM OTHER"                              
+ [2] "BASIC DATA STRUCTURE"                    
+ [3] "DEVICE LEVEL ANALYSIS DATASET"           
+ [4] "EVENTS"                                  
+ [5] "FINDINGS"                                
+ [6] "FINDINGS ABOUT"                          
+ [7] "INTERVENTIONS"                           
+ [8] "MEDICAL DEVICE BASIC DATA STRUCTURE"     
+ [9] "MEDICAL DEVICE OCCURRENCE DATA STRUCTURE"
+[10] "OCCURRENCE DATA STRUCTURE"               
+[11] "REFERENCE DATA STRUCTURE"                
+[12] "RELATIONSHIP"                            
+[13] "SPECIAL PURPOSE"                         
+[14] "STUDY REFERENCE"                         
+[15] "SUBJECT LEVEL ANALYSIS DATASET"          
+[16] "TRIAL DESIGN"                            </code></pre>
+</div>
+</div>
+<p><code>OCCURRENCE DATA STRUCTURE</code> is in that list, alongside <code>BASIC DATA STRUCTURE</code> for ADLB and <code>SUBJECT LEVEL ANALYSIS DATASET</code> for ADSL. And the SubClass:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_enum</span>(enum, <span class="st">"ItemGroupSubClass"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "ADVERSE EVENT"                       "MEDICAL DEVICE TIME-TO-EVENT"       
+[3] "NON-COMPARTMENTAL ANALYSIS"          "POPULATION PHARMACOKINETIC ANALYSIS"
+[5] "TIME-TO-EVENT"                      </code></pre>
+</div>
+</div>
+<p><code>ADVERSE EVENT</code> is a <strong>SubClass</strong>, in a different list. So the choice ADAE made is not a matter of emphasis or documentation style — it is a choice between two attributes on two different enumerated lists, and define.xml forces you to declare which one you meant.</p>
+<section id="the-version-trap" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="the-version-trap"><span class="header-section-number">8.6.1</span> The version trap</h3>
+<p>Here is where the frozen-PDF-versus-live-schema gap becomes concrete.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_enum</span>(enum, <span class="st">"StandardName"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "ADaMIG"         "ADaMIG-MD"      "BIMO"           "CDISC/NCI"     
+ [5] "SDTMIG"         "SDTMIG-AP"      "SDTMIG-MD"      "SENDIG"        
+ [9] "SENDIG-AR"      "SENDIG-DART"    "SENDIG-GENETOX"</code></pre>
+</div>
+</div>
+<p>The course builds ADAE to <strong>OCCDS v1.1</strong>. There is no <code>ADaM-OCCDSIG</code> in that list. You cannot declare OCCDS as a standard in a Define-XML v2.1.11 document; an OCCDS dataset is declared under <code>ADaMIG</code>.</p>
+<p>It used to be there. The package’s own <code>README.md</code> records the removal:</p>
+<blockquote class="blockquote">
+<p>Enumeration for ADaM-OCCDSIG (C214535) was deleted (Define-XML v2.1.11 release notes, changes in v2.1.11)</p>
+</blockquote>
+<p>Added at v2.1.9, deleted at v2.1.11. Two point releases.</p>
+<p>Now check the specification PDF against the same schema for SDTM versions. §4.1.1 lists SDTMIG allowable versions as 3.1.2, 3.2 and 3.3 — and this course uses v3.4, which Example 1 declared:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_enum</span>(enum, <span class="st">"SdtmigVersionResponse"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "3.1.1"                     "3.1.2"                    
+[3] "3.1.3"                     "3.2"                      
+[5] "3.3"                       "3.4"                      
+[7] "Version 3.1.2 Amendment 1"</code></pre>
+</div>
+</div>
+<p><code>3.4</code> is there. The 2019 PDF does not mention it; the schema does.</p>
+<p><strong>This is not the specification being out of date and the schema contradicting it.</strong> Read what §4.3.2 actually says about its own tables:</p>
+<blockquote class="blockquote">
+<p>In advance of CDISC publication of controlled terminology, the terms in the following tables can be used… Users are encouraged to refer to the most recent version of CDISC Controlled Terminology (Define-XML v2.1, §4.3.2)</p>
+</blockquote>
+<p>The specification designated its own lists as provisional and pointed at Controlled Terminology as the authority. The schema <em>is</em> that authority, regenerated for each CT package. So the rule to carry away:</p>
+<blockquote class="blockquote">
+<p><strong>For any enumerated value in Define-XML, the schema is current and the PDF is a snapshot. Check <code>define-enumerations.xsd</code>, not §4.1.1.</strong></p>
+</blockquote>
+<p>The same discipline the course applied to SDTM terminology with <code>sdtm.terminology</code> rather than reading the CT PDF, applied one level up.</p>
+</section>
+</section>
+<section id="what-can-go-wrong" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">8.7</span> What Can Go Wrong</h2>
+<p><em>Estimated time: ~10 minutes (reading)</em></p>
+<p>Example 1 ended on a question: if it validates, is it right? The specification answers it directly, and the answer is no.</p>
+<blockquote class="blockquote">
+<p>Once a Define-XML document is valid according to the schema, validation software should consider all other Define-XML requirements in the specification. These include rules about conditionally required components or other business rules in this document. <strong>The Define-XML schema can only enforce some of the standard</strong> (Define-XML v2.1, §3.6)</p>
+</blockquote>
+<p>CDISC publishes the rest as a separate deliverable: <strong>Conformance Rules for Define-XML v2.1</strong>, a spreadsheet of 225 rules. Each rule records where it comes from, and the split is the whole story:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Rules</th>
+<th>Who catches it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Schema</td>
+<td>135</td>
+<td><code>xml_validate()</code></td>
+</tr>
+<tr class="even">
+<td>Specification</td>
+<td>90</td>
+<td>Nothing, unless you check</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ninety rules that no schema validation will ever catch.</strong> A document can validate <code>TRUE</code> and violate any of them.</p>
+<section id="three-failures-the-schema-does-catch" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="three-failures-the-schema-does-catch"><span class="header-section-number">8.7.1</span> Three failures the schema does catch</h3>
+<p><strong>Case sensitivity.</strong> The spec warns about it explicitly: “XML is case-sensitive… <code>&lt;def:Class Name="findings" /&gt;</code> is not valid, but <code>&lt;def:Class Name="FINDINGS" /&gt;</code> is valid” (§3.6). Lowercasing our DM class produces:</p>
+<pre><code>Element '{http://www.cdisc.org/ns/def/v2.1}Class', attribute 'Name':
+[facet 'enumeration'] The value 'special purpose' is not an element of
+the set {'ADAM OTHER', 'BASIC DATA STRUCTURE', ..., 'SPECIAL PURPOSE',
+'STUDY REFERENCE', 'SUBJECT LEVEL ANALYSIS DATASET', 'TRIAL DESIGN'}.</code></pre>
+<p>Note that the error prints the entire permitted set. Schema errors in Define-XML are unusually informative — worth reading rather than skimming.</p>
+<p><strong>Element ordering.</strong> Moving <code>def:Class</code> above the <code>Description</code> inside <code>ItemGroupDef</code> gives:</p>
+<pre><code>Element '{http://www.cdisc.org/ns/odm/v1.3}Description': This element is
+not expected. Expected is one of ( {http://www.cdisc.org/ns/def/v2.1}Class,
+{http://www.cdisc.org/ns/def/v2.1}leaf ).</code></pre>
+<p>Order is not cosmetic here: “The correct ordering of elements within a document is an absolute requirement for the document to be valid with respect to the Define-XML schema” (§3.6).</p>
+<p><strong>A misspelled enumerated value</strong>, as in the version trap above.</p>
+</section>
+<section id="the-failure-the-schema-does-not-catch" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="the-failure-the-schema-does-not-catch"><span class="header-section-number">8.7.2</span> The failure the schema does not catch</h3>
+<p>Take the document from Example 1 and break the link — point an <code>ItemRef</code> at an OID that no <code>ItemDef</code> declares:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>broken <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(out)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>node <span class="ot">&lt;-</span> <span class="fu">xml_find_first</span>(broken, <span class="st">"//d1:ItemRef[@ItemOID='IT.DM.SEX']"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_set_attr</span>(node, <span class="st">"ItemOID"</span>, <span class="st">"IT.DM.DOES_NOT_EXIST"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_validate</span>(broken, schema)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE
+attr(,"errors")
+[1] "Element '{http://www.w3.org/2001/XMLSchema}import': Skipping import of schema located at 'C:/HE_Sufyan/Courses/cdisc-with-r/refs/DefineV2111_0/schema/cdisc-odm-1.3.2/ODM1-3-2-foundation.xsd' for the namespace 'http://www.cdisc.org/ns/odm/v1.3', since this namespace was already imported with the schema located at 'C:/HE_Sufyan/Courses/cdisc-with-r/refs/DefineV2111_0/schema/cdisc-define-2.1/define2-1-0.xsd'."
+[2] "Element '{http://www.w3.org/2001/XMLSchema}import': Skipping import of schema located at 'C:/HE_Sufyan/Courses/cdisc-with-r/refs/DefineV2111_0/schema/cdisc-odm-1.3.2/ODM1-3-2-foundation.xsd' for the namespace 'http://www.cdisc.org/ns/odm/v1.3', since this namespace was already imported with the schema located at 'C:/HE_Sufyan/Courses/cdisc-with-r/refs/DefineV2111_0/schema/cdisc-define-2.1/define2-1-0.xsd'."</code></pre>
+</div>
+</div>
+<p><code>TRUE</code>. The document is schema-valid and structurally broken: a dataset claims a variable that is defined nowhere. This is exactly the consequence of the central intuition — the schema knows <code>ItemOID</code> must be a string, because that is all a schema can know. It cannot know whether the string points at anything, because OIDs have no meaning to check against.</p>
+<p>Conformance rule 65 is the one that catches it, and its Source Type is <code>Specification</code>:</p>
+<blockquote class="blockquote">
+<p>The ItemOID attribute on the ItemRef element must reference an existing ItemDef element (Conformance Rules for Define-XML v2.1, rule 65)</p>
+</blockquote>
+<p>Which you can check yourself in three lines:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>refs <span class="ot">&lt;-</span> <span class="fu">xml_attr</span>(<span class="fu">xml_find_all</span>(broken, <span class="st">"//d1:ItemGroupDef/d1:ItemRef"</span>), <span class="st">"ItemOID"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>defs <span class="ot">&lt;-</span> <span class="fu">xml_attr</span>(<span class="fu">xml_find_all</span>(broken, <span class="st">"//d1:ItemDef"</span>), <span class="st">"OID"</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(refs, defs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "IT.DM.DOES_NOT_EXIST"</code></pre>
+</div>
+</div>
+</section>
+<section id="the-one-your-own-file-already-fails" class="level3" data-number="8.7.3">
+<h3 data-number="8.7.3" class="anchored" data-anchor-id="the-one-your-own-file-already-fails"><span class="header-section-number">8.7.3</span> The one your own file already fails</h3>
+<p>Rule 65 needed a deliberately broken document. This one does not.</p>
+<blockquote class="blockquote">
+<p>The MethodOID attribute must be provided on the ItemRef element when the Origin Type attribute on the corresponding ItemDef element is “Derived” (Conformance Rules for Define-XML v2.1, rule 73)</p>
+</blockquote>
+<p>In Example 1, <code>USUBJID</code> was given <code>Origin Type = "Derived"</code>. Its <code>ItemRef</code> has no <code>MethodOID</code>. Nothing declares <em>how</em> it was derived:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(out)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>derived <span class="ot">&lt;-</span> <span class="fu">xml_attr</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xml_find_all</span>(doc, <span class="st">"//d1:ItemDef[def:Origin/@Type='Derived']"</span>), <span class="st">"OID"</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>missing_method <span class="ot">&lt;-</span> <span class="fu">Filter</span>(<span class="cf">function</span>(oid) {</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  ref <span class="ot">&lt;-</span> <span class="fu">xml_find_first</span>(</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    doc, <span class="fu">sprintf</span>(<span class="st">"//d1:ItemGroupDef/d1:ItemRef[@ItemOID='%s']"</span>, oid))</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="sc">!</span><span class="fu">is.na</span>(ref) <span class="sc">&amp;&amp;</span> <span class="fu">is.na</span>(<span class="fu">xml_attr</span>(ref, <span class="st">"MethodOID"</span>))</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>}, derived)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>missing_method</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "IT.DM.USUBJID"</code></pre>
+</div>
+</div>
+<p>The file you built and validated in Example 1 is non-conformant, and <code>xml_validate()</code> returned <code>TRUE</code> on it. That is not a mistake in the example — it is the most useful thing this session can show you. Fixing it means adding a <code>MethodDef</code> that states the derivation and a <code>MethodOID</code> on the <code>ItemRef</code> that points at it, which is what <a href="../exercises/define-xml.html">Exercise 8</a> asks you to do.</p>
+</section>
+<section id="common-misinterpretations" class="level3" data-number="8.7.4">
+<h3 data-number="8.7.4" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">8.7.4</span> Common misinterpretations</h3>
+<ul>
+<li><strong>“The define.xml is documentation.”</strong> It is a submission deliverable with its own conformance rules, not a README. A submission with conformant datasets and a non-conformant define.xml is a non-conformant submission.</li>
+<li><strong>“Validation means conformance.”</strong> 135 of 225 rules, at best. Say “schema-valid” when you mean schema-valid.</li>
+<li><strong>“OID naming conventions are part of the standard.”</strong> They are not (§3.5.1). Use them — they make files readable — but never rely on an OID’s <em>shape</em> to infer what it points at. Follow the link.</li>
+<li><strong>“Origin is one value.”</strong> For SDTM and ADaM, Type <em>and</em> Source are both required (§4.3.2.1, §4.3.2.2).</li>
+<li><strong>“The spec PDF is the authority on permitted values.”</strong> For enumerated values it is a 2019 snapshot; the schema is regenerated with each CT package.</li>
+</ul>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.8</span> Exercises</h2>
+<p><a href="../exercises/define-xml.html">Exercise 8 — Define-XML</a> extends this document: a <code>MethodDef</code> to resolve rule 73, an <code>ItemGroupDef</code> for LB with value-level metadata, and the variable this course cannot populate at all.</p>
+</section>
+<section id="comprehension-check" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">8.9</span> Comprehension Check</h2>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>A colleague proposes renaming every OID in your define.xml to a UUID, arguing it is cleaner. Is the resulting document still conformant? What is actually lost?</li>
+<li>GLPX-001’s HbA1c results come from a central laboratory. What <code>Type</code> and <code>Source</code> belong on <code>LBSTRESN</code>, and why is <code>Collected</code>/<code>Sponsor</code> invalid?</li>
+<li>Your define.xml returns <code>TRUE</code> from <code>xml_validate()</code>. What proportion of the published conformance rules have you demonstrated compliance with?</li>
+<li>Why can an OCCDS-structured ADAE not be declared with <code>Name="ADaM-OCCDSIG"</code> in a v2.1.11 document, and what do you declare instead?</li>
+<li><code>ItemDef</code> elements sit beside <code>ItemGroupDef</code>, not inside it. What does that arrangement make possible?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -507,9 +1177,15 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO: answers, collapsed.</p>
+<ol type="1">
+<li><p><strong>Yes, still conformant.</strong> The specification does not mandate an OID format and states that random identifiers are equally valid (§3.5.1). What is lost is human readability — nothing machine-checkable. This is the central intuition: the structure lives in which OID points at which, not in what the OIDs say.</p></li>
+<li><p><strong><code>Type="Collected"</code>, <code>Source="Vendor"</code>.</strong> The value is observed and recorded, so the Type is <code>Collected</code>; a central laboratory is a vendor, and §4.3.2.1’s example in that cell is “Lab data, ECG”. <code>Collected</code>/<code>Sponsor</code> is marked <code>X</code> in the table — invalid, because the sponsor observes nothing. Both attributes are required for SDTM.</p></li>
+<li><p><strong>At most 135 of 225 — the Schema-sourced rules.</strong> The remaining 90 come from the specification and no schema validation touches them (§3.6). Rule 73 is the example: the Example 1 document validates and still fails it.</p></li>
+<li><p><strong><code>ADaM-OCCDSIG</code> is not in the <code>StandardName</code> enumeration in v2.1.11</strong> — it was added at v2.1.9 and deleted at v2.1.11 (package release notes). Declare <code>Name="ADaMIG"</code> instead, and record the occurrence structure through <code>def:Class="OCCURRENCE DATA STRUCTURE"</code> on the <code>ItemGroupDef</code>, which is where that decision belongs anyway.</p></li>
+<li><p><strong>Definition once, reference many times.</strong> <code>STUDYID</code> appears in almost every domain but is declared in a single <code>ItemDef</code> that every <code>ItemGroupDef</code> references by OID (§3.5.1). Nesting definitions inside datasets would force a copy per dataset, and copies drift.</p></li>
+</ol>
 </div>
 </div>
 </div>
