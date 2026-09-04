@@ -1,0 +1,122 @@
+---
+title: "Exercise 9 — Define-XML from a Specification Workbook"
+---
+
+## Goal
+
+Extend GLPX-001's specification workbook to a third domain, regenerate
+the define.xml, and then confront the question the session leaves open:
+what would it actually take to ship 2.1 instead of 2.0?
+
+## Setup
+
+Work from the project root. Everything you need is committed:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(openxlsx)
+library(xml2)
+library(defineR)
+library(metacore)
+
+spec <- "data/spec/SDTM_METADATA.xlsx"
+```
+
+Work on a **copy** of the workbook, not the committed one — the point
+of a controlled document is that it does not change casually.
+
+## Task
+
+1. **(Guided) Add a domain.** GLPX-001 has four SDTM domains but the
+   workbook specifies only DM and LB. Add **VS** (Vital Signs).
+
+   Read `data/sdtm/vs.csv` for the variable list, and take labels and
+   types from the same two sources `R/author_spec_workbook.R` uses —
+   the CDISC example define.xml in the Define-XML package, and SDTMIG
+   v3.4 for anything the example does not cover. Compute lengths from
+   the data.
+
+   You will need rows in at least `TOC_METADATA` and
+   `VARIABLE_METADATA`. Decide for yourself whether VS also needs
+   `VALUELEVEL_METADATA`, and justify the decision in one sentence —
+   look at what `VSSTRESU` does across `VSTESTCD` before you answer.
+
+   Regenerate with `write_define()` and confirm the new domain appears.
+   Report the dataset, variable and codelist counts before and after.
+
+2. **(The trap) Make the origins honest.** The session showed that the
+   2.0 workbook records `eDT` where the standard now wants `Collected`
+   + `Vendor`.
+
+   Write a function that takes the generated define.xml and reports,
+   for every variable, what its 2.1 `Type` and `Source` **would** be.
+   Use the mapping the session established for `CRF` and `eDT`, and
+   work out the rest yourself from §4.3.2.1 — `Derived` and `Assigned`
+   both survive into 2.1, but they still need a `Source`, and the SDTM
+   table constrains which sources are valid for each.
+
+   Then answer, with the count to back it up:
+
+   - How many of the 48 variables can you assign a 2.1 `Source` to with
+     confidence, and how many are genuinely ambiguous from the workbook
+     alone?
+   - For the ambiguous ones, what information would you need, and who
+     in a real sponsor would have it?
+
+3. **(Semi-guided) Cost out the upgrade.** You have been asked whether
+   the study should ship Define-XML 2.1.
+
+   Do not answer from opinion. Establish the facts:
+
+   - Does `defineR` 0.0.6 support 2.1? Check its `extdata` directory
+     rather than assuming, and say how you checked.
+   - Which columns would the workbook need that it does not have?
+   - Which of the differences the session identified — origin, class
+     casing, namespace — could be fixed by post-processing the
+     generated XML, and which could not?
+
+   Then write a short recommendation, five sentences at most, of the
+   kind you would actually send to a study team. State what you would
+   do, what it would cost, and what the risk of not doing it is. A
+   recommendation that says only "we should upgrade" has not done the
+   work.
+
+## Acceptance criteria
+
+- [ ] VS added to the workbook with labels traced to a named source,
+      not invented
+- [ ] The `VALUELEVEL_METADATA` decision for VS is made and justified
+- [ ] Regeneration succeeds; before/after counts reported
+- [ ] A 2.1 origin-mapping function that runs against the generated XML
+- [ ] Counts of confident vs ambiguous `Source` assignments, with the
+      ambiguity explained rather than guessed away
+- [ ] `defineR`'s 2.1 support established by inspection, with the method
+      stated
+- [ ] A five-sentence recommendation covering action, cost and risk
+
+::: {.callout-tip}
+## Hint
+
+Task 1: `R/author_spec_workbook.R` already does all of this for DM and
+LB — read it before writing anything. Its `var_meta_for()` helper is
+domain-agnostic and the label guard will tell you loudly if VS has a
+variable neither source covers. Note that `write_define()` writes its
+output beside the workbook you hand it, which is why
+`R/build_define.R` passes it a copy.
+
+Task 2: the SDTM origin table is §4.3.2.1 of the Define-XML v2.1
+specification, and the cells marked `X` are as informative as the ones
+with examples — they tell you which combinations are impossible, which
+narrows the ambiguous cases faster than the valid ones do. `Assigned` +
+`Sponsor` covers more variables than you might first think; look at
+what the spec says `Assigned` means.
+
+Task 3: `system.file("extdata", package = "defineR")` and
+`list.dirs()`. One directory listing settles it. For the
+post-processing question, think about which differences are local
+string substitutions and which require information the document does
+not contain — that distinction is the whole answer.
+:::
+
+> Solutions are in the paid tier.

@@ -48,6 +48,7 @@ book:
     - exercises/adlb.qmd
     - exercises/tlf.qmd
     - exercises/define-xml.qmd
+    - exercises/define-from-specs.qmd
 
 bibliography:
   - references.bib

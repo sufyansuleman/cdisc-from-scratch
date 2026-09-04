@@ -2,128 +2,530 @@
 title: "Define-XML from a Specification Workbook"
 ---
 
-<!-- SCOPE NOTE (not rendered)
-This session is the second half of the Define-XML material, split out of
-sessions/define-xml.qmd deliberately.
+```{r setup}
+#| include: false
+#| eval: true
+library(tidyverse)
+library(openxlsx)
+library(xml2)
+library(defineR)
+library(metacore)
 
-  - define-xml.qmd  = hand-rolled Define-XML v2.1 with xml2. Teaching path.
-  - this session    = the spec-driven production route.
-
-Decisions already taken, do not relitigate:
-
-  * defineR 0.0.6 supports Define-XML 2.0 ONLY. Its inst/extdata has a single
-    version directory, 2.0.0/. There is no 2.1 schema, stylesheet or template.
-    Define-XML 2.0 is April 2014; 2.1 is the current standard. The session must
-    teach this gap explicitly rather than paper over it - the version lag between
-    live tooling and the published standard IS the lesson.
-  * defineR is pre-1.0 (0.0.6). Say so in the session. Do not present it as
-    settled infrastructure.
-  * Build cost: this session needs an artifact the repo does not have - a GLPX-001
-    SDTM specification workbook. Do NOT invent the format: defineR ships templates
-    at inst/extdata/2.0.0/metadata/templates/SDTM_METADATA.xlsx. Fill those in.
-  * Pipeline convention applies: R/build_define.R alongside build_sdtm.R and
-    build_adam.R, deterministic, output committed.
-  * Closing move: metacore::define_to_metacore() reads the generated define.xml
-    back, demonstrating the metadata round-trip. Exported and verified available.
-  * defineR also ships define2-0.xsl; the xslt package (already a defineR
-    dependency) can render define.xml to the browsable HTML a reviewer opens.
-    The v2.1 package ships the matching define2-1.xsl.
-
-Packages verified installed and loading: metacore 0.3.0, metatools 0.3.0,
-defineR 0.0.6, xml2 1.6.0. renv.lock needs a snapshot once this session lands.
--->
-
+dx <- "refs/DefineV2111_0"
+```
 
 ::: {.callout-note}
 ### Session at a Glance
 
-**Total core time: about TODO minutes.**
+**Total core time: about 85 minutes.**
 
 | Section | Time | Type |
 |---|---|---|
-| When Do You Use This? + Learning Objectives | TODO | Reading |
-| Background | TODO | Reading |
-| Example 1 | TODO | Worked example |
-| Example 2 | TODO | Worked example |
-| What Can Go Wrong | TODO | Reading |
-| Exercises | TODO | Practice |
-| Comprehension Check | TODO | Self-test |
+| When Do You Use This? + Learning Objectives | 5 min | Reading |
+| Background: the workbook is the deliverable | 15 min | Reading |
+| Example 1: Reading a real specification | 20 min | Worked example |
+| Example 2: Generating define.xml from it | 15 min | Worked example |
+| Example 3: What the tool could not say | 15 min | Worked example |
+| Example 4: Reading the metadata back | 10 min | Worked example |
+| What Can Go Wrong | 10 min | Reading |
+| Exercises + Comprehension Check | 15 min | Practice / Self-test |
 
-TODO: how the session splits across sittings for self-paced study.
+The other half of [Define-XML](define-xml.qmd). That session built the
+document by hand to show its structure; this one builds it the way a
+sponsor does, from a specification workbook, and examines what the
+production route costs you. Read them in order — this session assumes
+you know what an `ItemGroupDef` is.
 :::
 
 ::: {.callout-tip}
 ### How to Use the Code in This Session
 
-Every code chunk below is written so you can copy it into your R
-console (or an R script) and run it yourself, in the order shown.
-Where you see a "Run It Yourself" box, stop and run the code above it
-before reading the explanation that follows.
+Run R from the project root, as always. This session uses three
+packages you have not seen before: **`defineR`**, **`openxlsx`** and
+**`metacore`**, all pinned in `renv.lock`.
+
+Everything here runs against artifacts committed in this repository —
+`data/spec/SDTM_METADATA.xlsx` and `data/define/`. You do not need the
+CDISC Define-XML package for the main path; one comparison in Example 3
+uses it, and is marked.
+:::
+
+::: {.callout-warning}
+### A Note on `defineR`
+
+`defineR` is at version **0.0.6**. That leading zero is not decoration:
+it is a pre-1.0 package, and its interface may change. It is used here
+because it is the most direct open-source path in R from a
+specification workbook to a define.xml, and because the shape of what
+it does is what matters — not because it is settled infrastructure you
+should build a submission pipeline on without further thought.
 :::
 
 ## When Do You Use This?
 
 ::: {.callout-tip}
-TODO: two or three concrete scenarios that this session answers, ending
-with the single question it addresses in bold. Cross-link the
-session(s) this one builds on.
+[Define-XML](define-xml.qmd) built a document with three variables. A
+real submission has thousands. Then:
+
+- Nobody is going to hand-write `xml_add_child()` calls for 2,000
+  variables across 30 domains. What actually produces the file?
+- Your standards group maintains dataset metadata in a spreadsheet, and
+  has done for years, before anyone mentioned XML. How does that become
+  a submission deliverable?
+- The tool you use was written against an older version of the
+  standard. What exactly does that cost you, and how would you find
+  out?
+
+**How is define.xml actually produced, and what does the production
+route quietly decide on your behalf?**
 :::
 
 ## Learning Objectives
 
 After completing this session you will be able to:
 
-- TODO
-- TODO
-- TODO
+- Describe what a specification workbook contains and why it, not the
+  XML, is the sponsor's source of truth
+- Generate a Define-XML document from a workbook with `defineR`
+- Identify what a Define-XML 2.0 tool cannot express, by comparing its
+  output against the 2.1 enumerations
+- Read published metadata back into R with `metacore` and explain why
+  that round-trip is worth doing
+- Explain why "our tool produces a valid define.xml" is not the same
+  claim as "our define.xml is right"
 
-## Background: TODO (the one core idea)
+## Background: The Workbook Is the Deliverable
 
-*Estimated time: ~TODO minutes (reading)*
+*Estimated time: ~15 minutes (reading)*
 
-TODO: introduce the single idea that ties the session together, concept
-before formula.
+Here is the thing that surprises people coming to clinical programming
+from other data work: **in most sponsors, nobody writes define.xml.**
 
-## Example 1: TODO
+The document that people write, argue about, review, version and sign
+off is a **specification workbook** — an Excel file, one sheet per kind
+of metadata, maintained by a standards or data-management group. It
+lists every dataset, every variable, its type, its length, its label,
+its origin, its codelist and its derivation. It is a controlled
+document. It exists before any of the datasets do, because it is what
+programming is written *against*.
 
-TODO: worked example on GLPX-001 data. Show the code, then the output,
-then explain it.
+define.xml is generated from it, usually near the end, often
+automatically, and frequently by someone who did not write a line of
+the metadata it contains.
+
+That arrangement has a consequence worth stating plainly, because it
+governs everything else in this session:
+
+> **If the define.xml is wrong, the workbook is wrong. Fixing the XML
+> fixes one submission; fixing the workbook fixes the study.**
+
+This repository mirrors that arrangement deliberately. `data/spec/SDTM_METADATA.xlsx`
+is a committed artifact — a binary file that git cannot show you diffs
+of, which is a genuine cost and also genuinely how this works. `R/build_define.R`
+**reads** that workbook and never writes it. There is a second script,
+`R/author_spec_workbook.R`, which created the workbook once and stands
+in for the standards group this course does not have.
+
+## Example 1: Reading a Real Specification
+
+*Estimated time: ~20 minutes (worked example)*
+
+GLPX-001's workbook covers two domains, DM and LB. Start with its
+shape:
+
+```{r ex1-sheets}
+spec <- "data/spec/SDTM_METADATA.xlsx"
+
+tibble(sheet = getSheetNames(spec)) |>
+  mutate(rows = map_int(sheet, ~ nrow(read.xlsx(spec, sheet = .x))))
+```
+
+Nine sheets. Read them as a list of definitions rather than a
+spreadsheet and the structure of [Define-XML](define-xml.qmd) is
+already visible: `TOC_METADATA` becomes `ItemGroupDef`,
+`VARIABLE_METADATA` becomes `ItemDef`, `CODELISTS` becomes `CodeList`,
+`COMPUTATION_METHOD` becomes `MethodDef`, `WHERE_CLAUSES` becomes
+`def:WhereClauseDef`. The workbook is the same web of definitions,
+flattened into sheets.
+
+### The variable sheet
+
+This is where almost all the content lives:
+
+```{r ex1-vars}
+vars <- read.xlsx(spec, sheet = "VARIABLE_METADATA") |> as_tibble()
+
+vars |>
+  filter(DOMAIN == "LB") |>
+  select(VARNUM, VARIABLE, TYPE, LENGTH, LABEL, ORIGIN, CODELISTNAME) |>
+  head(10)
+```
 
 ### Run It Yourself
 
-TODO: the exact code block the learner should execute before reading on.
+Count what the specification actually commits to:
+
+```{r ex1-counts}
+vars |> count(DOMAIN, name = "variables")
+vars |> count(ORIGIN, sort = TRUE)
+```
 
 ### Reading the Output Line by Line
 
-TODO: map each line of output to its plain-English meaning.
+48 variables across two domains, and every one of them carries an
+origin. Look at the origin counts closely, because Example 3 comes back
+to them: `Derived`, `Assigned`, `CRF`, `eDT`.
 
-## Example 2: TODO
+Two of those four are about to become a problem.
 
-TODO: a second worked example.
+### Where the labels came from
+
+One detail matters more than it looks. The labels in that sheet were
+not typed from memory. `R/author_spec_workbook.R` takes 36 of them from
+the CDISC-published example define.xml shipped in the Define-XML v2.1
+package, and the remaining 12 from the SDTMIG v3.4 specification tables
+(§5.2 for DM, §6.3.5.6 for LB). The script **stops with an error** if
+any variable is left unlabelled rather than proceeding with a blank.
+
+That is not fussiness. A wrong variable label is one of the easiest
+things in a submission to get wrong and one of the hardest for anyone
+downstream to notice, because it looks like content rather than
+metadata. It is worth a guard.
+
+## Example 2: Generating define.xml From It
+
+*Estimated time: ~15 minutes (worked example)*
+
+`defineR::write_define()` reads the workbook and writes the document.
+That is the whole production step:
+
+```{r ex2-build}
+#| eval: false
+write_define(
+  path  = "data/define/SDTM_METADATA.xlsx",
+  dir   = "data/define",
+  type  = "sdtm",
+  check = TRUE,
+  html  = TRUE,
+  view  = FALSE
+)
+```
+
+`R/build_define.R` runs exactly that, and the outputs are committed, so
+you can inspect them without rebuilding:
+
+```{r ex2-outputs}
+list.files("data/define")
+```
+
+Three files from one workbook:
+
+| File | What it is |
+|---|---|
+| `define.sdtm.xml` | The submission deliverable |
+| `define.sdtm.html` | The browsable rendering a reviewer opens |
+| `check.sdtm.pdf` | `defineR`'s own check report |
+
+The HTML is worth dwelling on. A reviewer does not read raw XML — they
+open define.xml in a browser, where a stylesheet turns it into a
+navigable document. That rendering is not a courtesy the tool added; it
+is produced by an XSL stylesheet CDISC publishes, and the reference to
+it is a line inside the XML itself.
 
 ### Run It Yourself
 
-TODO.
+```{r ex2-inspect}
+doc <- read_xml("data/define/define.sdtm.xml")
+
+c(datasets  = length(xml_find_all(doc, "//d1:ItemGroupDef")),
+  variables = length(xml_find_all(doc, "//d1:ItemDef")),
+  codelists = length(xml_find_all(doc, "//d1:CodeList")))
+```
+
+### Reading the Output Line by Line
+
+Two datasets and six codelists match the workbook exactly. **52
+`ItemDef`s from 48 variables** does not — and the extra four are not a
+bug.
+
+They are the value-level metadata. `VALUELEVEL_METADATA` has four rows,
+one per lab analyte, because `LBSTRESN` means something different
+depending on `LBTESTCD`: a percentage for HbA1c, mmol/L for glucose,
+U/L for ALT, µmol/L for creatinine. One variable, four meanings, and
+Define-XML expresses that by defining four additional items and
+attaching a where-clause to each.
+
+Four rows in a spreadsheet became four `ItemDef`s, four `ItemRef`s and
+four `def:WhereClauseDef`s. That is the leverage the workbook route
+buys you.
+
+## Example 3: What the Tool Could Not Say
+
+*Estimated time: ~15 minutes (worked example)*
+
+Now the part that matters.
+
+```{r ex3-validate}
+schema_20 <- read_xml(system.file(
+  "extdata/2.0.0/cdisc-define-2.0/define2-0-0.xsd", package = "defineR"))
+
+as.logical(xml_validate(doc, schema_20))
+```
+
+Valid. And against the current standard:
+
+```{r ex3-validate21}
+schema_21 <- read_xml(file.path(dx, "schema/cdisc-define-2.1/define2-1-0.xsd"))
+
+as.logical(xml_validate(doc, schema_21))
+```
+
+`defineR` emits **Define-XML 2.0**, published April 2014. The current
+standard is 2.1. It is tempting to file that as a version lag — an old
+tool that will catch up. Look at what actually differs before accepting
+that reading.
+
+### Origin
+
+```{r ex3-origin}
+xml_find_all(doc, "//def:Origin") |>
+  xml_attr("Type") |>
+  table()
+```
+
+Note first that `Derived` is 23 here against 19 in the workbook: the
+four value-level items carry origins of their own. The two tables
+reconcile.
+
+Two things are wrong here by 2.1's account, and only one of them is the
+obvious one.
+
+The obvious one: **there is no `Source` attribute.** [Define-XML](define-xml.qmd)
+established that SDTM requires both `Type` and `Source`, and that a
+central lab result is `Collected` + `Vendor`. The workbook has a single
+`ORIGIN` column. There is nowhere to put "Vendor".
+
+The less obvious one is worse. Compare those emitted types against what
+2.1 actually permits:
+
+```{r ex3-enum}
+enum <- read_xml(file.path(dx, "schema/cdisc-define-2.1/define-enumerations.xsd"))
+ns   <- c(xs = "http://www.w3.org/2001/XMLSchema")
+
+permitted <- xml_attr(xml_find_all(
+  enum, "//xs:simpleType[@name='OriginType']//xs:enumeration", ns), "value")
+
+emitted <- unique(xml_attr(xml_find_all(doc, "//def:Origin"), "Type"))
+
+setdiff(emitted, permitted)
+```
+
+**`CRF` and `eDT` are not values that 2.1 permits.** They are not
+missing a `Source` — they do not exist. 2.1 did not extend origin; it
+reorganised it. The old types were re-expressed as pairs:
+
+| Define-XML 2.0 | Define-XML 2.1 |
+|---|---|
+| `CRF` | `Collected` + `Investigator` |
+| `eDT` | `Collected` + `Vendor` |
+
+That second row is exactly the pairing the previous session derived for
+GLPX-001's central lab results from §4.3.2.1. The two sessions meet
+here.
+
+So the central intuition of this session is not about version numbers:
+
+> **The tool is not describing the same thing the standard now asks
+> for.** A 2.0 document is not a 2.1 document missing an attribute. It
+> is a document whose vocabulary was retired.
+
+### Class
+
+The same pattern, in a second place, and the difference here is
+structural rather than a matter of spelling. Look for `def:Class` as an
+element, the way [Define-XML](define-xml.qmd) built it:
+
+```{r ex3-class-elem}
+length(xml_find_all(doc, "//def:Class"))
+```
+
+None. It is not missing — in 2.0 the dataset class is an **attribute**
+on `ItemGroupDef`:
+
+```{r ex3-class-attr}
+xml_attr(xml_find_all(doc, "//d1:ItemGroupDef"), "Class")
+```
+
+Whereas in the CDISC-published 2.1 example, the same information is a
+**child element** on all eleven of its datasets:
+
+```{r ex3-class-21}
+ex21 <- read_xml(file.path(dx, "examples/DefineXML-2-1-SDTM/defineV21-SDTM.xml"))
+
+c(as_element   = length(xml_find_all(ex21, "//def:Class")),
+  as_attribute = sum(!is.na(xml_attr(xml_find_all(ex21, "//d1:ItemGroupDef"),
+                                     "Class"))))
+```
+
+So the class moved from an attribute to an element between versions —
+and the values changed casing too, from `Findings` to the `FINDINGS`
+that 2.1's `ItemGroupClass` enumeration requires. The previous session
+demonstrated deliberately that a lowercased class name fails schema
+validation with a `[facet 'enumeration']` error. Here the same failure
+arrives from a tool rather than a typo, and nothing in the workbook
+would have warned you.
+
+### Namespace
+
+```{r ex3-ns}
+xml_ns(doc)
+```
+
+The declared extension namespace ends `v2.0`. This is why the 2.1
+validation returned `FALSE` immediately: the document is not claiming
+to be a 2.1 document at all. Everything above — the retired origin
+types, the relocated class — follows from that one declaration.
+
+## Example 4: Reading the Metadata Back
+
+*Estimated time: ~10 minutes (worked example)*
+
+A define.xml is machine-readable, which means the trip runs both ways.
+`metacore` parses a published define.xml into an R object:
+
+```{r ex4-roundtrip}
+mc <- define_to_metacore("data/define/define.sdtm.xml", verbose = "silent")
+
+c(datasets    = nrow(mc$ds_spec),
+  variables   = nrow(mc$ds_vars),
+  codelists   = nrow(mc$codelist),
+  derivations = nrow(mc$derivations))
+```
+
+Everything the workbook committed comes back out:
+
+```{r ex4-ds}
+mc$ds_spec
+```
+
+And a codelist can be recovered by name, from the XML, without the
+workbook present at all:
+
+```{r ex4-ct}
+get_control_term(mc, LBNRIND)
+```
+
+### Why this matters
+
+Consider who can run that code. Not just the sponsor — **anyone holding
+the submission**. A reviewer receiving define.xml can reconstruct the
+sponsor's entire declared metadata programmatically and check the
+datasets against it.
+
+That is what "machine-readable" bought, and it cuts both ways. The
+metadata is not documentation attached to the submission; it is a set
+of claims the submission can be tested against, by someone who does not
+trust you and does not have to ask.
 
 ## What Can Go Wrong
 
-TODO: failure modes and misuse patterns.
+*Estimated time: ~10 minutes (reading)*
+
+**The tool validates against the wrong schema.** `defineR`'s own
+`check = TRUE` produces `check.sdtm.pdf`, and the document validates
+cleanly — against 2.0. A green check from a tool tells you the tool is
+satisfied. `R/build_define.R` therefore asserts *both* schemas
+explicitly, and is written to complain if the 2.1 result ever changes,
+so that a future `defineR` gaining 2.1 support is noticed rather than
+silently assumed.
+
+**The workbook has no place for what you know.** This is the failure
+mode with no error message. You know GLPX-001's lab results come from a
+central laboratory. The 2.0 `ORIGIN` column cannot record it. Nothing
+warns you, nothing fails, and the information is simply absent from the
+deliverable. **A metadata format's limits become your metadata's
+limits, silently.**
+
+**Fixing the XML instead of the workbook.** Hand-editing generated
+define.xml to correct something is the single most tempting mistake
+here, and it does not survive the next regeneration. It also makes the
+workbook and the deliverable disagree, which is worse than either being
+wrong on its own.
+
+**Links to documents that do not exist.** `EXTERNAL_LINKS` in this
+workbook names `blankcrf.pdf` and `sdrg.pdf`. **Neither file is part of
+this course**, and the generated define.xml links to both. A real
+submission ships them alongside; here they are named and absent, which
+is exactly the kind of dangling reference a conformance check is
+supposed to catch and a schema will not.
 
 ### Common misinterpretations
 
-TODO.
+- **"The define.xml is the source of truth."** The workbook is. The
+  XML is generated output, and treating it as the master is how a study
+  ends up with two disagreeing versions of its own metadata.
+- **"It validated, so the version is fine."** It validated against the
+  version it was written for. That is close to a tautology.
+- **"2.0 is 2.1 minus some attributes."** `CRF` and `eDT` say
+  otherwise. The vocabulary changed, not just the field count.
+- **"Value-level metadata is an advanced feature."** Four rows in a
+  spreadsheet. It is ordinary, and any Findings domain with mixed units
+  needs it.
 
 ## Exercises
 
-TODO: link the exercise file(s) for this session, or state that this
-session has no exercise.
+[Exercise 9 — Define-XML from a Specification Workbook](../exercises/define-from-specs.qmd)
+adds a domain to the workbook, regenerates, and asks what it would take
+to close the gap to 2.1.
 
 ## Comprehension Check
 
-TODO: three to five short self-test questions.
+::: {.callout-note collapse="true"}
+### Questions
+
+1. A reviewer finds `LBSTRESN`'s label is wrong in your submitted
+   define.xml. Where do you fix it, and why not in the XML?
+2. The workbook has 48 variables but the generated define.xml has 52
+   `ItemDef`s. Account for the difference.
+3. Why is `Type="eDT"` a more serious problem than `def:Origin` simply
+   lacking a `Source` attribute?
+4. Your `defineR` output validates and your check report is clean. What
+   have you demonstrated, and what have you not?
+5. What can a regulatory reviewer do with your define.xml that they
+   could not do with a PDF describing the same datasets?
+:::
 
 ::: {.callout-note collapse="true"}
 ### Answers
 
-TODO: answers, collapsed.
+1. **In `data/spec/SDTM_METADATA.xlsx`, then regenerate.** Editing the
+   XML fixes one file and leaves the workbook — the source of truth,
+   and the thing the next regeneration reads — still wrong. It also
+   makes the two disagree, so the next person cannot tell which is
+   intended.
+
+2. **Value-level metadata: four extra `ItemDef`s, one per lab analyte.**
+   `LBSTRESN` has a different meaning and unit depending on `LBTESTCD`
+   (% for HbA1c, mmol/L for glucose, U/L for ALT, µmol/L for
+   creatinine), so Define-XML defines an item per value and attaches a
+   where-clause to each.
+
+3. **Because a missing `Source` is an omission, and `eDT` is a
+   retirement.** Adding `Source` to a 2.0 document would leave `eDT`
+   still invalid — it is not in 2.1's `OriginType` enumeration at all.
+   The conversion is `eDT` → `Collected` + `Vendor`: one value becomes
+   a pair, and you cannot get there by adding an attribute.
+
+4. **You have demonstrated that the document conforms to Define-XML
+   2.0.** You have not demonstrated conformance to the current
+   standard, nor to the 90 Specification-sourced conformance rules that
+   no schema check touches (see [Define-XML](define-xml.qmd)), nor that
+   the metadata is *correct* — a confidently wrong label validates
+   perfectly.
+
+5. **Check it programmatically.** `define_to_metacore()` turns the
+   submission's declared metadata back into data, so a reviewer can
+   test the datasets against the sponsor's own claims — codelists,
+   types, lengths, derivations — without asking the sponsor anything.
+   A PDF is readable; only this is checkable.
 :::

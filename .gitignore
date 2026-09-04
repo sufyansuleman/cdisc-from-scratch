@@ -49,3 +49,12 @@ Thumbs.db
 *.pdf
 *.xlsx
 *.xls
+
+# EXCEPTION: the study specification workbook IS a course artifact and is
+# committed. In a real sponsor this workbook is the source of truth for
+# submission metadata — maintained by the standards/data-management group,
+# read by programming, and the input define.xml is generated from. It is a
+# binary blob that git cannot diff; that is a real cost, and it is also how
+# the work is actually done.
+!data/spec/
+!data/spec/*.xlsx

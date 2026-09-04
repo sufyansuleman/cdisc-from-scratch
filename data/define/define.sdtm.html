@@ -1,0 +1,1709 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<!--
+     xsl:version = "1.0"
+     xsl:vendor = "libxslt"
+     xsl:vendor-url = "http://xmlsoft.org/XSLT/"
+   -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="Content-Script-Type" content="text/javascript">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>GLPX-001, SDTM-IG3.4</title>
+<script type="text/javascript"><!--
+/**
+ * With one argument, return the textContent or innerText of the element.
+ * With two arguments, set the textContent or innerText of element to value.
+ */
+function textContent(element, value) {
+  "use strict";
+  var rtn;
+  var content = element.textContent;  // Check if textContent is defined
+  if (value === undefined) { // No value passed, so return current text
+    if (content !== undefined) {
+      rtn = content;
+    } else {
+      rtn = element.innerText;
+    }
+    return rtn;
+  }
+  else { // A value was passed, so set text
+    if (content !== undefined) {
+      element.textContent = value;
+    } else {
+      element.innerText = value;
+    }
+  }
+}
+
+var ITEM  = '\u00A0';
+var CLOSE = '\u25BA';
+var OPEN  = '\u25BC';
+
+function toggle_submenu(e) {
+  "use strict";
+  if (textContent(e)===OPEN) {
+    textContent(e, CLOSE);
+  }
+  else {
+    textContent(e, OPEN);
+  }
+
+  var i;
+  for (i=0; i < e.parentNode.childNodes.length; i++) {
+    var c;
+    c=e.parentNode.childNodes[i];
+    if (c.tagName==='UL') {c.style.display=(c.style.display==='none') ? 'block' : 'none';}
+   }
+}
+
+function reset_menus() {
+"use strict";
+  var li;
+  var c;
+  var i;
+  var j;
+  var li_tags = document.getElementsByTagName('LI');
+  for (i=0; i < li_tags.length; i++) {
+    li=li_tags[i];
+    if ( li.className.match('hmenu-item') ){
+      for (j=0; j < li.childNodes.length; j++) {
+        c=li.childNodes[j];
+        if ( c.tagName === 'SPAN' && c.className.match('hmenu-bullet') ) {textContent(c, ITEM);}
+        }
+      }
+    if ( li.className.match('hmenu-submenu') ) {
+      for (j=0; j < li.childNodes.length; j++) {
+        c=li.childNodes[j];
+        if ( c.tagName === 'SPAN' && c.className.match('hmenu-bullet') ) {textContent(c, CLOSE);}
+        else if ( c.tagName === 'UL' ) { c.style.display = 'none'; }
+        }
+    }
+  }
+}
+
+function toggle_vlm(element) {
+  var child_id = element.childNodes[0].getAttribute("id");
+  var vlm_rows = document.getElementsByClassName(child_id);
+  for (j=0; j < vlm_rows.length; j++) {
+    if (vlm_rows[j].style.display==='none') {
+      vlm_rows[j].style.display=''; }
+    else {
+      vlm_rows[j].style.display='none'; 
+      }
+    }
+}
+
+function expand_all_vlm() {
+  var vlm_rows = document.getElementsByClassName("vlm");
+  for (j=0; j < vlm_rows.length; j++) {
+      vlm_rows[j].style.display='';
+    }
+}
+
+function collapse_all_vlm() {
+  var vlm_rows = document.getElementsByClassName("vlm");
+  for (j=0; j < vlm_rows.length; j++) {
+      vlm_rows[j].style.display='none';
+    }
+}
+
+/**
+ * Open external documents (PDFs, ...) in a new window.
+ */
+document.onclick = function(e)
+{
+  var target = e ? e.target : window.event.srcElement;    
+  while (target && !/^(a|body)$/i.test(target.nodeName))
+  {
+    target = target.parentNode;
+  }
+
+  if (target && target.className.match('external'))
+  {
+    var external = window.open(target.href);
+    return external.closed;
+  }
+}
+//--></script>
+  <style type="text/css">
+      .external-link-gif{
+        background: 
+        url(data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9gCGhErDWL4mOoAAAB6SURBVBjTbVCxDcAgDHNRP2KDY9gYO5YbWNno1mPY6E3pAJEIYCmCOCQOPogII6wNkug4d49KiXMz1EiUEg8uLBN3Ui7FVduYmxjG3JRru+facubVuIdLEV4Dzwe8V4BYg7t4Ap+d57qUnuWICBzi116v1ggfd3bM+AEZWXFvnym8EwAAAABJRU5ErkJggg==)
+       no-repeat
+       right center;
+        padding: 8px;
+      }      
+      
+      body{
+        background-color: #FFFFFF;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+        font-size: 62.5%;
+        margin: 0;
+        padding: 30px;
+      }
+      
+      h1{
+        font-size: 1.6em;
+        margin-left: 0;
+        font-weight: bolder;
+        text-align: left;
+        color: #696969;
+      }
+      
+      h1.header{
+        text-align: center;
+      }
+      
+      ul{
+        margin-left: 0px;
+      }
+      
+      a{
+      color: #0000FF;
+        text-decoration: underline;
+      }
+      a.visited{
+      color: #551A8B;
+        text-decoration: underline;
+      }
+      a:hover{
+      color: #FF9900;
+        text-decoration: underline;
+      }
+      a.tocItem{
+      color: #004A95;
+      text-decoration: none;
+      margin-top: 2px;
+      font-size: 1.4em;
+      }
+      .tocItem{
+      text-decoration: none;
+      margin-top: 2px;
+      font-size: 1.4em;
+      }
+      
+      #menu{
+        position: fixed;
+        left: 0px;
+        top: 10px;
+        width: 20%;
+        height: 96%;
+        bottom: 0px;
+        overflow: auto;
+        background-color: #FFFFFF;
+        color: #000000;
+        border: 0px;
+        text-align: left;
+        white-space: nowrap;
+      }
+ 
+      .hmenu li{
+        list-style-type: none;
+        line-height: 200%;
+        padding-left: 0;
+      }
+      .hmenu ul{
+        padding-left: 14px;
+        margin-left: 0;
+      }
+      .hmenu-item{
+      }
+      .hmenu-submenu{
+      }
+      .hmenu-bullet{
+        float: left;
+        width: 16px;
+        color: #AAAAAA;
+        font-size: 1.2em;
+      }
+      
+      div.buttons {
+        padding: 5px 0 5px 40px;
+        display: inline-block;
+      }
+        div.button {
+        padding: 5px 0 5px 0;   
+      }
+      
+      button { 
+        width: 100%;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        -webkit-box-shadow: 3px 3px 2px #888;
+        -moz-box-shadow: 3px 3px 2px #888;
+        box-shadow: 3px 3px 2px #888;
+        padding: 4px 16px 4px 16px;
+        display:block;
+        cursor: pointer;
+      }
+
+      #main{
+        position: absolute;
+        left: 22%;
+        top: 0px;
+        overflow: auto;
+        background-color: #FFFFFF;
+        color: #000000;
+        float: none !important;
+      }
+      
+      ul.codelist{
+        padding: 1px;
+        margin-left: 1px;
+        margin-right: 1px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        
+      }
+      .codelist li{
+        list-style-type:none;
+        line-height: 200%;
+        padding-left: 0;
+        text-indent: -4px;
+      }
+      
+      .codelist-caption{
+        font-size: 1.4em;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        margin-left: 0;
+        font-weight: bolder;
+        text-align: left;
+        color: #696969;
+      }
+      
+      .codelist-item{
+        list-style-type: disk;
+        list-style-position: inside;
+        padding-left: 0;
+        padding-right: 0;
+        margin: 0 0 0 0;
+        }
+
+      .codelist-item-decode{
+        white-space: pre; /* CSS 2.0 */
+        white-space: pre-wrap; /* CSS 2.1 */
+         /* CSS 3.0 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        white-space: -moz-pre-wrap; /* Mozilla */
+        white-space: -hp-pre-wrap; /* HP Printers */
+        word-wrap: break-word; /* IE 5+ */
+      }      
+
+      ul.SubClass {
+        list-style-type: '- ';
+        padding-left: 5;
+        margin: 0 0 0 0;
+      }
+      ul.SubClass.li {}
+
+      #main .docinfo{
+        width: 95%;
+        text-align: right;
+        padding: 0px 5px;
+      }
+      
+      div.containerbox{
+        padding: 0px;
+        margin: 10px auto;
+        border: 0px;
+        page-break-after: always;
+      }
+      
+      .study-name{
+        font-size: 1.6em;
+        font-weight: bold;
+        text-align: left;
+        padding: 15px;
+        margin-left: 20px;
+        margin-top: 40px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+        color: #696969;
+        border: 0px;
+      }
+      
+      div.study-metadata{
+        font-size: 1.6em;
+        font-weight: bold;
+        text-align: left;
+        padding: 0px;
+        margin-left: 0px;
+        margin-top: 00px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        color: #696969;
+        border: 0px;
+      }
+      
+      dl.study-metadata{
+        width: 95%;
+        padding: 5px 0px;
+        font-size: 0.8em;
+        color: black;
+      }
+      
+      dl.study-metadata dt{
+        clear: left;
+        float: left;
+        width: 200px;
+        margin: 0;
+        padding: 5px 5px 5px 0px;
+        font-weight: bold;
+      }
+      
+      dl.study-metadata dd{
+        margin-left: 210px;
+        padding: 5px;
+        font-weight: normal;
+        min-height: 20px;
+      }
+      
+      div.codelist{
+        page-break-after: avoid;
+      }
+      
+      div.qval-indent {
+      margin-left: 20px;
+      }
+      
+      div.qval-indent2 {
+      margin-left: 40px;
+      }
+      
+      table{
+        width: 95%;
+        border-spacing: 4px;
+        border: 1px solid #000000;
+        background-color: #EEEEEE;
+        margin-top: 5px;
+        border-collapse: collapse;
+        padding: 5px;
+        empty-cells: show;
+      }
+      
+      table caption{
+        border: 0px;
+        left: 20px;
+        font-size: 1.4em;
+        font-weight: bolder;
+        color: #696969;
+        margin: 10px auto;
+        text-align: left;
+      }
+      
+      .description{
+        margin-left: 0px;
+        color: black;
+        font-weight: normal;
+        font-size: 0.85em;
+      }
+      
+      table caption .dataset{
+        font-weight: normal;
+        float: right;
+      }
+
+      table caption.header{
+        font-size: 1.6em;
+        margin-left: 0;
+        font-weight: bolder;
+        text-align: center;
+        color: #696969;
+      }
+      
+      table tr{
+        border: 1px solid #000000;
+      }
+      
+      table tr.header{
+        background-color: #6699CC;
+        color: #FFFFFF;
+        font-weight: bold;
+      }
+      
+      table th{
+        font-weight: bold;
+        vertical-align: top;
+        text-align: left;
+        padding: 5px;
+        border: 1px solid #000000;
+        font-size: 1.3em;
+      }
+      
+      table th.codedvalue{
+        width: 20%;
+      }
+      table th.length{
+        width: 7%;
+      }
+ 
+      table th.label{
+        width: 13%;
+      }
+ 
+      table td{
+        vertical-align: top;
+        padding: 5px;
+        border: 1px solid #000000;
+        font-size: 1.2em;
+        line-height: 150%;
+      }
+
+      table td.datatype{
+        text-align: left;
+      }
+      table td.role{
+        text-align: left;
+      }
+      table td.number{
+        text-align: right;
+      }
+      
+      tr.tablerowodd{
+        background-color: #FFFFFF;
+      }
+      tr.tableroweven{
+        background-color: #EEEEEE;
+      }
+      
+      .linebreakcell{
+        vertical-align: top;
+        margin-top: 3px;
+        margin-bottom: 3px;
+      }
+      
+      .nci,
+      .extended{
+        font-style: italic;
+      }
+      .super{
+        vertical-align: super;
+      }
+      .footnote{
+        font-size: 1.2em;
+      }
+      
+      .valuelist-reference{
+      vertical-align: super;
+      font-size: 0.8em;
+      padding-left: 5px;
+      cursor: pointer;
+      }
+      
+      .valuelist-no-reference{
+      vertical-align: super;
+      font-size: 0.8em;
+      padding-left: 5px;
+      }
+      
+      div.formalexpression{
+        margin-top: 6px;
+        margin-bottom: 6px;      
+      }
+
+      span.label{
+        font-weight: bold;      
+      }
+
+      .formalexpression-reference{
+        vertical-align: super;
+        font-size: 0.8em;
+        padding-left: 5px;
+      }
+
+      .formalexpression-code{
+        font-family:"Courier New", monospace, serif;
+        font-size:1.2em;
+        line-height:120%;
+        display:block;
+        vertical-align:top;
+        margin: 0px;
+        padding: 5px 0 0 20px;
+        white-space:pre;  /* CSS 2.0 */
+        white-space: pre-wrap; /* CSS 2.1 */
+        /* CSS 3.0 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        white-space: -moz-pre-wrap; /* Mozilla */
+        white-space: -hp-pre-wrap; /* HP Printers */
+        word-wrap: break-word; /* IE 5+ */
+      }
+      
+      .method-code{
+        vertical-align: top;
+        white-space: pre; /* CSS 2.0 */
+        white-space: pre-wrap; /* CSS 2.1 */
+         /* CSS 3.0 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        white-space: -moz-pre-wrap; /* Mozilla */
+        white-space: -hp-pre-wrap; /* HP Printers */
+        word-wrap: break-word; /* IE 5+ */
+      }
+
+      .linktop{
+        font-size: 1.2em;
+        margin-top: 5px;
+      }
+      .documentinfo,
+      .stylesheetinfo{
+        font-size: 1.1em;
+        line-height: 60%;
+      }
+      
+      .invisible{
+        display: none;
+      }
+      
+      .standard-refeference {
+        width: 95%;
+        font-size: 1.0em;
+        font-weight: bold;
+        padding: 5px;
+        color: #696969;
+        white-space: nowrap;
+      }
+
+      .nodata{
+        width: 95%;
+        font-size: 1.0em;
+        font-weight: bold;
+        padding: 5px;
+        color: #000000;
+        white-space: nowrap;
+      }
+
+      span.unresolved{
+        color: #000000;
+      }
+      td.unresolved{
+      color: #000000;
+      }
+      td.span.unresolved{
+      color: #000000;
+      }
+      
+      span.prefix{
+        font-weight: normal;
+      }      
+
+      .arm-summary{
+        width: 95%;
+        border-spacing: 5px;
+        border-width: 1px;
+        border-color: #000000;
+        border-style: solid solid none solid;
+        background-color: #EEEEEE;
+        font-size: 1.2em;
+        line-height: 150%;
+        vertical-align: top;
+      }
+      .arm-summary-resultdisplay{
+        margin: 0px 0px 0px 0px;
+        padding: 10px 10px 10px 10px;  
+        border-spacing: 5px;
+        border-width: 1px;
+        border-color #000000;
+        border-style: none none solid none;
+      }
+
+      .arm-display-title{
+        margin-left: 5pt;
+      }
+      
+      .table.analysisresults-detail{
+        background-color: #EEEEEE;
+      }
+      
+      .arm-summary-result{
+        margin-left: 20px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      th span.arm-displaytitle{
+        font-weight: bold;
+      }
+      td span.arm-resulttitle{
+        font-weight: bold;
+      }
+      tr.arm-analysisresult{
+        background-color: #6699CC;
+        color: #FFFFFF;
+        font-weight: bold;
+        border: 1px solid #000000;
+      }
+      td.arm-label{
+        font-weight: bold;
+      }
+
+      p.arm-analysisvariable{
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      .arm-data-reference{
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+      
+      .arm-code-context{
+        padding: 5px 0px;
+      }
+      .arm-code-ref{
+        font-size: 1.2em;
+        line-height: 150%;
+        padding: 5px;
+      }
+
+      .arm-code{
+        font-family:"Courier New", monospace, serif;
+        font-size:1.2em;
+        line-height:120%;
+        display:block;
+        vertical-align:top;
+        margin: 0px;
+        padding:0px;
+        white-space:pre;  /* CSS 2.0 */
+        white-space: pre-wrap; /* CSS 2.1 */
+        /* CSS 3.0 */
+        white-space: -pre-wrap; /* Opera 4-6 */
+        white-space: -o-pre-wrap; /* Opera 7 */
+        white-space: -moz-pre-wrap; /* Mozilla */
+        white-space: -hp-pre-wrap; /* HP Printers */
+        word-wrap: break-word; /* IE 5+ */
+      }
+      
+
+      
+      @media print{
+      
+        @page {
+          margin: 1.5cm;
+        }
+      
+        body,
+        h1,
+        table caption,
+        table caption.header{
+          color: #000;
+          background: #fff;
+          float: none !important;
+        }
+      
+        div.containerbox{
+          padding: 0px;
+          border: 0px;
+          page-break-after: always;
+        }
+      
+        a:link,
+        a:visited{
+          background: transparent;
+          text-decoration: none;
+          color: black;
+        }
+        a.external:link:after,
+        #main a:visited:after{
+          content: " (" attr(href) ") ";
+          font-size: 100%;
+          text-decoration: underline;
+          font-weight: normal;
+          color: black;
+        }
+        .external-link-gif,
+        .formalexpression-reference
+        .valuelist-reference{
+          display: none !important;
+          width: 0px;
+        }
+        
+        table{
+          border-width: 2px;
+        }
+
+        table tr.vlm{
+        display: table-row !important;
+        }
+      
+        #menu,
+        .linktop{
+          display: none !important;
+          width: 0px;
+        }
+        #main{
+          left: 2cm;
+          float: none !important;
+        }
+        span.prefix{
+          font-weight: normal;
+        }
+        
+        row, ul, img {
+          page-break-inside: avoid;
+        }
+      
+      }
+    </style>
+  </head>
+<body onload="reset_menus();">
+<div id="menu">
+<a name="top" class="invisible" href="#main">Skip Navigation Link</a><span class="study-name">GLPX-001</span><ul class="hmenu">
+<li class="hmenu-item">
+<span class="hmenu-bullet">+</span><a class="external tocItem" href="blankcrf.pdf">Annotated Case Report Form</a><span class="external-link-gif"></span>
+</li>
+<li class="hmenu-submenu">
+<span onclick="toggle_submenu(this);" class="hmenu-bullet">+</span><a class="tocItem">Supplemental Documents</a><ul><li class="hmenu-item">
+<span class="hmenu-bullet">+</span><a class="external tocItem" href="sdrg.pdf">Study Data Reviewer's Guide</a><span class="external-link-gif"></span>
+</li></ul>
+</li>
+<li class="hmenu-submenu">
+<span class="hmenu-bullet" onclick="toggle_submenu(this);">+</span><a class="tocItem" href="#datasets">Datasets</a><ul>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#IG.IG.DM">DM (Demographics)</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#IG.IG.LB">LB (Laboratory Test Results)</a>
+</li>
+</ul>
+</li>
+<li class="hmenu-submenu">
+<span onclick="toggle_submenu(this);" class="hmenu-bullet">+</span><a href="#decodelist" class="tocItem">Controlled Terminology</a><ul><li class="hmenu-submenu">
+<span class="hmenu-bullet" onclick="toggle_submenu(this);">+</span><a class="tocItem" href="#decodelist">CodeLists</a><ul>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#CL.CL.LBTEST">LBTEST</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#CL.CL.LBTESTCD">LBTESTCD</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#CL.CL.NRIND">NRIND</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#CL.CL.NY">NY</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#CL.CL.RACE">RACE</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#CL.CL.SEX">SEX</a>
+</li>
+</ul>
+</li></ul>
+</li>
+<li class="hmenu-submenu">
+<span class="hmenu-bullet" onclick="toggle_submenu(this);">+</span><a class="tocItem" href="#compmethod">Methods</a><ul>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#MT.MT.MT.USUBJID">Unique subject identifier</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#MT.MT.MT.AGE">Age at informed consent</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#MT.MT.MT.LBDY">Study day of specimen collection</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#MT.MT.MT.LBNRIND">Reference range indicator</a>
+</li>
+<li class="hmenu-item">
+<span class="hmenu-bullet">-</span><a class="tocItem" href="#MT.MT.MT.LBLOBXFL">Last observation before exposure</a>
+</li>
+</ul>
+</li>
+</ul>
+<div class="buttons">
+<div class="button"><button type="button" onclick="expand_all_vlm();">Expand all VLM</button></div>
+<div class="button"><button type="button" onclick="collapse_all_vlm();">Collapse all VLM</button></div>
+</div>
+</div>
+<div id="main">
+<div class="docinfo">
+<p class="documentinfo">Date/Time of Define-XML document generation: 2026-09-04T18:35:20</p>
+<p class="documentinfo">Define-XML version: 2.0.0</p>
+<p class="stylesheetinfo">Stylesheet version: 2018-11-21</p>
+</div>
+<div class="study-metadata"><dl class="study-metadata">
+<dt>Standard</dt>
+<dd>SDTM-IG 3.4</dd>
+<dt>Study Name</dt>
+<dd>GLPX-001</dd>
+<dt>Study Description</dt>
+<dd>A simulated Phase III trial of GLPX 10 mg in type 2 diabetes</dd>
+<dt>Protocol Name</dt>
+<dd>GLPX-001</dd>
+<dt>Metadata Name</dt>
+<dd>GLPX-001, SDTM Data Definitions</dd>
+<dt>Metadata Description</dt>
+<dd>GLPX-001, SDTM Data Definitions</dd>
+</dl></div>
+<a id="datasets"></a><h1 class="invisible">Datasets</h1>
+<div class="containerbox"><table summary="Data Definition Tables">
+<caption class="header">Datasets</caption>
+<tr class="header">
+<th scope="col">Dataset</th>
+<th scope="col">Description</th>
+<th scope="col">Class
+            </th>
+<th scope="col">Structure</th>
+<th scope="col">Purpose</th>
+<th scope="col">Keys</th>
+<th scope="col">Documentation</th>
+<th scope="col">Location</th>
+</tr>
+<tr class="tablerowodd" id="IG.DM">
+<td><a href="#IG.IG.DM">DM</a></td>
+<td>Demographics</td>
+<td>Special Purpose</td>
+<td>Special Purpose - One record per subject</td>
+<td>Tabulation</td>
+<td>STUDYID, USUBJID</td>
+<td></td>
+<td>
+<a class="external" href="dm.xpt">dm.xpt </a><span class="external-link-gif"></span> </td>
+</tr>
+<tr class="tableroweven" id="IG.LB">
+<td><a href="#IG.IG.LB">LB</a></td>
+<td>Laboratory Test Results</td>
+<td>Findings</td>
+<td>Findings - One record per lab test per time point per subject</td>
+<td>Tabulation</td>
+<td>STUDYID, USUBJID, LBTESTCD, VISITNUM, LBSEQ</td>
+<td></td>
+<td>
+<a class="external" href="lb.xpt">lb.xpt </a><span class="external-link-gif"></span> </td>
+</tr>
+</table></div>
+<p class="linktop">Go to the <a href="#main">top</a> of the Define-XML document</p>
+<br><a id="IG.IG.DM"></a><div class="containerbox">
+<h1 class="invisible">Demographics (DM) </h1>
+<table summary="ItemGroup IG.IG.DM">
+<caption><span>DM (Demographics) - Special Purpose <span class="dataset">Location: <a class="external" href="dm.xpt">dm.xpt </a><span class="external-link-gif"></span> </span></span></caption>
+<tr class="header">
+<th scope="col">Variable</th>
+<th scope="col">Label / Description</th>
+<th scope="col">Type</th>
+<th scope="col">Role</th>
+<th scope="col" class="length">Length or Display Format</th>
+<th scope="col" abbr="Format">Controlled Terms or ISO Format</th>
+<th scope="col">Origin / Source / Method / Comment</th>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.STUDYID"></a>STUDYID</td>
+<td>Study Identifier</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">7</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.DOMAIN"></a>DOMAIN</td>
+<td>Domain Abbreviation</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">2</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.USUBJID"></a>USUBJID</td>
+<td>Unique Subject Identifier</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">15</td>
+<td></td>
+<td>
+<div class="linebreakcell">Derived</div>
+<div class="method-code">Concatenation of STUDYID and SUBJID separated by a hyphen.</div>
+</td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.SUBJID"></a>SUBJID</td>
+<td>Subject Identifier for the Study</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">7</td>
+<td></td>
+<td><div class="linebreakcell">CRF</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.RFSTDTC"></a>RFSTDTC</td>
+<td>Subject Reference Start Date/Time</td>
+<td class="datatype">date</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.RFENDTC"></a>RFENDTC</td>
+<td>Subject Reference End Date/Time</td>
+<td class="datatype">date</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.RFXSTDTC"></a>RFXSTDTC</td>
+<td>Date/Time of First Study Treatment</td>
+<td class="datatype">date</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.RFXENDTC"></a>RFXENDTC</td>
+<td>Date/Time of Last Study Treatment</td>
+<td class="datatype">date</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.RFICDTC"></a>RFICDTC</td>
+<td>Date/Time of Informed Consent</td>
+<td class="datatype">date</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">CRF</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.RFPENDTC"></a>RFPENDTC</td>
+<td>Date/Time of End of Participation</td>
+<td class="datatype">date</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.DTHDTC"></a>DTHDTC</td>
+<td>Date/Time of Death</td>
+<td class="datatype">date</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">CRF</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.DTHFL"></a>DTHFL</td>
+<td>Subject Death Flag</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td>
+<span class="linebreakcell"><a href="#CL.CL.NY">NY</a></span><ul class="codelist"><li class="codelist-item">• "Y" = "Y"</li></ul>
+</td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.SITEID"></a>SITEID</td>
+<td>Study Site Identifier</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">3</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.BRTHDTC"></a>BRTHDTC</td>
+<td>Date/Time of Birth</td>
+<td class="datatype">date</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">CRF</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.AGE"></a>AGE</td>
+<td>Age</td>
+<td class="datatype">integer</td>
+<td class="role">NA</td>
+<td class="number">2</td>
+<td></td>
+<td>
+<div class="linebreakcell">Derived</div>
+<div class="method-code">Whole years between BRTHDTC and RFICDTC. Null where BRTHDTC is a partial date and age cannot be computed.</div>
+</td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.AGEU"></a>AGEU</td>
+<td>Age Units</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">5</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.SEX"></a>SEX</td>
+<td>Sex</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td>
+<span class="linebreakcell"><a href="#CL.CL.SEX">SEX</a></span><ul class="codelist">
+<li class="codelist-item">• "F" = "F"</li>
+<li class="codelist-item">• "M" = "M"</li>
+</ul>
+</td>
+<td><div class="linebreakcell">CRF</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.RACE"></a>RACE</td>
+<td>Race</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">25</td>
+<td>
+<span class="linebreakcell"><a href="#CL.CL.RACE">RACE</a></span><ul class="codelist">
+<li class="codelist-item">• "ASIAN" = "ASIAN"</li>
+<li class="codelist-item">• "BLACK OR AFRICAN AMERICAN" = "BLACK OR AFRICAN AMERICAN"</li>
+<li class="codelist-item">• "OTHER" = "OTHER"</li>
+<li class="codelist-item">• "WHITE" = "WHITE"</li>
+</ul>
+</td>
+<td><div class="linebreakcell">CRF</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.ETHNIC"></a>ETHNIC</td>
+<td>Ethnicity</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">22</td>
+<td></td>
+<td><div class="linebreakcell">CRF</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.ARMCD"></a>ARMCD</td>
+<td>Planned Arm Code</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">6</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.ARM"></a>ARM</td>
+<td>Description of Planned Arm</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.ACTARMCD"></a>ACTARMCD</td>
+<td>Actual Arm Code</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">6</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.ACTARM"></a>ACTARM</td>
+<td>Description of Actual Arm</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.ARMNRS"></a>ARMNRS</td>
+<td>Reason Arm and/or Actual Arm is Null</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.DM.IT.DM.ACTARMUD"></a>ACTARMUD</td>
+<td>Description of Unplanned Actual Arm</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.DM.IT.DM.COUNTRY"></a>COUNTRY</td>
+<td>Country</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">3</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+</table>
+</div>
+<p class="linktop">Go to the <a href="#main">top</a> of the Define-XML document</p>
+<br><a id="IG.IG.LB"></a><div class="containerbox">
+<h1 class="invisible">Laboratory Test Results (LB) </h1>
+<table summary="ItemGroup IG.IG.LB">
+<caption><span>LB (Laboratory Test Results) - Findings <span class="dataset">Location: <a class="external" href="lb.xpt">lb.xpt </a><span class="external-link-gif"></span> </span></span></caption>
+<tr class="header">
+<th scope="col">Variable</th>
+<th scope="col">Where Condition</th>
+<th scope="col">Label / Description</th>
+<th scope="col">Type</th>
+<th scope="col">Role</th>
+<th scope="col" class="length">Length or Display Format</th>
+<th scope="col" abbr="Format">Controlled Terms or ISO Format</th>
+<th scope="col">Origin / Source / Method / Comment</th>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.STUDYID"></a>STUDYID</td>
+<td></td>
+<td>Study Identifier</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">7</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.DOMAIN"></a>DOMAIN</td>
+<td></td>
+<td>Domain Abbreviation</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">2</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.USUBJID"></a>USUBJID</td>
+<td></td>
+<td>Unique Subject Identifier</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">15</td>
+<td></td>
+<td>
+<div class="linebreakcell">Derived</div>
+<div class="method-code">Concatenation of STUDYID and SUBJID separated by a hyphen.</div>
+</td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.LBSEQ"></a>LBSEQ</td>
+<td></td>
+<td>Sequence Number</td>
+<td class="datatype">integer</td>
+<td class="role">NA</td>
+<td class="number">2</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.LBTESTCD"></a>LBTESTCD</td>
+<td></td>
+<td>Lab Test or Examination Short Name</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">5</td>
+<td>
+<span class="linebreakcell"><a href="#CL.CL.LBTESTCD">LBTESTCD</a></span><ul class="codelist">
+<li class="codelist-item">• "ALT" = "ALT"</li>
+<li class="codelist-item">• "CREAT" = "CREAT"</li>
+<li class="codelist-item">• "GLUC" = "GLUC"</li>
+<li class="codelist-item">• "HBA1C" = "HBA1C"</li>
+</ul>
+</td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.LBTEST"></a>LBTEST</td>
+<td></td>
+<td>Lab Test or Examination Name</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">24</td>
+<td>
+<span class="linebreakcell"><a href="#CL.CL.LBTEST">LBTEST</a></span><ul class="codelist">
+<li class="codelist-item">• "Alanine Aminotransferase" = "Alanine Aminotransferase"</li>
+<li class="codelist-item">• "Creatinine" = "Creatinine"</li>
+<li class="codelist-item">• "Glucose" = "Glucose"</li>
+<li class="codelist-item">• "Hemoglobin A1C" = "Hemoglobin A1C"</li>
+</ul>
+</td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.LBORRES"></a>LBORRES</td>
+<td></td>
+<td>Result or Finding in Original Units</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">4</td>
+<td></td>
+<td><div class="linebreakcell">eDT</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.LBORRESU"></a>LBORRESU</td>
+<td></td>
+<td>Original Units</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">6</td>
+<td></td>
+<td><div class="linebreakcell">eDT</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.LBSTRESC"></a>LBSTRESC</td>
+<td></td>
+<td>Character Result/Finding in Std Format</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">4</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tableroweven">
+<td>LBSTRESN<span class="valuelist-reference" onclick="toggle_vlm(this);"><a id="IG.LB.IT.LB.LBSTRESN">VLM</a></span>
+</td>
+<td></td>
+<td>Numeric Result/Finding in Standard Units</td>
+<td class="datatype">float</td>
+<td class="role">NA</td>
+<td class="number">4</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="vlm tableroweven IG.LB.IT.LB.LBSTRESN">
+<td></td>
+<td>
+<a href="#IG.LB.IT.LB.LBTESTCD" title="Lab Test or Examination Short Name">LBTESTCD</a> = "ALT" (ALT)</td>
+<td>Alanine Aminotransferase</td>
+<td class="datatype">float</td>
+<td class="role"></td>
+<td class="number">8</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="vlm tableroweven IG.LB.IT.LB.LBSTRESN">
+<td></td>
+<td>
+<a href="#IG.LB.IT.LB.LBTESTCD" title="Lab Test or Examination Short Name">LBTESTCD</a> = "CREAT" (CREAT)</td>
+<td>Creatinine</td>
+<td class="datatype">float</td>
+<td class="role"></td>
+<td class="number">8</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="vlm tableroweven IG.LB.IT.LB.LBSTRESN">
+<td></td>
+<td>
+<a href="#IG.LB.IT.LB.LBTESTCD" title="Lab Test or Examination Short Name">LBTESTCD</a> = "GLUC" (GLUC)</td>
+<td>Glucose</td>
+<td class="datatype">float</td>
+<td class="role"></td>
+<td class="number">8</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="vlm tableroweven IG.LB.IT.LB.LBSTRESN">
+<td></td>
+<td>
+<a href="#IG.LB.IT.LB.LBTESTCD" title="Lab Test or Examination Short Name">LBTESTCD</a> = "HBA1C" (HBA1C)</td>
+<td>Hemoglobin A1C</td>
+<td class="datatype">float</td>
+<td class="role"></td>
+<td class="number">8</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.LBSTRESU"></a>LBSTRESU</td>
+<td></td>
+<td>Standard Units</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">6</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.LBORNRLO"></a>LBORNRLO</td>
+<td></td>
+<td>Reference Range Lower Limit in Orig Unit</td>
+<td class="datatype">float</td>
+<td class="role">NA</td>
+<td class="number">3</td>
+<td></td>
+<td><div class="linebreakcell">eDT</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.LBORNRHI"></a>LBORNRHI</td>
+<td></td>
+<td>Reference Range Upper Limit in Orig Unit</td>
+<td class="datatype">float</td>
+<td class="role">NA</td>
+<td class="number">3</td>
+<td></td>
+<td><div class="linebreakcell">eDT</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.LBSTNRLO"></a>LBSTNRLO</td>
+<td></td>
+<td>Reference Range Lower Limit-Std Units</td>
+<td class="datatype">float</td>
+<td class="role">NA</td>
+<td class="number">3</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.LBSTNRHI"></a>LBSTNRHI</td>
+<td></td>
+<td>Reference Range Upper Limit-Std Units</td>
+<td class="datatype">float</td>
+<td class="role">NA</td>
+<td class="number">3</td>
+<td></td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.LBNRIND"></a>LBNRIND</td>
+<td></td>
+<td>Reference Range Indicator</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">6</td>
+<td>
+<span class="linebreakcell"><a href="#CL.CL.NRIND">NRIND</a></span><ul class="codelist">
+<li class="codelist-item">• "HIGH" = "HIGH"</li>
+<li class="codelist-item">• "LOW" = "LOW"</li>
+<li class="codelist-item">• "NORMAL" = "NORMAL"</li>
+</ul>
+</td>
+<td>
+<div class="linebreakcell">Derived</div>
+<div class="method-code">LOW where LBSTRESN is below LBSTNRLO, HIGH where above LBSTNRHI, NORMAL otherwise. Null where either limit is missing.</div>
+</td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.LBDRVFL"></a>LBDRVFL</td>
+<td></td>
+<td>Derived Flag</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td>
+<span class="linebreakcell"><a href="#CL.CL.NY">NY</a></span><ul class="codelist"><li class="codelist-item">• "Y" = "Y"</li></ul>
+</td>
+<td><div class="linebreakcell">Derived</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.LBLOBXFL"></a>LBLOBXFL</td>
+<td></td>
+<td>Last Observation Before Exposure Flag</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td>
+<span class="linebreakcell"><a href="#CL.CL.NY">NY</a></span><ul class="codelist"><li class="codelist-item">• "Y" = "Y"</li></ul>
+</td>
+<td>
+<div class="linebreakcell">Derived</div>
+<div class="method-code">Y on the last record with LBDTC strictly prior to DM.RFXSTDTC, per subject and test. Null otherwise.</div>
+</td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.VISITNUM"></a>VISITNUM</td>
+<td></td>
+<td>Visit Number</td>
+<td class="datatype">integer</td>
+<td class="role">NA</td>
+<td class="number">1</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.VISIT"></a>VISIT</td>
+<td></td>
+<td>Visit Name</td>
+<td class="datatype">text</td>
+<td class="role">NA</td>
+<td class="number">9</td>
+<td></td>
+<td><div class="linebreakcell">Assigned</div></td>
+</tr>
+<tr class="tablerowodd">
+<td>
+<a id="IG.LB.IT.LB.LBDTC"></a>LBDTC</td>
+<td></td>
+<td>Date/Time of Specimen Collection</td>
+<td class="datatype">datetime</td>
+<td class="role">NA</td>
+<td class="number">10</td>
+<td>ISO 8601</td>
+<td><div class="linebreakcell">eDT</div></td>
+</tr>
+<tr class="tableroweven">
+<td>
+<a id="IG.LB.IT.LB.LBDY"></a>LBDY</td>
+<td></td>
+<td>Study Day of Specimen Collection</td>
+<td class="datatype">integer</td>
+<td class="role">NA</td>
+<td class="number">3</td>
+<td></td>
+<td>
+<div class="linebreakcell">Derived</div>
+<div class="method-code">Days between LBDTC and DM.RFSTDTC. Day 1 is the reference date; there is no day 0.</div>
+</td>
+</tr>
+</table>
+</div>
+<p class="linktop">Go to the <a href="#main">top</a> of the Define-XML document</p>
+<br><a id="decodelist"></a><div class="containerbox">
+<h1 class="header">CodeLists</h1>
+<div class="codelist" id="CL.CL.LBTEST">
+<div class="codelist-caption">LBTEST</div>
+<table summary="Controlled Term - LBTEST">
+<tr class="header">
+<th scope="col" class="codedvalue">Permitted Value (Code)</th>
+<th scope="col">Display Value (Decode)</th>
+<th scope="col">Rank</th>
+</tr>
+<tr class="tablerowodd">
+<td>Alanine Aminotransferase</td>
+<td class="codelist-item-decode">Alanine Aminotransferase</td>
+<td>1</td>
+</tr>
+<tr class="tableroweven">
+<td>Creatinine</td>
+<td class="codelist-item-decode">Creatinine</td>
+<td>2</td>
+</tr>
+<tr class="tablerowodd">
+<td>Glucose</td>
+<td class="codelist-item-decode">Glucose</td>
+<td>3</td>
+</tr>
+<tr class="tableroweven">
+<td>Hemoglobin A1C</td>
+<td class="codelist-item-decode">Hemoglobin A1C</td>
+<td>4</td>
+</tr>
+</table>
+</div>
+<div class="codelist" id="CL.CL.LBTESTCD">
+<div class="codelist-caption">LBTESTCD</div>
+<table summary="Controlled Term - LBTESTCD">
+<tr class="header">
+<th scope="col" class="codedvalue">Permitted Value (Code)</th>
+<th scope="col">Display Value (Decode)</th>
+<th scope="col">Rank</th>
+</tr>
+<tr class="tablerowodd">
+<td>ALT</td>
+<td class="codelist-item-decode">ALT</td>
+<td>1</td>
+</tr>
+<tr class="tableroweven">
+<td>CREAT</td>
+<td class="codelist-item-decode">CREAT</td>
+<td>2</td>
+</tr>
+<tr class="tablerowodd">
+<td>GLUC</td>
+<td class="codelist-item-decode">GLUC</td>
+<td>3</td>
+</tr>
+<tr class="tableroweven">
+<td>HBA1C</td>
+<td class="codelist-item-decode">HBA1C</td>
+<td>4</td>
+</tr>
+</table>
+</div>
+<div class="codelist" id="CL.CL.NRIND">
+<div class="codelist-caption">NRIND</div>
+<table summary="Controlled Term - NRIND">
+<tr class="header">
+<th scope="col" class="codedvalue">Permitted Value (Code)</th>
+<th scope="col">Display Value (Decode)</th>
+<th scope="col">Rank</th>
+</tr>
+<tr class="tablerowodd">
+<td>HIGH</td>
+<td class="codelist-item-decode">HIGH</td>
+<td>1</td>
+</tr>
+<tr class="tableroweven">
+<td>LOW</td>
+<td class="codelist-item-decode">LOW</td>
+<td>2</td>
+</tr>
+<tr class="tablerowodd">
+<td>NORMAL</td>
+<td class="codelist-item-decode">NORMAL</td>
+<td>3</td>
+</tr>
+</table>
+</div>
+<div class="codelist" id="CL.CL.NY">
+<div class="codelist-caption">NY</div>
+<table summary="Controlled Term - NY">
+<tr class="header">
+<th scope="col" class="codedvalue">Permitted Value (Code)</th>
+<th scope="col">Display Value (Decode)</th>
+<th scope="col">Rank</th>
+</tr>
+<tr class="tablerowodd">
+<td>Y</td>
+<td class="codelist-item-decode">Y</td>
+<td>1</td>
+</tr>
+</table>
+</div>
+<div class="codelist" id="CL.CL.RACE">
+<div class="codelist-caption">RACE</div>
+<table summary="Controlled Term - RACE">
+<tr class="header">
+<th scope="col" class="codedvalue">Permitted Value (Code)</th>
+<th scope="col">Display Value (Decode)</th>
+<th scope="col">Rank</th>
+</tr>
+<tr class="tablerowodd">
+<td>ASIAN</td>
+<td class="codelist-item-decode">ASIAN</td>
+<td>1</td>
+</tr>
+<tr class="tableroweven">
+<td>BLACK OR AFRICAN AMERICAN</td>
+<td class="codelist-item-decode">BLACK OR AFRICAN AMERICAN</td>
+<td>2</td>
+</tr>
+<tr class="tablerowodd">
+<td>OTHER</td>
+<td class="codelist-item-decode">OTHER</td>
+<td>3</td>
+</tr>
+<tr class="tableroweven">
+<td>WHITE</td>
+<td class="codelist-item-decode">WHITE</td>
+<td>4</td>
+</tr>
+</table>
+</div>
+<div class="codelist" id="CL.CL.SEX">
+<div class="codelist-caption">SEX</div>
+<table summary="Controlled Term - SEX">
+<tr class="header">
+<th scope="col" class="codedvalue">Permitted Value (Code)</th>
+<th scope="col">Display Value (Decode)</th>
+<th scope="col">Rank</th>
+</tr>
+<tr class="tablerowodd">
+<td>F</td>
+<td class="codelist-item-decode">F</td>
+<td>1</td>
+</tr>
+<tr class="tableroweven">
+<td>M</td>
+<td class="codelist-item-decode">M</td>
+<td>2</td>
+</tr>
+</table>
+</div>
+<p class="linktop">Go to the <a href="#main">top</a> of the Define-XML document</p>
+<br>
+</div>
+<a id="compmethod"></a><div class="containerbox">
+<h1 class="invisible">Methods</h1>
+<table summary="Methods">
+<caption class="header">Methods</caption>
+<tr class="header">
+<th scope="col">Method</th>
+<th scope="col">Type</th>
+<th scope="col">Description</th>
+</tr>
+<tr id="MT.MT.MT.USUBJID" class="tablerowodd">
+<td>Unique subject identifier</td>
+<td>Computation</td>
+<td><div class="method-code">Concatenation of STUDYID and SUBJID separated by a hyphen.</div></td>
+</tr>
+<tr id="MT.MT.MT.AGE" class="tableroweven">
+<td>Age at informed consent</td>
+<td>Computation</td>
+<td><div class="method-code">Whole years between BRTHDTC and RFICDTC. Null where BRTHDTC is a partial date and age cannot be computed.</div></td>
+</tr>
+<tr id="MT.MT.MT.LBDY" class="tablerowodd">
+<td>Study day of specimen collection</td>
+<td>Computation</td>
+<td><div class="method-code">Days between LBDTC and DM.RFSTDTC. Day 1 is the reference date; there is no day 0.</div></td>
+</tr>
+<tr id="MT.MT.MT.LBNRIND" class="tableroweven">
+<td>Reference range indicator</td>
+<td>Computation</td>
+<td><div class="method-code">LOW where LBSTRESN is below LBSTNRLO, HIGH where above LBSTNRHI, NORMAL otherwise. Null where either limit is missing.</div></td>
+</tr>
+<tr id="MT.MT.MT.LBLOBXFL" class="tablerowodd">
+<td>Last observation before exposure</td>
+<td>Computation</td>
+<td><div class="method-code">Y on the last record with LBDTC strictly prior to DM.RFXSTDTC, per subject and test. Null otherwise.</div></td>
+</tr>
+</table>
+</div>
+<p class="linktop">Go to the <a href="#main">top</a> of the Define-XML document</p>
+<br>
+</div>
+</body>
+</html>

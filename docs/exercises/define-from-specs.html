@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>24&nbsp; Exercise 8 — Define-XML – CDISC with R</title>
+<title>25&nbsp; Exercise 9 — Define-XML from a Specification Workbook – CDISC with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercises/define-from-specs.html" rel="next">
-<link href="../exercises/tlf.html" rel="prev">
+<link href="../exercises/define-xml.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -123,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/define-xml.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/define-from-specs.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -347,13 +346,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/define-xml.html" class="sidebar-item-text sidebar-link active">
+  <a href="../exercises/define-xml.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/define-from-specs.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/define-from-specs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></span></a>
   </div>
 </li>
@@ -369,19 +368,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal"><span class="header-section-number">24.1</span> Goal</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">24.2</span> Setup</a></li>
-  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task"><span class="header-section-number">24.3</span> Task</a></li>
-  <li><a href="#acceptance-criteria" id="toc-acceptance-criteria" class="nav-link" data-scroll-target="#acceptance-criteria"><span class="header-section-number">24.4</span> Acceptance criteria</a></li>
+  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal"><span class="header-section-number">25.1</span> Goal</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">25.2</span> Setup</a></li>
+  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task"><span class="header-section-number">25.3</span> Task</a></li>
+  <li><a href="#acceptance-criteria" id="toc-acceptance-criteria" class="nav-link" data-scroll-target="#acceptance-criteria"><span class="header-section-number">25.4</span> Acceptance criteria</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/define-xml.html"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/define-from-specs.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></h1>
+<h1 class="title"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></h1>
 </div>
 
 
@@ -398,56 +397,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="goal" class="level2" data-number="24.1">
-<h2 data-number="24.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">24.1</span> Goal</h2>
-<p>Take the schema-valid but non-conformant document from <a href="../sessions/define-xml.html">the Define-XML session</a> and make it conformant, then extend it to describe the one thing an SDTM variable cannot describe with a single origin — and the one variable this course cannot populate at all.</p>
+<section id="goal" class="level2" data-number="25.1">
+<h2 data-number="25.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">25.1</span> Goal</h2>
+<p>Extend GLPX-001’s specification workbook to a third domain, regenerate the define.xml, and then confront the question the session leaves open: what would it actually take to ship 2.1 instead of 2.0?</p>
 </section>
-<section id="setup" class="level2" data-number="24.2">
-<h2 data-number="24.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">24.2</span> Setup</h2>
-<p>Work from the project root. You need the CDISC Define-XML v2.1 package unzipped into <code>refs/</code>, as the session’s opening callout describes:</p>
+<section id="setup" class="level2" data-number="25.2">
+<h2 data-number="25.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">25.2</span> Setup</h2>
+<p>Work from the project root. Everything you need is committed:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dx     <span class="ot">&lt;-</span> <span class="st">"refs/DefineV2111_0"</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>schema <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="fu">file.path</span>(dx, <span class="st">"schema/cdisc-define-2.1/define2-1-0.xsd"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(defineR)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(metacore)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="st">"data/spec/SDTM_METADATA.xlsx"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Rebuild the DM document from the session’s Example 1 before you start, or keep the R session open from where the session left off.</p>
+<p>Work on a <strong>copy</strong> of the workbook, not the committed one — the point of a controlled document is that it does not change casually.</p>
 </section>
-<section id="task" class="level2" data-number="24.3">
-<h2 data-number="24.3" class="anchored" data-anchor-id="task"><span class="header-section-number">24.3</span> Task</h2>
+<section id="task" class="level2" data-number="25.3">
+<h2 data-number="25.3" class="anchored" data-anchor-id="task"><span class="header-section-number">25.3</span> Task</h2>
 <ol type="1">
-<li><p><strong>(Guided) Resolve rule 73.</strong> The session’s document declares <code>USUBJID</code> with <code>Origin Type="Derived"</code> and no <code>MethodOID</code>, which violates conformance rule 73.</p>
-<p>Fix it properly. That means two additions, not one: a <code>MethodDef</code> element that states how <code>USUBJID</code> is derived, and a <code>MethodOID</code> attribute on the <code>ItemRef</code> that points at it. GLPX-001 builds <code>USUBJID</code> by concatenating the study identifier, the site and the subject number — check <code>R/build_sdtm.R</code> and describe what it actually does, not what you assume it does.</p>
-<p>Re-run <code>xml_validate()</code> and re-run the rule 73 check from the session. Then answer: the document validated <code>TRUE</code> <em>before</em> this fix and validates <code>TRUE</code> after. What changed, and who benefits?</p></li>
-<li><p><strong>(The trap) Value-level metadata for LB.</strong> Add an <code>ItemGroupDef</code> for LB, and define <code>LBSTRESN</code>.</p>
-<p>You will find you cannot. Not because anything is missing from your toolkit, but because a single <code>ItemDef</code> for <code>LBSTRESN</code> cannot say what the variable means: in GLPX-001’s LB, <code>LBSTRESN</code> holds HbA1c in percent on some rows and fasting plasma glucose in mmol/L on others. One variable, one <code>ItemDef</code>, two meanings, two units, two reference ranges.</p>
-<p>Find out how Define-XML resolves this. Read §4.5 of the specification, and look at how <code>IT.LB.LBORRES</code> is defined in the package’s own example at <code>refs/DefineV2111_0/examples/DefineXML-2-1-SDTM/defineV21-SDTM.xml</code>.</p>
-<p>Build it: a <code>def:ValueListRef</code> on the <code>ItemDef</code>, a <code>def:ValueListDef</code> containing one <code>ItemRef</code> per parameter, and a <code>def:WhereClauseDef</code> for each that says which rows it applies to. Use the two <code>LBTESTCD</code> values GLPX-001 actually contains — read them from <code>data/sdtm/lb.csv</code> rather than assuming.</p>
-<p>Then answer, in one sentence each:</p>
+<li><p><strong>(Guided) Add a domain.</strong> GLPX-001 has four SDTM domains but the workbook specifies only DM and LB. Add <strong>VS</strong> (Vital Signs).</p>
+<p>Read <code>data/sdtm/vs.csv</code> for the variable list, and take labels and types from the same two sources <code>R/author_spec_workbook.R</code> uses — the CDISC example define.xml in the Define-XML package, and SDTMIG v3.4 for anything the example does not cover. Compute lengths from the data.</p>
+<p>You will need rows in at least <code>TOC_METADATA</code> and <code>VARIABLE_METADATA</code>. Decide for yourself whether VS also needs <code>VALUELEVEL_METADATA</code>, and justify the decision in one sentence — look at what <code>VSSTRESU</code> does across <code>VSTESTCD</code> before you answer.</p>
+<p>Regenerate with <code>write_define()</code> and confirm the new domain appears. Report the dataset, variable and codelist counts before and after.</p></li>
+<li><p><strong>(The trap) Make the origins honest.</strong> The session showed that the 2.0 workbook records <code>eDT</code> where the standard now wants <code>Collected</code></p>
 <ul>
-<li>What does a <code>def:WhereClauseDef</code> actually express, in plain English?</li>
-<li>Value-level metadata adds rows to the metadata document rather than columns to the dataset. Where have you seen that same move before in this course?</li>
-</ul></li>
-<li><p><strong>(Semi-guided) The variable with no values.</strong> Add an <code>ItemGroupDef</code> for ADAE’s source AE domain, and define <code>AEDECOD</code>.</p>
-<p><code>AEDECOD</code> is null on all 389 rows, for the reason <a href="../sessions/adae.html">ADAE</a> established: this study’s adverse events were never coded, because MedDRA is a licensed dictionary.</p>
-<p>Define-XML v2.1 has a specific mechanism for this, and using it triggers a second requirement. Find both. Search the conformance rules workbook for <code>HasNoData</code> — rules 76 and 242 are the two you need, and note that both have Source Type <code>Specification</code>.</p>
-<p>Implement both, then answer:</p>
+<li><code>Vendor</code>.</li>
+</ul>
+<p>Write a function that takes the generated define.xml and reports, for every variable, what its 2.1 <code>Type</code> and <code>Source</code> <strong>would</strong> be. Use the mapping the session established for <code>CRF</code> and <code>eDT</code>, and work out the rest yourself from §4.3.2.1 — <code>Derived</code> and <code>Assigned</code> both survive into 2.1, but they still need a <code>Source</code>, and the SDTM table constrains which sources are valid for each.</p>
+<p>Then answer, with the count to back it up:</p>
 <ul>
-<li>Why is declaring “this variable has no data” better than simply omitting the variable from the <code>ItemGroupDef</code>?</li>
-<li>Rule 242 requires a comment whenever <code>def:HasNoData="Yes"</code>. Write the comment you would actually submit for <code>AEDECOD</code>. It should be readable by a reviewer who has never heard of this course.</li>
+<li>How many of the 48 variables can you assign a 2.1 <code>Source</code> to with confidence, and how many are genuinely ambiguous from the workbook alone?</li>
+<li>For the ambiguous ones, what information would you need, and who in a real sponsor would have it?</li>
 </ul></li>
+<li><p><strong>(Semi-guided) Cost out the upgrade.</strong> You have been asked whether the study should ship Define-XML 2.1.</p>
+<p>Do not answer from opinion. Establish the facts:</p>
+<ul>
+<li>Does <code>defineR</code> 0.0.6 support 2.1? Check its <code>extdata</code> directory rather than assuming, and say how you checked.</li>
+<li>Which columns would the workbook need that it does not have?</li>
+<li>Which of the differences the session identified — origin, class casing, namespace — could be fixed by post-processing the generated XML, and which could not?</li>
+</ul>
+<p>Then write a short recommendation, five sentences at most, of the kind you would actually send to a study team. State what you would do, what it would cost, and what the risk of not doing it is. A recommendation that says only “we should upgrade” has not done the work.</p></li>
 </ol>
 </section>
-<section id="acceptance-criteria" class="level2" data-number="24.4">
-<h2 data-number="24.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">24.4</span> Acceptance criteria</h2>
+<section id="acceptance-criteria" class="level2" data-number="25.4">
+<h2 data-number="25.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">25.4</span> Acceptance criteria</h2>
 <ul class="task-list">
-<li><label><input type="checkbox"><code>MethodDef</code> added and referenced by <code>MethodOID</code>; the rule 73 check returns an empty result</label></li>
-<li><label><input type="checkbox">The derivation description matches what <code>R/build_sdtm.R</code> actually does</label></li>
-<li><label><input type="checkbox"><code>def:ValueListDef</code> and <code>def:WhereClauseDef</code> built for <code>LBSTRESN</code>, using the <code>LBTESTCD</code> values read from the data</label></li>
-<li><label><input type="checkbox">The whole document still validates against the schema after every addition</label></li>
-<li><label><input type="checkbox"><code>def:HasNoData</code> set on the <code>AEDECOD</code> <code>ItemRef</code>, with a <code>def:CommentOID</code> on the <code>ItemDef</code> and a <code>def:CommentDef</code> that a reviewer could act on</label></li>
-<li><label><input type="checkbox">All five follow-up questions answered</label></li>
+<li><label><input type="checkbox">VS added to the workbook with labels traced to a named source, not invented</label></li>
+<li><label><input type="checkbox">The <code>VALUELEVEL_METADATA</code> decision for VS is made and justified</label></li>
+<li><label><input type="checkbox">Regeneration succeeds; before/after counts reported</label></li>
+<li><label><input type="checkbox">A 2.1 origin-mapping function that runs against the generated XML</label></li>
+<li><label><input type="checkbox">Counts of confident vs ambiguous <code>Source</code> assignments, with the ambiguity explained rather than guessed away</label></li>
+<li><label><input type="checkbox"><code>defineR</code>’s 2.1 support established by inspection, with the method stated</label></li>
+<li><label><input type="checkbox">A five-sentence recommendation covering action, cost and risk</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -459,9 +463,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Task 1: <code>MethodDef</code> goes at the <code>MetaDataVersion</code> level, beside <code>ItemDef</code> and <code>CodeList</code> — same Def/Ref pattern as everything else. It needs <code>OID</code>, <code>Name</code>, <code>Type</code> and a <code>Description</code>. If the schema rejects your placement, remember that element order is an absolute requirement (§3.6) and the error message names what it expected instead.</p>
-<p>Task 2: the chain is <code>ItemDef</code> → <code>def:ValueListRef</code> → <code>def:ValueListDef</code> → <code>ItemRef</code> → <code>def:WhereClauseRef</code> → <code>def:WhereClauseDef</code> → <code>RangeCheck</code>. Six links, and every one is an OID pointing at something declared elsewhere — this task is the central intuition of the session made tedious on purpose. Note that the value-level <code>ItemDef</code>s are separate <code>ItemDef</code> elements with their own OIDs; the example’s naming (<code>IT.LB.LBORRES.SET1.LBSPEC.BLOOD</code>) shows the convention, though as the session established, the convention is not the standard.</p>
-<p>Task 3: <code>def:HasNoData</code> goes on the <code>ItemRef</code>, not the <code>ItemDef</code> — read rule 76’s XPath column carefully, because getting this backwards is the most common way to fail it. Rule 242 then tells you what else becomes required, and the <code>def:CommentDef</code> element is documented in §4.8.</p>
+<p>Task 1: <code>R/author_spec_workbook.R</code> already does all of this for DM and LB — read it before writing anything. Its <code>var_meta_for()</code> helper is domain-agnostic and the label guard will tell you loudly if VS has a variable neither source covers. Note that <code>write_define()</code> writes its output beside the workbook you hand it, which is why <code>R/build_define.R</code> passes it a copy.</p>
+<p>Task 2: the SDTM origin table is §4.3.2.1 of the Define-XML v2.1 specification, and the cells marked <code>X</code> are as informative as the ones with examples — they tell you which combinations are impossible, which narrows the ambiguous cases faster than the valid ones do. <code>Assigned</code> + <code>Sponsor</code> covers more variables than you might first think; look at what the spec says <code>Assigned</code> means.</p>
+<p>Task 3: <code>system.file("extdata", package = "defineR")</code> and <code>list.dirs()</code>. One directory listing settles it. For the post-processing question, think about which differences are local string substitutions and which require information the document does not contain — that distinction is the whole answer.</p>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -874,14 +878,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/tlf.html" class="pagination-link" aria-label="Exercise 7 — Tables, Listings and Figures">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Exercise 7 — Tables, Listings and Figures</span></span>
+      <a href="../exercises/define-xml.html" class="pagination-link" aria-label="Exercise 8 — Define-XML">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercises/define-from-specs.html" class="pagination-link" aria-label="Exercise 9 — Define-XML from a Specification Workbook">
-        <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -1,0 +1,1309 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+  <?xml-stylesheet type="text/xsl" href="define2-0-0.xsl"?>
+    <!-- ************************************************************* -->
+    <!-- File: define.xml                                              -->
+    <!-- Date: 04September2026                                                   -->
+    <!-- Description: Define.xml file for GLPX001.define.sdtm                       -->
+    <!-- Created by the defineR package                                -->
+    <!-- ************************************************************* -->
+    <ODM
+  xmlns="http://www.cdisc.org/ns/odm/v1.3"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:def="http://www.cdisc.org/ns/def/v2.0"
+  ODMVersion="1.3.2"
+  FileOID="GLPX001.define.sdtm"
+  FileType="Snapshot"
+  CreationDateTime="2026-09-04T18:35:20">
+    <Study OID="GLPX001">
+    <GlobalVariables>
+    <StudyName>GLPX-001</StudyName>
+    <StudyDescription>A simulated Phase III trial of GLPX 10 mg in type 2 diabetes</StudyDescription>
+    <ProtocolName>GLPX-001</ProtocolName>
+    </GlobalVariables>
+    <MetaDataVersion OID="CDISC.SDTM-IG.3.2"
+  Name="GLPX-001, SDTM Data Definitions"
+  Description="GLPX-001, SDTM Data Definitions"
+  def:DefineVersion="2.0.0"
+  def:StandardName="SDTM-IG"
+  def:StandardVersion="3.4">
+
+  <!-- ******************************************* -->
+  <!-- EXTERNAL DOCUMENT REFERENCE             *** -->
+  <!-- ******************************************* -->
+<def:AnnotatedCRF>
+  <def:DocumentRef leafID="LF.blankcrf"/>
+</def:AnnotatedCRF>
+
+<def:SupplementalDoc>
+  <def:DocumentRef leafID="LF.sdrg"/>
+</def:SupplementalDoc>
+
+
+  <!-- ******************************************* -->
+  <!-- VALUE LEVEL LIST DEFINITION INFORMATION  ** -->
+  <!-- ******************************************* -->
+
+<def:ValueListDef OID="VL.LB.LBSTRESN">
+<ItemRef ItemOID="IT.LB.LBSTRESN.ALT.ALT"
+  OrderNumber="1"
+  Mandatory="No"
+
+  >
+  <def:WhereClauseRef WhereClauseOID="WC.WC.LB.ALT"/>
+
+</ItemRef>
+<ItemRef ItemOID="IT.LB.LBSTRESN.CREAT.CREAT"
+  OrderNumber="2"
+  Mandatory="No"
+
+  >
+  <def:WhereClauseRef WhereClauseOID="WC.WC.LB.CREAT"/>
+
+</ItemRef>
+<ItemRef ItemOID="IT.LB.LBSTRESN.GLUC.GLUC"
+  OrderNumber="3"
+  Mandatory="No"
+
+  >
+  <def:WhereClauseRef WhereClauseOID="WC.WC.LB.GLUC"/>
+
+</ItemRef>
+<ItemRef ItemOID="IT.LB.LBSTRESN.HBA1C.HBA1C"
+  OrderNumber="4"
+  Mandatory="No"
+
+  >
+  <def:WhereClauseRef WhereClauseOID="WC.WC.LB.HBA1C"/>
+
+</ItemRef>
+ </def:ValueListDef>
+
+
+  <!-- ****************************************************************** -->
+  <!-- WhereClause Definitions Used/Referenced in Value List Definitions) -->
+  <!-- ****************************************************************** -->
+<def:WhereClauseDef OID="WC.WC.LB.ALT">
+<RangeCheck SoftHard="Soft" def:ItemOID="IT.LB.LBTESTCD" Comparator="EQ">
+<CheckValue>ALT</CheckValue>
+</RangeCheck>
+</def:WhereClauseDef>
+<def:WhereClauseDef OID="WC.WC.LB.CREAT">
+<RangeCheck SoftHard="Soft" def:ItemOID="IT.LB.LBTESTCD" Comparator="EQ">
+<CheckValue>CREAT</CheckValue>
+</RangeCheck>
+</def:WhereClauseDef>
+<def:WhereClauseDef OID="WC.WC.LB.GLUC">
+<RangeCheck SoftHard="Soft" def:ItemOID="IT.LB.LBTESTCD" Comparator="EQ">
+<CheckValue>GLUC</CheckValue>
+</RangeCheck>
+</def:WhereClauseDef>
+<def:WhereClauseDef OID="WC.WC.LB.HBA1C">
+<RangeCheck SoftHard="Soft" def:ItemOID="IT.LB.LBTESTCD" Comparator="EQ">
+<CheckValue>HBA1C</CheckValue>
+</RangeCheck>
+</def:WhereClauseDef>
+<!-- ******************************************* -->
+<!-- DM             ItemGroupDef INFORMATION *** -->
+<!-- ******************************************* -->
+<ItemGroupDef OID="IG.DM"
+Domain="DM"
+Name="DM"
+Repeating="No"
+Purpose="Tabulation"
+IsReferenceData="No"
+SASDatasetName="DM"
+def:Structure="Special Purpose - One record per subject"
+def:Class="Special Purpose"
+def:ArchiveLocationID="LF.DM">
+<Description>
+  <TranslatedText xml:lang="en">Demographics</TranslatedText>
+</Description>
+<ItemRef ItemOID="IT.DM.STUDYID"
+OrderNumber="1"
+Mandatory="Yes"
+KeySequence="1"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.DOMAIN"
+OrderNumber="2"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.USUBJID"
+OrderNumber="3"
+Mandatory="Yes"
+KeySequence="2"
+MethodOID="MT.MT.USUBJID"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.SUBJID"
+OrderNumber="4"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.RFSTDTC"
+OrderNumber="5"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.RFENDTC"
+OrderNumber="6"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.RFXSTDTC"
+OrderNumber="7"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.RFXENDTC"
+OrderNumber="8"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.RFICDTC"
+OrderNumber="9"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.RFPENDTC"
+OrderNumber="10"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.DTHDTC"
+OrderNumber="11"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.DTHFL"
+OrderNumber="12"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.SITEID"
+OrderNumber="13"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.BRTHDTC"
+OrderNumber="14"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.AGE"
+OrderNumber="15"
+Mandatory="No"
+MethodOID="MT.MT.AGE"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.AGEU"
+OrderNumber="16"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.SEX"
+OrderNumber="17"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.RACE"
+OrderNumber="18"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.ETHNIC"
+OrderNumber="19"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.ARMCD"
+OrderNumber="20"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.ARM"
+OrderNumber="21"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.ACTARMCD"
+OrderNumber="22"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.ACTARM"
+OrderNumber="23"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.ARMNRS"
+OrderNumber="24"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.ACTARMUD"
+OrderNumber="25"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.DM.COUNTRY"
+OrderNumber="26"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+ <!-- **************************************************** -->
+      <!-- def:leaf details for hypertext linking the dataset   -->
+      <!-- **************************************************** -->
+<def:leaf ID="LF.DM" xlink:href="dm.xpt">
+    <def:title>dm.xpt </def:title>
+  </def:leaf>
+</ItemGroupDef>
+<!-- ******************************************* -->
+<!-- LB             ItemGroupDef INFORMATION *** -->
+<!-- ******************************************* -->
+<ItemGroupDef OID="IG.LB"
+Domain="LB"
+Name="LB"
+Repeating="Yes"
+Purpose="Tabulation"
+IsReferenceData="No"
+SASDatasetName="LB"
+def:Structure="Findings - One record per lab test per time point per subject"
+def:Class="Findings"
+def:ArchiveLocationID="LF.LB">
+<Description>
+  <TranslatedText xml:lang="en">Laboratory Test Results</TranslatedText>
+</Description>
+<ItemRef ItemOID="IT.LB.STUDYID"
+OrderNumber="1"
+Mandatory="Yes"
+KeySequence="1"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.DOMAIN"
+OrderNumber="2"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.USUBJID"
+OrderNumber="3"
+Mandatory="Yes"
+KeySequence="2"
+MethodOID="MT.MT.USUBJID"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBSEQ"
+OrderNumber="4"
+Mandatory="Yes"
+KeySequence="5"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBTESTCD"
+OrderNumber="5"
+Mandatory="Yes"
+KeySequence="3"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBTEST"
+OrderNumber="6"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBORRES"
+OrderNumber="7"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBORRESU"
+OrderNumber="8"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBSTRESC"
+OrderNumber="9"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBSTRESN"
+OrderNumber="10"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBSTRESU"
+OrderNumber="11"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBORNRLO"
+OrderNumber="12"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBORNRHI"
+OrderNumber="13"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBSTNRLO"
+OrderNumber="14"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBSTNRHI"
+OrderNumber="15"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBNRIND"
+OrderNumber="16"
+Mandatory="No"
+MethodOID="MT.MT.LBNRIND"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBDRVFL"
+OrderNumber="17"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBLOBXFL"
+OrderNumber="18"
+Mandatory="No"
+MethodOID="MT.MT.LBLOBXFL"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.VISITNUM"
+OrderNumber="19"
+Mandatory="Yes"
+KeySequence="4"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.VISIT"
+OrderNumber="20"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBDTC"
+OrderNumber="21"
+Mandatory="No"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+<ItemRef ItemOID="IT.LB.LBDY"
+OrderNumber="22"
+Mandatory="No"
+MethodOID="MT.MT.LBDY"
+Role="NA"
+RoleCodeListOID="CL.rolecode"/>
+ <!-- **************************************************** -->
+      <!-- def:leaf details for hypertext linking the dataset   -->
+      <!-- **************************************************** -->
+<def:leaf ID="LF.LB" xlink:href="lb.xpt">
+    <def:title>lb.xpt </def:title>
+  </def:leaf>
+</ItemGroupDef>
+<!-- ************************************************************ -->
+  <!-- The details of each variable is here for all domains         -->
+  <!-- ************************************************************ -->
+<ItemDef OID="IT.DM.STUDYID"
+  Name="STUDYID"
+  SASFieldName="STUDYID"
+  DataType="text"
+  Length="7"
+  def:DisplayFormat="7"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.DOMAIN"
+  Name="DOMAIN"
+  SASFieldName="DOMAIN"
+  DataType="text"
+  Length="2"
+  def:DisplayFormat="2"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Domain Abbreviation</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.USUBJID"
+  Name="USUBJID"
+  SASFieldName="USUBJID"
+  DataType="text"
+  Length="15"
+  def:DisplayFormat="15"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.SUBJID"
+  Name="SUBJID"
+  SASFieldName="SUBJID"
+  DataType="text"
+  Length="7"
+  def:DisplayFormat="7"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Subject Identifier for the Study</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.RFSTDTC"
+  Name="RFSTDTC"
+  SASFieldName="RFSTDTC"
+  DataType="date"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Subject Reference Start Date/Time</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.RFENDTC"
+  Name="RFENDTC"
+  SASFieldName="RFENDTC"
+  DataType="date"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Subject Reference End Date/Time</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.RFXSTDTC"
+  Name="RFXSTDTC"
+  SASFieldName="RFXSTDTC"
+  DataType="date"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Date/Time of First Study Treatment</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.RFXENDTC"
+  Name="RFXENDTC"
+  SASFieldName="RFXENDTC"
+  DataType="date"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Date/Time of Last Study Treatment</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.RFICDTC"
+  Name="RFICDTC"
+  SASFieldName="RFICDTC"
+  DataType="date"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Date/Time of Informed Consent</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.RFPENDTC"
+  Name="RFPENDTC"
+  SASFieldName="RFPENDTC"
+  DataType="date"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Date/Time of End of Participation</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.DTHDTC"
+  Name="DTHDTC"
+  SASFieldName="DTHDTC"
+  DataType="date"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Date/Time of Death</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.DTHFL"
+  Name="DTHFL"
+  SASFieldName="DTHFL"
+  DataType="text"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Subject Death Flag</TranslatedText>
+  </Description><CodeListRef CodeListOID="CL.NY"/>
+
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.SITEID"
+  Name="SITEID"
+  SASFieldName="SITEID"
+  DataType="text"
+  Length="3"
+  def:DisplayFormat="3"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Study Site Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.BRTHDTC"
+  Name="BRTHDTC"
+  SASFieldName="BRTHDTC"
+  DataType="date"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Date/Time of Birth</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.AGE"
+  Name="AGE"
+  SASFieldName="AGE"
+  DataType="integer"
+  Length="2"
+  def:DisplayFormat="2"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Age</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.AGEU"
+  Name="AGEU"
+  SASFieldName="AGEU"
+  DataType="text"
+  Length="5"
+  def:DisplayFormat="5"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Age Units</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.SEX"
+  Name="SEX"
+  SASFieldName="SEX"
+  DataType="text"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Sex</TranslatedText>
+  </Description><CodeListRef CodeListOID="CL.SEX"/>
+
+  <def:Origin Type="CRF"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.RACE"
+  Name="RACE"
+  SASFieldName="RACE"
+  DataType="text"
+  Length="25"
+  def:DisplayFormat="25"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Race</TranslatedText>
+  </Description><CodeListRef CodeListOID="CL.RACE"/>
+
+  <def:Origin Type="CRF"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.ETHNIC"
+  Name="ETHNIC"
+  SASFieldName="ETHNIC"
+  DataType="text"
+  Length="22"
+  def:DisplayFormat="22"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Ethnicity</TranslatedText>
+  </Description>
+  <def:Origin Type="CRF"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.ARMCD"
+  Name="ARMCD"
+  SASFieldName="ARMCD"
+  DataType="text"
+  Length="6"
+  def:DisplayFormat="6"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Planned Arm Code</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.ARM"
+  Name="ARM"
+  SASFieldName="ARM"
+  DataType="text"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Description of Planned Arm</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.ACTARMCD"
+  Name="ACTARMCD"
+  SASFieldName="ACTARMCD"
+  DataType="text"
+  Length="6"
+  def:DisplayFormat="6"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Actual Arm Code</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.ACTARM"
+  Name="ACTARM"
+  SASFieldName="ACTARM"
+  DataType="text"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Description of Actual Arm</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.ARMNRS"
+  Name="ARMNRS"
+  SASFieldName="ARMNRS"
+  DataType="text"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Reason Arm and/or Actual Arm is Null</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.ACTARMUD"
+  Name="ACTARMUD"
+  SASFieldName="ACTARMUD"
+  DataType="text"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Description of Unplanned Actual Arm</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.DM.COUNTRY"
+  Name="COUNTRY"
+  SASFieldName="COUNTRY"
+  DataType="text"
+  Length="3"
+  def:DisplayFormat="3"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Country</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.STUDYID"
+  Name="STUDYID"
+  SASFieldName="STUDYID"
+  DataType="text"
+  Length="7"
+  def:DisplayFormat="7"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Study Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.DOMAIN"
+  Name="DOMAIN"
+  SASFieldName="DOMAIN"
+  DataType="text"
+  Length="2"
+  def:DisplayFormat="2"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Domain Abbreviation</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.USUBJID"
+  Name="USUBJID"
+  SASFieldName="USUBJID"
+  DataType="text"
+  Length="15"
+  def:DisplayFormat="15"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Unique Subject Identifier</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBSEQ"
+  Name="LBSEQ"
+  SASFieldName="LBSEQ"
+  DataType="integer"
+  Length="2"
+  def:DisplayFormat="2"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Sequence Number</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBTESTCD"
+  Name="LBTESTCD"
+  SASFieldName="LBTESTCD"
+  DataType="text"
+  Length="5"
+  def:DisplayFormat="5"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Lab Test or Examination Short Name</TranslatedText>
+  </Description><CodeListRef CodeListOID="CL.LBTESTCD"/>
+
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBTEST"
+  Name="LBTEST"
+  SASFieldName="LBTEST"
+  DataType="text"
+  Length="24"
+  def:DisplayFormat="24"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Lab Test or Examination Name</TranslatedText>
+  </Description><CodeListRef CodeListOID="CL.LBTEST"/>
+
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBORRES"
+  Name="LBORRES"
+  SASFieldName="LBORRES"
+  DataType="text"
+  Length="4"
+  def:DisplayFormat="4"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Result or Finding in Original Units</TranslatedText>
+  </Description>
+  <def:Origin Type="eDT"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBORRESU"
+  Name="LBORRESU"
+  SASFieldName="LBORRESU"
+  DataType="text"
+  Length="6"
+  def:DisplayFormat="6"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Original Units</TranslatedText>
+  </Description>
+  <def:Origin Type="eDT"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBSTRESC"
+  Name="LBSTRESC"
+  SASFieldName="LBSTRESC"
+  DataType="text"
+  Length="4"
+  def:DisplayFormat="4"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Character Result/Finding in Std Format</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBSTRESN"
+  Name="LBSTRESN"
+  SASFieldName="LBSTRESN"
+  DataType="float"
+  Length="4"
+  def:DisplayFormat="4"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Numeric Result/Finding in Standard Units</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  <def:ValueListRef ValueListOID="VL.LB.LBSTRESN"/>
+
+</ItemDef>
+<ItemDef OID="IT.LB.LBSTRESN.ALT.ALT"
+  Name="LBSTRESN"
+  SASFieldName="LBSTRESN"
+  DataType="float"
+  Length="8"
+  def:DisplayFormat="8"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Alanine Aminotransferase</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+</ItemDef>
+<ItemDef OID="IT.LB.LBSTRESN.CREAT.CREAT"
+  Name="LBSTRESN"
+  SASFieldName="LBSTRESN"
+  DataType="float"
+  Length="8"
+  def:DisplayFormat="8"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Creatinine</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+</ItemDef>
+<ItemDef OID="IT.LB.LBSTRESN.GLUC.GLUC"
+  Name="LBSTRESN"
+  SASFieldName="LBSTRESN"
+  DataType="float"
+  Length="8"
+  def:DisplayFormat="8"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Glucose</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+</ItemDef>
+<ItemDef OID="IT.LB.LBSTRESN.HBA1C.HBA1C"
+  Name="LBSTRESN"
+  SASFieldName="LBSTRESN"
+  DataType="float"
+  Length="8"
+  def:DisplayFormat="8"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Hemoglobin A1C</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBSTRESU"
+  Name="LBSTRESU"
+  SASFieldName="LBSTRESU"
+  DataType="text"
+  Length="6"
+  def:DisplayFormat="6"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Standard Units</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBORNRLO"
+  Name="LBORNRLO"
+  SASFieldName="LBORNRLO"
+  DataType="float"
+  Length="3"
+  def:DisplayFormat="3"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Reference Range Lower Limit in Orig Unit</TranslatedText>
+  </Description>
+  <def:Origin Type="eDT"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBORNRHI"
+  Name="LBORNRHI"
+  SASFieldName="LBORNRHI"
+  DataType="float"
+  Length="3"
+  def:DisplayFormat="3"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Reference Range Upper Limit in Orig Unit</TranslatedText>
+  </Description>
+  <def:Origin Type="eDT"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBSTNRLO"
+  Name="LBSTNRLO"
+  SASFieldName="LBSTNRLO"
+  DataType="float"
+  Length="3"
+  def:DisplayFormat="3"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Reference Range Lower Limit-Std Units</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBSTNRHI"
+  Name="LBSTNRHI"
+  SASFieldName="LBSTNRHI"
+  DataType="float"
+  Length="3"
+  def:DisplayFormat="3"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Reference Range Upper Limit-Std Units</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBNRIND"
+  Name="LBNRIND"
+  SASFieldName="LBNRIND"
+  DataType="text"
+  Length="6"
+  def:DisplayFormat="6"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Reference Range Indicator</TranslatedText>
+  </Description><CodeListRef CodeListOID="CL.NRIND"/>
+
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBDRVFL"
+  Name="LBDRVFL"
+  SASFieldName="LBDRVFL"
+  DataType="text"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Derived Flag</TranslatedText>
+  </Description><CodeListRef CodeListOID="CL.NY"/>
+
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBLOBXFL"
+  Name="LBLOBXFL"
+  SASFieldName="LBLOBXFL"
+  DataType="text"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Last Observation Before Exposure Flag</TranslatedText>
+  </Description><CodeListRef CodeListOID="CL.NY"/>
+
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.VISITNUM"
+  Name="VISITNUM"
+  SASFieldName="VISITNUM"
+  DataType="integer"
+  Length="1"
+  def:DisplayFormat="1"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Visit Number</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.VISIT"
+  Name="VISIT"
+  SASFieldName="VISIT"
+  DataType="text"
+  Length="9"
+  def:DisplayFormat="9"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Visit Name</TranslatedText>
+  </Description>
+  <def:Origin Type="Assigned"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBDTC"
+  Name="LBDTC"
+  SASFieldName="LBDTC"
+  DataType="datetime"
+  Length="10"
+  def:DisplayFormat="10"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Date/Time of Specimen Collection</TranslatedText>
+  </Description>
+  <def:Origin Type="eDT"></def:Origin>
+  
+</ItemDef>
+
+<ItemDef OID="IT.LB.LBDY"
+  Name="LBDY"
+  SASFieldName="LBDY"
+  DataType="integer"
+  Length="3"
+  def:DisplayFormat="3"
+  >
+  <Description>
+      <TranslatedText xml:lang="en">Study Day of Specimen Collection</TranslatedText>
+  </Description>
+  <def:Origin Type="Derived"></def:Origin>
+  
+</ItemDef>
+
+  <!-- ************************************************************ -->
+  <!-- Codelists are presented below                                -->
+  <!-- ************************************************************ -->
+<CodeList OID="CL.LBTEST"
+Name="LBTEST"
+DataType="text">
+<CodeListItem CodedValue="Alanine Aminotransferase" Rank="1">
+  <Decode>
+    <TranslatedText>Alanine Aminotransferase</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="Creatinine" Rank="2">
+  <Decode>
+    <TranslatedText>Creatinine</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="Glucose" Rank="3">
+  <Decode>
+    <TranslatedText>Glucose</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="Hemoglobin A1C" Rank="4">
+  <Decode>
+    <TranslatedText>Hemoglobin A1C</TranslatedText>
+  </Decode>
+</CodeListItem>
+</CodeList>
+<CodeList OID="CL.LBTESTCD"
+Name="LBTESTCD"
+DataType="text">
+<CodeListItem CodedValue="ALT" Rank="1">
+  <Decode>
+    <TranslatedText>ALT</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="CREAT" Rank="2">
+  <Decode>
+    <TranslatedText>CREAT</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="GLUC" Rank="3">
+  <Decode>
+    <TranslatedText>GLUC</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="HBA1C" Rank="4">
+  <Decode>
+    <TranslatedText>HBA1C</TranslatedText>
+  </Decode>
+</CodeListItem>
+</CodeList>
+<CodeList OID="CL.NRIND"
+Name="NRIND"
+DataType="text">
+<CodeListItem CodedValue="HIGH" Rank="1">
+  <Decode>
+    <TranslatedText>HIGH</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="LOW" Rank="2">
+  <Decode>
+    <TranslatedText>LOW</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="NORMAL" Rank="3">
+  <Decode>
+    <TranslatedText>NORMAL</TranslatedText>
+  </Decode>
+</CodeListItem>
+</CodeList>
+<CodeList OID="CL.NY"
+Name="NY"
+DataType="text">
+<CodeListItem CodedValue="Y" Rank="1">
+  <Decode>
+    <TranslatedText>Y</TranslatedText>
+  </Decode>
+</CodeListItem>
+</CodeList>
+<CodeList OID="CL.RACE"
+Name="RACE"
+DataType="text">
+<CodeListItem CodedValue="ASIAN" Rank="1">
+  <Decode>
+    <TranslatedText>ASIAN</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="BLACK OR AFRICAN AMERICAN" Rank="2">
+  <Decode>
+    <TranslatedText>BLACK OR AFRICAN AMERICAN</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="OTHER" Rank="3">
+  <Decode>
+    <TranslatedText>OTHER</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="WHITE" Rank="4">
+  <Decode>
+    <TranslatedText>WHITE</TranslatedText>
+  </Decode>
+</CodeListItem>
+</CodeList>
+<CodeList OID="CL.SEX"
+Name="SEX"
+DataType="text">
+<CodeListItem CodedValue="F" Rank="1">
+  <Decode>
+    <TranslatedText>F</TranslatedText>
+  </Decode>
+</CodeListItem>
+<CodeListItem CodedValue="M" Rank="2">
+  <Decode>
+    <TranslatedText>M</TranslatedText>
+  </Decode>
+</CodeListItem>
+</CodeList>
+  <!-- ******************************************* -->
+  <!-- COMPUTATIONAL METHOD INFORMATION        *** -->
+  <!-- ******************************************* -->
+<MethodDef OID="MT.MT.USUBJID" Name="Unique subject identifier" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Concatenation of STUDYID and SUBJID separated by a hyphen.</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.MT.AGE" Name="Age at informed consent" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Whole years between BRTHDTC and RFICDTC. Null where BRTHDTC is a partial date and age cannot be computed.</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.MT.LBDY" Name="Study day of specimen collection" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Days between LBDTC and DM.RFSTDTC. Day 1 is the reference date; there is no day 0.</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.MT.LBNRIND" Name="Reference range indicator" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">LOW where LBSTRESN is below LBSTNRLO, HIGH where above LBSTNRHI, NORMAL otherwise. Null where either limit is missing.</TranslatedText>
+  </Description>
+</MethodDef>
+<MethodDef OID="MT.MT.LBLOBXFL" Name="Last observation before exposure" Type="Computation">
+  <Description>
+    <TranslatedText xml:lang="en">Y on the last record with LBDTC strictly prior to DM.RFXSTDTC, per subject and test. Null otherwise.</TranslatedText>
+  </Description>
+</MethodDef>
+
+
+  <!-- ******************************** -->
+  <!-- COMMENTS DEFINITION SECTION      -->
+  <!-- ******************************** -->
+<def:CommentDef OID="COM.COM.AGE">
+  <Description>
+    <TranslatedText xml:lang="en">Four subjects have a partial birth date and therefore no AGE. See the study data reviewer's guide.</TranslatedText>
+  </Description>
+</def:CommentDef>
+<def:CommentDef OID="COM.COM.LBDRVFL">
+  <Description>
+    <TranslatedText xml:lang="en">Not populated. No LB record in this study is derived; all results are reported by the central laboratory.</TranslatedText>
+  </Description>
+</def:CommentDef>
+    <!-- ******************************************* -->
+    <!-- LEAF DEFINITION SECTION                 *** -->
+    <!-- ******************************************* -->
+<def:leaf ID="LF.blankcrf"
+  xlink:href="blankcrf.pdf">
+  <def:title>Annotated Case Report Form</def:title>
+</def:leaf>
+<def:leaf ID="LF.sdrg"
+  xlink:href="sdrg.pdf">
+  <def:title>Study Data Reviewer's Guide</def:title>
+</def:leaf>
+</MetaDataVersion>
+</Study>
+</ODM>

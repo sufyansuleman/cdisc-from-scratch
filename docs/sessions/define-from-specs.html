@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -316,6 +351,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/define-from-specs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -330,22 +371,35 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#when-do-you-use-this" id="toc-when-do-you-use-this" class="nav-link active" data-scroll-target="#when-do-you-use-this"><span class="header-section-number">14.1</span> When Do You Use This?</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">14.2</span> Learning Objectives</a></li>
-  <li><a href="#background-todo-the-one-core-idea" id="toc-background-todo-the-one-core-idea" class="nav-link" data-scroll-target="#background-todo-the-one-core-idea"><span class="header-section-number">14.3</span> Background: TODO (the one core idea)</a></li>
-  <li><a href="#example-1-todo" id="toc-example-1-todo" class="nav-link" data-scroll-target="#example-1-todo"><span class="header-section-number">14.4</span> Example 1: TODO</a>
+  <li><a href="#background-the-workbook-is-the-deliverable" id="toc-background-the-workbook-is-the-deliverable" class="nav-link" data-scroll-target="#background-the-workbook-is-the-deliverable"><span class="header-section-number">14.3</span> Background: The Workbook Is the Deliverable</a></li>
+  <li><a href="#example-1-reading-a-real-specification" id="toc-example-1-reading-a-real-specification" class="nav-link" data-scroll-target="#example-1-reading-a-real-specification"><span class="header-section-number">14.4</span> Example 1: Reading a Real Specification</a>
   <ul class="collapse">
-  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">14.4.1</span> Run It Yourself</a></li>
-  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">14.4.2</span> Reading the Output Line by Line</a></li>
+  <li><a href="#the-variable-sheet" id="toc-the-variable-sheet" class="nav-link" data-scroll-target="#the-variable-sheet"><span class="header-section-number">14.4.1</span> The variable sheet</a></li>
+  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">14.4.2</span> Run It Yourself</a></li>
+  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">14.4.3</span> Reading the Output Line by Line</a></li>
+  <li><a href="#where-the-labels-came-from" id="toc-where-the-labels-came-from" class="nav-link" data-scroll-target="#where-the-labels-came-from"><span class="header-section-number">14.4.4</span> Where the labels came from</a></li>
   </ul></li>
-  <li><a href="#example-2-todo" id="toc-example-2-todo" class="nav-link" data-scroll-target="#example-2-todo"><span class="header-section-number">14.5</span> Example 2: TODO</a>
+  <li><a href="#example-2-generating-define.xml-from-it" id="toc-example-2-generating-define.xml-from-it" class="nav-link" data-scroll-target="#example-2-generating-define.xml-from-it"><span class="header-section-number">14.5</span> Example 2: Generating define.xml From It</a>
   <ul class="collapse">
   <li><a href="#run-it-yourself-1" id="toc-run-it-yourself-1" class="nav-link" data-scroll-target="#run-it-yourself-1"><span class="header-section-number">14.5.1</span> Run It Yourself</a></li>
+  <li><a href="#reading-the-output-line-by-line-1" id="toc-reading-the-output-line-by-line-1" class="nav-link" data-scroll-target="#reading-the-output-line-by-line-1"><span class="header-section-number">14.5.2</span> Reading the Output Line by Line</a></li>
   </ul></li>
-  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">14.6</span> What Can Go Wrong</a>
+  <li><a href="#example-3-what-the-tool-could-not-say" id="toc-example-3-what-the-tool-could-not-say" class="nav-link" data-scroll-target="#example-3-what-the-tool-could-not-say"><span class="header-section-number">14.6</span> Example 3: What the Tool Could Not Say</a>
   <ul class="collapse">
-  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">14.6.1</span> Common misinterpretations</a></li>
+  <li><a href="#origin" id="toc-origin" class="nav-link" data-scroll-target="#origin"><span class="header-section-number">14.6.1</span> Origin</a></li>
+  <li><a href="#class" id="toc-class" class="nav-link" data-scroll-target="#class"><span class="header-section-number">14.6.2</span> Class</a></li>
+  <li><a href="#namespace" id="toc-namespace" class="nav-link" data-scroll-target="#namespace"><span class="header-section-number">14.6.3</span> Namespace</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.7</span> Exercises</a></li>
-  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">14.8</span> Comprehension Check</a></li>
+  <li><a href="#example-4-reading-the-metadata-back" id="toc-example-4-reading-the-metadata-back" class="nav-link" data-scroll-target="#example-4-reading-the-metadata-back"><span class="header-section-number">14.7</span> Example 4: Reading the Metadata Back</a>
+  <ul class="collapse">
+  <li><a href="#why-this-matters" id="toc-why-this-matters" class="nav-link" data-scroll-target="#why-this-matters"><span class="header-section-number">14.7.1</span> Why this matters</a></li>
+  </ul></li>
+  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">14.8</span> What Can Go Wrong</a>
+  <ul class="collapse">
+  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">14.8.1</span> Common misinterpretations</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.9</span> Exercises</a></li>
+  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">14.10</span> Comprehension Check</a></li>
   </ul>
 </nav>
     </div>
@@ -371,36 +425,6 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<!-- SCOPE NOTE (not rendered)
-This session is the second half of the Define-XML material, split out of
-sessions/define-xml.qmd deliberately.
-
-  - define-xml.qmd  = hand-rolled Define-XML v2.1 with xml2. Teaching path.
-  - this session    = the spec-driven production route.
-
-Decisions already taken, do not relitigate:
-
-  * defineR 0.0.6 supports Define-XML 2.0 ONLY. Its inst/extdata has a single
-    version directory, 2.0.0/. There is no 2.1 schema, stylesheet or template.
-    Define-XML 2.0 is April 2014; 2.1 is the current standard. The session must
-    teach this gap explicitly rather than paper over it - the version lag between
-    live tooling and the published standard IS the lesson.
-  * defineR is pre-1.0 (0.0.6). Say so in the session. Do not present it as
-    settled infrastructure.
-  * Build cost: this session needs an artifact the repo does not have - a GLPX-001
-    SDTM specification workbook. Do NOT invent the format: defineR ships templates
-    at inst/extdata/2.0.0/metadata/templates/SDTM_METADATA.xlsx. Fill those in.
-  * Pipeline convention applies: R/build_define.R alongside build_sdtm.R and
-    build_adam.R, deterministic, output committed.
-  * Closing move: metacore::define_to_metacore() reads the generated define.xml
-    back, demonstrating the metadata round-trip. Exported and verified available.
-  * defineR also ships define2-0.xsl; the xslt package (already a defineR
-    dependency) can render define.xml to the browsable HTML a reviewer opens.
-    The v2.1 package ships the matching define2-1.xsl.
-
-Packages verified installed and loading: metacore 0.3.0, metatools 0.3.0,
-defineR 0.0.6, xml2 1.6.0. renv.lock needs a snapshot once this session lands.
--->
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -411,7 +435,7 @@ defineR 0.0.6, xml2 1.6.0. renv.lock needs a snapshot once this session lands.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Total core time: about TODO minutes.</strong></p>
+<p><strong>Total core time: about 85 minutes.</strong></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -423,42 +447,47 @@ defineR 0.0.6, xml2 1.6.0. renv.lock needs a snapshot once this session lands.
 <tbody>
 <tr class="odd">
 <td>When Do You Use This? + Learning Objectives</td>
-<td>TODO</td>
+<td>5 min</td>
 <td>Reading</td>
 </tr>
 <tr class="even">
-<td>Background</td>
-<td>TODO</td>
+<td>Background: the workbook is the deliverable</td>
+<td>15 min</td>
 <td>Reading</td>
 </tr>
 <tr class="odd">
-<td>Example 1</td>
-<td>TODO</td>
+<td>Example 1: Reading a real specification</td>
+<td>20 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="even">
-<td>Example 2</td>
-<td>TODO</td>
+<td>Example 2: Generating define.xml from it</td>
+<td>15 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="odd">
+<td>Example 3: What the tool could not say</td>
+<td>15 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="even">
+<td>Example 4: Reading the metadata back</td>
+<td>10 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="odd">
 <td>What Can Go Wrong</td>
-<td>TODO</td>
+<td>10 min</td>
 <td>Reading</td>
 </tr>
 <tr class="even">
-<td>Exercises</td>
-<td>TODO</td>
-<td>Practice</td>
-</tr>
-<tr class="odd">
-<td>Comprehension Check</td>
-<td>TODO</td>
-<td>Self-test</td>
+<td>Exercises + Comprehension Check</td>
+<td>15 min</td>
+<td>Practice / Self-test</td>
 </tr>
 </tbody>
 </table>
-<p>TODO: how the session splits across sittings for self-paced study.</p>
+<p>The other half of <a href="../sessions/define-xml.html">Define-XML</a>. That session built the document by hand to show its structure; this one builds it the way a sponsor does, from a specification workbook, and examines what the production route costs you. Read them in order — this session assumes you know what an <code>ItemGroupDef</code> is.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -471,7 +500,21 @@ defineR 0.0.6, xml2 1.6.0. renv.lock needs a snapshot once this session lands.
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Where you see a “Run It Yourself” box, stop and run the code above it before reading the explanation that follows.</p>
+<p>Run R from the project root, as always. This session uses three packages you have not seen before: <strong><code>defineR</code></strong>, <strong><code>openxlsx</code></strong> and <strong><code>metacore</code></strong>, all pinned in <code>renv.lock</code>.</p>
+<p>Everything here runs against artifacts committed in this repository — <code>data/spec/SDTM_METADATA.xlsx</code> and <code>data/define/</code>. You do not need the CDISC Define-XML package for the main path; one comparison in Example 3 uses it, and is marked.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>A Note on <code>defineR</code>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>defineR</code> is at version <strong>0.0.6</strong>. That leading zero is not decoration: it is a pre-1.0 package, and its interface may change. It is used here because it is the most direct open-source path in R from a specification workbook to a define.xml, and because the shape of what it does is what matters — not because it is settled infrastructure you should build a submission pipeline on without further thought.</p>
 </div>
 </div>
 <section id="when-do-you-use-this" class="level2" data-number="14.1">
@@ -486,7 +529,13 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TODO: two or three concrete scenarios that this session answers, ending with the single question it addresses in bold. Cross-link the session(s) this one builds on.</p>
+<p><a href="../sessions/define-xml.html">Define-XML</a> built a document with three variables. A real submission has thousands. Then:</p>
+<ul>
+<li>Nobody is going to hand-write <code>xml_add_child()</code> calls for 2,000 variables across 30 domains. What actually produces the file?</li>
+<li>Your standards group maintains dataset metadata in a spreadsheet, and has done for years, before anyone mentioned XML. How does that become a submission deliverable?</li>
+<li>The tool you use was written against an older version of the standard. What exactly does that cost you, and how would you find out?</li>
+</ul>
+<p><strong>How is define.xml actually produced, and what does the production route quietly decide on your behalf?</strong></p>
 </div>
 </div>
 </section>
@@ -494,53 +543,391 @@ Tip
 <h2 data-number="14.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">14.2</span> Learning Objectives</h2>
 <p>After completing this session you will be able to:</p>
 <ul>
-<li>TODO</li>
-<li>TODO</li>
-<li>TODO</li>
+<li>Describe what a specification workbook contains and why it, not the XML, is the sponsor’s source of truth</li>
+<li>Generate a Define-XML document from a workbook with <code>defineR</code></li>
+<li>Identify what a Define-XML 2.0 tool cannot express, by comparing its output against the 2.1 enumerations</li>
+<li>Read published metadata back into R with <code>metacore</code> and explain why that round-trip is worth doing</li>
+<li>Explain why “our tool produces a valid define.xml” is not the same claim as “our define.xml is right”</li>
 </ul>
 </section>
-<section id="background-todo-the-one-core-idea" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="background-todo-the-one-core-idea"><span class="header-section-number">14.3</span> Background: TODO (the one core idea)</h2>
-<p><em>Estimated time: ~TODO minutes (reading)</em></p>
-<p>TODO: introduce the single idea that ties the session together, concept before formula.</p>
+<section id="background-the-workbook-is-the-deliverable" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="background-the-workbook-is-the-deliverable"><span class="header-section-number">14.3</span> Background: The Workbook Is the Deliverable</h2>
+<p><em>Estimated time: ~15 minutes (reading)</em></p>
+<p>Here is the thing that surprises people coming to clinical programming from other data work: <strong>in most sponsors, nobody writes define.xml.</strong></p>
+<p>The document that people write, argue about, review, version and sign off is a <strong>specification workbook</strong> — an Excel file, one sheet per kind of metadata, maintained by a standards or data-management group. It lists every dataset, every variable, its type, its length, its label, its origin, its codelist and its derivation. It is a controlled document. It exists before any of the datasets do, because it is what programming is written <em>against</em>.</p>
+<p>define.xml is generated from it, usually near the end, often automatically, and frequently by someone who did not write a line of the metadata it contains.</p>
+<p>That arrangement has a consequence worth stating plainly, because it governs everything else in this session:</p>
+<blockquote class="blockquote">
+<p><strong>If the define.xml is wrong, the workbook is wrong. Fixing the XML fixes one submission; fixing the workbook fixes the study.</strong></p>
+</blockquote>
+<p>This repository mirrors that arrangement deliberately. <code>data/spec/SDTM_METADATA.xlsx</code> is a committed artifact — a binary file that git cannot show you diffs of, which is a genuine cost and also genuinely how this works. <code>R/build_define.R</code> <strong>reads</strong> that workbook and never writes it. There is a second script, <code>R/author_spec_workbook.R</code>, which created the workbook once and stands in for the standards group this course does not have.</p>
 </section>
-<section id="example-1-todo" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="example-1-todo"><span class="header-section-number">14.4</span> Example 1: TODO</h2>
-<p>TODO: worked example on GLPX-001 data. Show the code, then the output, then explain it.</p>
-<section id="run-it-yourself" class="level3" data-number="14.4.1">
-<h3 data-number="14.4.1" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">14.4.1</span> Run It Yourself</h3>
-<p>TODO: the exact code block the learner should execute before reading on.</p>
+<section id="example-1-reading-a-real-specification" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="example-1-reading-a-real-specification"><span class="header-section-number">14.4</span> Example 1: Reading a Real Specification</h2>
+<p><em>Estimated time: ~20 minutes (worked example)</em></p>
+<p>GLPX-001’s workbook covers two domains, DM and LB. Start with its shape:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="st">"data/spec/SDTM_METADATA.xlsx"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">sheet =</span> <span class="fu">getSheetNames</span>(spec)) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rows =</span> <span class="fu">map_int</span>(sheet, <span class="sc">~</span> <span class="fu">nrow</span>(<span class="fu">read.xlsx</span>(spec, <span class="at">sheet =</span> .x))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 9 × 2
+  sheet                   rows
+  &lt;chr&gt;                  &lt;int&gt;
+1 DEFINE_HEADER_METADATA     1
+2 TOC_METADATA               2
+3 VARIABLE_METADATA         48
+4 VALUELEVEL_METADATA        4
+5 COMPUTATION_METHOD         5
+6 CODELISTS                 18
+7 WHERE_CLAUSES              4
+8 COMMENTS                   2
+9 EXTERNAL_LINKS             2</code></pre>
+</div>
+</div>
+<p>Nine sheets. Read them as a list of definitions rather than a spreadsheet and the structure of <a href="../sessions/define-xml.html">Define-XML</a> is already visible: <code>TOC_METADATA</code> becomes <code>ItemGroupDef</code>, <code>VARIABLE_METADATA</code> becomes <code>ItemDef</code>, <code>CODELISTS</code> becomes <code>CodeList</code>, <code>COMPUTATION_METHOD</code> becomes <code>MethodDef</code>, <code>WHERE_CLAUSES</code> becomes <code>def:WhereClauseDef</code>. The workbook is the same web of definitions, flattened into sheets.</p>
+<section id="the-variable-sheet" class="level3" data-number="14.4.1">
+<h3 data-number="14.4.1" class="anchored" data-anchor-id="the-variable-sheet"><span class="header-section-number">14.4.1</span> The variable sheet</h3>
+<p>This is where almost all the content lives:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> <span class="fu">read.xlsx</span>(spec, <span class="at">sheet =</span> <span class="st">"VARIABLE_METADATA"</span>) <span class="sc">|&gt;</span> <span class="fu">as_tibble</span>()</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>vars <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(DOMAIN <span class="sc">==</span> <span class="st">"LB"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(VARNUM, VARIABLE, TYPE, LENGTH, LABEL, ORIGIN, CODELISTNAME) <span class="sc">|&gt;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 10 × 7
+   VARNUM VARIABLE TYPE    LENGTH LABEL                      ORIGIN CODELISTNAME
+    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;       
+ 1      1 STUDYID  text         7 Study Identifier           Assig… &lt;NA&gt;        
+ 2      2 DOMAIN   text         2 Domain Abbreviation        Assig… &lt;NA&gt;        
+ 3      3 USUBJID  text        15 Unique Subject Identifier  Deriv… &lt;NA&gt;        
+ 4      4 LBSEQ    integer      2 Sequence Number            Deriv… &lt;NA&gt;        
+ 5      5 LBTESTCD text         5 Lab Test or Examination S… Assig… LBTESTCD    
+ 6      6 LBTEST   text        24 Lab Test or Examination N… Assig… LBTEST      
+ 7      7 LBORRES  text         4 Result or Finding in Orig… eDT    &lt;NA&gt;        
+ 8      8 LBORRESU text         6 Original Units             eDT    &lt;NA&gt;        
+ 9      9 LBSTRESC text         4 Character Result/Finding … Deriv… &lt;NA&gt;        
+10     10 LBSTRESN float        4 Numeric Result/Finding in… Deriv… &lt;NA&gt;        </code></pre>
+</div>
+</div>
 </section>
-<section id="reading-the-output-line-by-line" class="level3" data-number="14.4.2">
-<h3 data-number="14.4.2" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">14.4.2</span> Reading the Output Line by Line</h3>
-<p>TODO: map each line of output to its plain-English meaning.</p>
+<section id="run-it-yourself" class="level3" data-number="14.4.2">
+<h3 data-number="14.4.2" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">14.4.2</span> Run It Yourself</h3>
+<p>Count what the specification actually commits to:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>vars <span class="sc">|&gt;</span> <span class="fu">count</span>(DOMAIN, <span class="at">name =</span> <span class="st">"variables"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 2
+  DOMAIN variables
+  &lt;chr&gt;      &lt;int&gt;
+1 DM            26
+2 LB            22</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>vars <span class="sc">|&gt;</span> <span class="fu">count</span>(ORIGIN, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 4 × 2
+  ORIGIN       n
+  &lt;chr&gt;    &lt;int&gt;
+1 Derived     19
+2 Assigned    17
+3 CRF          7
+4 eDT          5</code></pre>
+</div>
+</div>
+</section>
+<section id="reading-the-output-line-by-line" class="level3" data-number="14.4.3">
+<h3 data-number="14.4.3" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">14.4.3</span> Reading the Output Line by Line</h3>
+<p>48 variables across two domains, and every one of them carries an origin. Look at the origin counts closely, because Example 3 comes back to them: <code>Derived</code>, <code>Assigned</code>, <code>CRF</code>, <code>eDT</code>.</p>
+<p>Two of those four are about to become a problem.</p>
+</section>
+<section id="where-the-labels-came-from" class="level3" data-number="14.4.4">
+<h3 data-number="14.4.4" class="anchored" data-anchor-id="where-the-labels-came-from"><span class="header-section-number">14.4.4</span> Where the labels came from</h3>
+<p>One detail matters more than it looks. The labels in that sheet were not typed from memory. <code>R/author_spec_workbook.R</code> takes 36 of them from the CDISC-published example define.xml shipped in the Define-XML v2.1 package, and the remaining 12 from the SDTMIG v3.4 specification tables (§5.2 for DM, §6.3.5.6 for LB). The script <strong>stops with an error</strong> if any variable is left unlabelled rather than proceeding with a blank.</p>
+<p>That is not fussiness. A wrong variable label is one of the easiest things in a submission to get wrong and one of the hardest for anyone downstream to notice, because it looks like content rather than metadata. It is worth a guard.</p>
 </section>
 </section>
-<section id="example-2-todo" class="level2" data-number="14.5">
-<h2 data-number="14.5" class="anchored" data-anchor-id="example-2-todo"><span class="header-section-number">14.5</span> Example 2: TODO</h2>
-<p>TODO: a second worked example.</p>
+<section id="example-2-generating-define.xml-from-it" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="example-2-generating-define.xml-from-it"><span class="header-section-number">14.5</span> Example 2: Generating define.xml From It</h2>
+<p><em>Estimated time: ~15 minutes (worked example)</em></p>
+<p><code>defineR::write_define()</code> reads the workbook and writes the document. That is the whole production step:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_define</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">path  =</span> <span class="st">"data/define/SDTM_METADATA.xlsx"</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">dir   =</span> <span class="st">"data/define"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">type  =</span> <span class="st">"sdtm"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">check =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">html  =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">view  =</span> <span class="cn">FALSE</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><code>R/build_define.R</code> runs exactly that, and the outputs are committed, so you can inspect them without rebuilding:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/define"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "check.sdtm.pdf"   "define.sdtm.html" "define.sdtm.xml" </code></pre>
+</div>
+</div>
+<p>Three files from one workbook:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>File</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>define.sdtm.xml</code></td>
+<td>The submission deliverable</td>
+</tr>
+<tr class="even">
+<td><code>define.sdtm.html</code></td>
+<td>The browsable rendering a reviewer opens</td>
+</tr>
+<tr class="odd">
+<td><code>check.sdtm.pdf</code></td>
+<td><code>defineR</code>’s own check report</td>
+</tr>
+</tbody>
+</table>
+<p>The HTML is worth dwelling on. A reviewer does not read raw XML — they open define.xml in a browser, where a stylesheet turns it into a navigable document. That rendering is not a courtesy the tool added; it is produced by an XSL stylesheet CDISC publishes, and the reference to it is a line inside the XML itself.</p>
 <section id="run-it-yourself-1" class="level3" data-number="14.5.1">
 <h3 data-number="14.5.1" class="anchored" data-anchor-id="run-it-yourself-1"><span class="header-section-number">14.5.1</span> Run It Yourself</h3>
-<p>TODO.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>doc <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="st">"data/define/define.sdtm.xml"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">datasets  =</span> <span class="fu">length</span>(<span class="fu">xml_find_all</span>(doc, <span class="st">"//d1:ItemGroupDef"</span>)),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables =</span> <span class="fu">length</span>(<span class="fu">xml_find_all</span>(doc, <span class="st">"//d1:ItemDef"</span>)),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">codelists =</span> <span class="fu">length</span>(<span class="fu">xml_find_all</span>(doc, <span class="st">"//d1:CodeList"</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> datasets variables codelists 
+        2        52         6 </code></pre>
+</div>
+</div>
+</section>
+<section id="reading-the-output-line-by-line-1" class="level3" data-number="14.5.2">
+<h3 data-number="14.5.2" class="anchored" data-anchor-id="reading-the-output-line-by-line-1"><span class="header-section-number">14.5.2</span> Reading the Output Line by Line</h3>
+<p>Two datasets and six codelists match the workbook exactly. <strong>52 <code>ItemDef</code>s from 48 variables</strong> does not — and the extra four are not a bug.</p>
+<p>They are the value-level metadata. <code>VALUELEVEL_METADATA</code> has four rows, one per lab analyte, because <code>LBSTRESN</code> means something different depending on <code>LBTESTCD</code>: a percentage for HbA1c, mmol/L for glucose, U/L for ALT, µmol/L for creatinine. One variable, four meanings, and Define-XML expresses that by defining four additional items and attaching a where-clause to each.</p>
+<p>Four rows in a spreadsheet became four <code>ItemDef</code>s, four <code>ItemRef</code>s and four <code>def:WhereClauseDef</code>s. That is the leverage the workbook route buys you.</p>
 </section>
 </section>
-<section id="what-can-go-wrong" class="level2" data-number="14.6">
-<h2 data-number="14.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">14.6</span> What Can Go Wrong</h2>
-<p>TODO: failure modes and misuse patterns.</p>
-<section id="common-misinterpretations" class="level3" data-number="14.6.1">
-<h3 data-number="14.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">14.6.1</span> Common misinterpretations</h3>
-<p>TODO.</p>
+<section id="example-3-what-the-tool-could-not-say" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="example-3-what-the-tool-could-not-say"><span class="header-section-number">14.6</span> Example 3: What the Tool Could Not Say</h2>
+<p><em>Estimated time: ~15 minutes (worked example)</em></p>
+<p>Now the part that matters.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>schema_20 <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="fu">system.file</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"extdata/2.0.0/cdisc-define-2.0/define2-0-0.xsd"</span>, <span class="at">package =</span> <span class="st">"defineR"</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(<span class="fu">xml_validate</span>(doc, schema_20))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Valid. And against the current standard:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>schema_21 <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="fu">file.path</span>(dx, <span class="st">"schema/cdisc-define-2.1/define2-1-0.xsd"</span>))</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">as.logical</span>(<span class="fu">xml_validate</span>(doc, schema_21))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE</code></pre>
+</div>
+</div>
+<p><code>defineR</code> emits <strong>Define-XML 2.0</strong>, published April 2014. The current standard is 2.1. It is tempting to file that as a version lag — an old tool that will catch up. Look at what actually differs before accepting that reading.</p>
+<section id="origin" class="level3" data-number="14.6.1">
+<h3 data-number="14.6.1" class="anchored" data-anchor-id="origin"><span class="header-section-number">14.6.1</span> Origin</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_find_all</span>(doc, <span class="st">"//def:Origin"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xml_attr</span>(<span class="st">"Type"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Assigned      CRF  Derived      eDT 
+      17        7       23        5 </code></pre>
+</div>
+</div>
+<p>Note first that <code>Derived</code> is 23 here against 19 in the workbook: the four value-level items carry origins of their own. The two tables reconcile.</p>
+<p>Two things are wrong here by 2.1’s account, and only one of them is the obvious one.</p>
+<p>The obvious one: <strong>there is no <code>Source</code> attribute.</strong> <a href="../sessions/define-xml.html">Define-XML</a> established that SDTM requires both <code>Type</code> and <code>Source</code>, and that a central lab result is <code>Collected</code> + <code>Vendor</code>. The workbook has a single <code>ORIGIN</code> column. There is nowhere to put “Vendor”.</p>
+<p>The less obvious one is worse. Compare those emitted types against what 2.1 actually permits:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>enum <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="fu">file.path</span>(dx, <span class="st">"schema/cdisc-define-2.1/define-enumerations.xsd"</span>))</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ns   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">xs =</span> <span class="st">"http://www.w3.org/2001/XMLSchema"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>permitted <span class="ot">&lt;-</span> <span class="fu">xml_attr</span>(<span class="fu">xml_find_all</span>(</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  enum, <span class="st">"//xs:simpleType[@name='OriginType']//xs:enumeration"</span>, ns), <span class="st">"value"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>emitted <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">xml_attr</span>(<span class="fu">xml_find_all</span>(doc, <span class="st">"//def:Origin"</span>), <span class="st">"Type"</span>))</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">setdiff</span>(emitted, permitted)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "CRF" "eDT"</code></pre>
+</div>
+</div>
+<p><strong><code>CRF</code> and <code>eDT</code> are not values that 2.1 permits.</strong> They are not missing a <code>Source</code> — they do not exist. 2.1 did not extend origin; it reorganised it. The old types were re-expressed as pairs:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Define-XML 2.0</th>
+<th>Define-XML 2.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>CRF</code></td>
+<td><code>Collected</code> + <code>Investigator</code></td>
+</tr>
+<tr class="even">
+<td><code>eDT</code></td>
+<td><code>Collected</code> + <code>Vendor</code></td>
+</tr>
+</tbody>
+</table>
+<p>That second row is exactly the pairing the previous session derived for GLPX-001’s central lab results from §4.3.2.1. The two sessions meet here.</p>
+<p>So the central intuition of this session is not about version numbers:</p>
+<blockquote class="blockquote">
+<p><strong>The tool is not describing the same thing the standard now asks for.</strong> A 2.0 document is not a 2.1 document missing an attribute. It is a document whose vocabulary was retired.</p>
+</blockquote>
+</section>
+<section id="class" class="level3" data-number="14.6.2">
+<h3 data-number="14.6.2" class="anchored" data-anchor-id="class"><span class="header-section-number">14.6.2</span> Class</h3>
+<p>The same pattern, in a second place, and the difference here is structural rather than a matter of spelling. Look for <code>def:Class</code> as an element, the way <a href="../sessions/define-xml.html">Define-XML</a> built it:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">xml_find_all</span>(doc, <span class="st">"//def:Class"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>None. It is not missing — in 2.0 the dataset class is an <strong>attribute</strong> on <code>ItemGroupDef</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_attr</span>(<span class="fu">xml_find_all</span>(doc, <span class="st">"//d1:ItemGroupDef"</span>), <span class="st">"Class"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Special Purpose" "Findings"       </code></pre>
+</div>
+</div>
+<p>Whereas in the CDISC-published 2.1 example, the same information is a <strong>child element</strong> on all eleven of its datasets:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>ex21 <span class="ot">&lt;-</span> <span class="fu">read_xml</span>(<span class="fu">file.path</span>(dx, <span class="st">"examples/DefineXML-2-1-SDTM/defineV21-SDTM.xml"</span>))</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">as_element   =</span> <span class="fu">length</span>(<span class="fu">xml_find_all</span>(ex21, <span class="st">"//def:Class"</span>)),</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">as_attribute =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(<span class="fu">xml_attr</span>(<span class="fu">xml_find_all</span>(ex21, <span class="st">"//d1:ItemGroupDef"</span>),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="st">"Class"</span>))))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  as_element as_attribute 
+          11            0 </code></pre>
+</div>
+</div>
+<p>So the class moved from an attribute to an element between versions — and the values changed casing too, from <code>Findings</code> to the <code>FINDINGS</code> that 2.1’s <code>ItemGroupClass</code> enumeration requires. The previous session demonstrated deliberately that a lowercased class name fails schema validation with a <code>[facet 'enumeration']</code> error. Here the same failure arrives from a tool rather than a typo, and nothing in the workbook would have warned you.</p>
+</section>
+<section id="namespace" class="level3" data-number="14.6.3">
+<h3 data-number="14.6.3" class="anchored" data-anchor-id="namespace"><span class="header-section-number">14.6.3</span> Namespace</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_ns</span>(doc)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>d1    &lt;-&gt; http://www.cdisc.org/ns/odm/v1.3
+def   &lt;-&gt; http://www.cdisc.org/ns/def/v2.0
+xlink &lt;-&gt; http://www.w3.org/1999/xlink</code></pre>
+</div>
+</div>
+<p>The declared extension namespace ends <code>v2.0</code>. This is why the 2.1 validation returned <code>FALSE</code> immediately: the document is not claiming to be a 2.1 document at all. Everything above — the retired origin types, the relocated class — follows from that one declaration.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="14.7">
-<h2 data-number="14.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.7</span> Exercises</h2>
-<p>TODO: link the exercise file(s) for this session, or state that this session has no exercise.</p>
+<section id="example-4-reading-the-metadata-back" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="example-4-reading-the-metadata-back"><span class="header-section-number">14.7</span> Example 4: Reading the Metadata Back</h2>
+<p><em>Estimated time: ~10 minutes (worked example)</em></p>
+<p>A define.xml is machine-readable, which means the trip runs both ways. <code>metacore</code> parses a published define.xml into an R object:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mc <span class="ot">&lt;-</span> <span class="fu">define_to_metacore</span>(<span class="st">"data/define/define.sdtm.xml"</span>, <span class="at">verbose =</span> <span class="st">"silent"</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">datasets    =</span> <span class="fu">nrow</span>(mc<span class="sc">$</span>ds_spec),</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">variables   =</span> <span class="fu">nrow</span>(mc<span class="sc">$</span>ds_vars),</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">codelists   =</span> <span class="fu">nrow</span>(mc<span class="sc">$</span>codelist),</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">derivations =</span> <span class="fu">nrow</span>(mc<span class="sc">$</span>derivations))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   datasets   variables   codelists derivations 
+          2          48           6           7 </code></pre>
+</div>
+</div>
+<p>Everything the workbook committed comes back out:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>mc<span class="sc">$</span>ds_spec</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 2 × 3
+  dataset structure                                                     label   
+  &lt;chr&gt;   &lt;chr&gt;                                                         &lt;chr&gt;   
+1 DM      Special Purpose - One record per subject                      Demogra…
+2 LB      Findings - One record per lab test per time point per subject Laborat…</code></pre>
+</div>
+</div>
+<p>And a codelist can be recovered by name, from the XML, without the workbook present at all:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">get_control_term</span>(mc, LBNRIND)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  code   decode
+  &lt;chr&gt;  &lt;chr&gt; 
+1 HIGH   HIGH  
+2 LOW    LOW   
+3 NORMAL NORMAL</code></pre>
+</div>
+</div>
+<section id="why-this-matters" class="level3" data-number="14.7.1">
+<h3 data-number="14.7.1" class="anchored" data-anchor-id="why-this-matters"><span class="header-section-number">14.7.1</span> Why this matters</h3>
+<p>Consider who can run that code. Not just the sponsor — <strong>anyone holding the submission</strong>. A reviewer receiving define.xml can reconstruct the sponsor’s entire declared metadata programmatically and check the datasets against it.</p>
+<p>That is what “machine-readable” bought, and it cuts both ways. The metadata is not documentation attached to the submission; it is a set of claims the submission can be tested against, by someone who does not trust you and does not have to ask.</p>
 </section>
-<section id="comprehension-check" class="level2" data-number="14.8">
-<h2 data-number="14.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">14.8</span> Comprehension Check</h2>
-<p>TODO: three to five short self-test questions.</p>
+</section>
+<section id="what-can-go-wrong" class="level2" data-number="14.8">
+<h2 data-number="14.8" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">14.8</span> What Can Go Wrong</h2>
+<p><em>Estimated time: ~10 minutes (reading)</em></p>
+<p><strong>The tool validates against the wrong schema.</strong> <code>defineR</code>’s own <code>check = TRUE</code> produces <code>check.sdtm.pdf</code>, and the document validates cleanly — against 2.0. A green check from a tool tells you the tool is satisfied. <code>R/build_define.R</code> therefore asserts <em>both</em> schemas explicitly, and is written to complain if the 2.1 result ever changes, so that a future <code>defineR</code> gaining 2.1 support is noticed rather than silently assumed.</p>
+<p><strong>The workbook has no place for what you know.</strong> This is the failure mode with no error message. You know GLPX-001’s lab results come from a central laboratory. The 2.0 <code>ORIGIN</code> column cannot record it. Nothing warns you, nothing fails, and the information is simply absent from the deliverable. <strong>A metadata format’s limits become your metadata’s limits, silently.</strong></p>
+<p><strong>Fixing the XML instead of the workbook.</strong> Hand-editing generated define.xml to correct something is the single most tempting mistake here, and it does not survive the next regeneration. It also makes the workbook and the deliverable disagree, which is worse than either being wrong on its own.</p>
+<p><strong>Links to documents that do not exist.</strong> <code>EXTERNAL_LINKS</code> in this workbook names <code>blankcrf.pdf</code> and <code>sdrg.pdf</code>. <strong>Neither file is part of this course</strong>, and the generated define.xml links to both. A real submission ships them alongside; here they are named and absent, which is exactly the kind of dangling reference a conformance check is supposed to catch and a schema will not.</p>
+<section id="common-misinterpretations" class="level3" data-number="14.8.1">
+<h3 data-number="14.8.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">14.8.1</span> Common misinterpretations</h3>
+<ul>
+<li><strong>“The define.xml is the source of truth.”</strong> The workbook is. The XML is generated output, and treating it as the master is how a study ends up with two disagreeing versions of its own metadata.</li>
+<li><strong>“It validated, so the version is fine.”</strong> It validated against the version it was written for. That is close to a tautology.</li>
+<li><strong>“2.0 is 2.1 minus some attributes.”</strong> <code>CRF</code> and <code>eDT</code> say otherwise. The vocabulary changed, not just the field count.</li>
+<li><strong>“Value-level metadata is an advanced feature.”</strong> Four rows in a spreadsheet. It is ordinary, and any Findings domain with mixed units needs it.</li>
+</ul>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="14.9">
+<h2 data-number="14.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.9</span> Exercises</h2>
+<p><a href="../exercises/define-from-specs.html">Exercise 9 — Define-XML from a Specification Workbook</a> adds a domain to the workbook, regenerates, and asks what it would take to close the gap to 2.1.</p>
+</section>
+<section id="comprehension-check" class="level2" data-number="14.10">
+<h2 data-number="14.10" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">14.10</span> Comprehension Check</h2>
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>A reviewer finds <code>LBSTRESN</code>’s label is wrong in your submitted define.xml. Where do you fix it, and why not in the XML?</li>
+<li>The workbook has 48 variables but the generated define.xml has 52 <code>ItemDef</code>s. Account for the difference.</li>
+<li>Why is <code>Type="eDT"</code> a more serious problem than <code>def:Origin</code> simply lacking a <code>Source</code> attribute?</li>
+<li>Your <code>defineR</code> output validates and your check report is clean. What have you demonstrated, and what have you not?</li>
+<li>What can a regulatory reviewer do with your define.xml that they could not do with a PDF describing the same datasets?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -549,9 +936,15 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO: answers, collapsed.</p>
+<ol type="1">
+<li><p><strong>In <code>data/spec/SDTM_METADATA.xlsx</code>, then regenerate.</strong> Editing the XML fixes one file and leaves the workbook — the source of truth, and the thing the next regeneration reads — still wrong. It also makes the two disagree, so the next person cannot tell which is intended.</p></li>
+<li><p><strong>Value-level metadata: four extra <code>ItemDef</code>s, one per lab analyte.</strong> <code>LBSTRESN</code> has a different meaning and unit depending on <code>LBTESTCD</code> (% for HbA1c, mmol/L for glucose, U/L for ALT, µmol/L for creatinine), so Define-XML defines an item per value and attaches a where-clause to each.</p></li>
+<li><p><strong>Because a missing <code>Source</code> is an omission, and <code>eDT</code> is a retirement.</strong> Adding <code>Source</code> to a 2.0 document would leave <code>eDT</code> still invalid — it is not in 2.1’s <code>OriginType</code> enumeration at all. The conversion is <code>eDT</code> → <code>Collected</code> + <code>Vendor</code>: one value becomes a pair, and you cannot get there by adding an attribute.</p></li>
+<li><p><strong>You have demonstrated that the document conforms to Define-XML 2.0.</strong> You have not demonstrated conformance to the current standard, nor to the 90 Specification-sourced conformance rules that no schema check touches (see <a href="../sessions/define-xml.html">Define-XML</a>), nor that the metadata is <em>correct</em> — a confidently wrong label validates perfectly.</p></li>
+<li><p><strong>Check it programmatically.</strong> <code>define_to_metacore()</code> turns the submission’s declared metadata back into data, so a reviewer can test the datasets against the sponsor’s own claims — codelists, types, lengths, derivations — without asking the sponsor anything. A PDF is readable; only this is checkable.</p></li>
+</ol>
 </div>
 </div>
 </div>
