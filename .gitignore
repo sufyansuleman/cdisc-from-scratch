@@ -36,15 +36,16 @@ renv/sandbox/
 .DS_Store
 Thumbs.db
 
-# Local reference material (not distributed). CT is checked
-# programmatically via the sdtm.terminology package instead.
-SDTM Terminology.pdf
-Providing-Regulatory-Submissions-In-Electronic-Format.pdf
-Study-Data-Technical-Conformance.pdf
-TRC-Worksheet Instructions_v4.0.pdf
-fda-dscv11.0.xlsx
+# Local reference material — Implementation Guides, FDA guidance, CDISC
+# specification packages. NEVER committed: SDTMIG/ADaMIG/OCCDS and the
+# Define-XML package are copyright CDISC and licensed to the reader, not
+# redistributable. Cited by section in the sessions, never quoted at length.
+# Controlled Terminology is checked programmatically via sdtm.terminology
+# instead of from the PDF.
+/refs/
 
-# CDISC SDTMIG — members-only material, copyright CDISC. NEVER commit or
-# push to a public repo. Local reference only; cited by section, never quoted.
-SDTMIG v3.4-FINAL_2022-07-21.pdf
+# Belt and braces: no PDF or spreadsheet anywhere in the tree, wherever a
+# reference document lands by accident.
 *.pdf
+*.xlsx
+*.xls

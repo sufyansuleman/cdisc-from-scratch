@@ -138,7 +138,7 @@ macOS and Windows get binaries from the standard repositories, with no
 action needed.
 
 The site is rendered locally into `docs/` and committed; GitHub Pages
-serves `docs/`. There is no CI (see [CI-NOTES.md](CI-NOTES.md)).
+serves `docs/`. There is no CI (see [notes/CI-NOTES.md](notes/CI-NOTES.md)).
 
 ## Exercises and solutions
 
