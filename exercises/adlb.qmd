@@ -1,5 +1,5 @@
 ---
-title: "Exercise 6 — ADLB"
+title: "Exercise 6: ADLB"
 ---
 
 ## Goal

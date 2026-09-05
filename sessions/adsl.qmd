@@ -18,13 +18,12 @@ library(sdtm.terminology)
 |---|---|---|
 | When Do You Use This? + Learning Objectives | 5 min | Reading |
 | Background: the roster every analysis starts from | 20 min | Reading |
-| Example 1: The ADSL spine — subjects, treatment, dates | 25 min | Worked example |
+| Example 1: The ADSL spine, subjects, treatment, dates | 25 min | Worked example |
 | Example 2: Population flags and disposition | 20 min | Worked example |
 | What Can Go Wrong | 10 min | Reading |
 | Exercises + Comprehension Check | 10 min | Practice / Self-test |
 
-Builds the course's first real ADaM dataset — one row per subject —
-from the persisted SDTM. For self-paced study, split after Example 1.
+Builds the course's first real ADaM dataset (one row per subject) from the persisted SDTM. For self-paced study, split after Example 1.
 :::
 
 ::: {.callout-tip}
@@ -34,8 +33,8 @@ Every code chunk below is written so you can copy it into your R
 console (or an R script) and run it yourself, in the order shown. Run R
 from the project root, as in earlier sessions.
 
-This session reads `data/sdtm/dm.csv` and `data/sdtm/vs.csv` — the
-finished SDTM from Part 2 — and writes the first dataset in
+This session reads `data/sdtm/dm.csv` and `data/sdtm/vs.csv`: the
+finished SDTM from Part 2, and writes the first dataset in
 `data/adam/`. The whole chain is now visible: raw → SDTM → ADaM.
 :::
 
@@ -79,8 +78,8 @@ After completing this session you will be able to:
 ### The one thing to remember
 
 **ADSL is the trial's roster: exactly one row per subject that every
-analysis starts from — which population, which treatment, from when to
-when — each value carried or derived from SDTM and traceable to it.**
+analysis starts from (which population, which treatment, from when to
+when) each value carried or derived from SDTM and traceable to it.**
 :::
 
 An ADaM-compliant ADSL is **required in a CDISC-based submission even if
@@ -89,7 +88,7 @@ per subject regardless of trial design (ADaMIG v1.3, §3.2). That is a
 strong claim, and it follows from what ADSL is for. `USUBJID` is the key
 variable that links ADSL to every other dataset, SDTM and ADaM alike
 (ADaMIG v1.3, §3.2). Filter a BDS dataset to a population, split a table
-by treatment, count a denominator — all of it comes back to ADSL.
+by treatment, count a denominator: all of it comes back to ADSL.
 
 The corollary matters as much: ADSL holds subject-level facts only.
 Anything that varies over time belongs in a BDS dataset (ADaMIG v1.3,
@@ -125,15 +124,15 @@ different name; changing the value under an SDTM name is prohibited
 This rule also explains something the ADSL variable tables do not: our
 ADSL carries `ETHNIC` and `COUNTRY`, but **neither appears anywhere in
 the ADaMIG's ADSL variable tables**. They are not ADaM standard
-variables. They are legitimate all the same — as SDTM variables copied
+variables. They are legitimate all the same, as SDTM variables copied
 in under the same-name rule, which is exactly what §2.2 asks for when it
 says all SDTM variables used in ADaM derivations should be included when
 practical, for traceability. The lesson generalises: *not everything in
 a conformant ADSL is an ADaM standard variable*, and the standard tells
 you how to include the rest rather than forbidding it.
 
-Other variables are **derived for the analysis**. `AGEGR1` — an age
-grouping such as `<65` / `>=65` — is the clearest case. The ADaMIG
+Other variables are **derived for the analysis**. `AGEGR1`: an age
+grouping such as `<65` / `>=65`, is the clearest case. The ADaMIG
 defines `AGEGRy` as "a character description of a grouping or pooling of
 the subject's age for analysis purposes" and offers `"<18"`, `"18-65"`,
 `">65"` only as *examples* (ADaMIG v1.3, §3.2). The cut point is a
@@ -153,17 +152,17 @@ v1.3, §3.2).
 Permissible, from `DM.ACTARM` (ADaMIG v1.3, §3.2). Alongside them sit
 the ADaM treatment variables, which are period-aware:
 
-- **`TRTxxP`** — planned treatment for period `xx`. In a one-period
+- **`TRTxxP`**, planned treatment for period `xx`. In a one-period
   randomized trial `TRT01P` is the treatment the subject was randomized
   to, and it may be derived from `DM.ARM`. **At least `TRT01P` is
   required** (ADaMIG v1.3, §3.2).
-- **`TRTxxA`** — actual treatment for period `xx`. This one is
+- **`TRTxxA`**, actual treatment for period `xx`. This one is
   *conditionally* required: required when actual treatment does not
   match planned **and** there is an analysis of the data as treated
   (ADaMIG v1.3, §3.2).
 
 GLPX-001 is single-period, and no subject received the wrong treatment,
-so `TRT01A` is not strictly required here. We include it anyway — a
+so `TRT01A` is not strictly required here. We include it anyway: a
 safety analysis is conventionally "as treated", and carrying the
 variable makes that explicit rather than implied. Knowing it is
 *conditional*, and why, is the point.
@@ -171,13 +170,13 @@ variable makes that explicit rather than implied. Knowing it is
 ### Dates and duration
 
 `TRTSDT` (date of first exposure) and `TRTEDT` (date of last exposure)
-are each conditionally required — required if there is an
+are each conditionally required, required if there is an
 investigational product (ADaMIG v1.3, §3.2). They come from SDTM DM's
 `RFXSTDTC` and `RFXENDTC`, which SDTMIG v3.4 §5.2 defines as the
 earliest and latest exposure datetimes. That is a clean, documented
 SDTM→ADaM derivation.
 
-`TRTDURD` — total treatment duration in days — is Permissible (ADaMIG
+`TRTDURD`, total treatment duration in days, is Permissible (ADaMIG
 v1.3, §3.2). Note what the guide does *not* do: it defines the variable
 as "total treatment duration, as measured in days" but does not fix the
 formula. Whether you count `TRTEDT − TRTSDT` or `TRTEDT − TRTSDT + 1` is
@@ -193,7 +192,7 @@ subject-level population flag variable is required in ADSL (ADaMIG v1.3,
 named to a convention: character subject-level flags end in `FL`, their
 numeric counterparts in `FN` (ADaMIG v1.3, §3.1.4, item 3). The standard
 list includes `SAFFL`, `ITTFL`, `FASFL`, `PPROTFL`, `COMPLFL`, `RANDFL`
-and `ENRLFL` — and is explicitly *not* meant to be all-inclusive (ADaMIG
+and `ENRLFL`, and is explicitly *not* meant to be all-inclusive (ADaMIG
 v1.3, §3.2, Table 3.2.3).
 
 Which of them you include is not a matter of taste. A character
@@ -206,7 +205,7 @@ Two precise rules make these flags unlike almost everything else in
 ADaM. First, on Core attributes generally: "unless otherwise specified,
 all ADaM variables are populated as appropriate, meaning **nulls are
 allowed**" (ADaMIG v1.3, §3). Population flags are the "otherwise
-specified" — for subject-level character population flags, `N` = not in
+specified", for subject-level character population flags, `N` = not in
 the population, `Y` = in it, and **null values are not allowed** (ADaMIG
 v1.3, §3.1.4, item 4). A subject-level population flag must commit,
 every time.
@@ -215,8 +214,8 @@ Second, and closing the thread opened in [Findings](sdtm-findings.qmd)
 and [ADaM Concepts](adam-concepts.qmd): whenever population or baseline
 flags are needed for analyses, **the ADaM variables must be used**
 (ADaMIG v1.3, §3.5). SDTM carries some conceptually-parallel flags as
-Supplemental Qualifiers — `SAFETY` maps to `SAFFL`, `ITT` to `ITTFL`,
-`FULLSET` to `FASFL`, `PPROT` to `PPROTFL`, `COMPLT` to `COMPLFL` — but
+Supplemental Qualifiers - `SAFETY` maps to `SAFFL`, `ITT` to `ITTFL`,
+`FULLSET` to `FASFL`, `PPROT` to `PPROTFL`, `COMPLT` to `COMPLFL`, but
 the guide is blunt that they might not match:
 
 > It is possible that ADaM subject-level population flags might not
@@ -231,7 +230,7 @@ never copied across, even when they would come out identical.
 
 Two ADSL variables in this course have **no SDTM source**, because
 GLPX-001's SDTM stops at DM, AE, LB and VS and never builds **DS
-(Disposition)** — the domain where a real trial records randomization
+(Disposition)**: the domain where a real trial records randomization
 and end-of-study.
 
 - **`RANDDT`** (date of randomization) is conditionally required:
@@ -253,7 +252,7 @@ with DS.
 
 *Estimated time: ~25 minutes (worked example)*
 
-Start from the persisted SDTM DM — one row per subject already, because
+Start from the persisted SDTM DM: one row per subject already, because
 that is what DM is:
 
 ```{r read-dm}
@@ -267,7 +266,7 @@ c(rows = nrow(dm), subjects = n_distinct(dm$USUBJID))
 
 Before deriving `RANDDT` from `TRTSDT`, check whether the two actually
 coincide in this trial. The raw EDC file recorded a randomization date;
-it never reached SDTM, because DM has no randomization-date variable —
+it never reached SDTM, because DM has no randomization-date variable,
 but it is still there to test against:
 
 ```{r randdt-check}
@@ -291,7 +290,7 @@ count(randdt_check, diff_days)
 
 Run the chunk. Every one of the 400 subjects has `diff_days = 0`: first
 dose fell on the randomization date, for all of them. That makes
-`RANDDT = TRTSDT` **true in this dataset** — which is exactly why it
+`RANDDT = TRTSDT` **true in this dataset**, which is exactly why it
 needs saying out loud that it is an artefact of how the trial was
 simulated, not a property of randomized trials. A real study would take
 `RANDDT` from DS and would find the two dates differing routinely.
@@ -346,7 +345,7 @@ adsl_spine |> filter(is.na(AGE)) |> select(USUBJID, AGE, AGEU, AGEGR1, AGEGR1N)
 ::: {.callout-tip}
 ### Run It Yourself
 
-Run both chunks. 303 subjects are `<65`, 93 are `>=65` — and **four are
+Run both chunks. 303 subjects are `<65`, 93 are `>=65`, and **four are
 null**. Those are the four subjects from [The DM Domain](sdtm-dm.qmd)
 whose birth dates were incomplete, so `AGE` could not be derived without
 imputing. That null propagates: no age, no age group.
@@ -354,7 +353,7 @@ imputing. That null propagates: no age, no age group.
 This is legal. Nulls are allowed in ADaM variables unless otherwise
 specified (ADaMIG v1.3, §3), and `AGE` being Required means the
 *variable* must be present, not that every value is populated. But legal
-is not the same as decided — see the note below.
+is not the same as decided. See the note below.
 :::
 
 ::: {.callout-note}
@@ -364,23 +363,23 @@ is not the same as decided — see the note below.
 |---|---|
 | 400 rows, 400 subjects | One row per subject, the defining ADSL structure (ADaMIG v1.3, §3.2). DM was already subject-level, so no collapsing was needed. |
 | `SITEID`, `SUBJID` carried | Required *in ADSL*, permissible elsewhere (ADaMIG v1.3, §3.2). Carried unmodified under the same-name rule. |
-| `AGEGR1` / `AGEGR1N` | Sponsor-defined grouping and its numeric counterpart. One-to-one, and null together on the same four rows — the rule from §3.2 holds. |
+| `AGEGR1` / `AGEGR1N` | Sponsor-defined grouping and its numeric counterpart. One-to-one, and null together on the same four rows: the rule from §3.2 holds. |
 | `TRT01P` from `ARM` | Planned treatment for period 1, derived from `DM.ARM` (ADaMIG v1.3, §3.2). `TRT01P` is required; `ARM` is carried alongside it. |
 | `TRTSDT` / `TRTEDT` | First and last exposure, from `DM.RFXSTDTC` / `DM.RFXENDTC` (SDTMIG v3.4, §5.2). Both conditionally required because there is an investigational product. |
-| `TRTDURD = 183` | The planned 26-week treatment period, counted inclusively. Discontinuing subjects have shorter durations — you will see them in Example 2. |
+| `TRTDURD = 183` | The planned 26-week treatment period, counted inclusively. Discontinuing subjects have shorter durations. You will see them in Example 2. |
 | Four null `AGEGR1` | Missing data flowing through a derivation, honestly. |
 
 **The decision the nulls force.** Four subjects have no age group, so
 every age-subgroup table will have a fourth category or a dropped
 denominator. Which of those happens is a decision, and it belongs in the
-statistical analysis plan *before* the analysis runs — an explicit
+statistical analysis plan *before* the analysis runs: an explicit
 "Missing" category, or documented exclusion from age-subgroup summaries.
 Leaving it to whatever `count()` happens to do is how a table quietly
 loses four subjects. ADaM's job here is not to hide the gap but to carry
 it forward visibly.
 :::
 
-The carried columns are still governed by SDTM controlled terminology —
+The carried columns are still governed by SDTM controlled terminology:
 the same-name rule means they must be the SDTM values, so they must
 still be valid ones. Check rather than assume:
 
@@ -405,7 +404,7 @@ ct_check |> select(variable, codelist, n_values, all_valid)
 ::: {.callout-tip}
 ### Run It Yourself
 
-All four come back `TRUE`. Nothing new was introduced — that is the
+All four come back `TRUE`. Nothing new was introduced, that is the
 point. Because these values were carried unmodified from SDTM, they
 remain valid CT; had we "tidied" `RACE` into nicer labels under the same
 variable name, we would have broken both the codelist and §3.1.1's
@@ -417,8 +416,8 @@ same-name rule in one move.
 *Estimated time: ~20 minutes (worked example)*
 
 Population flags are derived from *conditions*, never copied and never
-hard-coded. GLPX-001 makes this feel almost too easy — every randomized
-subject was dosed, so every flag comes out `"Y"` — but writing the
+hard-coded. GLPX-001 makes this feel almost too easy (every randomized
+subject was dosed, so every flag comes out `"Y"`) but writing the
 condition is what makes the dataset defensible, and it is what would
 catch the subject who was randomized and never dosed:
 
@@ -440,7 +439,7 @@ adsl_flags |>
 ```
 
 Now disposition. SDTM DM does not record whether a subject finished the
-trial, so derive it from what the trial observed — the last visit each
+trial, so derive it from what the trial observed: the last visit each
 subject actually attended:
 
 ```{r disposition}
@@ -473,7 +472,7 @@ adsl |>
 ### Run It Yourself
 
 Run both chunks. All 400 subjects are `"Y"` on all three flags, with no
-nulls. Then 367 subjects completed and 33 discontinued — and the
+nulls. Then 367 subjects completed and 33 discontinued, and the
 duration summary shows why that distinction matters: completers all sit
 at 183 days, while discontinuing subjects range from 41 to 169. Those 33
 are exactly the dropouts you first counted back in [The GLPX-001
@@ -503,14 +502,14 @@ adsl |>
 | What you see | What it means |
 |---|---|
 | All flags `"Y"`, no nulls | The derivation is conditional, not hard-coded. Null is not an option for subject-level population flags (ADaMIG v1.3, §3.1.4, item 4). |
-| `RANDFL` and `ITTFL` identical | In this trial the ITT population *is* the randomized population. That is a design fact worth stating in the SAP, not a redundancy to delete — the two flags answer different questions and could diverge in another trial. |
+| `RANDFL` and `ITTFL` identical | In this trial the ITT population *is* the randomized population. That is a design fact worth stating in the SAP, not a redundancy to delete: the two flags answer different questions and could diverge in another trial. |
 | 367 / 33 | Completers and discontinuers, reconciling with the trial overview from Part 1. |
 | `EOSDT != TRTEDT` for 30 subjects | End of *study* is not end of *treatment*. These subjects stopped attending visits before their exposure record ended. Two variables, two questions. |
 
 **On the disposition derivation.** `EOSSTT` and `EOSDT` here are derived
 from visit attendance because this course's SDTM has no DS domain. In a
-real trial, disposition is *collected* — the site records why and when a
-subject came off study — and ADSL reads it from DS. Attendance is a
+real trial, disposition is *collected*: the site records why and when a
+subject came off study, and ADSL reads it from DS. Attendance is a
 reasonable proxy and it is right for this dataset, but it is a proxy,
 and it is documented as one. If a subject skipped the final visit yet
 formally completed the study, this derivation would misclassify them; DS
@@ -518,7 +517,7 @@ would not.
 
 Note also that `EOSSTT` is Permissible, with the codelist `SBJTSTAT` and
 the ADaMIG's own examples being `COMPLETED` and `DISCONTINUED` (ADaMIG
-v1.3, §3.2) — which is where our two values come from.
+v1.3, §3.2), which is where our two values come from.
 :::
 
 ::: {.callout-warning}
@@ -532,7 +531,7 @@ taken from the ADaMIG's own stated examples for `EOSSTT`, and verifying
 them against the published `SBJTSTAT` codelist needs the ADaM CT
 package, which is a separate release from NCI EVS.
 
-Worth knowing in its own right — **ADaM has its own controlled
+Worth knowing in its own right - **ADaM has its own controlled
 terminology, distinct from SDTM's**, and a tool that validates one will
 silently tell you nothing about the other. "The codelist wasn't found"
 and "the value is invalid" are different findings, and conflating them
@@ -553,7 +552,7 @@ main()
 #> adsl: 400 rows x 28 cols
 ```
 
-It is deterministic — its inputs are the committed SDTM CSVs, which are
+It is deterministic: its inputs are the committed SDTM CSVs, which are
 themselves fixed-seed output of `simulate_trial.R` and `build_sdtm.R`.
 The whole chain reproduces from three scripts, and `data/adam/adsl.csv`
 is committed so the [TLF](tlf.qmd) session can read a finished ADSL
@@ -567,8 +566,8 @@ committing `data/sdtm/`, one link further along.
 **More than one row per subject**
 
 ADSL is one record per subject, full stop (ADaMIG v1.3, §3.2). The usual
-culprit is a join to a multi-record source — a subject with two enrolment
-records, two exposure periods, two disposition events — that silently
+culprit is a join to a multi-record source (a subject with two enrolment
+records, two exposure periods, two disposition events) that silently
 fans the dataset out. Every downstream denominator inherits the error.
 Check `nrow()` against `n_distinct(USUBJID)` after every join, and
 remember it was a real risk here: subject `101-012` has two raw
@@ -578,7 +577,7 @@ enrolment records, resolved back in [The DM Domain](sdtm-dm.qmd).
 
 The SDTM Supplemental Qualifier flags are not the analysis flags.
 Whenever a flag is needed for analysis, the ADaM variable must be used
-and re-derived (ADaMIG v1.3, §3.5) — and the guide explicitly allows the
+and re-derived (ADaMIG v1.3, §3.5), and the guide explicitly allows the
 two to disagree. Copying `SAFETY` into `SAFFL` skips the derivation ADSL
 exists to record.
 
@@ -598,14 +597,14 @@ is deliberate: a null denominator is not a denominator.
 
 **Modifying a value under an SDTM variable name**
 
-Relabelling `RACE`, recoding `SEX`, tidying `COUNTRY` — all prohibited
+Relabelling `RACE`, recoding `SEX`, tidying `COUNTRY`: all prohibited
 under the same-name rule (ADaMIG v1.3, §3.1.1, item 3). Whenever values
 are modified it is mandatory to do so in an ADaM variable with its own
 name, such as `RACEGR1`.
 
 **Deriving `TRTSDT` from the wrong date**
 
-`TRTSDT` is first *exposure*, from `RFXSTDTC` — not consent, not
+`TRTSDT` is first *exposure*, from `RFXSTDTC`, not consent, not
 randomization, not the first visit. Using the wrong reference date shifts
 every study day and every treatment-emergent classification built on it
 downstream.
@@ -627,11 +626,11 @@ variable's absence from the tables is not a prohibition.
 **"`Required` means the value can never be missing"**
 `Req` means the *variable* must be included in the dataset (ADaMIG v1.3,
 §3). Unless otherwise specified, nulls are allowed. `AGE` is Required and
-is null for four GLPX subjects — legitimately, because their birth dates
+is null for four GLPX subjects, legitimately, because their birth dates
 were incomplete and nothing was imputed.
 
 **"`RANDDT` equals `TRTSDT`"**
-It does in this simulated trial, for all 400 subjects — and that is a
+It does in this simulated trial, for all 400 subjects, and that is a
 property of the simulator, not of randomized trials. Randomization and
 first dose are distinct events, normally days apart, and `RANDDT`'s real
 source is the DS domain.
@@ -643,14 +642,14 @@ as `PARAMCD` in [ADaM Concepts](adam-concepts.qmd): there is no
 `is_term()` check for a design decision.
 
 **"If a value passes no validation check, it must be fine"**
-`EOSSTT` in this session passes no CT check — not because it is valid,
+`EOSSTT` in this session passes no CT check, not because it is valid,
 but because the tool covers SDTM terminology and `SBJTSTAT` is an ADaM
 codelist. An unchecked value is unchecked, not verified.
 :::
 
 ## Exercises
 
-Work through [Exercise 4 — ADSL](../exercises/adsl.qmd), which extends
+Work through [Exercise 4: ADSL](../exercises/adsl.qmd), which extends
 this ADSL with a second age grouping and an analysis-age case, and asks
 you to construct a population-flag scenario where the flags legitimately
 disagree.
@@ -667,7 +666,7 @@ disagree.
 3. Your SDTM has a `SAFETY` Supplemental Qualifier for every subject. Can
    you use it to populate `SAFFL`? Why or why not?
 4. Why does `ETHNIC` appear in this ADSL even though it is not listed in
-   any ADaMIG ADSL variable table — and what rule constrains its values?
+   any ADaMIG ADSL variable table, and what rule constrains its values?
 5. `EOSSTT` was not checked with `is_term()`. Does that mean its values
    are unverified, invalid, or standard-compliant? Explain the
    distinction.
@@ -675,7 +674,7 @@ disagree.
 ::: {.callout-note collapse="true"}
 ### Answers
 
-1. A one-to-many join fanned the dataset out — most likely to a source
+1. A one-to-many join fanned the dataset out: most likely to a source
    with more than one record for some subjects (multiple exposure
    periods, a re-enrolment). ADSL must have exactly one record per
    subject (ADaMIG v1.3, §3.2), so 412 rows for 400 subjects is
@@ -690,7 +689,7 @@ disagree.
    What *is* required is that the SAP says how those subjects are handled
    in age-subgroup analyses.
 
-3. No — not by copying it. Whenever population flags are needed for
+3. No, not by copying it. Whenever population flags are needed for
    analysis, the ADaM variables must be used (ADaMIG v1.3, §3.5), and the
    guide explicitly allows the SDTM Supplemental Qualifier and the ADaM
    flag to disagree, without obliging you to "fix" the SDTM. Derive
@@ -698,7 +697,7 @@ disagree.
    inform the definition, but it is not the source of the value.
 
 4. Because a variable that is not an ADaM standard variable may still be
-   carried from SDTM — §2.2 encourages including the SDTM variables used
+   carried from SDTM - §2.2 encourages including the SDTM variables used
    in ADaM for traceability. Its values are constrained by the same-name
    rule: an ADaM variable whose name matches an SDTM variable must be a
    copy, with label, meaning and values unmodified (ADaMIG v1.3, §3.1.1,
@@ -711,6 +710,6 @@ disagree.
    The values are taken from the ADaMIG's own examples for `EOSSTT`
    (ADaMIG v1.3, §3.2), which is good evidence but not a codelist check.
    "No check was possible" is a different finding from "the check
-   passed" — and reporting it as the latter is how validation becomes
+   passed", and reporting it as the latter is how validation becomes
    theatre.
 :::

@@ -8,11 +8,11 @@ SDTM/ADaM do. Every dataset-level claim in this session cites back to
 ADaMIG v1.3 / OCCDS v1.1 sections already verified in adsl/adae/adlb.
 The one exception is the AE-frequency-display convention, which OCCDS
 v1.1 itself attributes to ICH Guideline E3 Sections 12.2.2 and 14.3.1
-(OCCDS v1.1, §4, opening line of Example 1) — cited as OCCDS reporting
+(OCCDS v1.1, §4, opening line of Example 1), cited as OCCDS reporting
 what E3 says, NOT a direct E3 citation, since ICH E3 has not been read
 directly. If the ICH E3 PDF arrives, upgrade this to a direct citation.
 
-Deliberately no gt/flextable/rtables in renv.lock — tables are tidy
+Deliberately no gt/flextable/rtables in renv.lock, tables are tidy
 tibbles rendered with knitr::kable(); no inferential statistics.
 -->
 
@@ -52,7 +52,7 @@ console (or an R script) and run it yourself, in the order shown. Run R
 from the project root, as in earlier sessions.
 
 This session reads `data/adam/adsl.csv`, `data/adam/adae.csv` and
-`data/adam/adlb.csv` — nothing new is built here. Every number in this
+`data/adam/adlb.csv`: nothing new is built here. Every number in this
 session is arithmetic on datasets you have already built and cited.
 :::
 
@@ -64,7 +64,7 @@ says how many subjects were randomised, how many completed, and how the
 two arms compare. Nobody reads all 12,388 rows of ADLB either; they read
 a figure that shows HbA1c falling faster on drug than on placebo. A
 medical reviewer scanning for a single serious event does not filter a
-dataset — they read a listing built to show exactly that.
+dataset. They read a listing built to show exactly that.
 
 Every one of those documents is built from datasets you have already
 finished and already cited: ADSL in [ADSL](adsl.qmd), ADAE in
@@ -72,7 +72,7 @@ finished and already cited: ADSL in [ADSL](adsl.qmd), ADAE in
 derivation. They need a **question**, asked precisely enough that
 someone else can check the answer against the source. That raises this
 session's question: **once the data is standardised, who decides what
-the report looks like — and how do you prove the numbers in it are
+the report looks like, and how do you prove the numbers in it are
 real?**
 
 Builds on [ADSL](adsl.qmd), [ADAE](adae.qmd) and [ADLB](adlb.qmd),
@@ -101,7 +101,7 @@ After completing this session you will be able to:
 ::: {.callout-important}
 ### The one thing to remember
 
-**A table, listing or figure is not a new dataset — it is a single,
+**A table, listing or figure is not a new dataset. It is a single,
 precise question asked of the ADaM datasets already built, answered in
 a shape a reviewer can check line by line back to source. CDISC
 standardised the data three sessions ago; nobody standardised the shape
@@ -115,8 +115,8 @@ document exists for the shape of a table, a listing or a figure.**
 There is no TLFIG.
 
 That is not a gap in this course. It is a fact about the standards. What
-a demographics table looks like — which rows, in which order, with what
-column headers — comes from the protocol, the statistical analysis
+a demographics table looks like (which rows, in which order, with what
+column headers) comes from the protocol, the statistical analysis
 plan, the sponsor's house style, and the structure a clinical study
 report is expected to follow. CDISC's own OCCDS guide makes the
 boundary explicit when it reaches for a display convention it does not
@@ -127,7 +127,7 @@ own:
 > frequencies in treatment and control groups (OCCDS v1.1, §4).
 
 Read that sentence carefully. OCCDS defines `TRTEMFL`, `AOCCFL` and
-every variable this session uses — and then, for the one place it
+every variable this session uses, and then, for the one place it
 touches *display*, it points outside CDISC entirely, to an ICH
 guideline about clinical study reports. That is the honest answer to
 "where is the standard for what a table looks like": there mostly isn't
@@ -139,7 +139,7 @@ grouping is a sponsor decision. `PARAMCD` had no codelist because an
 analysis parameter is a sponsor decision. Now: **an entire report** has
 no CDISC-mandated layout, because reporting is a sponsor decision too.
 CDISC's job ends at making the data trustworthy and traceable. What you
-build from it is yours to design — and yours to be able to defend.
+build from it is yours to design, and yours to be able to defend.
 
 ### What that means for the tools in this session
 
@@ -150,7 +150,7 @@ a plain tibble and prints it with `knitr::kable()`.
 
 That is not a shortcut around the real thing. It is a decision about
 what this session is teaching. `gt`/`flextable`/`rtables` are a
-**formatting layer over the same derived numbers** — they control
+**formatting layer over the same derived numbers**. They control
 borders, fonts, page breaks and titles, none of which changes what a
 number means or where it came from. The lesson here is what question a
 table answers and how its numbers trace back to source. A prettier table
@@ -242,12 +242,12 @@ kable(disp_tbl, caption = "Disposition, n (%)")
 ### Run It Yourself
 
 Run all four chunks. Every row of every one of these tables is a
-`count()` or a `summarise()` on `ADSL` alone — no new logic, only
+`count()` or a `summarise()` on `ADSL` alone: no new logic, only
 presentation of a value derived in [ADSL](adsl.qmd) and cited there.
 
 Two things worth checking on the numbers themselves. First, `AGE`'s two
 missing subjects per arm are exactly the four subjects from D1, whose
-incomplete birth dates you met in [The DM Domain](sdtm-dm.qmd) — they
+incomplete birth dates you met in [The DM Domain](sdtm-dm.qmd). They
 are still missing here, four sessions later, because nothing between
 then and now had a reason to impute them. Second, `EOSSTT` here reads
 181/19 for GLPX and 186/14 for Placebo, which is the same 367/33 split
@@ -259,8 +259,8 @@ question asked of them.
 ### Traceability, made concrete
 
 A table entry is only as good as your ability to point at the row it
-came from. Pick a cell — GLPX001-101-010, `Placebo`, `WHITE`,
-`COMPLETED` — and check it:
+came from. Pick a cell (GLPX001-101-010, `Placebo`, `WHITE`,
+`COMPLETED`) and check it:
 
 ```{r trace-one}
 #| eval: true
@@ -272,7 +272,7 @@ adsl |>
 
 That one row is why the `WHITE` count under `Placebo` includes this
 subject, and why the `COMPLETED` count does too. A number that cannot be
-walked back to a row like this one is not a result — it is a claim.
+walked back to a row like this one is not a result. It is a claim.
 
 ## Example 2: A Table and a Listing, from the Same Events
 
@@ -323,7 +323,7 @@ four events is counted four times, and the percentages could exceed
 100%.
 
 This is `AOCCFL`'s job by another route. [ADAE](adae.qmd) derived
-`AOCCFL` for exactly this purpose — flagging one row per subject as the
+`AOCCFL` for exactly this purpose, flagging one row per subject as the
 "first occurrence" so a table can filter to it directly instead of
 de-duplicating by hand. Either approach gives the same answer; using
 `AOCCFL` is closer to how a production table would be built, because the
@@ -331,7 +331,7 @@ flag, not an inline `distinct()`, is what a reviewer expects to find
 documented in the analysis metadata.
 :::
 
-Now severity, where `AOCCIFL` — the *worst*-severity occurrence flag —
+Now severity, where `AOCCIFL`: the *worst*-severity occurrence flag,
 does the same job for a different question:
 
 ```{r ae-severity-table}
@@ -353,19 +353,19 @@ kable(sev_tbl, caption = "Subjects by Worst Treatment-Emergent Severity, n (%)")
 ### Run It Yourself
 
 75.5% of GLPX subjects and 55.0% of Placebo subjects had at least one
-TEAE — the same two numbers [ADAE](adae.qmd)'s denominator-lesson chunk
+TEAE: the same two numbers [ADAE](adae.qmd)'s denominator-lesson chunk
 produced, arrived at the same way, now sitting in the shape a CSR table
 would actually publish them in.
 
 Filtering to `AOCCIFL == "Y"` for severity, rather than `TRTEMFL == "Y"`
 alone, is what stops a subject with one Mild and one Severe event from
 appearing in both rows of the severity table. Every subject contributes
-to exactly one severity cell — the same "exactly one flag per subject"
+to exactly one severity cell: the same "exactly one flag per subject"
 discipline `ABLFL` enforced for baseline in [ADLB](adlb.qmd).
 
 Worth pausing on, because it is the wrong instinct made concrete: 151
 GLPX subjects had *any* TEAE, but only 13 + 67 + 71 = 151 appear across
-the three severity rows — the arithmetic checks, because `AOCCIFL` gives
+the three severity rows: the arithmetic checks, because `AOCCIFL` gives
 exactly one severity per subject who had any event. Had the table instead
 filtered only on `TRTEMFL == "Y"` and counted every severity a subject
 ever reached, those three numbers would sum to more than 151, because a
@@ -389,11 +389,11 @@ adae |>
 ```
 
 57.9% and 42.1%. Identical `n` values to the correct table above,
-different percentages, and these two sum to 100% — which is the signal
+different percentages, and these two sum to 100%, which is the signal
 that this column answers "what share of *affected* subjects were on
 each arm," not "what share of *each arm* was affected." Same records,
-same code up to the last `mutate()`, a materially different — and
-wrong — clinical claim.
+same code up to the last `mutate()`, a materially different (and
+wrong) clinical claim.
 :::
 
 ### The listing: every instance, none of them collapsed
@@ -434,12 +434,12 @@ Now count the same event, the way a table would:
 adae |> filter(AESER == "Y") |> count(TRT01A, name = "n_serious_events")
 ```
 
-One row either way, because there is only one event — which makes this
+One row either way, because there is only one event, which makes this
 a poor example of the *volume* difference between a table and a
 listing, and a very good one for the *purpose* difference. The count
 tells a reviewer "there was 1 serious event on GLPX 10 mg." It does not
 say what it was, when it happened, or how severe. The listing exists
-because "1" is not an answerable safety question on its own — a medical
+because "1" is not an answerable safety question on its own: a medical
 reviewer's next question is always "which one, and show me," and a
 table cannot answer that. A listing is built to be read row by row, by
 a person deciding whether to worry; a table is built to be scanned,
@@ -450,10 +450,10 @@ by a person deciding where to look next.
 
 *Estimated time: ~20 minutes (worked example)*
 
-Every argument [ADLB](adlb.qmd) made about `ABLFL` — why "the BASELINE
+Every argument [ADLB](adlb.qmd) made about `ABLFL`, why "the BASELINE
 visit" was the wrong definition, why the SAP's "last value on or before
 first dose" was the right one, why it mattered enough to check against
-the data rather than assume — existed to produce one chart: the mean
+the data rather than assume, existed to produce one chart: the mean
 change from baseline in HbA1c over time, by arm. This is that chart.
 
 ```{r read-adlb}
@@ -475,19 +475,19 @@ plot_data |> arrange(AVISITN, TRTA) |>
 
 `SCREENING` is excluded on purpose: it is a pre-dose visit, and `CHG` is
 only non-null there for the subset of subjects whose own baseline
-happens to fall on the screening record — plotting it would show a
+happens to fall on the screening record, plotting it would show a
 partial, artificially-flat point that means something different from
 every point after it.
 
 ::: {.callout-important}
-### Why `BASELINE` is not exactly 0.000 — and this is the whole course arc closing
+### Why `BASELINE` is not exactly 0.000, and this is the whole course arc closing
 
 Look at the `BASELINE` row above: `-0.051` for GLPX, `-0.003` for
 Placebo. Not zero. If you have been following the baseline thread since
 [The DM Domain](sdtm-dm.qmd), that number should stop you, and it is
 worth stopping on rather than rounding away.
 
-`CHG` is exactly 0 on the row where `ABLFL == "Y"` — that was checked
+`CHG` is exactly 0 on the row where `ABLFL == "Y"`, that was checked
 and confirmed in [ADLB](adlb.qmd). But `ABLFL` does not always land on
 the visit *labelled* `BASELINE`. Split this trial's HbA1c subjects by
 where their own baseline actually fell:
@@ -503,7 +503,7 @@ bl_source <- adlb |>
 count(bl_source, baseline_landed_at)
 ```
 
-244 subjects have their true baseline at `SCREENING` — recall from
+244 subjects have their true baseline at `SCREENING`, recall from
 [ADLB](adlb.qmd) that this happens whenever the scheduled `BASELINE`
 visit fell after first dose. For those 244, the row *labelled*
 `BASELINE` is not their baseline at all. It is an early post-baseline
@@ -513,7 +513,7 @@ together and you get a small non-zero number: the visible fingerprint,
 in this figure, of the exact mechanism [ADLB](adlb.qmd) spent an entire
 session deriving correctly.
 
-**This is not noise to smooth over.** A course — or a study — that
+**This is not noise to smooth over.** A course (or a study) that
 plotted `BASELINE` and saw a clean 0.000 either got lucky with its
 schedule or made the mistake ADLB warned against: using the visit label
 instead of the dosing date. Seeing a small, explainable non-zero number
@@ -546,19 +546,19 @@ ggplot(plot_data, aes(x = AVISITN, y = mean_chg, colour = TRTA, shape = TRTA)) +
 ### Run It Yourself
 
 Run the chunk. GLPX 10 mg separates from placebo almost immediately and
-the gap widens every visit, reaching -1.41 against -0.30 by week 26 —
+the gap widens every visit, reaching -1.41 against -0.30 by week 26:
 the same treatment effect [ADLB](adlb.qmd) reported as a table of
 numbers, now as the chart a clinical study report would actually
 publish.
 
 Colour and shape both carry treatment arm, using `R/palette.R`'s
-`arm_colours` — the same Okabe-Ito palette convention established for
+`arm_colours`: the same Okabe-Ito palette convention established for
 the very first figure in [The GLPX-001 Trial](the-trial-glpx001.qmd),
 carried through every figure in this course without exception. A
 colourblind reader loses nothing; identity never rests on colour alone.
 
 Error bars are standard error at each visit, computed from the same `n`
-and `CHG` values in the table above them — another number you can trace
+and `CHG` values in the table above them, another number you can trace
 back, this time to a formula rather than a single row, but no less
 checkable for it.
 :::
@@ -602,8 +602,7 @@ single most consequential error in this session, exactly as it was in
 else is computed.
 
 **Counting events instead of subjects.** A TEAE table answers "how many
-*subjects*," not "how many *events*." Skip the de-duplication —
-`distinct()` or an occurrence flag — and a subject with several events
+*subjects*," not "how many *events*." Skip the de-duplication (`distinct()` or an occurrence flag) and a subject with several events
 inflates the count and can push a percentage past 100%.
 
 **Filtering severity on the wrong flag.** `TRTEMFL == "Y"` alone lets a
@@ -625,8 +624,8 @@ length: baseline is a dosing-date decision, not a visit-label one.
 
 **Reaching for a CDISC citation that does not exist.** There is no CDISC
 standard for what a table, listing or figure must look like. Citing one
-anyway — inventing a section number because every other session had
-one — is worse than citing nothing.
+anyway (inventing a section number because every other session had
+one) is worse than citing nothing.
 
 ### Common misinterpretations
 
@@ -641,13 +640,13 @@ CDISC to ICH E3 for the one display convention it discusses. The
 standardisation stops at the data.
 
 **"A listing is just a table without the aggregation."** A listing is
-built for a different *reading pattern* — row by row, in full, by
-someone deciding whether to act on any single record — not merely a
+built for a different *reading pattern*, row by row, in full, by
+someone deciding whether to act on any single record, not merely a
 table with one fewer `group_by()`.
 
 ## Exercises
 
-Practice: [Exercise 7 — Tables, Listings and Figures](../exercises/tlf.qmd).
+Practice: [Exercise 7: Tables, Listings and Figures](../exercises/tlf.qmd).
 
 ## Comprehension Check
 
@@ -671,7 +670,7 @@ Practice: [Exercise 7 — Tables, Listings and Figures](../exercises/tlf.qmd).
 ### Answers
 
 1. Because the dataset being summarised only contains subjects
-   *something happened to* — an adverse event, a lab result. A subject
+   *something happened to*: an adverse event, a lab result. A subject
    with none has no row there at all, so a denominator drawn from it
    silently excludes exactly the subjects who had nothing to report,
    inflating every percentage. ADSL has one row per subject regardless
@@ -679,7 +678,7 @@ Practice: [Exercise 7 — Tables, Listings and Figures](../exercises/tlf.qmd).
    source for a denominator (OCCDS v1.1, §3.2.1; the same lesson from
    [ADAE](adae.qmd)).
 2. A subject can reach more than one severity level across their
-   treatment-emergent events — Mild once, Moderate later. Filtering on
+   treatment-emergent events, Mild once, Moderate later. Filtering on
    `TRTEMFL` alone and counting every severity a subject ever reached
    would let that subject appear in two rows of the table, so the three
    severity counts would sum to more than the number of subjects with
@@ -692,7 +691,7 @@ Practice: [Exercise 7 — Tables, Listings and Figures](../exercises/tlf.qmd).
    own. A table is built to be scanned for where to look; a listing is
    built to be read for what happened.
 4. `SCREENING` is excluded because `CHG` is only defined there for
-   subjects whose own baseline happens to be the screening record —
+   subjects whose own baseline happens to be the screening record,
    plotting it would show a partial, misleadingly flat data point built
    from a different subset of subjects than every later visit. The
    non-zero `BASELINE` mean follows from the same fact from the other
@@ -702,7 +701,7 @@ Practice: [Exercise 7 — Tables, Listings and Figures](../exercises/tlf.qmd).
    `BASELINE` is a small post-baseline measurement, not their baseline,
    so it carries a small non-zero `CHG` that pulls the arm mean away
    from exactly zero.
-5. There is no CDISC guide for TLF layout — that is not an oversight but
+5. There is no CDISC guide for TLF layout, that is not an oversight but
    a fact about the standards, which stop at making the data trustworthy
    and traceable. OCCDS v1.1 itself, when it needs a display convention
    for adverse event frequencies, points outside CDISC entirely to ICH

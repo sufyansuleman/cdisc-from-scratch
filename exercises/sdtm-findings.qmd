@@ -1,11 +1,11 @@
 ---
-title: "Exercise 3 — SDTM: Findings (Labs & Vital Signs)"
+title: "Exercise 3: SDTM Findings (Labs & Vital Signs)"
 ---
 
 ## Goal
 
-Build the Vital Signs (VS) domain slice — the structural twin of the LB
-domain from [The Findings session](../sessions/sdtm-findings.qmd) — and
+Build the Vital Signs (VS) domain slice, the structural twin of the LB
+domain from [The Findings session](../sessions/sdtm-findings.qmd), and
 catch its one deliberate difference from LB.
 
 ## Setup
@@ -35,7 +35,7 @@ is the reference; try each task before looking back.
    terminology.
 2. **(The trap) Units.** `VSORRESU` does **not** use the same units
    codelist as LB's `LBORRESU`. Find the codelist VS uses, and check the
-   trial's vital-sign units against it — not against the generic UNIT
+   trial's vital-sign units against it, not against the generic UNIT
    codelist. Explain in one sentence why checking against the wrong
    codelist would have looked fine but been meaningless.
 3. **(Semi-guided) Timing and structure.** Derive `VSDY` from each
@@ -57,7 +57,7 @@ is the reference; try each task before looking back.
 Task 2: the LB session used codelist `C71620` (UNIT) for lab units. VS
 has its own. Search the terminology for the VS results-unit codelist by
 name (`ct("list")` filtered on something like "Vital Signs" or "VSRESU")
-— the point of the exercise is that you *look it up* rather than assume
+- the point of the exercise is that you *look it up* rather than assume
 LB's codelist carries over.
 
 Task 3: height is measured once, at screening; the other vitals are

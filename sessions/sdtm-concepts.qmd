@@ -75,7 +75,7 @@ After completing this session you will be able to:
   relates to the general model
 - Classify a dataset into its observation class from what one row
   represents
-- Identify the role a variable plays in a record — who it identifies,
+- Identify the role a variable plays in a record, who it identifies,
   what it is about, when it happened, and how it qualifies the result
 - Read a variable's core designation and say what obligation it imposes
 - Distinguish a result as originally collected from its standardised
@@ -90,7 +90,7 @@ After completing this session you will be able to:
 ::: {.callout-important}
 ### The one thing to remember
 
-**SDTM doesn't tell you new facts about the trial — it puts the facts
+**SDTM doesn't tell you new facts about the trial. It puts the facts
 you already have into fixed boxes, so that what one row means, what
 each column's job is, and what may go in it are the same in every
 study.**
@@ -112,14 +112,14 @@ for a study is fixed by the study's start date against the FDA Data
 Standards Catalog [@fdadsc11]. Reading that catalogue for clinical
 study datasets:
 
-- **SDTMIG v3.2** — FDA support **ended** 2023-12-13.
-- **SDTMIG v3.3** — supported since 2020-07-07; **required** for
+- **SDTMIG v3.2**, FDA support **ended** 2023-12-13.
+- **SDTMIG v3.3**, supported since 2020-07-07; **required** for
   studies starting on or after 2022-03-15.
-- **SDTMIG v3.4** — supported since 2023-12-13; **required** for
+- **SDTMIG v3.4**, supported since 2023-12-13; **required** for
   studies starting on or after 2025-03-15; pairs with SDTM v2.0.
 
 GLPX-001 starts in 2024, so its version is settled by that start date
-falling in the v3.4 support window — not by preference. This is why
+falling in the v3.4 support window, not by preference. This is why
 "SDTM is required" is too loose to be useful: what is required is a
 *specific implementation-guide version over a specific window of study
 start dates*, and the catalogue's "date support begins / date support
@@ -141,7 +141,7 @@ v3.4, §2.3):
 | **Events** | something that happened to the subject | an adverse event (AE) |
 | **Findings** | the result of an observation or measurement | a lab test (LB), a vital sign (VS) |
 
-The distinction is not cosmetic — it determines which variables a
+The distinction is not cosmetic. It determines which variables a
 dataset is even allowed to have. A findings dataset is built around a
 *result*; an events dataset is built around a *thing that occurred*;
 an interventions dataset around a *treatment*. Most trial data, being
@@ -151,28 +151,28 @@ Not everything fits the three classes. SDTM also defines
 **special-purpose** domains, trial-design datasets, relationship
 datasets, and study-reference datasets (SDTMIG v3.4, §2.4).
 **Demographics (DM)** is the one that matters most here: it is a
-special-purpose domain — one record per subject (SDTMIG v3.4, §5.2) —
+special-purpose domain: one record per subject (SDTMIG v3.4, §5.2),
 not a member of any general observation class.
 
 ### Domains, and the two-character code
 
 A **domain** is a collection of logically related observations with a
 common topic, and each domain is one dataset (SDTMIG v3.4, §2.2). Every
-domain has a unique **two-character code** — and that code does four
+domain has a unique **two-character code**, and that code does four
 jobs at once: it is the dataset name, the value of the `DOMAIN`
 variable on every row, the prefix on most of the domain's variable
 names, and the domain's reference in relationship datasets (SDTMIG
 v3.4, §2.2).
 
 That third job is the one to internalise. The implementation guide
-writes variable names generically with a `--` placeholder — `--TESTCD`,
-`--ORRES` — and you replace the `--` with the domain code to get the
+writes variable names generically with a `--` placeholder (`--TESTCD`,
+`--ORRES`) and you replace the `--` with the domain code to get the
 real name: `LBTESTCD` in LB, `VSTESTCD` in VS (SDTMIG v3.4, §2.2,
 §4.2.2). So `--ORRES` is not itself a variable; it is a *pattern*. When
 this course writes `--STRESC`, read it as "the STRESC variable of
 whichever domain we're in."
 
-The two-character codes are themselves controlled terminology — they
+The two-character codes are themselves controlled terminology. They
 come from a published codelist, not from your imagination. Example 1
 checks GLPX's codes against it.
 
@@ -184,28 +184,28 @@ general observation class: `STUDYID`, `DOMAIN`, `USUBJID`, and `--SEQ`
 because they are exactly the rules that the raw-data problems from
 earlier sessions violate:
 
-- **`USUBJID`** — the unique subject identifier — must be unique for
+- **`USUBJID`**: the unique subject identifier, must be unique for
   each subject across *all trials in the submission*, not merely within
   one study (SDTMIG v3.4, §4.2.3). This is the rule that the
   duplicate-enrolment subject from [The DM Domain](sdtm-dm.qmd) has to
   be reconciled against.
-- **`--SEQ`** — the sequence number — must be unique within a
+- **`--SEQ`**: the sequence number, must be unique within a
   `USUBJID` within the domain, so that every record has a stable
   identity even when a subject has many (SDTMIG v3.4, §4.1.7).
 
 ### Variable roles, and the topic of a dataset
 
 Every SDTM variable plays a **role**. The model defines five: Identifier,
-Topic, Timing, Qualifier, and Rule — and Qualifiers subdivide further
+Topic, Timing, Qualifier, and Rule, and Qualifiers subdivide further
 into Grouping, Result, Synonym, Variable, and Record qualifiers (SDTMIG
 v3.4, §2.1). The Rule role belongs to the trial-design datasets and
 need not concern you while building subject data; the other four are
 the working vocabulary of every domain:
 
-- **Identifier** — who and which record (`USUBJID`, `--SEQ`).
-- **Topic** — what the observation is *about*.
-- **Timing** — when it happened (`--DTC`, `VISIT`).
-- **Qualifier** — everything that describes or completes the result
+- **Identifier**, who and which record (`USUBJID`, `--SEQ`).
+- **Topic**, what the observation is *about*.
+- **Timing**, when it happened (`--DTC`, `VISIT`).
+- **Qualifier**, everything that describes or completes the result
   (units, severity, the result itself).
 
 The **topic** variable is the heart of a dataset, and it differs by
@@ -220,14 +220,14 @@ what the dataset is fundamentally a list of.
 Finally, every variable in a domain model carries a **core
 designation** that says how obligatory it is (SDTMIG v3.4, §4.1.5):
 
-- **Required** — must be in the dataset and must never be null on any
+- **Required**, must be in the dataset and must never be null on any
   record. These are the identifying and topic variables that make a
   record meaningful.
-- **Expected** — must be in the dataset, but a value may be null on
+- **Expected**, must be in the dataset, but a value may be null on
   some records. If the study did not collect the item at all, the
   column is still included (empty) with an explanation in the
   Define-XML.
-- **Permissible** — include it when the study collected the relevant
+- **Permissible**, include it when the study collected the relevant
   data, and leave it out entirely when it did not.
 
 "Required" and "Expected" both mean the column is always present; the
@@ -250,7 +250,7 @@ and it is done on paper before any code:
 
 glpx_map <- tribble(
   ~raw_file,    ~domain, ~observation_class, ~topic_variable,
-  "dm_raw.csv", "DM",    "Special-Purpose",  "(none — one row per subject)",
+  "dm_raw.csv", "DM",    "Special-Purpose",  "(none: one row per subject)",
   "ex_raw.csv", "EX",    "Interventions",    "EXTRT",
   "ae_raw.csv", "AE",    "Events",           "AETERM",
   "lb_raw.csv", "LB",    "Findings",         "LBTESTCD",
@@ -278,7 +278,7 @@ glpx_map |>
 
 Run both chunks. Every row of the second should read `TRUE`: `DM`,
 `EX`, `AE`, `LB`, `VS` are all valid domain codes. Now change one code
-to something plausible-but-wrong — `"LBS"`, say, or `"VITALS"` — and
+to something plausible-but-wrong (`"LBS"`, say, or `"VITALS"`) and
 re-run. Watch it come back `FALSE`. That is the whole discipline of
 this course in one line: **you did not have to know the codelist, you
 had to check it.**
@@ -294,8 +294,7 @@ had to check it.**
 | `topic_variable` | What the dataset is a list *of*. Notice the topic follows the class: `--TESTCD` for the two Findings domains, `--TERM` for the Events domain, `--TRT` for the Interventions domain. |
 | `DM` row | Special-purpose, so it has no observation-class topic variable; its structure is simply one record per subject. You build it in [The DM Domain](sdtm-dm.qmd). |
 
-Whatever the domain, four identifier variables form its spine —
-`STUDYID`, `DOMAIN`, `USUBJID`, `--SEQ` — before a single
+Whatever the domain, four identifier variables form its spine (`STUDYID`, `DOMAIN`, `USUBJID`, `--SEQ`) before a single
 domain-specific column is added.
 :::
 
@@ -304,8 +303,8 @@ domain-specific column is added.
 *Estimated time: ~20 minutes (worked example)*
 
 This is where Findings pay off the modelling. A findings result is not
-one value in one column; it is kept twice — as collected, and
-standardised — and both are preserved. Take one subject's glucose
+one value in one column; it is kept twice (as collected, and
+standardised) and both are preserved. Take one subject's glucose
 across visits from the raw lab file:
 
 ```{r ex2-raw}
@@ -326,7 +325,7 @@ result as collected goes to `LBORRES`, with its unit in `LBORRESU`
 (SDTMIG v3.4, §4.5.1.1). The standardised character result goes to
 `LBSTRESC`; where that value is numeric it is also written, as a true
 number, to `LBSTRESN` (SDTMIG v3.4, §4.5.1.1). Glucose here is already
-in the standard unit, so standardising is a copy — but the *structure*
+in the standard unit, so standardising is a copy, but the *structure*
 is the lesson, not the arithmetic:
 
 ```{r ex2-map}
@@ -347,8 +346,8 @@ mapped
 ```
 
 Both the test code and the unit are controlled terminology, so confirm
-them against the published codelists — `C65047` for the lab test code,
-`C71620` for units — instead of assuming:
+them against the published codelists (`C65047` for the lab test code,
+`C71620` for units) instead of assuming:
 
 ```{r ex2-ct}
 #| eval: true
@@ -362,7 +361,7 @@ c(
 ::: {.callout-tip}
 ### Run It Yourself
 
-Run the three chunks. Both CT checks return `TRUE` — the vendor's
+Run the three chunks. Both CT checks return `TRUE`: the vendor's
 `GLUC` and `mmol/L` happen to be legal SDTM values. But look carefully
 at the mapped table's week-8 row before reading on. Something is
 missing, and it is not the result.
@@ -374,11 +373,11 @@ missing, and it is not the result.
 | Variable | Value at week 8 | What it means |
 |---|---|---|
 | `LBORRES` | `9.6` | The result as collected. It is present. |
-| `LBORRESU` | *(blank)* | The **unit is missing** — this is defect D7 from the trial simulator, a genuinely blank unit on one transferred record. |
+| `LBORRESU` | *(blank)* | The **unit is missing**. This is defect D7 from the trial simulator, a genuinely blank unit on one transferred record. |
 | `LBSTRESC` / `LBSTRESN` | `9.6` / `9.6` | The result standardises fine; the *number* was never the problem. |
 | `LBSTRESU` | *(blank)* | The missing unit propagates, because you cannot standardise a unit you do not have. |
 
-`LBORRES` is an **Expected** variable — always present, occasionally
+`LBORRES` is an **Expected** variable, always present, occasionally
 null (SDTMIG v3.4, §4.5.1.1). The unit's blankness is not a
 model violation; it is a data problem the model makes *visible*. And
 crucially, a blank is not a valid unit value:
@@ -391,11 +390,11 @@ is_term("", clst_code = "C71620")
 ```
 
 The check returns `FALSE`: an empty string is not a member of the UNIT
-codelist. So the week-8 glucose cannot be silently accepted — its unit
+codelist. So the week-8 glucose cannot be silently accepted: its unit
 has to be recovered from the lab's documentation or queried, a piece of
 work you do in [Findings](sdtm-findings.qmd). The
 point for now: **the standard did not fix the data, it located the
-problem** — and it located it in a specific variable with a specific
+problem**, and it located it in a specific variable with a specific
 rule, not in a vague sense that "something looks off."
 
 ## What Can Go Wrong
@@ -423,7 +422,7 @@ of the things the whole tabulation layer exists to preserve.
 
 Every `--TESTCD` and every unit is drawn from a published codelist. The
 temptation to write `"HGBA1C"` or `"mmol/l"` because it looks right is
-exactly the failure this course is built to prevent — check with
+exactly the failure this course is built to prevent. Check with
 `is_term()` and let the package be right so you don't have to remember.
 
 **Computing study day with a day zero**
@@ -447,7 +446,7 @@ It is a *submission* format: flat, one dataset per domain, built to be
 read and archived by a regulator, not to be queried efficiently. Its
 shape follows that purpose, not database-normalisation instincts.
 
-**"Required and Expected are the same — both are mandatory"**
+**"Required and Expected are the same: both are mandatory"**
 Both mean the column is always present. Only Required forbids a null
 value on every row; an Expected variable may be null where the datum is
 genuinely absent (SDTMIG v3.4, §4.1.5). The week-8 missing unit in
@@ -461,7 +460,7 @@ across domains (SDTMIG v3.4, §2.2).
 **"If a value passes `is_term()`, the record is correct"**
 It means the *value* is legal controlled terminology, nothing more. A
 legal `LBTESTCD` on the wrong row, or a valid unit that is simply the
-wrong unit, both pass. Conformance is necessary, not sufficient — the
+wrong unit, both pass. Conformance is necessary, not sufficient: the
 lesson that closes [Why Standards](why-standards.qmd).
 :::
 
@@ -479,8 +478,8 @@ disposition (how and when each subject left the study).
    and justify the choice from what *one row* represents.
 2. Name the topic variable each would use (as a `--` pattern), based on
    its class.
-3. Propose a plausible two-character domain code for each, then — this
-   is the point — describe how you would check whether your proposed
+3. Propose a plausible two-character domain code for each, then (this
+   is the point) describe how you would check whether your proposed
    code is real, without stating from memory whether it is.
 
 Worked solutions are in the paid tier; the habit the exercise builds
@@ -512,7 +511,7 @@ Worked solutions are in the paid tier; the habit the exercise builds
    version to the study's start date, and GLPX-001's 2024 start falls
    in the v3.4 support window [@fdadsc11].
 
-2. Findings — one row is the result of a measurement (SDTMIG v3.4,
+2. Findings: one row is the result of a measurement (SDTMIG v3.4,
    §2.3). Its topic variable is `--TESTCD` (SDTMIG v3.4, §2.1), i.e.
    `LBTESTCD` or `VSTESTCD` once the domain prefix is applied.
 
@@ -525,12 +524,12 @@ Worked solutions are in the paid tier; the habit the exercise builds
 4. The column must still be present, empty, with a comment in the
    Define-XML stating the study did not collect the item; a value is
    not required on any row (SDTMIG v3.4, §4.1.5). What must *not* happen
-   is dropping the column — that is the difference between Expected and
+   is dropping the column, that is the difference between Expected and
    Permissible.
 
 5. Check it against the UNIT codelist with the terminology package
    rather than debating: `is_term("bpm", clst_code = "C71620")` versus
    `is_term("beats/min", clst_code = "C71620")`. One is a member and one
-   is not, and the package settles it in a line — the same move Example
+   is not, and the package settles it in a line: the same move Example
    2 used for the glucose unit.
 :::

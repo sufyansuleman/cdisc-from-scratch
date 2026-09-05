@@ -17,12 +17,12 @@ library(tidyverse)
 |---|---|---|
 | When Do You Use This? + Learning Objectives | 5 min | Reading |
 | Background: what ADaM adds to SDTM | 25 min | Reading |
-| Example 1: The two shapes — ADSL and BDS | 20 min | Worked example |
+| Example 1: The two shapes, ADSL and BDS | 20 min | Worked example |
 | Example 2: Baseline is an ADaM decision | 20 min | Worked example |
 | What Can Go Wrong | 10 min | Reading |
 | Comprehension Check | 5 min | Self-test |
 
-The first session of Part 3. It has no exercise set — it is the mental
+The first session of Part 3. It has no exercise set. It is the mental
 model for [ADSL](adsl.qmd), [ADAE](adae.qmd) and [ADLB](adlb.qmd), which
 build the real analysis datasets. For self-paced study it fits one
 sitting.
@@ -37,8 +37,8 @@ Where you see a "Run It Yourself" box, stop and run the code above it
 before reading the explanation that follows. Run R from the project
 root, as in earlier sessions.
 
-This session reads the finished SDTM you built in Part 2 —
-`data/sdtm/dm.csv` and `data/sdtm/lb.csv` — rather than the raw files.
+This session reads the finished SDTM you built in Part 2 -
+`data/sdtm/dm.csv` and `data/sdtm/lb.csv`, rather than the raw files.
 That hand-off is the point where "what happened" becomes "what the
 analysis needs."
 :::
@@ -48,7 +48,7 @@ analysis needs."
 ::: {.callout-tip}
 A statistician asks for a dataset they can fit a model on with almost no
 reshaping. A reviewer wants to see exactly how "change from baseline"
-was computed — and to trace each number back to its source. You have
+was computed, and to trace each number back to its source. You have
 conformant SDTM and now have to turn it into something the analysis can
 use directly.
 
@@ -67,7 +67,7 @@ deferral is paid off.
 After completing this session you will be able to:
 
 - Explain what "analysis-ready" means and why ADaM exists alongside SDTM
-- Describe the two ADaM structures — ADSL and BDS — by what one row is
+- Describe the two ADaM structures (ADSL and BDS) by what one row is
 - Name the core BDS variables (PARAM, PARAMCD, AVAL) and say how a
   parameter differs from an SDTM test
 - Explain the two levels of traceability and why ADaM must show its work
@@ -87,7 +87,7 @@ value traces back to the SDTM row it came from.**
 :::
 
 SDTM answered *what happened in the trial*. ADaM answers *what the
-trial shows* — and to do that it does two things SDTM deliberately does
+trial shows*, and to do that it does two things SDTM deliberately does
 not.
 
 First, it is **analysis-ready**. An ADaM dataset must be structured and
@@ -96,7 +96,7 @@ programming" (ADaMIG v1.3, §2.1). The change-from-baseline column is
 already there; the treatment a record belongs to is already there; the
 population a subject is in is already flagged. The statistician should
 be one procedure away from the result, not a week of data-wrangling
-away. (SDTM, by contrast, is a *tabulation* format — faithful to what
+away. (SDTM, by contrast, is a *tabulation* format, faithful to what
 was collected, not shaped for any particular analysis.)
 
 Second, it is **traceable**. An ADaM dataset contains both source data
@@ -105,10 +105,10 @@ observed, derived, or imputed (ADaMIG v1.3, §2.3.2). Because it mixes
 the collected and the computed, it must show its work. The ADaMIG
 requires traceability at two levels (ADaMIG v1.3, §2.2):
 
-- **Metadata traceability** — a description of how each analysis
+- **Metadata traceability**: a description of how each analysis
   variable was derived from its immediate predecessor. This is
   **required** for ADaM compliance.
-- **Datapoint traceability** — direct links in the data to the specific
+- **Datapoint traceability**, direct links in the data to the specific
   predecessor record(s), for example through a `--SEQ` variable.
   Implemented when practical.
 
@@ -127,25 +127,25 @@ input here: ADaM builds *on* SDTM, traceably.
 The ADaMIG defines exactly **two** standard data structures (ADaMIG
 v1.3, §2.3), and telling them apart is the first practical skill:
 
-- **ADSL — the Subject-Level Analysis Dataset.** One record per
+- **ADSL: the Subject-Level Analysis Dataset.** One record per
   subject, regardless of trial design; there is exactly one ADSL per
   study (ADaMIG v1.3, §2.3.1). It holds the subject-level facts the
   analysis leans on: population flags, planned and actual treatment,
   demographics, randomization and stratification factors, and important
   dates. It is emphatically **not** the place for endpoints or anything
   that varies over time.
-- **BDS — the Basic Data Structure.** One or more records per subject
+- **BDS: the Basic Data Structure.** One or more records per subject
   per analysis parameter per analysis timepoint (the timepoint is
   conditionally required) (ADaMIG v1.3, §2.3.2). Its two central
   variables are `AVAL` (the value being analysed) and `PARAM` (the
   description of that value). A BDS dataset can be derived from any
-  SDTM class — Findings, Events, Interventions, Special-Purpose — from
+  SDTM class (Findings, Events, Interventions, Special-Purpose) from
   other ADaM datasets, or any combination.
 
 A caution the guide makes explicitly (ADaMIG v1.3, §2.3.2): BDS *looks*
 like the SDTM Findings class because it tends to be vertical, but it is
 not the same thing. A BDS parameter can be a highly derived quantity
-assembled from several SDTM domains at once — something no single
+assembled from several SDTM domains at once, something no single
 Findings record could hold.
 
 There is a third ADaM structure, **OCCDS** (the Occurrence Data
@@ -157,7 +157,7 @@ introduces it in [ADAE](adae.qmd) and cites it there.
 
 The heart of BDS is the parameter, and it is worth contrasting with the
 SDTM test it resembles. In SDTM, `--TESTCD` works *with* qualifier
-variables — specimen, position, method — that together pin down what
+variables (specimen, position, method) that together pin down what
 was measured. In ADaM, `PARAM` stands alone: it "has no accompanying
 qualifier variables," and `PARAM` by itself fully describes what is in
 `AVAL` (ADaMIG v1.3, §3.3.4.2). Everything that would have been a
@@ -167,7 +167,7 @@ That is because a parameter is **created to meet an analysis need, not
 because something was collected** (ADaMIG v1.3, §3.3.4.2). "HbA1c" is a
 test; "HbA1c change from baseline, on-treatment" is a parameter. `PARAM`
 (required, on every record, up to 200 characters) carries the full
-description; `PARAMCD` (required, on every record) is its short code —
+description; `PARAMCD` (required, on every record) is its short code,
 and `PARAMCD` has the same shape rule you already know from SDTM's
 `--TESTCD`: at most 8 characters, letters/numbers/underscore only.
 Slightly stricter, in fact: it must **start with a letter** (not an
@@ -189,12 +189,12 @@ Analysis-ready means the change-from-baseline is already computed, and
 BDS has standard variables for it (ADaMIG v1.3, §3.3.4, §3.3.8):
 `ABLFL` flags the baseline record; `BASE` is the `AVAL` copied from the
 record where `ABLFL = "Y"`; `CHG` is `AVAL − BASE`; `PCHG` is the
-percent change. `ABLFL` is *conditionally* required — required whenever
+percent change. `ABLFL` is *conditionally* required, required whenever
 `BASE` is present in the dataset (ADaMIG v1.3, §3.3.8).
 
 And here is where a thread from Part 2 closes. Whenever population or
 baseline flags are needed for analysis, **the ADaM variables must be
-used** — ADaM re-derives them; it does not reuse SDTM's (ADaMIG v1.3,
+used**, ADaM re-derives them; it does not reuse SDTM's (ADaMIG v1.3,
 §3.5). A baseline record identified in SDTM may not be the baseline
 record identified in ADaM. This is the precise reason the [Findings
 session](sdtm-findings.qmd) deferred the "authoritative baseline" from
@@ -202,12 +202,12 @@ SDTM's `LBLOBXFL` to ADaM: which value counts as baseline for the
 analysis is an ADaM decision, and Example 2 shows the two flags landing
 on different rows for the same subject.
 
-## Example 1: The Two Shapes — ADSL and BDS
+## Example 1: The Two Shapes, ADSL and BDS
 
 *Estimated time: ~20 minutes (worked example)*
 
 Read the finished SDTM and shape a small preview of each ADaM structure
-— not the full builds (those are [ADSL](adsl.qmd), [ADAE](adae.qmd) and
+- not the full builds (those are [ADSL](adsl.qmd), [ADAE](adae.qmd) and
 [ADLB](adlb.qmd)), just enough to *see* the difference in what one row
 is.
 
@@ -258,8 +258,8 @@ adlb_hba1c |> filter(USUBJID == "GLPX001-101-026")
 ::: {.callout-tip}
 ### Run It Yourself
 
-Run both chunks. The ADSL preview has **400 rows for 400 subjects** —
-one each. The BDS preview returns **8 rows for the one subject** shown —
+Run both chunks. The ADSL preview has **400 rows for 400 subjects**:
+one each. The BDS preview returns **8 rows for the one subject** shown:
 one per visit. That is the entire structural distinction: ADSL is one
 row per subject; BDS is one row per subject per parameter per timepoint.
 :::
@@ -271,13 +271,13 @@ row per subject; BDS is one row per subject per parameter per timepoint.
 |---|---|
 | ADSL: 400 rows = 400 subjects | Subject-level. `TRT01P` (planned treatment) and `SAFFL` (safety flag) are facts *about the subject*, constant across the study. |
 | BDS: 8 rows, one subject | Parameter-and-timepoint level. The same subject appears eight times because HbA1c was measured at eight visits. |
-| `PARAMCD` / `PARAM` | The parameter, standing alone — no qualifier columns. `PARAM` is the human-readable description; `PARAMCD` the 8-character code. |
-| `AVAL` | The analysis value — here copied from the standardised SDTM result `LBSTRESN`. In a real parameter it might be highly derived. |
-| `ADT` / `ADY` / `AVISIT` | Analysis date, analysis day, analysis visit — the ADaM timing variables. `AVISIT` is *derived*; it need not match SDTM `VISIT` one-to-one (ADaMIG v1.3, §3.3.3). |
+| `PARAMCD` / `PARAM` | The parameter, standing alone: no qualifier columns. `PARAM` is the human-readable description; `PARAMCD` the 8-character code. |
+| `AVAL` | The analysis value. Here copied from the standardised SDTM result `LBSTRESN`. In a real parameter it might be highly derived. |
+| `ADT` / `ADY` / `AVISIT` | Analysis date, analysis day, analysis visit: the ADaM timing variables. `AVISIT` is *derived*; it need not match SDTM `VISIT` one-to-one (ADaMIG v1.3, §3.3.3). |
 
 These are previews: `SAFFL` here is a simplification (every GLPX
-subject was dosed, so all are `"Y"`), and the real derivations — from
-EX, from the population definitions — are the work of the [ADSL](adsl.qmd)
+subject was dosed, so all are `"Y"`), and the real derivations (from
+EX, from the population definitions) are the work of the [ADSL](adsl.qmd)
 and [ADLB](adlb.qmd) sessions. The point now is only the *shape*.
 :::
 
@@ -285,7 +285,7 @@ and [ADLB](adlb.qmd) sessions. The point now is only the *shape*.
 
 *Estimated time: ~20 minutes (worked example)*
 
-In [Findings](sdtm-findings.qmd) you derived `LBLOBXFL` — SDTM's
+In [Findings](sdtm-findings.qmd) you derived `LBLOBXFL`, SDTM's
 operational baseline flag, the last value before first dose. The
 analysis, though, may define baseline differently, and the ADaMIG is
 explicit that the ADaM baseline can differ from the SDTM one (ADaMIG
@@ -317,7 +317,7 @@ adlb |>
 
 Run the chunk. Look at the `LBLOBXFL` and `ABLFL` columns side by side
 for this subject: the SDTM flag sits on **screening**, the ADaM flag on
-**baseline** — two different rows. `BASE` is the baseline-visit value
+**baseline**: two different rows. `BASE` is the baseline-visit value
 (8.9), and `CHG` is each visit's value minus that. The two flags
 disagreeing is not an error; it is the ADaMIG's point made concrete.
 :::
@@ -332,7 +332,7 @@ disagreeing is not an error; it is the ADaMIG's point made concrete.
 | `BASE` (8.9 throughout) | The `AVAL` from the `ABLFL = "Y"` record, copied onto every row so change can be computed (ADaMIG v1.3, §3.3.4). |
 | `CHG` | `AVAL − BASE`, the analysis-ready change from baseline (ADaMIG v1.3, §3.3.4). No further computation needed downstream. |
 
-Two flags, two rows, both correct — because they answer different
+Two flags, two rows, both correct, because they answer different
 questions. `LBLOBXFL` asks "what was the last pre-treatment value?";
 `ABLFL` asks "what does *this analysis* call baseline?" Whenever a
 baseline flag is needed for analysis, the ADaM variable must be used
@@ -341,8 +341,8 @@ than copied from SDTM.
 
 One more, for later: our baseline is an *observed* value (the
 Baseline-visit measurement), so no derivation type is needed. If the
-analysis baseline were itself *derived* — say, an average of two
-pre-dose values — then `DTYPE` would have to be populated to record how
+analysis baseline were itself *derived*, say, an average of two
+pre-dose values, then `DTYPE` would have to be populated to record how
 (ADaMIG v1.3, §3.3.8). A derived baseline is still an ADaM decision,
 just a more elaborate one; the traceability requirement is the same.
 :::
@@ -364,7 +364,7 @@ the analysis and its provenance are predictable.
 The SDTM population and baseline flags are not the analysis flags.
 Whenever a flag is needed for analysis, the ADaM variable must be used
 and re-derived (ADaMIG v1.3, §3.5). Using `LBLOBXFL` as if it were the
-analysis baseline skips the decision ADaM exists to record — and, as
+analysis baseline skips the decision ADaM exists to record, and, as
 Example 2 showed, may point at the wrong row.
 
 **Putting time-varying data in ADSL**
@@ -375,7 +375,7 @@ not an ADSL variable.
 
 **Expecting PARAM to have qualifiers**
 
-`PARAM` stands alone — no specimen, position or method columns beside it
+`PARAM` stands alone: no specimen, position or method columns beside it
 (ADaMIG v1.3, §3.3.4.2). If you find yourself wanting a qualifier
 variable, the distinction it captures belongs *inside* the parameter
 definition (a new `PARAM`), not in a separate column.
@@ -396,7 +396,7 @@ required traceability. A reformat has none of those. The change-from-
 baseline in Example 2 exists in ADaM and nowhere in SDTM.
 
 **"PARAMCD is controlled terminology like LBTESTCD"**
-No — `PARAMCD`/`PARAM` are sponsor-defined for the analysis (ADaMIG
+No - `PARAMCD`/`PARAM` are sponsor-defined for the analysis (ADaMIG
 v1.3, §3.3.4). They share `--TESTCD`'s 8-character *shape*, but there is
 no codelist to check them against, because a parameter is a design
 decision.
@@ -404,12 +404,12 @@ decision.
 **"The SDTM baseline flag and the ADaM baseline flag should match"**
 They may, but they need not (ADaMIG v1.3, §3.5). They answer different
 questions, and Example 2 shows them on different rows for the same
-subject — legitimately.
+subject, legitimately.
 
 **"Analysis-ready means the data is finished"**
 It means the dataset is *shaped* so analysis needs minimal programming
-(ADaMIG v1.3, §2.1). The analysis decisions — baseline, populations,
-parameters — are still yours to make and to document; ADaM is where you
+(ADaMIG v1.3, §2.1). The analysis decisions (baseline, populations,
+parameters) are still yours to make and to document; ADaM is where you
 record them, not a substitute for making them.
 :::
 
@@ -432,14 +432,14 @@ record them, not a substitute for making them.
 ### Answers
 
 1. **Analysis-ready**: the dataset is structured and populated so a
-   statistical analysis runs with minimal programming — the analysis
+   statistical analysis runs with minimal programming: the analysis
    values (e.g. change from baseline) and selection variables are
    already present (ADaMIG v1.3, §2.1). **Traceable**: every analysis
    value can be followed back through its derivation to its SDTM source
    and ultimately the collection instrument, with the derivation
    described in metadata (ADaMIG v1.3, §2.2).
 
-2. BDS — the Basic Data Structure. One or more records per subject per
+2. BDS: the Basic Data Structure. One or more records per subject per
    analysis parameter per analysis timepoint, built around `AVAL` and
    `PARAM` (ADaMIG v1.3, §2.3.2). ADSL, by contrast, is one row per
    subject (ADaMIG v1.3, §2.3.1), so a per-test-per-visit structure
@@ -462,7 +462,7 @@ record them, not a substitute for making them.
 5. Because `PARAMCD`/`PARAM` are **sponsor-defined for the analysis**,
    not drawn from controlled terminology (ADaMIG v1.3, §3.3.4). A
    parameter is a design decision, so there is no codelist to validate
-   it against — unlike `LBTESTCD`, which must be a published CT value.
+   it against, unlike `LBTESTCD`, which must be a published CT value.
    `PARAMCD` still obeys a *shape* rule (≤8 characters, starts with a
    letter), but shape is not membership.
 :::

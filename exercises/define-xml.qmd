@@ -1,5 +1,5 @@
 ---
-title: "Exercise 8 — Define-XML"
+title: "Exercise 8: Define-XML"
 ---
 
 ## Goal
@@ -7,7 +7,7 @@ title: "Exercise 8 — Define-XML"
 Take the schema-valid but non-conformant document from
 [the Define-XML session](../sessions/define-xml.qmd) and make it
 conformant, then extend it to describe the one thing an SDTM variable
-cannot describe with a single origin — and the one variable this course
+cannot describe with a single origin, and the one variable this course
 cannot populate at all.
 
 ## Setup
@@ -37,7 +37,7 @@ or keep the R session open from where the session left off.
    element that states how `USUBJID` is derived, and a `MethodOID`
    attribute on the `ItemRef` that points at it. GLPX-001 builds
    `USUBJID` by concatenating the study identifier, the site and the
-   subject number — check `R/build_sdtm.R` and describe what it
+   subject number. Check `R/build_sdtm.R` and describe what it
    actually does, not what you assume it does.
 
    Re-run `xml_validate()` and re-run the rule 73 check from the
@@ -62,7 +62,7 @@ or keep the R session open from where the session left off.
    Build it: a `def:ValueListRef` on the `ItemDef`, a `def:ValueListDef`
    containing one `ItemRef` per parameter, and a `def:WhereClauseDef`
    for each that says which rows it applies to. Use the two `LBTESTCD`
-   values GLPX-001 actually contains — read them from `data/sdtm/lb.csv`
+   values GLPX-001 actually contains. Read them from `data/sdtm/lb.csv`
    rather than assuming.
 
    Then answer, in one sentence each:
@@ -81,7 +81,7 @@ or keep the R session open from where the session left off.
 
    Define-XML v2.1 has a specific mechanism for this, and using it
    triggers a second requirement. Find both. Search the conformance
-   rules workbook for `HasNoData` — rules 76 and 242 are the two you
+   rules workbook for `HasNoData`, rules 76 and 242 are the two you
    need, and note that both have Source Type `Specification`.
 
    Implement both, then answer:
@@ -111,7 +111,7 @@ or keep the R session open from where the session left off.
 ## Hint
 
 Task 1: `MethodDef` goes at the `MetaDataVersion` level, beside
-`ItemDef` and `CodeList` — same Def/Ref pattern as everything else. It
+`ItemDef` and `CodeList`, same Def/Ref pattern as everything else. It
 needs `OID`, `Name`, `Type` and a `Description`. If the schema rejects
 your placement, remember that element order is an absolute requirement
 (§3.6) and the error message names what it expected instead.
@@ -119,13 +119,13 @@ your placement, remember that element order is an absolute requirement
 Task 2: the chain is `ItemDef` → `def:ValueListRef` → `def:ValueListDef`
 → `ItemRef` → `def:WhereClauseRef` → `def:WhereClauseDef` → `RangeCheck`.
 Six links, and every one is an OID pointing at something declared
-elsewhere — this task is the central intuition of the session made
+elsewhere. This task is the central intuition of the session made
 tedious on purpose. Note that the value-level `ItemDef`s are separate
 `ItemDef` elements with their own OIDs; the example's naming
 (`IT.LB.LBORRES.SET1.LBSPEC.BLOOD`) shows the convention, though as the
 session established, the convention is not the standard.
 
-Task 3: `def:HasNoData` goes on the `ItemRef`, not the `ItemDef` — read
+Task 3: `def:HasNoData` goes on the `ItemRef`, not the `ItemDef`. Read
 rule 76's XPath column carefully, because getting this backwards is the
 most common way to fail it. Rule 242 then tells you what else becomes
 required, and the `def:CommentDef` element is documented in §4.8.

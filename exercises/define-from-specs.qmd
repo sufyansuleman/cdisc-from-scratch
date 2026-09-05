@@ -1,5 +1,5 @@
 ---
-title: "Exercise 9 — Define-XML from a Specification Workbook"
+title: "Exercise 9: Define-XML from a Specification Workbook"
 ---
 
 ## Goal
@@ -23,7 +23,7 @@ library(metacore)
 spec <- "data/spec/SDTM_METADATA.xlsx"
 ```
 
-Work on a **copy** of the workbook, not the committed one — the point
+Work on a **copy** of the workbook, not the committed one: the point
 of a controlled document is that it does not change casually.
 
 ## Task
@@ -32,15 +32,15 @@ of a controlled document is that it does not change casually.
    workbook specifies only DM and LB. Add **VS** (Vital Signs).
 
    Read `data/sdtm/vs.csv` for the variable list, and take labels and
-   types from the same two sources `R/author_spec_workbook.R` uses —
+   types from the same two sources `R/author_spec_workbook.R` uses:
    the CDISC example define.xml in the Define-XML package, and SDTMIG
    v3.4 for anything the example does not cover. Compute lengths from
    the data.
 
    You will need rows in at least `TOC_METADATA` and
    `VARIABLE_METADATA`. Decide for yourself whether VS also needs
-   `VALUELEVEL_METADATA`, and justify the decision in one sentence —
-   look at what `VSSTRESU` does across `VSTESTCD` before you answer.
+   `VALUELEVEL_METADATA`, and justify the decision in one sentence.
+   Look at what `VSSTRESU` does across `VSTESTCD` before you answer.
 
    Regenerate with `write_define()` and confirm the new domain appears.
    Report the dataset, variable and codelist counts before and after.
@@ -52,7 +52,7 @@ of a controlled document is that it does not change casually.
    Write a function that takes the generated define.xml and reports,
    for every variable, what its 2.1 `Type` and `Source` **would** be.
    Use the mapping the session established for `CRF` and `eDT`, and
-   work out the rest yourself from §4.3.2.1 — `Derived` and `Assigned`
+   work out the rest yourself from §4.3.2.1 - `Derived` and `Assigned`
    both survive into 2.1, but they still need a `Source`, and the SDTM
    table constrains which sources are valid for each.
 
@@ -72,8 +72,8 @@ of a controlled document is that it does not change casually.
    - Does `defineR` 0.0.6 support 2.1? Check its `extdata` directory
      rather than assuming, and say how you checked.
    - Which columns would the workbook need that it does not have?
-   - Which of the differences the session identified — origin, class
-     casing, namespace — could be fixed by post-processing the
+   - Which of the differences the session identified (origin, class
+     casing, namespace) could be fixed by post-processing the
      generated XML, and which could not?
 
    Then write a short recommendation, five sentences at most, of the
@@ -99,7 +99,7 @@ of a controlled document is that it does not change casually.
 ## Hint
 
 Task 1: `R/author_spec_workbook.R` already does all of this for DM and
-LB — read it before writing anything. Its `var_meta_for()` helper is
+LB. Read it before writing anything. Its `var_meta_for()` helper is
 domain-agnostic and the label guard will tell you loudly if VS has a
 variable neither source covers. Note that `write_define()` writes its
 output beside the workbook you hand it, which is why
@@ -107,7 +107,7 @@ output beside the workbook you hand it, which is why
 
 Task 2: the SDTM origin table is §4.3.2.1 of the Define-XML v2.1
 specification, and the cells marked `X` are as informative as the ones
-with examples — they tell you which combinations are impossible, which
+with examples. They tell you which combinations are impossible, which
 narrows the ambiguous cases faster than the valid ones do. `Assigned` +
 `Sponsor` covers more variables than you might first think; look at
 what the spec says `Assigned` means.
@@ -116,7 +116,7 @@ Task 3: `system.file("extdata", package = "defineR")` and
 `list.dirs()`. One directory listing settles it. For the
 post-processing question, think about which differences are local
 string substitutions and which require information the document does
-not contain — that distinction is the whole answer.
+not contain, that distinction is the whole answer.
 :::
 
 > Solutions are in the paid tier.

@@ -135,7 +135,7 @@ course is hard.
 
 Example 1 below demonstrates the first two problems in the GLPX-001
 raw data. Example 2 demonstrates the third. Neither example needs you
-to know any CDISC yet — that is the point. You should feel the problem
+to know any CDISC yet, that is the point. You should feel the problem
 before you are handed the solution.
 
 ### The shape of what is coming
@@ -143,17 +143,17 @@ before you are handed the solution.
 The rest of this course is one pipeline, and it is worth seeing the
 whole shape before you meet any of its parts:
 
-- **Raw data** — what the study team receives: an EDC export, a lab
+- **Raw data**, what the study team receives: an EDC export, a lab
   vendor's file, each with its own conventions. This is where you are
   now.
-- **SDTM** — the raw data, reorganised and renamed to the standard,
+- **SDTM**: the raw data, reorganised and renamed to the standard,
   with the original values preserved. It answers: *what happened in
   this trial?* (Part 2)
-- **ADaM** — analysis-ready datasets derived from SDTM, carrying the
+- **ADaM**, analysis-ready datasets derived from SDTM, carrying the
   variables a statistician needs to run the analysis and a reviewer
   needs to reproduce it. It answers: *what does the trial show?*
   (Part 3)
-- **TLFs** — the tables, listings and figures that go in the study
+- **TLFs**: the tables, listings and figures that go in the study
   report. (Part 4)
 
 Each stage has a different job, and a great deal of confusion in
@@ -170,9 +170,9 @@ chain behind it is short and worth knowing. Four documents do the work:
 - **The statute and the guidance.** Under section 745A(a) of the FD&C
   Act, once FDA specifies an electronic format in final guidance, that
   format is *required*. The specifying document is *Providing
-  Regulatory Submissions in Electronic Format — Standardized Study
+  Regulatory Submissions in Electronic Format, Standardized Study
   Data* [@fda2021estudy]. It applies to NDAs, ANDAs, certain BLAs and
-  certain commercial INDs, and — unusually for FDA guidance — has
+  certain commercial INDs, and (unusually for FDA guidance) has
   binding effect. FDA may refuse to file (NDAs, BLAs) or refuse to
   receive (ANDAs) a submission whose study data does not conform to
   the required standards in the Catalog.
@@ -189,7 +189,7 @@ chain behind it is short and worth knowing. Four documents do the work:
   every submitted dataset's metadata. You will build one in
   [define.xml](define-xml.qmd).
 - **The Technical Rejection Criteria (TRC)** make part of this
-  automatic. The TRC is not a separate document — it lives inside the
+  automatic. The TRC is not a separate document. It lives inside the
   Conformance Guide (TCG v6.0, §8.1.2.1–8.1.2.3) [@fdatcg], and the
   clinical-drug case this course works in is §8.1.2.1. The mechanism is
   worth knowing precisely, because it is mechanical: the check operates
@@ -206,7 +206,7 @@ chain behind it is short and worth knowing. Four documents do the work:
   [The Analysis Data Reviewer's Guide](adrg.qmd).
 
 Two cautions. The dates above attach to *study start*, not submission
-date. And the Catalog is a living document — versions of SDTM, ADaM and
+date. And the Catalog is a living document, versions of SDTM, ADaM and
 Define-XML move in and out of the required set over time, so the
 version to consult is always the current one, at the FDA Study Data
 Standards Resources page.
@@ -307,7 +307,7 @@ tibble(
 |---|---|
 | `SUBJID` in four files, `subjid` in `lb_raw.csv` | The lab vendor lower-cases its columns. R is case-sensitive, so `dm$SUBJID` and `lb$subjid` are different names for the same concept. Every join you write must know this. |
 | `BIRTHDT`, `RANDDT`, `AESTDT`, `AEENDT`, `EXSTDT`, `EXENDT`, `VSDT`, `colldt` | Eight date columns, eight names, no shared pattern. `colldt` does not even end in the same convention as the others. |
-| `ae_raw.csv` has 389 rows | Fewer rows than subjects. Adverse event data has one row per *event*, not per subject — and subjects with no events have no rows at all. |
+| `ae_raw.csv` has 389 rows | Fewer rows than subjects. Adverse event data has one row per *event*, not per subject, and subjects with no events have no rows at all. |
 | `lb_raw.csv` has 12,389 rows | One row per subject per visit per test. The same trial, at a completely different granularity. |
 
 Notice what the last two rows of that table mean: **"one row" means
@@ -317,7 +317,7 @@ detail you can fix with `rename()`.
 
 The `grep()` in that chunk is itself the lesson. To find the subject
 column, we had to search for it with a case-insensitive pattern,
-because we already knew — from having looked — that it might be
+because we already knew (from having looked) that it might be
 upper or lower case. A standard is what makes that search unnecessary.
 
 ### When two sources disagree about a fact
@@ -397,15 +397,14 @@ number. Both rows are things that genuinely happened and both were
 genuinely recorded.
 
 The file is not corrupt. It simply has no rule that says *one row per
-subject* — so nobody enforced one, and a plausible sequence of events
+subject*, so nobody enforced one, and a plausible sequence of events
 produced two. The standard's contribution here is the rule itself,
 stated in advance and checkable by a machine. You will apply it in
 [The DM Domain](sdtm-dm.qmd).
 :::
 
-This is the whole argument in miniature. Three ordinary questions —
-what is the subject column, what sex is subject `111-003`, how many
-subjects are there — and each one needed knowledge that is not in the
+This is the whole argument in miniature. Three ordinary questions (what is the subject column, what sex is subject `111-003`, how many
+subjects are there) and each one needed knowledge that is not in the
 data.
 
 ## Example 2: One Question, Three Answers
@@ -433,7 +432,7 @@ ae |> count(AETERM, sort = TRUE)
 ::: {.callout-tip}
 ### Run It Yourself
 
-Run the chunk above and read the whole list — all 25 rows, not just
+Run the chunk above and read the whole list: all 25 rows, not just
 the top. Find every row that a clinician would call nausea. There are
 four of them.
 :::
@@ -443,7 +442,7 @@ four of them.
 
 | What you see | What it means |
 |---|---|
-| `Nausea` (61), `NAUSEA` (2), `nausea` (2) | The same event, typed three ways. Case is not meaningful here — but R has no way to know that. |
+| `Nausea` (61), `NAUSEA` (2), `nausea` (2) | The same event, typed three ways. Case is not meaningful here, but R has no way to know that. |
 | `Diarrhoea` (56), `DIARRHOEA` (2), `diarrhoea` (1), `Diarrea` (1) | Case again, plus a misspelling. `Diarrea` is a typo that no case-folding will rescue. |
 | `nausea and vomitting` (1) | Two clinical events in one field, and a misspelling. This is not a formatting problem; it is a *data* problem. One AE record is describing two AEs. |
 | 25 rows in total | Twenty-five distinct strings for what sites believed were ordinary, common events. |
@@ -509,7 +508,7 @@ data either.
 |---|---|---|
 | `AETERM == 'Nausea'` | 61 | Exact match. Silently drops the four subjects whose term was typed in a different case. Wrong, and looks fine. |
 | `toupper(AETERM) == 'NAUSEA'` | 65 | Case-insensitive exact match. Catches `NAUSEA` and `nausea`. Still misses `nausea and vomitting`. |
-| `str_detect(toupper(AETERM), 'NAUSEA')` | 66 | Substring match. Catches all four spellings — but it counts `nausea and vomitting` as nausea, which is *arguably* right, while quietly failing to also count it as vomiting, which is *definitely* wrong. |
+| `str_detect(toupper(AETERM), 'NAUSEA')` | 66 | Substring match. Catches all four spellings, but it counts `nausea and vomitting` as nausea, which is *arguably* right, while quietly failing to also count it as vomiting, which is *definitely* wrong. |
 
 Three rules, all defensible, all written by a competent R programmer in
 good faith. Three different numbers in a safety table.
@@ -522,12 +521,12 @@ vocabulary problem returns a number.**
 
 The standard's answer has two halves, and this course covers both:
 
-- **Controlled terminology** — the column is not free text. It may hold
+- **Controlled terminology**: the column is not free text. It may hold
   only values from a published list, so `Nausea`, `NAUSEA` and `nausea`
   cannot coexist, because two of them are not legal values. You will
   check values against the published lists programmatically rather than
   from memory in [SDTM Concepts](sdtm-concepts.qmd).
-- **Coding** — a human (or a human-supervised process) maps each
+- **Coding**: a human (or a human-supervised process) maps each
   verbatim term a site typed to a dictionary term, and *both* are kept:
   the original words and the coded concept. `Diarrea` and
   `nausea and vomitting` are resolved by that step, not by code.
@@ -564,7 +563,7 @@ someone knew, at the time, why a subject's birth date was recorded as
 
 **Assuming the vendor's file is the trustworthy one**
 
-The lab file looks more authoritative — machine-generated, consistent
+The lab file looks more authoritative, machine-generated, consistent
 formatting, no free text. It is still the file with the wrong sex for
 subject `111-003` (or the right one; you do not know yet). Tidiness is
 not accuracy.
@@ -583,8 +582,8 @@ structurally valid number. Passing validation means you have not made a
 
 **"Standards are bureaucratic overhead imposed by regulators"**
 The regulation exists because the problem does, not the other way
-round. Everything demonstrated in this session — the disagreeing sex,
-the duplicated subject, the 25 spellings — would still be a problem for
+round. Everything demonstrated in this session (the disagreeing sex,
+the duplicated subject, the 25 spellings) would still be a problem for
 your own team six months from now if no agency existed.
 
 **"My data is clean, so this doesn't apply to me"**
@@ -595,7 +594,7 @@ problem in this session came from *clean data with no agreed meaning*.
 **"The CRO/vendor handles CDISC, so I don't need to know it"**
 Someone still has to decide what sex subject `111-003` is, and that
 someone needs to understand both the trial and the standard. Delegating
-the mapping does not delegate the decisions — it just means you approve
+the mapping does not delegate the decisions. It just means you approve
 decisions you did not make.
 
 **"Once the data conforms, the analysis is objective"**
@@ -647,7 +646,7 @@ and see how many different answers you can defend.
 2. Subject `101-012` was screened at one site and enrolled again at
    another after moving, producing two genuine, correctly recorded
    rows. The raw data has no rule saying one row per subject, so
-   nothing prevented it. The standard contributes the rule itself —
+   nothing prevented it. The standard contributes the rule itself,
    stated in advance, applying to every trial, and checkable by a
    machine rather than by someone noticing.
 
@@ -670,10 +669,10 @@ and see how many different answers you can defend.
    record and the missing unit live.)
 
 5. **Variable naming**: `SUBJID` in four files and `subjid` in the lab
-   file — the same concept, two names, so no join can be written
+   file: the same concept, two names, so no join can be written
    generically. **Dataset structure**: `ae_raw.csv` has one row per
    event (389 rows, fewer than the 400 subjects), while `lb_raw.csv`
-   has one row per subject per visit per test (12,389 rows) — "one row"
+   has one row per subject per visit per test (12,389 rows) - "one row"
    means something different in each. **Controlled vocabulary**:
    `AETERM` holds 25 distinct strings for 10 clinical concepts,
    including `Diarrea` and `nausea and vomitting`.

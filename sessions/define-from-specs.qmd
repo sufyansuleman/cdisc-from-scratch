@@ -33,7 +33,7 @@ dx <- "refs/DefineV2111_0"
 The other half of [Define-XML](define-xml.qmd). That session built the
 document by hand to show its structure; this one builds it the way a
 sponsor does, from a specification workbook, and examines what the
-production route costs you. Read them in order — this session assumes
+production route costs you. Read them in order. This session assumes
 you know what an `ItemGroupDef` is.
 :::
 
@@ -44,7 +44,7 @@ Run R from the project root, as always. This session uses three
 packages you have not seen before: **`defineR`**, **`openxlsx`** and
 **`metacore`**, all pinned in `renv.lock`.
 
-Everything here runs against artifacts committed in this repository —
+Everything here runs against artifacts committed in this repository -
 `data/spec/SDTM_METADATA.xlsx` and `data/define/`. You do not need the
 CDISC Define-XML package for the main path; one comparison in Example 3
 uses it, and is marked.
@@ -57,7 +57,7 @@ uses it, and is marked.
 it is a pre-1.0 package, and its interface may change. It is used here
 because it is the most direct open-source path in R from a
 specification workbook to a define.xml, and because the shape of what
-it does is what matters — not because it is settled infrastructure you
+it does is what matters, not because it is settled infrastructure you
 should build a submission pipeline on without further thought.
 :::
 
@@ -102,7 +102,7 @@ Here is the thing that surprises people coming to clinical programming
 from other data work: **in most sponsors, nobody writes define.xml.**
 
 The document that people write, argue about, review, version and sign
-off is a **specification workbook** — an Excel file, one sheet per kind
+off is a **specification workbook**: an Excel file, one sheet per kind
 of metadata, maintained by a standards or data-management group. It
 lists every dataset, every variable, its type, its length, its label,
 its origin, its codelist and its derivation. It is a controlled
@@ -120,7 +120,7 @@ governs everything else in this session:
 > fixes one submission; fixing the workbook fixes the study.**
 
 This repository mirrors that arrangement deliberately. `data/spec/SDTM_METADATA.xlsx`
-is a committed artifact — a binary file that git cannot show you diffs
+is a committed artifact: a binary file that git cannot show you diffs
 of, which is a genuine cost and also genuinely how this works. `R/build_define.R`
 **reads** that workbook and never writes it. There is a second script,
 `R/author_spec_workbook.R`, which created the workbook once and stands
@@ -226,7 +226,7 @@ Three files from one workbook:
 | `define.sdtm.html` | The browsable rendering a reviewer opens |
 | `check.sdtm.pdf` | `defineR`'s own check report |
 
-The HTML is worth dwelling on. A reviewer does not read raw XML — they
+The HTML is worth dwelling on. A reviewer does not read raw XML. They
 open define.xml in a browser, where a stylesheet turns it into a
 navigable document. That rendering is not a courtesy the tool added; it
 is produced by an XSL stylesheet CDISC publishes, and the reference to
@@ -245,7 +245,7 @@ c(datasets  = length(xml_find_all(doc, "//d1:ItemGroupDef")),
 ### Reading the Output Line by Line
 
 Two datasets and six codelists match the workbook exactly. **52
-`ItemDef`s from 48 variables** does not — and the extra four are not a
+`ItemDef`s from 48 variables** does not, and the extra four are not a
 bug.
 
 They are the value-level metadata. `VALUELEVEL_METADATA` has four rows,
@@ -281,7 +281,7 @@ as.logical(xml_validate(doc, schema_21))
 ```
 
 `defineR` emits **Define-XML 2.0**, published April 2014. The current
-standard is 2.1. It is tempting to file that as a version lag — an old
+standard is 2.1. It is tempting to file that as a version lag: an old
 tool that will catch up. Look at what actually differs before accepting
 that reading.
 
@@ -321,7 +321,7 @@ setdiff(emitted, permitted)
 ```
 
 **`CRF` and `eDT` are not values that 2.1 permits.** They are not
-missing a `Source` — they do not exist. 2.1 did not extend origin; it
+missing a `Source`. They do not exist. 2.1 did not extend origin; it
 reorganised it. The old types were re-expressed as pairs:
 
 | Define-XML 2.0 | Define-XML 2.1 |
@@ -349,7 +349,7 @@ element, the way [Define-XML](define-xml.qmd) built it:
 length(xml_find_all(doc, "//def:Class"))
 ```
 
-None. It is not missing — in 2.0 the dataset class is an **attribute**
+None. It is not missing, in 2.0 the dataset class is an **attribute**
 on `ItemGroupDef`:
 
 ```{r ex3-class-attr}
@@ -367,7 +367,7 @@ c(as_element   = length(xml_find_all(ex21, "//def:Class")),
                                      "Class"))))
 ```
 
-So the class moved from an attribute to an element between versions —
+So the class moved from an attribute to an element between versions,
 and the values changed casing too, from `Findings` to the `FINDINGS`
 that 2.1's `ItemGroupClass` enumeration requires. The previous session
 demonstrated deliberately that a lowercased class name fails schema
@@ -383,8 +383,8 @@ xml_ns(doc)
 
 The declared extension namespace ends `v2.0`. This is why the 2.1
 validation returned `FALSE` immediately: the document is not claiming
-to be a 2.1 document at all. Everything above — the retired origin
-types, the relocated class — follows from that one declaration.
+to be a 2.1 document at all. Everything above (the retired origin
+types, the relocated class) follows from that one declaration.
 
 ## Example 4: Reading the Metadata Back
 
@@ -417,7 +417,7 @@ get_control_term(mc, LBNRIND)
 
 ### Why this matters
 
-Consider who can run that code. Not just the sponsor — **anyone holding
+Consider who can run that code. Not just the sponsor - **anyone holding
 the submission**. A reviewer receiving define.xml can reconstruct the
 sponsor's entire declared metadata programmatically and check the
 datasets against it.
@@ -433,7 +433,7 @@ trust you and does not have to ask.
 
 **The tool validates against the wrong schema.** `defineR`'s own
 `check = TRUE` produces `check.sdtm.pdf`, and the document validates
-cleanly — against 2.0. A green check from a tool tells you the tool is
+cleanly, against 2.0. A green check from a tool tells you the tool is
 satisfied. `R/build_define.R` therefore asserts *both* schemas
 explicitly, and is written to complain if the 2.1 result ever changes,
 so that a future `defineR` gaining 2.1 support is noticed rather than
@@ -474,7 +474,7 @@ supposed to catch and a schema will not.
 
 ## Exercises
 
-[Exercise 9 — Define-XML from a Specification Workbook](../exercises/define-from-specs.qmd)
+[Exercise 9: Define-XML from a Specification Workbook](../exercises/define-from-specs.qmd)
 adds a domain to the workbook, regenerates, and asks what it would take
 to close the gap to 2.1.
 
@@ -499,8 +499,8 @@ to close the gap to 2.1.
 ### Answers
 
 1. **In `data/spec/SDTM_METADATA.xlsx`, then regenerate.** Editing the
-   XML fixes one file and leaves the workbook — the source of truth,
-   and the thing the next regeneration reads — still wrong. It also
+   XML fixes one file and leaves the workbook (the source of truth,
+   and the thing the next regeneration reads) still wrong. It also
    makes the two disagree, so the next person cannot tell which is
    intended.
 
@@ -512,7 +512,7 @@ to close the gap to 2.1.
 
 3. **Because a missing `Source` is an omission, and `eDT` is a
    retirement.** Adding `Source` to a 2.0 document would leave `eDT`
-   still invalid — it is not in 2.1's `OriginType` enumeration at all.
+   still invalid. It is not in 2.1's `OriginType` enumeration at all.
    The conversion is `eDT` → `Collected` + `Vendor`: one value becomes
    a pair, and you cannot get there by adding an attribute.
 
@@ -520,12 +520,12 @@ to close the gap to 2.1.
    2.0.** You have not demonstrated conformance to the current
    standard, nor to the 90 Specification-sourced conformance rules that
    no schema check touches (see [Define-XML](define-xml.qmd)), nor that
-   the metadata is *correct* — a confidently wrong label validates
+   the metadata is *correct*: a confidently wrong label validates
    perfectly.
 
 5. **Check it programmatically.** `define_to_metacore()` turns the
    submission's declared metadata back into data, so a reviewer can
-   test the datasets against the sponsor's own claims — codelists,
-   types, lengths, derivations — without asking the sponsor anything.
+   test the datasets against the sponsor's own claims (codelists,
+   types, lengths, derivations) without asking the sponsor anything.
    A PDF is readable; only this is checkable.
 :::

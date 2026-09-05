@@ -1,12 +1,12 @@
 ---
-title: "Exercise 7 — Tables, Listings and Figures"
+title: "Exercise 7: Tables, Listings and Figures"
 ---
 
 ## Goal
 
 Extend the demographics table from [the TLF session](../sessions/tlf.qmd)
 with an age-group row, then attempt the AE summary table the session's
-own citation calls for — and find out, on real data, exactly what a
+own citation calls for, and find out, on real data, exactly what a
 missing MedDRA coding costs a submission-ready report.
 
 ## Setup
@@ -31,8 +31,8 @@ adlb <- read_csv("data/adam/adlb.csv", show_col_types = FALSE)
 
    Two subjects per arm have no `AGEGR1`, because they have no `AGE`
    (the D1 defect from [The DM Domain](sdtm-dm.qmd)). Decide how those
-   four subjects should appear in your table — as a stated `Missing`
-   row, folded silently into one of the age bands, or dropped — and
+   four subjects should appear in your table (as a stated `Missing`
+   row, folded silently into one of the age bands, or dropped) and
    justify the choice in one sentence. There is a wrong answer among
    those three; say which one and why.
 
@@ -42,13 +42,13 @@ adlb <- read_csv("data/adam/adlb.csv", show_col_types = FALSE)
    Organ Class and Preferred Term**. Build that table for GLPX-001.
 
    You will not be able to. Find out precisely why, using the data
-   rather than assuming it — check what columns actually exist in ADAE,
+   rather than assuming it. Check what columns actually exist in ADAE,
    and what is populated in them. State the reason in one sentence,
    citing back to the constraint established in [ADAE](../sessions/adae.qmd).
 
    Now build the closest thing you *can* build: the same summary at the
    level of the verbatim `AETERM` instead of the coded preferred term.
-   Look at your result closely — several clinical concepts appear more
+   Look at your result closely, several clinical concepts appear more
    than once, under slightly different spellings or capitalisation.
    Count how many distinct `AETERM` values there are, and how many
    remain after folding case. Then answer: why would a real submission
@@ -61,7 +61,7 @@ adlb <- read_csv("data/adam/adlb.csv", show_col_types = FALSE)
    from baseline in HbA1c at Week 26, by arm, with `n`.
 
    Build it. Then, separately, build a listing of the four subjects
-   with missing `AGE` — one row each, with `USUBJID`, `TRT01P`, `SEX`
+   with missing `AGE`: one row each, with `USUBJID`, `TRT01P`, `SEX`
    and `AGEGR1`.
 
    Answer in one sentence each:
@@ -88,7 +88,7 @@ adlb <- read_csv("data/adam/adlb.csv", show_col_types = FALSE)
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-Task 1: reuse the pattern the session used for `SEX` and `RACE` —
+Task 1: reuse the pattern the session used for `SEX` and `RACE` -
 `count()`, join the arm `N`, format, `pivot_wider()`. For the missing
 subjects, think about what a null percentage would even mean: 2 out of
 what denominator?
@@ -102,7 +102,7 @@ looking for is visible the moment you `arrange()` the result
 alphabetically.
 
 Task 3: the Week 26 table is one `filter()` and one `summarise()` on
-`adlb`, not a new derivation — every value it needs already exists on
+`adlb`, not a new derivation: every value it needs already exists on
 each row. The listing is a `filter()` and a `select()` on `adsl`, no
 `count()` involved.
 :::

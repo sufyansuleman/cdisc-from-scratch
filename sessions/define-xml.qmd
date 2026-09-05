@@ -44,10 +44,10 @@ Unlike every earlier session, this one reads files that this repository
 cannot ship. The Define-XML v2.1 package is copyright CDISC and
 licensed to you, not redistributable by a course.
 
-Download it yourself. It is free — a CDISC account, not a paid
+Download it yourself. It is free: a CDISC account, not a paid
 membership:
 
-- **Define-XML v2.1** —
+- **Define-XML v2.1** -
   <https://www.cdisc.org/standards/data-exchange/define-xml/define-xml-v2-1>
 
 Unzip it into a `refs/` folder at the project root, so that the
@@ -64,7 +64,7 @@ gitignored in this repository for exactly this reason.
 
 The package used to write this session is **v2.1.11**, whose `README.md`
 is dated 2026-03-27. The specification PDF inside it is **Version 2.1
-(Final), 2019-05-15** — the point releases update the schemas, not the
+(Final), 2019-05-15**: the point releases update the schemas, not the
 prose. That gap between a frozen document and a maintained schema turns
 out to matter, and Example 3 is where it bites.
 :::
@@ -79,7 +79,7 @@ before reading the explanation that follows. Run R from the project
 root, as in earlier sessions.
 
 The only package this session needs beyond the tidyverse is
-**`xml2`**, which you already have — it is a tidyverse dependency. We
+**`xml2`**, which you already have. It is a tidyverse dependency. We
 build the XML by hand, element by element. That is slower than the
 tools a sponsor would actually use, and it is the point: you cannot
 review a define.xml you have never assembled.
@@ -132,8 +132,8 @@ sponsor was implementing when they chose those columns.
 
 **define.xml is where all of that lives.** It is a single XML document
 submitted alongside the datasets, and it carries the metadata: every
-dataset, every variable, every codelist, every derivation, and — the
-part this session keeps coming back to — where each value came from.
+dataset, every variable, every codelist, every derivation, and (the
+part this session keeps coming back to) where each value came from.
 
 The specification is blunt about the purpose:
 
@@ -143,8 +143,8 @@ The specification is blunt about the purpose:
 
 **Machine-readable** is doing real work in that sentence. A PDF
 describing your datasets would be readable. It would not be *checkable*.
-Everything this session does in its last third — validating against a
-schema, running conformance rules — is possible only because the format
+Everything this session does in its last third (validating against a
+schema, running conformance rules) is possible only because the format
 was designed for a program to read first and a person second.
 
 ### Defs and Refs
@@ -158,7 +158,7 @@ the document stops looking arbitrary:
 > (Define-XML v2.1, §3.5)
 
 So a variable is *declared once*, in an `ItemDef`. A dataset that
-contains that variable does not repeat the declaration — it points at
+contains that variable does not repeat the declaration. It points at
 it, with an `ItemRef`. The link is carried by an identifier called an
 **OID**.
 
@@ -200,7 +200,7 @@ So the intuition to carry through the rest of this session:
 
 > **A define.xml is a web of definitions held together by names that are
 > deliberately meaningless. The structure lives entirely in which name
-> points at which — not in what the names say.**
+> points at which, not in what the names say.**
 
 That has a practical consequence you will hit in Example 1 and again in
 "What Can Go Wrong": if an `ItemRef` points at an OID that no `ItemDef`
@@ -230,7 +230,7 @@ The document nests like this, outermost first:
 | `CodeList` | A set of permitted values |
 
 Note where `ItemDef` sits: **beside** `ItemGroupDef`, not inside it.
-That is the Def/Ref idea made concrete — the dataset holds `ItemRef`
+That is the Def/Ref idea made concrete: the dataset holds `ItemRef`
 pointers, and the definitions live at the same level as the dataset,
 available to be shared.
 
@@ -274,7 +274,7 @@ mdv <- xml_add_child(
 ```
 
 Two attributes are worth pausing on. `FileType="Snapshot"` says this
-document describes data as of a moment, rather than a set of changes —
+document describes data as of a moment, rather than a set of changes,
 which is what a submission always is. And `def:DefineVersion` is the
 document declaring which version of Define-XML *it* is written to; not
 which version of SDTM it describes. Those are different things, and the
@@ -309,7 +309,7 @@ the document against.
 
 The reason for the change is visible in the shape: 2.0 had *attributes*,
 so a document could name one standard. 2.1 has *elements*, so a document
-can list several — which a real submission needs when some domains were
+can list several, which a real submission needs when some domains were
 built to one SDTMIG version and some to another.
 
 ### The dataset, and pointers to its variables
@@ -343,14 +343,14 @@ xml_add_child(lf, "def:title", "dm.xpt")
 
 Read the `ItemRef` lines and notice what is *not* there: no label, no
 data type, no length, no origin. An `ItemRef` says "this dataset
-contains that variable, in this position, and it is a key" — nothing
+contains that variable, in this position, and it is a key": nothing
 about what the variable *is*. `def:StandardOID="STD.1"` points back at
 the `def:Standard` declared a moment ago, so this dataset is explicitly
 an SDTMIG v3.4 dataset.
 
 `def:Class="SPECIAL PURPOSE"` is DM's SDTM class, the same classification
 [SDTM Concepts](sdtm-concepts.qmd) introduced. Keep an eye on that
-element — Example 3 comes back to it.
+element, Example 3 comes back to it.
 
 `def:leaf` is the link to the actual data file. This is the line that
 connects the metadata document to `dm.xpt` sitting beside it in the
@@ -411,7 +411,7 @@ for (v in c("F", "M")) {
 xml_add_child(cl, "Alias", Context = "nci:ExtCodeID", Name = "C66731")
 ```
 
-That `C66731` should look familiar — it is the NCI code for the CDISC
+That `C66731` should look familiar. It is the NCI code for the CDISC
 `SEX` codelist, the same one checked programmatically with
 `sdtm.terminology` back in [SDTM Concepts](sdtm-concepts.qmd). The
 `Alias` elements on each `EnumeratedItem` carry the codes for the
@@ -439,7 +439,7 @@ as.logical(result)
 v2.1 document.
 
 That is worth a moment. `xml_validate()` checked your file against
-`define2-1-0.xsd` — the same schema CDISC publishes and the same one a
+`define2-1-0.xsd`: the same schema CDISC publishes and the same one a
 sponsor's validation software loads. Nothing about this was simulated or
 approximated. Roughly forty lines of R produced a file a validator
 accepts.
@@ -484,7 +484,7 @@ combinations that are not valid. Two rows matter for LB:
 | `Derived` | X | X | Lab data, ECG | **SDTM** |
 
 Read the `Collected` row. A central lab result is not collected by the
-investigator — it is produced by the laboratory, which is a **Vendor**.
+investigator. It is produced by the laboratory, which is a **Vendor**.
 The spec's own example in that cell is literally "Lab data, ECG". And
 `Collected` + `Sponsor` is marked `X`: invalid, because the sponsor
 observes nothing.
@@ -509,7 +509,7 @@ knitr::kable(lb_origin, col.names = c("Variable", "Type", "Source", "Why"))
 
 `LBTESTCD` and `DOMAIN` are `Assigned`, which the spec defines to
 include "values set independently of any subject-related data value in
-order to complete a dataset" — and names `DOMAIN` and `--TESTCD` as its
+order to complete a dataset", and names `DOMAIN` and `--TESTCD` as its
 examples (§4.3.2.1).
 
 ### Run It Yourself
@@ -538,7 +538,7 @@ as.logical(xml_validate(read_xml(out2), schema))
 
 Note what that chunk does **not** do: call `add_item()`. The helper
 appends its `ItemDef` to the end of `MetaDataVersion`, which by now
-means *after* the `CodeList` — and the schema requires every `ItemDef`
+means *after* the `CodeList`, and the schema requires every `ItemDef`
 to precede every `CodeList`. Appending returns `FALSE`, for exactly the
 reason "What Can Go Wrong" is about to demonstrate deliberately.
 
@@ -588,7 +588,7 @@ get_enum(enum, "ItemGroupSubClass")
 ```
 
 `ADVERSE EVENT` is a **SubClass**, in a different list. So the choice
-ADAE made is not a matter of emphasis or documentation style — it is a
+ADAE made is not a matter of emphasis or documentation style. It is a
 choice between two attributes on two different enumerated lists, and
 define.xml forces you to declare which one you meant.
 
@@ -612,7 +612,7 @@ It used to be there. The package's own `README.md` records the removal:
 Added at v2.1.9, deleted at v2.1.11. Two point releases.
 
 Now check the specification PDF against the same schema for SDTM
-versions. §4.1.1 lists SDTMIG allowable versions as 3.1.2, 3.2 and 3.3 —
+versions. §4.1.1 lists SDTMIG allowable versions as 3.1.2, 3.2 and 3.3,
 and this course uses v3.4, which Example 1 declared:
 
 ```{r ex3-sdtmig}
@@ -679,7 +679,7 @@ the set {'ADAM OTHER', 'BASIC DATA STRUCTURE', ..., 'SPECIAL PURPOSE',
 ```
 
 Note that the error prints the entire permitted set. Schema errors in
-Define-XML are unusually informative — worth reading rather than
+Define-XML are unusually informative, worth reading rather than
 skimming.
 
 **Element ordering.** Moving `def:Class` above the `Description` inside
@@ -699,7 +699,7 @@ respect to the Define-XML schema" (§3.6).
 
 ### The failure the schema does not catch
 
-Take the document from Example 1 and break the link — point an `ItemRef`
+Take the document from Example 1 and break the link, point an `ItemRef`
 at an OID that no `ItemDef` declares:
 
 ```{r wcg-dangling}
@@ -712,7 +712,7 @@ xml_validate(broken, schema)
 
 `TRUE`. The document is schema-valid and structurally broken: a dataset
 claims a variable that is defined nowhere. This is exactly the
-consequence of the central intuition — the schema knows `ItemOID` must
+consequence of the central intuition: the schema knows `ItemOID` must
 be a string, because that is all a schema can know. It cannot know
 whether the string points at anything, because OIDs have no meaning to
 check against.
@@ -760,7 +760,7 @@ missing_method
 
 The file you built and validated in Example 1 is non-conformant, and
 `xml_validate()` returned `TRUE` on it. That is not a mistake in the
-example — it is the most useful thing this session can show you.
+example. It is the most useful thing this session can show you.
 Fixing it means adding a `MethodDef` that states the derivation and a
 `MethodOID` on the `ItemRef` that points at it, which is what
 [Exercise 8](../exercises/define-xml.qmd) asks you to do.
@@ -774,7 +774,7 @@ Fixing it means adding a `MethodDef` that states the derivation and a
 - **"Validation means conformance."** 135 of 225 rules, at best. Say
   "schema-valid" when you mean schema-valid.
 - **"OID naming conventions are part of the standard."** They are not
-  (§3.5.1). Use them — they make files readable — but never rely on an
+  (§3.5.1). Use them (they make files readable) but never rely on an
   OID's *shape* to infer what it points at. Follow the link.
 - **"Origin is one value."** For SDTM and ADaM, Type *and* Source are
   both required (§4.3.2.1, §4.3.2.2).
@@ -784,7 +784,7 @@ Fixing it means adding a `MethodDef` that states the derivation and a
 
 ## Exercises
 
-[Exercise 8 — Define-XML](../exercises/define-xml.qmd) extends this
+[Exercise 8: Define-XML](../exercises/define-xml.qmd) extends this
 document: a `MethodDef` to resolve rule 73, an `ItemGroupDef` for LB
 with value-level metadata, and the variable this course cannot populate
 at all.
@@ -815,23 +815,23 @@ at all.
 
 1. **Yes, still conformant.** The specification does not mandate an OID
    format and states that random identifiers are equally valid (§3.5.1).
-   What is lost is human readability — nothing machine-checkable. This
+   What is lost is human readability: nothing machine-checkable. This
    is the central intuition: the structure lives in which OID points at
    which, not in what the OIDs say.
 
 2. **`Type="Collected"`, `Source="Vendor"`.** The value is observed and
    recorded, so the Type is `Collected`; a central laboratory is a
    vendor, and §4.3.2.1's example in that cell is "Lab data, ECG".
-   `Collected`/`Sponsor` is marked `X` in the table — invalid, because
+   `Collected`/`Sponsor` is marked `X` in the table, invalid, because
    the sponsor observes nothing. Both attributes are required for SDTM.
 
-3. **At most 135 of 225 — the Schema-sourced rules.** The remaining 90
+3. **At most 135 of 225: the Schema-sourced rules.** The remaining 90
    come from the specification and no schema validation touches them
    (§3.6). Rule 73 is the example: the Example 1 document validates and
    still fails it.
 
 4. **`ADaM-OCCDSIG` is not in the `StandardName` enumeration in
-   v2.1.11** — it was added at v2.1.9 and deleted at v2.1.11 (package
+   v2.1.11**. It was added at v2.1.9 and deleted at v2.1.11 (package
    release notes). Declare `Name="ADaMIG"` instead, and record the
    occurrence structure through `def:Class="OCCURRENCE DATA STRUCTURE"`
    on the `ItemGroupDef`, which is where that decision belongs anyway.

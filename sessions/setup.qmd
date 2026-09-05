@@ -45,7 +45,7 @@ macOS and Linux users do not need this step.
 In regulated clinical work, "it worked on my machine" is not a defence.
 A submission has to be reproducible years after it was built, by
 somebody who is not you, on a machine that does not exist yet. That is
-not a nice-to-have — it is what the whole apparatus of standards,
+not a nice-to-have. It is what the whole apparatus of standards,
 define.xml and reviewer guides exists to support.
 
 So this course practises what it teaches. It uses
@@ -72,7 +72,7 @@ Then open **`cdisc-with-r.Rproj`** in RStudio. This matters more than it
 looks: opening the project sets R's working directory to the project
 root, which is what every code chunk in the course assumes. Paths in the
 sessions are written as `data/sdtm/dm.csv`, not
-`../data/sdtm/dm.csv` — they only resolve if you are at the root.
+`../data/sdtm/dm.csv`. They only resolve if you are at the root.
 
 If you use Positron or run R from a terminal, `cd` to the repository
 root before starting R, and confirm with:
@@ -87,7 +87,7 @@ Opening the project runs `.Rprofile`, which activates renv and points
 your session at [Posit Public Package
 Manager](https://packagemanager.posit.co/) for precompiled binaries.
 You will usually see renv announce itself, and often a note that the
-library is out of sync — that is expected on a fresh clone.
+library is out of sync, that is expected on a fresh clone.
 
 Run this once, in the R console at the project root:
 
@@ -102,7 +102,7 @@ this fast on Windows and macOS by default, and on Linux via the
 `__linux__/jammy` P3M repository the `.Rprofile` selects. If it starts
 compiling packages from source and crawling, that is the signal
 something is off with the repository configuration rather than with
-you — see the troubleshooting section below.
+you. See the troubleshooting section below.
 
 A successful restore ends quietly, with no error, and:
 
@@ -124,7 +124,7 @@ can answer a question:
 library(tidyverse)
 library(sdtm.terminology)
 
-# 1. the data ships with the repo — this should print 401 rows
+# 1. the data ships with the repo. This should print 401 rows
 dm_raw <- read_csv("data/raw/dm_raw.csv", show_col_types = FALSE)
 nrow(dm_raw)
 
@@ -136,7 +136,7 @@ Sys.which("quarto")
 ```
 
 You are ready when all three run without error: the read returns **401
-rows** (yes, 401 — 400 subjects and one duplicate enrolment, which you
+rows** (yes, 401, 400 subjects and one duplicate enrolment, which you
 will meet in [Why Standards](why-standards.qmd)), the codelist lookup
 returns the `SEX` codelist `C66731`, and `Sys.which()` returns a path
 rather than an empty string.
@@ -155,14 +155,14 @@ Rtools44 is missing or does not match your R version. Install it, restart
 R, try again.
 
 **Packages compile from source and take forever.** Check that
-`.Rprofile` ran — `getOption("repos")` should show a
+`.Rprofile` ran - `getOption("repos")` should show a
 `packagemanager.posit.co` entry. If it does not, you probably opened R
 somewhere other than the project root.
 
 **`renv::restore()` reports nothing to do, but `library(tidyverse)`
 then fails.** The lockfile and your library disagree. Run
 `renv::status()` first and read what it says before installing anything
-by hand — that message is the diagnosis.
+by hand, that message is the diagnosis.
 
 **A code chunk says it cannot find `data/raw/dm_raw.csv`.** Your working
 directory is not the project root. Run `getwd()` and, if needed, reopen

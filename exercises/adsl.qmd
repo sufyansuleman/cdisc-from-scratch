@@ -1,5 +1,5 @@
 ---
-title: "Exercise 4 — ADSL"
+title: "Exercise 4: ADSL"
 ---
 
 ## Goal
@@ -28,7 +28,7 @@ persisted copy from `data/adam/adsl.csv`.
 ## Task
 
 1. **(Guided) A second age grouping.** Add `AGEGR2` and `AGEGR2N` using
-   three bands — `<50`, `50-64`, `>=65`. Confirm the one-to-one
+   three bands - `<50`, `50-64`, `>=65`. Confirm the one-to-one
    relationship holds and that the two variables are null on exactly the
    same rows. Why is there no `is_term()` check to run on `AGEGR2`?
 
@@ -63,7 +63,7 @@ persisted copy from `data/adam/adsl.csv`.
 - [ ] `AAGE` derived under the SAP rule with `AGE` unmodified; the
       governing rule named and `AAGE`'s conditional requirement checked
 - [ ] The randomized-not-dosed scenario produces `RANDFL = "Y"`,
-      `ITTFL = "Y"`, `SAFFL = "N"` — with no nulls
+      `ITTFL = "Y"`, `SAFFL = "N"`, with no nulls
 - [ ] Efficacy vs safety population membership explained
 
 ::: {.callout-tip collapse="true"}
@@ -74,13 +74,13 @@ session applies (ADaMIG v1.3, §3.2). For the second part, recall what
 made `PARAMCD` uncheckable in [ADaM
 Concepts](../sessions/adam-concepts.qmd).
 
-Task 2: look up `AAGE` in ADaMIG v1.3 §3.2 — read its Core designation
+Task 2: look up `AAGE` in ADaMIG v1.3 §3.2. Read its Core designation
 and the exact wording of when it is required. The rule preventing you
 from writing into `AGE` is in §3.1.1, and the session quotes it.
 
 Task 3: you are changing one input, not one flag. Ask which condition
-each flag is derived *from* — `SAFFL`'s condition is about exposure, the
-other two are about randomization — then let the derivations you already
+each flag is derived *from* - `SAFFL`'s condition is about exposure, the
+other two are about randomization, then let the derivations you already
 wrote produce the three values themselves.
 :::
 

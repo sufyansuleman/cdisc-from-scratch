@@ -1,12 +1,12 @@
 ---
-title: "Exercise 10 — The Analysis Data Reviewer's Guide"
+title: "Exercise 10: The Analysis Data Reviewer's Guide"
 ---
 
 ## Goal
 
 Close the conformance finding the session reports, at its source rather
 than in the output, and then write the one narrative ADRG section this
-course can honestly ask you to write — because you have the material
+course can honestly ask you to write, because you have the material
 for it.
 
 ## Setup
@@ -37,8 +37,8 @@ adrg <- list.files("data/adrg", full.names = TRUE) |>
    `VARIABLE_METADATA`, regenerate with `R/build_define.R`, and re-run
    the check.
 
-   The derivations must describe what `R/build_sdtm.R` actually does —
-   read it. Do not write "derived per SAP" thirteen times; a method
+   The derivations must describe what `R/build_sdtm.R` actually does.
+   Read it. Do not write "derived per SAP" thirteen times; a method
    that says nothing is worse than an honest finding, because it
    suppresses the finding without supplying the information.
 
@@ -52,7 +52,7 @@ adrg <- list.files("data/adrg", full.names = TRUE) |>
 
    Section 6.2 should now be clean. Check whether anything **else**
    changed, and explain each difference you find. In particular, look
-   at the standards inventory — it reads the Define-XML version out of
+   at the standards inventory. It reads the Define-XML version out of
    the regenerated file rather than restating it, which is either a
    safeguard or a trap depending on what you changed.
 
@@ -63,7 +63,7 @@ adrg <- list.files("data/adrg", full.names = TRUE) |>
 
 3. **(Semi-guided) Write section 3.4.** Visit windowing and record
    selection is a narrative section, and it is the one narrative
-   section you have everything you need for — because
+   section you have everything you need for, because
    [ADLB](adlb.qmd) established the facts and argued the decision.
 
    Write it. Real prose, aimed at a reviewer who does not know this
@@ -102,7 +102,7 @@ Task 1: the thirteen are mostly DM reference dates and LB standardised
 results. `R/build_sdtm.R` has the logic; `study_day()` in particular is
 worth quoting rather than paraphrasing. For `LBDRVFL`, re-read what
 [Findings](sdtm-findings.qmd) established about why it is null, then
-check the Define-XML `Type` definitions — `Derived` means a value
+check the Define-XML `Type` definitions - `Derived` means a value
 "calculated by an algorithm or reproducible rule", and a variable with
 no values has not been calculated by anything.
 
@@ -112,11 +112,11 @@ inventory changes with it and that is the safeguard working. If you
 edited `DEFINE_HEADER_METADATA` you may have changed something you did
 not intend.
 
-Task 3: the numbers are all in [ADLB](adlb.qmd) — the 342 pairs, the
+Task 3: the numbers are all in [ADLB](adlb.qmd), the 342 pairs, the
 `ADY <= 1` rule, and the -1.116 versus -1.138 comparison. The
 Completion Guidelines section 3.4 lists the questions the section must
 answer; answer those, in order, in prose. Resist writing a paragraph
-about why baseline definitions matter in general — a reviewer wants
+about why baseline definitions matter in general: a reviewer wants
 this study's rule, not a tutorial.
 :::
 

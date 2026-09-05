@@ -306,61 +306,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-dm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exercise 1 — SDTM: The DM Domain</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exercise 1: SDTM Demographics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-events.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise 2 — SDTM: Events (Adverse Events)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise 2: SDTM Events (Adverse Events)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/sdtm-findings.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 3 — SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 3: SDTM Findings (Labs &amp; Vital Signs)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/adsl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 4 — ADSL</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 4: ADSL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/adae.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5 — ADAE</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5: ADAE</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/adlb.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exercise 6 — ADLB</span></span></a>
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exercise 6: ADLB</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/tlf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Exercise 7 — Tables, Listings and Figures</span></span></a>
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Exercise 7: Tables, Listings and Figures</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/define-xml.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></span></a>
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8: Define-XML</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/define-from-specs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></span></a>
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9: Define-XML from a Specification Workbook</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/adrg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10 — The Analysis Data Reviewer’s Guide</span></span></a>
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10: The Analysis Data Reviewer’s Guide</span></span></a>
   </div>
 </li>
       </ul>
@@ -502,7 +502,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="why-this-course-pins-its-packages" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="why-this-course-pins-its-packages"><span class="header-section-number">1.2</span> Why This Course Pins Its Packages</h2>
-<p>In regulated clinical work, “it worked on my machine” is not a defence. A submission has to be reproducible years after it was built, by somebody who is not you, on a machine that does not exist yet. That is not a nice-to-have — it is what the whole apparatus of standards, define.xml and reviewer guides exists to support.</p>
+<p>In regulated clinical work, “it worked on my machine” is not a defence. A submission has to be reproducible years after it was built, by somebody who is not you, on a machine that does not exist yet. That is not a nice-to-have. It is what the whole apparatus of standards, define.xml and reviewer guides exists to support.</p>
 <p>So this course practises what it teaches. It uses <a href="https://rstudio.github.io/renv/"><strong>renv</strong></a> to record the exact version of every package it depends on in a file called <code>renv.lock</code>. When you restore that lockfile, you get the same package versions the author had, not whatever CRAN is serving today.</p>
 <p><code>renv.lock</code> is a teaching artifact, not overhead. It is the smallest honest example of the thing the rest of the course is about: <strong>a result you can hand to someone else and have them reproduce exactly.</strong></p>
 </section>
@@ -511,17 +511,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Clone it, or download it as a ZIP from <a href="https://github.com/sufyansuleman/cdisc-with-r">github.com/sufyansuleman/cdisc-with-r</a>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sufyansuleman/cdisc-with-r.git</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> cdisc-with-r</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then open <strong><code>cdisc-with-r.Rproj</code></strong> in RStudio. This matters more than it looks: opening the project sets R’s working directory to the project root, which is what every code chunk in the course assumes. Paths in the sessions are written as <code>data/sdtm/dm.csv</code>, not <code>../data/sdtm/dm.csv</code> — they only resolve if you are at the root.</p>
+<p>Then open <strong><code>cdisc-with-r.Rproj</code></strong> in RStudio. This matters more than it looks: opening the project sets R’s working directory to the project root, which is what every code chunk in the course assumes. Paths in the sessions are written as <code>data/sdtm/dm.csv</code>, not <code>../data/sdtm/dm.csv</code>. They only resolve if you are at the root.</p>
 <p>If you use Positron or run R from a terminal, <code>cd</code> to the repository root before starting R, and confirm with:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()   <span class="co"># should end in /cdisc-with-r</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="restore-the-course-library" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="restore-the-course-library"><span class="header-section-number">1.4</span> Restore the Course Library</h2>
-<p>Opening the project runs <code>.Rprofile</code>, which activates renv and points your session at <a href="https://packagemanager.posit.co/">Posit Public Package Manager</a> for precompiled binaries. You will usually see renv announce itself, and often a note that the library is out of sync — that is expected on a fresh clone.</p>
+<p>Opening the project runs <code>.Rprofile</code>, which activates renv and points your session at <a href="https://packagemanager.posit.co/">Posit Public Package Manager</a> for precompiled binaries. You will usually see renv announce itself, and often a note that the library is out of sync, that is expected on a fresh clone.</p>
 <p>Run this once, in the R console at the project root:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>renv lists what it is about to install and asks you to confirm. Say yes.</p>
-<p><strong>What to expect.</strong> Several minutes, and a lot of output. Binaries make this fast on Windows and macOS by default, and on Linux via the <code>__linux__/jammy</code> P3M repository the <code>.Rprofile</code> selects. If it starts compiling packages from source and crawling, that is the signal something is off with the repository configuration rather than with you — see the troubleshooting section below.</p>
+<p><strong>What to expect.</strong> Several minutes, and a lot of output. Binaries make this fast on Windows and macOS by default, and on Linux via the <code>__linux__/jammy</code> P3M repository the <code>.Rprofile</code> selects. If it starts compiling packages from source and crawling, that is the signal something is off with the repository configuration rather than with you. See the troubleshooting section below.</p>
 <p>A successful restore ends quietly, with no error, and:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">status</span>()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No issues found -- the project is in a consistent state.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -533,7 +533,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdtm.terminology)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. the data ships with the repo — this should print 401 rows</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. the data ships with the repo. This should print 401 rows</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>dm_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/dm_raw.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(dm_raw)</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
@@ -542,15 +542,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Quarto is on your PATH</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.which</span>(<span class="st">"quarto"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You are ready when all three run without error: the read returns <strong>401 rows</strong> (yes, 401 — 400 subjects and one duplicate enrolment, which you will meet in <a href="../sessions/why-standards.html">Why Standards</a>), the codelist lookup returns the <code>SEX</code> codelist <code>C66731</code>, and <code>Sys.which()</code> returns a path rather than an empty string.</p>
+<p>You are ready when all three run without error: the read returns <strong>401 rows</strong> (yes, 401, 400 subjects and one duplicate enrolment, which you will meet in <a href="../sessions/why-standards.html">Why Standards</a>), the codelist lookup returns the <code>SEX</code> codelist <code>C66731</code>, and <code>Sys.which()</code> returns a path rather than an empty string.</p>
 <p>To confirm the whole book builds, run this in a terminal at the project root:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="if-something-went-wrong" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="if-something-went-wrong"><span class="header-section-number">1.6</span> If Something Went Wrong</h2>
 <p><strong><code>renv::restore()</code> fails on Windows, mentioning compilation.</strong> Rtools44 is missing or does not match your R version. Install it, restart R, try again.</p>
-<p><strong>Packages compile from source and take forever.</strong> Check that <code>.Rprofile</code> ran — <code>getOption("repos")</code> should show a <code>packagemanager.posit.co</code> entry. If it does not, you probably opened R somewhere other than the project root.</p>
-<p><strong><code>renv::restore()</code> reports nothing to do, but <code>library(tidyverse)</code> then fails.</strong> The lockfile and your library disagree. Run <code>renv::status()</code> first and read what it says before installing anything by hand — that message is the diagnosis.</p>
+<p><strong>Packages compile from source and take forever.</strong> Check that <code>.Rprofile</code> ran - <code>getOption("repos")</code> should show a <code>packagemanager.posit.co</code> entry. If it does not, you probably opened R somewhere other than the project root.</p>
+<p><strong><code>renv::restore()</code> reports nothing to do, but <code>library(tidyverse)</code> then fails.</strong> The lockfile and your library disagree. Run <code>renv::status()</code> first and read what it says before installing anything by hand, that message is the diagnosis.</p>
 <p><strong>A code chunk says it cannot find <code>data/raw/dm_raw.csv</code>.</strong> Your working directory is not the project root. Run <code>getwd()</code> and, if needed, reopen <code>cdisc-with-r.Rproj</code>.</p>
 <p><strong>Everything installs but the book will not render.</strong> Check Quarto is on your PATH with <code>quarto --version</code> in a terminal. RStudio bundles its own Quarto, which can differ from the one your terminal sees.</p>
 <div class="callout callout-style-default callout-tip callout-titled">

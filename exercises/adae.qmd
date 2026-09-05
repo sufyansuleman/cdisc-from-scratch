@@ -1,12 +1,12 @@
 ---
-title: "Exercise 5 — ADAE"
+title: "Exercise 5: ADAE"
 ---
 
 ## Goal
 
 Extend the ADAE from [the ADAE session](../sessions/adae.qmd) with a
 severity grouping and a second treatment-emergent window, then build the
-non-emergent event GLPX-001 never gives you — and see what it does to
+non-emergent event GLPX-001 never gives you, and see what it does to
 the safety table.
 
 ## Setup
@@ -43,20 +43,20 @@ persisted copy from `data/adam/adae.csv`.
    a second flag using a 30-day follow-up window, alongside the first.
 
    Start by finding the variable OCCDS provides for exactly this
-   situation — a second treatment-emergent flag with a different
-   cut-off — in §3.2, Table 3.2.5.3. Two similar-looking variables sit
+   situation (a second treatment-emergent flag with a different
+   cut-off) in §3.2, Table 3.2.5.3. Two similar-looking variables sit
    just below `TRTEMFL`; only one is for different cut-offs rather than
    for multiple periods. Derive the flag under **that** name, leaving
    `TRTEMFL` untouched.
 
-   Then compare the two flags and explain the result — carefully,
+   Then compare the two flags and explain the result, carefully,
    because it is not the result the exercise appears to be fishing for.
    What does it tell you about validating a window choice against this
    dataset?
 
 3. **(Semi-guided) The event that came first.** Take subject
    `GLPX001-101-147`, whose four events you saw in the session. Construct
-   the scenario where their first event — the diarrhoea at day 51 — had
+   the scenario where their first event (the diarrhoea at day 51) had
    instead started 10 days *before* first dose.
 
    Re-derive `TRTEMFL`, `AOCCFL` and `AOCCIFL` for that subject and show
@@ -88,7 +88,7 @@ in the OCCDS table.
 
 Task 2: derive it, then `count()` both flags together before writing any
 explanation. Every GLPX-001 event sits well inside the treatment window
-— the session says so explicitly. For the variable name, read the rows
+- the session says so explicitly. For the variable name, read the rows
 immediately below `TRTEMFL` in Table 3.2.5.3.
 
 Task 3: you are changing one date, not three flags. Shift `ASTDT` for

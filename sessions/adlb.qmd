@@ -785,7 +785,7 @@ them.
 
 ## Exercises
 
-Practice: [Exercise 6 — ADLB](../exercises/adlb.qmd).
+Practice: [Exercise 6: ADLB](../exercises/adlb.qmd).
 
 ## Comprehension Check
 

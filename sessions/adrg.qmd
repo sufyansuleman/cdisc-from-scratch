@@ -42,7 +42,7 @@ expectations. Those require experience of running a submission, which
 the author does not have, and a course that fakes them is worse than a
 course that omits them. Where a section of the ADRG requires that kind
 of judgement, this session says so and shows you what a real study
-would put there — rather than inventing plausible prose.
+would put there, rather than inventing plausible prose.
 
 Every regulatory statement below is cited to a published document you
 can read yourself: the FDA **Study Data Technical Conformance Guide
@@ -209,7 +209,7 @@ Sections 1.3 and 3.1 are tables. Neither should ever be typed.
 ### 1.3 Study Data Standards and Dictionary Inventory
 
 The guidelines ask for the ADaM, SDTM and Define versions used. Those
-facts already exist in the define.xml, so read them from there — if the
+facts already exist in the define.xml, so read them from there, if the
 ADRG and the define.xml disagree about which version of Define-XML the
 study used, that is a finding, and it should be impossible rather than
 merely unlikely.
@@ -228,7 +228,7 @@ read_csv("data/adrg/01_standards_inventory.csv", show_col_types = FALSE) |>
 > analysis datasets (ADRG Completion Guidelines v1.2, §3.1)
 
 "Represented across all analysis datasets" is a computation, not an
-opinion — it is the intersection of the variable names:
+opinion. It is the intersection of the variable names:
 
 ```{r ex1-core}
 read_csv("data/adrg/02_core_variables.csv", show_col_types = FALSE) |>
@@ -250,7 +250,7 @@ reduce(map(ads, names), intersect)
 ### Reading the Output Line by Line
 
 Six variables appear in all three analysis datasets. Two of them,
-`STUDYID` and `USUBJID`, are there because ADaM requires them — the
+`STUDYID` and `USUBJID`, are there because ADaM requires them: the
 guidelines note that as the minimum this table would contain. The other
 four are this study's own shape: `SUBJID` and `SITEID` carried through
 for traceability, `TRTSDT` because every dataset needs the treatment
@@ -277,7 +277,7 @@ read_csv("data/adrg/03_treatment_agreement.csv", show_col_types = FALSE) |>
 ```
 
 Zero discrepancies across 400 subjects. In GLPX-001 nobody received a
-treatment other than the one they were randomised to — which is a
+treatment other than the one they were randomised to, which is a
 simulation convenience, and an ADRG for a real study would very
 probably have a non-empty "No" row and a paragraph explaining it.
 
@@ -295,15 +295,15 @@ Read the `Convention` column, because each entry is a decision that
 [ADSL](adsl.qmd), [ADAE](adae.qmd) and [ADLB](adlb.qmd) argued through
 at length:
 
-- **Four subjects with no `AGE`** — partial birth dates, the D1 defect
+- **Four subjects with no `AGE`**, partial birth dates, the D1 defect
   from [The DM Domain](sdtm-dm.qmd). Left null, not imputed. define.xml
   can say `AGE` is derived; only this table says four people have none.
-- **One adverse event with no `ASTDT`** — and the convention matters
+- **One adverse event with no `ASTDT`**, and the convention matters
   more than the count. `TRTEMFL` is left **null, never `"N"`**, because
   "we do not know whether this event was treatment-emergent" is a
   different claim from "this event was not treatment-emergent". That
   distinction is invisible in the dataset and invisible in define.xml.
-- **Zero records with no `BASE`** — a real number, not an absence of
+- **Zero records with no `BASE`**: a real number, not an absence of
   effort. It is worth stating precisely because a reader would
   otherwise wonder.
 
@@ -316,7 +316,7 @@ read_csv("data/adrg/05_dataset_inventory.csv", show_col_types = FALSE) |>
 
 The `Class` column is the same vocabulary
 [Define-XML](define-xml.qmd) found in the `ItemGroupClass` enumeration
-— including `OCCURRENCE DATA STRUCTURE` for ADAE, the decision
+- including `OCCURRENCE DATA STRUCTURE` for ADAE, the decision
 [ADAE](adae.qmd) made and defended.
 
 ## Example 3: The Conformance Summary
@@ -348,7 +348,7 @@ read_csv("data/adrg/06_conformance_issues.csv", show_col_types = FALSE) |>
 ### Reading the Output Line by Line
 
 Thirteen variables in GLPX-001's define.xml have `Origin Type="Derived"`
-and no `MethodOID` — nothing states how they were derived. The cause is
+and no `MethodOID`: nothing states how they were derived. The cause is
 upstream, in the specification workbook: `COMPUTATION_METHOD` defines
 five methods, but twenty-three variables are marked derived.
 
@@ -358,7 +358,7 @@ quietly fixed.** Two reasons, and both are the point of section 6:
 1. It is what a real conformance summary looks like. A submission with
    zero findings is rarer than people expect, and the section exists
    because findings are normal. What matters is that each one is
-   *known, stated, and explained* — not that the list is empty.
+   *known, stated, and explained*, not that the list is empty.
 2. Fixing it belongs in the workbook, not in the XML and not in the
    ADRG, exactly as
    [the previous session](define-from-specs.qmd) argued. The ADRG
@@ -366,7 +366,7 @@ quietly fixed.** Two reasons, and both are the point of section 6:
 
 A real ADRG's issues summary would carry, for each finding, an
 explanation of why it is acceptable or what was done about it. Writing
-that explanation is a judgement call — which brings us to the rest of
+that explanation is a judgement call, which brings us to the rest of
 the document.
 
 ## The Half That Cannot Be Generated
@@ -387,7 +387,7 @@ left. Of the seven required sections, these cannot be generated at all:
 | 7 Submission of Programs | The submission package | Itemises what is being shipped |
 
 ::: {.callout-note}
-### VERIFY — sections this course does not write
+### VERIFY, sections this course does not write
 
 Sections 2.2, 3.3, 4.1–4.3, 5.1 and 7 require submission experience and
 study conduct knowledge that this course does not have and will not
@@ -402,7 +402,7 @@ with authority this course cannot claim:
   uses nominal visits with no windowing, which is unusually simple and
   would itself be worth stating.
 - **4.2** would describe that ADSL is built first and ADAE and ADLB
-  both read it — the dependency `R/build_adam.R` encodes.
+  both read it: the dependency `R/build_adam.R` encodes.
 - **5.1** would confirm whether the datasets support every objective in
   the protocol and SAP. GLPX-001 has no formal SAP, so this cannot be
   answered honestly here at all.
@@ -432,7 +432,7 @@ before any human opens it.
 The connection to this session is narrow and worth stating plainly:
 `ts.xpt` is where the *machine* learns which standards a study used;
 ADRG section 1.3 is where a *person* does. The same facts, twice, for
-two different readers — which is the "purposefully duplicates"
+two different readers, which is the "purposefully duplicates"
 principle again. GLPX-001 has no TS domain, so this course cannot build
 one, and how `ts.xpt` is populated for a real submission is outside
 what this session teaches.
@@ -456,7 +456,7 @@ what this session teaches.
 
 ## Exercises
 
-[Exercise 10 — The Analysis Data Reviewer's Guide](../exercises/adrg.qmd)
+[Exercise 10: The Analysis Data Reviewer's Guide](../exercises/adrg.qmd)
 asks you to close the rule-73 finding at its source, and to draft the
 one narrative section this course can honestly ask you to write.
 
@@ -491,11 +491,11 @@ one narrative section this course can honestly ask you to write.
    was decided about it.** `Origin` describes the variable; it says
    nothing about the records where the derivation could not be
    performed. That belongs in **section 3.5,
-   Imputation/Derivation Methods** — where GLPX-001 states the partial
+   Imputation/Derivation Methods**, where GLPX-001 states the partial
    birth dates, the count, and the decision to leave the values null
    rather than impute.
 
-3. **Fix them in the specification workbook** — add the missing
+3. **Fix them in the specification workbook**, add the missing
    `COMPUTATION_METHOD` entries and the `COMPUTATIONMETHODOID`
    references, then regenerate. Not in the XML, which would be
    overwritten, and not in the ADRG, which reports the state of the

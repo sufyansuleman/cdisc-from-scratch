@@ -49,7 +49,7 @@ A safety reviewer asks "how many serious adverse events were there?"
 and you need to know that seriousness is a regulatory category, not a
 measure of how bad the event felt. A site reports an event by phone
 and never sends a start date. A subject reports no adverse events at
-all — and you have to know that "none" is represented by *no row*, not
+all, and you have to know that "none" is represented by *no row*, not
 a row that says none.
 
 All three are the same underlying task: representing *things that
@@ -83,7 +83,7 @@ After completing this session you will be able to:
 ::: {.callout-important}
 ### The one thing to remember
 
-**An Events row records that something happened — carried by a verbatim
+**An Events row records that something happened, carried by a verbatim
 term and a timing. Everything else in the row qualifies that
 occurrence; it never turns the row into a measurement.**
 :::
@@ -94,12 +94,12 @@ sponsor defines what counts as one event, but the unit is the event: a
 subject with three events has three rows, a subject with none has no
 rows at all.
 
-The **topic** variable — the thing each row is about — is `AETERM`, the
+The **topic** variable (the thing each row is about) is `AETERM`, the
 Required, verbatim name of the event exactly as it was reported (SDTMIG
 v3.4, §6.2.1, assumption 2a). "Verbatim" is doing real work: `AETERM`
 holds what the site actually wrote, messiness and all, and it is never
 cleaned in place. The cleaned, standardised version lives in a
-*separate* variable, `AEDECOD` — the dictionary-derived preferred term,
+*separate* variable, `AEDECOD`: the dictionary-derived preferred term,
 also Required, produced by coding each verbatim term against a medical
 dictionary, normally MedDRA (SDTMIG v3.4, §6.2.1, assumption 2c).
 
@@ -117,9 +117,9 @@ study, coding is done by trained coders (or a supervised process) and
 the dictionary name and version are recorded in the Define-XML.
 :::
 
-Around the topic sit **qualifiers** — and two of them are constantly
+Around the topic sit **qualifiers**, and two of them are constantly
 confused. `AESEV` is the event's *severity* (its intensity: MILD,
-MODERATE, SEVERE). `AESER` is whether the event is *serious* — a
+MODERATE, SEVERE). `AESER` is whether the event is *serious*: a
 regulatory category with a Y/N answer, defined by criteria like death,
 hospitalisation, or life-threatening risk. They are independent: a
 severe headache may not be serious, and a "mild" event can be serious.
@@ -127,7 +127,7 @@ Getting these two straight is the single most important idea in AE
 data, and Example 2 shows the trap directly.
 
 Finally, **timing**. `AESTDTC` and `AEENDTC` are the ISO 8601 start and
-end of the event — and both are *Expected*, meaning the column is
+end of the event, and both are *Expected*, meaning the column is
 always present but a value may be missing (SDTMIG v3.4, §6.2.1). That
 core designation is not a technicality: it is exactly what lets the
 standard represent an event whose start date was never captured.
@@ -160,8 +160,8 @@ c(ae_rows = nrow(ae_raw),
 ::: {.callout-note}
 ### Reading the Output Line by Line
 
-389 event rows across 262 subjects, out of 400 enrolled. The gap — 138
-subjects — is the point: those subjects have **no AE rows**, and that
+389 event rows across 262 subjects, out of 400 enrolled. The gap (138
+subjects) is the point: those subjects have **no AE rows**, and that
 is the correct representation of "no adverse events." A dataset never
 carries a row that says a subject had none; absence is the record
 (SDTMIG v3.4, §6.2.1, assumption 4d). If you counted rows expecting
@@ -169,7 +169,7 @@ carries a row that says a subject had none; absence is the record
 occurrence, not one-row-per-subject.
 :::
 
-Now build the identifier spine and the topic. `USUBJID` comes from DM —
+Now build the identifier spine and the topic. `USUBJID` comes from DM:
 the AE file only knows the study's `SUBJID`, so DM is where the
 across-submission identifier is joined in. `AESEQ` numbers each
 subject's events. `AETERM` is copied verbatim; `AEDECOD` is created and
@@ -185,7 +185,7 @@ ae <- ae_raw |>
   mutate(AESEQ = row_number()) |>
   ungroup() |>
   mutate(STUDYID = "GLPX001", DOMAIN = "AE",
-         AEDECOD = NA_character_)   # MedDRA preferred term — coding step, not done here
+         AEDECOD = NA_character_)   # MedDRA preferred term, coding step, not done here
 
 ae |>
   filter(USUBJID == "GLPX001-101-037") |>
@@ -200,7 +200,7 @@ Run both chunks. Subject `101-037` should come back with two events,
 Look back at [Why Standards](why-standards.qmd): the raw `AETERM`
 column is where `Nausea`, `NAUSEA`, `Diarrea` and `nausea and
 vomitting` all live. Every one of those is preserved here exactly as
-written — because `AETERM` is verbatim, and fixing the spelling is the
+written, because `AETERM` is verbatim, and fixing the spelling is the
 coder's job, recorded in `AEDECOD`, not ours to guess.
 :::
 
@@ -211,8 +211,8 @@ coder's job, recorded in `AEDECOD`, not ours to guess.
 ### Severity is not seriousness
 
 The raw file carries both the intensity of each event and whether it
-was serious. Map them straight across — `AESEV` for severity, `AESER`
-for the serious flag — then look at what they say together:
+was serious. Map them straight across (`AESEV` for severity, `AESER`
+for the serious flag) then look at what they say together:
 
 ```{r sev-ser}
 #| eval: true
@@ -232,8 +232,8 @@ Read the cross-tabulation carefully. There are `SEVERE` events that are
 serious (`AESER = "Y"`). Severity and seriousness are different axes:
 severity is how intense the event was; seriousness is whether it met a
 regulatory criterion (here, a hypoglycaemia that required
-hospitalisation). Most severe events are not serious, and — though
-GLPX-001 has no such case — a mild event *could* be serious. Confusing
+hospitalisation). Most severe events are not serious, and (though
+GLPX-001 has no such case) a mild event *could* be serious. Confusing
 the two is how a safety table ends up with the wrong SAE count.
 :::
 
@@ -255,7 +255,7 @@ c(
 ### Outcome: a term that needs mapping
 
 The raw outcome column reads `RECOVERED`, but that is *not* a legal
-value of the AE outcome codelist — the published term is
+value of the AE outcome codelist: the published term is
 `RECOVERED/RESOLVED`. This is the controlled-terminology discipline
 from [SDTM Concepts](sdtm-concepts.qmd) in miniature: a raw string that
 looks right is not automatically a codelist member, so it is mapped and
@@ -279,8 +279,8 @@ c(
 ::: {.callout-tip}
 ### Run It Yourself
 
-Run the chunk. The raw `RECOVERED` returns `FALSE` — it is not in the
-outcome codelist — while the mapped `RECOVERED/RESOLVED` returns `TRUE`.
+Run the chunk. The raw `RECOVERED` returns `FALSE`. It is not in the
+outcome codelist, while the mapped `RECOVERED/RESOLVED` returns `TRUE`.
 Every GLPX-001 event resolved, so after mapping, `AEOUT` is a single
 value across the file; there are no ongoing events to represent. (Had
 there been, an event still ongoing at last contact would carry a null
@@ -291,7 +291,7 @@ but this trial gives us no occasion to use it.)
 
 ### Timing, and the event with no start date
 
-Now the dates — and defect D4. Map `AESTDTC`/`AEENDTC` from the raw
+Now the dates, and defect D4. Map `AESTDTC`/`AEENDTC` from the raw
 start and end, turning blanks into true nulls, and derive the study
 day from each subject's `RFSTDTC` with the same rule as [The DM
 Domain](sdtm-dm.qmd):
@@ -322,13 +322,13 @@ ae |>
 ::: {.callout-note}
 ### Reading the Output Line by Line
 
-One event comes back — subject `103-199`'s constipation — with a null
+One event comes back (subject `103-199`'s constipation) with a null
 `AESTDTC`. It was reported by phone and the start date was never
 obtained (defect D4). The standard handles this without complaint,
 because `AESTDTC` is **Expected**, not Required: the column is present,
 and this one value is legitimately null (SDTMIG v3.4, §6.2.1). The
-study day `AESTDY` is null too — you cannot compute days-from-reference
-without a date — while `AEENDTC` is present, so `AEENDY` is not. Note
+study day `AESTDY` is null too (you cannot compute days-from-reference
+without a date) while `AEENDTC` is present, so `AEENDY` is not. Note
 what the standard did *not* make you do: it did not force you to invent
 a start date to fill the column, and it did not make you drop the
 event. The missing value is carried honestly, exactly as with the
@@ -343,8 +343,8 @@ partial birth dates in DM.
 
 The most consequential AE error there is. A count of `AESEV = "SEVERE"`
 is not a count of serious adverse events; the SAE count comes from
-`AESER = "Y"`. In GLPX-001 the two numbers are wildly different — many
-severe events, one serious one — and reporting the wrong column
+`AESER = "Y"`. In GLPX-001 the two numbers are wildly different (many
+severe events, one serious one) and reporting the wrong column
 misstates the trial's safety profile.
 
 **Inventing preferred terms**
@@ -352,7 +352,7 @@ misstates the trial's safety profile.
 Filling `AEDECOD` by guessing what a verbatim term "should" code to,
 rather than leaving it for the dictionary step, plants exactly the kind
 of authoritative-looking error a reviewer cannot catch. If you do not
-have MedDRA and a coding process, `AEDECOD` stays empty — and the
+have MedDRA and a coding process, `AEDECOD` stays empty, and the
 Define-XML says so.
 
 **A row that says "no events"**
@@ -371,7 +371,7 @@ belongs in `AEDECOD`, produced by coding. Keep both.
 **Copying raw outcome text without checking it**
 
 `RECOVERED` is not a codelist value. Carrying raw text straight into a
-CT-governed variable produces data that fails conformance — the map to
+CT-governed variable produces data that fails conformance: the map to
 `RECOVERED/RESOLVED` is not optional.
 
 ::: {.callout-warning}
@@ -379,7 +379,7 @@ CT-governed variable produces data that fails conformance — the map to
 
 **"389 adverse events means the drug caused 389 problems"**
 It means 389 were *recorded*, across both arms, most unrelated to
-treatment. Counts describe what was captured, not what the drug did —
+treatment. Counts describe what was captured, not what the drug did,
 causality is a separate variable (`AEREL`) and a separate analysis.
 
 **"A missing start date is a data-quality failure to fix"**
@@ -400,7 +400,7 @@ the verbatim originals. Editing `AETERM` throws away the source.
 
 ## Exercises
 
-The AE exercise set is in [Exercise 2 — SDTM:
+The AE exercise set is in [Exercise 2: SDTM:
 Events](../exercises/sdtm-events.qmd): completing the domain slice,
 deriving the study days, and articulating the severity/seriousness
 distinction on real rows. Solutions are in the paid tier.
@@ -431,11 +431,11 @@ distinction on real rows. Solutions are in the paid tier.
    "none" row would inflate counts and joins.
 
 2. `AETERM` holds the verbatim string `nausea and vomitting` exactly as
-   reported — it is a Required, verbatim topic variable (SDTMIG v3.4,
+   reported. It is a Required, verbatim topic variable (SDTMIG v3.4,
    §6.2.1, assumption 2a). `AEDECOD` would hold the dictionary-derived
    preferred term(s) from coding (SDTMIG v3.4, §6.2.1, assumption 2c).
    This course leaves `AEDECOD` empty because coding needs MedDRA, a
-   licensed dictionary it does not use — and guessing a preferred term
+   licensed dictionary it does not use, and guessing a preferred term
    would risk a confident, invisible error.
 
 3. Severity (`AESEV`) measures how intense the event was; seriousness
@@ -448,7 +448,7 @@ distinction on real rows. Solutions are in the paid tier.
    value may be null (SDTMIG v3.4, §6.2.1). The start date was never
    collected, so null is the honest value, and `AESTDY` is null in
    consequence. You must not invent a start date to fill the column,
-   and you must not drop the event — both would misrepresent what was
+   and you must not drop the event: both would misrepresent what was
    recorded.
 
 5. `RECOVERED` is not a member of the AE outcome codelist; the published

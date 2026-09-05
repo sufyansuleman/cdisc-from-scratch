@@ -1,5 +1,5 @@
 ---
-title: "Exercise 2 — SDTM: Events (Adverse Events)"
+title: "Exercise 2: SDTM Events (Adverse Events)"
 ---
 
 ## Goal
@@ -57,7 +57,7 @@ is the reference; try each task before looking back.
 ::: {.callout-tip collapse="true"}
 ## Hint
 
-Task 2: `AESTDY` is null wherever `AESTDTC` is null — you cannot count
+Task 2: `AESTDY` is null wherever `AESTDTC` is null. You cannot count
 days from a reference date without a date. There is exactly one such
 event in GLPX-001 (defect D4).
 
