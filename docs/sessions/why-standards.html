@@ -331,8 +331,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sessions/adrg-and-submission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The ADRG and Submission</span></span></a>
+  <a href="../sessions/adrg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Analysis Data Reviewer’s Guide</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -404,6 +404,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../exercises/define-from-specs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/adrg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10 — The Analysis Data Reviewer’s Guide</span></span></a>
   </div>
 </li>
       </ul>
@@ -643,7 +649,7 @@ Tip
 <li><p><strong>The Data Standards Catalog</strong> <span class="citation" data-cites="fdadsc11">(<a href="#ref-fdadsc11" role="doc-biblioref">U.S. Food and Drug Administration 2025a</a>)</span> is the list the guidance points to: which standards FDA can process, review and archive, and from when. It lists CDISC <strong>SDTM</strong> and <strong>ADaM</strong> (exchanged as XPT files) and <strong>Define-XML</strong> among the required standards. The requirement applies based on <em>study start date</em>: after 17 December 2016 for NDAs, ANDAs and BLAs; after 17 December 2017 for the applicable INDs.</p></li>
 <li><p><strong>The Study Data Technical Conformance Guide</strong> <span class="citation" data-cites="fdatcg">(<a href="#ref-fdatcg" role="doc-biblioref">U.S. Food and Drug Administration 2025b</a>)</span> is the technical companion: how to organise, name and document the datasets, including the data definition file (<code>define.xml</code>) that describes every submitted dataset’s metadata. You will build one in <a href="../sessions/define-xml.html">define.xml</a>.</p></li>
 <li><p><strong>The Technical Rejection Criteria (TRC)</strong> make part of this automatic. The TRC is not a separate document — it lives inside the Conformance Guide (TCG v6.0, §8.1.2.1–8.1.2.3) <span class="citation" data-cites="fdatcg">(<a href="#ref-fdatcg" role="doc-biblioref">U.S. Food and Drug Administration 2025b</a>)</span>, and the clinical-drug case this course works in is §8.1.2.1. The mechanism is worth knowing precisely, because it is mechanical: the check operates through the study tagging file and the <strong>trial summary dataset</strong>, <code>ts.xpt</code>. A <em>full</em> <code>ts.xpt</code> is expected when a study’s type and initiation date meet the Data Standards Catalog’s criteria for requiring SDTM and ADaM; a <em>simplified</em> <code>ts.xpt</code> (TCG Appendix G) covers studies where those standards are not required.</p>
-<p>That closes the chain: <strong>the Catalog sets the requirement → the TRC enforces it via the <code>ts.xpt</code> check → non-conformance triggers rejection</strong>, before a human reviewer ever opens the submission. You will meet <code>ts.xpt</code> again in <a href="../sessions/adrg-and-submission.html">ADRG and Submission</a>.</p></li>
+<p>That closes the chain: <strong>the Catalog sets the requirement → the TRC enforces it via the <code>ts.xpt</code> check → non-conformance triggers rejection</strong>, before a human reviewer ever opens the submission. You will meet <code>ts.xpt</code> again in <a href="../sessions/adrg.html">The Analysis Data Reviewer’s Guide</a>.</p></li>
 </ul>
 <p>Two cautions. The dates above attach to <em>study start</em>, not submission date. And the Catalog is a living document — versions of SDTM, ADaM and Define-XML move in and out of the required set over time, so the version to consult is always the current one, at the FDA Study Data Standards Resources page.</p>
 </div>

@@ -1,0 +1,123 @@
+---
+title: "Exercise 10 — The Analysis Data Reviewer's Guide"
+---
+
+## Goal
+
+Close the conformance finding the session reports, at its source rather
+than in the output, and then write the one narrative ADRG section this
+course can honestly ask you to write — because you have the material
+for it.
+
+## Setup
+
+Work from the project root:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(xml2)
+library(openxlsx)
+library(defineR)
+
+adrg <- list.files("data/adrg", full.names = TRUE) |>
+  set_names(~ basename(.x)) |>
+  map(read_csv, show_col_types = FALSE)
+```
+
+## Task
+
+1. **(Guided) Close the rule-73 finding.** The session's section 6.2
+   reports thirteen variables with `Origin Type="Derived"` and no
+   `MethodOID`.
+
+   Fix it where it belongs. Work on a copy of
+   `data/spec/SDTM_METADATA.xlsx`, add the missing entries to
+   `COMPUTATION_METHOD`, reference them from `COMPUTATIONMETHODOID` in
+   `VARIABLE_METADATA`, regenerate with `R/build_define.R`, and re-run
+   the check.
+
+   The derivations must describe what `R/build_sdtm.R` actually does —
+   read it. Do not write "derived per SAP" thirteen times; a method
+   that says nothing is worse than an honest finding, because it
+   suppresses the finding without supplying the information.
+
+   Then answer: `LBDRVFL` is one of the thirteen and it is null on
+   every record in the study. What should its computation method say,
+   and is `Derived` even the right origin for it? Justify from the
+   Define-XML origin definitions rather than from convenience.
+
+2. **(The trap) Regenerate everything and find what moved.** Re-run
+   `R/build_adrg_components.R` after your fix.
+
+   Section 6.2 should now be clean. Check whether anything **else**
+   changed, and explain each difference you find. In particular, look
+   at the standards inventory — it reads the Define-XML version out of
+   the regenerated file rather than restating it, which is either a
+   safeguard or a trap depending on what you changed.
+
+   Then answer: the session argues the ADRG's generated tables should
+   never be hand-maintained. You have just regenerated six tables from
+   one workbook edit. What would have gone wrong if section 6.2 had
+   been a paragraph someone typed?
+
+3. **(Semi-guided) Write section 3.4.** Visit windowing and record
+   selection is a narrative section, and it is the one narrative
+   section you have everything you need for — because
+   [ADLB](adlb.qmd) established the facts and argued the decision.
+
+   Write it. Real prose, aimed at a reviewer who does not know this
+   study. It must cover:
+
+   - Whether visit windowing was used, and what `AVISIT` actually is in
+     GLPX-001
+   - How the baseline record is selected, stated precisely enough that
+     a reader could reproduce it
+   - That `ABLFL` disagrees with SDTM's `LBLOBXFL` on 342
+     subject-parameter pairs, why, and what it does to the headline
+     result
+
+   Aim for 200–300 words. Then answer: which sentence in what you wrote
+   could a script have generated, and which could not? That split is
+   the whole session.
+
+## Acceptance criteria
+
+- [ ] All thirteen `COMPUTATION_METHOD` entries added, each describing
+      the actual derivation in `R/build_sdtm.R`
+- [ ] Regenerated define.xml still validates against the 2.0 schema
+- [ ] The rule-73 check returns zero findings
+- [ ] The `LBDRVFL` origin question answered from the Define-XML origin
+      definitions
+- [ ] All six ADRG component tables regenerated, with every change
+      accounted for
+- [ ] A 200–300 word section 3.4 covering windowing, baseline selection
+      and the `ABLFL`/`LBLOBXFL` divergence with its numbers
+- [ ] The generated-versus-written sentence split identified
+
+::: {.callout-tip}
+## Hint
+
+Task 1: the thirteen are mostly DM reference dates and LB standardised
+results. `R/build_sdtm.R` has the logic; `study_day()` in particular is
+worth quoting rather than paraphrasing. For `LBDRVFL`, re-read what
+[Findings](sdtm-findings.qmd) established about why it is null, then
+check the Define-XML `Type` definitions — `Derived` means a value
+"calculated by an algorithm or reproducible rule", and a variable with
+no values has not been calculated by anything.
+
+Task 2: `R/build_adrg_components.R` reads the Define-XML version from
+the `MetaDataVersion` element. If your regeneration changed it, the
+inventory changes with it and that is the safeguard working. If you
+edited `DEFINE_HEADER_METADATA` you may have changed something you did
+not intend.
+
+Task 3: the numbers are all in [ADLB](adlb.qmd) — the 342 pairs, the
+`ADY <= 1` rule, and the -1.116 versus -1.138 comparison. The
+Completion Guidelines section 3.4 lists the questions the section must
+answer; answer those, in order, in prose. Resist writing a paragraph
+about why baseline definitions matter in general — a reviewer wants
+this study's rule, not a tutorial.
+:::
+
+> Solutions are in the paid tier.

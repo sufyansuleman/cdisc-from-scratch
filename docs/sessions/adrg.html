@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>15&nbsp; The Analysis Data Reviewer’s Guide – CDISC with R</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../sessions/dataset-json.html" rel="next">
+<link href="../sessions/define-from-specs.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-70a47bd5681a7291082a5b9f83d58762.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<meta name="description" content="A free, self-paced, hands-on course on CDISC clinical data standards in R: building SDTM domains, ADaM datasets, and tables, listings and figures from scratch using a simulated Phase III trial.">
+<meta name="keywords" content="CDISC, SDTM, ADaM, define-XML, Dataset-JSON, TLF, clinical trials, clinical data standards, R programming, pharmaverse, regulatory submission, clinical programming">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<script data-goatcounter="https://cdiscwithr.goatcounter.com/count" async="" src="//gc.zgo.at/count.js"></script>
+
+
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/tlf.html">Part 4: Outputs and Submission</a></li><li class="breadcrumb-item"><a href="../sessions/adrg.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Analysis Data Reviewer’s Guide</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">CDISC with R</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Before You Begin: Setup</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part 1: Foundations</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/why-standards.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Why Standards</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part 2: SDTM</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/sdtm-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">SDTM Concepts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/sdtm-dm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">SDTM: The DM Domain</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/sdtm-events.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SDTM: Events (Adverse Events)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/sdtm-findings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/define-xml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Define-XML</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part 3: ADaM</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/adam-concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">ADaM Concepts</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/adsl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">ADSL</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/adae.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">ADAE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/adlb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ADLB</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Part 4: Outputs and Submission</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/tlf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Tables, Listings and Figures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/define-from-specs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Define-XML from a Specification Workbook</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/adrg.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Analysis Data Reviewer’s Guide</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../sessions/dataset-json.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dataset-JSON</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Exercises</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/sdtm-dm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Exercise 1 — SDTM: The DM Domain</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/sdtm-events.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Exercise 2 — SDTM: Events (Adverse Events)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/sdtm-findings.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Exercise 3 — SDTM: Findings (Labs &amp; Vital Signs)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/adsl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Exercise 4 — ADSL</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/adae.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Exercise 5 — ADAE</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/adlb.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Exercise 6 — ADLB</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/tlf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Exercise 7 — Tables, Listings and Figures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/define-xml.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 8 — Define-XML</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/define-from-specs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/adrg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10 — The Analysis Data Reviewer’s Guide</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#when-do-you-use-this" id="toc-when-do-you-use-this" class="nav-link active" data-scroll-target="#when-do-you-use-this"><span class="header-section-number">15.1</span> When Do You Use This?</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">15.2</span> Learning Objectives</a></li>
+  <li><a href="#background-the-document-that-says-why" id="toc-background-the-document-that-says-why" class="nav-link" data-scroll-target="#background-the-document-that-says-why"><span class="header-section-number">15.3</span> Background: The Document That Says Why</a>
+  <ul class="collapse">
+  <li><a href="#what-it-is-concretely" id="toc-what-it-is-concretely" class="nav-link" data-scroll-target="#what-it-is-concretely"><span class="header-section-number">15.3.1</span> What it is, concretely</a></li>
+  <li><a href="#the-seven-required-sections" id="toc-the-seven-required-sections" class="nav-link" data-scroll-target="#the-seven-required-sections"><span class="header-section-number">15.3.2</span> The seven required sections</a></li>
+  </ul></li>
+  <li><a href="#example-1-the-inventory-sections" id="toc-example-1-the-inventory-sections" class="nav-link" data-scroll-target="#example-1-the-inventory-sections"><span class="header-section-number">15.4</span> Example 1: The Inventory Sections</a>
+  <ul class="collapse">
+  <li><a href="#study-data-standards-and-dictionary-inventory" id="toc-study-data-standards-and-dictionary-inventory" class="nav-link" data-scroll-target="#study-data-standards-and-dictionary-inventory"><span class="header-section-number">15.4.1</span> 1.3 Study Data Standards and Dictionary Inventory</a></li>
+  <li><a href="#core-variables" id="toc-core-variables" class="nav-link" data-scroll-target="#core-variables"><span class="header-section-number">15.4.2</span> 3.1 Core Variables</a></li>
+  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">15.4.3</span> Run It Yourself</a></li>
+  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">15.4.4</span> Reading the Output Line by Line</a></li>
+  </ul></li>
+  <li><a href="#example-2-treatment-and-imputation" id="toc-example-2-treatment-and-imputation" class="nav-link" data-scroll-target="#example-2-treatment-and-imputation"><span class="header-section-number">15.5</span> Example 2: Treatment and Imputation</a>
+  <ul class="collapse">
+  <li><a href="#treatment-variables" id="toc-treatment-variables" class="nav-link" data-scroll-target="#treatment-variables"><span class="header-section-number">15.5.1</span> 3.2 Treatment Variables</a></li>
+  <li><a href="#imputationderivation-methods" id="toc-imputationderivation-methods" class="nav-link" data-scroll-target="#imputationderivation-methods"><span class="header-section-number">15.5.2</span> 3.5 Imputation/Derivation Methods</a></li>
+  <li><a href="#analysis-datasets" id="toc-analysis-datasets" class="nav-link" data-scroll-target="#analysis-datasets"><span class="header-section-number">15.5.3</span> 5.2 Analysis Datasets</a></li>
+  </ul></li>
+  <li><a href="#example-3-the-conformance-summary" id="toc-example-3-the-conformance-summary" class="nav-link" data-scroll-target="#example-3-the-conformance-summary"><span class="header-section-number">15.6</span> Example 3: The Conformance Summary</a>
+  <ul class="collapse">
+  <li><a href="#reading-the-output-line-by-line-1" id="toc-reading-the-output-line-by-line-1" class="nav-link" data-scroll-target="#reading-the-output-line-by-line-1"><span class="header-section-number">15.6.1</span> Reading the Output Line by Line</a></li>
+  </ul></li>
+  <li><a href="#the-half-that-cannot-be-generated" id="toc-the-half-that-cannot-be-generated" class="nav-link" data-scroll-target="#the-half-that-cannot-be-generated"><span class="header-section-number">15.7</span> The Half That Cannot Be Generated</a>
+  <ul class="collapse">
+  <li><a href="#a-note-on-ts.xpt" id="toc-a-note-on-ts.xpt" class="nav-link" data-scroll-target="#a-note-on-ts.xpt"><span class="header-section-number">15.7.1</span> A note on <code>ts.xpt</code></a></li>
+  </ul></li>
+  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">15.8</span> What Can Go Wrong</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">15.9</span> Exercises</a></li>
+  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">15.10</span> Comprehension Check</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../sessions/tlf.html">Part 4: Outputs and Submission</a></li><li class="breadcrumb-item"><a href="../sessions/adrg.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Analysis Data Reviewer’s Guide</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Analysis Data Reviewer’s Guide</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Session at a Glance
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Total core time: about 80 minutes.</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>Time</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>When Do You Use This? + Learning Objectives</td>
+<td>5 min</td>
+<td>Reading</td>
+</tr>
+<tr class="even">
+<td>Background: the document that says why</td>
+<td>20 min</td>
+<td>Reading</td>
+</tr>
+<tr class="odd">
+<td>Example 1: The inventory sections</td>
+<td>15 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="even">
+<td>Example 2: Treatment and imputation</td>
+<td>15 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="odd">
+<td>Example 3: The conformance summary</td>
+<td>10 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="even">
+<td>The half that cannot be generated</td>
+<td>10 min</td>
+<td>Reading</td>
+</tr>
+<tr class="odd">
+<td>Exercises + Comprehension Check</td>
+<td>15 min</td>
+<td>Practice / Self-test</td>
+</tr>
+</tbody>
+</table>
+<p>Reads after <a href="../sessions/define-xml.html">Define-XML</a> and <a href="../sessions/define-from-specs.html">Define-XML from a Specification Workbook</a>, because the ADRG’s whole reason for existing is what define.xml cannot do. Split after Example 2 for self-paced study.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Scope of This Session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This session teaches <strong>what the ADRG is, what it must contain, and how to generate its data-driven components from R.</strong></p>
+<p>It does not teach submission strategy, agency interaction, or review expectations. Those require experience of running a submission, which the author does not have, and a course that fakes them is worse than a course that omits them. Where a section of the ADRG requires that kind of judgement, this session says so and shows you what a real study would put there — rather than inventing plausible prose.</p>
+<p>Every regulatory statement below is cited to a published document you can read yourself: the FDA <strong>Study Data Technical Conformance Guide v6.0 (March 2025)</strong> and the PhUSE <strong>ADRG Completion Guidelines v1.2 (2019-07-12)</strong>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>How to Use the Code in This Session
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Run R from the project root. The tables shown here are generated by <code>R/build_adrg_components.R</code> and committed under <code>data/adrg/</code>, so you can read them without rebuilding.</p>
+<p>The PhUSE ADRG Package is free and does not require membership. It is reference material, not redistributable by this course: <a href="https://advance.hub.phuse.global/wiki/spaces/WEL/pages/26804660/Analysis+Data+Reviewer+s+Guide+ADRG+Package" class="uri">https://advance.hub.phuse.global/wiki/spaces/WEL/pages/26804660/Analysis+Data+Reviewer+s+Guide+ADRG+Package</a></p>
+</div>
+</div>
+<section id="when-do-you-use-this" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="when-do-you-use-this"><span class="header-section-number">15.1</span> When Do You Use This?</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Your ADaM datasets are built and your define.xml is generated. Then:</p>
+<ul>
+<li>Four subjects have no <code>AGE</code> because their birth dates are partial. define.xml can say <code>AGE</code> is derived. Where do you say <em>why four subjects do not have one</em>?</li>
+<li>Your SAP defines baseline as the last value on or before first dose. <code>ABLFL</code> records the result. Where do you record the <em>choice</em>, and the fact that a different defensible choice would have moved the headline number?</li>
+<li>A reviewer opens your submission with no memory of your study. What single document orients them?</li>
+</ul>
+<p><strong>Where do the decisions live, once the data has recorded only their consequences?</strong></p>
+</div>
+</div>
+</section>
+<section id="learning-objectives" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">15.2</span> Learning Objectives</h2>
+<p>After completing this session you will be able to:</p>
+<ul>
+<li>State what the ADRG is, what file it must be, and where the FDA guidance says it goes</li>
+<li>List the seven required sections and two optional sections of the PhUSE ADRG template</li>
+<li>Generate the ADRG’s data-driven tables from analysis datasets and define.xml, rather than maintaining them by hand</li>
+<li>Distinguish the sections that can be generated from those that require a human, and explain why that boundary is where it is</li>
+<li>Produce a conformance issues summary from real checks, including when the findings are your own</li>
+</ul>
+</section>
+<section id="background-the-document-that-says-why" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="background-the-document-that-says-why"><span class="header-section-number">15.3</span> Background: The Document That Says Why</h2>
+<p><em>Estimated time: ~20 minutes (reading)</em></p>
+<p><a href="../sessions/define-xml.html">Define-XML</a> built a document that records, in machine-readable form, what every variable is and where it came from. That is a great deal of information. It is also, in a specific and important way, silent.</p>
+<p><code>def:Origin Type="Derived"</code> tells a reviewer that <code>AGE</code> was computed. A <code>MethodDef</code> can even tell them the algorithm. Neither tells them that four subjects in GLPX-001 have no age at all, that this is because their birth dates arrived partial, and that the study chose to leave them null rather than impute. That is a decision, with a rationale, and XML has no element for a rationale.</p>
+<p>The FDA guidance is unusually direct about the ADRG’s role, including the part that sounds like a flaw:</p>
+<blockquote class="blockquote">
+<p>The ADRG <strong>purposefully duplicates</strong> limited information found in other submission documentation (e.g., the protocol, statistical analysis plan (SAP), clinical study report, define.xml) in order to provide FDA reviewers with a single point of orientation to the analysis datasets (Study Data Technical Conformance Guide v6.0, §2.3)</p>
+</blockquote>
+<p>Duplication is normally a defect. Here it is the design. And the guidance immediately closes the obvious misreading:</p>
+<blockquote class="blockquote">
+<p>It should be noted that the submission of an ADRG does not eliminate the requirement to submit a complete and informative define.xml file corresponding to the analysis datasets (TCG v6.0, §2.3)</p>
+</blockquote>
+<p>So the ADRG is not a substitute for define.xml, and define.xml is not a substitute for the ADRG. That gives the intuition to carry through the session:</p>
+<blockquote class="blockquote">
+<p><strong>define.xml records what you decided. The ADRG exists to say why.</strong> A machine-readable record of a decision is not an explanation of it, and the half of the ADRG that cannot be generated is precisely the half worth reading.</p>
+</blockquote>
+<section id="what-it-is-concretely" class="level3" data-number="15.3.1">
+<h3 data-number="15.3.1" class="anchored" data-anchor-id="what-it-is-concretely"><span class="header-section-number">15.3.1</span> What it is, concretely</h3>
+<p>The TCG is specific about the artifact, and this much is pure fact rather than expectation:</p>
+<ul>
+<li>Its preparation is <strong>“recommended as an important part of a standards-compliant analysis data submission for clinical trials”</strong> (§2.3)</li>
+<li>It must be a PDF called <strong><code>adrg.pdf</code></strong> (§2.3)</li>
+<li>It goes with the analysis data in <strong>Module 5 of the eCTD</strong>, file-tagged <code>analysis-data-reviewers-guide</code> in eCTD v3.2.2, or with document type keyword <code>analysis data reviewers guide</code> in eCTD v4.0 (§2.3)</li>
+</ul>
+<p>One detail is worth noticing because it is easy to overstate the ADRG’s status. For the <em>Study</em> Data Reviewer’s Guide, the TCG’s footnotes record that the PhUSE templates “have been reviewed by FDA and published in the Federal Register” and that “FDA prefers but does not require” their use. <strong>The ADRG footnote carries no equivalent language.</strong> It says only:</p>
+<blockquote class="blockquote">
+<p>A specific template for an Analysis Data Reviewer’s Guide is not specified. However, an example can be found at https://phuse.global/Deliverables (TCG v6.0, §2.3, footnote 16)</p>
+</blockquote>
+<p>No template is mandated. The PhUSE template is what the industry converged on, not what the agency imposed.</p>
+</section>
+<section id="the-seven-required-sections" class="level3" data-number="15.3.2">
+<h3 data-number="15.3.2" class="anchored" data-anchor-id="the-seven-required-sections"><span class="header-section-number">15.3.2</span> The seven required sections</h3>
+<p>The PhUSE ADRG Completion Guidelines are explicit about structure:</p>
+<blockquote class="blockquote">
+<p>The ADRG has seven required sections: Introduction; Protocol Description; Analysis Considerations Related to Multiple Analysis Datasets; Analysis Data Creation and Processing Issues; Analysis Dataset Descriptions; Data Conformance Summary; Submissions of Programs (ADRG Completion Guidelines v1.2, ADRG Overview)</p>
+</blockquote>
+<p>Plus two optional ones: an <strong>Appendix</strong>, and a <strong>Legacy Data Conversion Plan &amp; Report Appendix</strong> for sponsors who converted non-SDTM data to ADaM.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>Mind the Version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This session uses <strong>ADRG Completion Guidelines v1.2 (2019-07-12)</strong>, the current version. It matters, because v1.2 <strong>renumbered section 3</strong>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Topic</th>
+<th>Earlier template</th>
+<th>v1.2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>SDTM/ADaM content comparison</td>
+<td>3.1</td>
+<td><strong>5.1</strong></td>
+</tr>
+<tr class="even">
+<td>Core Variables</td>
+<td>3.2</td>
+<td><strong>3.1</strong></td>
+</tr>
+<tr class="odd">
+<td>Treatment Variables</td>
+<td>3.3</td>
+<td><strong>3.2</strong></td>
+</tr>
+<tr class="even">
+<td>Visit windowing</td>
+<td>3.5</td>
+<td><strong>3.4</strong></td>
+</tr>
+<tr class="odd">
+<td>Imputation/Derivation</td>
+<td>3.6</td>
+<td><strong>3.5</strong></td>
+</tr>
+<tr class="even">
+<td>Variable Conventions</td>
+<td>4.4</td>
+<td>folded into <strong>3.4/3.5</strong></td>
+</tr>
+</tbody>
+</table>
+<p>An ADRG citing “section 3.2, Core Variables” is working from a superseded template. This is the same lesson <a href="../sessions/define-xml.html">Define-XML</a> taught about enumerations: check the current publication, do not trust a section number you remember.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="example-1-the-inventory-sections" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="example-1-the-inventory-sections"><span class="header-section-number">15.4</span> Example 1: The Inventory Sections</h2>
+<p><em>Estimated time: ~15 minutes (worked example)</em></p>
+<p>Sections 1.3 and 3.1 are tables. Neither should ever be typed.</p>
+<section id="study-data-standards-and-dictionary-inventory" class="level3" data-number="15.4.1">
+<h3 data-number="15.4.1" class="anchored" data-anchor-id="study-data-standards-and-dictionary-inventory"><span class="header-section-number">15.4.1</span> 1.3 Study Data Standards and Dictionary Inventory</h3>
+<p>The guidelines ask for the ADaM, SDTM and Define versions used. Those facts already exist in the define.xml, so read them from there — if the ADRG and the define.xml disagree about which version of Define-XML the study used, that is a finding, and it should be impossible rather than merely unlikely.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/adrg/01_standards_inventory.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Standard or Dictionary</th>
+<th style="text-align: left;">Versions Used</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SDTM</td>
+<td style="text-align: left;">SDTM v2.0 / SDTMIG v3.4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ADaM</td>
+<td style="text-align: left;">ADaM v2.1 / ADaMIG v1.3; OCCDS v1.1 for ADAE</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Controlled Terminology</td>
+<td style="text-align: left;">CDISC/NCI SDTM CT</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Data Definitions</td>
+<td style="text-align: left;">Define-XML 2.0.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Dictionaries (MedDRA, WHODrug)</td>
+<td style="text-align: left;">Not applicable - see section 3.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><code>R/build_adrg_components.R</code> pulls the Define-XML version out of the <code>MetaDataVersion</code> element rather than restating it.</p>
+</section>
+<section id="core-variables" class="level3" data-number="15.4.2">
+<h3 data-number="15.4.2" class="anchored" data-anchor-id="core-variables"><span class="header-section-number">15.4.2</span> 3.1 Core Variables</h3>
+<blockquote class="blockquote">
+<p>Core variables are those that are represented across all/most analysis datasets (ADRG Completion Guidelines v1.2, §3.1)</p>
+</blockquote>
+<p>“Represented across all analysis datasets” is a computation, not an opinion — it is the intersection of the variable names:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/adrg/02_core_variables.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable Name</th>
+<th style="text-align: left;">Variable Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">STUDYID</td>
+<td style="text-align: left;">Study identifier used for this protocol</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">USUBJID</td>
+<td style="text-align: left;">Unique subject identifier</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">SUBJID</td>
+<td style="text-align: left;">Subject identifier within the study</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SITEID</td>
+<td style="text-align: left;">Study site identifier</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">TRTSDT</td>
+<td style="text-align: left;">Date of first exposure to study treatment</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SAFFL</td>
+<td style="text-align: left;">Safety population flag</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="run-it-yourself" class="level3" data-number="15.4.3">
+<h3 data-number="15.4.3" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">15.4.3</span> Run It Yourself</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ads <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ADSL =</span> <span class="fu">read_csv</span>(<span class="st">"data/adam/adsl.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ADAE =</span> <span class="fu">read_csv</span>(<span class="st">"data/adam/adae.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">ADLB =</span> <span class="fu">read_csv</span>(<span class="st">"data/adam/adlb.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">reduce</span>(<span class="fu">map</span>(ads, names), intersect)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "STUDYID" "USUBJID" "SUBJID"  "SITEID"  "TRTSDT"  "SAFFL"  </code></pre>
+</div>
+</div>
+</section>
+<section id="reading-the-output-line-by-line" class="level3" data-number="15.4.4">
+<h3 data-number="15.4.4" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">15.4.4</span> Reading the Output Line by Line</h3>
+<p>Six variables appear in all three analysis datasets. Two of them, <code>STUDYID</code> and <code>USUBJID</code>, are there because ADaM requires them — the guidelines note that as the minimum this table would contain. The other four are this study’s own shape: <code>SUBJID</code> and <code>SITEID</code> carried through for traceability, <code>TRTSDT</code> because every dataset needs the treatment start date to compute study day, and <code>SAFFL</code> because every analysis in this study is run on the safety population.</p>
+<p>That last one is the kind of thing worth a reviewer’s attention, and it is visible only because the table was computed rather than copied from the last study’s ADRG.</p>
+</section>
+</section>
+<section id="example-2-treatment-and-imputation" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="example-2-treatment-and-imputation"><span class="header-section-number">15.5</span> Example 2: Treatment and Imputation</h2>
+<p><em>Estimated time: ~15 minutes (worked example)</em></p>
+<section id="treatment-variables" class="level3" data-number="15.5.1">
+<h3 data-number="15.5.1" class="anchored" data-anchor-id="treatment-variables"><span class="header-section-number">15.5.1</span> 3.2 Treatment Variables</h3>
+<p>The guidelines ask a yes/no question: are the values of planned treatment equivalent in meaning to actual treatment? A cross-tabulation answers it and shows the working:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/adrg/03_treatment_agreement.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">TRT01P</th>
+<th style="text-align: left;">TRT01A</th>
+<th style="text-align: right;">Subjects</th>
+<th style="text-align: left;">Agree</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">GLPX 10 mg</td>
+<td style="text-align: left;">GLPX 10 mg</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Placebo</td>
+<td style="text-align: left;">Placebo</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: left;">Yes</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Zero discrepancies across 400 subjects. In GLPX-001 nobody received a treatment other than the one they were randomised to — which is a simulation convenience, and an ADRG for a real study would very probably have a non-empty “No” row and a paragraph explaining it.</p>
+</section>
+<section id="imputationderivation-methods" class="level3" data-number="15.5.2">
+<h3 data-number="15.5.2" class="anchored" data-anchor-id="imputationderivation-methods"><span class="header-section-number">15.5.2</span> 3.5 Imputation/Derivation Methods</h3>
+<p>This is where the course’s deliberate data defects finally get written down where a reviewer would see them:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/adrg/04_imputation_summary.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 30%">
+<col style="width: 12%">
+<col style="width: 45%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dataset</th>
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Situation</th>
+<th style="text-align: right;">Records Affected</th>
+<th style="text-align: left;">Convention</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ADSL</td>
+<td style="text-align: left;">AGE</td>
+<td style="text-align: left;">Partial birth date; age not computable</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: left;">Left null. No imputation performed.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ADAE</td>
+<td style="text-align: left;">ASTDT</td>
+<td style="text-align: left;">Adverse event start date not recorded</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Left null; TRTEMFL also null, never ‘N’.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ADLB</td>
+<td style="text-align: left;">BASE</td>
+<td style="text-align: left;">No pre-dose value on or before first dose</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: left;">Left null. Baseline is the last value on or before first dose.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Read the <code>Convention</code> column, because each entry is a decision that <a href="../sessions/adsl.html">ADSL</a>, <a href="../sessions/adae.html">ADAE</a> and <a href="../sessions/adlb.html">ADLB</a> argued through at length:</p>
+<ul>
+<li><strong>Four subjects with no <code>AGE</code></strong> — partial birth dates, the D1 defect from <a href="../sessions/sdtm-dm.html">The DM Domain</a>. Left null, not imputed. define.xml can say <code>AGE</code> is derived; only this table says four people have none.</li>
+<li><strong>One adverse event with no <code>ASTDT</code></strong> — and the convention matters more than the count. <code>TRTEMFL</code> is left <strong>null, never <code>"N"</code></strong>, because “we do not know whether this event was treatment-emergent” is a different claim from “this event was not treatment-emergent”. That distinction is invisible in the dataset and invisible in define.xml.</li>
+<li><strong>Zero records with no <code>BASE</code></strong> — a real number, not an absence of effort. It is worth stating precisely because a reader would otherwise wonder.</li>
+</ul>
+</section>
+<section id="analysis-datasets" class="level3" data-number="15.5.3">
+<h3 data-number="15.5.3" class="anchored" data-anchor-id="analysis-datasets"><span class="header-section-number">15.5.3</span> 5.2 Analysis Datasets</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/adrg/05_dataset_inventory.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 36%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 5%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Dataset</th>
+<th style="text-align: left;">Label</th>
+<th style="text-align: left;">Class</th>
+<th style="text-align: left;">Structure</th>
+<th style="text-align: right;">Records</th>
+<th style="text-align: right;">Variables</th>
+<th style="text-align: right;">Subjects</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ADSL</td>
+<td style="text-align: left;">Subject Level Analysis Dataset</td>
+<td style="text-align: left;">SUBJECT LEVEL ANALYSIS DATASET</td>
+<td style="text-align: left;">One record per subject</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">400</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">ADAE</td>
+<td style="text-align: left;">Adverse Events Analysis Dataset</td>
+<td style="text-align: left;">OCCURRENCE DATA STRUCTURE</td>
+<td style="text-align: left;">One record per subject per adverse event</td>
+<td style="text-align: right;">389</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">262</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ADLB</td>
+<td style="text-align: left;">Laboratory Analysis Dataset</td>
+<td style="text-align: left;">BASIC DATA STRUCTURE</td>
+<td style="text-align: left;">One record per subject per parameter per analysis visit</td>
+<td style="text-align: right;">12388</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">400</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The <code>Class</code> column is the same vocabulary <a href="../sessions/define-xml.html">Define-XML</a> found in the <code>ItemGroupClass</code> enumeration — including <code>OCCURRENCE DATA STRUCTURE</code> for ADAE, the decision <a href="../sessions/adae.html">ADAE</a> made and defended.</p>
+</section>
+</section>
+<section id="example-3-the-conformance-summary" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="example-3-the-conformance-summary"><span class="header-section-number">15.6</span> Example 3: The Conformance Summary</h2>
+<p><em>Estimated time: ~10 minutes (worked example)</em></p>
+<p>Section 6 is required, and section 6.2 asks for an issues summary. <a href="../sessions/define-xml.html">Define-XML</a> built the machinery: two Specification-sourced conformance rules that no schema check will catch. Run them against this study’s own define.xml and report what comes back.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/adrg/06_conformance_issues.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Rule, <span class="st">`</span><span class="at">Diagnostic Message</span><span class="st">`</span>, Records) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 70%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Rule</th>
+<th style="text-align: left;">Diagnostic Message</th>
+<th style="text-align: right;">Records</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Define-XML 65</td>
+<td style="text-align: left;">ItemRef/<span class="citation" data-cites="ItemOID">(<a href="#ref-ItemOID" role="doc-biblioref"><strong>ItemOID?</strong></a>)</span> must reference an existing ItemDef</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Define-XML 73</td>
+<td style="text-align: left;">MethodOID required when Origin Type is ‘Derived’</td>
+<td style="text-align: right;">13</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Rule 65 is clean. Rule 73 is not, and the finding is ours:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/adrg/06_conformance_issues.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Records <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Explanation) <span class="sc">|&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_wrap</span>(<span class="dv">70</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Missing MethodOID: IT.DM.RFSTDTC, IT.DM.RFENDTC, IT.DM.RFXSTDTC,
+IT.DM.RFXENDTC, IT.DM.RFPENDTC, IT.DM.DTHFL, IT.LB.LBSEQ,
+IT.LB.LBSTRESC, IT.LB.LBSTRESN, IT.LB.LBSTRESU, IT.LB.LBSTNRLO,
+IT.LB.LBSTNRHI, IT.LB.LBDRVFL</code></pre>
+</div>
+</div>
+<section id="reading-the-output-line-by-line-1" class="level3" data-number="15.6.1">
+<h3 data-number="15.6.1" class="anchored" data-anchor-id="reading-the-output-line-by-line-1"><span class="header-section-number">15.6.1</span> Reading the Output Line by Line</h3>
+<p>Thirteen variables in GLPX-001’s define.xml have <code>Origin Type="Derived"</code> and no <code>MethodOID</code> — nothing states how they were derived. The cause is upstream, in the specification workbook: <code>COMPUTATION_METHOD</code> defines five methods, but twenty-three variables are marked derived.</p>
+<p><strong>This finding is left in deliberately, and reported rather than quietly fixed.</strong> Two reasons, and both are the point of section 6:</p>
+<ol type="1">
+<li>It is what a real conformance summary looks like. A submission with zero findings is rarer than people expect, and the section exists because findings are normal. What matters is that each one is <em>known, stated, and explained</em> — not that the list is empty.</li>
+<li>Fixing it belongs in the workbook, not in the XML and not in the ADRG, exactly as <a href="../sessions/define-from-specs.html">the previous session</a> argued. The ADRG reports the state of the submission; it does not launder it.</li>
+</ol>
+<p>A real ADRG’s issues summary would carry, for each finding, an explanation of why it is acceptable or what was done about it. Writing that explanation is a judgement call — which brings us to the rest of the document.</p>
+</section>
+</section>
+<section id="the-half-that-cannot-be-generated" class="level2" data-number="15.7">
+<h2 data-number="15.7" class="anchored" data-anchor-id="the-half-that-cannot-be-generated"><span class="header-section-number">15.7</span> The Half That Cannot Be Generated</h2>
+<p><em>Estimated time: ~10 minutes (reading)</em></p>
+<p>Everything above was a table computed from data. Now count what is left. Of the seven required sections, these cannot be generated at all:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Section</th>
+<th>What it needs</th>
+<th>Why no script can write it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2.1 Protocol Number and Title</td>
+<td>The protocol</td>
+<td>Not in the data</td>
+</tr>
+<tr class="even">
+<td>2.2 Protocol Design in Relation to ADaM Concepts</td>
+<td>Study design judgement</td>
+<td>Relates the <em>design</em> to the variables; requires knowing the intent</td>
+</tr>
+<tr class="odd">
+<td>3.3 Subject Issues Requiring Special Analysis Rules</td>
+<td>Study conduct knowledge</td>
+<td>Which subjects, and why they are special, is a clinical matter</td>
+</tr>
+<tr class="even">
+<td>3.4 Visit Windowing and Record Selection</td>
+<td>The SAP</td>
+<td>The rule is a choice, not a property of the data</td>
+</tr>
+<tr class="odd">
+<td>4.1–4.3 Split Datasets, Dependencies, Intermediate Datasets</td>
+<td>Pipeline knowledge</td>
+<td>Describes how the programming was organised</td>
+</tr>
+<tr class="even">
+<td>5.1 Overview</td>
+<td>SAP objectives</td>
+<td>Asks whether the datasets support every protocol objective</td>
+</tr>
+<tr class="odd">
+<td>7 Submission of Programs</td>
+<td>The submission package</td>
+<td>Itemises what is being shipped</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>VERIFY — sections this course does not write
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sections 2.2, 3.3, 4.1–4.3, 5.1 and 7 require submission experience and study conduct knowledge that this course does not have and will not fake.</p>
+<p>For GLPX-001 they would say roughly this, and a real study would say it with authority this course cannot claim:</p>
+<ul>
+<li><strong>2.2</strong> would relate <code>TRT01P</code>/<code>TRT01A</code> and the analysis periods to the trial’s two-arm parallel design with eight visits over 26 weeks.</li>
+<li><strong>3.4</strong> would state the visit-windowing rule from the SAP. GLPX-001 uses nominal visits with no windowing, which is unusually simple and would itself be worth stating.</li>
+<li><strong>4.2</strong> would describe that ADSL is built first and ADAE and ADLB both read it — the dependency <code>R/build_adam.R</code> encodes.</li>
+<li><strong>5.1</strong> would confirm whether the datasets support every objective in the protocol and SAP. GLPX-001 has no formal SAP, so this cannot be answered honestly here at all.</li>
+<li><strong>7</strong> would itemise the programs shipped. This course ships <code>R/build_sdtm.R</code>, <code>R/build_adam.R</code>, <code>R/build_define.R</code> and <code>R/build_adrg_components.R</code>, but a submission’s program inventory has requirements this course has not verified.</li>
+</ul>
+<p>If you are writing a real ADRG, read the Completion Guidelines section by section. They are 33 pages and they answer these questions properly.</p>
+</div>
+</div>
+<p>That table is the session’s real content. <strong>Roughly half the ADRG is a report and half is an explanation</strong>, and the boundary is not arbitrary: everything that is a <em>property of the data</em> can be generated, and everything that is a <em>reason for a choice</em> cannot. A script knows that <code>TRTEMFL</code> is null on one record. Only a person knows that null was chosen over <code>"N"</code> because the two mean different things.</p>
+<section id="a-note-on-ts.xpt" class="level3" data-number="15.7.1">
+<h3 data-number="15.7.1" class="anchored" data-anchor-id="a-note-on-ts.xpt"><span class="header-section-number">15.7.1</span> A note on <code>ts.xpt</code></h3>
+<p>Three earlier sessions promised you would meet <code>ts.xpt</code> again here. <a href="../sessions/why-standards.html">Why Standards</a> taught the chain by which the FDA’s technical rejection criteria check a submission’s study tagging file before any human opens it.</p>
+<p>The connection to this session is narrow and worth stating plainly: <code>ts.xpt</code> is where the <em>machine</em> learns which standards a study used; ADRG section 1.3 is where a <em>person</em> does. The same facts, twice, for two different readers — which is the “purposefully duplicates” principle again. GLPX-001 has no TS domain, so this course cannot build one, and how <code>ts.xpt</code> is populated for a real submission is outside what this session teaches.</p>
+</section>
+</section>
+<section id="what-can-go-wrong" class="level2" data-number="15.8">
+<h2 data-number="15.8" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">15.8</span> What Can Go Wrong</h2>
+<ul>
+<li><strong>Hand-maintaining the generated tables.</strong> The core-variables table copied from the last study’s ADRG will be wrong in a way nobody notices, because it looks right. Compute it.</li>
+<li><strong>An empty issues summary.</strong> If section 6.2 is empty, the likeliest explanation is that nothing was checked, not that nothing was found.</li>
+<li><strong>Citing a superseded section number.</strong> v1.2 renumbered section 3. “See ADRG section 3.2 for core variables” is a v1.1 sentence.</li>
+<li><strong>Treating the ADRG as a substitute for define.xml.</strong> The TCG closes this off explicitly (§2.3), and it is worth knowing the sentence exists.</li>
+<li><strong>Writing the ADRG last.</strong> Every table above was derivable the moment the datasets existed. The sections that need a human are the ones whose reasoning is freshest while the work is being done, and hardest to reconstruct six months later.</li>
+</ul>
+</section>
+<section id="exercises" class="level2" data-number="15.9">
+<h2 data-number="15.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">15.9</span> Exercises</h2>
+<p><a href="../exercises/adrg.html">Exercise 10 — The Analysis Data Reviewer’s Guide</a> asks you to close the rule-73 finding at its source, and to draft the one narrative section this course can honestly ask you to write.</p>
+</section>
+<section id="comprehension-check" class="level2" data-number="15.10">
+<h2 data-number="15.10" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">15.10</span> Comprehension Check</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>The TCG says the ADRG “purposefully duplicates” information found in the protocol, SAP and define.xml. Why is that not a design flaw?</li>
+<li>GLPX-001’s define.xml records that <code>AGE</code> has <code>Origin Type="Derived"</code>. What can it not record, and which ADRG section carries it?</li>
+<li>Your ADRG’s section 6.2 lists thirteen rule-73 findings. Where do you fix them, and what do you do about the ADRG in the meantime?</li>
+<li>Which of the seven required sections could be regenerated automatically after a data refresh, and which would need rewriting by hand?</li>
+<li>A colleague’s ADRG has an empty Data Conformance Summary. What is the most likely explanation?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Answers
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li><p><strong>Because the reviewer needs a single point of orientation.</strong> The information exists elsewhere, but scattered across documents in different formats written for different purposes. The ADRG’s job is to be the one place someone with no memory of the study can start, and that job requires repeating things (TCG v6.0, §2.3).</p></li>
+<li><p><strong>It cannot record that four subjects have no <code>AGE</code>, why, or what was decided about it.</strong> <code>Origin</code> describes the variable; it says nothing about the records where the derivation could not be performed. That belongs in <strong>section 3.5, Imputation/Derivation Methods</strong> — where GLPX-001 states the partial birth dates, the count, and the decision to leave the values null rather than impute.</p></li>
+<li><p><strong>Fix them in the specification workbook</strong> — add the missing <code>COMPUTATION_METHOD</code> entries and the <code>COMPUTATIONMETHODOID</code> references, then regenerate. Not in the XML, which would be overwritten, and not in the ADRG, which reports the state of the submission rather than improving it. In the meantime the ADRG reports the findings honestly, with an explanation, because that is what section 6.2 is for.</p></li>
+<li><p><strong>Regenerable: 1.3, 3.1, 3.2, 3.5, 5.2, and the findings half of 6.</strong> <strong>By hand: 2.1, 2.2, 3.3, 3.4, 4.1–4.3, 5.1, 7, and the <em>explanation</em> half of 6.2.</strong> The boundary is properties of the data versus reasons for a choice.</p></li>
+<li><p><strong>That nothing was checked.</strong> Section 6.1 asks which conformance software was used and against which version of the checks; an empty 6.2 with a filled 6.1 would be a strong claim, and an empty 6.2 with an empty 6.1 is not a claim at all. Findings are normal; the section exists because they are.</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../sessions/define-from-specs.html" class="pagination-link" aria-label="Define-XML from a Specification Workbook">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Define-XML from a Specification Workbook</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../sessions/dataset-json.html" class="pagination-link" aria-label="Dataset-JSON">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dataset-JSON</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

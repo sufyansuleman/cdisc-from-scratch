@@ -407,8 +407,8 @@ subject matter of the course, not incidental to it:
   through `build_sdtm.R` to a row in `data/raw/lb_raw.csv` — the
   provenance a reviewer needs to follow a result from a table back to
   its source. You will meet traceability again, formally, in
-  [define.xml](define-xml.qmd) and [ADRG and
-  Submission](adrg-and-submission.qmd).
+  [define.xml](define-xml.qmd) and
+  [The Analysis Data Reviewer's Guide](adrg.qmd).
 
 From here on, the ADaM sessions read `data/sdtm/` rather than rebuilding
 from raw. The committed CSVs are the hand-off point between "what

@@ -282,8 +282,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../sessions/adrg-and-submission.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The ADRG and Submission</span></span></a>
+  <a href="../sessions/adrg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">The Analysis Data Reviewer’s Guide</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -355,6 +355,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../exercises/define-from-specs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9 — Define-XML from a Specification Workbook</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/adrg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10 — The Analysis Data Reviewer’s Guide</span></span></a>
   </div>
 </li>
       </ul>
@@ -799,7 +805,7 @@ data/sdtm/{dm,ae,lb,vs}.csv   --  conformant, committed, reproducible</code></pr
 <p>Two properties make this more than a convenience, and both are the subject matter of the course, not incidental to it:</p>
 <ul>
 <li><strong>Reproducibility.</strong> <code>simulate_trial.R</code> is fixed-seed and <code>build_sdtm.R</code> has no randomness, so <code>data/sdtm/</code> is fully determined by those two scripts. Anyone who clones the repository regenerates byte-identical datasets. Reproducibility is not a nicety in regulated work; it is a requirement, and here the pipeline demonstrates it.</li>
-<li><strong>Traceability.</strong> Every value in <code>data/sdtm/lb.csv</code> traces back through <code>build_sdtm.R</code> to a row in <code>data/raw/lb_raw.csv</code> — the provenance a reviewer needs to follow a result from a table back to its source. You will meet traceability again, formally, in <a href="../sessions/define-xml.html">define.xml</a> and <a href="../sessions/adrg-and-submission.html">ADRG and Submission</a>.</li>
+<li><strong>Traceability.</strong> Every value in <code>data/sdtm/lb.csv</code> traces back through <code>build_sdtm.R</code> to a row in <code>data/raw/lb_raw.csv</code> — the provenance a reviewer needs to follow a result from a table back to its source. You will meet traceability again, formally, in <a href="../sessions/define-xml.html">define.xml</a> and <a href="../sessions/adrg.html">The Analysis Data Reviewer’s Guide</a>.</li>
 </ul>
 <p>From here on, the ADaM sessions read <code>data/sdtm/</code> rather than rebuilding from raw. The committed CSVs are the hand-off point between “what happened in the trial” (SDTM) and “what the trial shows” (ADaM).</p>
 <div class="cell">

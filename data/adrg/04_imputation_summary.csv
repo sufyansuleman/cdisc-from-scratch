@@ -1,0 +1,4 @@
+Dataset,Variable,Situation,Records Affected,Convention
+ADSL,AGE,Partial birth date; age not computable,4,Left null. No imputation performed.
+ADAE,ASTDT,Adverse event start date not recorded,1,"Left null; TRTEMFL also null, never 'N'."
+ADLB,BASE,No pre-dose value on or before first dose,0,Left null. Baseline is the last value on or before first dose.

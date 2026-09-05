@@ -125,8 +125,8 @@ falling in the v3.4 support window — not by preference. This is why
 start dates*, and the catalogue's "date support begins / date support
 ends / date requirement begins" columns are the whole point. (The
 study's start date itself travels in the submission in a small dataset
-called `ts.xpt`; you will meet it in [ADRG and
-Submission](adrg-and-submission.qmd).)
+called `ts.xpt`; you will meet it in
+[The Analysis Data Reviewer's Guide](adrg.qmd).)
 
 ### The three general observation classes
 

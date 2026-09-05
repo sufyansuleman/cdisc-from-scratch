@@ -202,8 +202,8 @@ chain behind it is short and worth knowing. Four documents do the work:
   That closes the chain: **the Catalog sets the requirement → the TRC
   enforces it via the `ts.xpt` check → non-conformance triggers
   rejection**, before a human reviewer ever opens the submission. You
-  will meet `ts.xpt` again in [ADRG and
-  Submission](adrg-and-submission.qmd).
+  will meet `ts.xpt` again in
+  [The Analysis Data Reviewer's Guide](adrg.qmd).
 
 Two cautions. The dates above attach to *study start*, not submission
 date. And the Catalog is a living document — versions of SDTM, ADaM and

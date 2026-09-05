@@ -1,0 +1,7 @@
+Variable Name,Variable Description
+STUDYID,Study identifier used for this protocol
+USUBJID,Unique subject identifier
+SUBJID,Subject identifier within the study
+SITEID,Study site identifier
+TRTSDT,Date of first exposure to study treatment
+SAFFL,Safety population flag

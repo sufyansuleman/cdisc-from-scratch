@@ -36,7 +36,7 @@ book:
     chapters:
     - sessions/tlf.qmd
     - sessions/define-from-specs.qmd
-    - sessions/adrg-and-submission.qmd
+    - sessions/adrg.qmd
     - sessions/dataset-json.qmd
   - part: "Exercises"
     chapters:
@@ -49,6 +49,7 @@ book:
     - exercises/tlf.qmd
     - exercises/define-xml.qmd
     - exercises/define-from-specs.qmd
+    - exercises/adrg.qmd
 
 bibliography:
   - references.bib

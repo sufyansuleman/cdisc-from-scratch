@@ -1,0 +1,4 @@
+Dataset,Label,Class,Structure,Records,Variables,Subjects
+ADSL,Subject Level Analysis Dataset,SUBJECT LEVEL ANALYSIS DATASET,One record per subject,400,28,400
+ADAE,Adverse Events Analysis Dataset,OCCURRENCE DATA STRUCTURE,One record per subject per adverse event,389,26,262
+ADLB,Laboratory Analysis Dataset,BASIC DATA STRUCTURE,One record per subject per parameter per analysis visit,12388,29,400
