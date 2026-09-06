@@ -4,7 +4,7 @@
 
 A free, self-paced, hands-on course on CDISC clinical data standards in
 R. You take raw data from a simulated Phase III trial (codename
-**GLPX-001**) and carry it all the way to submission-ready datasets and
+**GLPX-1**) and carry it all the way to submission-ready datasets and
 outputs: SDTM domains, ADaM datasets, define-XML, tables, listings and
 figures, and Dataset-JSON. All data is synthetic. No real patient
 information appears anywhere in this repository.
@@ -30,7 +30,7 @@ New here? Go through it in this order:
 
 1. **Setup**: tools, packages, and a reproducible workflow
 2. **Part 1, Foundations**: why clinical data standards exist, and the
-   GLPX-001 trial you will work with throughout
+   GLPX-1 trial you will work with throughout
 3. **Part 2, SDTM**: study data tabulation. Concepts, the DM domain,
    events and findings domains, and define-XML
 4. **Part 3, ADaM**: analysis datasets. Concepts, ADSL, ADAE and ADLB
@@ -65,7 +65,7 @@ repository's data, every standards claim cited to its Implementation
 Guide section:
 
 - Setup
-- Part 1: Why Standards, The GLPX-001 Trial
+- Part 1: Why Standards, The GLPX-1 Trial
 - Part 2: SDTM Concepts, DM, Events (AE), Findings (LB/VS)
 - Part 3: ADaM Concepts, ADSL, ADAE, ADLB
 

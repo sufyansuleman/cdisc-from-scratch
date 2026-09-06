@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="goal" class="level2" data-number="21.1">
 <h2 data-number="21.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">21.1</span> Goal</h2>
-<p>Extend the ADAE from <a href="../sessions/adae.html">the ADAE session</a> with a severity grouping and a second treatment-emergent window, then build the non-emergent event GLPX-001 never gives you, and see what it does to the safety table.</p>
+<p>Extend the ADAE from <a href="../sessions/adae.html">the ADAE session</a> with a severity grouping and a second treatment-emergent window, then build the non-emergent event GLPX-1 never gives you, and see what it does to the safety table.</p>
 </section>
 <section id="setup" class="level2" data-number="21.2">
 <h2 data-number="21.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">21.2</span> Setup</h2>
@@ -430,7 +430,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>(The trap) A window that changes the answer.</strong> The session used <em>x</em> = 0 in <code>TRTSDT &lt;= ASTDT &lt;= TRTEDT + x</code>. Suppose the SAP asks for a second flag using a 30-day follow-up window, alongside the first.</p>
 <p>Start by finding the variable OCCDS provides for exactly this situation (a second treatment-emergent flag with a different cut-off) in §3.2, Table 3.2.5.3. Two similar-looking variables sit just below <code>TRTEMFL</code>; only one is for different cut-offs rather than for multiple periods. Derive the flag under <strong>that</strong> name, leaving <code>TRTEMFL</code> untouched.</p>
 <p>Then compare the two flags and explain the result, carefully, because it is not the result the exercise appears to be fishing for. What does it tell you about validating a window choice against this dataset?</p></li>
-<li><p><strong>(Semi-guided) The event that came first.</strong> Take subject <code>GLPX001-101-147</code>, whose four events you saw in the session. Construct the scenario where their first event (the diarrhoea at day 51) had instead started 10 days <em>before</em> first dose.</p>
+<li><p><strong>(Semi-guided) The event that came first.</strong> Take subject <code>GLPX1-101-147</code>, whose four events you saw in the session. Construct the scenario where their first event (the diarrhoea at day 51) had instead started 10 days <em>before</em> first dose.</p>
 <p>Re-derive <code>TRTEMFL</code>, <code>AOCCFL</code> and <code>AOCCIFL</code> for that subject and show all three columns. Then answer in one sentence each:</p>
 <ul>
 <li>Which row now carries <code>AOCCFL</code>, and why did it move?</li>
@@ -461,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Task 1: the structural rule for a grouping and its numeric counterpart is the same one <code>AGEGR1</code>/<code>AGEGR1N</code> followed in <a href="../sessions/adsl.html">ADSL</a>. For the codelist question, look at the footnote attached to the asterisk in the OCCDS table.</p>
-<p>Task 2: derive it, then <code>count()</code> both flags together before writing any explanation. Every GLPX-001 event sits well inside the treatment window - the session says so explicitly. For the variable name, read the rows immediately below <code>TRTEMFL</code> in Table 3.2.5.3.</p>
+<p>Task 2: derive it, then <code>count()</code> both flags together before writing any explanation. Every GLPX-1 event sits well inside the treatment window - the session says so explicitly. For the variable name, read the rows immediately below <code>TRTEMFL</code> in Table 3.2.5.3.</p>
 <p>Task 3: you are changing one date, not three flags. Shift <code>ASTDT</code> for that one row, then re-run the derivations you already wrote and let them produce the answers. <code>AOCCFL</code> keys on the first <em>treatment-emergent</em> record; ask what the flags are sorted and filtered by before they are assigned.</p>
 </div>
 </div>

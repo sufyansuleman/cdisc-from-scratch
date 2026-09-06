@@ -107,7 +107,7 @@ important way, silent.
 
 `def:Origin Type="Derived"` tells a reviewer that `AGE` was computed. A
 `MethodDef` can even tell them the algorithm. Neither tells them that
-four subjects in GLPX-001 have no age at all, that this is because
+four subjects in GLPX-1 have no age at all, that this is because
 their birth dates arrived partial, and that the study chose to leave
 them null rather than impute. That is a decision, with a rationale, and
 XML has no element for a rationale.
@@ -276,7 +276,7 @@ read_csv("data/adrg/03_treatment_agreement.csv", show_col_types = FALSE) |>
   kable()
 ```
 
-Zero discrepancies across 400 subjects. In GLPX-001 nobody received a
+Zero discrepancies across 400 subjects. In GLPX-1 nobody received a
 treatment other than the one they were randomised to, which is a
 simulation convenience, and an ADRG for a real study would very
 probably have a non-empty "No" row and a paragraph explaining it.
@@ -347,7 +347,7 @@ read_csv("data/adrg/06_conformance_issues.csv", show_col_types = FALSE) |>
 
 ### Reading the Output Line by Line
 
-Thirteen variables in GLPX-001's define.xml have `Origin Type="Derived"`
+Thirteen variables in GLPX-1's define.xml have `Origin Type="Derived"`
 and no `MethodOID`: nothing states how they were derived. The cause is
 upstream, in the specification workbook: `COMPUTATION_METHOD` defines
 five methods, but twenty-three variables are marked derived.
@@ -393,18 +393,18 @@ Sections 2.2, 3.3, 4.1–4.3, 5.1 and 7 require submission experience and
 study conduct knowledge that this course does not have and will not
 fake.
 
-For GLPX-001 they would say roughly this, and a real study would say it
+For GLPX-1 they would say roughly this, and a real study would say it
 with authority this course cannot claim:
 
 - **2.2** would relate `TRT01P`/`TRT01A` and the analysis periods to
   the trial's two-arm parallel design with eight visits over 26 weeks.
-- **3.4** would state the visit-windowing rule from the SAP. GLPX-001
+- **3.4** would state the visit-windowing rule from the SAP. GLPX-1
   uses nominal visits with no windowing, which is unusually simple and
   would itself be worth stating.
 - **4.2** would describe that ADSL is built first and ADAE and ADLB
   both read it: the dependency `R/build_adam.R` encodes.
 - **5.1** would confirm whether the datasets support every objective in
-  the protocol and SAP. GLPX-001 has no formal SAP, so this cannot be
+  the protocol and SAP. GLPX-1 has no formal SAP, so this cannot be
   answered honestly here at all.
 - **7** would itemise the programs shipped. This course ships
   `R/build_sdtm.R`, `R/build_adam.R`, `R/build_define.R` and
@@ -433,7 +433,7 @@ The connection to this session is narrow and worth stating plainly:
 `ts.xpt` is where the *machine* learns which standards a study used;
 ADRG section 1.3 is where a *person* does. The same facts, twice, for
 two different readers, which is the "purposefully duplicates"
-principle again. GLPX-001 has no TS domain, so this course cannot build
+principle again. GLPX-1 has no TS domain, so this course cannot build
 one, and how `ts.xpt` is populated for a real submission is outside
 what this session teaches.
 
@@ -467,7 +467,7 @@ one narrative section this course can honestly ask you to write.
 
 1. The TCG says the ADRG "purposefully duplicates" information found in
    the protocol, SAP and define.xml. Why is that not a design flaw?
-2. GLPX-001's define.xml records that `AGE` has `Origin Type="Derived"`.
+2. GLPX-1's define.xml records that `AGE` has `Origin Type="Derived"`.
    What can it not record, and which ADRG section carries it?
 3. Your ADRG's section 6.2 lists thirteen rule-73 findings. Where do
    you fix them, and what do you do about the ADRG in the meantime?
@@ -491,7 +491,7 @@ one narrative section this course can honestly ask you to write.
    was decided about it.** `Origin` describes the variable; it says
    nothing about the records where the derivation could not be
    performed. That belongs in **section 3.5,
-   Imputation/Derivation Methods**, where GLPX-001 states the partial
+   Imputation/Derivation Methods**, where GLPX-1 states the partial
    birth dates, the count, and the decision to leave the values null
    rather than impute.
 

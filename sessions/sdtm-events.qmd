@@ -184,11 +184,11 @@ ae <- ae_raw |>
   group_by(USUBJID) |>
   mutate(AESEQ = row_number()) |>
   ungroup() |>
-  mutate(STUDYID = "GLPX001", DOMAIN = "AE",
+  mutate(STUDYID = "GLPX1", DOMAIN = "AE",
          AEDECOD = NA_character_)   # MedDRA preferred term, coding step, not done here
 
 ae |>
-  filter(USUBJID == "GLPX001-101-037") |>
+  filter(USUBJID == "GLPX1-101-037") |>
   select(USUBJID, AESEQ, AETERM, AEDECOD)
 ```
 
@@ -233,7 +233,7 @@ serious (`AESER = "Y"`). Severity and seriousness are different axes:
 severity is how intense the event was; seriousness is whether it met a
 regulatory criterion (here, a hypoglycaemia that required
 hospitalisation). Most severe events are not serious, and (though
-GLPX-001 has no such case) a mild event *could* be serious. Confusing
+GLPX-1 has no such case) a mild event *could* be serious. Confusing
 the two is how a safety table ends up with the wrong SAE count.
 :::
 
@@ -281,7 +281,7 @@ c(
 
 Run the chunk. The raw `RECOVERED` returns `FALSE`. It is not in the
 outcome codelist, while the mapped `RECOVERED/RESOLVED` returns `TRUE`.
-Every GLPX-001 event resolved, so after mapping, `AEOUT` is a single
+Every GLPX-1 event resolved, so after mapping, `AEOUT` is a single
 value across the file; there are no ongoing events to represent. (Had
 there been, an event still ongoing at last contact would carry a null
 `AEENDTC`; the relative-timing variable `AEENRF` exists for expressing
@@ -343,7 +343,7 @@ partial birth dates in DM.
 
 The most consequential AE error there is. A count of `AESEV = "SEVERE"`
 is not a count of serious adverse events; the SAE count comes from
-`AESER = "Y"`. In GLPX-001 the two numbers are wildly different (many
+`AESER = "Y"`. In GLPX-1 the two numbers are wildly different (many
 severe events, one serious one) and reporting the wrong column
 misstates the trial's safety profile.
 
@@ -414,7 +414,7 @@ distinction on real rows. Solutions are in the paid tier.
 2. `AETERM` for one event reads `nausea and vomitting`. What do you put
    in `AETERM`, what in `AEDECOD`, and why does this course leave the
    second empty?
-3. GLPX-001 has many `SEVERE` events and one `AESER = "Y"` event.
+3. GLPX-1 has many `SEVERE` events and one `AESER = "Y"` event.
    Explain, to a colleague who thinks they are the same thing, how both
    can be true.
 4. Subject `103-199`'s constipation has a null `AESTDTC`. Why is the

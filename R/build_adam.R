@@ -1,4 +1,4 @@
-# build_adam.R — GLPX-001 SDTM -> ADaM datasets
+# build_adam.R — GLPX-1 SDTM -> ADaM datasets
 #
 # Reads the finished SDTM in data/sdtm/ and writes analysis datasets to
 # data/adam/. This is the ADaM companion to build_sdtm.R: each ADaM
@@ -35,7 +35,7 @@ read_sdtm <- function(name) {
 # See sessions/adsl.qmd for the reasoning behind each derivation.
 #
 # SCOPE NOTE. Two ADSL variables have no SDTM source in this course,
-# because GLPX-001's SDTM stops at DM/AE/LB/VS and never builds DS
+# because GLPX-1's SDTM stops at DM/AE/LB/VS and never builds DS
 # (Disposition), which is where a real trial records randomization and
 # end-of-study:
 #   RANDDT — taken as TRTSDT. Verified true for all 400 subjects here
@@ -116,7 +116,7 @@ build_adsl <- function() {
 # CLASS NOTE. This is Class = OCCURRENCE DATA STRUCTURE, and deliberately
 # NOT SubClass ADVERSE EVENT. The SubClass requires every level of the
 # MedDRA primary path — SOC, HLGT, HLT, LLT, PT (OCCDS v1.1 §3.2.3) — and
-# GLPX-001 has no MedDRA coding at all, because MedDRA is licensed and
+# GLPX-1 has no MedDRA coding at all, because MedDRA is licensed and
 # this course does not fabricate coded terms. OCCDS v1.1 §1.1.2 sanctions
 # exactly this: data "that could have been coded but was not should use
 # this structure". The MedDRA-dependent occurrence flags (AOCCSFL,
@@ -125,7 +125,7 @@ build_adsl <- function() {
 #
 # TREATMENT WINDOW. TRTEMFL uses ADSL.TRTSDT <= ASTDT <= ADSL.TRTEDT + x
 # with x = 0 (OCCDS v1.1 §3.2, Table 3.2.5.3). Real trials commonly set
-# x > 0 from the drug's half-life; GLPX-001 is fictional and inventing a
+# x > 0 from the drug's half-life; GLPX-1 is fictional and inventing a
 # half-life for it would be inventing a pharmacological fact, so the
 # window is exactly first dose to last dose inclusive. Sponsor choice,
 # documented here and in the session.
@@ -214,7 +214,7 @@ build_adae <- function(adsl) {
 # BASELINE DEFINITION (sponsor decision, see sessions/adlb.qmd).
 # The SAP defines baseline as the last non-missing value ON OR BEFORE the
 # first dose of study drug. That is the standard wording, and it matters
-# here: GLPX-001's BASELINE visit is scheduled in a window that lands
+# here: GLPX-1's BASELINE visit is scheduled in a window that lands
 # AFTER first dose for 958 of 1600 subject-parameter pairs, so flagging
 # "the BASELINE visit" would make most baseline values post-dose.
 #

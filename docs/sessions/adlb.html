@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -514,7 +514,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The primary endpoint of GLPX-001 is a <em>change</em> from baseline in HbA1c. Before anyone can compute it, something has to decide which value baseline is. A safety review needs every lab result classified against its reference range at every visit. A reviewer needs to see the measured value and the analysis value side by side, and to know which record the change was measured from.</p>
+<p>The primary endpoint of GLPX-1 is a <em>change</em> from baseline in HbA1c. Before anyone can compute it, something has to decide which value baseline is. A safety review needs every lab result classified against its reference range at every visit. A reviewer needs to see the measured value and the analysis value side by side, and to know which record the change was measured from.</p>
 <p>All three need the same thing: a dataset where each row is one measurement, described well enough to stand on its own, with the baseline it is compared against carried alongside it. That raises the question this session answers: <strong>when the whole trial is measured as change from baseline, who decides which value baseline is?</strong></p>
 <p>Builds on <a href="../sessions/adam-concepts.html">ADaM Concepts</a>, <a href="../sessions/adsl.html">ADSL</a>, and <a href="../sessions/sdtm-findings.html">Findings</a>, where <code>LBLOBXFL</code> was deliberately left unfinished.</p>
 </div>
@@ -593,7 +593,7 @@ Tip
 <li>“<code>AVISIT</code> represents the analysis visit of the record, but <strong>it does not mean that the record was analyzed</strong>”</li>
 <li>“Values of <code>AVISIT</code> are producer-defined” (all ADaMIG v1.3, §3.3.3)</li>
 </ul>
-<p>GLPX-001 has a clean nominal visit schedule, so our <code>AVISIT</code> copies <code>VISIT</code> unchanged. That is a defensible choice for this trial, not a general rule. In studies where subjects attend outside the protocol window, <code>AVISIT</code> is where windowing decisions get recorded, and it can differ from <code>VISIT</code> on most rows.</p>
+<p>GLPX-1 has a clean nominal visit schedule, so our <code>AVISIT</code> copies <code>VISIT</code> unchanged. That is a defensible choice for this trial, not a general rule. In studies where subjects attend outside the protocol window, <code>AVISIT</code> is where windowing decisions get recorded, and it can differ from <code>VISIT</code> on most rows.</p>
 </section>
 <section id="ranges" class="level3" data-number="12.3.3">
 <h3 data-number="12.3.3" class="anchored" data-anchor-id="ranges"><span class="header-section-number">12.3.3</span> Ranges</h3>
@@ -607,7 +607,7 @@ Tip
 <p>From there the derived columns follow mechanically. <code>CHG</code> is “equal to <code>AVAL-BASE</code>” and <code>PCHG</code> is “equal to <code>((AVAL-BASE)/BASE)*100</code>”, both Permissible, and both “should be populated for all post-baseline records of that <code>PARAM</code> regardless of whether that record is used for analysis” (ADaMIG v1.3, §3.3.4.1).</p>
 <p>What the guide does <em>not</em> do is tell you what baseline is. It gives you the machinery to record a decision, and leaves the decision to the statistical analysis plan. Two further variables mark the edges of that freedom:</p>
 <ul>
-<li><strong><code>BASETYPE</code></strong> is “producer-defined text describing the definition of baseline relevant to the value of <code>BASE</code> on the current record”, and is “required when there are multiple ways that baseline is defined” (ADaMIG v1.3, §3.3.4.1). GLPX-001 has one definition, so <code>BASETYPE</code> is not required here and is not built. A study with a screening baseline, a double-blind baseline and an open-label-extension baseline needs it on every affected row (see ADaMIG v1.3, §4.2.1.6, Rule 6).</li>
+<li><strong><code>BASETYPE</code></strong> is “producer-defined text describing the definition of baseline relevant to the value of <code>BASE</code> on the current record”, and is “required when there are multiple ways that baseline is defined” (ADaMIG v1.3, §3.3.4.1). GLPX-1 has one definition, so <code>BASETYPE</code> is not required here and is not built. A study with a screening baseline, a double-blind baseline and an open-label-extension baseline needs it on every affected row (see ADaMIG v1.3, §4.2.1.6, Rule 6).</li>
 <li><strong><code>DTYPE</code></strong> “is used to denote, and must be populated, when the value of <code>AVAL</code> or <code>AVALC</code> has been imputed or derived differently than the other analysis values within the parameter” (ADaMIG v1.3, §3.3.5). A baseline record “may be derived (e.g., it may be an average), in which case <code>DTYPE</code> must also be populated” (ADaMIG v1.3, §3.3.8). Every <code>AVAL</code> in our ADLB is an observed lab result, so <code>DTYPE</code> is null throughout. Null <code>DTYPE</code> is a statement, not an omission: it says this row is what was measured.</li>
 </ul>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -616,12 +616,12 @@ Tip
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>GLPX-001’s baseline definition, and why it is not “the BASELINE visit”
+<span class="screen-reader-only">Important</span>GLPX-1’s baseline definition, and why it is not “the BASELINE visit”
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>The obvious definition is “the record at the visit named BASELINE.” For this trial that would be wrong, and the data says so.</p>
-<p>GLPX-001’s baseline visit is scheduled in a window that, for many subjects, falls <em>after</em> the first dose. Flagging the BASELINE visit record would make <strong>958 of 1600</strong> subject-parameter baselines post-dose: values measured after the subject had already started study drug, used as the anchor for measuring the drug’s effect.</p>
+<p>GLPX-1’s baseline visit is scheduled in a window that, for many subjects, falls <em>after</em> the first dose. Flagging the BASELINE visit record would make <strong>958 of 1600</strong> subject-parameter baselines post-dose: values measured after the subject had already started study drug, used as the anchor for measuring the drug’s effect.</p>
 <p>So the SAP for this course defines baseline the way real protocols usually word it: <strong>the last non-missing value on or before the first dose of study drug.</strong> Example 1 checks that this produces zero post-dose baselines, and Example 2 shows what it costs and what it buys.</p>
 <p>The general lesson is the one worth carrying: a baseline definition is a claim about which measurement is untreated. Check it against the dosing dates rather than trusting the visit label.</p>
 </div>
@@ -705,7 +705,7 @@ Tip
 <span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>adlb_spine <span class="sc">|&gt;</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-010"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-010"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(PARAM, AVISIT, ADT, ADY, AVAL, ANRLO, ANRHI, ANRIND)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 8
@@ -933,7 +933,7 @@ Tip
 <p>Seeing it on one subject makes the mechanism concrete. Subject <code>101-010</code>, whom you met in <a href="../sessions/sdtm-findings.html">Findings</a> as the duplicate-record case:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>adlb <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-010"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-010"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AVISIT, ADY, AVAL, ABLFL, BASE, CHG, PCHG) <span class="sc">|&gt;</span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -946,7 +946,7 @@ Tip
 4 WEEK 8       59   8.3 &lt;NA&gt;    8.6 -0.300 -3.49</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>lb <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-010"</span>, LBTESTCD <span class="sc">==</span> <span class="st">"HBA1C"</span>,</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-010"</span>, LBTESTCD <span class="sc">==</span> <span class="st">"HBA1C"</span>,</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>         VISIT <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"SCREENING"</span>, <span class="st">"BASELINE"</span>)) <span class="sc">|&gt;</span></span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(VISIT, LBDTC, LBSTRESN, LBLOBXFL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1061,7 +1061,7 @@ Tip
 <p><code>101-052</code> is the subject from <a href="../sessions/sdtm-findings.html">Findings</a> whose screening HbA1c came back at 13.9%, tripped an edit check, was investigated, and was confirmed as a real value:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>adlb <span class="sc">|&gt;</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-052"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-052"</span>, PARAMCD <span class="sc">==</span> <span class="st">"HBA1C"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AVISIT, ADY, AVAL, ABLFL, BASE, CHG)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 6
@@ -1152,7 +1152,7 @@ Tip
 <section id="comprehension-check" class="level2" data-number="12.8">
 <h2 data-number="12.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">12.8</span> Comprehension Check</h2>
 <ol type="1">
-<li>GLPX-001’s <code>ABLFL</code> lands on SCREENING for 958 subject-parameter pairs and on BASELINE for 642. Is that an inconsistency? Explain in one sentence.</li>
+<li>GLPX-1’s <code>ABLFL</code> lands on SCREENING for 958 subject-parameter pairs and on BASELINE for 642. Is that an inconsistency? Explain in one sentence.</li>
 <li>Every disagreement between <code>ABLFL</code> and <code>LBLOBXFL</code> in this dataset is at <code>ADY == 1</code>. What is it about <code>ADY == 1</code> that causes this, and which definition does each flag use?</li>
 <li><code>DTYPE</code> is null on all 12,388 records of our ADLB. Under what change to the baseline definition would it stop being null, and on which rows?</li>
 <li>Your ADLB has <code>BASE</code> populated but you removed <code>ABLFL</code> because “the baseline value is already there.” Which rule does that break, and what can a reviewer no longer do?</li>

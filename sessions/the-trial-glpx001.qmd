@@ -1,5 +1,5 @@
 ---
-title: "The Trial: GLPX-001"
+title: "The Trial: GLPX-1"
 ---
 
 ```{r setup}
@@ -65,7 +65,7 @@ course uses throughout.
 
 After completing this session you will be able to:
 
-- Describe the design of GLPX-001 (population, arms, duration,
+- Describe the design of GLPX-1 (population, arms, duration,
   endpoints, visit schedule) from its summary
 - Predict the expected shape of every raw file from the design alone,
   before opening it
@@ -106,11 +106,11 @@ mysterious files" into "here are two discrepancies I need to explain."
 
 ### The trial
 
-GLPX-001 is a simulated Phase III, randomised, double-blind,
+GLPX-1 is a simulated Phase III, randomised, double-blind,
 placebo-controlled trial of **GLPX**, a fictional GLP-1-class agent,
 in adults with type 2 diabetes.
 
-| Design element | GLPX-001 |
+| Design element | GLPX-1 |
 |---|---|
 | Phase | III |
 | Population | Adults with type 2 diabetes |
@@ -531,7 +531,7 @@ pre-specified, is a different and harder question. The distance
 between those two questions is Parts 2 through 4 of this course.
 
 **"Screening values and baseline values are the same thing"**
-GLPX-001 measures HbA1c at both, two weeks apart, and the means
+GLPX-1 measures HbA1c at both, two weeks apart, and the means
 differ (8.37 at screening, 8.28 at baseline for GLPX). Which one is
 "baseline" for analysis is a definition, not an observation, and
 defining it is a decision you will make explicitly in

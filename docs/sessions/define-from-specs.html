@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -571,7 +571,7 @@ Tip
 <section id="example-1-reading-a-real-specification" class="level2" data-number="14.4">
 <h2 data-number="14.4" class="anchored" data-anchor-id="example-1-reading-a-real-specification"><span class="header-section-number">14.4</span> Example 1: Reading a Real Specification</h2>
 <p><em>Estimated time: ~20 minutes (worked example)</em></p>
-<p>GLPX-001’s workbook covers two domains, DM and LB. Start with its shape:</p>
+<p>GLPX-1’s workbook covers two domains, DM and LB. Start with its shape:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>spec <span class="ot">&lt;-</span> <span class="st">"data/spec/SDTM_METADATA.xlsx"</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -607,9 +607,9 @@ Tip
 <pre><code># A tibble: 10 × 7
    VARNUM VARIABLE TYPE    LENGTH LABEL                      ORIGIN CODELISTNAME
     &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;       
- 1      1 STUDYID  text         7 Study Identifier           Assig… &lt;NA&gt;        
+ 1      1 STUDYID  text         5 Study Identifier           Assig… &lt;NA&gt;        
  2      2 DOMAIN   text         2 Domain Abbreviation        Assig… &lt;NA&gt;        
- 3      3 USUBJID  text        15 Unique Subject Identifier  Deriv… &lt;NA&gt;        
+ 3      3 USUBJID  text        13 Unique Subject Identifier  Deriv… &lt;NA&gt;        
  4      4 LBSEQ    integer      2 Sequence Number            Deriv… &lt;NA&gt;        
  5      5 LBTESTCD text         5 Lab Test or Examination S… Assig… LBTESTCD    
  6      6 LBTEST   text        24 Lab Test or Examination N… Assig… LBTEST      
@@ -793,7 +793,7 @@ Assigned      CRF  Derived      eDT
 </tr>
 </tbody>
 </table>
-<p>That second row is exactly the pairing the previous session derived for GLPX-001’s central lab results from §4.3.2.1. The two sessions meet here.</p>
+<p>That second row is exactly the pairing the previous session derived for GLPX-1’s central lab results from §4.3.2.1. The two sessions meet here.</p>
 <p>So the central intuition of this session is not about version numbers:</p>
 <blockquote class="blockquote">
 <p><strong>The tool is not describing the same thing the standard now asks for.</strong> A 2.0 document is not a 2.1 document missing an attribute. It is a document whose vocabulary was retired.</p>
@@ -891,7 +891,7 @@ xlink &lt;-&gt; http://www.w3.org/1999/xlink</code></pre>
 <h2 data-number="14.8" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">14.8</span> What Can Go Wrong</h2>
 <p><em>Estimated time: ~10 minutes (reading)</em></p>
 <p><strong>The tool validates against the wrong schema.</strong> <code>defineR</code>’s own <code>check = TRUE</code> produces <code>check.sdtm.pdf</code>, and the document validates cleanly, against 2.0. A green check from a tool tells you the tool is satisfied. <code>R/build_define.R</code> therefore asserts <em>both</em> schemas explicitly, and is written to complain if the 2.1 result ever changes, so that a future <code>defineR</code> gaining 2.1 support is noticed rather than silently assumed.</p>
-<p><strong>The workbook has no place for what you know.</strong> This is the failure mode with no error message. You know GLPX-001’s lab results come from a central laboratory. The 2.0 <code>ORIGIN</code> column cannot record it. Nothing warns you, nothing fails, and the information is simply absent from the deliverable. <strong>A metadata format’s limits become your metadata’s limits, silently.</strong></p>
+<p><strong>The workbook has no place for what you know.</strong> This is the failure mode with no error message. You know GLPX-1’s lab results come from a central laboratory. The 2.0 <code>ORIGIN</code> column cannot record it. Nothing warns you, nothing fails, and the information is simply absent from the deliverable. <strong>A metadata format’s limits become your metadata’s limits, silently.</strong></p>
 <p><strong>Fixing the XML instead of the workbook.</strong> Hand-editing generated define.xml to correct something is the single most tempting mistake here, and it does not survive the next regeneration. It also makes the workbook and the deliverable disagree, which is worse than either being wrong on its own.</p>
 <p><strong>Links to documents that do not exist.</strong> <code>EXTERNAL_LINKS</code> in this workbook names <code>blankcrf.pdf</code> and <code>sdrg.pdf</code>. <strong>Neither file is part of this course</strong>, and the generated define.xml links to both. A real submission ships them alongside; here they are named and absent, which is exactly the kind of dangling reference a conformance check is supposed to catch and a schema will not.</p>
 <section id="common-misinterpretations" class="level3" data-number="14.8.1">

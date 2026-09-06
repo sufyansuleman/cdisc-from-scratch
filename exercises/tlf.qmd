@@ -39,7 +39,7 @@ adlb <- read_csv("data/adam/adlb.csv", show_col_types = FALSE)
 2. **(The trap) The table the session's own citation calls for.** OCCDS
    v1.1 §4 opens Example 1 by citing ICH E3 §12.2.2 and §14.3.1 for "the
    basic summary of adverse event frequencies," displayed by **System
-   Organ Class and Preferred Term**. Build that table for GLPX-001.
+   Organ Class and Preferred Term**. Build that table for GLPX-1.
 
    You will not be able to. Find out precisely why, using the data
    rather than assuming it. Check what columns actually exist in ADAE,

@@ -60,7 +60,7 @@ correctly, before any other dataset can be built, and what does
 building it actually involve?**
 
 Builds on [SDTM Concepts](sdtm-concepts.qmd) (classes, cores,
-controlled terminology) and [The Trial: GLPX-001](the-trial-glpx001.qmd)
+controlled terminology) and [The Trial: GLPX-1](the-trial-glpx001.qmd)
 (the raw files and their defects).
 :::
 
@@ -135,7 +135,7 @@ all the others. `RFSTDTC`, the subject reference start date, is
 study treatment" and is the anchor from which every study-day variable
 in every domain is calculated (SDTMIG v3.4, §5.2, assumption 9). It is
 null for subjects who were never treated, screen failures, subjects
-never assigned (SDTMIG v3.4, §5.2, assumption 9), which GLPX-001 does
+never assigned (SDTMIG v3.4, §5.2, assumption 9), which GLPX-1 does
 not have, but the principle stands: the clock starts at first exposure,
 so a subject with no exposure has no clock.
 
@@ -195,7 +195,7 @@ v3.4, §5.2, assumption 4). `ARMCD` is limited to 20 characters and is
 free of the `--TESTCD` character restrictions (SDTMIG v3.4, §4.2.1).
 `ARMNRS` exists for subjects whose arm variables are null, and may
 **not** be populated when both ARMCD and ACTARMCD have values (SDTMIG
-v3.4, §5.2, assumption 4a). In a trial like GLPX-001 where everyone was
+v3.4, §5.2, assumption 4a). In a trial like GLPX-1 where everyone was
 randomised and treated as assigned, `ARMNRS` is a column of nulls,
 present because it is Expected, empty because it has nothing to say.
 
@@ -254,9 +254,9 @@ detail carried elsewhere."
 
 dm_ids <- dm_person |>
   mutate(
-    STUDYID = "GLPX001",
+    STUDYID = "GLPX1",
     DOMAIN  = "DM",
-    USUBJID = paste("GLPX001", SUBJID, sep = "-")
+    USUBJID = paste("GLPX1", SUBJID, sep = "-")
   )
 
 dm_ids |> select(STUDYID, DOMAIN, USUBJID, SUBJID, SITEID) |> head(3)
@@ -269,7 +269,7 @@ dm_ids |> select(STUDYID, DOMAIN, USUBJID, SUBJID, SITEID) |> head(3)
 |---|---|
 | `STUDYID` | The study, constant. Sponsor-assigned. |
 | `DOMAIN` | The constant `"DM"`: the two-character code doing one of its four jobs (SDTMIG v3.4, §2.2). |
-| `USUBJID` | `GLPX001-101-012`, built as STUDYID + SUBJID, **deliberately not** from `SITEID`. |
+| `USUBJID` | `GLPX1-101-012`, built as STUDYID + SUBJID, **deliberately not** from `SITEID`. |
 | `SUBJID` | The subject as recorded on the CRF, unique within the study, DM's topic variable (SDTMIG v3.4, §5.2). |
 
 The format decision is the lesson. The guide suggests
@@ -288,7 +288,7 @@ recomputed.)
 assumption 9), and exposure lives in the raw dosing file. The
 reference pairs come from the same place: `RFXSTDTC` is defined as the
 earliest `EXSTDTC` and `RFXENDTC` as the latest `EXENDTC` (SDTMIG
-v3.4, §5.2). GLPX-001 has one dosing record per subject, so earliest
+v3.4, §5.2). GLPX-1 has one dosing record per subject, so earliest
 and latest are simply its two dates:
 
 ```{r ref-dates}
@@ -311,7 +311,7 @@ dm_ref <- dm_ids |>
 dm_ref |> select(USUBJID, RFSTDTC, RFENDTC, RFXSTDTC, RFXENDTC) |> head(3)
 ```
 
-`RFICDTC` deserves a pause: GLPX-001's raw data never collected consent
+`RFICDTC` deserves a pause: GLPX-1's raw data never collected consent
 dates, so the column is present and entirely null. That is the
 Expected discipline from [SDTM Concepts](sdtm-concepts.qmd) in the
 flesh: the column must exist (with the absence explained in the
@@ -379,7 +379,7 @@ get `NA` in both AGE and AGEU. Ask yourself which you would rather
 defend to a reviewer: four honest nulls, or four ages computed from
 invented birthdays. (In a real study, ages for such subjects are often
 *collected* on the CRF precisely because the birth date is withheld,
-GLPX-001's CRF did not, so nulls it is.)
+GLPX-1's CRF did not, so nulls it is.)
 :::
 
 ### SEX: one subject, one value
@@ -414,7 +414,7 @@ is logged as a data query to the lab rather than silently absorbed:
 
 dm_queries <- tribble(
   ~USUBJID,          ~variable, ~issue,
-  "GLPX001-111-003", "SEX",     "EDC records F; central-lab file records M"
+  "GLPX1-111-003", "SEX",     "EDC records F; central-lab file records M"
 ) |>
   mutate(resolution = paste(
     "SEX taken from the EDC (site-entered source);",
@@ -457,7 +457,7 @@ ct_checks |> mutate(values = map_chr(values, paste, collapse = ", "))
 ### Reading the Output Line by Line
 
 All four rows come back `TRUE`, including RACE's `OTHER`, which is a
-genuine member of the RACE codelist (`C74457`). GLPX-001's EDC was
+genuine member of the RACE codelist (`C74457`). GLPX-1's EDC was
 configured with codelist values, so the checks pass; in a study whose
 CRF allowed free text they would not, and this one table would be
 where you found out. Passing is not the point. *Having checked* is
@@ -492,7 +492,7 @@ dm_arms <- dm_age |>
     ACTARMCD = ARMCD,
     ARMNRS   = NA_character_,
     ACTARMUD = NA_character_,
-    DTHDTC   = NA_character_,   # no deaths in GLPX-001
+    DTHDTC   = NA_character_,   # no deaths in GLPX-1
     DTHFL    = NA_character_
   )
 
@@ -670,7 +670,7 @@ compute durations.
 
 **Dropping the empty Expected columns**
 
-`ARMNRS`, `RFICDTC` and `DTHFL` are all null in GLPX-001's DM, and a
+`ARMNRS`, `RFICDTC` and `DTHFL` are all null in GLPX-1's DM, and a
 tidy instinct says remove them. Expected means the column stays, with
 the study-level absence explained in the metadata (SDTMIG v3.4,
 §4.1.5). Only Permissible variables disappear when uncollected.
@@ -698,7 +698,7 @@ here, is the *correct value*.
 
 **"The subject's study day 0 is their randomisation day"**
 There is no study day 0 (SDTMIG v3.4, §4.4.4): the reference date is
-day 1, and GLPX-001's reference date is first *exposure*, which for
+day 1, and GLPX-1's reference date is first *exposure*, which for
 some subjects is not the randomisation day at all.
 :::
 
@@ -715,7 +715,7 @@ two resolved conflicts. Solutions are in the paid tier.
 
 1. Subject `101-012` has two genuine enrolment records. Why does DM get
    exactly one row, and where does the site-change information belong?
-2. This course built `USUBJID` as `GLPX001-<SUBJID>` rather than the
+2. This course built `USUBJID` as `GLPX1-<SUBJID>` rather than the
    guide's STUDYID-SITEID-SUBJID example. Justify the choice.
 3. `RFICDTC`, `DTHFL` and `ARMNRS` are all completely null in the
    finished dataset, while `INVNAM` and `DMDTC` are absent entirely.

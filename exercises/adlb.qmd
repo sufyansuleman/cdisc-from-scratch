@@ -5,7 +5,7 @@ title: "Exercise 6: ADLB"
 ## Goal
 
 Extend the ADLB from [the ADLB session](../sessions/adlb.qmd) with a
-categorised change, then build the two things GLPX-001's single baseline
+categorised change, then build the two things GLPX-1's single baseline
 definition never forces you to build: a derived baseline that requires
 `DTYPE`, and a second baseline definition that requires `BASETYPE`.
 

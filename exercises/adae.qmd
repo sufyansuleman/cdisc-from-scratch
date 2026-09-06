@@ -6,7 +6,7 @@ title: "Exercise 5: ADAE"
 
 Extend the ADAE from [the ADAE session](../sessions/adae.qmd) with a
 severity grouping and a second treatment-emergent window, then build the
-non-emergent event GLPX-001 never gives you, and see what it does to
+non-emergent event GLPX-1 never gives you, and see what it does to
 the safety table.
 
 ## Setup
@@ -55,7 +55,7 @@ persisted copy from `data/adam/adae.csv`.
    dataset?
 
 3. **(Semi-guided) The event that came first.** Take subject
-   `GLPX001-101-147`, whose four events you saw in the session. Construct
+   `GLPX1-101-147`, whose four events you saw in the session. Construct
    the scenario where their first event (the diarrhoea at day 51) had
    instead started 10 days *before* first dose.
 
@@ -87,7 +87,7 @@ For the codelist question, look at the footnote attached to the asterisk
 in the OCCDS table.
 
 Task 2: derive it, then `count()` both flags together before writing any
-explanation. Every GLPX-001 event sits well inside the treatment window
+explanation. Every GLPX-1 event sits well inside the treatment window
 - the session says so explicitly. For the variable name, read the rows
 immediately below `TRTEMFL` in Table 3.2.5.3.
 

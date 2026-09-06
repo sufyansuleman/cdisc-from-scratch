@@ -212,7 +212,7 @@ there or it is not, and only checking finds out.
 *Estimated time: ~25 minutes (worked example)*
 
 We will build a small but genuinely valid Define-XML v2.1 document
-describing GLPX-001's DM domain, with three variables and one codelist.
+describing GLPX-1's DM domain, with three variables and one codelist.
 Small, but not a toy: it validates against the same CDISC schema a
 submission would be checked with.
 
@@ -252,23 +252,23 @@ odm <- xml_new_root(
   "xmlns:xlink" = "http://www.w3.org/1999/xlink",
   ODMVersion       = "1.3.2",
   FileType         = "Snapshot",
-  FileOID          = "GLPX001.define.sdtm.v1",
+  FileOID          = "GLPX1.define.sdtm.v1",
   CreationDateTime = "2026-09-04T10:00:00",
   Originator       = "CDISC with R course",
   "def:Context"    = "Other"
 )
 
-study <- xml_add_child(odm, "Study", OID = "STDY.GLPX001")
+study <- xml_add_child(odm, "Study", OID = "STDY.GLPX1")
 gv    <- xml_add_child(study, "GlobalVariables")
-xml_add_child(gv, "StudyName", "GLPX-001")
+xml_add_child(gv, "StudyName", "GLPX-1")
 xml_add_child(gv, "StudyDescription",
               "A simulated Phase III trial of GLPX 10 mg in type 2 diabetes")
-xml_add_child(gv, "ProtocolName", "GLPX-001")
+xml_add_child(gv, "ProtocolName", "GLPX-1")
 
 mdv <- xml_add_child(
   study, "MetaDataVersion",
-  OID  = "MDV.GLPX001.SDTMIG.3.4",
-  Name = "GLPX-001 SDTM Data Definitions",
+  OID  = "MDV.GLPX1.SDTMIG.3.4",
+  Name = "GLPX-1 SDTM Data Definitions",
   "def:DefineVersion" = "2.1.11"
 )
 ```
@@ -296,7 +296,7 @@ xml_add_child(std, "def:Standard", OID = "STD.2",
 ```
 
 This is the machine-readable version of a claim the course has been
-making in prose since [SDTM Concepts](sdtm-concepts.qmd): GLPX-001
+making in prose since [SDTM Concepts](sdtm-concepts.qmd): GLPX-1
 implements **SDTMIG v3.4** with SDTM CT. Until now that claim lived in a
 sentence. Here it becomes an attribute a validator can check the rest of
 the document against.
@@ -451,7 +451,7 @@ session is about: **if it validates, is it right?**
 
 *Estimated time: ~15 minutes (worked example)*
 
-[Findings](sdtm-findings.qmd) made a claim about GLPX-001's central lab
+[Findings](sdtm-findings.qmd) made a claim about GLPX-1's central lab
 data that this session can now finish. It said that a central lab result
 has `LBDRVFL` null because the value was not derived, and that the same
 fact is recorded a second time in the Define-XML origin metadata, where
@@ -797,7 +797,7 @@ at all.
 1. A colleague proposes renaming every OID in your define.xml to a UUID,
    arguing it is cleaner. Is the resulting document still conformant?
    What is actually lost?
-2. GLPX-001's HbA1c results come from a central laboratory. What
+2. GLPX-1's HbA1c results come from a central laboratory. What
    `Type` and `Source` belong on `LBSTRESN`, and why is
    `Collected`/`Sponsor` invalid?
 3. Your define.xml returns `TRUE` from `xml_validate()`. What proportion

@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -557,7 +557,7 @@ Tip
 <h2 data-number="15.3" class="anchored" data-anchor-id="background-the-document-that-says-why"><span class="header-section-number">15.3</span> Background: The Document That Says Why</h2>
 <p><em>Estimated time: ~20 minutes (reading)</em></p>
 <p><a href="../sessions/define-xml.html">Define-XML</a> built a document that records, in machine-readable form, what every variable is and where it came from. That is a great deal of information. It is also, in a specific and important way, silent.</p>
-<p><code>def:Origin Type="Derived"</code> tells a reviewer that <code>AGE</code> was computed. A <code>MethodDef</code> can even tell them the algorithm. Neither tells them that four subjects in GLPX-001 have no age at all, that this is because their birth dates arrived partial, and that the study chose to leave them null rather than impute. That is a decision, with a rationale, and XML has no element for a rationale.</p>
+<p><code>def:Origin Type="Derived"</code> tells a reviewer that <code>AGE</code> was computed. A <code>MethodDef</code> can even tell them the algorithm. Neither tells them that four subjects in GLPX-1 have no age at all, that this is because their birth dates arrived partial, and that the study chose to leave them null rather than impute. That is a decision, with a rationale, and XML has no element for a rationale.</p>
 <p>The FDA guidance is unusually direct about the ADRG’s role, including the part that sounds like a flaw:</p>
 <blockquote class="blockquote">
 <p>The ADRG <strong>purposefully duplicates</strong> limited information found in other submission documentation (e.g., the protocol, statistical analysis plan (SAP), clinical study report, define.xml) in order to provide FDA reviewers with a single point of orientation to the analysis datasets (Study Data Technical Conformance Guide v6.0, §2.3)</p>
@@ -801,7 +801,7 @@ Tip
 </table>
 </div>
 </div>
-<p>Zero discrepancies across 400 subjects. In GLPX-001 nobody received a treatment other than the one they were randomised to, which is a simulation convenience, and an ADRG for a real study would very probably have a non-empty “No” row and a paragraph explaining it.</p>
+<p>Zero discrepancies across 400 subjects. In GLPX-1 nobody received a treatment other than the one they were randomised to, which is a simulation convenience, and an ADRG for a real study would very probably have a non-empty “No” row and a paragraph explaining it.</p>
 </section>
 <section id="imputationderivation-methods" class="level3" data-number="15.5.2">
 <h3 data-number="15.5.2" class="anchored" data-anchor-id="imputationderivation-methods"><span class="header-section-number">15.5.2</span> 3.5 Imputation/Derivation Methods</h3>
@@ -975,7 +975,7 @@ IT.LB.LBSTNRHI, IT.LB.LBDRVFL</code></pre>
 </div>
 <section id="reading-the-output-line-by-line-1" class="level3" data-number="15.6.1">
 <h3 data-number="15.6.1" class="anchored" data-anchor-id="reading-the-output-line-by-line-1"><span class="header-section-number">15.6.1</span> Reading the Output Line by Line</h3>
-<p>Thirteen variables in GLPX-001’s define.xml have <code>Origin Type="Derived"</code> and no <code>MethodOID</code>: nothing states how they were derived. The cause is upstream, in the specification workbook: <code>COMPUTATION_METHOD</code> defines five methods, but twenty-three variables are marked derived.</p>
+<p>Thirteen variables in GLPX-1’s define.xml have <code>Origin Type="Derived"</code> and no <code>MethodOID</code>: nothing states how they were derived. The cause is upstream, in the specification workbook: <code>COMPUTATION_METHOD</code> defines five methods, but twenty-three variables are marked derived.</p>
 <p><strong>This finding is left in deliberately, and reported rather than quietly fixed.</strong> Two reasons, and both are the point of section 6:</p>
 <ol type="1">
 <li>It is what a real conformance summary looks like. A submission with zero findings is rarer than people expect, and the section exists because findings are normal. What matters is that each one is <em>known, stated, and explained</em>, not that the list is empty.</li>
@@ -1050,12 +1050,12 @@ IT.LB.LBSTNRHI, IT.LB.LBDRVFL</code></pre>
 </div>
 <div class="callout-body-container callout-body">
 <p>Sections 2.2, 3.3, 4.1–4.3, 5.1 and 7 require submission experience and study conduct knowledge that this course does not have and will not fake.</p>
-<p>For GLPX-001 they would say roughly this, and a real study would say it with authority this course cannot claim:</p>
+<p>For GLPX-1 they would say roughly this, and a real study would say it with authority this course cannot claim:</p>
 <ul>
 <li><strong>2.2</strong> would relate <code>TRT01P</code>/<code>TRT01A</code> and the analysis periods to the trial’s two-arm parallel design with eight visits over 26 weeks.</li>
-<li><strong>3.4</strong> would state the visit-windowing rule from the SAP. GLPX-001 uses nominal visits with no windowing, which is unusually simple and would itself be worth stating.</li>
+<li><strong>3.4</strong> would state the visit-windowing rule from the SAP. GLPX-1 uses nominal visits with no windowing, which is unusually simple and would itself be worth stating.</li>
 <li><strong>4.2</strong> would describe that ADSL is built first and ADAE and ADLB both read it: the dependency <code>R/build_adam.R</code> encodes.</li>
-<li><strong>5.1</strong> would confirm whether the datasets support every objective in the protocol and SAP. GLPX-001 has no formal SAP, so this cannot be answered honestly here at all.</li>
+<li><strong>5.1</strong> would confirm whether the datasets support every objective in the protocol and SAP. GLPX-1 has no formal SAP, so this cannot be answered honestly here at all.</li>
 <li><strong>7</strong> would itemise the programs shipped. This course ships <code>R/build_sdtm.R</code>, <code>R/build_adam.R</code>, <code>R/build_define.R</code> and <code>R/build_adrg_components.R</code>, but a submission’s program inventory has requirements this course has not verified.</li>
 </ul>
 <p>If you are writing a real ADRG, read the Completion Guidelines section by section. They are 33 pages and they answer these questions properly.</p>
@@ -1065,7 +1065,7 @@ IT.LB.LBSTNRHI, IT.LB.LBDRVFL</code></pre>
 <section id="a-note-on-ts.xpt" class="level3" data-number="15.7.1">
 <h3 data-number="15.7.1" class="anchored" data-anchor-id="a-note-on-ts.xpt"><span class="header-section-number">15.7.1</span> A note on <code>ts.xpt</code></h3>
 <p>Three earlier sessions promised you would meet <code>ts.xpt</code> again here. <a href="../sessions/why-standards.html">Why Standards</a> taught the chain by which the FDA’s technical rejection criteria check a submission’s study tagging file before any human opens it.</p>
-<p>The connection to this session is narrow and worth stating plainly: <code>ts.xpt</code> is where the <em>machine</em> learns which standards a study used; ADRG section 1.3 is where a <em>person</em> does. The same facts, twice, for two different readers, which is the “purposefully duplicates” principle again. GLPX-001 has no TS domain, so this course cannot build one, and how <code>ts.xpt</code> is populated for a real submission is outside what this session teaches.</p>
+<p>The connection to this session is narrow and worth stating plainly: <code>ts.xpt</code> is where the <em>machine</em> learns which standards a study used; ADRG section 1.3 is where a <em>person</em> does. The same facts, twice, for two different readers, which is the “purposefully duplicates” principle again. GLPX-1 has no TS domain, so this course cannot build one, and how <code>ts.xpt</code> is populated for a real submission is outside what this session teaches.</p>
 </section>
 </section>
 <section id="what-can-go-wrong" class="level2" data-number="15.8">
@@ -1098,7 +1098,7 @@ IT.LB.LBSTNRHI, IT.LB.LBDRVFL</code></pre>
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>The TCG says the ADRG “purposefully duplicates” information found in the protocol, SAP and define.xml. Why is that not a design flaw?</li>
-<li>GLPX-001’s define.xml records that <code>AGE</code> has <code>Origin Type="Derived"</code>. What can it not record, and which ADRG section carries it?</li>
+<li>GLPX-1’s define.xml records that <code>AGE</code> has <code>Origin Type="Derived"</code>. What can it not record, and which ADRG section carries it?</li>
 <li>Your ADRG’s section 6.2 lists thirteen rule-73 findings. Where do you fix them, and what do you do about the ADRG in the meantime?</li>
 <li>Which of the seven required sections could be regenerated automatically after a data refresh, and which would need rewriting by hand?</li>
 <li>A colleague’s ADRG has an empty Data Conformance Summary. What is the most likely explanation?</li>
@@ -1120,7 +1120,7 @@ IT.LB.LBSTNRHI, IT.LB.LBDRVFL</code></pre>
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li><p><strong>Because the reviewer needs a single point of orientation.</strong> The information exists elsewhere, but scattered across documents in different formats written for different purposes. The ADRG’s job is to be the one place someone with no memory of the study can start, and that job requires repeating things (TCG v6.0, §2.3).</p></li>
-<li><p><strong>It cannot record that four subjects have no <code>AGE</code>, why, or what was decided about it.</strong> <code>Origin</code> describes the variable; it says nothing about the records where the derivation could not be performed. That belongs in <strong>section 3.5, Imputation/Derivation Methods</strong>, where GLPX-001 states the partial birth dates, the count, and the decision to leave the values null rather than impute.</p></li>
+<li><p><strong>It cannot record that four subjects have no <code>AGE</code>, why, or what was decided about it.</strong> <code>Origin</code> describes the variable; it says nothing about the records where the derivation could not be performed. That belongs in <strong>section 3.5, Imputation/Derivation Methods</strong>, where GLPX-1 states the partial birth dates, the count, and the decision to leave the values null rather than impute.</p></li>
 <li><p><strong>Fix them in the specification workbook</strong>, add the missing <code>COMPUTATION_METHOD</code> entries and the <code>COMPUTATIONMETHODOID</code> references, then regenerate. Not in the XML, which would be overwritten, and not in the ADRG, which reports the state of the submission rather than improving it. In the meantime the ADRG reports the findings honestly, with an explanation, because that is what section 6.2 is for.</p></li>
 <li><p><strong>Regenerable: 1.3, 3.1, 3.2, 3.5, 5.2, and the findings half of 6.</strong> <strong>By hand: 2.1, 2.2, 3.3, 3.4, 4.1–4.3, 5.1, 7, and the <em>explanation</em> half of 6.2.</strong> The boundary is properties of the data versus reasons for a choice.</p></li>
 <li><p><strong>That nothing was checked.</strong> Section 6.1 asks which conformance software was used and against which version of the checks; an empty 6.2 with a filled 6.1 would be a strong claim, and an empty 6.2 with an empty 6.1 is not a claim at all. Findings are normal; the section exists because they are.</p></li>

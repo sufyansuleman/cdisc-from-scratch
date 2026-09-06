@@ -251,7 +251,7 @@ incomplete birth dates you met in [The DM Domain](sdtm-dm.qmd). They
 are still missing here, four sessions later, because nothing between
 then and now had a reason to impute them. Second, `EOSSTT` here reads
 181/19 for GLPX and 186/14 for Placebo, which is the same 367/33 split
-you first counted in [The GLPX-001 Trial](the-trial-glpx001.qmd), now
+you first counted in [The GLPX-1 Trial](the-trial-glpx001.qmd), now
 shown by arm rather than pooled. Same subjects, same numbers, different
 question asked of them.
 :::
@@ -259,14 +259,14 @@ question asked of them.
 ### Traceability, made concrete
 
 A table entry is only as good as your ability to point at the row it
-came from. Pick a cell (GLPX001-101-010, `Placebo`, `WHITE`,
+came from. Pick a cell (GLPX1-101-010, `Placebo`, `WHITE`,
 `COMPLETED`) and check it:
 
 ```{r trace-one}
 #| eval: true
 
 adsl |>
-  filter(USUBJID == "GLPX001-101-010") |>
+  filter(USUBJID == "GLPX1-101-010") |>
   select(USUBJID, TRT01P, AGE, SEX, RACE, EOSSTT)
 ```
 
@@ -281,7 +281,7 @@ walked back to a row like this one is not a result. It is a claim.
 A **table** counts. A **listing** enumerates. They can describe exactly
 the same underlying records and still look nothing alike, because they
 answer different questions: "how many?" against "which ones, in full?"
-GLPX-001 gives you a case where you can watch both happen to the same
+GLPX-1 gives you a case where you can watch both happen to the same
 event.
 
 ### The table: how many subjects, not how many events
@@ -398,7 +398,7 @@ wrong) clinical claim.
 
 ### The listing: every instance, none of them collapsed
 
-GLPX-001 has exactly one serious adverse event. That is a small enough
+GLPX-1 has exactly one serious adverse event. That is a small enough
 number to show you the entire listing, and it is the best possible size
 for seeing what a listing is *for*:
 
@@ -422,7 +422,7 @@ kable(sae_listing, caption = "Listing of Serious Adverse Events")
 ::: {.callout-tip}
 ### Run It Yourself
 
-One row: `GLPX001-110-004`, Hypoglycaemia, 2024-03-23, Severe,
+One row: `GLPX1-110-004`, Hypoglycaemia, 2024-03-23, Severe,
 treatment-emergent, GLPX 10 mg. You met this subject in
 [ADAE](adae.qmd) as the study's single serious event.
 
@@ -553,7 +553,7 @@ publish.
 
 Colour and shape both carry treatment arm, using `R/palette.R`'s
 `arm_colours`: the same Okabe-Ito palette convention established for
-the very first figure in [The GLPX-001 Trial](the-trial-glpx001.qmd),
+the very first figure in [The GLPX-1 Trial](the-trial-glpx001.qmd),
 carried through every figure in this course without exception. A
 colourblind reader loses nothing; identity never rests on colour alone.
 
@@ -656,7 +656,7 @@ Practice: [Exercise 7: Tables, Listings and Figures](../exercises/tlf.qmd).
 2. The severity table uses `AOCCIFL == "Y"`, not `TRTEMFL == "Y"` alone.
    What would go wrong with the severity row totals if you filtered on
    `TRTEMFL` alone?
-3. GLPX-001's single serious adverse event appears as `n = 1` in both a
+3. GLPX-1's single serious adverse event appears as `n = 1` in both a
    table count and the listing. In what sense are these two views of
    the same event still doing different jobs?
 4. This session's figure excludes `SCREENING` and shows a `BASELINE`

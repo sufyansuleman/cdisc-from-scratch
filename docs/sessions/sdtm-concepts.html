@@ -198,7 +198,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -525,9 +525,9 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You have the five raw GLPX-001 files and you have been told to “map them to SDTM.” Before you rename a single column you hit the questions this session answers: how many datasets should there be, and which raw file becomes which? What is a single row supposed to represent in each? Which columns are mandatory, which are optional, and who decides? And when the lab sends a result in one form but the standard expects another, where does each version live?</p>
+<p>You have the five raw GLPX-1 files and you have been told to “map them to SDTM.” Before you rename a single column you hit the questions this session answers: how many datasets should there be, and which raw file becomes which? What is a single row supposed to represent in each? Which columns are mandatory, which are optional, and who decides? And when the lab sends a result in one form but the standard expects another, where does each version live?</p>
 <p>Every one of those is a <strong>modelling question, not a coding question.</strong> This session is the vocabulary and the mental model you need before <a href="../sessions/sdtm-dm.html">The DM Domain</a>, <a href="../sessions/sdtm-events.html">Events</a> and <a href="../sessions/sdtm-findings.html">Findings</a>, where you build real domains from the raw data.</p>
-<p>It builds on <a href="../sessions/why-standards.html">Why Standards</a> (why a shared structure exists) and <a href="../sessions/the-trial-glpx001.html">The Trial: GLPX-001</a> (the raw data you will now reshape).</p>
+<p>It builds on <a href="../sessions/why-standards.html">Why Standards</a> (why a shared structure exists) and <a href="../sessions/the-trial-glpx001.html">The Trial: GLPX-1</a> (the raw data you will now reshape).</p>
 </div>
 </div>
 </section>
@@ -568,7 +568,7 @@ Tip
 <li><strong>SDTMIG v3.3</strong>, supported since 2020-07-07; <strong>required</strong> for studies starting on or after 2022-03-15.</li>
 <li><strong>SDTMIG v3.4</strong>, supported since 2023-12-13; <strong>required</strong> for studies starting on or after 2025-03-15; pairs with SDTM v2.0.</li>
 </ul>
-<p>GLPX-001 starts in 2024, so its version is settled by that start date falling in the v3.4 support window, not by preference. This is why “SDTM is required” is too loose to be useful: what is required is a <em>specific implementation-guide version over a specific window of study start dates</em>, and the catalogue’s “date support begins / date support ends / date requirement begins” columns are the whole point. (The study’s start date itself travels in the submission in a small dataset called <code>ts.xpt</code>; you will meet it in <a href="../sessions/adrg.html">The Analysis Data Reviewer’s Guide</a>.)</p>
+<p>GLPX-1 starts in 2024, so its version is settled by that start date falling in the v3.4 support window, not by preference. This is why “SDTM is required” is too loose to be useful: what is required is a <em>specific implementation-guide version over a specific window of study start dates</em>, and the catalogue’s “date support begins / date support ends / date requirement begins” columns are the whole point. (The study’s start date itself travels in the submission in a small dataset called <code>ts.xpt</code>; you will meet it in <a href="../sessions/adrg.html">The Analysis Data Reviewer’s Guide</a>.)</p>
 </section>
 <section id="the-three-general-observation-classes" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="the-three-general-observation-classes"><span class="header-section-number">4.3.2</span> The three general observation classes</h3>
@@ -941,7 +941,7 @@ Tip
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><p>The SDTM is the general model (the kinds of boxes that exist); the SDTMIG is the implementation guide that turns it into named datasets and variables (SDTMIG v3.4, §2.1). The version is not a preference: the FDA Data Standards Catalog ties the required SDTMIG version to the study’s start date, and GLPX-001’s 2024 start falls in the v3.4 support window <span class="citation" data-cites="fdadsc11">(<a href="#ref-fdadsc11" role="doc-biblioref">U.S. Food and Drug Administration 2025</a>)</span>.</p></li>
+<li><p>The SDTM is the general model (the kinds of boxes that exist); the SDTMIG is the implementation guide that turns it into named datasets and variables (SDTMIG v3.4, §2.1). The version is not a preference: the FDA Data Standards Catalog ties the required SDTMIG version to the study’s start date, and GLPX-1’s 2024 start falls in the v3.4 support window <span class="citation" data-cites="fdadsc11">(<a href="#ref-fdadsc11" role="doc-biblioref">U.S. Food and Drug Administration 2025</a>)</span>.</p></li>
 <li><p>Findings: one row is the result of a measurement (SDTMIG v3.4, §2.3). Its topic variable is <code>--TESTCD</code> (SDTMIG v3.4, §2.1), i.e. <code>LBTESTCD</code> or <code>VSTESTCD</code> once the domain prefix is applied.</p></li>
 <li><p><code>--STRESC</code> holds the standardised result in character form, so it can carry any result at all; <code>--STRESN</code> holds it as a true number for the results that are numeric (SDTMIG v3.4, §4.5.1.1). <code>--STRESN</code> is null whenever the standardised result is not numeric (a category, a <code>&gt;10,000</code>, a blank), which is why the character version exists.</p></li>
 <li><p>The column must still be present, empty, with a comment in the Define-XML stating the study did not collect the item; a value is not required on any row (SDTMIG v3.4, §4.1.5). What must <em>not</em> happen is dropping the column, that is the difference between Expected and Permissible.</p></li>
@@ -1362,8 +1362,8 @@ U.S. Food and Drug Administration. 2025. <span>“<span>FDA</span> Data Standard
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../sessions/the-trial-glpx001.html" class="pagination-link" aria-label="The Trial: GLPX-001">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span>
+      <a href="../sessions/the-trial-glpx001.html" class="pagination-link" aria-label="The Trial: GLPX-1">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

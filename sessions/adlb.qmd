@@ -41,7 +41,7 @@ This session reads `data/sdtm/lb.csv` and `data/adam/adsl.csv`.
 ## When Do You Use This? {#sec-adlb}
 
 ::: {.callout-tip}
-The primary endpoint of GLPX-001 is a *change* from baseline in HbA1c.
+The primary endpoint of GLPX-1 is a *change* from baseline in HbA1c.
 Before anyone can compute it, something has to decide which value
 baseline is. A safety review needs every lab result classified against
 its reference range at every visit. A reviewer needs to see the measured
@@ -201,7 +201,7 @@ matter more than they look:
   not mean that the record was analyzed**"
 - "Values of `AVISIT` are producer-defined" (all ADaMIG v1.3, §3.3.3)
 
-GLPX-001 has a clean nominal visit schedule, so our `AVISIT` copies
+GLPX-1 has a clean nominal visit schedule, so our `AVISIT` copies
 `VISIT` unchanged. That is a defensible choice for this trial, not a
 general rule. In studies where subjects attend outside the protocol
 window, `AVISIT` is where windowing decisions get recorded, and it can
@@ -251,7 +251,7 @@ freedom:
 - **`BASETYPE`** is "producer-defined text describing the definition of
   baseline relevant to the value of `BASE` on the current record", and is
   "required when there are multiple ways that baseline is defined"
-  (ADaMIG v1.3, §3.3.4.1). GLPX-001 has one definition, so `BASETYPE` is
+  (ADaMIG v1.3, §3.3.4.1). GLPX-1 has one definition, so `BASETYPE` is
   not required here and is not built. A study with a screening baseline,
   a double-blind baseline and an open-label-extension baseline needs it
   on every affected row (see ADaMIG v1.3, §4.2.1.6, Rule 6).
@@ -265,12 +265,12 @@ freedom:
   row is what was measured.
 
 ::: {.callout-important}
-### GLPX-001's baseline definition, and why it is not "the BASELINE visit"
+### GLPX-1's baseline definition, and why it is not "the BASELINE visit"
 
 The obvious definition is "the record at the visit named BASELINE." For
 this trial that would be wrong, and the data says so.
 
-GLPX-001's baseline visit is scheduled in a window that, for many
+GLPX-1's baseline visit is scheduled in a window that, for many
 subjects, falls *after* the first dose. Flagging the BASELINE visit
 record would make **958 of 1600** subject-parameter baselines post-dose:
 values measured after the subject had already started study drug, used
@@ -364,7 +364,7 @@ adlb_spine <- lb |>
   )
 
 adlb_spine |>
-  filter(USUBJID == "GLPX001-101-010", PARAMCD == "HBA1C") |>
+  filter(USUBJID == "GLPX1-101-010", PARAMCD == "HBA1C") |>
   select(PARAM, AVISIT, ADT, ADY, AVAL, ANRLO, ANRHI, ANRIND)
 ```
 
@@ -586,12 +586,12 @@ duplicate-record case:
 #| eval: true
 
 adlb |>
-  filter(USUBJID == "GLPX001-101-010", PARAMCD == "HBA1C") |>
+  filter(USUBJID == "GLPX1-101-010", PARAMCD == "HBA1C") |>
   select(AVISIT, ADY, AVAL, ABLFL, BASE, CHG, PCHG) |>
   head(4)
 
 lb |>
-  filter(USUBJID == "GLPX001-101-010", LBTESTCD == "HBA1C",
+  filter(USUBJID == "GLPX1-101-010", LBTESTCD == "HBA1C",
          VISIT %in% c("SCREENING", "BASELINE")) |>
   select(VISIT, LBDTC, LBSTRESN, LBLOBXFL)
 ```
@@ -666,7 +666,7 @@ investigated, and was confirmed as a real value:
 #| eval: true
 
 adlb |>
-  filter(USUBJID == "GLPX001-101-052", PARAMCD == "HBA1C") |>
+  filter(USUBJID == "GLPX1-101-052", PARAMCD == "HBA1C") |>
   select(AVISIT, ADY, AVAL, ABLFL, BASE, CHG)
 ```
 
@@ -789,7 +789,7 @@ Practice: [Exercise 6: ADLB](../exercises/adlb.qmd).
 
 ## Comprehension Check
 
-1. GLPX-001's `ABLFL` lands on SCREENING for 958 subject-parameter pairs
+1. GLPX-1's `ABLFL` lands on SCREENING for 958 subject-parameter pairs
    and on BASELINE for 642. Is that an inconsistency? Explain in one
    sentence.
 2. Every disagreement between `ABLFL` and `LBLOBXFL` in this dataset is

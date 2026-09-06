@@ -30,7 +30,7 @@ okabe_ito <- c(
   grey           = "#999999"
 )
 
-# Treatment-arm colours for GLPX-001. Blue / orange is the highest-contrast
+# Treatment-arm colours for GLPX-1. Blue / orange is the highest-contrast
 # accessible pair in Okabe-Ito and reads clearly in greyscale too. Arms are
 # also encoded by shape in every figure, so identity never rests on colour
 # alone.

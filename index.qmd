@@ -7,7 +7,7 @@ yourself, decide what to do about the duplicate, and defend the
 decision.
 
 This course teaches CDISC clinical data standards by building them: you
-take raw data from a simulated Phase III trial (codename **GLPX-001**)
+take raw data from a simulated Phase III trial (codename **GLPX-1**)
 and carry it all the way to submission-ready datasets and outputs, in R.
 
 Every claim about a standard in this book is cited to the section of the
@@ -69,7 +69,7 @@ the order shown, against data that ships with the repository.
 ## How the Course Is Organised {.unnumbered}
 
 **Part 1: Foundations.** Why clinical data standards exist at all,
-argued from a real mess in GLPX-001's raw files rather than asserted;
+argued from a real mess in GLPX-1's raw files rather than asserted;
 then the trial itself, its design, and what its data should look like
 if the design is respected.
 

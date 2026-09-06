@@ -12,7 +12,7 @@ Decided 31 July 2026. Supersedes any earlier instruction to keep the repository 
 
 | Repo | Visibility | Contents |
 |---|---|---|
-| `cdisc-with-r` | **Public**, CC BY-NC-SA 4.0 + MIT | The book: sessions, worked examples, GLPX-001 data and build scripts, exercises **without** solutions, Zenodo DOI |
+| `cdisc-with-r` | **Public**, CC BY-NC-SA 4.0 + MIT | The book: sessions, worked examples, GLPX-1 data and build scripts, exercises **without** solutions, Zenodo DOI |
 | `cdisc-with-r-solutions` | **Private**, paid tier | Solutions, extra exercises, specs, slides, instructor material |
 
 The commercial offering is the objective; the free book is the acquisition channel for it.
@@ -52,7 +52,7 @@ The repository already implements the compliant pattern (see §4). Do not weaken
 **`cdisc-with-r` (public, free):**
 
 - All conceptual sessions and worked examples
-- The GLPX-001 simulated trial: `simulate_trial.R`, `build_sdtm.R`, `build_adam.R`, and the generated datasets
+- The GLPX-1 simulated trial: `simulate_trial.R`, `build_sdtm.R`, `build_adam.R`, and the generated datasets
 - Exercises **without** worked solutions
 - Comprehension checks
 - `renv.lock` and the reproducible setup
@@ -63,7 +63,7 @@ The repository already implements the compliant pattern (see §4). Do not weaken
 - Worked solutions — structure: *Approach → Code → Why this way → Variations worth knowing*
 - Extra exercises not in the public book
 - ADaM, define-XML and TLF-shell specs
-- The GLPX-001 defect registry answer key
+- The GLPX-1 defect registry answer key
 - Slides and facilitation notes (workshop tier)
 
 **Not in either repo:** live cohort delivery, corporate training, assessment and certification. These are services, not files.
@@ -109,7 +109,7 @@ These are already correct. Do not relax them.
 - **Cite by section, never quote.** Reference "SDTMIG v3.4 §6.2" rather than reproducing text.
 - **Never reproduce codelists or specification tables in bulk.** Check controlled terminology programmatically via the `sdtm.terminology` package, as the repo already does.
 - **Never imply CDISC endorsement, affiliation or certification.**
-- **All data synthetic, always.** GLPX-001 only.
+- **All data synthetic, always.** GLPX-1 only.
 - **Keep the `VERIFY` callout discipline** from `AGENT-CONTENT-PROMPT.md`. It is the single most valuable safeguard in this project — a pharma audience will find any invented specific, and the author's credibility does not survive it.
 
 FDA documents in the repo (Technical Conformance Guide, Electronic Submissions guidance) are US government works and carry no such restriction — but they are gitignored anyway, which is fine.

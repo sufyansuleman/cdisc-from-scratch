@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -588,18 +588,18 @@ Tip
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(USUBJID) <span class="sc">|&gt;</span></span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">AESEQ =</span> <span class="fu">row_number</span>()) <span class="sc">|&gt;</span></span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">STUDYID =</span> <span class="st">"GLPX001"</span>, <span class="at">DOMAIN =</span> <span class="st">"AE"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">STUDYID =</span> <span class="st">"GLPX1"</span>, <span class="at">DOMAIN =</span> <span class="st">"AE"</span>,</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">AEDECOD =</span> <span class="cn">NA_character_</span>)   <span class="co"># MedDRA preferred term, coding step, not done here</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>ae <span class="sc">|&gt;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-037"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-037"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, AESEQ, AETERM, AEDECOD)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
-  USUBJID         AESEQ AETERM          AEDECOD
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;  
-1 GLPX001-101-037     1 Diarrhoea       &lt;NA&gt;   
-2 GLPX001-101-037     2 Nasopharyngitis &lt;NA&gt;   </code></pre>
+  USUBJID       AESEQ AETERM          AEDECOD
+  &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;  
+1 GLPX1-101-037     1 Diarrhoea       &lt;NA&gt;   
+2 GLPX1-101-037     2 Nasopharyngitis &lt;NA&gt;   </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -648,7 +648,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Read the cross-tabulation carefully. There are <code>SEVERE</code> events that are <strong>not</strong> serious (<code>AESER = "N"</code>), and exactly one event that <strong>is</strong> serious (<code>AESER = "Y"</code>). Severity and seriousness are different axes: severity is how intense the event was; seriousness is whether it met a regulatory criterion (here, a hypoglycaemia that required hospitalisation). Most severe events are not serious, and (though GLPX-001 has no such case) a mild event <em>could</em> be serious. Confusing the two is how a safety table ends up with the wrong SAE count.</p>
+<p>Read the cross-tabulation carefully. There are <code>SEVERE</code> events that are <strong>not</strong> serious (<code>AESER = "N"</code>), and exactly one event that <strong>is</strong> serious (<code>AESER = "Y"</code>). Severity and seriousness are different axes: severity is how intense the event was; seriousness is whether it met a regulatory criterion (here, a hypoglycaemia that required hospitalisation). Most severe events are not serious, and (though GLPX-1 has no such case) a mild event <em>could</em> be serious. Confusing the two is how a safety table ends up with the wrong SAE count.</p>
 </div>
 </div>
 <p>Look at the one serious event directly, and confirm both qualifier columns hold only legal controlled-terminology values:</p>
@@ -656,9 +656,9 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>ae <span class="sc">|&gt;</span> <span class="fu">filter</span>(AESER <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, AETERM, AESEV, AESER)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
-  USUBJID         AETERM        AESEV  AESER
-  &lt;chr&gt;           &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;
-1 GLPX001-110-004 Hypoglycaemia SEVERE Y    </code></pre>
+  USUBJID       AETERM        AESEV  AESER
+  &lt;chr&gt;         &lt;chr&gt;         &lt;chr&gt;  &lt;chr&gt;
+1 GLPX1-110-004 Hypoglycaemia SEVERE Y    </code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># AESEV -&gt; codelist C66769; AESER -&gt; the NY (No/Yes) codelist C66742</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(</span>
@@ -700,7 +700,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Run the chunk. The raw <code>RECOVERED</code> returns <code>FALSE</code>. It is not in the outcome codelist, while the mapped <code>RECOVERED/RESOLVED</code> returns <code>TRUE</code>. Every GLPX-001 event resolved, so after mapping, <code>AEOUT</code> is a single value across the file; there are no ongoing events to represent. (Had there been, an event still ongoing at last contact would carry a null <code>AEENDTC</code>; the relative-timing variable <code>AEENRF</code> exists for expressing “ongoing” against the study reference period, per SDTMIG v3.4, §4.4.7, but this trial gives us no occasion to use it.)</p>
+<p>Run the chunk. The raw <code>RECOVERED</code> returns <code>FALSE</code>. It is not in the outcome codelist, while the mapped <code>RECOVERED/RESOLVED</code> returns <code>TRUE</code>. Every GLPX-1 event resolved, so after mapping, <code>AEOUT</code> is a single value across the file; there are no ongoing events to represent. (Had there been, an event still ongoing at last contact would carry a null <code>AEENDTC</code>; the relative-timing variable <code>AEENRF</code> exists for expressing “ongoing” against the study reference period, per SDTMIG v3.4, §4.4.7, but this trial gives us no occasion to use it.)</p>
 </div>
 </div>
 </section>
@@ -728,9 +728,9 @@ Tip
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, AETERM, AESTDTC, AEENDTC, AESTDY, AEENDY)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 6
-  USUBJID         AETERM       AESTDTC AEENDTC    AESTDY AEENDY
-  &lt;chr&gt;           &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;
-1 GLPX001-103-199 Constipation &lt;NA&gt;    2024-08-28     NA     56</code></pre>
+  USUBJID       AETERM       AESTDTC AEENDTC    AESTDY AEENDY
+  &lt;chr&gt;         &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt;       &lt;int&gt;  &lt;int&gt;
+1 GLPX1-103-199 Constipation &lt;NA&gt;    2024-08-28     NA     56</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -752,7 +752,7 @@ Tip
 <h2 data-number="6.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">6.6</span> What Can Go Wrong</h2>
 <p><em>Estimated time: ~10 minutes (reading)</em></p>
 <p><strong>Conflating seriousness and severity</strong></p>
-<p>The most consequential AE error there is. A count of <code>AESEV = "SEVERE"</code> is not a count of serious adverse events; the SAE count comes from <code>AESER = "Y"</code>. In GLPX-001 the two numbers are wildly different (many severe events, one serious one) and reporting the wrong column misstates the trial’s safety profile.</p>
+<p>The most consequential AE error there is. A count of <code>AESEV = "SEVERE"</code> is not a count of serious adverse events; the SAE count comes from <code>AESER = "Y"</code>. In GLPX-1 the two numbers are wildly different (many severe events, one serious one) and reporting the wrong column misstates the trial’s safety profile.</p>
 <p><strong>Inventing preferred terms</strong></p>
 <p>Filling <code>AEDECOD</code> by guessing what a verbatim term “should” code to, rather than leaving it for the dictionary step, plants exactly the kind of authoritative-looking error a reviewer cannot catch. If you do not have MedDRA and a coding process, <code>AEDECOD</code> stays empty, and the Define-XML says so.</p>
 <p><strong>A row that says “no events”</strong></p>
@@ -788,7 +788,7 @@ Tip
 <ol type="1">
 <li>A subject had no adverse events. How many AE rows do they have, and why?</li>
 <li><code>AETERM</code> for one event reads <code>nausea and vomitting</code>. What do you put in <code>AETERM</code>, what in <code>AEDECOD</code>, and why does this course leave the second empty?</li>
-<li>GLPX-001 has many <code>SEVERE</code> events and one <code>AESER = "Y"</code> event. Explain, to a colleague who thinks they are the same thing, how both can be true.</li>
+<li>GLPX-1 has many <code>SEVERE</code> events and one <code>AESER = "Y"</code> event. Explain, to a colleague who thinks they are the same thing, how both can be true.</li>
 <li>Subject <code>103-199</code>’s constipation has a null <code>AESTDTC</code>. Why is the dataset still conformant, and what must you <em>not</em> do to “fix” it?</li>
 <li>The raw outcome value is <code>RECOVERED</code>. Why can it not go straight into <code>AEOUT</code>, and how do you find the value that can?</li>
 </ol>

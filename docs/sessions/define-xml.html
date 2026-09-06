@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -614,7 +614,7 @@ Tip
 <section id="example-1-a-define.xml-for-dm-built-by-hand" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="example-1-a-define.xml-for-dm-built-by-hand"><span class="header-section-number">8.4</span> Example 1: A define.xml for DM, Built by Hand</h2>
 <p><em>Estimated time: ~25 minutes (worked example)</em></p>
-<p>We will build a small but genuinely valid Define-XML v2.1 document describing GLPX-001’s DM domain, with three variables and one codelist. Small, but not a toy: it validates against the same CDISC schema a submission would be checked with.</p>
+<p>We will build a small but genuinely valid Define-XML v2.1 document describing GLPX-1’s DM domain, with three variables and one codelist. Small, but not a toy: it validates against the same CDISC schema a submission would be checked with.</p>
 <p>The document nests like this, outermost first:</p>
 <table class="caption-top table">
 <thead>
@@ -673,23 +673,23 @@ Tip
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"xmlns:xlink"</span> <span class="ot">=</span> <span class="st">"http://www.w3.org/1999/xlink"</span>,</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">ODMVersion       =</span> <span class="st">"1.3.2"</span>,</span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">FileType         =</span> <span class="st">"Snapshot"</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">FileOID          =</span> <span class="st">"GLPX001.define.sdtm.v1"</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">FileOID          =</span> <span class="st">"GLPX1.define.sdtm.v1"</span>,</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">CreationDateTime =</span> <span class="st">"2026-09-04T10:00:00"</span>,</span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">Originator       =</span> <span class="st">"CDISC with R course"</span>,</span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="st">"def:Context"</span>    <span class="ot">=</span> <span class="st">"Other"</span></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>study <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(odm, <span class="st">"Study"</span>, <span class="at">OID =</span> <span class="st">"STDY.GLPX001"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>study <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(odm, <span class="st">"Study"</span>, <span class="at">OID =</span> <span class="st">"STDY.GLPX1"</span>)</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>gv    <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(study, <span class="st">"GlobalVariables"</span>)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(gv, <span class="st">"StudyName"</span>, <span class="st">"GLPX-001"</span>)</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(gv, <span class="st">"StudyName"</span>, <span class="st">"GLPX-1"</span>)</span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(gv, <span class="st">"StudyDescription"</span>,</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>              <span class="st">"A simulated Phase III trial of GLPX 10 mg in type 2 diabetes"</span>)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(gv, <span class="st">"ProtocolName"</span>, <span class="st">"GLPX-001"</span>)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">xml_add_child</span>(gv, <span class="st">"ProtocolName"</span>, <span class="st">"GLPX-1"</span>)</span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>mdv <span class="ot">&lt;-</span> <span class="fu">xml_add_child</span>(</span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>  study, <span class="st">"MetaDataVersion"</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">OID  =</span> <span class="st">"MDV.GLPX001.SDTMIG.3.4"</span>,</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> <span class="st">"GLPX-001 SDTM Data Definitions"</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">OID  =</span> <span class="st">"MDV.GLPX1.SDTMIG.3.4"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">Name =</span> <span class="st">"GLPX-1 SDTM Data Definitions"</span>,</span>
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>  <span class="st">"def:DefineVersion"</span> <span class="ot">=</span> <span class="st">"2.1.11"</span></span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -709,7 +709,7 @@ Tip
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>              <span class="at">PublishingSet =</span> <span class="st">"SDTM"</span>,</span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">Version =</span> <span class="st">"2023-12-15"</span>, <span class="at">Status =</span> <span class="st">"Final"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This is the machine-readable version of a claim the course has been making in prose since <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a>: GLPX-001 implements <strong>SDTMIG v3.4</strong> with SDTM CT. Until now that claim lived in a sentence. Here it becomes an attribute a validator can check the rest of the document against.</p>
+<p>This is the machine-readable version of a claim the course has been making in prose since <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a>: GLPX-1 implements <strong>SDTMIG v3.4</strong> with SDTM CT. Until now that claim lived in a sentence. Here it becomes an attribute a validator can check the rest of the document against.</p>
 <p><code>def:Standards</code> is new in v2.1, and it replaced something:</p>
 <blockquote class="blockquote">
 <p>Note: The def:Standards and def:Standard elements replace the def:StandardName and def:StandardVersion attributes used in Define-XML Version 2.0 (Define-XML v2.1, §4.1)</p>
@@ -825,7 +825,7 @@ Tip
 <section id="example-2-origin-grows-a-second-attribute" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="example-2-origin-grows-a-second-attribute"><span class="header-section-number">8.5</span> Example 2: Origin Grows a Second Attribute</h2>
 <p><em>Estimated time: ~15 minutes (worked example)</em></p>
-<p><a href="../sessions/sdtm-findings.html">Findings</a> made a claim about GLPX-001’s central lab data that this session can now finish. It said that a central lab result has <code>LBDRVFL</code> null because the value was not derived, and that the same fact is recorded a second time in the Define-XML origin metadata, where the origin is <em>Collected</em>.</p>
+<p><a href="../sessions/sdtm-findings.html">Findings</a> made a claim about GLPX-1’s central lab data that this session can now finish. It said that a central lab result has <code>LBDRVFL</code> null because the value was not derived, and that the same fact is recorded a second time in the Define-XML origin metadata, where the origin is <em>Collected</em>.</p>
 <p>That was right, and it was incomplete. In Define-XML v2.1, origin is not one value:</p>
 <blockquote class="blockquote">
 <p>The def:Origin element includes the Type and Source attributes. The Type attribute indicates how the data originated. The Source attribute identifies the party responsible for the data’s origin (Define-XML v2.1, §4.3.2)</p>
@@ -1171,7 +1171,7 @@ attr(,"errors")
 <div class="callout-body-container callout-body">
 <ol type="1">
 <li>A colleague proposes renaming every OID in your define.xml to a UUID, arguing it is cleaner. Is the resulting document still conformant? What is actually lost?</li>
-<li>GLPX-001’s HbA1c results come from a central laboratory. What <code>Type</code> and <code>Source</code> belong on <code>LBSTRESN</code>, and why is <code>Collected</code>/<code>Sponsor</code> invalid?</li>
+<li>GLPX-1’s HbA1c results come from a central laboratory. What <code>Type</code> and <code>Source</code> belong on <code>LBSTRESN</code>, and why is <code>Collected</code>/<code>Sponsor</code> invalid?</li>
 <li>Your define.xml returns <code>TRUE</code> from <code>xml_validate()</code>. What proportion of the published conformance rules have you demonstrated compliance with?</li>
 <li>Why can an OCCDS-structured ADAE not be declared with <code>Name="ADaM-OCCDSIG"</code> in a v2.1.11 document, and what do you declare instead?</li>
 <li><code>ItemDef</code> elements sit beside <code>ItemGroupDef</code>, not inside it. What does that arrangement make possible?</li>

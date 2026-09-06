@@ -633,6 +633,49 @@
       "Repository": "P3M",
       "Encoding": "UTF-8"
     },
+    "checkmate": {
+      "Package": "checkmate",
+      "Version": "2.3.4",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Fast and Versatile Argument Checks",
+      "Description": "Tests and assertions to perform frequent argument checks. A substantial part of the package was written in C to minimize any worries about execution time overhead.",
+      "Authors@R": "c( person(\"Michel\", \"Lang\", NULL, \"michellang@gmail.com\", role = c(\"cre\", \"aut\"), comment = c(ORCID = \"0000-0001-9754-0393\")), person(\"Bernd\", \"Bischl\", NULL, \"bernd_bischl@gmx.net\", role = \"ctb\"), person(\"Dénes\", \"Tóth\", NULL, \"toth.denes@kogentum.hu\", role = \"ctb\", comment = c(ORCID = \"0000-0003-4262-3217\")) )",
+      "URL": "https://mllg.github.io/checkmate/, https://github.com/mllg/checkmate",
+      "URLNote": "https://github.com/mllg/checkmate",
+      "BugReports": "https://github.com/mllg/checkmate/issues",
+      "NeedsCompilation": "yes",
+      "ByteCompile": "yes",
+      "Encoding": "UTF-8",
+      "Depends": [
+        "R (>= 3.0.0)"
+      ],
+      "Imports": [
+        "backports (>= 1.1.0)",
+        "utils"
+      ],
+      "Suggests": [
+        "R6",
+        "fastmatch",
+        "data.table (>= 1.9.8)",
+        "devtools",
+        "ggplot2",
+        "knitr",
+        "magrittr",
+        "microbenchmark",
+        "rmarkdown",
+        "testthat (>= 3.0.4)",
+        "tinytest (>= 1.1.0)",
+        "tibble"
+      ],
+      "License": "BSD_3_clause + file LICENSE",
+      "VignetteBuilder": "knitr",
+      "RoxygenNote": "7.3.3",
+      "Collate": "'AssertCollection.R' 'allMissing.R' 'anyInfinite.R' 'anyMissing.R' 'anyNaN.R' 'asInteger.R' 'assert.R' 'helper.R' 'makeExpectation.R' 'makeTest.R' 'makeAssertion.R' 'checkAccess.R' 'checkArray.R' 'checkAtomic.R' 'checkAtomicVector.R' 'checkCharacter.R' 'checkChoice.R' 'checkClass.R' 'checkComplex.R' 'checkCount.R' 'checkDataFrame.R' 'checkDataTable.R' 'checkDate.R' 'checkDirectoryExists.R' 'checkDisjunct.R' 'checkDouble.R' 'checkEnvironment.R' 'checkFALSE.R' 'checkFactor.R' 'checkFileExists.R' 'checkFlag.R' 'checkFormula.R' 'checkFunction.R' 'checkInt.R' 'checkInteger.R' 'checkIntegerish.R' 'checkList.R' 'checkLogical.R' 'checkMatrix.R' 'checkMultiClass.R' 'checkNamed.R' 'checkNames.R' 'checkNull.R' 'checkNumber.R' 'checkNumeric.R' 'checkOS.R' 'checkPOSIXct.R' 'checkPathForOutput.R' 'checkPermutation.R' 'checkR6.R' 'checkRaw.R' 'checkScalar.R' 'checkScalarNA.R' 'checkSetEqual.R' 'checkString.R' 'checkSubset.R' 'checkTRUE.R' 'checkTibble.R' 'checkVector.R' 'coalesce.R' 'isIntegerish.R' 'matchArg.R' 'qassert.R' 'qassertr.R' 'vname.R' 'wfwl.R' 'zzz.R'",
+      "Author": "Michel Lang [cre, aut] (ORCID: <https://orcid.org/0000-0001-9754-0393>), Bernd Bischl [ctb], Dénes Tóth [ctb] (ORCID: <https://orcid.org/0000-0003-4262-3217>)",
+      "Maintainer": "Michel Lang <michellang@gmail.com>",
+      "Repository": "P3M"
+    },
     "cli": {
       "Package": "cli",
       "Version": "3.6.6",
@@ -929,6 +972,50 @@
       "NeedsCompilation": "yes",
       "Author": "Tyson Barrett [aut, cre] (ORCID: <https://orcid.org/0000-0002-2137-1391>), Matt Dowle [aut], Arun Srinivasan [aut], Jan Gorecki [aut], Michael Chirico [aut] (ORCID: <https://orcid.org/0000-0003-0787-087X>), Toby Hocking [aut] (ORCID: <https://orcid.org/0000-0002-3146-0865>), Benjamin Schwendinger [aut] (ORCID: <https://orcid.org/0000-0003-3315-8114>), Ivan Krylov [aut] (ORCID: <https://orcid.org/0000-0002-0172-3812>), Pasha Stetsenko [ctb], Tom Short [ctb], Steve Lianoglou [ctb], Eduard Antonyan [ctb], Markus Bonsch [ctb], Hugh Parsonage [ctb], Scott Ritchie [ctb], Kun Ren [ctb], Xianying Tan [ctb], Rick Saporta [ctb], Otto Seiskari [ctb], Xianghui Dong [ctb], Michel Lang [ctb], Watal Iwasaki [ctb], Seth Wenchel [ctb], Karl Broman [ctb], Tobias Schmidt [ctb], David Arenburg [ctb], Ethan Smith [ctb], Francois Cocquemas [ctb], Matthieu Gomez [ctb], Philippe Chataignon [ctb], Nello Blaser [ctb], Dmitry Selivanov [ctb], Andrey Riabushenko [ctb], Cheng Lee [ctb], Declan Groves [ctb], Daniel Possenriede [ctb], Felipe Parages [ctb], Denes Toth [ctb], Mus Yaramaz-David [ctb], Ayappan Perumal [ctb], James Sams [ctb], Martin Morgan [ctb], Michael Quinn [ctb], @javrucebo [ctb] (GitHub user), Marc Halperin [ctb], Roy Storey [ctb], Manish Saraswat [ctb], Morgan Jacob [ctb], Michael Schubmehl [ctb], Davis Vaughan [ctb], Leonardo Silvestri [ctb], Jim Hester [ctb], Anthony Damico [ctb], Sebastian Freundt [ctb], David Simons [ctb], Elliott Sales de Andrade [ctb], Cole Miller [ctb], Jens Peder Meldgaard [ctb], Vaclav Tlapak [ctb], Kevin Ushey [ctb], Dirk Eddelbuettel [ctb], Tony Fischetti [ctb], Ofek Shilon [ctb], Vadim Khotilovich [ctb], Hadley Wickham [ctb], Bennet Becker [ctb], Kyle Haynes [ctb], Boniface Christian Kamgang [ctb], Olivier Delmarcell [ctb], Josh O'Brien [ctb], Dereck de Mezquita [ctb], Michael Czekanski [ctb], Dmitry Shemetov [ctb], Nitish Jha [ctb], Joshua Wu [ctb], Iago Giné-Vázquez [ctb], Anirban Chetia [ctb], Doris Amoakohene [ctb], Angel Feliz [ctb], Michael Young [ctb], Mark Seeto [ctb], Philippe Grosjean [ctb], Vincent Runge [ctb], Christian Wia [ctb], Elise Maigné [ctb], Vincent Rocher [ctb], Vijay Lulla [ctb], Aljaž Sluga [ctb], Bill Evans [ctb], Reino Bruner [ctb], @badasahog [ctb] (GitHub user), Vinit Thakur [ctb], Mukul Kumar [ctb], Ildikó Czeller [ctb], Manmita Das [ctb], Tarun Thammisetty [ctb]",
       "Maintainer": "Tyson Barrett <t.barrett88@gmail.com>",
+      "Repository": "P3M"
+    },
+    "datasetjson": {
+      "Package": "datasetjson",
+      "Version": "0.4.0",
+      "Source": "Repository",
+      "Type": "Package",
+      "Title": "Read and Write CDISC Dataset JSON Files",
+      "Authors@R": "c( person(given = \"Mike\", family = \"Stackhouse\", role = c(\"aut\", \"cre\"), email = \"mike.stackhouse@atorusresearch.com\", comment = c(ORCID = \"0000-0001-6030-723X\")), person(given = \"Nicholas\", family = \"Masel\", email = \"nmasel@its.jnj.com\", role = \"aut\"), person(given = \"Atorus Research, Inc.\", role = \"cph\"), person(given = \"Yao\", family = \"Yuan\", role = \"cph\", comment = \"Author of the bundled yyjson C library\") )",
+      "Description": "Read, construct and write CDISC (Clinical Data Interchange Standards Consortium) Dataset JSON (JavaScript Object Notation) files, while validating per the Dataset JSON schema file, as described in CDISC (2023) <https://www.cdisc.org/standards/data-exchange/dataset-json>.",
+      "URL": "https://atorus-research.github.io/datasetjson/",
+      "BugReports": "https://github.com/atorus-research/datasetjson/issues/",
+      "Encoding": "UTF-8",
+      "Language": "en-US",
+      "License": "Apache License (>= 2)",
+      "Copyright": "The included 'yyjson' C library is Copyright (c) 2020 YaoYuan and is released under the MIT license. See inst/COPYRIGHTS.",
+      "LazyData": "true",
+      "Depends": [
+        "R (>= 4.0)"
+      ],
+      "Imports": [
+        "hms"
+      ],
+      "Suggests": [
+        "testthat (>= 2.1.0)",
+        "jsonvalidate (>= 1.3.1)",
+        "jsonlite (>= 1.8.0)",
+        "mockery",
+        "knitr",
+        "haven",
+        "rmarkdown",
+        "withr",
+        "purrr",
+        "tibble",
+        "dplyr",
+        "lubridate",
+        "data.table"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "Config/roxygen2/version": "8.0.0",
+      "NeedsCompilation": "yes",
+      "Author": "Mike Stackhouse [aut, cre] (ORCID: <https://orcid.org/0000-0001-6030-723X>), Nicholas Masel [aut], Atorus Research, Inc. [cph], Yao Yuan [cph] (Author of the bundled yyjson C library)",
+      "Maintainer": "Mike Stackhouse <mike.stackhouse@atorusresearch.com>",
       "Repository": "P3M"
     },
     "dbplyr": {
@@ -4360,6 +4447,49 @@
       "NeedsCompilation": "yes",
       "Author": "Hadley Wickham [aut], Jim Hester [aut], Jeroen Ooms [aut, cre], Posit Software, PBC [cph, fnd], R Foundation [ctb] (Copy of R-project homepage cached as example)",
       "Maintainer": "Jeroen Ooms <jeroenooms@gmail.com>",
+      "Repository": "P3M"
+    },
+    "xportr": {
+      "Package": "xportr",
+      "Version": "0.6.0",
+      "Source": "Repository",
+      "Title": "Utilities to Output CDISC SDTM/ADaM XPT Files",
+      "Authors@R": "c( person(\"Eli\", \"Miller\", , \"Eli.Miller@AtorusResearch.com\", role = c(\"aut\", \"cre\"), comment = c(ORCID = \"0000-0002-2127-9456\")), person(\"Ben\", \"Straub\", role = \"aut\"), person(\"Zelos\", \"Zhu\", role = \"aut\"), person(\"Ethan\", \"Brockmann\", role = \"aut\"), person(\"Vedha\", \"Viyash\", role = \"aut\"), person(\"Andre\", \"Verissimo\", role = \"aut\"), person(\"Sophie\", \"Shapcott\", role = \"aut\"), person(\"Celine\", \"Piraux\", role = \"aut\"), person(\"Kangjie\", \"Zhang\", role = \"aut\"), person(\"Adrian\", \"Chan\", role = \"aut\"), person(\"Sadchla\", \"Mascary\", role = \"aut\"), person(\"Seunghyun\", \"Kim\", role = \"aut\"), person(\"Atorus/GSK JPT\", role = \"cph\") )",
+      "Description": "Tools to build CDISC compliant data sets and check for CDISC compliance.",
+      "License": "MIT + file LICENSE",
+      "URL": "https://atorus-research.github.io/xportr/, https://github.com/atorus-research/xportr",
+      "BugReports": "https://github.com/atorus-research/xportr/issues",
+      "Depends": [
+        "R (>= 4.1)"
+      ],
+      "Imports": [
+        "checkmate",
+        "cli",
+        "dplyr (>= 1.0.2)",
+        "glue (>= 1.4.2)",
+        "haven (>= 2.5.0)",
+        "lifecycle",
+        "purrr (>= 0.3.4)",
+        "rlang (>= 0.4.10)"
+      ],
+      "Suggests": [
+        "DT",
+        "knitr",
+        "labelled",
+        "metacore",
+        "pharmaverseadam",
+        "readxl",
+        "rmarkdown",
+        "testthat (>= 3.0.0)",
+        "withr"
+      ],
+      "VignetteBuilder": "knitr",
+      "Config/testthat/edition": "3",
+      "Encoding": "UTF-8",
+      "RoxygenNote": "7.3.3",
+      "NeedsCompilation": "no",
+      "Author": "Eli Miller [aut, cre] (ORCID: <https://orcid.org/0000-0002-2127-9456>), Ben Straub [aut], Zelos Zhu [aut], Ethan Brockmann [aut], Vedha Viyash [aut], Andre Verissimo [aut], Sophie Shapcott [aut], Celine Piraux [aut], Kangjie Zhang [aut], Adrian Chan [aut], Sadchla Mascary [aut], Seunghyun Kim [aut], Atorus/GSK JPT [cph]",
+      "Maintainer": "Eli Miller <Eli.Miller@AtorusResearch.com>",
       "Repository": "P3M"
     },
     "xslt": {

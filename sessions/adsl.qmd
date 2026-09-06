@@ -161,7 +161,7 @@ the ADaM treatment variables, which are period-aware:
   match planned **and** there is an analysis of the data as treated
   (ADaMIG v1.3, §3.2).
 
-GLPX-001 is single-period, and no subject received the wrong treatment,
+GLPX-1 is single-period, and no subject received the wrong treatment,
 so `TRT01A` is not strictly required here. We include it anyway: a
 safety analysis is conventionally "as treated", and carrying the
 variable makes that explicit rather than implied. Knowing it is
@@ -229,7 +229,7 @@ never copied across, even when they would come out identical.
 ### A scope limit worth naming
 
 Two ADSL variables in this course have **no SDTM source**, because
-GLPX-001's SDTM stops at DM, AE, LB and VS and never builds **DS
+GLPX-1's SDTM stops at DM, AE, LB and VS and never builds **DS
 (Disposition)**: the domain where a real trial records randomization
 and end-of-study.
 
@@ -331,7 +331,7 @@ adsl_spine |>
   head(3)
 ```
 
-The age grouping is worth a second look, because GLPX-001's deliberate
+The age grouping is worth a second look, because GLPX-1's deliberate
 data defects reach it:
 
 ```{r agegr1}
@@ -416,7 +416,7 @@ same-name rule in one move.
 *Estimated time: ~20 minutes (worked example)*
 
 Population flags are derived from *conditions*, never copied and never
-hard-coded. GLPX-001 makes this feel almost too easy (every randomized
+hard-coded. GLPX-1 makes this feel almost too easy (every randomized
 subject was dosed, so every flag comes out `"Y"`) but writing the
 condition is what makes the dataset defensible, and it is what would
 catch the subject who was randomized and never dosed:
@@ -475,7 +475,7 @@ Run both chunks. All 400 subjects are `"Y"` on all three flags, with no
 nulls. Then 367 subjects completed and 33 discontinued, and the
 duration summary shows why that distinction matters: completers all sit
 at 183 days, while discontinuing subjects range from 41 to 169. Those 33
-are exactly the dropouts you first counted back in [The GLPX-001
+are exactly the dropouts you first counted back in [The GLPX-1
 Trial](the-trial-glpx001.qmd). The number has survived the whole
 pipeline intact.
 :::

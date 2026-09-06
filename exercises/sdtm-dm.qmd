@@ -4,7 +4,7 @@ title: "Exercise 1: SDTM Demographics"
 
 ## Goal
 
-Rebuild the core of the GLPX-001 DM dataset yourself, including the
+Rebuild the core of the GLPX-1 DM dataset yourself, including the
 three decisions that make it more than a rename, and defend the
 result.
 

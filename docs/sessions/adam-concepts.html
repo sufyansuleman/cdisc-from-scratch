@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -580,11 +580,11 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(adsl_preview, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 3
-  USUBJID         TRT01P  SAFFL
-  &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;
-1 GLPX001-101-010 Placebo Y    
-2 GLPX001-101-012 Placebo Y    
-3 GLPX001-101-026 Placebo Y    </code></pre>
+  USUBJID       TRT01P  SAFFL
+  &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;
+1 GLPX1-101-010 Placebo Y    
+2 GLPX1-101-012 Placebo Y    
+3 GLPX1-101-026 Placebo Y    </code></pre>
 </div>
 </div>
 <p>Now a BDS-shaped preview for one parameter, HbA1c:</p>
@@ -604,19 +604,19 @@ Tip
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">ADY     =</span> <span class="fu">as.integer</span>(LBDY)</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>adlb_hba1c <span class="sc">|&gt;</span> <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-026"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>adlb_hba1c <span class="sc">|&gt;</span> <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-026"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 7
-  USUBJID         PARAMCD PARAM              AVISIT     AVAL ADT          ADY
-  &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt;              &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;
-1 GLPX001-101-026 HBA1C   Hemoglobin A1C (%) SCREENING   8.8 2024-04-21   -15
-2 GLPX001-101-026 HBA1C   Hemoglobin A1C (%) BASELINE    8.9 2024-05-07     2
-3 GLPX001-101-026 HBA1C   Hemoglobin A1C (%) WEEK 4      8.3 2024-06-02    28
-4 GLPX001-101-026 HBA1C   Hemoglobin A1C (%) WEEK 8      8.5 2024-07-03    59
-5 GLPX001-101-026 HBA1C   Hemoglobin A1C (%) WEEK 12     9   2024-07-30    86
-6 GLPX001-101-026 HBA1C   Hemoglobin A1C (%) WEEK 16     8.8 2024-08-25   112
-7 GLPX001-101-026 HBA1C   Hemoglobin A1C (%) WEEK 20     8.4 2024-09-22   140
-8 GLPX001-101-026 HBA1C   Hemoglobin A1C (%) WEEK 26     8   2024-11-05   184</code></pre>
+  USUBJID       PARAMCD PARAM              AVISIT     AVAL ADT          ADY
+  &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt;              &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;      &lt;int&gt;
+1 GLPX1-101-026 HBA1C   Hemoglobin A1C (%) SCREENING   8.8 2024-04-21   -15
+2 GLPX1-101-026 HBA1C   Hemoglobin A1C (%) BASELINE    8.9 2024-05-07     2
+3 GLPX1-101-026 HBA1C   Hemoglobin A1C (%) WEEK 4      8.3 2024-06-02    28
+4 GLPX1-101-026 HBA1C   Hemoglobin A1C (%) WEEK 8      8.5 2024-07-03    59
+5 GLPX1-101-026 HBA1C   Hemoglobin A1C (%) WEEK 12     9   2024-07-30    86
+6 GLPX1-101-026 HBA1C   Hemoglobin A1C (%) WEEK 16     8.8 2024-08-25   112
+7 GLPX1-101-026 HBA1C   Hemoglobin A1C (%) WEEK 20     8.4 2024-09-22   140
+8 GLPX1-101-026 HBA1C   Hemoglobin A1C (%) WEEK 26     8   2024-11-05   184</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -697,7 +697,7 @@ Tip
 <span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>adlb <span class="sc">|&gt;</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-026"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-026"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AVISIT, AVAL, LBLOBXFL, ABLFL, BASE, CHG)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 6

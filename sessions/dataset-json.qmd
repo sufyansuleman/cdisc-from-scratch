@@ -54,7 +54,7 @@ before formula.
 
 ## Example 1: TODO
 
-TODO: worked example on GLPX-001 data. Show the code, then the output,
+TODO: worked example on GLPX-1 data. Show the code, then the output,
 then explain it.
 
 ### Run It Yourself

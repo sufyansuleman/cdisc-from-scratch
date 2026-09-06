@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -559,7 +559,7 @@ Tip
 <li><strong><code>TRTxxP</code></strong>, planned treatment for period <code>xx</code>. In a one-period randomized trial <code>TRT01P</code> is the treatment the subject was randomized to, and it may be derived from <code>DM.ARM</code>. <strong>At least <code>TRT01P</code> is required</strong> (ADaMIG v1.3, §3.2).</li>
 <li><strong><code>TRTxxA</code></strong>, actual treatment for period <code>xx</code>. This one is <em>conditionally</em> required: required when actual treatment does not match planned <strong>and</strong> there is an analysis of the data as treated (ADaMIG v1.3, §3.2).</li>
 </ul>
-<p>GLPX-001 is single-period, and no subject received the wrong treatment, so <code>TRT01A</code> is not strictly required here. We include it anyway: a safety analysis is conventionally “as treated”, and carrying the variable makes that explicit rather than implied. Knowing it is <em>conditional</em>, and why, is the point.</p>
+<p>GLPX-1 is single-period, and no subject received the wrong treatment, so <code>TRT01A</code> is not strictly required here. We include it anyway: a safety analysis is conventionally “as treated”, and carrying the variable makes that explicit rather than implied. Knowing it is <em>conditional</em>, and why, is the point.</p>
 </section>
 <section id="dates-and-duration" class="level3" data-number="10.3.3">
 <h3 data-number="10.3.3" class="anchored" data-anchor-id="dates-and-duration"><span class="header-section-number">10.3.3</span> Dates and duration</h3>
@@ -579,7 +579,7 @@ Tip
 </section>
 <section id="a-scope-limit-worth-naming" class="level3" data-number="10.3.5">
 <h3 data-number="10.3.5" class="anchored" data-anchor-id="a-scope-limit-worth-naming"><span class="header-section-number">10.3.5</span> A scope limit worth naming</h3>
-<p>Two ADSL variables in this course have <strong>no SDTM source</strong>, because GLPX-001’s SDTM stops at DM, AE, LB and VS and never builds <strong>DS (Disposition)</strong>: the domain where a real trial records randomization and end-of-study.</p>
+<p>Two ADSL variables in this course have <strong>no SDTM source</strong>, because GLPX-1’s SDTM stops at DM, AE, LB and VS and never builds <strong>DS (Disposition)</strong>: the domain where a real trial records randomization and end-of-study.</p>
 <ul>
 <li><strong><code>RANDDT</code></strong> (date of randomization) is conditionally required: “Required in randomized trials” (ADaMIG v1.3, §3.2). In a real submission it comes from DS. Here we set it equal to <code>TRTSDT</code>.</li>
 <li><strong><code>EOSSTT</code></strong> (end-of-study status) and <strong><code>EOSDT</code></strong> (end-of-study date) are both Permissible (ADaMIG v1.3, §3.2). In a real submission they come from DS too. Here we derive them from visit attendance.</li>
@@ -668,14 +668,14 @@ Tip
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 9
-  USUBJID         SITEID   AGE AGEGR1 SEX   TRT01P TRTSDT     TRTEDT     TRTDURD
-  &lt;chr&gt;           &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;       &lt;int&gt;
-1 GLPX001-101-010 101       58 &lt;65    M     Place… 2024-03-28 2024-09-26     183
-2 GLPX001-101-012 101       59 &lt;65    M     Place… 2024-03-06 2024-09-04     183
-3 GLPX001-101-026 101       65 &gt;=65   F     Place… 2024-05-06 2024-11-04     183</code></pre>
+  USUBJID       SITEID   AGE AGEGR1 SEX   TRT01P  TRTSDT     TRTEDT     TRTDURD
+  &lt;chr&gt;         &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;date&gt;     &lt;date&gt;       &lt;int&gt;
+1 GLPX1-101-010 101       58 &lt;65    M     Placebo 2024-03-28 2024-09-26     183
+2 GLPX1-101-012 101       59 &lt;65    M     Placebo 2024-03-06 2024-09-04     183
+3 GLPX1-101-026 101       65 &gt;=65   F     Placebo 2024-05-06 2024-11-04     183</code></pre>
 </div>
 </div>
-<p>The age grouping is worth a second look, because GLPX-001’s deliberate data defects reach it:</p>
+<p>The age grouping is worth a second look, because GLPX-1’s deliberate data defects reach it:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">count</span>(adsl_spine, AGEGR1, AGEGR1N)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -689,12 +689,12 @@ Tip
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>adsl_spine <span class="sc">|&gt;</span> <span class="fu">filter</span>(<span class="fu">is.na</span>(AGE)) <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, AGE, AGEU, AGEGR1, AGEGR1N)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
-  USUBJID           AGE AGEU  AGEGR1 AGEGR1N
-  &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;
-1 GLPX001-102-005    NA &lt;NA&gt;  &lt;NA&gt;        NA
-2 GLPX001-103-141    NA &lt;NA&gt;  &lt;NA&gt;        NA
-3 GLPX001-110-023    NA &lt;NA&gt;  &lt;NA&gt;        NA
-4 GLPX001-111-057    NA &lt;NA&gt;  &lt;NA&gt;        NA</code></pre>
+  USUBJID         AGE AGEU  AGEGR1 AGEGR1N
+  &lt;chr&gt;         &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;
+1 GLPX1-102-005    NA &lt;NA&gt;  &lt;NA&gt;        NA
+2 GLPX1-103-141    NA &lt;NA&gt;  &lt;NA&gt;        NA
+3 GLPX1-110-023    NA &lt;NA&gt;  &lt;NA&gt;        NA
+4 GLPX1-111-057    NA &lt;NA&gt;  &lt;NA&gt;        NA</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -808,7 +808,7 @@ Tip
 <section id="example-2-population-flags-and-disposition" class="level2" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="example-2-population-flags-and-disposition"><span class="header-section-number">10.5</span> Example 2: Population Flags and Disposition</h2>
 <p><em>Estimated time: ~20 minutes (worked example)</em></p>
-<p>Population flags are derived from <em>conditions</em>, never copied and never hard-coded. GLPX-001 makes this feel almost too easy (every randomized subject was dosed, so every flag comes out <code>"Y"</code>) but writing the condition is what makes the dataset defensible, and it is what would catch the subject who was randomized and never dosed:</p>
+<p>Population flags are derived from <em>conditions</em>, never copied and never hard-coded. GLPX-1 makes this feel almost too easy (every randomized subject was dosed, so every flag comes out <code>"Y"</code>) but writing the condition is what makes the dataset defensible, and it is what would catch the subject who was randomized and never dosed:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>adsl_flags <span class="ot">&lt;-</span> adsl_spine <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
@@ -881,7 +881,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Run both chunks. All 400 subjects are <code>"Y"</code> on all three flags, with no nulls. Then 367 subjects completed and 33 discontinued, and the duration summary shows why that distinction matters: completers all sit at 183 days, while discontinuing subjects range from 41 to 169. Those 33 are exactly the dropouts you first counted back in <a href="../sessions/the-trial-glpx001.html">The GLPX-001 Trial</a>. The number has survived the whole pipeline intact.</p>
+<p>Run both chunks. All 400 subjects are <code>"Y"</code> on all three flags, with no nulls. Then 367 subjects completed and 33 discontinued, and the duration summary shows why that distinction matters: completers all sit at 183 days, while discontinuing subjects range from 41 to 169. Those 33 are exactly the dropouts you first counted back in <a href="../sessions/the-trial-glpx001.html">The GLPX-1 Trial</a>. The number has survived the whole pipeline intact.</p>
 </div>
 </div>
 <p>One more check, because it exposes a distinction that is easy to collapse:</p>
@@ -901,12 +901,12 @@ Tip
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 5
-  USUBJID         TRTEDT     EOSDT      EOSSTT       TRTDURD
-  &lt;chr&gt;           &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;          &lt;int&gt;
-1 GLPX001-101-139 2024-09-20 2024-09-06 DISCONTINUED      72
-2 GLPX001-101-309 2024-05-21 2024-05-04 DISCONTINUED      47
-3 GLPX001-101-400 2024-08-01 2024-07-20 DISCONTINUED     126
-4 GLPX001-102-105 2024-12-13 2024-11-16 DISCONTINUED     169</code></pre>
+  USUBJID       TRTEDT     EOSDT      EOSSTT       TRTDURD
+  &lt;chr&gt;         &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;          &lt;int&gt;
+1 GLPX1-101-139 2024-09-20 2024-09-06 DISCONTINUED      72
+2 GLPX1-101-309 2024-05-21 2024-05-04 DISCONTINUED      47
+3 GLPX1-101-400 2024-08-01 2024-07-20 DISCONTINUED     126
+4 GLPX1-102-105 2024-12-13 2024-11-16 DISCONTINUED     169</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">

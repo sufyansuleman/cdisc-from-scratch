@@ -130,7 +130,7 @@ in for the standards group this course does not have.
 
 *Estimated time: ~20 minutes (worked example)*
 
-GLPX-001's workbook covers two domains, DM and LB. Start with its
+GLPX-1's workbook covers two domains, DM and LB. Start with its
 shape:
 
 ```{r ex1-sheets}
@@ -330,7 +330,7 @@ reorganised it. The old types were re-expressed as pairs:
 | `eDT` | `Collected` + `Vendor` |
 
 That second row is exactly the pairing the previous session derived for
-GLPX-001's central lab results from §4.3.2.1. The two sessions meet
+GLPX-1's central lab results from §4.3.2.1. The two sessions meet
 here.
 
 So the central intuition of this session is not about version numbers:
@@ -440,7 +440,7 @@ so that a future `defineR` gaining 2.1 support is noticed rather than
 silently assumed.
 
 **The workbook has no place for what you know.** This is the failure
-mode with no error message. You know GLPX-001's lab results come from a
+mode with no error message. You know GLPX-1's lab results come from a
 central laboratory. The 2.0 `ORIGIN` column cannot record it. Nothing
 warns you, nothing fails, and the information is simply absent from the
 deliverable. **A metadata format's limits become your metadata's

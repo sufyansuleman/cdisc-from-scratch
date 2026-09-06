@@ -150,7 +150,7 @@ It also carries a requirement this course cannot meet:
 > other OCCDS datasets, these variables are recommended… but not
 > required (OCCDS v1.1, §3.2.3).
 
-GLPX-001 has no MedDRA coding at all. `AEDECOD` is null on every row,
+GLPX-1 has no MedDRA coding at all. `AEDECOD` is null on every row,
 because MedDRA is a licensed dictionary and this course does not
 fabricate coded terms: the same discipline that keeps it from inventing
 lab reference ranges or a half-life for a fictional compound. So the
@@ -200,7 +200,7 @@ buildable set is bounded by which coded terms we lack (preferred term
 and system organ class) and that boundary cuts across CDISC's table
 structure rather than following it.** `AOCCFL` and `AOCCIFL` survive
 because they key on record order and on `ASEVN`, which come from
-severity and dates that GLPX-001 has. Everything keyed on a dictionary
+severity and dates that GLPX-1 has. Everything keyed on a dictionary
 term goes, wherever it happens to be filed.
 
 That is the general habit worth building. When a constraint bites (licensing, a domain you did not collect, a variable the vendor never
@@ -247,7 +247,7 @@ different definitions, date imputation, and other analysis rules."
 
 This is the same lesson as ADSL's population flags, which ADaM
 re-derives rather than copying from SDTM's Supplemental Qualifiers
-(ADaMIG v1.3, §3.5). The analysis flag is the analysis's own. GLPX-001
+(ADaMIG v1.3, §3.5). The analysis flag is the analysis's own. GLPX-1
 has no SUPPAE, so `AETRTEM` simply does not exist here, stated rather
 than invented.
 :::
@@ -476,7 +476,7 @@ count(adae_spine, TRTEMFL)
 
 **On *x* = 0.** The IG says *x* "often incorporates the known half-life
 of the drug": a real trial commonly counts events for some days after
-the last dose, because the drug is still present. GLPX-001 is a
+the last dose, because the drug is still present. GLPX-1 is a
 fictional compound, and inventing a half-life for it would be inventing
 a pharmacological fact to dress up an example. So the window here is
 exactly first dose to last dose inclusive, declared as a sponsor
@@ -485,7 +485,7 @@ protocol- or SAP-level decision with a clinical justification behind it,
 and it is often greater than zero.
 
 **On the absence of any `"N"`.** Every one of the 388 datable events in
-GLPX-001 falls inside the treatment window: the earliest begins one day
+GLPX-1 falls inside the treatment window: the earliest begins one day
 after first dose, the latest a week before last dose. So the flag comes
 out `"Y"` for all of them, and this trial contains **no non-emergent
 event to show you**. The simulator generated on-treatment events only.
@@ -495,7 +495,7 @@ move is to say so rather than manufacture a pre-treatment event to make
 a prettier demonstration. Real trials routinely have them: an event
 recorded at screening, a condition present before the first dose. The
 derivation above would assign those `"N"`, and the safety tables would
-exclude them. In GLPX-001, *x* = 0 and *x* = 30 would give identical
+exclude them. In GLPX-1, *x* = 0 and *x* = 30 would give identical
 results, which itself tells you the window choice cannot be validated
 against this dataset, only declared.
 :::
@@ -516,7 +516,7 @@ adae_spine |>
 ::: {.callout-tip}
 ### Run It Yourself
 
-Subject `GLPX001-103-199` has an adverse event (constipation) with no
+Subject `GLPX1-103-199` has an adverse event (constipation) with no
 recorded start date. Follow the consequences across the row:
 
 - `ASTDT` is null, because there was nothing to convert and **no
@@ -587,7 +587,7 @@ events:
 #| eval: true
 
 adae |>
-  filter(USUBJID == "GLPX001-101-147") |>
+  filter(USUBJID == "GLPX1-101-147") |>
   select(AESEQ, AETERM, ASTDT, ASTDY, ASEV, ASEVN, TRTEMFL, AOCCFL, AOCCIFL)
 ```
 
@@ -750,7 +750,7 @@ Practice: [Exercise 5: ADAE](../exercises/adae.qmd).
 
 ## Comprehension Check
 
-1. GLPX-001's ADAE has 389 rows covering 262 subjects, and ADSL has 400.
+1. GLPX-1's ADAE has 389 rows covering 262 subjects, and ADSL has 400.
    Which number is the denominator for "percentage of subjects with a
    treatment-emergent adverse event," and why are the other two wrong?
 2. `TRTEMFL` needs `ASTDT`, `TRTSDT` and `TRTEDT`. Which of those three
@@ -759,7 +759,7 @@ Practice: [Exercise 5: ADAE](../exercises/adae.qmd).
 3. Why is `ASTDTF` null for subject `103-199`'s undated event, when the
    date is certainly not known?
 4. Your study's AE data is fully MedDRA coded. Which occurrence flags
-   become available that GLPX-001 cannot derive, and where in OCCDS
+   become available that GLPX-1 cannot derive, and where in OCCDS
    would you look to confirm the list?
 5. A colleague recases `AESEV` from `MILD` to `Mild` directly, arguing
    the meaning is unchanged. Which rule does this break, and what should

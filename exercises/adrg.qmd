@@ -70,7 +70,7 @@ adrg <- list.files("data/adrg", full.names = TRUE) |>
    study. It must cover:
 
    - Whether visit windowing was used, and what `AVISIT` actually is in
-     GLPX-001
+     GLPX-1
    - How the baseline record is selected, stated precisely enough that
      a reader could reproduce it
    - That `ABLFL` disagrees with SDTM's `LBLOBXFL` on 342

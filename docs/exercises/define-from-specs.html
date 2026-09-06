@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -406,7 +406,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="goal" class="level2" data-number="25.1">
 <h2 data-number="25.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">25.1</span> Goal</h2>
-<p>Extend GLPX-001’s specification workbook to a third domain, regenerate the define.xml, and then confront the question the session leaves open: what would it actually take to ship 2.1 instead of 2.0?</p>
+<p>Extend GLPX-1’s specification workbook to a third domain, regenerate the define.xml, and then confront the question the session leaves open: what would it actually take to ship 2.1 instead of 2.0?</p>
 </section>
 <section id="setup" class="level2" data-number="25.2">
 <h2 data-number="25.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">25.2</span> Setup</h2>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="task" class="level2" data-number="25.3">
 <h2 data-number="25.3" class="anchored" data-anchor-id="task"><span class="header-section-number">25.3</span> Task</h2>
 <ol type="1">
-<li><p><strong>(Guided) Add a domain.</strong> GLPX-001 has four SDTM domains but the workbook specifies only DM and LB. Add <strong>VS</strong> (Vital Signs).</p>
+<li><p><strong>(Guided) Add a domain.</strong> GLPX-1 has four SDTM domains but the workbook specifies only DM and LB. Add <strong>VS</strong> (Vital Signs).</p>
 <p>Read <code>data/sdtm/vs.csv</code> for the variable list, and take labels and types from the same two sources <code>R/author_spec_workbook.R</code> uses: the CDISC example define.xml in the Define-XML package, and SDTMIG v3.4 for anything the example does not cover. Compute lengths from the data.</p>
 <p>You will need rows in at least <code>TOC_METADATA</code> and <code>VARIABLE_METADATA</code>. Decide for yourself whether VS also needs <code>VALUELEVEL_METADATA</code>, and justify the decision in one sentence. Look at what <code>VSSTRESU</code> does across <code>VSTESTCD</code> before you answer.</p>
 <p>Regenerate with <code>write_define()</code> and confirm the new domain appears. Report the dataset, variable and codelist counts before and after.</p></li>

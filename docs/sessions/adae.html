@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -575,7 +575,7 @@ Tip
 <blockquote class="blockquote">
 <p>For the SubClass ADVERSE EVENT, it is required that all levels of terms for the primary path in the MedDRA hierarchy — System Organ Class (SOC), High Level Group Term (HLGT), High Level Term (HLT), Lowest Level Term (LLT), and Preferred Term (PT) — be included. For other OCCDS datasets, these variables are recommended… but not required (OCCDS v1.1, §3.2.3).</p>
 </blockquote>
-<p>GLPX-001 has no MedDRA coding at all. <code>AEDECOD</code> is null on every row, because MedDRA is a licensed dictionary and this course does not fabricate coded terms: the same discipline that keeps it from inventing lab reference ranges or a half-life for a fictional compound. So the SubClass is out of reach.</p>
+<p>GLPX-1 has no MedDRA coding at all. <code>AEDECOD</code> is null on every row, because MedDRA is a licensed dictionary and this course does not fabricate coded terms: the same discipline that keeps it from inventing lab reference ranges or a half-life for a fictional compound. So the SubClass is out of reach.</p>
 <p>The right response is not to fake the codes, and not to abandon the dataset. It is to build ADAE with Class <code>OCCURRENCE DATA STRUCTURE</code> and no SubClass, and the guide is unusually direct that this is correct rather than merely tolerated:</p>
 <blockquote class="blockquote">
 <p>Data for a particular study that could have been coded but was not <strong>should use this structure</strong>, because analysis results are similar, and this will allow analysis programming to work the same way (OCCDS v1.1, §1.1.2).</p>
@@ -631,7 +631,7 @@ Tip
 </tbody>
 </table>
 <p>Read the middle column and the boundary is obvious. Read the right-hand one and it is not - <strong>the line falls across the two tables, not along them.</strong> <code>AOCCPFL</code> and <code>AOCCPIFL</code> sit in the <em>general</em> table, yet we cannot build them, because their derivations key on <code>--DECOD</code>. The table titled “MedDRA” contains some of what a dictionary costs you, not all of it.</p>
-<p>So the rule to carry away is about derivations, not headings: <strong>the buildable set is bounded by which coded terms we lack (preferred term and system organ class) and that boundary cuts across CDISC’s table structure rather than following it.</strong> <code>AOCCFL</code> and <code>AOCCIFL</code> survive because they key on record order and on <code>ASEVN</code>, which come from severity and dates that GLPX-001 has. Everything keyed on a dictionary term goes, wherever it happens to be filed.</p>
+<p>So the rule to carry away is about derivations, not headings: <strong>the buildable set is bounded by which coded terms we lack (preferred term and system organ class) and that boundary cuts across CDISC’s table structure rather than following it.</strong> <code>AOCCFL</code> and <code>AOCCIFL</code> survive because they key on record order and on <code>ASEVN</code>, which come from severity and dates that GLPX-1 has. Everything keyed on a dictionary term goes, wherever it happens to be filed.</p>
 <p>That is the general habit worth building. When a constraint bites (licensing, a domain you did not collect, a variable the vendor never sent) work out what each derivation <em>depends on</em>. Grouping in the standard is a useful signpost and an unreliable rule.</p>
 </section>
 <section id="treatment-emergence-the-question-adae-exists-to-answer" class="level3" data-number="11.3.2">
@@ -654,7 +654,7 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>SDTM can carry its own treatment-emergent flag as a Supplemental Qualifier, <code>AETRTEM</code> in SUPPAE (OCCDS v1.1, §3.2, Table 3.2.5.3). Where it exists, including it alongside <code>TRTEMFL</code> adds traceability, but the guide is explicit that “<code>TRTEMFL</code> may differ from <code>AETRTEM</code> due to different definitions, date imputation, and other analysis rules.”</p>
-<p>This is the same lesson as ADSL’s population flags, which ADaM re-derives rather than copying from SDTM’s Supplemental Qualifiers (ADaMIG v1.3, §3.5). The analysis flag is the analysis’s own. GLPX-001 has no SUPPAE, so <code>AETRTEM</code> simply does not exist here, stated rather than invented.</p>
+<p>This is the same lesson as ADSL’s population flags, which ADaM re-derives rather than copying from SDTM’s Supplemental Qualifiers (ADaMIG v1.3, §3.5). The analysis flag is the analysis’s own. GLPX-1 has no SUPPAE, so <code>AETRTEM</code> simply does not exist here, stated rather than invented.</p>
 </div>
 </div>
 </section>
@@ -723,12 +723,12 @@ Tip
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 7
-  USUBJID         AESEQ AETERM          AESTDTC    ASTDT      TRTSDT     ASTDY
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;     &lt;int&gt;
-1 GLPX001-101-010     1 Constipation    2024-05-23 2024-05-23 2024-03-28    57
-2 GLPX001-101-010     2 Nasopharyngitis 2024-06-23 2024-06-23 2024-03-28    88
-3 GLPX001-101-027     1 Hypoglycaemia   2024-05-01 2024-05-01 2024-04-14    18
-4 GLPX001-101-037     1 Diarrhoea       2024-07-05 2024-07-05 2024-04-19    78</code></pre>
+  USUBJID       AESEQ AETERM          AESTDTC    ASTDT      TRTSDT     ASTDY
+  &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;           &lt;chr&gt;      &lt;date&gt;     &lt;date&gt;     &lt;int&gt;
+1 GLPX1-101-010     1 Constipation    2024-05-23 2024-05-23 2024-03-28    57
+2 GLPX1-101-010     2 Nasopharyngitis 2024-06-23 2024-06-23 2024-03-28    88
+3 GLPX1-101-027     1 Hypoglycaemia   2024-05-01 2024-05-01 2024-04-14    18
+4 GLPX1-101-037     1 Diarrhoea       2024-07-05 2024-07-05 2024-04-19    78</code></pre>
 </div>
 </div>
 <p>Note that <code>AEDECOD</code> came across in the join and is null throughout, that is the licensing constraint, present in the data rather than described in the abstract:</p>
@@ -838,9 +838,9 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>On <em>x</em> = 0.</strong> The IG says <em>x</em> “often incorporates the known half-life of the drug”: a real trial commonly counts events for some days after the last dose, because the drug is still present. GLPX-001 is a fictional compound, and inventing a half-life for it would be inventing a pharmacological fact to dress up an example. So the window here is exactly first dose to last dose inclusive, declared as a sponsor decision. <strong>Do not read <em>x</em> = 0 as the norm.</strong> In a real study <em>x</em> is a protocol- or SAP-level decision with a clinical justification behind it, and it is often greater than zero.</p>
-<p><strong>On the absence of any <code>"N"</code>.</strong> Every one of the 388 datable events in GLPX-001 falls inside the treatment window: the earliest begins one day after first dose, the latest a week before last dose. So the flag comes out <code>"Y"</code> for all of them, and this trial contains <strong>no non-emergent event to show you</strong>. The simulator generated on-treatment events only.</p>
-<p>That is a limitation of the data, not of the concept, and the honest move is to say so rather than manufacture a pre-treatment event to make a prettier demonstration. Real trials routinely have them: an event recorded at screening, a condition present before the first dose. The derivation above would assign those <code>"N"</code>, and the safety tables would exclude them. In GLPX-001, <em>x</em> = 0 and <em>x</em> = 30 would give identical results, which itself tells you the window choice cannot be validated against this dataset, only declared.</p>
+<p><strong>On <em>x</em> = 0.</strong> The IG says <em>x</em> “often incorporates the known half-life of the drug”: a real trial commonly counts events for some days after the last dose, because the drug is still present. GLPX-1 is a fictional compound, and inventing a half-life for it would be inventing a pharmacological fact to dress up an example. So the window here is exactly first dose to last dose inclusive, declared as a sponsor decision. <strong>Do not read <em>x</em> = 0 as the norm.</strong> In a real study <em>x</em> is a protocol- or SAP-level decision with a clinical justification behind it, and it is often greater than zero.</p>
+<p><strong>On the absence of any <code>"N"</code>.</strong> Every one of the 388 datable events in GLPX-1 falls inside the treatment window: the earliest begins one day after first dose, the latest a week before last dose. So the flag comes out <code>"Y"</code> for all of them, and this trial contains <strong>no non-emergent event to show you</strong>. The simulator generated on-treatment events only.</p>
+<p>That is a limitation of the data, not of the concept, and the honest move is to say so rather than manufacture a pre-treatment event to make a prettier demonstration. Real trials routinely have them: an event recorded at screening, a condition present before the first dose. The derivation above would assign those <code>"N"</code>, and the safety tables would exclude them. In GLPX-1, <em>x</em> = 0 and <em>x</em> = 30 would give identical results, which itself tells you the window choice cannot be validated against this dataset, only declared.</p>
 </div>
 </div>
 </section>
@@ -853,9 +853,9 @@ Tip
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, AESEQ, AETERM, AESTDTC, ASTDT, ASTDY, ASTDTF, TRTEMFL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 8
-  USUBJID         AESEQ AETERM       AESTDTC ASTDT  ASTDY ASTDTF TRTEMFL
-  &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;   &lt;date&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;  
-1 GLPX001-103-199     1 Constipation &lt;NA&gt;    NA        NA &lt;NA&gt;   &lt;NA&gt;   </code></pre>
+  USUBJID       AESEQ AETERM       AESTDTC ASTDT  ASTDY ASTDTF TRTEMFL
+  &lt;chr&gt;         &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;   &lt;date&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;  
+1 GLPX1-103-199     1 Constipation &lt;NA&gt;    NA        NA &lt;NA&gt;   &lt;NA&gt;   </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -868,7 +868,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Subject <code>GLPX001-103-199</code> has an adverse event (constipation) with no recorded start date. Follow the consequences across the row:</p>
+<p>Subject <code>GLPX1-103-199</code> has an adverse event (constipation) with no recorded start date. Follow the consequences across the row:</p>
 <ul>
 <li><code>ASTDT</code> is null, because there was nothing to convert and <strong>no imputation rule was specified</strong> for this study.</li>
 <li><code>ASTDTF</code> is null too, and that is the correct value. The imputation flag records <em>the level of imputation applied</em>. Nothing was imputed, so there is nothing to record. A populated <code>ASTDTF</code> here would be a lie about what we did.</li>
@@ -912,7 +912,7 @@ Tip
 <p>The two flags are easiest to understand on a subject with several events:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>adae <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-147"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-147"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(AESEQ, AETERM, ASTDT, ASTDY, ASEV, ASEVN, TRTEMFL, AOCCFL, AOCCIFL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 9
@@ -1070,10 +1070,10 @@ Tip
 <section id="comprehension-check" class="level2" data-number="11.8">
 <h2 data-number="11.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">11.8</span> Comprehension Check</h2>
 <ol type="1">
-<li>GLPX-001’s ADAE has 389 rows covering 262 subjects, and ADSL has 400. Which number is the denominator for “percentage of subjects with a treatment-emergent adverse event,” and why are the other two wrong?</li>
+<li>GLPX-1’s ADAE has 389 rows covering 262 subjects, and ADSL has 400. Which number is the denominator for “percentage of subjects with a treatment-emergent adverse event,” and why are the other two wrong?</li>
 <li><code>TRTEMFL</code> needs <code>ASTDT</code>, <code>TRTSDT</code> and <code>TRTEDT</code>. Which of those three come from ADSL, and what does that tell you about the order in which analysis datasets must be built?</li>
 <li>Why is <code>ASTDTF</code> null for subject <code>103-199</code>’s undated event, when the date is certainly not known?</li>
-<li>Your study’s AE data is fully MedDRA coded. Which occurrence flags become available that GLPX-001 cannot derive, and where in OCCDS would you look to confirm the list?</li>
+<li>Your study’s AE data is fully MedDRA coded. Which occurrence flags become available that GLPX-1 cannot derive, and where in OCCDS would you look to confirm the list?</li>
 <li>A colleague recases <code>AESEV</code> from <code>MILD</code> to <code>Mild</code> directly, arguing the meaning is unchanged. Which rule does this break, and what should they do instead?</li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">

@@ -252,7 +252,7 @@ adlb_hba1c <- lb |>
     ADY     = as.integer(LBDY)
   )
 
-adlb_hba1c |> filter(USUBJID == "GLPX001-101-026")
+adlb_hba1c |> filter(USUBJID == "GLPX1-101-026")
 ```
 
 ::: {.callout-tip}
@@ -308,7 +308,7 @@ adlb <- lb |>
   ungroup()
 
 adlb |>
-  filter(USUBJID == "GLPX001-101-026") |>
+  filter(USUBJID == "GLPX1-101-026") |>
   select(AVISIT, AVAL, LBLOBXFL, ABLFL, BASE, CHG)
 ```
 

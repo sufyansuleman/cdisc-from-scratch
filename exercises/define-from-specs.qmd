@@ -4,7 +4,7 @@ title: "Exercise 9: Define-XML from a Specification Workbook"
 
 ## Goal
 
-Extend GLPX-001's specification workbook to a third domain, regenerate
+Extend GLPX-1's specification workbook to a third domain, regenerate
 the define.xml, and then confront the question the session leaves open:
 what would it actually take to ship 2.1 instead of 2.0?
 
@@ -28,7 +28,7 @@ of a controlled document is that it does not change casually.
 
 ## Task
 
-1. **(Guided) Add a domain.** GLPX-001 has four SDTM domains but the
+1. **(Guided) Add a domain.** GLPX-1 has four SDTM domains but the
    workbook specifies only DM and LB. Add **VS** (Vital Signs).
 
    Read `data/sdtm/vs.csv` for the variable list, and take labels and

@@ -6,7 +6,7 @@ title: "Exercise 4: ADSL"
 
 Extend the ADSL from [the ADSL session](../sessions/adsl.qmd) with a
 second age grouping and an analysis age, then construct the case the
-GLPX-001 data never gives you: population flags that legitimately
+GLPX-1 data never gives you: population flags that legitimately
 disagree.
 
 ## Setup
@@ -46,9 +46,9 @@ persisted copy from `data/adam/adsl.csv`.
    itself, and check whether the ADaMIG's condition for including `AAGE`
    is actually met here.
 
-3. **(Semi-guided) Flags that disagree.** In GLPX-001 every randomized
+3. **(Semi-guided) Flags that disagree.** In GLPX-1 every randomized
    subject was dosed, so `RANDFL`, `ITTFL` and `SAFFL` are all `"Y"` for
-   all 400. Take subject `GLPX001-101-010`, construct the scenario where
+   all 400. Take subject `GLPX1-101-010`, construct the scenario where
    they were randomized but never received a dose, and show what each of
    the three flags becomes.
 

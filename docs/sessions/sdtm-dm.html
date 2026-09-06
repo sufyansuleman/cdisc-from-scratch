@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -514,7 +514,7 @@ Tip
 <div class="callout-body-container callout-body">
 <p>Every mapping effort starts here: DM is the first domain anyone builds, because every other domain assumes it exists. You will also recognise this session’s problems personally by now: the demographics file with 401 rows for 400 subjects, and the subject whose sex differs between the EDC and the lab file, have both been sitting unresolved since <a href="../sessions/why-standards.html">Why Standards</a>. And any question of the form “what study day was that?” is unanswerable until someone sets each subject’s reference date.</p>
 <p>So the question this session answers: <strong>which dataset must exist, correctly, before any other dataset can be built, and what does building it actually involve?</strong></p>
-<p>Builds on <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a> (classes, cores, controlled terminology) and <a href="../sessions/the-trial-glpx001.html">The Trial: GLPX-001</a> (the raw files and their defects).</p>
+<p>Builds on <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a> (classes, cores, controlled terminology) and <a href="../sessions/the-trial-glpx001.html">The Trial: GLPX-1</a> (the raw files and their defects).</p>
 </div>
 </div>
 </section>
@@ -562,7 +562,7 @@ Tip
 </section>
 <section id="the-subjects-clock" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="the-subjects-clock"><span class="header-section-number">5.3.3</span> The subject’s clock</h3>
-<p>DM carries a set of reference dates, and one of them matters more than all the others. <code>RFSTDTC</code>, the subject reference start date, is “usually equivalent to date/time when subject was first exposed to study treatment” and is the anchor from which every study-day variable in every domain is calculated (SDTMIG v3.4, §5.2, assumption 9). It is null for subjects who were never treated, screen failures, subjects never assigned (SDTMIG v3.4, §5.2, assumption 9), which GLPX-001 does not have, but the principle stands: the clock starts at first exposure, so a subject with no exposure has no clock.</p>
+<p>DM carries a set of reference dates, and one of them matters more than all the others. <code>RFSTDTC</code>, the subject reference start date, is “usually equivalent to date/time when subject was first exposed to study treatment” and is the anchor from which every study-day variable in every domain is calculated (SDTMIG v3.4, §5.2, assumption 9). It is null for subjects who were never treated, screen failures, subjects never assigned (SDTMIG v3.4, §5.2, assumption 9), which GLPX-1 does not have, but the principle stands: the clock starts at first exposure, so a subject with no exposure has no clock.</p>
 <p>Around it sit the pairs (SDTMIG v3.4, §5.2): <code>RFENDTC</code> (the subject’s reference end, usually trial end, often last exposure; required for all randomised subjects), <code>RFXSTDTC</code>/<code>RFXENDTC</code> (first and last exposure to protocol-specified treatment, defined as the earliest <code>EXSTDTC</code> and latest <code>EXENDTC</code>), <code>RFICDTC</code> (informed consent) and <code>RFPENDTC</code> (end of participation: the last known date of contact).</p>
 <p>One modelling subtlety: these look like timing variables, but in DM they are classified as Record Qualifiers, because they are not intended for use in the general observation classes (SDTMIG v3.4, §5.2, assumption 7). The only true Timing variables DM may carry are <code>DMDTC</code>/<code>DMDY</code> and, if needed, <code>VISITNUM</code>/<code>VISIT</code>/<code>VISITDY</code> (SDTMIG v3.4, §5.2, assumption 8).</p>
 </section>
@@ -619,7 +619,7 @@ Tip
 </section>
 <section id="the-arms" class="level3" data-number="5.3.5">
 <h3 data-number="5.3.5" class="anchored" data-anchor-id="the-arms"><span class="header-section-number">5.3.5</span> The arms</h3>
-<p>Finally, treatment assignment: <code>ARM</code>/<code>ARMCD</code> (planned) and <code>ACTARM</code>/<code>ACTARMCD</code> (actual), all Expected (SDTMIG v3.4, §5.2). The codes are sponsor-defined, not controlled terminology: their values must come from the Trial Arms (TA) dataset: the trial-design dataset where a study declares its arms, which this course notes but does not build, with ARM and ARMCD in a strict one-to-one relationship (SDTMIG v3.4, §5.2, assumption 4). <code>ARMCD</code> is limited to 20 characters and is free of the <code>--TESTCD</code> character restrictions (SDTMIG v3.4, §4.2.1). <code>ARMNRS</code> exists for subjects whose arm variables are null, and may <strong>not</strong> be populated when both ARMCD and ACTARMCD have values (SDTMIG v3.4, §5.2, assumption 4a). In a trial like GLPX-001 where everyone was randomised and treated as assigned, <code>ARMNRS</code> is a column of nulls, present because it is Expected, empty because it has nothing to say.</p>
+<p>Finally, treatment assignment: <code>ARM</code>/<code>ARMCD</code> (planned) and <code>ACTARM</code>/<code>ACTARMCD</code> (actual), all Expected (SDTMIG v3.4, §5.2). The codes are sponsor-defined, not controlled terminology: their values must come from the Trial Arms (TA) dataset: the trial-design dataset where a study declares its arms, which this course notes but does not build, with ARM and ARMCD in a strict one-to-one relationship (SDTMIG v3.4, §5.2, assumption 4). <code>ARMCD</code> is limited to 20 characters and is free of the <code>--TESTCD</code> character restrictions (SDTMIG v3.4, §4.2.1). <code>ARMNRS</code> exists for subjects whose arm variables are null, and may <strong>not</strong> be populated when both ARMCD and ACTARMCD have values (SDTMIG v3.4, §5.2, assumption 4a). In a trial like GLPX-1 where everyone was randomised and treated as assigned, <code>ARMNRS</code> is a column of nulls, present because it is Expected, empty because it has nothing to say.</p>
 </section>
 </section>
 <section id="example-1-building-dm-from-the-raw-files" class="level2" data-number="5.4">
@@ -676,19 +676,19 @@ Tip
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dm_ids <span class="ot">&lt;-</span> dm_person <span class="sc">|&gt;</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">STUDYID =</span> <span class="st">"GLPX001"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">STUDYID =</span> <span class="st">"GLPX1"</span>,</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">DOMAIN  =</span> <span class="st">"DM"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">USUBJID =</span> <span class="fu">paste</span>(<span class="st">"GLPX001"</span>, SUBJID, <span class="at">sep =</span> <span class="st">"-"</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">USUBJID =</span> <span class="fu">paste</span>(<span class="st">"GLPX1"</span>, SUBJID, <span class="at">sep =</span> <span class="st">"-"</span>)</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>dm_ids <span class="sc">|&gt;</span> <span class="fu">select</span>(STUDYID, DOMAIN, USUBJID, SUBJID, SITEID) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
-  STUDYID DOMAIN USUBJID         SUBJID  SITEID
-  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;           &lt;chr&gt;   &lt;chr&gt; 
-1 GLPX001 DM     GLPX001-101-010 101-010 101   
-2 GLPX001 DM     GLPX001-101-012 101-012 101   
-3 GLPX001 DM     GLPX001-101-026 101-026 101   </code></pre>
+  STUDYID DOMAIN USUBJID       SUBJID  SITEID
+  &lt;chr&gt;   &lt;chr&gt;  &lt;chr&gt;         &lt;chr&gt;   &lt;chr&gt; 
+1 GLPX1   DM     GLPX1-101-010 101-010 101   
+2 GLPX1   DM     GLPX1-101-012 101-012 101   
+3 GLPX1   DM     GLPX1-101-026 101-026 101   </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -723,7 +723,7 @@ Tip
 </tr>
 <tr class="odd">
 <td><code>USUBJID</code></td>
-<td><code>GLPX001-101-012</code>, built as STUDYID + SUBJID, <strong>deliberately not</strong> from <code>SITEID</code>.</td>
+<td><code>GLPX1-101-012</code>, built as STUDYID + SUBJID, <strong>deliberately not</strong> from <code>SITEID</code>.</td>
 </tr>
 <tr class="even">
 <td><code>SUBJID</code></td>
@@ -737,7 +737,7 @@ Tip
 </section>
 <section id="the-subjects-clock-from-the-dosing-records" class="level3" data-number="5.4.3">
 <h3 data-number="5.4.3" class="anchored" data-anchor-id="the-subjects-clock-from-the-dosing-records"><span class="header-section-number">5.4.3</span> The subject’s clock, from the dosing records</h3>
-<p><code>RFSTDTC</code> is usually the first exposure date (SDTMIG v3.4, §5.2, assumption 9), and exposure lives in the raw dosing file. The reference pairs come from the same place: <code>RFXSTDTC</code> is defined as the earliest <code>EXSTDTC</code> and <code>RFXENDTC</code> as the latest <code>EXENDTC</code> (SDTMIG v3.4, §5.2). GLPX-001 has one dosing record per subject, so earliest and latest are simply its two dates:</p>
+<p><code>RFSTDTC</code> is usually the first exposure date (SDTMIG v3.4, §5.2, assumption 9), and exposure lives in the raw dosing file. The reference pairs come from the same place: <code>RFXSTDTC</code> is defined as the earliest <code>EXSTDTC</code> and <code>RFXENDTC</code> as the latest <code>EXENDTC</code> (SDTMIG v3.4, §5.2). GLPX-1 has one dosing record per subject, so earliest and latest are simply its two dates:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ex_raw <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/ex_raw.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_character</span>()))</span>
@@ -756,14 +756,14 @@ Tip
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>dm_ref <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, RFSTDTC, RFENDTC, RFXSTDTC, RFXENDTC) <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 5
-  USUBJID         RFSTDTC    RFENDTC    RFXSTDTC   RFXENDTC  
-  &lt;chr&gt;           &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     
-1 GLPX001-101-010 2024-03-28 2024-09-26 2024-03-28 2024-09-26
-2 GLPX001-101-012 2024-03-06 2024-09-04 2024-03-06 2024-09-04
-3 GLPX001-101-026 2024-05-06 2024-11-04 2024-05-06 2024-11-04</code></pre>
+  USUBJID       RFSTDTC    RFENDTC    RFXSTDTC   RFXENDTC  
+  &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;     
+1 GLPX1-101-010 2024-03-28 2024-09-26 2024-03-28 2024-09-26
+2 GLPX1-101-012 2024-03-06 2024-09-04 2024-03-06 2024-09-04
+3 GLPX1-101-026 2024-05-06 2024-11-04 2024-05-06 2024-11-04</code></pre>
 </div>
 </div>
-<p><code>RFICDTC</code> deserves a pause: GLPX-001’s raw data never collected consent dates, so the column is present and entirely null. That is the Expected discipline from <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a> in the flesh: the column must exist (with the absence explained in the Define-XML), but no value is invented (SDTMIG v3.4, §4.1.5).</p>
+<p><code>RFICDTC</code> deserves a pause: GLPX-1’s raw data never collected consent dates, so the column is present and entirely null. That is the Expected discipline from <a href="../sessions/sdtm-concepts.html">SDTM Concepts</a> in the flesh: the column must exist (with the absence explained in the Define-XML), but no value is invented (SDTMIG v3.4, §4.1.5).</p>
 </section>
 <section id="birth-dates-at-their-true-precision" class="level3" data-number="5.4.4">
 <h3 data-number="5.4.4" class="anchored" data-anchor-id="birth-dates-at-their-true-precision"><span class="header-section-number">5.4.4</span> Birth dates at their true precision</h3>
@@ -840,7 +840,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Run the chunk. 396 subjects get a derived age; the four D1 subjects get <code>NA</code> in both AGE and AGEU. Ask yourself which you would rather defend to a reviewer: four honest nulls, or four ages computed from invented birthdays. (In a real study, ages for such subjects are often <em>collected</em> on the CRF precisely because the birth date is withheld, GLPX-001’s CRF did not, so nulls it is.)</p>
+<p>Run the chunk. 396 subjects get a derived age; the four D1 subjects get <code>NA</code> in both AGE and AGEU. Ask yourself which you would rather defend to a reviewer: four honest nulls, or four ages computed from invented birthdays. (In a real study, ages for such subjects are often <em>collected</em> on the CRF precisely because the birth date is withheld, GLPX-1’s CRF did not, so nulls it is.)</p>
 </div>
 </div>
 </section>
@@ -867,7 +867,7 @@ Tip
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>dm_queries <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span>USUBJID,          <span class="sc">~</span>variable, <span class="sc">~</span>issue,</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GLPX001-111-003"</span>, <span class="st">"SEX"</span>,     <span class="st">"EDC records F; central-lab file records M"</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"GLPX1-111-003"</span>, <span class="st">"SEX"</span>,     <span class="st">"EDC records F; central-lab file records M"</span></span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">resolution =</span> <span class="fu">paste</span>(</span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SEX taken from the EDC (site-entered source);"</span>,</span>
@@ -877,9 +877,9 @@ Tip
 <span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>dm_queries <span class="sc">|&gt;</span> <span class="fu">select</span>(USUBJID, issue, resolution)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 3
-  USUBJID         issue                                     resolution          
-  &lt;chr&gt;           &lt;chr&gt;                                     &lt;chr&gt;               
-1 GLPX001-111-003 EDC records F; central-lab file records M SEX taken from the …</code></pre>
+  USUBJID       issue                                     resolution            
+  &lt;chr&gt;         &lt;chr&gt;                                     &lt;chr&gt;                 
+1 GLPX1-111-003 EDC records F; central-lab file records M SEX taken from the ED…</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dm_age <span class="sc">|&gt;</span> <span class="fu">count</span>(SEX)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -926,7 +926,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>All four rows come back <code>TRUE</code>, including RACE’s <code>OTHER</code>, which is a genuine member of the RACE codelist (<code>C74457</code>). GLPX-001’s EDC was configured with codelist values, so the checks pass; in a study whose CRF allowed free text they would not, and this one table would be where you found out. Passing is not the point. <em>Having checked</em> is the point: the alternative is stating codelist contents from memory, which is how plausible-but-wrong values enter submissions.</p>
+<p>All four rows come back <code>TRUE</code>, including RACE’s <code>OTHER</code>, which is a genuine member of the RACE codelist (<code>C74457</code>). GLPX-1’s EDC was configured with codelist values, so the checks pass; in a study whose CRF allowed free text they would not, and this one table would be where you found out. Passing is not the point. <em>Having checked</em> is the point: the alternative is stating codelist contents from memory, which is how plausible-but-wrong values enter submissions.</p>
 <p><code>COUNTRY</code> (<code>DNK</code>, <code>DEU</code>, <code>GBR</code>, <code>ESP</code>, <code>POL</code>) is governed by ISO 3166-1 alpha-3 (SDTMIG v3.4, §5.2), an external standard the terminology package does not carry, so it is <em>not</em> in this table, and its check is a different one (against the ISO list) rather than pretending <code>is_term()</code> covers it.</p>
 </div>
 </div>
@@ -943,7 +943,7 @@ Tip
 <span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">ACTARMCD =</span> ARMCD,</span>
 <span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">ARMNRS   =</span> <span class="cn">NA_character_</span>,</span>
 <span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">ACTARMUD =</span> <span class="cn">NA_character_</span>,</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">DTHDTC   =</span> <span class="cn">NA_character_</span>,   <span class="co"># no deaths in GLPX-001</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">DTHDTC   =</span> <span class="cn">NA_character_</span>,   <span class="co"># no deaths in GLPX-1</span></span>
 <span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">DTHFL    =</span> <span class="cn">NA_character_</span></span>
 <span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>  )</span>
 <span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a></span>
@@ -1123,7 +1123,7 @@ expected_cols_present
 <p><strong>Study-day arithmetic with a day 0</strong></p>
 <p><code>as.integer(date - ref)</code> alone is off by one for every on-study record, and <code>+ 1</code> everywhere is off by one for every pre-study record. The rule is two-branched because the scale skips zero (SDTMIG v3.4, §4.4.4), and the same section is why <code>--DY</code> must never be used to compute durations.</p>
 <p><strong>Dropping the empty Expected columns</strong></p>
-<p><code>ARMNRS</code>, <code>RFICDTC</code> and <code>DTHFL</code> are all null in GLPX-001’s DM, and a tidy instinct says remove them. Expected means the column stays, with the study-level absence explained in the metadata (SDTMIG v3.4, §4.1.5). Only Permissible variables disappear when uncollected.</p>
+<p><code>ARMNRS</code>, <code>RFICDTC</code> and <code>DTHFL</code> are all null in GLPX-1’s DM, and a tidy instinct says remove them. Expected means the column stays, with the study-level absence explained in the metadata (SDTMIG v3.4, §4.1.5). Only Permissible variables disappear when uncollected.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1137,7 +1137,7 @@ expected_cols_present
 <p><strong>“DM holds whatever was on the demographics CRF page”</strong> DM holds the standard’s set of subject-level variables, several of which (the reference dates) come from <em>other</em> raw sources entirely, GLPX’s clock came from the dosing file. The CRF page and the domain are different units of organisation.</p>
 <p><strong>“USUBJID and SUBJID are basically the same thing”</strong> <code>SUBJID</code> is the subject as the study knew them, unique within the study. <code>USUBJID</code> is the person across every study of the product, unique across the whole submission (SDTMIG v3.4, §5.2; §4.2.3). The same person in a later GLPX trial would get a new SUBJID and must get the same USUBJID.</p>
 <p><strong>“AGE missing for four subjects is a data quality problem”</strong> It is the honest representation of what is known. The quality problem would be four plausible ages derived from invented birthdays. Null, here, is the <em>correct value</em>.</p>
-<p><strong>“The subject’s study day 0 is their randomisation day”</strong> There is no study day 0 (SDTMIG v3.4, §4.4.4): the reference date is day 1, and GLPX-001’s reference date is first <em>exposure</em>, which for some subjects is not the randomisation day at all.</p>
+<p><strong>“The subject’s study day 0 is their randomisation day”</strong> There is no study day 0 (SDTMIG v3.4, §4.4.4): the reference date is day 1, and GLPX-1’s reference date is first <em>exposure</em>, which for some subjects is not the randomisation day at all.</p>
 </div>
 </div>
 </section>
@@ -1150,7 +1150,7 @@ expected_cols_present
 <p><em>Estimated time: ~10 minutes</em></p>
 <ol type="1">
 <li>Subject <code>101-012</code> has two genuine enrolment records. Why does DM get exactly one row, and where does the site-change information belong?</li>
-<li>This course built <code>USUBJID</code> as <code>GLPX001-&lt;SUBJID&gt;</code> rather than the guide’s STUDYID-SITEID-SUBJID example. Justify the choice.</li>
+<li>This course built <code>USUBJID</code> as <code>GLPX1-&lt;SUBJID&gt;</code> rather than the guide’s STUDYID-SITEID-SUBJID example. Justify the choice.</li>
 <li><code>RFICDTC</code>, <code>DTHFL</code> and <code>ARMNRS</code> are all completely null in the finished dataset, while <code>INVNAM</code> and <code>DMDTC</code> are absent entirely. Explain both fates.</li>
 <li>A colleague fills subject <code>111-057</code>’s birth date (<code>1969</code>) in as <code>1969-06-15</code> so that AGE can be computed. What has gone wrong, and where would completing a date be legitimate?</li>
 <li>A lab sample was collected the day before a subject’s first dose, and another on the day of first dose. What are the two study days, and what rule produced them?</li>

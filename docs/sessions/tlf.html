@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -756,21 +756,21 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>Run all four chunks. Every row of every one of these tables is a <code>count()</code> or a <code>summarise()</code> on <code>ADSL</code> alone: no new logic, only presentation of a value derived in <a href="../sessions/adsl.html">ADSL</a> and cited there.</p>
-<p>Two things worth checking on the numbers themselves. First, <code>AGE</code>’s two missing subjects per arm are exactly the four subjects from D1, whose incomplete birth dates you met in <a href="../sessions/sdtm-dm.html">The DM Domain</a>. They are still missing here, four sessions later, because nothing between then and now had a reason to impute them. Second, <code>EOSSTT</code> here reads 181/19 for GLPX and 186/14 for Placebo, which is the same 367/33 split you first counted in <a href="../sessions/the-trial-glpx001.html">The GLPX-001 Trial</a>, now shown by arm rather than pooled. Same subjects, same numbers, different question asked of them.</p>
+<p>Two things worth checking on the numbers themselves. First, <code>AGE</code>’s two missing subjects per arm are exactly the four subjects from D1, whose incomplete birth dates you met in <a href="../sessions/sdtm-dm.html">The DM Domain</a>. They are still missing here, four sessions later, because nothing between then and now had a reason to impute them. Second, <code>EOSSTT</code> here reads 181/19 for GLPX and 186/14 for Placebo, which is the same 367/33 split you first counted in <a href="../sessions/the-trial-glpx001.html">The GLPX-1 Trial</a>, now shown by arm rather than pooled. Same subjects, same numbers, different question asked of them.</p>
 </div>
 </div>
 <section id="traceability-made-concrete" class="level3" data-number="13.4.1">
 <h3 data-number="13.4.1" class="anchored" data-anchor-id="traceability-made-concrete"><span class="header-section-number">13.4.1</span> Traceability, made concrete</h3>
-<p>A table entry is only as good as your ability to point at the row it came from. Pick a cell (GLPX001-101-010, <code>Placebo</code>, <code>WHITE</code>, <code>COMPLETED</code>) and check it:</p>
+<p>A table entry is only as good as your ability to point at the row it came from. Pick a cell (GLPX1-101-010, <code>Placebo</code>, <code>WHITE</code>, <code>COMPLETED</code>) and check it:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>adsl <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX001-101-010"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(USUBJID <span class="sc">==</span> <span class="st">"GLPX1-101-010"</span>) <span class="sc">|&gt;</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(USUBJID, TRT01P, AGE, SEX, RACE, EOSSTT)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 6
-  USUBJID         TRT01P    AGE SEX   RACE  EOSSTT   
-  &lt;chr&gt;           &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    
-1 GLPX001-101-010 Placebo    58 M     WHITE COMPLETED</code></pre>
+  USUBJID       TRT01P    AGE SEX   RACE  EOSSTT   
+  &lt;chr&gt;         &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    
+1 GLPX1-101-010 Placebo    58 M     WHITE COMPLETED</code></pre>
 </div>
 </div>
 <p>That one row is why the <code>WHITE</code> count under <code>Placebo</code> includes this subject, and why the <code>COMPLETED</code> count does too. A number that cannot be walked back to a row like this one is not a result. It is a claim.</p>
@@ -779,7 +779,7 @@ Tip
 <section id="example-2-a-table-and-a-listing-from-the-same-events" class="level2" data-number="13.5">
 <h2 data-number="13.5" class="anchored" data-anchor-id="example-2-a-table-and-a-listing-from-the-same-events"><span class="header-section-number">13.5</span> Example 2: A Table and a Listing, from the Same Events</h2>
 <p><em>Estimated time: ~25 minutes (worked example)</em></p>
-<p>A <strong>table</strong> counts. A <strong>listing</strong> enumerates. They can describe exactly the same underlying records and still look nothing alike, because they answer different questions: “how many?” against “which ones, in full?” GLPX-001 gives you a case where you can watch both happen to the same event.</p>
+<p>A <strong>table</strong> counts. A <strong>listing</strong> enumerates. They can describe exactly the same underlying records and still look nothing alike, because they answer different questions: “how many?” against “which ones, in full?” GLPX-1 gives you a case where you can watch both happen to the same event.</p>
 <section id="the-table-how-many-subjects-not-how-many-events" class="level3" data-number="13.5.1">
 <h3 data-number="13.5.1" class="anchored" data-anchor-id="the-table-how-many-subjects-not-how-many-events"><span class="header-section-number">13.5.1</span> The table: how many subjects, not how many events</h3>
 <div class="cell">
@@ -933,7 +933,7 @@ Tip
 </section>
 <section id="the-listing-every-instance-none-of-them-collapsed" class="level3" data-number="13.5.2">
 <h3 data-number="13.5.2" class="anchored" data-anchor-id="the-listing-every-instance-none-of-them-collapsed"><span class="header-section-number">13.5.2</span> The listing: every instance, none of them collapsed</h3>
-<p>GLPX-001 has exactly one serious adverse event. That is a small enough number to show you the entire listing, and it is the best possible size for seeing what a listing is <em>for</em>:</p>
+<p>GLPX-1 has exactly one serious adverse event. That is a small enough number to show you the entire listing, and it is the best possible size for seeing what a listing is <em>for</em>:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>sae_listing <span class="ot">&lt;-</span> adae <span class="sc">|&gt;</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(AESER <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">|&gt;</span></span>
@@ -951,11 +951,11 @@ Tip
 <table class="caption-top table table-sm table-striped small">
 <caption>Listing of Serious Adverse Events</caption>
 <colgroup>
-<col style="width: 20%">
-<col style="width: 17%">
+<col style="width: 18%">
+<col style="width: 18%">
 <col style="width: 14%">
 <col style="width: 11%">
-<col style="width: 21%">
+<col style="width: 22%">
 <col style="width: 14%">
 </colgroup>
 <thead>
@@ -970,7 +970,7 @@ Tip
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">GLPX001-110-004</td>
+<td style="text-align: left;">GLPX1-110-004</td>
 <td style="text-align: left;">Hypoglycaemia</td>
 <td style="text-align: left;">2024-03-23</td>
 <td style="text-align: left;">Severe</td>
@@ -991,7 +991,7 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>One row: <code>GLPX001-110-004</code>, Hypoglycaemia, 2024-03-23, Severe, treatment-emergent, GLPX 10 mg. You met this subject in <a href="../sessions/adae.html">ADAE</a> as the study’s single serious event.</p>
+<p>One row: <code>GLPX1-110-004</code>, Hypoglycaemia, 2024-03-23, Severe, treatment-emergent, GLPX 10 mg. You met this subject in <a href="../sessions/adae.html">ADAE</a> as the study’s single serious event.</p>
 <p>Now count the same event, the way a table would:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>adae <span class="sc">|&gt;</span> <span class="fu">filter</span>(AESER <span class="sc">==</span> <span class="st">"Y"</span>) <span class="sc">|&gt;</span> <span class="fu">count</span>(TRT01A, <span class="at">name =</span> <span class="st">"n_serious_events"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1111,7 +1111,7 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p>Run the chunk. GLPX 10 mg separates from placebo almost immediately and the gap widens every visit, reaching -1.41 against -0.30 by week 26: the same treatment effect <a href="../sessions/adlb.html">ADLB</a> reported as a table of numbers, now as the chart a clinical study report would actually publish.</p>
-<p>Colour and shape both carry treatment arm, using <code>R/palette.R</code>’s <code>arm_colours</code>: the same Okabe-Ito palette convention established for the very first figure in <a href="../sessions/the-trial-glpx001.html">The GLPX-001 Trial</a>, carried through every figure in this course without exception. A colourblind reader loses nothing; identity never rests on colour alone.</p>
+<p>Colour and shape both carry treatment arm, using <code>R/palette.R</code>’s <code>arm_colours</code>: the same Okabe-Ito palette convention established for the very first figure in <a href="../sessions/the-trial-glpx001.html">The GLPX-1 Trial</a>, carried through every figure in this course without exception. A colourblind reader loses nothing; identity never rests on colour alone.</p>
 <p>Error bars are standard error at each visit, computed from the same <code>n</code> and <code>CHG</code> values in the table above them, another number you can trace back, this time to a formula rather than a single row, but no less checkable for it.</p>
 </div>
 </div>
@@ -1174,7 +1174,7 @@ Tip
 <ol type="1">
 <li>Every table in this session states its <code>N</code> before it states any percentage, and that <code>N</code> always comes from ADSL. Why not compute it from whichever dataset the table is summarising?</li>
 <li>The severity table uses <code>AOCCIFL == "Y"</code>, not <code>TRTEMFL == "Y"</code> alone. What would go wrong with the severity row totals if you filtered on <code>TRTEMFL</code> alone?</li>
-<li>GLPX-001’s single serious adverse event appears as <code>n = 1</code> in both a table count and the listing. In what sense are these two views of the same event still doing different jobs?</li>
+<li>GLPX-1’s single serious adverse event appears as <code>n = 1</code> in both a table count and the listing. In what sense are these two views of the same event still doing different jobs?</li>
 <li>This session’s figure excludes <code>SCREENING</code> and shows a <code>BASELINE</code> mean of -0.051 rather than 0. Explain both decisions from what you already know about <code>ABLFL</code> from <a href="../sessions/adlb.html">ADLB</a>.</li>
 <li>A colleague asks which CDISC guide specifies how a demographics table should be laid out. What is the honest answer, and what document does OCCDS itself point to instead?</li>
 </ol>

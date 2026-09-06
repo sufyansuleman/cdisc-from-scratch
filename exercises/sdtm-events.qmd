@@ -59,7 +59,7 @@ is the reference; try each task before looking back.
 
 Task 2: `AESTDY` is null wherever `AESTDTC` is null. You cannot count
 days from a reference date without a date. There is exactly one such
-event in GLPX-001 (defect D4).
+event in GLPX-1 (defect D4).
 
 Task 3: the *serious* count comes only from `AESER == "Y"`; the *severe*
 count from `AESEV == "SEVERE"`. If those two numbers are equal, you have

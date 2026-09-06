@@ -1,4 +1,4 @@
-# build_sdtm.R — GLPX-001 raw -> SDTM datasets
+# build_sdtm.R — GLPX-1 raw -> SDTM datasets
 #
 # Reads the raw EDC/vendor CSVs in data/raw/ and writes standardised SDTM
 # domains to data/sdtm/. This is the "production" companion to the
@@ -43,7 +43,7 @@ read_raw <- function(name) {
            col_types = cols(.default = col_character()))
 }
 
-STUDYID <- "GLPX001"
+STUDYID <- "GLPX1"
 
 # ---- DM (Demographics; special-purpose) ------------------------------------
 # See sessions/sdtm-dm.qmd for the reasoning behind each decision.

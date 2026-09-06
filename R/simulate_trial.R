@@ -1,6 +1,6 @@
-# simulate_trial.R — GLPX-001 synthetic trial data generator
+# simulate_trial.R — GLPX-1 synthetic trial data generator
 #
-# GLPX-001 is a SIMULATED Phase III, randomised, double-blind,
+# GLPX-1 is a SIMULATED Phase III, randomised, double-blind,
 # placebo-controlled trial of GLPX (a fictional GLP-1-class agent) in
 # adults with type 2 diabetes: GLPX 10 mg once weekly vs placebo, 1:1,
 # 26 weeks. Primary endpoint: change in HbA1c from baseline to week 26
@@ -51,7 +51,7 @@ n_visits <- nrow(visits)
 fmt_date <- function(x) format(x, "%Y-%m-%d")
 
 # ---- Defect registry -------------------------------------------------------
-# Single source of truth for every deliberate flaw in GLPX-001.
+# Single source of truth for every deliberate flaw in GLPX-1.
 # Defects are the curriculum, not bugs. Each is taught in exactly one session.
 # Placement is driven FROM this table. Never place a defect positionally.
 #

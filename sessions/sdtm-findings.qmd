@@ -380,7 +380,7 @@ analysis.
 
 *Estimated time: ~10 minutes (reading)*
 
-You have now built all four of GLPX-001's domains across three sessions
+You have now built all four of GLPX-1's domains across three sessions
 - DM, AE, and here LB and VS. Rebuilding them by hand every time a later
 session needs them would invite drift: the DM logic in one session
 subtly disagreeing with another. So the course reifies exactly these

@@ -22,7 +22,7 @@
 #     for the 36 variables it covers;
 #   * SDTMIG v3.4 section 5.2 (DM) and 6.3.5.6 (LB) for the remaining 12.
 # The Define-XML package is reference material the reader downloads; see
-# sessions/define-xml.qmd. Lengths are computed from the actual GLPX-001 data.
+# sessions/define-xml.qmd. Lengths are computed from the actual GLPX-1 data.
 # ---------------------------------------------------------------------------
 
 library(tidyverse)
@@ -180,12 +180,12 @@ if (any(is.na(variable_metadata$LABEL))) {
 # --- the remaining sheets --------------------------------------------------
 
 define_header <- tibble(
-  FILEOID          = "GLPX001.define.sdtm",
-  STUDYOID         = "GLPX001",
-  STUDYNAME        = "GLPX-001",
+  FILEOID          = "GLPX1.define.sdtm",
+  STUDYOID         = "GLPX1",
+  STUDYNAME        = "GLPX-1",
   STUDYDESCRIPTION = paste("A simulated Phase III trial of GLPX 10 mg",
                            "in type 2 diabetes"),
-  PROTOCOLNAME     = "GLPX-001",
+  PROTOCOLNAME     = "GLPX-1",
   STANDARD         = "SDTM-IG",
   VERSION          = "3.4",
   SCHEMALOCATION   = NA_character_,

@@ -35,7 +35,7 @@ or keep the R session open from where the session left off.
 
    Fix it properly. That means two additions, not one: a `MethodDef`
    element that states how `USUBJID` is derived, and a `MethodOID`
-   attribute on the `ItemRef` that points at it. GLPX-001 builds
+   attribute on the `ItemRef` that points at it. GLPX-1 builds
    `USUBJID` by concatenating the study identifier, the site and the
    subject number. Check `R/build_sdtm.R` and describe what it
    actually does, not what you assume it does.
@@ -49,7 +49,7 @@ or keep the R session open from where the session left off.
 
    You will find you cannot. Not because anything is missing from your
    toolkit, but because a single `ItemDef` for `LBSTRESN` cannot say
-   what the variable means: in GLPX-001's LB, `LBSTRESN` holds HbA1c in
+   what the variable means: in GLPX-1's LB, `LBSTRESN` holds HbA1c in
    percent on some rows and fasting plasma glucose in mmol/L on others.
    One variable, one `ItemDef`, two meanings, two units, two reference
    ranges.
@@ -62,7 +62,7 @@ or keep the R session open from where the session left off.
    Build it: a `def:ValueListRef` on the `ItemDef`, a `def:ValueListDef`
    containing one `ItemRef` per parameter, and a `def:WhereClauseDef`
    for each that says which rows it applies to. Use the two `LBTESTCD`
-   values GLPX-001 actually contains. Read them from `data/sdtm/lb.csv`
+   values GLPX-1 actually contains. Read them from `data/sdtm/lb.csv`
    rather than assuming.
 
    Then answer, in one sentence each:

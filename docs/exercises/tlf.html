@@ -178,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -425,7 +425,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p><strong>(Guided) An age-group row.</strong> Add an <code>AGEGR1</code> row to the demographics table from Example 1, showing n (%) by arm the same way <code>SEX</code> and <code>RACE</code> do.</p>
 <p>Two subjects per arm have no <code>AGEGR1</code>, because they have no <code>AGE</code> (the D1 defect from <a href="../exercises/sdtm-dm.html">The DM Domain</a>). Decide how those four subjects should appear in your table (as a stated <code>Missing</code> row, folded silently into one of the age bands, or dropped) and justify the choice in one sentence. There is a wrong answer among those three; say which one and why.</p></li>
-<li><p><strong>(The trap) The table the session’s own citation calls for.</strong> OCCDS v1.1 §4 opens Example 1 by citing ICH E3 §12.2.2 and §14.3.1 for “the basic summary of adverse event frequencies,” displayed by <strong>System Organ Class and Preferred Term</strong>. Build that table for GLPX-001.</p>
+<li><p><strong>(The trap) The table the session’s own citation calls for.</strong> OCCDS v1.1 §4 opens Example 1 by citing ICH E3 §12.2.2 and §14.3.1 for “the basic summary of adverse event frequencies,” displayed by <strong>System Organ Class and Preferred Term</strong>. Build that table for GLPX-1.</p>
 <p>You will not be able to. Find out precisely why, using the data rather than assuming it. Check what columns actually exist in ADAE, and what is populated in them. State the reason in one sentence, citing back to the constraint established in <a href="../sessions/adae.html">ADAE</a>.</p>
 <p>Now build the closest thing you <em>can</em> build: the same summary at the level of the verbatim <code>AETERM</code> instead of the coded preferred term. Look at your result closely, several clinical concepts appear more than once, under slightly different spellings or capitalisation. Count how many distinct <code>AETERM</code> values there are, and how many remain after folding case. Then answer: why would a real submission reject a table built this way, even though every number in it is arithmetically correct?</p></li>
 <li><p><strong>(Semi-guided) The tabular twin of the figure, and one more listing.</strong> The session’s figure shows the full HbA1c trajectory. A study report also needs the single-timepoint version: a table of mean (SD) change from baseline in HbA1c at Week 26, by arm, with <code>n</code>.</p>

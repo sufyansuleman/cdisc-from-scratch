@@ -24,7 +24,7 @@ library(tidyverse)
 
 This session is shorter than most and has no exercise set: it is the
 argument for everything that follows, not a technique to practise. It
-fits one sitting. Read it before [The GLPX-001
+fits one sitting. Read it before [The GLPX-1
 Trial](the-trial-glpx001.qmd), which introduces the data you will work
 with for the rest of the course.
 :::
@@ -133,7 +133,7 @@ course is hard.
 | **Dataset structure** | What is one row, and which datasets exist? | [SDTM Concepts](sdtm-concepts.qmd), [The DM Domain](sdtm-dm.qmd) |
 | **Controlled vocabulary** | Which values is this column allowed to hold? | [SDTM Concepts](sdtm-concepts.qmd), [Events](sdtm-events.qmd) |
 
-Example 1 below demonstrates the first two problems in the GLPX-001
+Example 1 below demonstrates the first two problems in the GLPX-1
 raw data. Example 2 demonstrates the third. Neither example needs you
 to know any CDISC yet, that is the point. You should feel the problem
 before you are handed the solution.
@@ -236,7 +236,7 @@ that each sponsor adapts to taste is a dictionary with extra steps.
 
 *Estimated time: ~20 minutes (worked example)*
 
-GLPX-001 is a simulated Phase III trial of a GLP-1-class agent in type
+GLPX-1 is a simulated Phase III trial of a GLP-1-class agent in type
 2 diabetes. [The next session](the-trial-glpx001.qmd) introduces it
 properly. For now you only need to know that its raw data is what a
 study team actually receives: an export from the EDC system where sites
@@ -350,7 +350,7 @@ it from the data alone.
 :::
 
 This is not a trick, and it is not rare. It is a defect deliberately
-built into the GLPX-001 simulation because it is one of the most
+built into the GLPX-1 simulation because it is one of the most
 ordinary things that happens in a real trial. You will resolve this
 subject properly in [The DM Domain](sdtm-dm.qmd), where you will see
 that the standard's contribution is not to *know* the answer, but to
@@ -457,7 +457,7 @@ n_distinct(ae$AETERM)
 n_distinct(toupper(ae$AETERM))
 ```
 
-Twenty-five as recorded; twelve once you ignore case. But GLPX-001 only
+Twenty-five as recorded; twelve once you ignore case. But GLPX-1 only
 ever produced **ten** clinical concepts. Upper-casing gets you from 25
 to 12, and then stops:
 
@@ -587,7 +587,7 @@ the duplicated subject, the 25 spellings) would still be a problem for
 your own team six months from now if no agency existed.
 
 **"My data is clean, so this doesn't apply to me"**
-Nothing in the GLPX-001 raw data is dirty in the ordinary sense. There
+Nothing in the GLPX-1 raw data is dirty in the ordinary sense. There
 are no impossible values, no corrupted rows, no encoding errors. Every
 problem in this session came from *clean data with no agreed meaning*.
 
@@ -630,7 +630,7 @@ and see how many different answers you can defend.
    EDC and the lab disagree, trust the lab." What is wrong with this
    reasoning?
 5. Name the three distinct things a standard fixes, and give an example
-   of each from the GLPX-001 raw data.
+   of each from the GLPX-1 raw data.
 
 ::: {.callout-note collapse="true"}
 ### Answers

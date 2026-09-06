@@ -227,7 +227,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../sessions/the-trial-glpx001.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span></a>
   </div>
 </li>
       </ul>
@@ -520,7 +520,7 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p>This session is shorter than most and has no exercise set: it is the argument for everything that follows, not a technique to practise. It fits one sitting. Read it before <a href="../sessions/the-trial-glpx001.html">The GLPX-001 Trial</a>, which introduces the data you will work with for the rest of the course.</p>
+<p>This session is shorter than most and has no exercise set: it is the argument for everything that follows, not a technique to practise. It fits one sitting. Read it before <a href="../sessions/the-trial-glpx001.html">The GLPX-1 Trial</a>, which introduces the data you will work with for the rest of the course.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -619,7 +619,7 @@ Tip
 </tr>
 </tbody>
 </table>
-<p>Example 1 below demonstrates the first two problems in the GLPX-001 raw data. Example 2 demonstrates the third. Neither example needs you to know any CDISC yet, that is the point. You should feel the problem before you are handed the solution.</p>
+<p>Example 1 below demonstrates the first two problems in the GLPX-1 raw data. Example 2 demonstrates the third. Neither example needs you to know any CDISC yet, that is the point. You should feel the problem before you are handed the solution.</p>
 </section>
 <section id="the-shape-of-what-is-coming" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="the-shape-of-what-is-coming"><span class="header-section-number">2.3.2</span> The shape of what is coming</h3>
@@ -678,7 +678,7 @@ Tip
 <section id="example-1-five-files-five-conventions" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="example-1-five-files-five-conventions"><span class="header-section-number">2.4</span> Example 1: Five Files, Five Conventions</h2>
 <p><em>Estimated time: ~20 minutes (worked example)</em></p>
-<p>GLPX-001 is a simulated Phase III trial of a GLP-1-class agent in type 2 diabetes. <a href="../sessions/the-trial-glpx001.html">The next session</a> introduces it properly. For now you only need to know that its raw data is what a study team actually receives: an export from the EDC system where sites enter data, plus a separate file from the central laboratory that analyses the blood samples. Two organisations, two sets of habits.</p>
+<p>GLPX-1 is a simulated Phase III trial of a GLP-1-class agent in type 2 diabetes. <a href="../sessions/the-trial-glpx001.html">The next session</a> introduces it properly. For now you only need to know that its raw data is what a study team actually receives: an export from the EDC system where sites enter data, plus a separate file from the central laboratory that analyses the blood samples. Two organisations, two sets of habits.</p>
 <p>Load all five raw files and look at nothing but their shape:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>raw_paths <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data/raw"</span>, <span class="at">pattern =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.csv$"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
@@ -818,7 +818,7 @@ Tip
 <p>Now sit with the awkward part: <strong>which one is right?</strong> The data cannot tell you. Nothing in either file is malformed. Both values are perfectly valid. They simply disagree, and you have no way to resolve it from the data alone.</p>
 </div>
 </div>
-<p>This is not a trick, and it is not rare. It is a defect deliberately built into the GLPX-001 simulation because it is one of the most ordinary things that happens in a real trial. You will resolve this subject properly in <a href="../sessions/sdtm-dm.html">The DM Domain</a>, where you will see that the standard’s contribution is not to <em>know</em> the answer, but to force the question to be asked and the decision to be recorded.</p>
+<p>This is not a trick, and it is not rare. It is a defect deliberately built into the GLPX-1 simulation because it is one of the most ordinary things that happens in a real trial. You will resolve this subject properly in <a href="../sessions/sdtm-dm.html">The DM Domain</a>, where you will see that the standard’s contribution is not to <em>know</em> the answer, but to force the question to be asked and the decision to be recorded.</p>
 <p>Note the join itself: <code>join_by(SUBJID == subjid)</code>. Because the two files name the same concept differently, the join cannot be written without trial-specific knowledge. After standardisation it can.</p>
 </section>
 <section id="counting-subjects-is-not-nrow" class="level3" data-number="2.4.2">
@@ -960,7 +960,7 @@ Tip
 <pre><code>[1] 12</code></pre>
 </div>
 </div>
-<p>Twenty-five as recorded; twelve once you ignore case. But GLPX-001 only ever produced <strong>ten</strong> clinical concepts. Upper-casing gets you from 25 to 12, and then stops:</p>
+<p>Twenty-five as recorded; twelve once you ignore case. But GLPX-1 only ever produced <strong>ten</strong> clinical concepts. Upper-casing gets you from 25 to 12, and then stops:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sort</span>(<span class="fu">unique</span>(<span class="fu">toupper</span>(ae<span class="sc">$</span>AETERM)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1085,7 +1085,7 @@ Tip
 </div>
 <div class="callout-body-container callout-body">
 <p><strong>“Standards are bureaucratic overhead imposed by regulators”</strong> The regulation exists because the problem does, not the other way round. Everything demonstrated in this session (the disagreeing sex, the duplicated subject, the 25 spellings) would still be a problem for your own team six months from now if no agency existed.</p>
-<p><strong>“My data is clean, so this doesn’t apply to me”</strong> Nothing in the GLPX-001 raw data is dirty in the ordinary sense. There are no impossible values, no corrupted rows, no encoding errors. Every problem in this session came from <em>clean data with no agreed meaning</em>.</p>
+<p><strong>“My data is clean, so this doesn’t apply to me”</strong> Nothing in the GLPX-1 raw data is dirty in the ordinary sense. There are no impossible values, no corrupted rows, no encoding errors. Every problem in this session came from <em>clean data with no agreed meaning</em>.</p>
 <p><strong>“The CRO/vendor handles CDISC, so I don’t need to know it”</strong> Someone still has to decide what sex subject <code>111-003</code> is, and that someone needs to understand both the trial and the standard. Delegating the mapping does not delegate the decisions. It just means you approve decisions you did not make.</p>
 <p><strong>“Once the data conforms, the analysis is objective”</strong> The three nausea counts differ by rule choice, not by data quality. The standard removes the <em>arbitrary</em> differences (naming, case, structure) so that the remaining differences are visible and arguable. It does not remove judgement; it exposes it.</p>
 </div>
@@ -1104,7 +1104,7 @@ Tip
 <li><code>dm_raw.csv</code> has 401 rows and 400 subjects. Why is this not a data error, and what does the standard contribute?</li>
 <li>Three defensible R rules gave 61, 65 and 66 subjects with nausea. Which is correct, and what does your answer tell you about where the fix has to happen?</li>
 <li>A colleague says: “The lab file is machine-generated, so where the EDC and the lab disagree, trust the lab.” What is wrong with this reasoning?</li>
-<li>Name the three distinct things a standard fixes, and give an example of each from the GLPX-001 raw data.</li>
+<li>Name the three distinct things a standard fixes, and give an example of each from the GLPX-1 raw data.</li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
@@ -1551,8 +1551,8 @@ U.S. Food and Drug Administration. 2021. <span>“Providing Regulatory Submissio
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../sessions/the-trial-glpx001.html" class="pagination-link" aria-label="The Trial: GLPX-001">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-001</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../sessions/the-trial-glpx001.html" class="pagination-link" aria-label="The Trial: GLPX-1">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">The Trial: GLPX-1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

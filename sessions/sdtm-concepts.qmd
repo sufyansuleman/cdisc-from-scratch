@@ -48,7 +48,7 @@ not already provided it, install it once with
 ## When Do You Use This? {#sec-sdtm-concepts}
 
 ::: {.callout-tip}
-You have the five raw GLPX-001 files and you have been told to "map
+You have the five raw GLPX-1 files and you have been told to "map
 them to SDTM." Before you rename a single column you hit the questions
 this session answers: how many datasets should there be, and which raw
 file becomes which? What is a single row supposed to represent in each?
@@ -63,7 +63,7 @@ This session is the vocabulary and the mental model you need before
 the raw data.
 
 It builds on [Why Standards](why-standards.qmd) (why a shared structure
-exists) and [The Trial: GLPX-001](the-trial-glpx001.qmd) (the raw data
+exists) and [The Trial: GLPX-1](the-trial-glpx001.qmd) (the raw data
 you will now reshape).
 :::
 
@@ -118,7 +118,7 @@ study datasets:
 - **SDTMIG v3.4**, supported since 2023-12-13; **required** for
   studies starting on or after 2025-03-15; pairs with SDTM v2.0.
 
-GLPX-001 starts in 2024, so its version is settled by that start date
+GLPX-1 starts in 2024, so its version is settled by that start date
 falling in the v3.4 support window, not by preference. This is why
 "SDTM is required" is too loose to be useful: what is required is a
 *specific implementation-guide version over a specific window of study
@@ -508,7 +508,7 @@ Worked solutions are in the paid tier; the habit the exercise builds
    SDTMIG is the implementation guide that turns it into named
    datasets and variables (SDTMIG v3.4, §2.1). The version is not a
    preference: the FDA Data Standards Catalog ties the required SDTMIG
-   version to the study's start date, and GLPX-001's 2024 start falls
+   version to the study's start date, and GLPX-1's 2024 start falls
    in the v3.4 support window [@fdadsc11].
 
 2. Findings: one row is the result of a measurement (SDTMIG v3.4,
