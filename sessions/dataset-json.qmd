@@ -2,96 +2,501 @@
 title: "Dataset-JSON"
 ---
 
+```{r setup}
+#| include: false
+#| eval: true
+library(tidyverse)
+library(jsonlite)
+library(haven)
+library(datasetjson)
+library(knitr)
+```
+
 ::: {.callout-note}
 ### Session at a Glance
 
-**Total core time: about TODO minutes.**
+**Total core time: about 85 minutes.**
 
 | Section | Time | Type |
 |---|---|---|
-| When Do You Use This? + Learning Objectives | TODO | Reading |
-| Background | TODO | Reading |
-| Example 1 | TODO | Worked example |
-| Example 2 | TODO | Worked example |
-| What Can Go Wrong | TODO | Reading |
-| Exercises | TODO | Practice |
-| Comprehension Check | TODO | Self-test |
+| When Do You Use This? + Learning Objectives | 5 min | Reading |
+| Background: the format the standards bent around | 20 min | Reading |
+| Example 1: The same domain, twice | 20 min | Worked example |
+| Example 2: What transport cannot say | 15 min | Worked example |
+| Example 3: The size question, honestly | 15 min | Worked example |
+| What Can Go Wrong | 10 min | Reading |
+| Exercises + Comprehension Check | 15 min | Practice / Self-test |
 
-TODO: how the session splits across sittings for self-paced study.
+The last session in the course, and the only one about how data
+*travels* rather than how it is shaped. It closes a thread opened in
+Part 2: every session has referred to `dm.xpt` and `lb.xpt` without ever
+producing one. Here we finally do, and then produce the format meant to
+replace it.
 :::
 
 ::: {.callout-tip}
 ### How to Use the Code in This Session
 
-Every code chunk below is written so you can copy it into your R
-console (or an R script) and run it yourself, in the order shown.
-Where you see a "Run It Yourself" box, stop and run the code above it
-before reading the explanation that follows.
+Run R from the project root. Three new packages: **`datasetjson`** for
+reading and writing Dataset-JSON, **`xportr`** for writing SAS Transport
+v5, and **`haven`** for reading it back. All pinned in `renv.lock`.
+
+Everything below runs against artifacts committed in this repository:
+`data/xpt/` and `data/json/`, produced by `R/build_dataset_json.R`.
+
+The specification, its JSON Schema and CDISC's own example files are all
+**public on GitHub**: no CDISC account needed, unlike Define-XML:
+<https://github.com/cdisc-org/DataExchange-DatasetJson>
 :::
 
 ## When Do You Use This?
 
 ::: {.callout-tip}
-TODO: two or three concrete scenarios that this session answers, ending
-with the single question it addresses in bold. Cross-link the
-session(s) this one builds on.
+Your datasets are built, your define.xml describes them and your ADRG
+explains them. Then:
+
+- The submission has to physically arrive somewhere. In what file
+  format, and who decided?
+- Your `ADLB` has a variable called `LBSTRESN` rather than
+  `LABORATORY_RESULT_NUMERIC`. Why is every CDISC variable name eight
+  characters or fewer? Is that a style rule?
+- [ADAE](adae.qmd) insisted that a null `TRTEMFL` and a value of `"N"`
+  mean different things. Does the file format you submit in preserve
+  that distinction?
+
+**What does the container do to the data you put in it?**
 :::
 
 ## Learning Objectives
 
 After completing this session you will be able to:
 
-- TODO
-- TODO
-- TODO
+- Describe the constraints of SAS Transport v5 and how they shaped
+  CDISC's own standards
+- Write a dataset as both `.xpt` and Dataset-JSON v1.1 from R
+- Read the required and optional attributes of a Dataset-JSON file, and
+  explain what `itemGroupOID` is doing there
+- Demonstrate a data distinction that transport format destroys and
+  Dataset-JSON preserves
+- Interpret file-size comparisons between the two formats without
+  overclaiming
 
-## Background: TODO (the one core idea)
+## Background: The Format the Standards Bent Around
 
-*Estimated time: ~TODO minutes (reading)*
+*Estimated time: ~20 minutes (reading)*
 
-TODO: introduce the single idea that ties the session together, concept
-before formula.
+Every session in Part 2 referred to files this course never made.
+`def:ArchiveLocationID="dm.xpt"`. `<def:leaf xlink:href="lb.xpt">`.
+GLPX-1's data has lived in CSV throughout, because CSV is convenient for
+teaching. A real submission does not use CSV.
 
-## Example 1: TODO
+It uses **SAS Transport Format Version 5**, a file format published in
+1988 and required for regulatory submission ever since. Not SAS's
+current format: a specific, frozen, thirty-eight-year-old one.
 
-TODO: worked example on GLPX-1 data. Show the code, then the output,
-then explain it.
+PhUSE's 2017 paper *Transport for the Next Generation*, which is the
+document that started the effort to replace it, lists what it costs:
+
+> Only supports US ASCII Character encoding. No multibyte characters are
+> possible; this requires translation and/or transcription from the
+> source data.
+>
+> Field names are restricted in terms of width and format. Field names
+> must be alphanumeric, Variable names are limited to a maximum length
+> of **8 characters**, Variable labels are restricted to a maximum
+> length of **40 characters**.
+>
+> Character field widths are limited to **200 characters**.
+>
+> Does not make efficient use of storage space. There is often empty
+> space for columns allocated, but not used by data and this can lead
+> up to **70% wasted space**.
+> (Transport for the Next Generation v1.0, "SAS Transport v5")
+
+Read the second item again, then look at any variable name in this
+course. `USUBJID`. `LBSTRESN`. `TRTEMFL`. `AOCCIFL`.
+
+### The constraint you never noticed
+
+```{r bg-namecheck}
+datasets <- c("data/sdtm/dm.csv", "data/sdtm/lb.csv",
+              "data/adam/adsl.csv", "data/adam/adae.csv", "data/adam/adlb.csv")
+
+all_names <- datasets |>
+  map(~ names(read_csv(.x, n_max = 0, show_col_types = FALSE))) |>
+  unlist()
+
+c(variables = length(all_names),
+  over_8_characters = sum(nchar(all_names) > 8))
+```
+
+**Not one variable in 131 exceeds eight characters.** That is not
+restraint on the part of whoever named them, and it is not coincidence.
+`LBSTRESN` is called `LBSTRESN` rather than something readable because a
+1988 file format could not have stored a longer name.
+
+This is the thing worth taking from the session, and it is larger than
+one file format:
+
+> **The container shaped the contents.** SDTM and ADaM variable names
+> are what they are because of the format they had to travel in. A
+> constraint you cannot see, because everything you have been taught
+> already accommodates it.
+
+Dataset-JSON is the attempt to remove the constraint:
+
+> Dataset-JSON is a data exchange standard for sharing tabular data
+> using JSON. It is designed to meet a wide range of data exchange
+> scenarios, including regulatory submissions and API-based data
+> exchange. Each Dataset-JSON dataset can **optionally** reference a
+> Define-XML document containing more complete metadata for the dataset
+> (Dataset-JSON v1.1, Introduction)
+
+Two rules from the same section, both worth knowing before you open a
+file:
+
+> Dataset-JSON must contain only **1 dataset per file**. Dataset-JSON
+> uses the file extension .json (Dataset-JSON v1.1, Introduction)
+
+## Example 1: The Same Domain, Twice
+
+*Estimated time: ~20 minutes (worked example)*
+
+`R/build_dataset_json.R` writes DM and LB in both formats. Variable
+labels come from `data/spec/SDTM_METADATA.xlsx`: the same workbook
+[the previous session](define-from-specs.qmd) used to generate
+define.xml, so the transport file, the metadata document and the JSON
+all tell one story.
+
+```{r ex1-files}
+tibble(directory = c("data/xpt", "data/json")) |>
+  mutate(files = map_chr(directory, ~ paste(list.files(.x), collapse = ", "))) |>
+  kable()
+```
+
+### What is in the JSON
+
+```{r ex1-header}
+dm <- fromJSON("data/json/dm.json", simplifyVector = FALSE)
+
+tibble(attribute = setdiff(names(dm), c("columns", "rows"))) |>
+  mutate(value = map_chr(attribute, ~ paste(unlist(dm[[.x]]), collapse = " / "))) |>
+  kable()
+```
+
+Compare that against what the specification requires. Of the
+seventeen top-level attributes, only seven are **Required**:
+`datasetJSONCreationDateTime`, `datasetJSONVersion`, `itemGroupOID`,
+`records`, `name`, `label` and `columns`.
+
+One pairing repays attention:
+
+| Attribute | Usage |
+|---|---|
+| `itemGroupOID` | **Required** |
+| `metaDataRef` | Optional |
+| `metaDataVersionOID` | Optional |
+
+`itemGroupOID` is `IG.DM`. That is not a Dataset-JSON invention. It is
+the OID from [Define-XML](define-xml.qmd), the identifier the
+specification insisted has "no intrinsic meaning." Here is what it is
+for. Every column carries one too:
+
+```{r ex1-columns}
+dm$columns |> head(4) |> map_dfr(as_tibble) |> kable()
+```
+
+`IT.DM.STUDYID`, `IT.DM.USUBJID`: the same OIDs the hand-built
+define.xml declared. So a Dataset-JSON file **must** carry the keys that
+join it to its metadata, but is **not** required to say which document
+those keys belong to. It hands you a foreign key and leaves the table
+optional.
+
+### Row data
+
+```{r ex1-rows}
+dm$rows[1:2] |> map_chr(~ paste(map_chr(.x, ~ format(.x %||% "null")),
+                                collapse = " | ")) |>
+  str_trunc(78)
+```
+
+> **rows** is an array of records with variables values. Each record
+> itself is also represented as an array of variables values
+> (Dataset-JSON v1.1, Row Data)
+
+An **array**, not an object. There are no keys on the rows at all: the
+column names are stated once, in `columns`, and never repeated. A naive
+JSON export would write `"USUBJID": "GLPX1-101-010"` on all 12,388 rows
+of LB. This writes it zero times.
+
+### Does it conform?
+
+```{r ex1-validate}
+#| eval: false
+validate_dataset_json("data/json/dm.json")
+```
+
+```
+File is valid per the Dataset JSON v1.1.0 schema
+```
+
+Checked against the JSON Schema CDISC publishes in the same repository
+as the specification, exactly as [Define-XML](define-xml.qmd) checked
+against the XSD. Both of GLPX-1's files pass.
+
+## Example 2: What Transport Cannot Say
+
+*Estimated time: ~15 minutes (worked example)*
+
+[ADAE](adae.qmd) made a point at some length: subject `GLPX1-103-199`
+has an adverse event with no start date, so `TRTEMFL` is **null**, not
+`"N"`. "We do not know whether this event was treatment-emergent" is a
+different claim from "this event was not treatment-emergent," and the
+dataset must not conflate them.
+
+The specification is explicit that Dataset-JSON preserves the
+distinction:
+
+> Missing values are represented by **null**. Empty strings are
+> represented by **""** (Dataset-JSON v1.1, Row Data)
+
+Which raises a question nobody asks: does the format we actually submit
+in preserve it too?
 
 ### Run It Yourself
 
-TODO: the exact code block the learner should execute before reading on.
+Three values: a string, a genuine missing, and an empty string:
+
+```{r ex2-setup}
+probe <- tibble(ID = c("A", "B", "C"), VAL = c("x", NA_character_, ""))
+is.na(probe$VAL)
+```
+
+Round-trip through SAS Transport v5:
+
+```{r ex2-xpt}
+xpt_path <- file.path(tempdir(), "probe.xpt")
+write_xpt(probe, xpt_path, version = 5)
+back_xpt <- read_xpt(xpt_path)
+
+is.na(back_xpt$VAL)
+```
+
+Round-trip through Dataset-JSON:
+
+```{r ex2-json}
+cols <- tibble(itemOID = paste0("IT.PROBE.", names(probe)), name = names(probe),
+               label = names(probe), dataType = "string", length = 8L)
+
+ds <- dataset_json(probe, item_oid = "IG.PROBE", name = "PROBE",
+                   dataset_label = "Missingness probe", columns = cols)
+
+json_path <- file.path(tempdir(), "probe.json")
+write_dataset_json(ds, json_path)
+back_json <- read_dataset_json(json_path)
+
+is.na(back_json$VAL)
+```
 
 ### Reading the Output Line by Line
 
-TODO: map each line of output to its plain-English meaning.
+The original had one missing value: `FALSE TRUE FALSE`.
 
-## Example 2: TODO
+After the transport round-trip: **`FALSE FALSE FALSE`**. The missing
+value is gone. Not lost as in corrupted, silently converted into an
+empty string, indistinguishable from the value in row C that was
+deliberately empty.
 
-TODO: a second worked example.
+After the Dataset-JSON round-trip: `FALSE TRUE FALSE`. Unchanged.
 
-### Run It Yourself
+Look at what is actually written to the file:
 
-TODO.
+```{r ex2-raw}
+readLines(json_path, warn = FALSE) |>
+  paste(collapse = "") |>
+  str_extract('"rows".*')
+```
+
+`null` for the missing value, `""` for the empty string. Two different
+tokens for two different facts.
+
+**This is the strongest practical argument in the session.** The course
+has spent Part 3 insisting that null and a value are different claims -
+`TRTEMFL` null rather than `"N"`, `AGE` null rather than imputed,
+`AEDECOD` null because MedDRA was never applied. Every one of those
+distinctions survives in the CSV and in the define.xml. Submitted as
+transport format, the character ones quietly stop existing.
+
+## Example 3: The Size Question, Honestly
+
+*Estimated time: ~15 minutes (worked example)*
+
+Dataset-JSON's stated aims include "the efficient use of storage space,"
+against transport format's "up to 70% wasted space." So the JSON should
+be smaller. Ours is not:
+
+```{r ex3-sizes}
+read_csv("data/json/size_comparison.csv", show_col_types = FALSE) |> kable()
+```
+
+**Uncompressed Dataset-JSON is about 1.3 times larger than the `.xpt`
+for both domains.** That is the opposite of the advertised result, and
+it is not a mistake in the build.
+
+Now the same comparison on CDISC's own published example files, shipped
+in the specification repository:
+
+```{r ex3-cdisc}
+ex <- "refs/DatasetJSON_v1.1/repo/examples/adam"
+
+tibble(dataset = c("adae", "adlbc")) |>
+  mutate(xpt  = file.size(file.path(ex, paste0(dataset, ".xpt"))),
+         json = file.size(file.path(ex, paste0(dataset, ".json"))),
+         dsjc = file.size(file.path(ex, paste0(dataset, ".dsjc"))),
+         json_vs_xpt = round(json / xpt, 3),
+         dsjc_vs_xpt = round(dsjc / xpt, 3)) |>
+  kable()
+```
+
+Theirs go the other way: JSON is **smaller** than the transport file.
+Same two formats, opposite conclusions. One of these is misleading and
+it is worth working out which.
+
+### Why the answer differs
+
+The difference is not the formats. It is the **declared lengths**.
+
+```{r ex3-lengths}
+our_len   <- fromJSON("data/json/lb.json", simplifyVector = FALSE)$columns |>
+  map_int(~ .x$length %||% NA_integer_)
+cdisc_len <- fromJSON(file.path("refs/DatasetJSON_v1.1/repo/examples/sdtm/lb.json"),
+                      simplifyVector = FALSE)$columns |>
+  map_int(~ .x$length %||% NA_integer_)
+
+list(GLPX1 = our_len, CDISC = cdisc_len) |>
+  map(~ c(n = length(.x), max = max(.x, na.rm = TRUE),
+          at_200 = sum(.x == 200, na.rm = TRUE)))
+```
+
+CDISC's LB declares three fields at the transport maximum of 200
+characters. Ours declares nothing above 24, because
+`R/author_spec_workbook.R` computed every length from the data actually
+present.
+
+A transport file allocates the declared width on **every row**, whether
+the data fills it or not. Three 200-character fields across thousands of
+rows is exactly the "empty space for columns allocated, but not used"
+the PhUSE paper describes. Dataset-JSON writes only what is there, so
+the padding is what it wins on, and where there is no padding, it
+loses, because JSON pays for quotes, commas and brackets.
+
+Which of the two is realistic? Theirs. The Define-XML specification says
+so directly: variable lengths are **planned** lengths, not observed
+ones. A real study declares `LBORRES` at 200 because some future result
+might need it. This course computed lengths from 12,388 rows that
+already exist, which no live study can do.
+
+So the honest statement of the central lesson:
+
+> **The storage-efficiency claim depends on how generously you declared
+> your lengths, not on the format.** Dataset-JSON does not compress your
+> data. It stops transport format from padding it. If you had nothing to
+> pad, you get nothing back.
+
+### The compressed form
+
+One number in both tables is not ambiguous:
+
+`.dsjc`, compressed Dataset-JSON, is **0.10 to 0.14** of the
+transport file in our data and **0.07** in CDISC's. Seven to ten times
+smaller, in every case, regardless of how the lengths were declared.
+That is the size argument, and it does not depend on anyone's
+declarations.
 
 ## What Can Go Wrong
 
-TODO: failure modes and misuse patterns.
+*Estimated time: ~10 minutes (reading)*
+
+- **Assuming the format preserves your distinctions.** Example 2 is the
+  case in point. A pipeline that is careful about null-versus-`"N"` all
+  the way through ADaM, and then submits transport format, has thrown
+  the distinction away at the last step for every character variable.
+- **Quoting the storage claim without the caveat.** "Dataset-JSON is
+  smaller than XPT" is true of realistic data and false of ours. If you
+  cite it, cite what it depends on.
+- **Expecting one file to hold a study.** "Dataset-JSON must contain
+  only 1 dataset per file." A submission is a directory, not a document.
+- **Treating `itemGroupOID` as decoration.** It is Required. If it does
+  not match an `ItemGroupDef` in your define.xml, the two artifacts
+  disagree and nothing in either file will tell you.
+- **Assuming eight-character names are a CDISC style choice.** They are
+  a 1988 file-format constraint. Worth knowing, because it explains a
+  great deal of what otherwise looks like arbitrary ugliness.
 
 ### Common misinterpretations
 
-TODO.
+- **"JSON means human-readable."** A 12,388-row LB file is two megabytes
+  of nested arrays. It is *parseable*, which is different.
+- **"Dataset-JSON replaces define.xml."** It optionally references one.
+  `columns` carries name, label, type and length; define.xml carries
+  origin, derivations, codelists and value-level metadata.
+- **"The rows are objects."** They are arrays, which is precisely why
+  the format is not far larger than transport.
 
 ## Exercises
 
-TODO: link the exercise file(s) for this session, or state that this
-session has no exercise.
+[Exercise 11, Dataset-JSON](../exercises/dataset-json.qmd) asks you to
+break the eight-character rule and find out what happens, and to settle
+the size question on data where the lengths are planned rather than
+observed.
 
 ## Comprehension Check
 
-TODO: three to five short self-test questions.
+::: {.callout-note collapse="true"}
+### Questions
+
+1. Why is the ADaM variable for treatment-emergent flag called
+   `TRTEMFL` rather than `TREATMENT_EMERGENT_FLAG`?
+2. `GLPX1-103-199` has a null `TRTEMFL`. What happens to that null in a
+   `.xpt` submission, and why does it matter?
+3. A colleague says Dataset-JSON files are smaller than XPT. Under what
+   condition is that false?
+4. `metaDataRef` is optional but `itemGroupOID` is required. What does
+   that combination let a file do, and not do?
+5. Why are `rows` arrays rather than objects?
+:::
 
 ::: {.callout-note collapse="true"}
 ### Answers
 
-TODO: answers, collapsed.
+1. **Because SAS Transport v5 limits variable names to eight
+   characters.** Every CDISC variable name in this course obeys it,
+   131 of 131. It is a file-format constraint that predates SDTM, not a
+   naming convention someone chose.
+
+2. **It becomes an empty string, indistinguishable from a deliberate
+   blank.** Demonstrated in Example 2: `is.na()` returns `TRUE` before
+   the round-trip and `FALSE` after. It matters because
+   [ADAE](adae.qmd) established that null means "we do not know" while
+   `"N"` means "no", and the transport file cannot carry the
+   difference.
+
+3. **When the declared lengths are close to the data.** GLPX-1's
+   Dataset-JSON is 1.3× *larger* than its `.xpt`, because the
+   specification workbook computed lengths from observed data. CDISC's
+   examples declare fields at 200 characters, so their transport files
+   carry padding that the JSON does not, and the JSON wins. Compressed
+   `.dsjc` is smaller in both cases.
+
+4. **It can be joined to its metadata, but it need not name it.**
+   `itemGroupOID` is the foreign key to an `ItemGroupDef` in a
+   define.xml; `metaDataRef` is the URI of that document. Required key,
+   optional pointer, so a file always *can* be matched to metadata,
+   but a recipient may have to be told which define.xml to match it
+   against.
+
+5. **To avoid repeating the column names on every record.** Names are
+   stated once in `columns`. On LB that saves writing 22 keys across
+   12,388 rows. It is the single design decision that keeps
+   Dataset-JSON competitive with a binary format on size.
 :::

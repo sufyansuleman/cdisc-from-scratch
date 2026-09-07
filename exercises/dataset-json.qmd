@@ -1,0 +1,127 @@
+---
+title: "Exercise 11: Dataset-JSON"
+---
+
+## Goal
+
+Break the eight-character rule deliberately and watch two formats
+disagree about it, then settle the size question the session leaves
+open by testing it on lengths that were planned rather than observed.
+
+## Setup
+
+Work from the project root:
+
+```{r}
+#| eval: false
+library(tidyverse)
+library(jsonlite)
+library(haven)
+library(xportr)
+library(datasetjson)
+```
+
+Everything you need is committed under `data/xpt/`, `data/json/` and
+`data/spec/`. CDISC's example files live in
+`refs/DatasetJSON_v1.1/repo/examples/`, which you cloned in the session.
+
+## Task
+
+1. **(Guided) Break the eight-character rule.** Take `data/sdtm/lb.csv`
+   and rename three variables to something a human could read:
+   `LBSTRESN` to `LAB_RESULT_NUMERIC`, `LBORRESU` to
+   `ORIGINAL_UNITS`, `LBNRIND` to `REFERENCE_RANGE_INDICATOR`.
+
+   Now try to write the result both ways: as `.xpt` with
+   `xportr_write()`, and as Dataset-JSON with `write_dataset_json()`.
+
+   Report exactly what each does. One of them will not simply refuse.
+   Read its output carefully rather than assuming it failed. Then
+   answer:
+
+   - What did the transport writer do with the long names, and would you
+     have noticed in a pipeline that did not check?
+   - Dataset-JSON accepted them. Does that make the renamed dataset
+     submittable? Separate what the *format* permits from what the
+     *standard* requires, and say which document settles it.
+
+2. **(The trap) Settle the size question properly.** The session found
+   GLPX-1's Dataset-JSON 1.3 times larger than its `.xpt`, and CDISC's
+   examples the other way round, and attributed the difference to
+   declared lengths.
+
+   Test that claim instead of accepting it. Take `data/sdtm/lb.csv` and
+   write it to `.xpt` twice: once with the lengths from
+   `data/spec/SDTM_METADATA.xlsx` as they are, and once with every
+   character field declared at 200, the way a real study would. Compare
+   all three files each time: `.xpt`, `.json`, `.dsjc`.
+
+   Report the sizes and the ratios. Then answer:
+
+   - At what declared length does Dataset-JSON stop losing and start
+     winning? Find the approximate crossover rather than guessing.
+   - The session claims `.dsjc` wins regardless. Does your data support
+     that, and by how much?
+   - Define-XML calls declared lengths *planned* lengths. Given what you
+     just measured, what does that mean for a sponsor deciding how
+     generous to be?
+
+3. **(Semi-guided) Round-trip the whole study.** Write all three ADaM
+   datasets (ADSL, ADAE, ADLB) as Dataset-JSON, with `itemOID` values
+   that would match an `ItemGroupDef` and `ItemDef` in a define.xml for
+   the analysis data.
+
+   Validate each with `validate_dataset_json()`. Then read them back and
+   prove the round-trip is lossless: every value, every type, and in
+   particular every null. `ADAE` has one record with a null `ASTDT` and
+   a null `TRTEMFL`, and `ADSL` has four subjects with a null `AGE`.
+   Check those specifically, not just the row counts.
+
+   Answer in one sentence each:
+
+   - Which is harder to verify: that the values round-tripped, or that
+     the *types* did? Why?
+   - You have now written the same three datasets as CSV, as
+     Dataset-JSON, and described them in define.xml. Which of the three
+     could a reviewer reconstruct the study from with no other files,
+     and what would still be missing?
+
+## Acceptance criteria
+
+- [ ] Long-named LB written both ways, with the transport writer's
+      actual behaviour reported, not assumed
+- [ ] The format-permits versus standard-requires distinction stated,
+      with the governing document named
+- [ ] LB written to `.xpt` under both length regimes, with all sizes and
+      ratios reported
+- [ ] An approximate crossover length identified from measurement
+- [ ] All three ADaM datasets written as Dataset-JSON and validated
+- [ ] Null preservation checked on the specific known records, not by
+      row count
+- [ ] Both round-trip questions answered
+
+::: {.callout-tip}
+## Hint
+
+Task 1: `xportr` has validation controlled by `strict_checks`; the
+default is not what you might expect, which is the point of the task.
+For the second half, the eight-character limit is not in the
+Dataset-JSON specification at all. Ask yourself which document defines
+what an SDTM variable may be called, and note that a file can be
+perfectly valid JSON and still not be an SDTM dataset.
+
+Task 2: build the modified metadata frame by taking the
+`VARIABLE_METADATA` sheet and setting `LENGTH` to 200 wherever `TYPE` is
+text. For the crossover, you do not need a formula. Write the file at
+a handful of declared lengths (say 10, 25, 50, 100, 200) and plot or
+tabulate the ratio. The answer is more interesting than the number.
+
+Task 3: `dataset_json()` needs a `columns` tibble whose row order
+matches the dataset's column order; building it with `imap()` over
+`names(dat)` is less error-prone than typing it. For null checking,
+`sum(is.na(x))` before and after is a start, but compare the specific
+`USUBJID` values the session names, because a count can match while the
+nulls have moved.
+:::
+
+> Solutions are in the paid tier.

@@ -50,6 +50,7 @@ book:
     - exercises/define-xml.qmd
     - exercises/define-from-specs.qmd
     - exercises/adrg.qmd
+    - exercises/dataset-json.qmd
 
 bibliography:
   - references.bib

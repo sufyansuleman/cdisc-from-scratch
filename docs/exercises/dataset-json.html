@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>26&nbsp; Exercise 10: The Analysis Data Reviewer’s Guide – CDISC with R</title>
+<title>27&nbsp; Exercise 11: Dataset-JSON – CDISC with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercises/dataset-json.html" rel="next">
-<link href="../exercises/define-from-specs.html" rel="prev">
+<link href="../exercises/adrg.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -123,7 +122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/adrg.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10: The Analysis Data Reviewer’s Guide</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/dataset-json.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Exercise 11: Dataset-JSON</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -359,13 +358,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/adrg.html" class="sidebar-item-text sidebar-link active">
+  <a href="../exercises/adrg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10: The Analysis Data Reviewer’s Guide</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/dataset-json.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/dataset-json.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Exercise 11: Dataset-JSON</span></span></a>
   </div>
 </li>
@@ -381,19 +380,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal"><span class="header-section-number">26.1</span> Goal</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">26.2</span> Setup</a></li>
-  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task"><span class="header-section-number">26.3</span> Task</a></li>
-  <li><a href="#acceptance-criteria" id="toc-acceptance-criteria" class="nav-link" data-scroll-target="#acceptance-criteria"><span class="header-section-number">26.4</span> Acceptance criteria</a></li>
+  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal"><span class="header-section-number">27.1</span> Goal</a></li>
+  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">27.2</span> Setup</a></li>
+  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task"><span class="header-section-number">27.3</span> Task</a></li>
+  <li><a href="#acceptance-criteria" id="toc-acceptance-criteria" class="nav-link" data-scroll-target="#acceptance-criteria"><span class="header-section-number">27.4</span> Acceptance criteria</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/adrg.html"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10: The Analysis Data Reviewer’s Guide</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/dataset-json.html"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Exercise 11: Dataset-JSON</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10: The Analysis Data Reviewer’s Guide</span></h1>
+<h1 class="title"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Exercise 11: Dataset-JSON</span></h1>
 </div>
 
 
@@ -410,54 +409,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="goal" class="level2" data-number="26.1">
-<h2 data-number="26.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">26.1</span> Goal</h2>
-<p>Close the conformance finding the session reports, at its source rather than in the output, and then write the one narrative ADRG section this course can honestly ask you to write, because you have the material for it.</p>
+<section id="goal" class="level2" data-number="27.1">
+<h2 data-number="27.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">27.1</span> Goal</h2>
+<p>Break the eight-character rule deliberately and watch two formats disagree about it, then settle the size question the session leaves open by testing it on lengths that were planned rather than observed.</p>
 </section>
-<section id="setup" class="level2" data-number="26.2">
-<h2 data-number="26.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">26.2</span> Setup</h2>
+<section id="setup" class="level2" data-number="27.2">
+<h2 data-number="27.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">27.2</span> Setup</h2>
 <p>Work from the project root:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xml2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openxlsx)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(defineR)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>adrg <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">"data/adrg"</span>, <span class="at">full.names =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_names</span>(<span class="sc">~</span> <span class="fu">basename</span>(.x)) <span class="sc">|&gt;</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(read_csv, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(xportr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasetjson)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Everything you need is committed under <code>data/xpt/</code>, <code>data/json/</code> and <code>data/spec/</code>. CDISC’s example files live in <code>refs/DatasetJSON_v1.1/repo/examples/</code>, which you cloned in the session.</p>
 </section>
-<section id="task" class="level2" data-number="26.3">
-<h2 data-number="26.3" class="anchored" data-anchor-id="task"><span class="header-section-number">26.3</span> Task</h2>
+<section id="task" class="level2" data-number="27.3">
+<h2 data-number="27.3" class="anchored" data-anchor-id="task"><span class="header-section-number">27.3</span> Task</h2>
 <ol type="1">
-<li><p><strong>(Guided) Close the rule-73 finding.</strong> The session’s section 6.2 reports thirteen variables with <code>Origin Type="Derived"</code> and no <code>MethodOID</code>.</p>
-<p>Fix it where it belongs. Work on a copy of <code>data/spec/SDTM_METADATA.xlsx</code>, add the missing entries to <code>COMPUTATION_METHOD</code>, reference them from <code>COMPUTATIONMETHODOID</code> in <code>VARIABLE_METADATA</code>, regenerate with <code>R/build_define.R</code>, and re-run the check.</p>
-<p>The derivations must describe what <code>R/build_sdtm.R</code> actually does. Read it. Do not write “derived per SAP” thirteen times; a method that says nothing is worse than an honest finding, because it suppresses the finding without supplying the information.</p>
-<p>Then answer: <code>LBDRVFL</code> is one of the thirteen and it is null on every record in the study. What should its computation method say, and is <code>Derived</code> even the right origin for it? Justify from the Define-XML origin definitions rather than from convenience.</p></li>
-<li><p><strong>(The trap) Regenerate everything and find what moved.</strong> Re-run <code>R/build_adrg_components.R</code> after your fix.</p>
-<p>Section 6.2 should now be clean. Check whether anything <strong>else</strong> changed, and explain each difference you find. In particular, look at the standards inventory. It reads the Define-XML version out of the regenerated file rather than restating it, which is either a safeguard or a trap depending on what you changed.</p>
-<p>Then answer: the session argues the ADRG’s generated tables should never be hand-maintained. You have just regenerated six tables from one workbook edit. What would have gone wrong if section 6.2 had been a paragraph someone typed?</p></li>
-<li><p><strong>(Semi-guided) Write section 3.4.</strong> Visit windowing and record selection is a narrative section, and it is the one narrative section you have everything you need for, because <a href="../exercises/adlb.html">ADLB</a> established the facts and argued the decision.</p>
-<p>Write it. Real prose, aimed at a reviewer who does not know this study. It must cover:</p>
+<li><p><strong>(Guided) Break the eight-character rule.</strong> Take <code>data/sdtm/lb.csv</code> and rename three variables to something a human could read: <code>LBSTRESN</code> to <code>LAB_RESULT_NUMERIC</code>, <code>LBORRESU</code> to <code>ORIGINAL_UNITS</code>, <code>LBNRIND</code> to <code>REFERENCE_RANGE_INDICATOR</code>.</p>
+<p>Now try to write the result both ways: as <code>.xpt</code> with <code>xportr_write()</code>, and as Dataset-JSON with <code>write_dataset_json()</code>.</p>
+<p>Report exactly what each does. One of them will not simply refuse. Read its output carefully rather than assuming it failed. Then answer:</p>
 <ul>
-<li>Whether visit windowing was used, and what <code>AVISIT</code> actually is in GLPX-1</li>
-<li>How the baseline record is selected, stated precisely enough that a reader could reproduce it</li>
-<li>That <code>ABLFL</code> disagrees with SDTM’s <code>LBLOBXFL</code> on 342 subject-parameter pairs, why, and what it does to the headline result</li>
-</ul>
-<p>Aim for 200–300 words. Then answer: which sentence in what you wrote could a script have generated, and which could not? That split is the whole session.</p></li>
+<li>What did the transport writer do with the long names, and would you have noticed in a pipeline that did not check?</li>
+<li>Dataset-JSON accepted them. Does that make the renamed dataset submittable? Separate what the <em>format</em> permits from what the <em>standard</em> requires, and say which document settles it.</li>
+</ul></li>
+<li><p><strong>(The trap) Settle the size question properly.</strong> The session found GLPX-1’s Dataset-JSON 1.3 times larger than its <code>.xpt</code>, and CDISC’s examples the other way round, and attributed the difference to declared lengths.</p>
+<p>Test that claim instead of accepting it. Take <code>data/sdtm/lb.csv</code> and write it to <code>.xpt</code> twice: once with the lengths from <code>data/spec/SDTM_METADATA.xlsx</code> as they are, and once with every character field declared at 200, the way a real study would. Compare all three files each time: <code>.xpt</code>, <code>.json</code>, <code>.dsjc</code>.</p>
+<p>Report the sizes and the ratios. Then answer:</p>
+<ul>
+<li>At what declared length does Dataset-JSON stop losing and start winning? Find the approximate crossover rather than guessing.</li>
+<li>The session claims <code>.dsjc</code> wins regardless. Does your data support that, and by how much?</li>
+<li>Define-XML calls declared lengths <em>planned</em> lengths. Given what you just measured, what does that mean for a sponsor deciding how generous to be?</li>
+</ul></li>
+<li><p><strong>(Semi-guided) Round-trip the whole study.</strong> Write all three ADaM datasets (ADSL, ADAE, ADLB) as Dataset-JSON, with <code>itemOID</code> values that would match an <code>ItemGroupDef</code> and <code>ItemDef</code> in a define.xml for the analysis data.</p>
+<p>Validate each with <code>validate_dataset_json()</code>. Then read them back and prove the round-trip is lossless: every value, every type, and in particular every null. <code>ADAE</code> has one record with a null <code>ASTDT</code> and a null <code>TRTEMFL</code>, and <code>ADSL</code> has four subjects with a null <code>AGE</code>. Check those specifically, not just the row counts.</p>
+<p>Answer in one sentence each:</p>
+<ul>
+<li>Which is harder to verify: that the values round-tripped, or that the <em>types</em> did? Why?</li>
+<li>You have now written the same three datasets as CSV, as Dataset-JSON, and described them in define.xml. Which of the three could a reviewer reconstruct the study from with no other files, and what would still be missing?</li>
+</ul></li>
 </ol>
 </section>
-<section id="acceptance-criteria" class="level2" data-number="26.4">
-<h2 data-number="26.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">26.4</span> Acceptance criteria</h2>
+<section id="acceptance-criteria" class="level2" data-number="27.4">
+<h2 data-number="27.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">27.4</span> Acceptance criteria</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">All thirteen <code>COMPUTATION_METHOD</code> entries added, each describing the actual derivation in <code>R/build_sdtm.R</code></label></li>
-<li><label><input type="checkbox">Regenerated define.xml still validates against the 2.0 schema</label></li>
-<li><label><input type="checkbox">The rule-73 check returns zero findings</label></li>
-<li><label><input type="checkbox">The <code>LBDRVFL</code> origin question answered from the Define-XML origin definitions</label></li>
-<li><label><input type="checkbox">All six ADRG component tables regenerated, with every change accounted for</label></li>
-<li><label><input type="checkbox">A 200–300 word section 3.4 covering windowing, baseline selection and the <code>ABLFL</code>/<code>LBLOBXFL</code> divergence with its numbers</label></li>
-<li><label><input type="checkbox">The generated-versus-written sentence split identified</label></li>
+<li><label><input type="checkbox">Long-named LB written both ways, with the transport writer’s actual behaviour reported, not assumed</label></li>
+<li><label><input type="checkbox">The format-permits versus standard-requires distinction stated, with the governing document named</label></li>
+<li><label><input type="checkbox">LB written to <code>.xpt</code> under both length regimes, with all sizes and ratios reported</label></li>
+<li><label><input type="checkbox">An approximate crossover length identified from measurement</label></li>
+<li><label><input type="checkbox">All three ADaM datasets written as Dataset-JSON and validated</label></li>
+<li><label><input type="checkbox">Null preservation checked on the specific known records, not by row count</label></li>
+<li><label><input type="checkbox">Both round-trip questions answered</label></li>
 </ul>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -469,9 +473,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Task 1: the thirteen are mostly DM reference dates and LB standardised results. <code>R/build_sdtm.R</code> has the logic; <code>study_day()</code> in particular is worth quoting rather than paraphrasing. For <code>LBDRVFL</code>, re-read what <a href="../exercises/sdtm-findings.html">Findings</a> established about why it is null, then check the Define-XML <code>Type</code> definitions - <code>Derived</code> means a value “calculated by an algorithm or reproducible rule”, and a variable with no values has not been calculated by anything.</p>
-<p>Task 2: <code>R/build_adrg_components.R</code> reads the Define-XML version from the <code>MetaDataVersion</code> element. If your regeneration changed it, the inventory changes with it and that is the safeguard working. If you edited <code>DEFINE_HEADER_METADATA</code> you may have changed something you did not intend.</p>
-<p>Task 3: the numbers are all in <a href="../exercises/adlb.html">ADLB</a>, the 342 pairs, the <code>ADY &lt;= 1</code> rule, and the -1.116 versus -1.138 comparison. The Completion Guidelines section 3.4 lists the questions the section must answer; answer those, in order, in prose. Resist writing a paragraph about why baseline definitions matter in general: a reviewer wants this study’s rule, not a tutorial.</p>
+<p>Task 1: <code>xportr</code> has validation controlled by <code>strict_checks</code>; the default is not what you might expect, which is the point of the task. For the second half, the eight-character limit is not in the Dataset-JSON specification at all. Ask yourself which document defines what an SDTM variable may be called, and note that a file can be perfectly valid JSON and still not be an SDTM dataset.</p>
+<p>Task 2: build the modified metadata frame by taking the <code>VARIABLE_METADATA</code> sheet and setting <code>LENGTH</code> to 200 wherever <code>TYPE</code> is text. For the crossover, you do not need a formula. Write the file at a handful of declared lengths (say 10, 25, 50, 100, 200) and plot or tabulate the ratio. The answer is more interesting than the number.</p>
+<p>Task 3: <code>dataset_json()</code> needs a <code>columns</code> tibble whose row order matches the dataset’s column order; building it with <code>imap()</code> over <code>names(dat)</code> is less error-prone than typing it. For null checking, <code>sum(is.na(x))</code> before and after is a start, but compare the specific <code>USUBJID</code> values the session names, because a count can match while the nulls have moved.</p>
 </div>
 </div>
 <blockquote class="blockquote">
@@ -884,14 +888,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/define-from-specs.html" class="pagination-link" aria-label="Exercise 9: Define-XML from a Specification Workbook">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 9: Define-XML from a Specification Workbook</span></span>
+      <a href="../exercises/adrg.html" class="pagination-link" aria-label="Exercise 10: The Analysis Data Reviewer's Guide">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10: The Analysis Data Reviewer’s Guide</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercises/dataset-json.html" class="pagination-link" aria-label="Exercise 11: Dataset-JSON">
-        <span class="nav-page-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Exercise 11: Dataset-JSON</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

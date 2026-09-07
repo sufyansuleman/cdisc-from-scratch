@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -328,6 +363,12 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 10: The Analysis Data Reviewer’s Guide</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/dataset-json.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Exercise 11: Dataset-JSON</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -342,22 +383,32 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#when-do-you-use-this" id="toc-when-do-you-use-this" class="nav-link active" data-scroll-target="#when-do-you-use-this"><span class="header-section-number">16.1</span> When Do You Use This?</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">16.2</span> Learning Objectives</a></li>
-  <li><a href="#background-todo-the-one-core-idea" id="toc-background-todo-the-one-core-idea" class="nav-link" data-scroll-target="#background-todo-the-one-core-idea"><span class="header-section-number">16.3</span> Background: TODO (the one core idea)</a></li>
-  <li><a href="#example-1-todo" id="toc-example-1-todo" class="nav-link" data-scroll-target="#example-1-todo"><span class="header-section-number">16.4</span> Example 1: TODO</a>
+  <li><a href="#background-the-format-the-standards-bent-around" id="toc-background-the-format-the-standards-bent-around" class="nav-link" data-scroll-target="#background-the-format-the-standards-bent-around"><span class="header-section-number">16.3</span> Background: The Format the Standards Bent Around</a>
   <ul class="collapse">
-  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">16.4.1</span> Run It Yourself</a></li>
-  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">16.4.2</span> Reading the Output Line by Line</a></li>
+  <li><a href="#the-constraint-you-never-noticed" id="toc-the-constraint-you-never-noticed" class="nav-link" data-scroll-target="#the-constraint-you-never-noticed"><span class="header-section-number">16.3.1</span> The constraint you never noticed</a></li>
   </ul></li>
-  <li><a href="#example-2-todo" id="toc-example-2-todo" class="nav-link" data-scroll-target="#example-2-todo"><span class="header-section-number">16.5</span> Example 2: TODO</a>
+  <li><a href="#example-1-the-same-domain-twice" id="toc-example-1-the-same-domain-twice" class="nav-link" data-scroll-target="#example-1-the-same-domain-twice"><span class="header-section-number">16.4</span> Example 1: The Same Domain, Twice</a>
   <ul class="collapse">
-  <li><a href="#run-it-yourself-1" id="toc-run-it-yourself-1" class="nav-link" data-scroll-target="#run-it-yourself-1"><span class="header-section-number">16.5.1</span> Run It Yourself</a></li>
+  <li><a href="#what-is-in-the-json" id="toc-what-is-in-the-json" class="nav-link" data-scroll-target="#what-is-in-the-json"><span class="header-section-number">16.4.1</span> What is in the JSON</a></li>
+  <li><a href="#row-data" id="toc-row-data" class="nav-link" data-scroll-target="#row-data"><span class="header-section-number">16.4.2</span> Row data</a></li>
+  <li><a href="#does-it-conform" id="toc-does-it-conform" class="nav-link" data-scroll-target="#does-it-conform"><span class="header-section-number">16.4.3</span> Does it conform?</a></li>
   </ul></li>
-  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">16.6</span> What Can Go Wrong</a>
+  <li><a href="#example-2-what-transport-cannot-say" id="toc-example-2-what-transport-cannot-say" class="nav-link" data-scroll-target="#example-2-what-transport-cannot-say"><span class="header-section-number">16.5</span> Example 2: What Transport Cannot Say</a>
   <ul class="collapse">
-  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">16.6.1</span> Common misinterpretations</a></li>
+  <li><a href="#run-it-yourself" id="toc-run-it-yourself" class="nav-link" data-scroll-target="#run-it-yourself"><span class="header-section-number">16.5.1</span> Run It Yourself</a></li>
+  <li><a href="#reading-the-output-line-by-line" id="toc-reading-the-output-line-by-line" class="nav-link" data-scroll-target="#reading-the-output-line-by-line"><span class="header-section-number">16.5.2</span> Reading the Output Line by Line</a></li>
   </ul></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">16.7</span> Exercises</a></li>
-  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">16.8</span> Comprehension Check</a></li>
+  <li><a href="#example-3-the-size-question-honestly" id="toc-example-3-the-size-question-honestly" class="nav-link" data-scroll-target="#example-3-the-size-question-honestly"><span class="header-section-number">16.6</span> Example 3: The Size Question, Honestly</a>
+  <ul class="collapse">
+  <li><a href="#why-the-answer-differs" id="toc-why-the-answer-differs" class="nav-link" data-scroll-target="#why-the-answer-differs"><span class="header-section-number">16.6.1</span> Why the answer differs</a></li>
+  <li><a href="#the-compressed-form" id="toc-the-compressed-form" class="nav-link" data-scroll-target="#the-compressed-form"><span class="header-section-number">16.6.2</span> The compressed form</a></li>
+  </ul></li>
+  <li><a href="#what-can-go-wrong" id="toc-what-can-go-wrong" class="nav-link" data-scroll-target="#what-can-go-wrong"><span class="header-section-number">16.7</span> What Can Go Wrong</a>
+  <ul class="collapse">
+  <li><a href="#common-misinterpretations" id="toc-common-misinterpretations" class="nav-link" data-scroll-target="#common-misinterpretations"><span class="header-section-number">16.7.1</span> Common misinterpretations</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">16.8</span> Exercises</a></li>
+  <li><a href="#comprehension-check" id="toc-comprehension-check" class="nav-link" data-scroll-target="#comprehension-check"><span class="header-section-number">16.9</span> Comprehension Check</a></li>
   </ul>
 </nav>
     </div>
@@ -393,7 +444,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Total core time: about TODO minutes.</strong></p>
+<p><strong>Total core time: about 85 minutes.</strong></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -405,42 +456,42 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td>When Do You Use This? + Learning Objectives</td>
-<td>TODO</td>
+<td>5 min</td>
 <td>Reading</td>
 </tr>
 <tr class="even">
-<td>Background</td>
-<td>TODO</td>
+<td>Background: the format the standards bent around</td>
+<td>20 min</td>
 <td>Reading</td>
 </tr>
 <tr class="odd">
-<td>Example 1</td>
-<td>TODO</td>
+<td>Example 1: The same domain, twice</td>
+<td>20 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="even">
-<td>Example 2</td>
-<td>TODO</td>
+<td>Example 2: What transport cannot say</td>
+<td>15 min</td>
 <td>Worked example</td>
 </tr>
 <tr class="odd">
+<td>Example 3: The size question, honestly</td>
+<td>15 min</td>
+<td>Worked example</td>
+</tr>
+<tr class="even">
 <td>What Can Go Wrong</td>
-<td>TODO</td>
+<td>10 min</td>
 <td>Reading</td>
 </tr>
-<tr class="even">
-<td>Exercises</td>
-<td>TODO</td>
-<td>Practice</td>
-</tr>
 <tr class="odd">
-<td>Comprehension Check</td>
-<td>TODO</td>
-<td>Self-test</td>
+<td>Exercises + Comprehension Check</td>
+<td>15 min</td>
+<td>Practice / Self-test</td>
 </tr>
 </tbody>
 </table>
-<p>TODO: how the session splits across sittings for self-paced study.</p>
+<p>The last session in the course, and the only one about how data <em>travels</em> rather than how it is shaped. It closes a thread opened in Part 2: every session has referred to <code>dm.xpt</code> and <code>lb.xpt</code> without ever producing one. Here we finally do, and then produce the format meant to replace it.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip callout-titled">
@@ -453,7 +504,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Every code chunk below is written so you can copy it into your R console (or an R script) and run it yourself, in the order shown. Where you see a “Run It Yourself” box, stop and run the code above it before reading the explanation that follows.</p>
+<p>Run R from the project root. Three new packages: <strong><code>datasetjson</code></strong> for reading and writing Dataset-JSON, <strong><code>xportr</code></strong> for writing SAS Transport v5, and <strong><code>haven</code></strong> for reading it back. All pinned in <code>renv.lock</code>.</p>
+<p>Everything below runs against artifacts committed in this repository: <code>data/xpt/</code> and <code>data/json/</code>, produced by <code>R/build_dataset_json.R</code>.</p>
+<p>The specification, its JSON Schema and CDISC’s own example files are all <strong>public on GitHub</strong>: no CDISC account needed, unlike Define-XML: <a href="https://github.com/cdisc-org/DataExchange-DatasetJson" class="uri">https://github.com/cdisc-org/DataExchange-DatasetJson</a></p>
 </div>
 </div>
 <section id="when-do-you-use-this" class="level2" data-number="16.1">
@@ -468,7 +521,13 @@ Tip
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>TODO: two or three concrete scenarios that this session answers, ending with the single question it addresses in bold. Cross-link the session(s) this one builds on.</p>
+<p>Your datasets are built, your define.xml describes them and your ADRG explains them. Then:</p>
+<ul>
+<li>The submission has to physically arrive somewhere. In what file format, and who decided?</li>
+<li>Your <code>ADLB</code> has a variable called <code>LBSTRESN</code> rather than <code>LABORATORY_RESULT_NUMERIC</code>. Why is every CDISC variable name eight characters or fewer? Is that a style rule?</li>
+<li><a href="../sessions/adae.html">ADAE</a> insisted that a null <code>TRTEMFL</code> and a value of <code>"N"</code> mean different things. Does the file format you submit in preserve that distinction?</li>
+</ul>
+<p><strong>What does the container do to the data you put in it?</strong></p>
 </div>
 </div>
 </section>
@@ -476,53 +535,508 @@ Tip
 <h2 data-number="16.2" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">16.2</span> Learning Objectives</h2>
 <p>After completing this session you will be able to:</p>
 <ul>
-<li>TODO</li>
-<li>TODO</li>
-<li>TODO</li>
+<li>Describe the constraints of SAS Transport v5 and how they shaped CDISC’s own standards</li>
+<li>Write a dataset as both <code>.xpt</code> and Dataset-JSON v1.1 from R</li>
+<li>Read the required and optional attributes of a Dataset-JSON file, and explain what <code>itemGroupOID</code> is doing there</li>
+<li>Demonstrate a data distinction that transport format destroys and Dataset-JSON preserves</li>
+<li>Interpret file-size comparisons between the two formats without overclaiming</li>
 </ul>
 </section>
-<section id="background-todo-the-one-core-idea" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="background-todo-the-one-core-idea"><span class="header-section-number">16.3</span> Background: TODO (the one core idea)</h2>
-<p><em>Estimated time: ~TODO minutes (reading)</em></p>
-<p>TODO: introduce the single idea that ties the session together, concept before formula.</p>
+<section id="background-the-format-the-standards-bent-around" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="background-the-format-the-standards-bent-around"><span class="header-section-number">16.3</span> Background: The Format the Standards Bent Around</h2>
+<p><em>Estimated time: ~20 minutes (reading)</em></p>
+<p>Every session in Part 2 referred to files this course never made. <code>def:ArchiveLocationID="dm.xpt"</code>. <code>&lt;def:leaf xlink:href="lb.xpt"&gt;</code>. GLPX-1’s data has lived in CSV throughout, because CSV is convenient for teaching. A real submission does not use CSV.</p>
+<p>It uses <strong>SAS Transport Format Version 5</strong>, a file format published in 1988 and required for regulatory submission ever since. Not SAS’s current format: a specific, frozen, thirty-eight-year-old one.</p>
+<p>PhUSE’s 2017 paper <em>Transport for the Next Generation</em>, which is the document that started the effort to replace it, lists what it costs:</p>
+<blockquote class="blockquote">
+<p>Only supports US ASCII Character encoding. No multibyte characters are possible; this requires translation and/or transcription from the source data.</p>
+<p>Field names are restricted in terms of width and format. Field names must be alphanumeric, Variable names are limited to a maximum length of <strong>8 characters</strong>, Variable labels are restricted to a maximum length of <strong>40 characters</strong>.</p>
+<p>Character field widths are limited to <strong>200 characters</strong>.</p>
+<p>Does not make efficient use of storage space. There is often empty space for columns allocated, but not used by data and this can lead up to <strong>70% wasted space</strong>. (Transport for the Next Generation v1.0, “SAS Transport v5”)</p>
+</blockquote>
+<p>Read the second item again, then look at any variable name in this course. <code>USUBJID</code>. <code>LBSTRESN</code>. <code>TRTEMFL</code>. <code>AOCCIFL</code>.</p>
+<section id="the-constraint-you-never-noticed" class="level3" data-number="16.3.1">
+<h3 data-number="16.3.1" class="anchored" data-anchor-id="the-constraint-you-never-noticed"><span class="header-section-number">16.3.1</span> The constraint you never noticed</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data/sdtm/dm.csv"</span>, <span class="st">"data/sdtm/lb.csv"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">"data/adam/adsl.csv"</span>, <span class="st">"data/adam/adae.csv"</span>, <span class="st">"data/adam/adlb.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>all_names <span class="ot">&lt;-</span> datasets <span class="sc">|&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">names</span>(<span class="fu">read_csv</span>(.x, <span class="at">n_max =</span> <span class="dv">0</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">variables =</span> <span class="fu">length</span>(all_names),</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">over_8_characters =</span> <span class="fu">sum</span>(<span class="fu">nchar</span>(all_names) <span class="sc">&gt;</span> <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        variables over_8_characters 
+              131                 0 </code></pre>
+</div>
+</div>
+<p><strong>Not one variable in 131 exceeds eight characters.</strong> That is not restraint on the part of whoever named them, and it is not coincidence. <code>LBSTRESN</code> is called <code>LBSTRESN</code> rather than something readable because a 1988 file format could not have stored a longer name.</p>
+<p>This is the thing worth taking from the session, and it is larger than one file format:</p>
+<blockquote class="blockquote">
+<p><strong>The container shaped the contents.</strong> SDTM and ADaM variable names are what they are because of the format they had to travel in. A constraint you cannot see, because everything you have been taught already accommodates it.</p>
+</blockquote>
+<p>Dataset-JSON is the attempt to remove the constraint:</p>
+<blockquote class="blockquote">
+<p>Dataset-JSON is a data exchange standard for sharing tabular data using JSON. It is designed to meet a wide range of data exchange scenarios, including regulatory submissions and API-based data exchange. Each Dataset-JSON dataset can <strong>optionally</strong> reference a Define-XML document containing more complete metadata for the dataset (Dataset-JSON v1.1, Introduction)</p>
+</blockquote>
+<p>Two rules from the same section, both worth knowing before you open a file:</p>
+<blockquote class="blockquote">
+<p>Dataset-JSON must contain only <strong>1 dataset per file</strong>. Dataset-JSON uses the file extension .json (Dataset-JSON v1.1, Introduction)</p>
+</blockquote>
 </section>
-<section id="example-1-todo" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="example-1-todo"><span class="header-section-number">16.4</span> Example 1: TODO</h2>
-<p>TODO: worked example on GLPX-1 data. Show the code, then the output, then explain it.</p>
-<section id="run-it-yourself" class="level3" data-number="16.4.1">
-<h3 data-number="16.4.1" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">16.4.1</span> Run It Yourself</h3>
-<p>TODO: the exact code block the learner should execute before reading on.</p>
 </section>
-<section id="reading-the-output-line-by-line" class="level3" data-number="16.4.2">
-<h3 data-number="16.4.2" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">16.4.2</span> Reading the Output Line by Line</h3>
-<p>TODO: map each line of output to its plain-English meaning.</p>
+<section id="example-1-the-same-domain-twice" class="level2" data-number="16.4">
+<h2 data-number="16.4" class="anchored" data-anchor-id="example-1-the-same-domain-twice"><span class="header-section-number">16.4</span> Example 1: The Same Domain, Twice</h2>
+<p><em>Estimated time: ~20 minutes (worked example)</em></p>
+<p><code>R/build_dataset_json.R</code> writes DM and LB in both formats. Variable labels come from <code>data/spec/SDTM_METADATA.xlsx</code>: the same workbook <a href="../sessions/define-from-specs.html">the previous session</a> used to generate define.xml, so the transport file, the metadata document and the JSON all tell one story.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">directory =</span> <span class="fu">c</span>(<span class="st">"data/xpt"</span>, <span class="st">"data/json"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">files =</span> <span class="fu">map_chr</span>(directory, <span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">list.files</span>(.x), <span class="at">collapse =</span> <span class="st">", "</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">directory</th>
+<th style="text-align: left;">files</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">data/xpt</td>
+<td style="text-align: left;">dm.xpt, lb.xpt</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">data/json</td>
+<td style="text-align: left;">dm.dsjc, dm.json, lb.dsjc, lb.json, size_comparison.csv</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="what-is-in-the-json" class="level3" data-number="16.4.1">
+<h3 data-number="16.4.1" class="anchored" data-anchor-id="what-is-in-the-json"><span class="header-section-number">16.4.1</span> What is in the JSON</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/json/dm.json"</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">attribute =</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(dm), <span class="fu">c</span>(<span class="st">"columns"</span>, <span class="st">"rows"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">map_chr</span>(attribute, <span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">unlist</span>(dm[[.x]]), <span class="at">collapse =</span> <span class="st">" / "</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">attribute</th>
+<th style="text-align: left;">value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">datasetJSONCreationDateTime</td>
+<td style="text-align: left;">2026-09-06T15:28:04</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">datasetJSONVersion</td>
+<td style="text-align: left;">1.1.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">fileOID</td>
+<td style="text-align: left;">GLPX1.dm</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">dbLastModifiedDateTime</td>
+<td style="text-align: left;">2026-09-06T00:00:00</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">originator</td>
+<td style="text-align: left;">CDISC with R course</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sourceSystem</td>
+<td style="text-align: left;">R / 4.4.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">studyOID</td>
+<td style="text-align: left;">GLPX1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">metaDataVersionOID</td>
+<td style="text-align: left;">MDV.GLPX1.SDTMIG.3.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">metaDataRef</td>
+<td style="text-align: left;">define.xml</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">itemGroupOID</td>
+<td style="text-align: left;">IG.DM</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">records</td>
+<td style="text-align: left;">400</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">DM</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">label</td>
+<td style="text-align: left;">Demographics</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Compare that against what the specification requires. Of the seventeen top-level attributes, only seven are <strong>Required</strong>: <code>datasetJSONCreationDateTime</code>, <code>datasetJSONVersion</code>, <code>itemGroupOID</code>, <code>records</code>, <code>name</code>, <code>label</code> and <code>columns</code>.</p>
+<p>One pairing repays attention:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>itemGroupOID</code></td>
+<td><strong>Required</strong></td>
+</tr>
+<tr class="even">
+<td><code>metaDataRef</code></td>
+<td>Optional</td>
+</tr>
+<tr class="odd">
+<td><code>metaDataVersionOID</code></td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+<p><code>itemGroupOID</code> is <code>IG.DM</code>. That is not a Dataset-JSON invention. It is the OID from <a href="../sessions/define-xml.html">Define-XML</a>, the identifier the specification insisted has “no intrinsic meaning.” Here is what it is for. Every column carries one too:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dm<span class="sc">$</span>columns <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>) <span class="sc">|&gt;</span> <span class="fu">map_dfr</span>(as_tibble) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 11%">
+<col style="width: 46%">
+<col style="width: 12%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">itemOID</th>
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">label</th>
+<th style="text-align: left;">dataType</th>
+<th style="text-align: right;">length</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">IT.DM.STUDYID</td>
+<td style="text-align: left;">STUDYID</td>
+<td style="text-align: left;">Study Identifier</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IT.DM.DOMAIN</td>
+<td style="text-align: left;">DOMAIN</td>
+<td style="text-align: left;">Domain Abbreviation</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">IT.DM.USUBJID</td>
+<td style="text-align: left;">USUBJID</td>
+<td style="text-align: left;">Unique Subject Identifier</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: right;">13</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">IT.DM.SUBJID</td>
+<td style="text-align: left;">SUBJID</td>
+<td style="text-align: left;">Subject Identifier for the Study</td>
+<td style="text-align: left;">string</td>
+<td style="text-align: right;">7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><code>IT.DM.STUDYID</code>, <code>IT.DM.USUBJID</code>: the same OIDs the hand-built define.xml declared. So a Dataset-JSON file <strong>must</strong> carry the keys that join it to its metadata, but is <strong>not</strong> required to say which document those keys belong to. It hands you a foreign key and leaves the table optional.</p>
+</section>
+<section id="row-data" class="level3" data-number="16.4.2">
+<h3 data-number="16.4.2" class="anchored" data-anchor-id="row-data"><span class="header-section-number">16.4.2</span> Row data</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dm<span class="sc">$</span>rows[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="sc">|&gt;</span> <span class="fu">map_chr</span>(<span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">map_chr</span>(.x, <span class="sc">~</span> <span class="fu">format</span>(.x <span class="sc">%||%</span> <span class="st">"null"</span>)),</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">collapse =</span> <span class="st">" | "</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trunc</span>(<span class="dv">78</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "GLPX1 | DM | GLPX1-101-010 | 101-010 | 2024-03-28 | 2024-09-26 | 2024-03-28..."
+[2] "GLPX1 | DM | GLPX1-101-012 | 101-012 | 2024-03-06 | 2024-09-04 | 2024-03-06..."</code></pre>
+</div>
+</div>
+<blockquote class="blockquote">
+<p><strong>rows</strong> is an array of records with variables values. Each record itself is also represented as an array of variables values (Dataset-JSON v1.1, Row Data)</p>
+</blockquote>
+<p>An <strong>array</strong>, not an object. There are no keys on the rows at all: the column names are stated once, in <code>columns</code>, and never repeated. A naive JSON export would write <code>"USUBJID": "GLPX1-101-010"</code> on all 12,388 rows of LB. This writes it zero times.</p>
+</section>
+<section id="does-it-conform" class="level3" data-number="16.4.3">
+<h3 data-number="16.4.3" class="anchored" data-anchor-id="does-it-conform"><span class="header-section-number">16.4.3</span> Does it conform?</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">validate_dataset_json</span>(<span class="st">"data/json/dm.json"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<pre><code>File is valid per the Dataset JSON v1.1.0 schema</code></pre>
+<p>Checked against the JSON Schema CDISC publishes in the same repository as the specification, exactly as <a href="../sessions/define-xml.html">Define-XML</a> checked against the XSD. Both of GLPX-1’s files pass.</p>
 </section>
 </section>
-<section id="example-2-todo" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="example-2-todo"><span class="header-section-number">16.5</span> Example 2: TODO</h2>
-<p>TODO: a second worked example.</p>
-<section id="run-it-yourself-1" class="level3" data-number="16.5.1">
-<h3 data-number="16.5.1" class="anchored" data-anchor-id="run-it-yourself-1"><span class="header-section-number">16.5.1</span> Run It Yourself</h3>
-<p>TODO.</p>
+<section id="example-2-what-transport-cannot-say" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="example-2-what-transport-cannot-say"><span class="header-section-number">16.5</span> Example 2: What Transport Cannot Say</h2>
+<p><em>Estimated time: ~15 minutes (worked example)</em></p>
+<p><a href="../sessions/adae.html">ADAE</a> made a point at some length: subject <code>GLPX1-103-199</code> has an adverse event with no start date, so <code>TRTEMFL</code> is <strong>null</strong>, not <code>"N"</code>. “We do not know whether this event was treatment-emergent” is a different claim from “this event was not treatment-emergent,” and the dataset must not conflate them.</p>
+<p>The specification is explicit that Dataset-JSON preserves the distinction:</p>
+<blockquote class="blockquote">
+<p>Missing values are represented by <strong>null</strong>. Empty strings are represented by <strong>““</strong> (Dataset-JSON v1.1, Row Data)</p>
+</blockquote>
+<p>Which raises a question nobody asks: does the format we actually submit in preserve it too?</p>
+<section id="run-it-yourself" class="level3" data-number="16.5.1">
+<h3 data-number="16.5.1" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">16.5.1</span> Run It Yourself</h3>
+<p>Three values: a string, a genuine missing, and an empty string:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>probe <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">ID =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">VAL =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="cn">NA_character_</span>, <span class="st">""</span>))</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(probe<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE</code></pre>
+</div>
+</div>
+<p>Round-trip through SAS Transport v5:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>xpt_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"probe.xpt"</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xpt</span>(probe, xpt_path, <span class="at">version =</span> <span class="dv">5</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>back_xpt <span class="ot">&lt;-</span> <span class="fu">read_xpt</span>(xpt_path)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(back_xpt<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE FALSE FALSE</code></pre>
+</div>
+</div>
+<p>Round-trip through Dataset-JSON:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">itemOID =</span> <span class="fu">paste0</span>(<span class="st">"IT.PROBE."</span>, <span class="fu">names</span>(probe)), <span class="at">name =</span> <span class="fu">names</span>(probe),</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">label =</span> <span class="fu">names</span>(probe), <span class="at">dataType =</span> <span class="st">"string"</span>, <span class="at">length =</span> <span class="dv">8</span>L)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">dataset_json</span>(probe, <span class="at">item_oid =</span> <span class="st">"IG.PROBE"</span>, <span class="at">name =</span> <span class="st">"PROBE"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dataset_label =</span> <span class="st">"Missingness probe"</span>, <span class="at">columns =</span> cols)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>json_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"probe.json"</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_dataset_json</span>(ds, json_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>NULL</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>back_json <span class="ot">&lt;-</span> <span class="fu">read_dataset_json</span>(json_path)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(back_json<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] FALSE  TRUE FALSE</code></pre>
+</div>
+</div>
+</section>
+<section id="reading-the-output-line-by-line" class="level3" data-number="16.5.2">
+<h3 data-number="16.5.2" class="anchored" data-anchor-id="reading-the-output-line-by-line"><span class="header-section-number">16.5.2</span> Reading the Output Line by Line</h3>
+<p>The original had one missing value: <code>FALSE TRUE FALSE</code>.</p>
+<p>After the transport round-trip: <strong><code>FALSE FALSE FALSE</code></strong>. The missing value is gone. Not lost as in corrupted, silently converted into an empty string, indistinguishable from the value in row C that was deliberately empty.</p>
+<p>After the Dataset-JSON round-trip: <code>FALSE TRUE FALSE</code>. Unchanged.</p>
+<p>Look at what is actually written to the file:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(json_path, <span class="at">warn =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract</span>(<span class="st">'"rows".*'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "\"rows\":[[\"A\",\"x\"],[\"B\",null],[\"C\",\"\"]]}"</code></pre>
+</div>
+</div>
+<p><code>null</code> for the missing value, <code>""</code> for the empty string. Two different tokens for two different facts.</p>
+<p><strong>This is the strongest practical argument in the session.</strong> The course has spent Part 3 insisting that null and a value are different claims - <code>TRTEMFL</code> null rather than <code>"N"</code>, <code>AGE</code> null rather than imputed, <code>AEDECOD</code> null because MedDRA was never applied. Every one of those distinctions survives in the CSV and in the define.xml. Submitted as transport format, the character ones quietly stop existing.</p>
 </section>
 </section>
-<section id="what-can-go-wrong" class="level2" data-number="16.6">
-<h2 data-number="16.6" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">16.6</span> What Can Go Wrong</h2>
-<p>TODO: failure modes and misuse patterns.</p>
-<section id="common-misinterpretations" class="level3" data-number="16.6.1">
-<h3 data-number="16.6.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">16.6.1</span> Common misinterpretations</h3>
-<p>TODO.</p>
+<section id="example-3-the-size-question-honestly" class="level2" data-number="16.6">
+<h2 data-number="16.6" class="anchored" data-anchor-id="example-3-the-size-question-honestly"><span class="header-section-number">16.6</span> Example 3: The Size Question, Honestly</h2>
+<p><em>Estimated time: ~15 minutes (worked example)</em></p>
+<p>Dataset-JSON’s stated aims include “the efficient use of storage space,” against transport format’s “up to 70% wasted space.” So the JSON should be smaller. Ours is not:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/json/size_comparison.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">domain</th>
+<th style="text-align: right;">rows</th>
+<th style="text-align: right;">xpt</th>
+<th style="text-align: right;">json</th>
+<th style="text-align: right;">dsjc</th>
+<th style="text-align: right;">json_vs_xpt</th>
+<th style="text-align: right;">dsjc_vs_xpt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">DM</td>
+<td style="text-align: right;">400</td>
+<td style="text-align: right;">78400</td>
+<td style="text-align: right;">101319</td>
+<td style="text-align: right;">10600</td>
+<td style="text-align: right;">1.292</td>
+<td style="text-align: right;">0.135</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">LB</td>
+<td style="text-align: right;">12388</td>
+<td style="text-align: right;">1465680</td>
+<td style="text-align: right;">1954921</td>
+<td style="text-align: right;">149421</td>
+<td style="text-align: right;">1.334</td>
+<td style="text-align: right;">0.102</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><strong>Uncompressed Dataset-JSON is about 1.3 times larger than the <code>.xpt</code> for both domains.</strong> That is the opposite of the advertised result, and it is not a mistake in the build.</p>
+<p>Now the same comparison on CDISC’s own published example files, shipped in the specification repository:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="st">"refs/DatasetJSON_v1.1/repo/examples/adam"</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">dataset =</span> <span class="fu">c</span>(<span class="st">"adae"</span>, <span class="st">"adlbc"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">xpt  =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".xpt"</span>))),</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">json =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".json"</span>))),</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">dsjc =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".dsjc"</span>))),</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">json_vs_xpt =</span> <span class="fu">round</span>(json <span class="sc">/</span> xpt, <span class="dv">3</span>),</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">dsjc_vs_xpt =</span> <span class="fu">round</span>(dsjc <span class="sc">/</span> xpt, <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">dataset</th>
+<th style="text-align: right;">xpt</th>
+<th style="text-align: right;">json</th>
+<th style="text-align: right;">dsjc</th>
+<th style="text-align: right;">json_vs_xpt</th>
+<th style="text-align: right;">dsjc_vs_xpt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">adae</td>
+<td style="text-align: right;">713600</td>
+<td style="text-align: right;">550475</td>
+<td style="text-align: right;">36283</td>
+<td style="text-align: right;">0.771</td>
+<td style="text-align: right;">0.051</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">adlbc</td>
+<td style="text-align: right;">14488720</td>
+<td style="text-align: right;">13679765</td>
+<td style="text-align: right;">1031817</td>
+<td style="text-align: right;">0.944</td>
+<td style="text-align: right;">0.071</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Theirs go the other way: JSON is <strong>smaller</strong> than the transport file. Same two formats, opposite conclusions. One of these is misleading and it is worth working out which.</p>
+<section id="why-the-answer-differs" class="level3" data-number="16.6.1">
+<h3 data-number="16.6.1" class="anchored" data-anchor-id="why-the-answer-differs"><span class="header-section-number">16.6.1</span> Why the answer differs</h3>
+<p>The difference is not the formats. It is the <strong>declared lengths</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>our_len   <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/json/lb.json"</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>columns <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_int</span>(<span class="sc">~</span> .x<span class="sc">$</span>length <span class="sc">%||%</span> <span class="cn">NA_integer_</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>cdisc_len <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">file.path</span>(<span class="st">"refs/DatasetJSON_v1.1/repo/examples/sdtm/lb.json"</span>),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>columns <span class="sc">|&gt;</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_int</span>(<span class="sc">~</span> .x<span class="sc">$</span>length <span class="sc">%||%</span> <span class="cn">NA_integer_</span>)</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">GLPX1 =</span> our_len, <span class="at">CDISC =</span> cdisc_len) <span class="sc">|&gt;</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">c</span>(<span class="at">n =</span> <span class="fu">length</span>(.x), <span class="at">max =</span> <span class="fu">max</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">at_200 =</span> <span class="fu">sum</span>(.x <span class="sc">==</span> <span class="dv">200</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$GLPX1
+     n    max at_200 
+    22     24      0 
+
+$CDISC
+     n    max at_200 
+    23    200      3 </code></pre>
+</div>
+</div>
+<p>CDISC’s LB declares three fields at the transport maximum of 200 characters. Ours declares nothing above 24, because <code>R/author_spec_workbook.R</code> computed every length from the data actually present.</p>
+<p>A transport file allocates the declared width on <strong>every row</strong>, whether the data fills it or not. Three 200-character fields across thousands of rows is exactly the “empty space for columns allocated, but not used” the PhUSE paper describes. Dataset-JSON writes only what is there, so the padding is what it wins on, and where there is no padding, it loses, because JSON pays for quotes, commas and brackets.</p>
+<p>Which of the two is realistic? Theirs. The Define-XML specification says so directly: variable lengths are <strong>planned</strong> lengths, not observed ones. A real study declares <code>LBORRES</code> at 200 because some future result might need it. This course computed lengths from 12,388 rows that already exist, which no live study can do.</p>
+<p>So the honest statement of the central lesson:</p>
+<blockquote class="blockquote">
+<p><strong>The storage-efficiency claim depends on how generously you declared your lengths, not on the format.</strong> Dataset-JSON does not compress your data. It stops transport format from padding it. If you had nothing to pad, you get nothing back.</p>
+</blockquote>
+</section>
+<section id="the-compressed-form" class="level3" data-number="16.6.2">
+<h3 data-number="16.6.2" class="anchored" data-anchor-id="the-compressed-form"><span class="header-section-number">16.6.2</span> The compressed form</h3>
+<p>One number in both tables is not ambiguous:</p>
+<p><code>.dsjc</code>, compressed Dataset-JSON, is <strong>0.10 to 0.14</strong> of the transport file in our data and <strong>0.07</strong> in CDISC’s. Seven to ten times smaller, in every case, regardless of how the lengths were declared. That is the size argument, and it does not depend on anyone’s declarations.</p>
 </section>
 </section>
-<section id="exercises" class="level2" data-number="16.7">
-<h2 data-number="16.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">16.7</span> Exercises</h2>
-<p>TODO: link the exercise file(s) for this session, or state that this session has no exercise.</p>
+<section id="what-can-go-wrong" class="level2" data-number="16.7">
+<h2 data-number="16.7" class="anchored" data-anchor-id="what-can-go-wrong"><span class="header-section-number">16.7</span> What Can Go Wrong</h2>
+<p><em>Estimated time: ~10 minutes (reading)</em></p>
+<ul>
+<li><strong>Assuming the format preserves your distinctions.</strong> Example 2 is the case in point. A pipeline that is careful about null-versus-<code>"N"</code> all the way through ADaM, and then submits transport format, has thrown the distinction away at the last step for every character variable.</li>
+<li><strong>Quoting the storage claim without the caveat.</strong> “Dataset-JSON is smaller than XPT” is true of realistic data and false of ours. If you cite it, cite what it depends on.</li>
+<li><strong>Expecting one file to hold a study.</strong> “Dataset-JSON must contain only 1 dataset per file.” A submission is a directory, not a document.</li>
+<li><strong>Treating <code>itemGroupOID</code> as decoration.</strong> It is Required. If it does not match an <code>ItemGroupDef</code> in your define.xml, the two artifacts disagree and nothing in either file will tell you.</li>
+<li><strong>Assuming eight-character names are a CDISC style choice.</strong> They are a 1988 file-format constraint. Worth knowing, because it explains a great deal of what otherwise looks like arbitrary ugliness.</li>
+</ul>
+<section id="common-misinterpretations" class="level3" data-number="16.7.1">
+<h3 data-number="16.7.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">16.7.1</span> Common misinterpretations</h3>
+<ul>
+<li><strong>“JSON means human-readable.”</strong> A 12,388-row LB file is two megabytes of nested arrays. It is <em>parseable</em>, which is different.</li>
+<li><strong>“Dataset-JSON replaces define.xml.”</strong> It optionally references one. <code>columns</code> carries name, label, type and length; define.xml carries origin, derivations, codelists and value-level metadata.</li>
+<li><strong>“The rows are objects.”</strong> They are arrays, which is precisely why the format is not far larger than transport.</li>
+</ul>
 </section>
-<section id="comprehension-check" class="level2" data-number="16.8">
-<h2 data-number="16.8" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">16.8</span> Comprehension Check</h2>
-<p>TODO: three to five short self-test questions.</p>
+</section>
+<section id="exercises" class="level2" data-number="16.8">
+<h2 data-number="16.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">16.8</span> Exercises</h2>
+<p><a href="../exercises/dataset-json.html">Exercise 11, Dataset-JSON</a> asks you to break the eight-character rule and find out what happens, and to settle the size question on data where the lengths are planned rather than observed.</p>
+</section>
+<section id="comprehension-check" class="level2" data-number="16.9">
+<h2 data-number="16.9" class="anchored" data-anchor-id="comprehension-check"><span class="header-section-number">16.9</span> Comprehension Check</h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Questions
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Why is the ADaM variable for treatment-emergent flag called <code>TRTEMFL</code> rather than <code>TREATMENT_EMERGENT_FLAG</code>?</li>
+<li><code>GLPX1-103-199</code> has a null <code>TRTEMFL</code>. What happens to that null in a <code>.xpt</code> submission, and why does it matter?</li>
+<li>A colleague says Dataset-JSON files are smaller than XPT. Under what condition is that false?</li>
+<li><code>metaDataRef</code> is optional but <code>itemGroupOID</code> is required. What does that combination let a file do, and not do?</li>
+<li>Why are <code>rows</code> arrays rather than objects?</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -531,9 +1045,15 @@ Tip
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>TODO: answers, collapsed.</p>
+<ol type="1">
+<li><p><strong>Because SAS Transport v5 limits variable names to eight characters.</strong> Every CDISC variable name in this course obeys it, 131 of 131. It is a file-format constraint that predates SDTM, not a naming convention someone chose.</p></li>
+<li><p><strong>It becomes an empty string, indistinguishable from a deliberate blank.</strong> Demonstrated in Example 2: <code>is.na()</code> returns <code>TRUE</code> before the round-trip and <code>FALSE</code> after. It matters because <a href="../sessions/adae.html">ADAE</a> established that null means “we do not know” while <code>"N"</code> means “no”, and the transport file cannot carry the difference.</p></li>
+<li><p><strong>When the declared lengths are close to the data.</strong> GLPX-1’s Dataset-JSON is 1.3× <em>larger</em> than its <code>.xpt</code>, because the specification workbook computed lengths from observed data. CDISC’s examples declare fields at 200 characters, so their transport files carry padding that the JSON does not, and the JSON wins. Compressed <code>.dsjc</code> is smaller in both cases.</p></li>
+<li><p><strong>It can be joined to its metadata, but it need not name it.</strong> <code>itemGroupOID</code> is the foreign key to an <code>ItemGroupDef</code> in a define.xml; <code>metaDataRef</code> is the URI of that document. Required key, optional pointer, so a file always <em>can</em> be matched to metadata, but a recipient may have to be told which define.xml to match it against.</p></li>
+<li><p><strong>To avoid repeating the column names on every record.</strong> Names are stated once in <code>columns</code>. On LB that saves writing 22 keys across 12,388 rows. It is the single design decision that keeps Dataset-JSON competitive with a binary format on size.</p></li>
+</ol>
 </div>
 </div>
 </div>
