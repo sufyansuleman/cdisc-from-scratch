@@ -95,18 +95,43 @@ you have never opened an Implementation Guide.
 ```
 sessions/      the course sessions (authoring source for the book)
 exercises/     exercise sets; solutions live in the private repo
-R/             simulate_trial.R, build_sdtm.R, build_adam.R, palette.R
+notes/         internal authoring and strategy notes
+R/             the build pipeline, in order:
+                 simulate_trial.R        seeded raw export
+                 build_sdtm.R            raw -> SDTM
+                 build_adam.R            SDTM -> ADaM
+                 author_spec_workbook.R  the specification workbook (run once)
+                 build_define.R          workbook -> define.xml
+                 build_adrg_components.R the ADRG's generated tables
+                 build_dataset_json.R    SDTM -> .xpt and Dataset-JSON
+                 palette.R               figure colours
 data/raw/      the simulated raw export, defects included
-data/sdtm/     built SDTM domains, committed and reproducible
-data/adam/     built ADaM datasets, committed and reproducible
+data/sdtm/     built SDTM domains
+data/adam/     built ADaM datasets
+data/spec/     the SDTM specification workbook (source of truth for metadata)
+data/define/   generated define.xml, its HTML rendering and check report
+data/adrg/     the ADRG's data-driven tables
+data/xpt/      SAS Transport v5 files
+data/json/     Dataset-JSON files, plus the size comparison
 docs/          the rendered book, served by GitHub Pages
 ```
 
-The pipeline is deterministic end to end: `simulate_trial.R` is
-seeded, and `build_sdtm.R` and `build_adam.R` contain no randomness, so
-everything under `data/` regenerates identically from source. The
-generated CSVs are committed rather than ignored, so the later sessions
-can read finished datasets without rebuilding the chain.
+The pipeline is deterministic: `simulate_trial.R` is seeded and nothing
+downstream contains randomness, so `data/raw/`, `data/sdtm/` and
+`data/adam/` regenerate byte-identically from source. Every generated
+artifact is committed rather than ignored, so a session can read a finished
+dataset, define.xml or transport file without rebuilding the chain.
+
+The submission artifacts under `data/define/`, `data/xpt/` and `data/json/`
+are the one exception, and deliberately so: each records the moment it was
+written, so re-running the build changes a creation timestamp and nothing
+else. `datasetJSONCreationDateTime` is a *required* attribute of the
+standard. A file that claimed a constant creation time would be reproducible
+and wrong.
+
+`data/spec/SDTM_METADATA.xlsx` is the one artifact that is authored rather
+than derived. It stands in for the specification a sponsor's standards group
+maintains, and `build_define.R` reads it without ever writing it.
 
 ## Working with this repo
 

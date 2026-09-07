@@ -1,6 +1,6 @@
 # Course Strategy — CDISC with R
 
-**Governs positioning, licensing and tiering.** Pair with `AGENT-CONTENT-PROMPT.md` (content) and `COURSE-SCAFFOLD-SPEC.md` (structure).
+**Governs positioning, licensing and tiering.** Pair with `AGENT-CONTENT-PROMPT.md` (content). A separate scaffold spec was planned but never written; the session template in the repository serves that purpose instead.
 
 Decided 31 July 2026. Supersedes any earlier instruction to keep the repository private.
 
@@ -131,19 +131,29 @@ Worth considering separately: applying to become a **CDISC Authorized Instructor
 
 ## 6. Work priority
 
-Parts 1–3 are substantially written. Part 4 is stubbed and is the commercially important half.
+**Authoring is complete as of 2026-09-07.** All 16 sessions and 11 exercises
+are written, executed and rendered; 28 pages, zero TODOs. What remains is
+release work, not content.
 
 | Order | Task | Note |
 |---|---|---|
-| 1 | `sessions/tlf.qmd` | Currently a template. **Highest priority** — TLFs are a core selling point |
-| 2 | `sessions/define-xml.qmd` | Template |
-| 3 | `sessions/dataset-json.qmd` | Template. Differentiator: little training covers it |
-| 4 | `sessions/adlb.qmd` | Thin (103 lines) vs. ADAE (310) |
-| 5 | `sessions/adrg-and-submission.qmd` | Template. **See scope warning below** |
-| 6 | README / licensing changes from §3 | Small, do alongside |
-| 7 | Cut a release and mint the Zenodo DOI | After Part 4 is complete |
+| 1 | Private-repo cleanup | See §6b. Two competing solution formats, stale directories |
+| 2 | Solutions for Exercises 7-11 | tlf, define-xml, define-from-specs, adrg, dataset-json |
+| 3 | README / licensing changes from §3 | Small |
+| 4 | Cut a release and mint the Zenodo DOI | The book is content-complete, so this is now unblocked |
 
-### ⚠️ Scope warning — `adrg-and-submission.qmd`
+Two known items deliberately left open in the public repo, both documented
+where they occur:
+
+- `sessions/adlb.qmd` reports the week-26 difference as **-1.116**; the exact
+  value is -1.116515, which rounds to -1.117. The figure quoted is the
+  difference of the two *displayed* means, so it is a presentation choice
+  rather than an error, but it is worth a decision.
+- The committed `data/define/define.sdtm.xml` carries **13 rule-73 findings**
+  (Origin `Derived` with no `MethodOID`). Left in on purpose, reported in the
+  ADRG's conformance summary, and closed by Exercise 10 task 1.
+
+### ⚠️ Scope warning — `adrg.qmd` (honoured; kept as the record of why)
 
 The author's expertise is **reproducible R engineering applied to clinical data standards**, not regulatory submission practice. He has not run a submission.
 
