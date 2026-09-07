@@ -90,9 +90,14 @@ Every session in Part 2 referred to files this course never made.
 GLPX-1's data has lived in CSV throughout, because CSV is convenient for
 teaching. A real submission does not use CSV.
 
-It uses **SAS Transport Format Version 5**, a file format published in
-1988 and required for regulatory submission ever since. Not SAS's
-current format: a specific, frozen, thirty-eight-year-old one.
+It uses **SAS Transport Format Version 5**. Not SAS's current format:
+a specific, frozen one that "dates from 1989 and was first available as
+part of SAS version 5" (Transport for the Next Generation v1.0). The FDA
+is unambiguous about its standing:
+
+> The Transport Format (XPORT) Version 5 is the file format for the
+> submission of all electronic datasets (Study Data Technical
+> Conformance Guide v6.0, §3.1.1)
 
 PhUSE's 2017 paper *Transport for the Next Generation*, which is the
 document that started the effort to replace it, lists what it costs:
@@ -133,7 +138,7 @@ c(variables = length(all_names),
 **Not one variable in 131 exceeds eight characters.** That is not
 restraint on the part of whoever named them, and it is not coincidence.
 `LBSTRESN` is called `LBSTRESN` rather than something readable because a
-1988 file format could not have stored a longer name.
+1989 file format could not have stored a longer name.
 
 This is the thing worth taking from the session, and it is larger than
 one file format:
@@ -430,7 +435,7 @@ declarations.
   not match an `ItemGroupDef` in your define.xml, the two artifacts
   disagree and nothing in either file will tell you.
 - **Assuming eight-character names are a CDISC style choice.** They are
-  a 1988 file-format constraint. Worth knowing, because it explains a
+  a 1989 file-format constraint. Worth knowing, because it explains a
   great deal of what otherwise looks like arbitrary ugliness.
 
 ### Common misinterpretations

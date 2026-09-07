@@ -280,7 +280,8 @@ schema_21 <- read_xml(file.path(dx, "schema/cdisc-define-2.1/define2-1-0.xsd"))
 as.logical(xml_validate(doc, schema_21))
 ```
 
-`defineR` emits **Define-XML 2.0**, published April 2014. The current
+`defineR` emits **Define-XML 2.0**, whose specification carries the
+production date 2013-03-05 in its own revision history. The current
 standard is 2.1. It is tempting to file that as a version lag: an old
 tool that will catch up. Look at what actually differs before accepting
 that reading.

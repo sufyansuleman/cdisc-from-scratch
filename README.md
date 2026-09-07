@@ -10,8 +10,8 @@ figures, and Dataset-JSON. All data is synthetic. No real patient
 information appears anywhere in this repository.
 
 Most CDISC courses hand you a finished SDTM domain and walk you through
-its columns. This one hands you the raw export instead: five files, five
-different date formats, one subject enrolled twice. You build the domain
+its columns. This one hands you the raw export instead: five files, birth
+dates recorded four different ways, one subject enrolled twice. You build the domain
 yourself, decide what to do about the duplicate, and defend the
 decision.
 
@@ -48,7 +48,7 @@ Working from its raw export, you build:
 |---|---|---|
 | **SDTM** | DM, AE, LB, VS | `USUBJID` construction, the study-day rule (no day 0), controlled terminology, original vs standardised results, reference ranges |
 | **ADaM** | ADSL, ADAE, ADLB | population flags, treatment dates, treatment emergence (`TRTEMFL`), occurrence flags, `PARAM`/`AVAL`, and the baseline (`ABLFL`) every change is measured from |
-| **Outputs** | TLFs, define-XML, ADRG, Dataset-JSON | what a reviewer actually receives |
+| **Outputs** | TLFs, define.xml, ADRG, Dataset-JSON | what a reviewer actually receives, and the two file formats it travels in |
 
 The simulator plants a small number of deliberate data defects: a
 duplicated lab record, a missing start date, a sex value that disagrees
@@ -58,24 +58,25 @@ data.
 
 ## Status
 
-This book is being written in the open, session by session.
-
-**Complete.** Prose written, every code chunk executed against the
-repository's data, every standards claim cited to its Implementation
-Guide section:
+**All sessions are written.** Prose written, every code chunk executed
+against the repository's data, every standards claim cited to its
+Implementation Guide section, every exercise built on computed numbers:
 
 - Setup
 - Part 1: Why Standards, The GLPX-1 Trial
-- Part 2: SDTM Concepts, DM, Events (AE), Findings (LB/VS)
+- Part 2: SDTM Concepts, DM, Events (AE), Findings (LB/VS), Define-XML
 - Part 3: ADaM Concepts, ADSL, ADAE, ADLB
+- Part 4: TLFs, Define-XML from a Specification Workbook, the ADRG,
+  Dataset-JSON
 
-**In progress.** Outlined but not yet written: Define-XML, and all of
-Part 4 (TLFs, ADRG, Dataset-JSON). Those pages exist in the book's
-navigation but are largely empty.
+Eleven exercises, one for every session that builds something.
 
 The course targets the standard versions a 2024 study start would be
 held to: **SDTMIG v3.4** (with SDTM v2.0), **ADaMIG v1.3** (with ADaM
-v2.1), and **OCCDS v1.1** for adverse events.
+v2.1), **OCCDS v1.1** for adverse events, **Define-XML v2.1** and
+**Dataset-JSON v1.1**.
+
+The book is maintained in the open, so corrections land continuously.
 
 ## Who this is for
 

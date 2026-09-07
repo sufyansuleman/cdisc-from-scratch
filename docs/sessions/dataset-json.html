@@ -546,7 +546,10 @@ Tip
 <h2 data-number="16.3" class="anchored" data-anchor-id="background-the-format-the-standards-bent-around"><span class="header-section-number">16.3</span> Background: The Format the Standards Bent Around</h2>
 <p><em>Estimated time: ~20 minutes (reading)</em></p>
 <p>Every session in Part 2 referred to files this course never made. <code>def:ArchiveLocationID="dm.xpt"</code>. <code>&lt;def:leaf xlink:href="lb.xpt"&gt;</code>. GLPX-1’s data has lived in CSV throughout, because CSV is convenient for teaching. A real submission does not use CSV.</p>
-<p>It uses <strong>SAS Transport Format Version 5</strong>, a file format published in 1988 and required for regulatory submission ever since. Not SAS’s current format: a specific, frozen, thirty-eight-year-old one.</p>
+<p>It uses <strong>SAS Transport Format Version 5</strong>. Not SAS’s current format: a specific, frozen one that “dates from 1989 and was first available as part of SAS version 5” (Transport for the Next Generation v1.0). The FDA is unambiguous about its standing:</p>
+<blockquote class="blockquote">
+<p>The Transport Format (XPORT) Version 5 is the file format for the submission of all electronic datasets (Study Data Technical Conformance Guide v6.0, §3.1.1)</p>
+</blockquote>
 <p>PhUSE’s 2017 paper <em>Transport for the Next Generation</em>, which is the document that started the effort to replace it, lists what it costs:</p>
 <blockquote class="blockquote">
 <p>Only supports US ASCII Character encoding. No multibyte characters are possible; this requires translation and/or transcription from the source data.</p>
@@ -572,7 +575,7 @@ Tip
               131                 0 </code></pre>
 </div>
 </div>
-<p><strong>Not one variable in 131 exceeds eight characters.</strong> That is not restraint on the part of whoever named them, and it is not coincidence. <code>LBSTRESN</code> is called <code>LBSTRESN</code> rather than something readable because a 1988 file format could not have stored a longer name.</p>
+<p><strong>Not one variable in 131 exceeds eight characters.</strong> That is not restraint on the part of whoever named them, and it is not coincidence. <code>LBSTRESN</code> is called <code>LBSTRESN</code> rather than something readable because a 1989 file format could not have stored a longer name.</p>
 <p>This is the thing worth taking from the session, and it is larger than one file format:</p>
 <blockquote class="blockquote">
 <p><strong>The container shaped the contents.</strong> SDTM and ADaM variable names are what they are because of the format they had to travel in. A constraint you cannot see, because everything you have been taught already accommodates it.</p>
@@ -996,7 +999,7 @@ $CDISC
 <li><strong>Quoting the storage claim without the caveat.</strong> “Dataset-JSON is smaller than XPT” is true of realistic data and false of ours. If you cite it, cite what it depends on.</li>
 <li><strong>Expecting one file to hold a study.</strong> “Dataset-JSON must contain only 1 dataset per file.” A submission is a directory, not a document.</li>
 <li><strong>Treating <code>itemGroupOID</code> as decoration.</strong> It is Required. If it does not match an <code>ItemGroupDef</code> in your define.xml, the two artifacts disagree and nothing in either file will tell you.</li>
-<li><strong>Assuming eight-character names are a CDISC style choice.</strong> They are a 1988 file-format constraint. Worth knowing, because it explains a great deal of what otherwise looks like arbitrary ugliness.</li>
+<li><strong>Assuming eight-character names are a CDISC style choice.</strong> They are a 1989 file-format constraint. Worth knowing, because it explains a great deal of what otherwise looks like arbitrary ugliness.</li>
 </ul>
 <section id="common-misinterpretations" class="level3" data-number="16.7.1">
 <h3 data-number="16.7.1" class="anchored" data-anchor-id="common-misinterpretations"><span class="header-section-number">16.7.1</span> Common misinterpretations</h3>

@@ -413,6 +413,20 @@ parameters) are still yours to make and to document; ADaM is where you
 record them, not a substitute for making them.
 :::
 
+## Exercises
+
+This session has no exercise of its own. Unlike
+[SDTM Concepts](sdtm-concepts.qmd), whose classification questions can
+be practised on paper, everything here becomes concrete only once you
+are building a dataset: the two structures, the baseline decision and
+the traceability requirement are exercised directly in
+[Exercise 4: ADSL](../exercises/adsl.qmd),
+[Exercise 5: ADAE](../exercises/adae.qmd) and
+[Exercise 6: ADLB](../exercises/adlb.qmd).
+
+If you want to test yourself before moving on, the Comprehension Check
+below is the place to do it.
+
 ## Comprehension Check
 
 *Estimated time: ~5 minutes*
