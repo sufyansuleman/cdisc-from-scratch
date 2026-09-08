@@ -1,0 +1,67 @@
+---
+title: "The Live Course"
+---
+
+This book is free and self-paced. It is also taught live, in small
+cohorts, as two courses of two-hour evening sessions.
+
+The difference is not the material. It is that in a cohort you type the
+code while someone watches for the place you are about to get stuck, you
+argue about the duplicate subject with three other people instead of
+reading what I concluded, and you have a deadline.
+
+## The two courses
+
+| | [Course A: SDTM](course-a-sdtm.qmd) | [Course B: ADaM and Outputs](course-b-adam-outputs.qmd) |
+|---|---|---|
+| Evenings | 7 | 8 |
+| Total | 14 hours | 16 hours |
+| You build | `dm`, `ae`, `lb`, `vs`, `define.xml` | `adsl`, `adae`, `adlb`, TLFs, ADRG, Dataset-JSON |
+| Prerequisite | Setup only | Course A or equivalent |
+
+Course A stands on its own. You can stop after it having built a real
+SDTM and a valid Define-XML document, which is a complete piece of work.
+
+Course B assumes it. Together they run about **30 hours of live
+teaching** across fifteen weeks, plus roughly an hour a week between
+sessions.
+
+## Who this works for
+
+The same people the book is for: R users who can write `dplyr` but have
+never seen a submission, academics moving into pharma, statisticians who
+have been told to learn CDISC. No prior CDISC knowledge, no clinical
+trials background beyond knowing roughly what a randomised trial is.
+
+It works less well if you cannot commit to typing along. The sessions
+are built around running code, not watching it.
+
+## How it runs
+
+- **Two hours**, one evening a week, with a ten-minute break
+- **Small**, so that everyone can be heard and nobody hides
+- **Not recorded**, so discussion is open. This is deliberate, and it
+  has a cost: see the note on each course page about missing an evening
+- **Code-along**, with short group challenges and a discussion in every
+  session
+- **Homework** between evenings, about an hour, reviewed at the start of
+  the next session
+
+## What you need
+
+- A laptop you can install software on
+- R, RStudio and Quarto, set up per
+  [Before You Begin](../sessions/setup.qmd) **before** the first evening
+- Willingness to be wrong in front of four other people in a breakout
+  room, which is where most of the learning happens
+
+## If you are reading this on your own
+
+Everything the cohort works through is in this book, in order, with
+every code chunk executed against data that ships with the repository.
+The two schedule pages double as a self-paced study plan: work one
+session a week, do the homework exercise, and you will cover the same
+ground on the same timescale.
+
+What you will not get on your own is the argument. That is the part
+worth paying for.

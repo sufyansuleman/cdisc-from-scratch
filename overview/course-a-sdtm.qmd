@@ -1,0 +1,110 @@
+---
+title: "Course A: SDTM"
+---
+
+Seven evenings, two hours each, one per week. You arrive with a raw
+clinical trial export and leave with four conformant SDTM domains and
+the machine-readable document that describes them.
+
+::: {.callout-important}
+### Before Evening 1
+
+Complete [Before You Begin: Setup](../sessions/setup.qmd). It takes
+about 30 minutes and it must be done before the first evening, not
+during it. We will triage failures in the first ten minutes of Evening
+1, but only for people who have tried.
+
+You need R, RStudio and Quarto working, the repository cloned, and
+`renv::restore()` finished.
+:::
+
+## The schedule
+
+| Ev | Session | What you build | Homework after |
+|---|---|---|---|
+| 1 | [Why Standards](../sessions/why-standards.qmd) | Nothing yet. You find the mess in the raw export that makes the rest necessary | Read [The Trial](../sessions/the-trial-glpx001.qmd) background |
+| 2 | [The Trial: GLPX-1](../sessions/the-trial-glpx001.qmd) | The trial's shape: arms, visits, endpoints, and what its data should look like | Read [SDTM Concepts](../sessions/sdtm-concepts.qmd) background |
+| 3 | [SDTM Concepts](../sessions/sdtm-concepts.qmd) | Observation classes, controlled terminology, the variable naming system | The two classification exercises in the session |
+| 4 | [The DM Domain](../sessions/sdtm-dm.qmd) | `dm`: identifiers, treatment dates, the study-day rule | [Exercise 1](../exercises/sdtm-dm.qmd) |
+| 5 | [Events (AE)](../sessions/sdtm-events.qmd) | `ae`: one row per event, and an event with no date | [Exercise 2](../exercises/sdtm-events.qmd) |
+| 6 | [Findings (LB and VS)](../sessions/sdtm-findings.qmd) | `lb` and `vs`: results, units, reference ranges, a duplicate and an outlier | [Exercise 3](../exercises/sdtm-findings.qmd) |
+| 7 | [Define-XML](../sessions/define-xml.qmd) | `define.xml`: the document that describes everything you just built | [Exercise 8](../exercises/define-xml.qmd) |
+
+::: {.callout-warning}
+### One download, before Evening 7
+
+Evening 7 (Define-XML) is the only session that needs a file this
+repository cannot ship. You will need a **free CDISC account** and one
+download, done before that evening:
+
+- **Define-XML v2.1**:
+  <https://www.cdisc.org/standards/data-exchange/define-xml/define-xml-v2-1>
+
+Unzip it into a `refs/` folder at the project root, so that the schema
+sits at `refs/DefineV2111_0/schema/cdisc-define-2.1/`. It is a free
+account, not a paid membership, and `refs/` is gitignored.
+
+Without it you can still build the document; you will not be able to
+validate it against the CDISC schema, which is the best part of the
+evening. Start the account early.
+:::
+
+## How an evening runs
+
+Two hours, with a ten-minute break in the middle.
+
+| Time | What |
+|---|---|
+| 0:00 | Homework review and warm-up |
+| 0:10 | Code along, first block |
+| 0:45 | Short challenge in small groups |
+| 0:55 | Break |
+| 1:05 | Code along, second block |
+| 1:40 | Discussion |
+| 1:52 | Wrap and homework brief |
+
+**Bring a working laptop and type along.** The sessions are built around
+"Run It Yourself" boxes: we stop, you run the code, and then we read the
+output together. Watching someone else type teaches very little.
+
+## What is expected between evenings
+
+Roughly **45 to 60 minutes**:
+
+- The homework exercise from the table above
+- Reading the *Background* section of the next session before you arrive
+
+The Background sections are the reading-heavy parts. If you read them
+beforehand, the live time goes on code and questions instead of on me
+reading to you.
+
+::: {.callout-warning}
+### Sessions are not recorded
+
+This is deliberate. Nothing is recorded, so discussion is open and
+nobody is performing for a camera.
+
+The cost is that missing an evening genuinely costs you. If you have to
+miss one, work through that session in the book yourself before the
+next evening: every code chunk runs against data that ships with the
+repository, and the outputs shown in the book are the outputs you will
+get. The homework exercise is the check that you got there.
+:::
+
+## What you will have at the end
+
+- Four SDTM domains built from a raw export, not handed to you finished:
+  `dm`, `ae`, `lb`, `vs`
+- A defensible answer for a duplicate subject, a missing unit, a sex
+  value that disagrees between two sources, and an adverse event with no
+  start date
+- A schema-valid Define-XML v2.1 document you assembled element by
+  element
+- The habit of checking a claim against the Implementation Guide section
+  rather than against your memory
+
+## After Course A
+
+[Course B: ADaM and Outputs](course-b-adam-outputs.qmd) takes these
+datasets and builds the analysis layer on top of them. Course A stands
+on its own, and you can stop there having built a real SDTM.

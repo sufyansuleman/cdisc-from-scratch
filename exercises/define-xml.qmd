@@ -61,9 +61,9 @@ or keep the R session open from where the session left off.
 
    Build it: a `def:ValueListRef` on the `ItemDef`, a `def:ValueListDef`
    containing one `ItemRef` per parameter, and a `def:WhereClauseDef`
-   for each that says which rows it applies to. Use the two `LBTESTCD`
+   for each that says which rows it applies to. Use the `LBTESTCD`
    values GLPX-1 actually contains. Read them from `data/sdtm/lb.csv`
-   rather than assuming.
+   rather than assuming; there are more of them than you might guess.
 
    Then answer, in one sentence each:
 

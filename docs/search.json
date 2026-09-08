@@ -1683,487 +1683,685 @@
     ]
   },
   {
+    "objectID": "overview/index.html",
+    "href": "overview/index.html",
+    "title": "17  The Live Course",
+    "section": "",
+    "text": "17.1 The two courses\nThis book is free and self-paced. It is also taught live, in small cohorts, as two courses of two-hour evening sessions.\nThe difference is not the material. It is that in a cohort you type the code while someone watches for the place you are about to get stuck, you argue about the duplicate subject with three other people instead of reading what I concluded, and you have a deadline.\nCourse A stands on its own. You can stop after it having built a real SDTM and a valid Define-XML document, which is a complete piece of work.\nCourse B assumes it. Together they run about 30 hours of live teaching across fifteen weeks, plus roughly an hour a week between sessions.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>The Live Course</span>"
+    ]
+  },
+  {
+    "objectID": "overview/index.html#the-two-courses",
+    "href": "overview/index.html#the-two-courses",
+    "title": "17  The Live Course",
+    "section": "",
+    "text": "Course A: SDTM\nCourse B: ADaM and Outputs\n\n\n\n\nEvenings\n7\n8\n\n\nTotal\n14 hours\n16 hours\n\n\nYou build\ndm, ae, lb, vs, define.xml\nadsl, adae, adlb, TLFs, ADRG, Dataset-JSON\n\n\nPrerequisite\nSetup only\nCourse A or equivalent",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>The Live Course</span>"
+    ]
+  },
+  {
+    "objectID": "overview/index.html#who-this-works-for",
+    "href": "overview/index.html#who-this-works-for",
+    "title": "17  The Live Course",
+    "section": "17.2 Who this works for",
+    "text": "17.2 Who this works for\nThe same people the book is for: R users who can write dplyr but have never seen a submission, academics moving into pharma, statisticians who have been told to learn CDISC. No prior CDISC knowledge, no clinical trials background beyond knowing roughly what a randomised trial is.\nIt works less well if you cannot commit to typing along. The sessions are built around running code, not watching it.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>The Live Course</span>"
+    ]
+  },
+  {
+    "objectID": "overview/index.html#how-it-runs",
+    "href": "overview/index.html#how-it-runs",
+    "title": "17  The Live Course",
+    "section": "17.3 How it runs",
+    "text": "17.3 How it runs\n\nTwo hours, one evening a week, with a ten-minute break\nSmall, so that everyone can be heard and nobody hides\nNot recorded, so discussion is open. This is deliberate, and it has a cost: see the note on each course page about missing an evening\nCode-along, with short group challenges and a discussion in every session\nHomework between evenings, about an hour, reviewed at the start of the next session",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>The Live Course</span>"
+    ]
+  },
+  {
+    "objectID": "overview/index.html#what-you-need",
+    "href": "overview/index.html#what-you-need",
+    "title": "17  The Live Course",
+    "section": "17.4 What you need",
+    "text": "17.4 What you need\n\nA laptop you can install software on\nR, RStudio and Quarto, set up per Before You Begin before the first evening\nWillingness to be wrong in front of four other people in a breakout room, which is where most of the learning happens",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>The Live Course</span>"
+    ]
+  },
+  {
+    "objectID": "overview/index.html#if-you-are-reading-this-on-your-own",
+    "href": "overview/index.html#if-you-are-reading-this-on-your-own",
+    "title": "17  The Live Course",
+    "section": "17.5 If you are reading this on your own",
+    "text": "17.5 If you are reading this on your own\nEverything the cohort works through is in this book, in order, with every code chunk executed against data that ships with the repository. The two schedule pages double as a self-paced study plan: work one session a week, do the homework exercise, and you will cover the same ground on the same timescale.\nWhat you will not get on your own is the argument. That is the part worth paying for.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>The Live Course</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-a-sdtm.html",
+    "href": "overview/course-a-sdtm.html",
+    "title": "18  Course A: SDTM",
+    "section": "",
+    "text": "18.1 The schedule\nSeven evenings, two hours each, one per week. You arrive with a raw clinical trial export and leave with four conformant SDTM domains and the machine-readable document that describes them.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Course A: SDTM</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-a-sdtm.html#the-schedule",
+    "href": "overview/course-a-sdtm.html#the-schedule",
+    "title": "18  Course A: SDTM",
+    "section": "",
+    "text": "Ev\nSession\nWhat you build\nHomework after\n\n\n\n\n1\nWhy Standards\nNothing yet. You find the mess in the raw export that makes the rest necessary\nRead The Trial background\n\n\n2\nThe Trial: GLPX-1\nThe trial’s shape: arms, visits, endpoints, and what its data should look like\nRead SDTM Concepts background\n\n\n3\nSDTM Concepts\nObservation classes, controlled terminology, the variable naming system\nThe two classification exercises in the session\n\n\n4\nThe DM Domain\ndm: identifiers, treatment dates, the study-day rule\nExercise 1\n\n\n5\nEvents (AE)\nae: one row per event, and an event with no date\nExercise 2\n\n\n6\nFindings (LB and VS)\nlb and vs: results, units, reference ranges, a duplicate and an outlier\nExercise 3\n\n\n7\nDefine-XML\ndefine.xml: the document that describes everything you just built\nExercise 8\n\n\n\n\n\n\n\n\n\nWarningOne download, before Evening 7\n\n\n\nEvening 7 (Define-XML) is the only session that needs a file this repository cannot ship. You will need a free CDISC account and one download, done before that evening:\n\nDefine-XML v2.1: https://www.cdisc.org/standards/data-exchange/define-xml/define-xml-v2-1\n\nUnzip it into a refs/ folder at the project root, so that the schema sits at refs/DefineV2111_0/schema/cdisc-define-2.1/. It is a free account, not a paid membership, and refs/ is gitignored.\nWithout it you can still build the document; you will not be able to validate it against the CDISC schema, which is the best part of the evening. Start the account early.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Course A: SDTM</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-a-sdtm.html#how-an-evening-runs",
+    "href": "overview/course-a-sdtm.html#how-an-evening-runs",
+    "title": "18  Course A: SDTM",
+    "section": "18.2 How an evening runs",
+    "text": "18.2 How an evening runs\nTwo hours, with a ten-minute break in the middle.\n\n\n\nTime\nWhat\n\n\n\n\n0:00\nHomework review and warm-up\n\n\n0:10\nCode along, first block\n\n\n0:45\nShort challenge in small groups\n\n\n0:55\nBreak\n\n\n1:05\nCode along, second block\n\n\n1:40\nDiscussion\n\n\n1:52\nWrap and homework brief\n\n\n\nBring a working laptop and type along. The sessions are built around “Run It Yourself” boxes: we stop, you run the code, and then we read the output together. Watching someone else type teaches very little.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Course A: SDTM</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-a-sdtm.html#what-is-expected-between-evenings",
+    "href": "overview/course-a-sdtm.html#what-is-expected-between-evenings",
+    "title": "18  Course A: SDTM",
+    "section": "18.3 What is expected between evenings",
+    "text": "18.3 What is expected between evenings\nRoughly 45 to 60 minutes:\n\nThe homework exercise from the table above\nReading the Background section of the next session before you arrive\n\nThe Background sections are the reading-heavy parts. If you read them beforehand, the live time goes on code and questions instead of on me reading to you.\n\n\n\n\n\n\nWarningSessions are not recorded\n\n\n\nThis is deliberate. Nothing is recorded, so discussion is open and nobody is performing for a camera.\nThe cost is that missing an evening genuinely costs you. If you have to miss one, work through that session in the book yourself before the next evening: every code chunk runs against data that ships with the repository, and the outputs shown in the book are the outputs you will get. The homework exercise is the check that you got there.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Course A: SDTM</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-a-sdtm.html#what-you-will-have-at-the-end",
+    "href": "overview/course-a-sdtm.html#what-you-will-have-at-the-end",
+    "title": "18  Course A: SDTM",
+    "section": "18.4 What you will have at the end",
+    "text": "18.4 What you will have at the end\n\nFour SDTM domains built from a raw export, not handed to you finished: dm, ae, lb, vs\nA defensible answer for a duplicate subject, a missing unit, a sex value that disagrees between two sources, and an adverse event with no start date\nA schema-valid Define-XML v2.1 document you assembled element by element\nThe habit of checking a claim against the Implementation Guide section rather than against your memory",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Course A: SDTM</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-a-sdtm.html#after-course-a",
+    "href": "overview/course-a-sdtm.html#after-course-a",
+    "title": "18  Course A: SDTM",
+    "section": "18.5 After Course A",
+    "text": "18.5 After Course A\nCourse B: ADaM and Outputs takes these datasets and builds the analysis layer on top of them. Course A stands on its own, and you can stop there having built a real SDTM.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Course A: SDTM</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-b-adam-outputs.html",
+    "href": "overview/course-b-adam-outputs.html",
+    "title": "19  Course B: ADaM and Outputs",
+    "section": "",
+    "text": "19.1 The schedule\nEight evenings, two hours each, one per week. You start from the SDTM datasets built in Course A and build the analysis layer, the tables and figures on top of it, and the documents a regulator actually receives.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Course B: ADaM and Outputs</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-b-adam-outputs.html#the-schedule",
+    "href": "overview/course-b-adam-outputs.html#the-schedule",
+    "title": "19  Course B: ADaM and Outputs",
+    "section": "",
+    "text": "Ev\nSession\nWhat you build\nHomework after\n\n\n\n\n1\nADaM Concepts\nWhy analysis datasets are not SDTM rearranged; the two structures; traceability\nRead ADSL background\n\n\n2\nADSL\nadsl: one row per subject, population flags, treatment dates\nExercise 4\n\n\n3\nADAE\nadae: occurrence data, treatment emergence, incidence denominators\nExercise 5\n\n\n4\nADLB\nadlb: parameters, analysis values, and the baseline every change is measured from\nExercise 6\n\n\n5\nTables, Listings and Figures\nA demographics table, an AE table, an SAE listing, an HbA1c figure\nExercise 7\n\n\n6\nDefine-XML from a Specification Workbook\ndefine.xml generated the way a sponsor does it, from a spec workbook\nExercise 9\n\n\n7\nThe Analysis Data Reviewer’s Guide\nThe ADRG’s data-driven tables, and the conformance summary\nExercise 10\n\n\n8\nDataset-JSON\nThe same data as .xpt and as Dataset-JSON, and what each format destroys\nExercise 11",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Course B: ADaM and Outputs</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-b-adam-outputs.html#how-an-evening-runs",
+    "href": "overview/course-b-adam-outputs.html#how-an-evening-runs",
+    "title": "19  Course B: ADaM and Outputs",
+    "section": "19.2 How an evening runs",
+    "text": "19.2 How an evening runs\nIdentical to Course A. Two hours with a ten-minute break.\n\n\n\nTime\nWhat\n\n\n\n\n0:00\nHomework review and warm-up\n\n\n0:10\nCode along, first block\n\n\n0:45\nShort challenge in small groups\n\n\n0:55\nBreak\n\n\n1:05\nCode along, second block\n\n\n1:40\nDiscussion\n\n\n1:52\nWrap and homework brief\n\n\n\n\n\n\n\n\n\nNoteEvenings 5 and 6 are the dense ones\n\n\n\nTables, Listings and Figures and the specification workbook session both carry more worked examples than the others. Expect those two evenings to move faster, and expect me to cut a worked example rather than run over. The book has all of them, so nothing is lost, and the cut example is always flagged so you know what to read.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Course B: ADaM and Outputs</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-b-adam-outputs.html#what-is-expected-between-evenings",
+    "href": "overview/course-b-adam-outputs.html#what-is-expected-between-evenings",
+    "title": "19  Course B: ADaM and Outputs",
+    "section": "19.3 What is expected between evenings",
+    "text": "19.3 What is expected between evenings\nRoughly 45 to 75 minutes. The Part 3 exercises are harder than Course A’s, and Exercises 6 and 9 are the longest in the course.\n\nThe homework exercise from the table above\nReading the Background section of the next session beforehand\n\n\n\n\n\n\n\nWarningSessions are not recorded\n\n\n\nAs in Course A. Nothing is recorded. If you miss an evening, work the session yourself in the book before the next one and do the homework exercise as your check.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Course B: ADaM and Outputs</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-b-adam-outputs.html#what-you-will-have-at-the-end",
+    "href": "overview/course-b-adam-outputs.html#what-you-will-have-at-the-end",
+    "title": "19  Course B: ADaM and Outputs",
+    "section": "19.4 What you will have at the end",
+    "text": "19.4 What you will have at the end\n\nThree ADaM datasets built and defended: adsl, adae, adlb\nA tables-and-figures workflow that produces submission-shaped output from analysis data\nA define.xml generated from a specification workbook, and a clear view of what that production route decides on your behalf\nThe ADRG’s generated tables, including a conformance summary with real findings in it\nThe same datasets in both transport formats, and a demonstrated distinction that one of them destroys",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Course B: ADaM and Outputs</span>"
+    ]
+  },
+  {
+    "objectID": "overview/course-b-adam-outputs.html#a-word-about-what-this-course-does-not-teach",
+    "href": "overview/course-b-adam-outputs.html#a-word-about-what-this-course-does-not-teach",
+    "title": "19  Course B: ADaM and Outputs",
+    "section": "19.5 A word about what this course does not teach",
+    "text": "19.5 A word about what this course does not teach\nIt does not teach submission strategy, agency interaction, or what a reviewer will look for. Those require experience of running a submission. Where a topic needs that, the sessions say so rather than inventing plausible prose. See the scope note in The Analysis Data Reviewer’s Guide.",
+    "crumbs": [
+      "Live Course",
+      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Course B: ADaM and Outputs</span>"
+    ]
+  },
+  {
     "objectID": "exercises/sdtm-dm.html",
     "href": "exercises/sdtm-dm.html",
-    "title": "17  Exercise 1: SDTM Demographics",
+    "title": "20  Exercise 1: SDTM Demographics",
     "section": "",
-    "text": "17.1 Goal\nRebuild the core of the GLPX-1 DM dataset yourself, including the three decisions that make it more than a rename, and defend the result.",
+    "text": "20.1 Goal\nRebuild the core of the GLPX-1 DM dataset yourself, including the three decisions that make it more than a rename, and defend the result.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise 1: SDTM Demographics</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 1: SDTM Demographics</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-dm.html#setup",
     "href": "exercises/sdtm-dm.html#setup",
-    "title": "17  Exercise 1: SDTM Demographics",
-    "section": "17.2 Setup",
-    "text": "17.2 Setup\nWork from the project root, with the session’s packages loaded:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\ndm_raw &lt;- read_csv(\"data/raw/dm_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\nex_raw &lt;- read_csv(\"data/raw/ex_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\n\nDo the tasks in order: each builds on the last. The DM Domain session is the reference; try each task before looking back at how the session did the equivalent step.",
+    "title": "20  Exercise 1: SDTM Demographics",
+    "section": "20.2 Setup",
+    "text": "20.2 Setup\nWork from the project root, with the session’s packages loaded:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\ndm_raw &lt;- read_csv(\"data/raw/dm_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\nex_raw &lt;- read_csv(\"data/raw/ex_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\n\nDo the tasks in order: each builds on the last. The DM Domain session is the reference; try each task before looking back at how the session did the equivalent step.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise 1: SDTM Demographics</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 1: SDTM Demographics</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-dm.html#task",
     "href": "exercises/sdtm-dm.html#task",
-    "title": "17  Exercise 1: SDTM Demographics",
-    "section": "17.3 Task",
-    "text": "17.3 Task\n\n(Guided) The identifier block. Reduce dm_raw to one row per subject, then build STUDYID, DOMAIN, USUBJID and SUBJID. Confirm (with code, not by inspection) that USUBJID is unique and that no identifier would change if a subject moved sites.\n(Guided) The clock. Derive RFSTDTC, RFENDTC, RFXSTDTC and RFXENDTC from the dosing file. Then compute the study day of 2024-03-05 and 2024-03-06 for subject 101-012 (first dose 2024-03-06) and check you get −1 and 1.\n(Semi-guided) Defend the nulls. Identify every subject whose AGE must be null, and write one sentence per subject saying why\n\nnaming the precision of the birth date you refused to extend. Then name two columns that must be present-but-null and two that must be absent, and say which core designation produces each fate.\n\n(Open-ended) The decision log. Write the two decision-log entries a reviewer would want for this dataset: the one-row resolution for 101-012 and the SEX resolution for 111-003. Each entry: what conflicted, what rule was applied, why that rule, and what was queried. Aim for the register of study documentation, not a chat message.",
+    "title": "20  Exercise 1: SDTM Demographics",
+    "section": "20.3 Task",
+    "text": "20.3 Task\n\n(Guided) The identifier block. Reduce dm_raw to one row per subject, then build STUDYID, DOMAIN, USUBJID and SUBJID. Confirm (with code, not by inspection) that USUBJID is unique and that no identifier would change if a subject moved sites.\n(Guided) The clock. Derive RFSTDTC, RFENDTC, RFXSTDTC and RFXENDTC from the dosing file. Then compute the study day of 2024-03-05 and 2024-03-06 for subject 101-012 (first dose 2024-03-06) and check you get −1 and 1.\n(Semi-guided) Defend the nulls. Identify every subject whose AGE must be null, and write one sentence per subject saying why\n\nnaming the precision of the birth date you refused to extend. Then name two columns that must be present-but-null and two that must be absent, and say which core designation produces each fate.\n\n(Open-ended) The decision log. Write the two decision-log entries a reviewer would want for this dataset: the one-row resolution for 101-012 and the SEX resolution for 111-003. Each entry: what conflicted, what rule was applied, why that rule, and what was queried. Aim for the register of study documentation, not a chat message.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise 1: SDTM Demographics</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 1: SDTM Demographics</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-dm.html#acceptance-criteria",
     "href": "exercises/sdtm-dm.html#acceptance-criteria",
-    "title": "17  Exercise 1: SDTM Demographics",
-    "section": "17.4 Acceptance criteria",
-    "text": "17.4 Acceptance criteria\n\n400 rows, USUBJID unique, identifiers built only from immutable facts\nReference dates populated for all subjects; study-day check returns −1 and 1 (no zero)\nFour AGE nulls, each with a stated reason; Expected-vs-Permissible fates correctly assigned\nBoth decision-log entries name the rule, not just the outcome\nEvery CT-governed column you touched was checked with is_term(), not asserted from memory\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 2’s check is the two-branch rule from the session: before the reference date, the study day is the plain date difference; on or after it, the difference plus one. If you got 0 for 2024-03-05, you used one branch for both dates.\nTask 4’s entries need three ingredients each: the conflict, the rule (one row per person; site-entered source outranks a downstream copy), and the action taken (SUPPDM note; query to the lab).\n\n\n\n\nSolutions are in the paid tier.",
+    "title": "20  Exercise 1: SDTM Demographics",
+    "section": "20.4 Acceptance criteria",
+    "text": "20.4 Acceptance criteria\n\n400 rows, USUBJID unique, identifiers built only from immutable facts\nReference dates populated for all subjects; study-day check returns −1 and 1 (no zero)\nFour AGE nulls, each with a stated reason; Expected-vs-Permissible fates correctly assigned\nBoth decision-log entries name the rule, not just the outcome\nEvery CT-governed column you touched was checked with is_term(), not asserted from memory\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 2’s check is the two-branch rule from the session: before the reference date, the study day is the plain date difference; on or after it, the difference plus one. If you got 0 for 2024-03-05, you used one branch for both dates.\nTask 4’s entries need three ingredients each: the conflict, the rule (one row per person; site-entered source outranks a downstream copy), and the action taken (SUPPDM note; query to the lab).\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Exercise 1: SDTM Demographics</span>"
+      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 1: SDTM Demographics</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-events.html",
     "href": "exercises/sdtm-events.html",
-    "title": "18  Exercise 2: SDTM Events (Adverse Events)",
+    "title": "21  Exercise 2: SDTM Events (Adverse Events)",
     "section": "",
-    "text": "18.1 Goal\nFinish the AE domain slice from The Events session and use it to answer the questions a safety reviewer actually asks.",
+    "text": "21.1 Goal\nFinish the AE domain slice from The Events session and use it to answer the questions a safety reviewer actually asks.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise 2: SDTM Events (Adverse Events)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 2: SDTM Events (Adverse Events)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-events.html#setup",
     "href": "exercises/sdtm-events.html#setup",
-    "title": "18  Exercise 2: SDTM Events (Adverse Events)",
-    "section": "18.2 Setup",
-    "text": "18.2 Setup\nWork from the project root. The AE raw file and the DM dataset you built last session are both inputs:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nae_raw &lt;- read_csv(\"data/raw/ae_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nDo the tasks in order. The Events session is the reference; try each task before looking back.",
+    "title": "21  Exercise 2: SDTM Events (Adverse Events)",
+    "section": "21.2 Setup",
+    "text": "21.2 Setup\nWork from the project root. The AE raw file and the DM dataset you built last session are both inputs:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nae_raw &lt;- read_csv(\"data/raw/ae_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nDo the tasks in order. The Events session is the reference; try each task before looking back.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise 2: SDTM Events (Adverse Events)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 2: SDTM Events (Adverse Events)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-events.html#task",
     "href": "exercises/sdtm-events.html#task",
-    "title": "18  Exercise 2: SDTM Events (Adverse Events)",
-    "section": "18.3 Task",
-    "text": "18.3 Task\n\n(Guided) Build the spine. Reproduce the session’s AE build: USUBJID from DM, AESEQ per subject, verbatim AETERM, empty AEDECOD. Confirm with code that AESEQ is unique within each USUBJID and that every AETERM value is preserved exactly as in the raw file.\n(Guided) Study days. Derive AESTDTC, AEENDTC, AESTDY and AEENDY. Find every row where AESTDY is null and explain, for each, why.\n(Semi-guided) Severity vs seriousness. Produce a table of event counts by AESEV and AESER. Then answer, with the numbers: how many serious adverse events were there, how many severe, and why are those two counts different?\n(Open-ended) The outcome column. The raw AEOUT value RECOVERED is not controlled terminology. Find the correct codelist value (codelist C66768), map it, and check it with is_term(). Then write one sentence a reviewer would accept explaining why the raw value could not be submitted as-is.",
+    "title": "21  Exercise 2: SDTM Events (Adverse Events)",
+    "section": "21.3 Task",
+    "text": "21.3 Task\n\n(Guided) Build the spine. Reproduce the session’s AE build: USUBJID from DM, AESEQ per subject, verbatim AETERM, empty AEDECOD. Confirm with code that AESEQ is unique within each USUBJID and that every AETERM value is preserved exactly as in the raw file.\n(Guided) Study days. Derive AESTDTC, AEENDTC, AESTDY and AEENDY. Find every row where AESTDY is null and explain, for each, why.\n(Semi-guided) Severity vs seriousness. Produce a table of event counts by AESEV and AESER. Then answer, with the numbers: how many serious adverse events were there, how many severe, and why are those two counts different?\n(Open-ended) The outcome column. The raw AEOUT value RECOVERED is not controlled terminology. Find the correct codelist value (codelist C66768), map it, and check it with is_term(). Then write one sentence a reviewer would accept explaining why the raw value could not be submitted as-is.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise 2: SDTM Events (Adverse Events)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 2: SDTM Events (Adverse Events)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-events.html#acceptance-criteria",
     "href": "exercises/sdtm-events.html#acceptance-criteria",
-    "title": "18  Exercise 2: SDTM Events (Adverse Events)",
-    "section": "18.4 Acceptance criteria",
-    "text": "18.4 Acceptance criteria\n\nAESEQ unique within USUBJID; AETERM values identical to raw\nNull AESTDY rows identified, each with a stated reason\nSerious-vs-severe counts reported with the correct column for each\nAEOUT mapped to a value that passes is_term(..., \"C66768\")\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 2: AESTDY is null wherever AESTDTC is null. You cannot count days from a reference date without a date. There is exactly one such event in GLPX-1 (defect D4).\nTask 3: the serious count comes only from AESER == \"Y\"; the severe count from AESEV == \"SEVERE\". If those two numbers are equal, you have counted the same column twice.\n\n\n\n\nSolutions are in the paid tier.",
+    "title": "21  Exercise 2: SDTM Events (Adverse Events)",
+    "section": "21.4 Acceptance criteria",
+    "text": "21.4 Acceptance criteria\n\nAESEQ unique within USUBJID; AETERM values identical to raw\nNull AESTDY rows identified, each with a stated reason\nSerious-vs-severe counts reported with the correct column for each\nAEOUT mapped to a value that passes is_term(..., \"C66768\")\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 2: AESTDY is null wherever AESTDTC is null. You cannot count days from a reference date without a date. There is exactly one such event in GLPX-1 (defect D4).\nTask 3: the serious count comes only from AESER == \"Y\"; the severe count from AESEV == \"SEVERE\". If those two numbers are equal, you have counted the same column twice.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>18</span>  <span class='chapter-title'>Exercise 2: SDTM Events (Adverse Events)</span>"
+      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 2: SDTM Events (Adverse Events)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-findings.html",
     "href": "exercises/sdtm-findings.html",
-    "title": "19  Exercise 3: SDTM Findings (Labs & Vital Signs)",
+    "title": "22  Exercise 3: SDTM Findings (Labs & Vital Signs)",
     "section": "",
-    "text": "19.1 Goal\nBuild the Vital Signs (VS) domain slice, the structural twin of the LB domain from The Findings session, and catch its one deliberate difference from LB.",
+    "text": "22.1 Goal\nBuild the Vital Signs (VS) domain slice, the structural twin of the LB domain from The Findings session, and catch its one deliberate difference from LB.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 3: SDTM Findings (Labs & Vital Signs)</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 3: SDTM Findings (Labs & Vital Signs)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-findings.html#setup",
     "href": "exercises/sdtm-findings.html#setup",
-    "title": "19  Exercise 3: SDTM Findings (Labs & Vital Signs)",
-    "section": "19.2 Setup",
-    "text": "19.2 Setup\nWork from the project root. The VS raw file and the DM dataset you built earlier are the inputs:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nvs_raw &lt;- read_csv(\"data/raw/vs_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nDo the tasks in order. The Findings session is the reference; try each task before looking back.",
+    "title": "22  Exercise 3: SDTM Findings (Labs & Vital Signs)",
+    "section": "22.2 Setup",
+    "text": "22.2 Setup\nWork from the project root. The VS raw file and the DM dataset you built earlier are the inputs:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nvs_raw &lt;- read_csv(\"data/raw/vs_raw.csv\", show_col_types = FALSE,\n                   col_types = cols(.default = col_character()))\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nDo the tasks in order. The Findings session is the reference; try each task before looking back.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 3: SDTM Findings (Labs & Vital Signs)</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 3: SDTM Findings (Labs & Vital Signs)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-findings.html#task",
     "href": "exercises/sdtm-findings.html#task",
-    "title": "19  Exercise 3: SDTM Findings (Labs & Vital Signs)",
-    "section": "19.3 Task",
-    "text": "19.3 Task\n\n(Guided) The result quartet. Build VSTESTCD, VSORRES, VSORRESU, VSSTRESC and VSSTRESN from the raw file, joining USUBJID from DM. Confirm every VSTESTCD value is valid controlled terminology.\n(The trap) Units. VSORRESU does not use the same units codelist as LB’s LBORRESU. Find the codelist VS uses, and check the trial’s vital-sign units against it, not against the generic UNIT codelist. Explain in one sentence why checking against the wrong codelist would have looked fine but been meaningless.\n(Semi-guided) Timing and structure. Derive VSDY from each subject’s RFSTDTC, and assign VSSEQ uniquely within USUBJID. How many rows does HEIGHT contribute per subject, and why does that differ from the other vitals?",
+    "title": "22  Exercise 3: SDTM Findings (Labs & Vital Signs)",
+    "section": "22.3 Task",
+    "text": "22.3 Task\n\n(Guided) The result quartet. Build VSTESTCD, VSORRES, VSORRESU, VSSTRESC and VSSTRESN from the raw file, joining USUBJID from DM. Confirm every VSTESTCD value is valid controlled terminology.\n(The trap) Units. VSORRESU does not use the same units codelist as LB’s LBORRESU. Find the codelist VS uses, and check the trial’s vital-sign units against it, not against the generic UNIT codelist. Explain in one sentence why checking against the wrong codelist would have looked fine but been meaningless.\n(Semi-guided) Timing and structure. Derive VSDY from each subject’s RFSTDTC, and assign VSSEQ uniquely within USUBJID. How many rows does HEIGHT contribute per subject, and why does that differ from the other vitals?",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 3: SDTM Findings (Labs & Vital Signs)</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 3: SDTM Findings (Labs & Vital Signs)</span>"
     ]
   },
   {
     "objectID": "exercises/sdtm-findings.html#acceptance-criteria",
     "href": "exercises/sdtm-findings.html#acceptance-criteria",
-    "title": "19  Exercise 3: SDTM Findings (Labs & Vital Signs)",
-    "section": "19.4 Acceptance criteria",
-    "text": "19.4 Acceptance criteria\n\nVSTESTCD values all valid CT; USUBJID joined from DM\nVSORRESU checked against the VS units codelist, not UNIT\nVSDY derived with the no-day-0 rule; VSSEQ unique within USUBJID\nThe height-versus-other-vitals row-count difference explained\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 2: the LB session used codelist C71620 (UNIT) for lab units. VS has its own. Search the terminology for the VS results-unit codelist by name (ct(\"list\") filtered on something like “Vital Signs” or “VSRESU”) - the point of the exercise is that you look it up rather than assume LB’s codelist carries over.\nTask 3: height is measured once, at screening; the other vitals are measured at every visit. So height contributes one row per subject and the others many.\n\n\n\n\nSolutions are in the paid tier.",
+    "title": "22  Exercise 3: SDTM Findings (Labs & Vital Signs)",
+    "section": "22.4 Acceptance criteria",
+    "text": "22.4 Acceptance criteria\n\nVSTESTCD values all valid CT; USUBJID joined from DM\nVSORRESU checked against the VS units codelist, not UNIT\nVSDY derived with the no-day-0 rule; VSSEQ unique within USUBJID\nThe height-versus-other-vitals row-count difference explained\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 2: the LB session used codelist C71620 (UNIT) for lab units. VS has its own. Search the terminology for the VS results-unit codelist by name (ct(\"list\") filtered on something like “Vital Signs” or “VSRESU”) - the point of the exercise is that you look it up rather than assume LB’s codelist carries over.\nTask 3: height is measured once, at screening; the other vitals are measured at every visit. So height contributes one row per subject and the others many.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>19</span>  <span class='chapter-title'>Exercise 3: SDTM Findings (Labs & Vital Signs)</span>"
+      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 3: SDTM Findings (Labs & Vital Signs)</span>"
     ]
   },
   {
     "objectID": "exercises/adsl.html",
     "href": "exercises/adsl.html",
-    "title": "20  Exercise 4: ADSL",
+    "title": "23  Exercise 4: ADSL",
     "section": "",
-    "text": "20.1 Goal\nExtend the ADSL from the ADSL session with a second age grouping and an analysis age, then construct the case the GLPX-1 data never gives you: population flags that legitimately disagree.",
+    "text": "23.1 Goal\nExtend the ADSL from the ADSL session with a second age grouping and an analysis age, then construct the case the GLPX-1 data never gives you: population flags that legitimately disagree.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 4: ADSL</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Exercise 4: ADSL</span>"
     ]
   },
   {
     "objectID": "exercises/adsl.html#setup",
     "href": "exercises/adsl.html#setup",
-    "title": "20  Exercise 4: ADSL",
-    "section": "20.2 Setup",
-    "text": "20.2 Setup\nWork from the project root. The finished SDTM is the input:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nBuild the ADSL spine as in Example 1 before starting, or read the persisted copy from data/adam/adsl.csv.",
+    "title": "23  Exercise 4: ADSL",
+    "section": "23.2 Setup",
+    "text": "23.2 Setup\nWork from the project root. The finished SDTM is the input:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\ndm &lt;- read_csv(\"data/sdtm/dm.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nBuild the ADSL spine as in Example 1 before starting, or read the persisted copy from data/adam/adsl.csv.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 4: ADSL</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Exercise 4: ADSL</span>"
     ]
   },
   {
     "objectID": "exercises/adsl.html#task",
     "href": "exercises/adsl.html#task",
-    "title": "20  Exercise 4: ADSL",
-    "section": "20.3 Task",
-    "text": "20.3 Task\n\n(Guided) A second age grouping. Add AGEGR2 and AGEGR2N using three bands - &lt;50, 50-64, &gt;=65. Confirm the one-to-one relationship holds and that the two variables are null on exactly the same rows. Why is there no is_term() check to run on AGEGR2?\n(The trap) Analysis age. Four subjects have a null AGE because their birth dates were incomplete. Suppose the SAP specifies an imputation for age-subgroup analyses: a missing day becomes the 15th of the month, and a missing month and day become 30 June. Derive AAGE implementing that rule, leaving AGE untouched.\nNote how many of the four subjects the rule actually rescues, and what happens to the one it does not.\nTwo things to get right, and both are the point of the task: say which ADaMIG rule stops you writing the imputed value into AGE itself, and check whether the ADaMIG’s condition for including AAGE is actually met here.\n(Semi-guided) Flags that disagree. In GLPX-1 every randomized subject was dosed, so RANDFL, ITTFL and SAFFL are all \"Y\" for all 400. Take subject GLPX1-101-010, construct the scenario where they were randomized but never received a dose, and show what each of the three flags becomes.\nThen answer in one sentence each: which population would that subject be counted in for an efficacy table, which for a safety table, and why a null flag would be wrong for either.",
+    "title": "23  Exercise 4: ADSL",
+    "section": "23.3 Task",
+    "text": "23.3 Task\n\n(Guided) A second age grouping. Add AGEGR2 and AGEGR2N using three bands - &lt;50, 50-64, &gt;=65. Confirm the one-to-one relationship holds and that the two variables are null on exactly the same rows. Why is there no is_term() check to run on AGEGR2?\n(The trap) Analysis age. Four subjects have a null AGE because their birth dates were incomplete. Suppose the SAP specifies an imputation for age-subgroup analyses: a missing day becomes the 15th of the month, and a missing month and day become 30 June. Derive AAGE implementing that rule, leaving AGE untouched.\nNote how many of the four subjects the rule actually rescues, and what happens to the one it does not.\nTwo things to get right, and both are the point of the task: say which ADaMIG rule stops you writing the imputed value into AGE itself, and check whether the ADaMIG’s condition for including AAGE is actually met here.\n(Semi-guided) Flags that disagree. In GLPX-1 every randomized subject was dosed, so RANDFL, ITTFL and SAFFL are all \"Y\" for all 400. Take subject GLPX1-101-010, construct the scenario where they were randomized but never received a dose, and show what each of the three flags becomes.\nThen answer in one sentence each: which population would that subject be counted in for an efficacy table, which for a safety table, and why a null flag would be wrong for either.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 4: ADSL</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Exercise 4: ADSL</span>"
     ]
   },
   {
     "objectID": "exercises/adsl.html#acceptance-criteria",
     "href": "exercises/adsl.html#acceptance-criteria",
-    "title": "20  Exercise 4: ADSL",
-    "section": "20.4 Acceptance criteria",
-    "text": "20.4 Acceptance criteria\n\nAGEGR2/AGEGR2N one-to-one, null on the same rows, and the no-codelist reasoning stated\nAAGE derived under the SAP rule with AGE unmodified; the governing rule named and AAGE’s conditional requirement checked\nThe randomized-not-dosed scenario produces RANDFL = \"Y\", ITTFL = \"Y\", SAFFL = \"N\", with no nulls\nEfficacy vs safety population membership explained\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: the same structural rule you used for AGEGR1/AGEGR1N in the session applies (ADaMIG v1.3, §3.2). For the second part, recall what made PARAMCD uncheckable in ADaM Concepts.\nTask 2: look up AAGE in ADaMIG v1.3 §3.2. Read its Core designation and the exact wording of when it is required. The rule preventing you from writing into AGE is in §3.1.1, and the session quotes it.\nTask 3: you are changing one input, not one flag. Ask which condition each flag is derived from - SAFFL’s condition is about exposure, the other two are about randomization, then let the derivations you already wrote produce the three values themselves.\n\n\n\n\nSolutions are in the paid tier.",
+    "title": "23  Exercise 4: ADSL",
+    "section": "23.4 Acceptance criteria",
+    "text": "23.4 Acceptance criteria\n\nAGEGR2/AGEGR2N one-to-one, null on the same rows, and the no-codelist reasoning stated\nAAGE derived under the SAP rule with AGE unmodified; the governing rule named and AAGE’s conditional requirement checked\nThe randomized-not-dosed scenario produces RANDFL = \"Y\", ITTFL = \"Y\", SAFFL = \"N\", with no nulls\nEfficacy vs safety population membership explained\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: the same structural rule you used for AGEGR1/AGEGR1N in the session applies (ADaMIG v1.3, §3.2). For the second part, recall what made PARAMCD uncheckable in ADaM Concepts.\nTask 2: look up AAGE in ADaMIG v1.3 §3.2. Read its Core designation and the exact wording of when it is required. The rule preventing you from writing into AGE is in §3.1.1, and the session quotes it.\nTask 3: you are changing one input, not one flag. Ask which condition each flag is derived from - SAFFL’s condition is about exposure, the other two are about randomization, then let the derivations you already wrote produce the three values themselves.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>20</span>  <span class='chapter-title'>Exercise 4: ADSL</span>"
+      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Exercise 4: ADSL</span>"
     ]
   },
   {
     "objectID": "exercises/adae.html",
     "href": "exercises/adae.html",
-    "title": "21  Exercise 5: ADAE",
+    "title": "24  Exercise 5: ADAE",
     "section": "",
-    "text": "21.1 Goal\nExtend the ADAE from the ADAE session with a severity grouping and a second treatment-emergent window, then build the non-emergent event GLPX-1 never gives you, and see what it does to the safety table.",
+    "text": "24.1 Goal\nExtend the ADAE from the ADAE session with a severity grouping and a second treatment-emergent window, then build the non-emergent event GLPX-1 never gives you, and see what it does to the safety table.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 5: ADAE</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Exercise 5: ADAE</span>"
     ]
   },
   {
     "objectID": "exercises/adae.html#setup",
     "href": "exercises/adae.html#setup",
-    "title": "21  Exercise 5: ADAE",
-    "section": "21.2 Setup",
-    "text": "21.2 Setup\nWork from the project root. Both inputs are persisted:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nae &lt;- read_csv(\"data/sdtm/ae.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nadsl &lt;- read_csv(\"data/adam/adsl.csv\", show_col_types = FALSE)\n\nBuild the ADAE spine as in Example 1 before starting, or read the persisted copy from data/adam/adae.csv.",
+    "title": "24  Exercise 5: ADAE",
+    "section": "24.2 Setup",
+    "text": "24.2 Setup\nWork from the project root. Both inputs are persisted:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nae &lt;- read_csv(\"data/sdtm/ae.csv\", show_col_types = FALSE,\n               col_types = cols(.default = col_character()))\n\nadsl &lt;- read_csv(\"data/adam/adsl.csv\", show_col_types = FALSE)\n\nBuild the ADAE spine as in Example 1 before starting, or read the persisted copy from data/adam/adae.csv.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 5: ADAE</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Exercise 5: ADAE</span>"
     ]
   },
   {
     "objectID": "exercises/adae.html#task",
     "href": "exercises/adae.html#task",
-    "title": "21  Exercise 5: ADAE",
-    "section": "21.3 Task",
-    "text": "21.3 Task\n\n(Guided) Pooled severity. Add SEVGR1 and SEVGR1N, pooling severity into two groups: Mild/Moderate and Severe. Look up SEVGRy in OCCDS v1.1 §3.2 (Table 3.2.8.1) and note its Core designation before you start.\nThen answer: is SEVGR1 checkable against a CDISC codelist? Give the same reasoning you would give for ASEV, and name the marker in the OCCDS table that tells you.\n(The trap) A window that changes the answer. The session used x = 0 in TRTSDT &lt;= ASTDT &lt;= TRTEDT + x. Suppose the SAP asks for a second flag using a 30-day follow-up window, alongside the first.\nStart by finding the variable OCCDS provides for exactly this situation (a second treatment-emergent flag with a different cut-off) in §3.2, Table 3.2.5.3. Two similar-looking variables sit just below TRTEMFL; only one is for different cut-offs rather than for multiple periods. Derive the flag under that name, leaving TRTEMFL untouched.\nThen compare the two flags and explain the result, carefully, because it is not the result the exercise appears to be fishing for. What does it tell you about validating a window choice against this dataset?\n(Semi-guided) The event that came first. Take subject GLPX1-101-147, whose four events you saw in the session. Construct the scenario where their first event (the diarrhoea at day 51) had instead started 10 days before first dose.\nRe-derive TRTEMFL, AOCCFL and AOCCIFL for that subject and show all three columns. Then answer in one sentence each:\n\nWhich row now carries AOCCFL, and why did it move?\nDoes AOCCIFL move, and why or why not?\nThe subject still had four adverse events. Does the count of subjects in a treatment-emergent incidence table change?",
+    "title": "24  Exercise 5: ADAE",
+    "section": "24.3 Task",
+    "text": "24.3 Task\n\n(Guided) Pooled severity. Add SEVGR1 and SEVGR1N, pooling severity into two groups: Mild/Moderate and Severe. Look up SEVGRy in OCCDS v1.1 §3.2 (Table 3.2.8.1) and note its Core designation before you start.\nThen answer: is SEVGR1 checkable against a CDISC codelist? Give the same reasoning you would give for ASEV, and name the marker in the OCCDS table that tells you.\n(The trap) A window that changes the answer. The session used x = 0 in TRTSDT &lt;= ASTDT &lt;= TRTEDT + x. Suppose the SAP asks for a second flag using a 30-day follow-up window, alongside the first.\nStart by finding the variable OCCDS provides for exactly this situation (a second treatment-emergent flag with a different cut-off) in §3.2, Table 3.2.5.3. Two similar-looking variables sit just below TRTEMFL; only one is for different cut-offs rather than for multiple periods. Derive the flag under that name, leaving TRTEMFL untouched.\nThen compare the two flags and explain the result, carefully, because it is not the result the exercise appears to be fishing for. What does it tell you about validating a window choice against this dataset?\n(Semi-guided) The event that came first. Take subject GLPX1-101-147, whose four events you saw in the session. Construct the scenario where their first event (the diarrhoea at day 51) had instead started 10 days before first dose.\nRe-derive TRTEMFL, AOCCFL and AOCCIFL for that subject and show all three columns. Then answer in one sentence each:\n\nWhich row now carries AOCCFL, and why did it move?\nDoes AOCCIFL move, and why or why not?\nThe subject still had four adverse events. Does the count of subjects in a treatment-emergent incidence table change?",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 5: ADAE</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Exercise 5: ADAE</span>"
     ]
   },
   {
     "objectID": "exercises/adae.html#acceptance-criteria",
     "href": "exercises/adae.html#acceptance-criteria",
-    "title": "21  Exercise 5: ADAE",
-    "section": "21.4 Acceptance criteria",
-    "text": "21.4 Acceptance criteria\n\nSEVGR1/SEVGR1N one-to-one, with the no-codelist reasoning stated and the OCCDS marker named\nThe correct OCCDS variable for a second cut-off identified, and the derivation written under that name with TRTEMFL unmodified\nThe comparison result correctly explained rather than assumed\nThe modified subject yields TRTEMFL = \"N\" on the pre-treatment row, with AOCCFL moved and AOCCIFL unchanged\nAll three follow-up questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: the structural rule for a grouping and its numeric counterpart is the same one AGEGR1/AGEGR1N followed in ADSL. For the codelist question, look at the footnote attached to the asterisk in the OCCDS table.\nTask 2: derive it, then count() both flags together before writing any explanation. Every GLPX-1 event sits well inside the treatment window - the session says so explicitly. For the variable name, read the rows immediately below TRTEMFL in Table 3.2.5.3.\nTask 3: you are changing one date, not three flags. Shift ASTDT for that one row, then re-run the derivations you already wrote and let them produce the answers. AOCCFL keys on the first treatment-emergent record; ask what the flags are sorted and filtered by before they are assigned.\n\n\n\n\nSolutions are in the paid tier.",
+    "title": "24  Exercise 5: ADAE",
+    "section": "24.4 Acceptance criteria",
+    "text": "24.4 Acceptance criteria\n\nSEVGR1/SEVGR1N one-to-one, with the no-codelist reasoning stated and the OCCDS marker named\nThe correct OCCDS variable for a second cut-off identified, and the derivation written under that name with TRTEMFL unmodified\nThe comparison result correctly explained rather than assumed\nThe modified subject yields TRTEMFL = \"N\" on the pre-treatment row, with AOCCFL moved and AOCCIFL unchanged\nAll three follow-up questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: the structural rule for a grouping and its numeric counterpart is the same one AGEGR1/AGEGR1N followed in ADSL. For the codelist question, look at the footnote attached to the asterisk in the OCCDS table.\nTask 2: derive it, then count() both flags together before writing any explanation. Every GLPX-1 event sits well inside the treatment window - the session says so explicitly. For the variable name, read the rows immediately below TRTEMFL in Table 3.2.5.3.\nTask 3: you are changing one date, not three flags. Shift ASTDT for that one row, then re-run the derivations you already wrote and let them produce the answers. AOCCFL keys on the first treatment-emergent record; ask what the flags are sorted and filtered by before they are assigned.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>21</span>  <span class='chapter-title'>Exercise 5: ADAE</span>"
+      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Exercise 5: ADAE</span>"
     ]
   },
   {
     "objectID": "exercises/adlb.html",
     "href": "exercises/adlb.html",
-    "title": "22  Exercise 6: ADLB",
+    "title": "25  Exercise 6: ADLB",
     "section": "",
-    "text": "22.1 Goal\nExtend the ADLB from the ADLB session with a categorised change, then build the two things GLPX-1’s single baseline definition never forces you to build: a derived baseline that requires DTYPE, and a second baseline definition that requires BASETYPE.",
+    "text": "25.1 Goal\nExtend the ADLB from the ADLB session with a categorised change, then build the two things GLPX-1’s single baseline definition never forces you to build: a derived baseline that requires DTYPE, and a second baseline definition that requires BASETYPE.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 6: ADLB</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Exercise 6: ADLB</span>"
     ]
   },
   {
     "objectID": "exercises/adlb.html#setup",
     "href": "exercises/adlb.html#setup",
-    "title": "22  Exercise 6: ADLB",
-    "section": "22.2 Setup",
-    "text": "22.2 Setup\nWork from the project root. Both inputs are persisted:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nlb   &lt;- read_csv(\"data/sdtm/lb.csv\", show_col_types = FALSE,\n                 col_types = cols(.default = col_character()))\nadlb &lt;- read_csv(\"data/adam/adlb.csv\", show_col_types = FALSE)\nadsl &lt;- read_csv(\"data/adam/adsl.csv\", show_col_types = FALSE)\n\nBuild the ADLB as in the session before starting, or read the persisted copy from data/adam/adlb.csv.",
+    "title": "25  Exercise 6: ADLB",
+    "section": "25.2 Setup",
+    "text": "25.2 Setup\nWork from the project root. Both inputs are persisted:\n\nlibrary(tidyverse)\nlibrary(sdtm.terminology)\n\nlb   &lt;- read_csv(\"data/sdtm/lb.csv\", show_col_types = FALSE,\n                 col_types = cols(.default = col_character()))\nadlb &lt;- read_csv(\"data/adam/adlb.csv\", show_col_types = FALSE)\nadsl &lt;- read_csv(\"data/adam/adsl.csv\", show_col_types = FALSE)\n\nBuild the ADLB as in the session before starting, or read the persisted copy from data/adam/adlb.csv.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 6: ADLB</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Exercise 6: ADLB</span>"
     ]
   },
   {
     "objectID": "exercises/adlb.html#task",
     "href": "exercises/adlb.html#task",
-    "title": "22  Exercise 6: ADLB",
-    "section": "22.3 Task",
-    "text": "22.3 Task\n\n(Guided) Categorised change. For PARAMCD == \"HBA1C\" at AVISIT == \"WEEK 26\", add CHGCAT1 grouping CHG into three bands: \"Reduction &gt;= 1%\", \"Reduction 0 to &lt;1%\", and \"No reduction\". Add its numeric counterpart CHGCAT1N.\nLook up CHGCATy in ADaMIG v1.3 §3.3.4.1 before you start and note its Core designation. Then answer: which structural rule ties CHGCAT1N to CHGCAT1, and is CHGCAT1 checkable against a CDISC codelist?\nCross-tabulate the result by TRTA. The clinically meaningful number should be obvious.\n(The trap) A derived baseline. Suppose the SAP is amended: for HbA1c only, baseline becomes the average of the screening and the last pre-dose value, rather than the single last pre-dose value.\nRe-derive ABLFL, BASE and CHG for HbA1c under this definition. Getting the arithmetic right is the easy part; the exercise is about what else must change.\nTwo requirements, and both are the point:\n\nThe averaged baseline is a new record, not an edit to an existing one. Add it as a row, and set DTYPE on it, choosing a value the ADaMIG itself gives as an example.\nState what AVISIT should be on that row, and why the answer is not obvious.\nReport how many subjects actually have two pre-dose HbA1c values. Not all of them do, and what you decide to do about the rest is part of the answer.\n\nThen recompute the week-26 treatment difference and compare it with the session’s -1.116. Report the number you get, whatever it is.\n(Semi-guided) Two baselines at once. Now suppose the study report needs both definitions side by side: the session’s last-pre-dose baseline and task 2’s averaged baseline, for the same parameter, in the same dataset.\nRestructure so both coexist, and answer in one sentence each:\n\nWhich variable becomes required, and what exactly does it have to be populated on?\nWhy can you not simply add a second column called BASE2?\nHow many rows does HbA1c now have per subject, and what does that do to the “one row per subject per parameter per timepoint” description of BDS?",
+    "title": "25  Exercise 6: ADLB",
+    "section": "25.3 Task",
+    "text": "25.3 Task\n\n(Guided) Categorised change. For PARAMCD == \"HBA1C\" at AVISIT == \"WEEK 26\", add CHGCAT1 grouping CHG into three bands: \"Reduction &gt;= 1%\", \"Reduction 0 to &lt;1%\", and \"No reduction\". Add its numeric counterpart CHGCAT1N.\nLook up CHGCATy in ADaMIG v1.3 §3.3.4.1 before you start and note its Core designation. Then answer: which structural rule ties CHGCAT1N to CHGCAT1, and is CHGCAT1 checkable against a CDISC codelist?\nCross-tabulate the result by TRTA. The clinically meaningful number should be obvious.\n(The trap) A derived baseline. Suppose the SAP is amended: for HbA1c only, baseline becomes the average of the screening and the last pre-dose value, rather than the single last pre-dose value.\nRe-derive ABLFL, BASE and CHG for HbA1c under this definition. Getting the arithmetic right is the easy part; the exercise is about what else must change.\nTwo requirements, and both are the point:\n\nThe averaged baseline is a new record, not an edit to an existing one. Add it as a row, and set DTYPE on it, choosing a value the ADaMIG itself gives as an example.\nState what AVISIT should be on that row, and why the answer is not obvious.\nReport how many subjects actually have two pre-dose HbA1c values. Not all of them do, and what you decide to do about the rest is part of the answer.\n\nThen recompute the week-26 treatment difference and compare it with the session’s -1.116. Report the number you get, whatever it is.\n(Semi-guided) Two baselines at once. Now suppose the study report needs both definitions side by side: the session’s last-pre-dose baseline and task 2’s averaged baseline, for the same parameter, in the same dataset.\nRestructure so both coexist, and answer in one sentence each:\n\nWhich variable becomes required, and what exactly does it have to be populated on?\nWhy can you not simply add a second column called BASE2?\nHow many rows does HbA1c now have per subject, and what does that do to the “one row per subject per parameter per timepoint” description of BDS?",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 6: ADLB</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Exercise 6: ADLB</span>"
     ]
   },
   {
     "objectID": "exercises/adlb.html#acceptance-criteria",
     "href": "exercises/adlb.html#acceptance-criteria",
-    "title": "22  Exercise 6: ADLB",
-    "section": "22.4 Acceptance criteria",
-    "text": "22.4 Acceptance criteria\n\nCHGCAT1/CHGCAT1N one-to-one, null on the same rows, with the no-codelist reasoning stated\nThe averaged baseline exists as a new row with DTYPE populated, not as a modified original record\nThe AVISIT decision for the derived row is stated and justified\nThe recomputed week-26 difference is reported as obtained\nBASETYPE identified, with the scope of “must be non-null” stated precisely\nAll three follow-up questions in task 3 answered\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: the structural rule for a category and its numeric counterpart is the one AGEGR1/AGEGR1N followed in ADSL and SEVGR1 followed in Exercise 5. For the codelist question, ask what kind of variable CHGCATy is rather than searching for a codelist name.\nTask 2: DTYPE is in ADaMIG v1.3 §3.3.5, which lists example values directly; one of them is exactly this case. Note that sdtm.terminology cannot help you here, because it packages SDTM controlled terminology and DTYPE is an ADaM codelist. Knowing which terminology a variable belongs to is part of the skill. For AVISIT, re-read the three precisions quoted in the session’s Timing section, especially the one about what AVISIT does not mean. There is no single right answer, but there is a wrong one: silently reusing BASELINE when a row belongs to no visit.\nTask 3: ADaMIG v1.3 §4.2.1.6, Rule 6 is the worked example for exactly this situation. Read it before restructuring. The answer to “why not BASE2” is in what BDS does with additional analysis concepts: it adds rows, not columns.\n\n\n\n\nSolutions are in the paid tier.",
+    "title": "25  Exercise 6: ADLB",
+    "section": "25.4 Acceptance criteria",
+    "text": "25.4 Acceptance criteria\n\nCHGCAT1/CHGCAT1N one-to-one, null on the same rows, with the no-codelist reasoning stated\nThe averaged baseline exists as a new row with DTYPE populated, not as a modified original record\nThe AVISIT decision for the derived row is stated and justified\nThe recomputed week-26 difference is reported as obtained\nBASETYPE identified, with the scope of “must be non-null” stated precisely\nAll three follow-up questions in task 3 answered\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: the structural rule for a category and its numeric counterpart is the one AGEGR1/AGEGR1N followed in ADSL and SEVGR1 followed in Exercise 5. For the codelist question, ask what kind of variable CHGCATy is rather than searching for a codelist name.\nTask 2: DTYPE is in ADaMIG v1.3 §3.3.5, which lists example values directly; one of them is exactly this case. Note that sdtm.terminology cannot help you here, because it packages SDTM controlled terminology and DTYPE is an ADaM codelist. Knowing which terminology a variable belongs to is part of the skill. For AVISIT, re-read the three precisions quoted in the session’s Timing section, especially the one about what AVISIT does not mean. There is no single right answer, but there is a wrong one: silently reusing BASELINE when a row belongs to no visit.\nTask 3: ADaMIG v1.3 §4.2.1.6, Rule 6 is the worked example for exactly this situation. Read it before restructuring. The answer to “why not BASE2” is in what BDS does with additional analysis concepts: it adds rows, not columns.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>22</span>  <span class='chapter-title'>Exercise 6: ADLB</span>"
+      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Exercise 6: ADLB</span>"
     ]
   },
   {
     "objectID": "exercises/tlf.html",
     "href": "exercises/tlf.html",
-    "title": "23  Exercise 7: Tables, Listings and Figures",
+    "title": "26  Exercise 7: Tables, Listings and Figures",
     "section": "",
-    "text": "23.1 Goal\nExtend the demographics table from the TLF session with an age-group row, then attempt the AE summary table the session’s own citation calls for, and find out, on real data, exactly what a missing MedDRA coding costs a submission-ready report.",
+    "text": "26.1 Goal\nExtend the demographics table from the TLF session with an age-group row, then attempt the AE summary table the session’s own citation calls for, and find out, on real data, exactly what a missing MedDRA coding costs a submission-ready report.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Exercise 7: Tables, Listings and Figures</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Exercise 7: Tables, Listings and Figures</span>"
     ]
   },
   {
     "objectID": "exercises/tlf.html#setup",
     "href": "exercises/tlf.html#setup",
-    "title": "23  Exercise 7: Tables, Listings and Figures",
-    "section": "23.2 Setup",
-    "text": "23.2 Setup\nWork from the project root. All three inputs are persisted:\n\nlibrary(tidyverse)\nlibrary(knitr)\n\nadsl &lt;- read_csv(\"data/adam/adsl.csv\", show_col_types = FALSE)\nadae &lt;- read_csv(\"data/adam/adae.csv\", show_col_types = FALSE)\nadlb &lt;- read_csv(\"data/adam/adlb.csv\", show_col_types = FALSE)",
+    "title": "26  Exercise 7: Tables, Listings and Figures",
+    "section": "26.2 Setup",
+    "text": "26.2 Setup\nWork from the project root. All three inputs are persisted:\n\nlibrary(tidyverse)\nlibrary(knitr)\n\nadsl &lt;- read_csv(\"data/adam/adsl.csv\", show_col_types = FALSE)\nadae &lt;- read_csv(\"data/adam/adae.csv\", show_col_types = FALSE)\nadlb &lt;- read_csv(\"data/adam/adlb.csv\", show_col_types = FALSE)",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Exercise 7: Tables, Listings and Figures</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Exercise 7: Tables, Listings and Figures</span>"
     ]
   },
   {
     "objectID": "exercises/tlf.html#task",
     "href": "exercises/tlf.html#task",
-    "title": "23  Exercise 7: Tables, Listings and Figures",
-    "section": "23.3 Task",
-    "text": "23.3 Task\n\n(Guided) An age-group row. Add an AGEGR1 row to the demographics table from Example 1, showing n (%) by arm the same way SEX and RACE do.\nTwo subjects per arm have no AGEGR1, because they have no AGE (the D1 defect from The DM Domain). Decide how those four subjects should appear in your table (as a stated Missing row, folded silently into one of the age bands, or dropped) and justify the choice in one sentence. There is a wrong answer among those three; say which one and why.\n(The trap) The table the session’s own citation calls for. OCCDS v1.1 §4 opens Example 1 by citing ICH E3 §12.2.2 and §14.3.1 for “the basic summary of adverse event frequencies,” displayed by System Organ Class and Preferred Term. Build that table for GLPX-1.\nYou will not be able to. Find out precisely why, using the data rather than assuming it. Check what columns actually exist in ADAE, and what is populated in them. State the reason in one sentence, citing back to the constraint established in ADAE.\nNow build the closest thing you can build: the same summary at the level of the verbatim AETERM instead of the coded preferred term. Look at your result closely, several clinical concepts appear more than once, under slightly different spellings or capitalisation. Count how many distinct AETERM values there are, and how many remain after folding case. Then answer: why would a real submission reject a table built this way, even though every number in it is arithmetically correct?\n(Semi-guided) The tabular twin of the figure, and one more listing. The session’s figure shows the full HbA1c trajectory. A study report also needs the single-timepoint version: a table of mean (SD) change from baseline in HbA1c at Week 26, by arm, with n.\nBuild it. Then, separately, build a listing of the four subjects with missing AGE: one row each, with USUBJID, TRT01P, SEX and AGEGR1.\nAnswer in one sentence each:\n\nWhat does the Week 26 table tell a reader that the full-trajectory figure does not, and vice versa?\nWhy is a listing, not a table, the right artifact for the four missing-age subjects?",
+    "title": "26  Exercise 7: Tables, Listings and Figures",
+    "section": "26.3 Task",
+    "text": "26.3 Task\n\n(Guided) An age-group row. Add an AGEGR1 row to the demographics table from Example 1, showing n (%) by arm the same way SEX and RACE do.\nTwo subjects per arm have no AGEGR1, because they have no AGE (the D1 defect from The DM Domain). Decide how those four subjects should appear in your table (as a stated Missing row, folded silently into one of the age bands, or dropped) and justify the choice in one sentence. There is a wrong answer among those three; say which one and why.\n(The trap) The table the session’s own citation calls for. OCCDS v1.1 §4 opens Example 1 by citing ICH E3 §12.2.2 and §14.3.1 for “the basic summary of adverse event frequencies,” displayed by System Organ Class and Preferred Term. Build that table for GLPX-1.\nYou will not be able to. Find out precisely why, using the data rather than assuming it. Check what columns actually exist in ADAE, and what is populated in them. State the reason in one sentence, citing back to the constraint established in ADAE.\nNow build the closest thing you can build: the same summary at the level of the verbatim AETERM instead of the coded preferred term. Look at your result closely, several clinical concepts appear more than once, under slightly different spellings or capitalisation. Count how many distinct AETERM values there are, and how many remain after folding case. Then answer: why would a real submission reject a table built this way, even though every number in it is arithmetically correct?\n(Semi-guided) The tabular twin of the figure, and one more listing. The session’s figure shows the full HbA1c trajectory. A study report also needs the single-timepoint version: a table of mean (SD) change from baseline in HbA1c at Week 26, by arm, with n.\nBuild it. Then, separately, build a listing of the four subjects with missing AGE: one row each, with USUBJID, TRT01P, SEX and AGEGR1.\nAnswer in one sentence each:\n\nWhat does the Week 26 table tell a reader that the full-trajectory figure does not, and vice versa?\nWhy is a listing, not a table, the right artifact for the four missing-age subjects?",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Exercise 7: Tables, Listings and Figures</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Exercise 7: Tables, Listings and Figures</span>"
     ]
   },
   {
     "objectID": "exercises/tlf.html#acceptance-criteria",
     "href": "exercises/tlf.html#acceptance-criteria",
-    "title": "23  Exercise 7: Tables, Listings and Figures",
-    "section": "23.4 Acceptance criteria",
-    "text": "23.4 Acceptance criteria\n\nAGEGR1 row added with a stated, justified treatment of the four missing-age subjects\nThe SOC/PT table is attempted, found impossible, and the reason is stated precisely (which column, and why it is empty)\nThe AETERM-level alternative is built, with the raw and case-folded distinct-value counts both reported\nA one-sentence explanation of why the AETERM table is not an acceptable substitute, grounded in what was actually observed in the data (not just “it’s not coded”)\nWeek 26 table built with correct n, mean and SD per arm\nMissing-age listing built, with both follow-up questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: reuse the pattern the session used for SEX and RACE - count(), join the arm N, format, pivot_wider(). For the missing subjects, think about what a null percentage would even mean: 2 out of what denominator?\nTask 2: start by checking names(adae) for the column the SOC display would need, before writing any summarising code. ADAE already told you which coded-term columns exist and which don’t, and why. For the AETERM table, group and count exactly as the session did for AOCCFL, just keyed on AETERM instead. The fragmentation you are looking for is visible the moment you arrange() the result alphabetically.\nTask 3: the Week 26 table is one filter() and one summarise() on adlb, not a new derivation: every value it needs already exists on each row. The listing is a filter() and a select() on adsl, no count() involved.\n\n\n\n\nSolutions are in the paid tier.",
+    "title": "26  Exercise 7: Tables, Listings and Figures",
+    "section": "26.4 Acceptance criteria",
+    "text": "26.4 Acceptance criteria\n\nAGEGR1 row added with a stated, justified treatment of the four missing-age subjects\nThe SOC/PT table is attempted, found impossible, and the reason is stated precisely (which column, and why it is empty)\nThe AETERM-level alternative is built, with the raw and case-folded distinct-value counts both reported\nA one-sentence explanation of why the AETERM table is not an acceptable substitute, grounded in what was actually observed in the data (not just “it’s not coded”)\nWeek 26 table built with correct n, mean and SD per arm\nMissing-age listing built, with both follow-up questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\n\n\nTask 1: reuse the pattern the session used for SEX and RACE - count(), join the arm N, format, pivot_wider(). For the missing subjects, think about what a null percentage would even mean: 2 out of what denominator?\nTask 2: start by checking names(adae) for the column the SOC display would need, before writing any summarising code. ADAE already told you which coded-term columns exist and which don’t, and why. For the AETERM table, group and count exactly as the session did for AOCCFL, just keyed on AETERM instead. The fragmentation you are looking for is visible the moment you arrange() the result alphabetically.\nTask 3: the Week 26 table is one filter() and one summarise() on adlb, not a new derivation: every value it needs already exists on each row. The listing is a filter() and a select() on adsl, no count() involved.\n\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>23</span>  <span class='chapter-title'>Exercise 7: Tables, Listings and Figures</span>"
+      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Exercise 7: Tables, Listings and Figures</span>"
     ]
   },
   {
     "objectID": "exercises/define-xml.html",
     "href": "exercises/define-xml.html",
-    "title": "24  Exercise 8: Define-XML",
+    "title": "27  Exercise 8: Define-XML",
     "section": "",
-    "text": "24.1 Goal\nTake the schema-valid but non-conformant document from the Define-XML session and make it conformant, then extend it to describe the one thing an SDTM variable cannot describe with a single origin, and the one variable this course cannot populate at all.",
+    "text": "27.1 Goal\nTake the schema-valid but non-conformant document from the Define-XML session and make it conformant, then extend it to describe the one thing an SDTM variable cannot describe with a single origin, and the one variable this course cannot populate at all.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Exercise 8: Define-XML</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Exercise 8: Define-XML</span>"
     ]
   },
   {
     "objectID": "exercises/define-xml.html#setup",
     "href": "exercises/define-xml.html#setup",
-    "title": "24  Exercise 8: Define-XML",
-    "section": "24.2 Setup",
-    "text": "24.2 Setup\nWork from the project root. You need the CDISC Define-XML v2.1 package unzipped into refs/, as the session’s opening callout describes:\n\nlibrary(tidyverse)\nlibrary(xml2)\n\ndx     &lt;- \"refs/DefineV2111_0\"\nschema &lt;- read_xml(file.path(dx, \"schema/cdisc-define-2.1/define2-1-0.xsd\"))\n\nRebuild the DM document from the session’s Example 1 before you start, or keep the R session open from where the session left off.",
+    "title": "27  Exercise 8: Define-XML",
+    "section": "27.2 Setup",
+    "text": "27.2 Setup\nWork from the project root. You need the CDISC Define-XML v2.1 package unzipped into refs/, as the session’s opening callout describes:\n\nlibrary(tidyverse)\nlibrary(xml2)\n\ndx     &lt;- \"refs/DefineV2111_0\"\nschema &lt;- read_xml(file.path(dx, \"schema/cdisc-define-2.1/define2-1-0.xsd\"))\n\nRebuild the DM document from the session’s Example 1 before you start, or keep the R session open from where the session left off.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Exercise 8: Define-XML</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Exercise 8: Define-XML</span>"
     ]
   },
   {
     "objectID": "exercises/define-xml.html#task",
     "href": "exercises/define-xml.html#task",
-    "title": "24  Exercise 8: Define-XML",
-    "section": "24.3 Task",
-    "text": "24.3 Task\n\n(Guided) Resolve rule 73. The session’s document declares USUBJID with Origin Type=\"Derived\" and no MethodOID, which violates conformance rule 73.\nFix it properly. That means two additions, not one: a MethodDef element that states how USUBJID is derived, and a MethodOID attribute on the ItemRef that points at it. GLPX-1 builds USUBJID by concatenating the study identifier, the site and the subject number. Check R/build_sdtm.R and describe what it actually does, not what you assume it does.\nRe-run xml_validate() and re-run the rule 73 check from the session. Then answer: the document validated TRUE before this fix and validates TRUE after. What changed, and who benefits?\n(The trap) Value-level metadata for LB. Add an ItemGroupDef for LB, and define LBSTRESN.\nYou will find you cannot. Not because anything is missing from your toolkit, but because a single ItemDef for LBSTRESN cannot say what the variable means: in GLPX-1’s LB, LBSTRESN holds HbA1c in percent on some rows and fasting plasma glucose in mmol/L on others. One variable, one ItemDef, two meanings, two units, two reference ranges.\nFind out how Define-XML resolves this. Read §4.5 of the specification, and look at how IT.LB.LBORRES is defined in the package’s own example at refs/DefineV2111_0/examples/DefineXML-2-1-SDTM/defineV21-SDTM.xml.\nBuild it: a def:ValueListRef on the ItemDef, a def:ValueListDef containing one ItemRef per parameter, and a def:WhereClauseDef for each that says which rows it applies to. Use the two LBTESTCD values GLPX-1 actually contains. Read them from data/sdtm/lb.csv rather than assuming.\nThen answer, in one sentence each:\n\nWhat does a def:WhereClauseDef actually express, in plain English?\nValue-level metadata adds rows to the metadata document rather than columns to the dataset. Where have you seen that same move before in this course?\n\n(Semi-guided) The variable with no values. Add an ItemGroupDef for ADAE’s source AE domain, and define AEDECOD.\nAEDECOD is null on all 389 rows, for the reason ADAE established: this study’s adverse events were never coded, because MedDRA is a licensed dictionary.\nDefine-XML v2.1 has a specific mechanism for this, and using it triggers a second requirement. Find both. Search the conformance rules workbook for HasNoData, rules 76 and 242 are the two you need, and note that both have Source Type Specification.\nImplement both, then answer:\n\nWhy is declaring “this variable has no data” better than simply omitting the variable from the ItemGroupDef?\nRule 242 requires a comment whenever def:HasNoData=\"Yes\". Write the comment you would actually submit for AEDECOD. It should be readable by a reviewer who has never heard of this course.",
+    "title": "27  Exercise 8: Define-XML",
+    "section": "27.3 Task",
+    "text": "27.3 Task\n\n(Guided) Resolve rule 73. The session’s document declares USUBJID with Origin Type=\"Derived\" and no MethodOID, which violates conformance rule 73.\nFix it properly. That means two additions, not one: a MethodDef element that states how USUBJID is derived, and a MethodOID attribute on the ItemRef that points at it. GLPX-1 builds USUBJID by concatenating the study identifier, the site and the subject number. Check R/build_sdtm.R and describe what it actually does, not what you assume it does.\nRe-run xml_validate() and re-run the rule 73 check from the session. Then answer: the document validated TRUE before this fix and validates TRUE after. What changed, and who benefits?\n(The trap) Value-level metadata for LB. Add an ItemGroupDef for LB, and define LBSTRESN.\nYou will find you cannot. Not because anything is missing from your toolkit, but because a single ItemDef for LBSTRESN cannot say what the variable means: in GLPX-1’s LB, LBSTRESN holds HbA1c in percent on some rows and fasting plasma glucose in mmol/L on others. One variable, one ItemDef, two meanings, two units, two reference ranges.\nFind out how Define-XML resolves this. Read §4.5 of the specification, and look at how IT.LB.LBORRES is defined in the package’s own example at refs/DefineV2111_0/examples/DefineXML-2-1-SDTM/defineV21-SDTM.xml.\nBuild it: a def:ValueListRef on the ItemDef, a def:ValueListDef containing one ItemRef per parameter, and a def:WhereClauseDef for each that says which rows it applies to. Use the LBTESTCD values GLPX-1 actually contains. Read them from data/sdtm/lb.csv rather than assuming; there are more of them than you might guess.\nThen answer, in one sentence each:\n\nWhat does a def:WhereClauseDef actually express, in plain English?\nValue-level metadata adds rows to the metadata document rather than columns to the dataset. Where have you seen that same move before in this course?\n\n(Semi-guided) The variable with no values. Add an ItemGroupDef for ADAE’s source AE domain, and define AEDECOD.\nAEDECOD is null on all 389 rows, for the reason ADAE established: this study’s adverse events were never coded, because MedDRA is a licensed dictionary.\nDefine-XML v2.1 has a specific mechanism for this, and using it triggers a second requirement. Find both. Search the conformance rules workbook for HasNoData, rules 76 and 242 are the two you need, and note that both have Source Type Specification.\nImplement both, then answer:\n\nWhy is declaring “this variable has no data” better than simply omitting the variable from the ItemGroupDef?\nRule 242 requires a comment whenever def:HasNoData=\"Yes\". Write the comment you would actually submit for AEDECOD. It should be readable by a reviewer who has never heard of this course.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Exercise 8: Define-XML</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Exercise 8: Define-XML</span>"
     ]
   },
   {
     "objectID": "exercises/define-xml.html#acceptance-criteria",
     "href": "exercises/define-xml.html#acceptance-criteria",
-    "title": "24  Exercise 8: Define-XML",
-    "section": "24.4 Acceptance criteria",
-    "text": "24.4 Acceptance criteria\n\nMethodDef added and referenced by MethodOID; the rule 73 check returns an empty result\nThe derivation description matches what R/build_sdtm.R actually does\ndef:ValueListDef and def:WhereClauseDef built for LBSTRESN, using the LBTESTCD values read from the data\nThe whole document still validates against the schema after every addition\ndef:HasNoData set on the AEDECOD ItemRef, with a def:CommentOID on the ItemDef and a def:CommentDef that a reviewer could act on\nAll five follow-up questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\nTask 1: MethodDef goes at the MetaDataVersion level, beside ItemDef and CodeList, same Def/Ref pattern as everything else. It needs OID, Name, Type and a Description. If the schema rejects your placement, remember that element order is an absolute requirement (§3.6) and the error message names what it expected instead.\nTask 2: the chain is ItemDef → def:ValueListRef → def:ValueListDef → ItemRef → def:WhereClauseRef → def:WhereClauseDef → RangeCheck. Six links, and every one is an OID pointing at something declared elsewhere. This task is the central intuition of the session made tedious on purpose. Note that the value-level ItemDefs are separate ItemDef elements with their own OIDs; the example’s naming (IT.LB.LBORRES.SET1.LBSPEC.BLOOD) shows the convention, though as the session established, the convention is not the standard.\nTask 3: def:HasNoData goes on the ItemRef, not the ItemDef. Read rule 76’s XPath column carefully, because getting this backwards is the most common way to fail it. Rule 242 then tells you what else becomes required, and the def:CommentDef element is documented in §4.8.\n\n\n\nSolutions are in the paid tier.",
+    "title": "27  Exercise 8: Define-XML",
+    "section": "27.4 Acceptance criteria",
+    "text": "27.4 Acceptance criteria\n\nMethodDef added and referenced by MethodOID; the rule 73 check returns an empty result\nThe derivation description matches what R/build_sdtm.R actually does\ndef:ValueListDef and def:WhereClauseDef built for LBSTRESN, using the LBTESTCD values read from the data\nThe whole document still validates against the schema after every addition\ndef:HasNoData set on the AEDECOD ItemRef, with a def:CommentOID on the ItemDef and a def:CommentDef that a reviewer could act on\nAll five follow-up questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\nTask 1: MethodDef goes at the MetaDataVersion level, beside ItemDef and CodeList, same Def/Ref pattern as everything else. It needs OID, Name, Type and a Description. If the schema rejects your placement, remember that element order is an absolute requirement (§3.6) and the error message names what it expected instead.\nTask 2: the chain is ItemDef → def:ValueListRef → def:ValueListDef → ItemRef → def:WhereClauseRef → def:WhereClauseDef → RangeCheck. Six links, and every one is an OID pointing at something declared elsewhere. This task is the central intuition of the session made tedious on purpose. Note that the value-level ItemDefs are separate ItemDef elements with their own OIDs; the example’s naming (IT.LB.LBORRES.SET1.LBSPEC.BLOOD) shows the convention, though as the session established, the convention is not the standard.\nTask 3: def:HasNoData goes on the ItemRef, not the ItemDef. Read rule 76’s XPath column carefully, because getting this backwards is the most common way to fail it. Rule 242 then tells you what else becomes required, and the def:CommentDef element is documented in §4.8.\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>24</span>  <span class='chapter-title'>Exercise 8: Define-XML</span>"
+      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Exercise 8: Define-XML</span>"
     ]
   },
   {
     "objectID": "exercises/define-from-specs.html",
     "href": "exercises/define-from-specs.html",
-    "title": "25  Exercise 9: Define-XML from a Specification Workbook",
+    "title": "28  Exercise 9: Define-XML from a Specification Workbook",
     "section": "",
-    "text": "25.1 Goal\nExtend GLPX-1’s specification workbook to a third domain, regenerate the define.xml, and then confront the question the session leaves open: what would it actually take to ship 2.1 instead of 2.0?",
+    "text": "28.1 Goal\nExtend GLPX-1’s specification workbook to a third domain, regenerate the define.xml, and then confront the question the session leaves open: what would it actually take to ship 2.1 instead of 2.0?",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Exercise 9: Define-XML from a Specification Workbook</span>"
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Exercise 9: Define-XML from a Specification Workbook</span>"
     ]
   },
   {
     "objectID": "exercises/define-from-specs.html#setup",
     "href": "exercises/define-from-specs.html#setup",
-    "title": "25  Exercise 9: Define-XML from a Specification Workbook",
-    "section": "25.2 Setup",
-    "text": "25.2 Setup\nWork from the project root. Everything you need is committed:\n\nlibrary(tidyverse)\nlibrary(openxlsx)\nlibrary(xml2)\nlibrary(defineR)\nlibrary(metacore)\n\nspec &lt;- \"data/spec/SDTM_METADATA.xlsx\"\n\nWork on a copy of the workbook, not the committed one: the point of a controlled document is that it does not change casually.",
+    "title": "28  Exercise 9: Define-XML from a Specification Workbook",
+    "section": "28.2 Setup",
+    "text": "28.2 Setup\nWork from the project root. Everything you need is committed:\n\nlibrary(tidyverse)\nlibrary(openxlsx)\nlibrary(xml2)\nlibrary(defineR)\nlibrary(metacore)\n\nspec &lt;- \"data/spec/SDTM_METADATA.xlsx\"\n\nWork on a copy of the workbook, not the committed one: the point of a controlled document is that it does not change casually.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Exercise 9: Define-XML from a Specification Workbook</span>"
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Exercise 9: Define-XML from a Specification Workbook</span>"
     ]
   },
   {
     "objectID": "exercises/define-from-specs.html#task",
     "href": "exercises/define-from-specs.html#task",
-    "title": "25  Exercise 9: Define-XML from a Specification Workbook",
-    "section": "25.3 Task",
-    "text": "25.3 Task\n\n(Guided) Add a domain. GLPX-1 has four SDTM domains but the workbook specifies only DM and LB. Add VS (Vital Signs).\nRead data/sdtm/vs.csv for the variable list, and take labels and types from the same two sources R/author_spec_workbook.R uses: the CDISC example define.xml in the Define-XML package, and SDTMIG v3.4 for anything the example does not cover. Compute lengths from the data.\nYou will need rows in at least TOC_METADATA and VARIABLE_METADATA. Decide for yourself whether VS also needs VALUELEVEL_METADATA, and justify the decision in one sentence. Look at what VSSTRESU does across VSTESTCD before you answer.\nRegenerate with write_define() and confirm the new domain appears. Report the dataset, variable and codelist counts before and after.\n(The trap) Make the origins honest. The session showed that the 2.0 workbook records eDT where the standard now wants Collected\n\nVendor.\n\nWrite a function that takes the generated define.xml and reports, for every variable, what its 2.1 Type and Source would be. Use the mapping the session established for CRF and eDT, and work out the rest yourself from §4.3.2.1 - Derived and Assigned both survive into 2.1, but they still need a Source, and the SDTM table constrains which sources are valid for each.\nThen answer, with the count to back it up:\n\nHow many of the 48 variables can you assign a 2.1 Source to with confidence, and how many are genuinely ambiguous from the workbook alone?\nFor the ambiguous ones, what information would you need, and who in a real sponsor would have it?\n\n(Semi-guided) Cost out the upgrade. You have been asked whether the study should ship Define-XML 2.1.\nDo not answer from opinion. Establish the facts:\n\nDoes defineR 0.0.6 support 2.1? Check its extdata directory rather than assuming, and say how you checked.\nWhich columns would the workbook need that it does not have?\nWhich of the differences the session identified (origin, class casing, namespace) could be fixed by post-processing the generated XML, and which could not?\n\nThen write a short recommendation, five sentences at most, of the kind you would actually send to a study team. State what you would do, what it would cost, and what the risk of not doing it is. A recommendation that says only “we should upgrade” has not done the work.",
+    "title": "28  Exercise 9: Define-XML from a Specification Workbook",
+    "section": "28.3 Task",
+    "text": "28.3 Task\n\n(Guided) Add a domain. GLPX-1 has four SDTM domains but the workbook specifies only DM and LB. Add VS (Vital Signs).\nRead data/sdtm/vs.csv for the variable list, and take labels and types from the same two sources R/author_spec_workbook.R uses: the CDISC example define.xml in the Define-XML package, and SDTMIG v3.4 for anything the example does not cover. Compute lengths from the data.\nYou will need rows in at least TOC_METADATA and VARIABLE_METADATA. Decide for yourself whether VS also needs VALUELEVEL_METADATA, and justify the decision in one sentence. Look at what VSSTRESU does across VSTESTCD before you answer.\nRegenerate with write_define() and confirm the new domain appears. Report the dataset, variable and codelist counts before and after.\n(The trap) Make the origins honest. The session showed that the 2.0 workbook records eDT where the standard now wants Collected\n\nVendor.\n\nWrite a function that takes the generated define.xml and reports, for every variable, what its 2.1 Type and Source would be. Use the mapping the session established for CRF and eDT, and work out the rest yourself from §4.3.2.1 - Derived and Assigned both survive into 2.1, but they still need a Source, and the SDTM table constrains which sources are valid for each.\nThen answer, with the count to back it up:\n\nHow many of the 48 variables can you assign a 2.1 Source to with confidence, and how many are genuinely ambiguous from the workbook alone?\nFor the ambiguous ones, what information would you need, and who in a real sponsor would have it?\n\n(Semi-guided) Cost out the upgrade. You have been asked whether the study should ship Define-XML 2.1.\nDo not answer from opinion. Establish the facts:\n\nDoes defineR 0.0.6 support 2.1? Check its extdata directory rather than assuming, and say how you checked.\nWhich columns would the workbook need that it does not have?\nWhich of the differences the session identified (origin, class casing, namespace) could be fixed by post-processing the generated XML, and which could not?\n\nThen write a short recommendation, five sentences at most, of the kind you would actually send to a study team. State what you would do, what it would cost, and what the risk of not doing it is. A recommendation that says only “we should upgrade” has not done the work.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Exercise 9: Define-XML from a Specification Workbook</span>"
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Exercise 9: Define-XML from a Specification Workbook</span>"
     ]
   },
   {
     "objectID": "exercises/define-from-specs.html#acceptance-criteria",
     "href": "exercises/define-from-specs.html#acceptance-criteria",
-    "title": "25  Exercise 9: Define-XML from a Specification Workbook",
-    "section": "25.4 Acceptance criteria",
-    "text": "25.4 Acceptance criteria\n\nVS added to the workbook with labels traced to a named source, not invented\nThe VALUELEVEL_METADATA decision for VS is made and justified\nRegeneration succeeds; before/after counts reported\nA 2.1 origin-mapping function that runs against the generated XML\nCounts of confident vs ambiguous Source assignments, with the ambiguity explained rather than guessed away\ndefineR’s 2.1 support established by inspection, with the method stated\nA five-sentence recommendation covering action, cost and risk\n\n\n\n\n\n\n\nTipHint\n\n\n\nTask 1: R/author_spec_workbook.R already does all of this for DM and LB. Read it before writing anything. Its var_meta_for() helper is domain-agnostic and the label guard will tell you loudly if VS has a variable neither source covers. Note that write_define() writes its output beside the workbook you hand it, which is why R/build_define.R passes it a copy.\nTask 2: the SDTM origin table is §4.3.2.1 of the Define-XML v2.1 specification, and the cells marked X are as informative as the ones with examples. They tell you which combinations are impossible, which narrows the ambiguous cases faster than the valid ones do. Assigned + Sponsor covers more variables than you might first think; look at what the spec says Assigned means.\nTask 3: system.file(\"extdata\", package = \"defineR\") and list.dirs(). One directory listing settles it. For the post-processing question, think about which differences are local string substitutions and which require information the document does not contain, that distinction is the whole answer.\n\n\n\nSolutions are in the paid tier.",
+    "title": "28  Exercise 9: Define-XML from a Specification Workbook",
+    "section": "28.4 Acceptance criteria",
+    "text": "28.4 Acceptance criteria\n\nVS added to the workbook with labels traced to a named source, not invented\nThe VALUELEVEL_METADATA decision for VS is made and justified\nRegeneration succeeds; before/after counts reported\nA 2.1 origin-mapping function that runs against the generated XML\nCounts of confident vs ambiguous Source assignments, with the ambiguity explained rather than guessed away\ndefineR’s 2.1 support established by inspection, with the method stated\nA five-sentence recommendation covering action, cost and risk\n\n\n\n\n\n\n\nTipHint\n\n\n\nTask 1: R/author_spec_workbook.R already does all of this for DM and LB. Read it before writing anything. Its var_meta_for() helper is domain-agnostic and the label guard will tell you loudly if VS has a variable neither source covers. Note that write_define() writes its output beside the workbook you hand it, which is why R/build_define.R passes it a copy.\nTask 2: the SDTM origin table is §4.3.2.1 of the Define-XML v2.1 specification, and the cells marked X are as informative as the ones with examples. They tell you which combinations are impossible, which narrows the ambiguous cases faster than the valid ones do. Assigned + Sponsor covers more variables than you might first think; look at what the spec says Assigned means.\nTask 3: system.file(\"extdata\", package = \"defineR\") and list.dirs(). One directory listing settles it. For the post-processing question, think about which differences are local string substitutions and which require information the document does not contain, that distinction is the whole answer.\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>25</span>  <span class='chapter-title'>Exercise 9: Define-XML from a Specification Workbook</span>"
+      "<span class='chapter-number'>28</span>  <span class='chapter-title'>Exercise 9: Define-XML from a Specification Workbook</span>"
     ]
   },
   {
     "objectID": "exercises/adrg.html",
     "href": "exercises/adrg.html",
-    "title": "26  Exercise 10: The Analysis Data Reviewer’s Guide",
+    "title": "29  Exercise 10: The Analysis Data Reviewer’s Guide",
     "section": "",
-    "text": "26.1 Goal\nClose the conformance finding the session reports, at its source rather than in the output, and then write the one narrative ADRG section this course can honestly ask you to write, because you have the material for it.",
+    "text": "29.1 Goal\nClose the conformance finding the session reports, at its source rather than in the output, and then write the one narrative ADRG section this course can honestly ask you to write, because you have the material for it.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Exercise 10: The Analysis Data Reviewer's Guide</span>"
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Exercise 10: The Analysis Data Reviewer's Guide</span>"
     ]
   },
   {
     "objectID": "exercises/adrg.html#setup",
     "href": "exercises/adrg.html#setup",
-    "title": "26  Exercise 10: The Analysis Data Reviewer’s Guide",
-    "section": "26.2 Setup",
-    "text": "26.2 Setup\nWork from the project root:\n\nlibrary(tidyverse)\nlibrary(xml2)\nlibrary(openxlsx)\nlibrary(defineR)\n\nadrg &lt;- list.files(\"data/adrg\", full.names = TRUE) |&gt;\n  set_names(~ basename(.x)) |&gt;\n  map(read_csv, show_col_types = FALSE)",
+    "title": "29  Exercise 10: The Analysis Data Reviewer’s Guide",
+    "section": "29.2 Setup",
+    "text": "29.2 Setup\nWork from the project root:\n\nlibrary(tidyverse)\nlibrary(xml2)\nlibrary(openxlsx)\nlibrary(defineR)\n\nadrg &lt;- list.files(\"data/adrg\", full.names = TRUE) |&gt;\n  set_names(~ basename(.x)) |&gt;\n  map(read_csv, show_col_types = FALSE)",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Exercise 10: The Analysis Data Reviewer's Guide</span>"
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Exercise 10: The Analysis Data Reviewer's Guide</span>"
     ]
   },
   {
     "objectID": "exercises/adrg.html#task",
     "href": "exercises/adrg.html#task",
-    "title": "26  Exercise 10: The Analysis Data Reviewer’s Guide",
-    "section": "26.3 Task",
-    "text": "26.3 Task\n\n(Guided) Close the rule-73 finding. The session’s section 6.2 reports thirteen variables with Origin Type=\"Derived\" and no MethodOID.\nFix it where it belongs. Work on a copy of data/spec/SDTM_METADATA.xlsx, add the missing entries to COMPUTATION_METHOD, reference them from COMPUTATIONMETHODOID in VARIABLE_METADATA, regenerate with R/build_define.R, and re-run the check.\nThe derivations must describe what R/build_sdtm.R actually does. Read it. Do not write “derived per SAP” thirteen times; a method that says nothing is worse than an honest finding, because it suppresses the finding without supplying the information.\nThen answer: LBDRVFL is one of the thirteen and it is null on every record in the study. What should its computation method say, and is Derived even the right origin for it? Justify from the Define-XML origin definitions rather than from convenience.\n(The trap) Regenerate everything and find what moved. Re-run R/build_adrg_components.R after your fix.\nSection 6.2 should now be clean. Check whether anything else changed, and explain each difference you find. In particular, look at the standards inventory. It reads the Define-XML version out of the regenerated file rather than restating it, which is either a safeguard or a trap depending on what you changed.\nThen answer: the session argues the ADRG’s generated tables should never be hand-maintained. You have just regenerated six tables from one workbook edit. What would have gone wrong if section 6.2 had been a paragraph someone typed?\n(Semi-guided) Write section 3.4. Visit windowing and record selection is a narrative section, and it is the one narrative section you have everything you need for, because ADLB established the facts and argued the decision.\nWrite it. Real prose, aimed at a reviewer who does not know this study. It must cover:\n\nWhether visit windowing was used, and what AVISIT actually is in GLPX-1\nHow the baseline record is selected, stated precisely enough that a reader could reproduce it\nThat ABLFL disagrees with SDTM’s LBLOBXFL on 342 subject-parameter pairs, why, and what it does to the headline result\n\nAim for 200–300 words. Then answer: which sentence in what you wrote could a script have generated, and which could not? That split is the whole session.",
+    "title": "29  Exercise 10: The Analysis Data Reviewer’s Guide",
+    "section": "29.3 Task",
+    "text": "29.3 Task\n\n(Guided) Close the rule-73 finding. The session’s section 6.2 reports thirteen variables with Origin Type=\"Derived\" and no MethodOID.\nFix it where it belongs. Work on a copy of data/spec/SDTM_METADATA.xlsx, add the missing entries to COMPUTATION_METHOD, reference them from COMPUTATIONMETHODOID in VARIABLE_METADATA, regenerate with R/build_define.R, and re-run the check.\nThe derivations must describe what R/build_sdtm.R actually does. Read it. Do not write “derived per SAP” thirteen times; a method that says nothing is worse than an honest finding, because it suppresses the finding without supplying the information.\nThen answer: LBDRVFL is one of the thirteen and it is null on every record in the study. What should its computation method say, and is Derived even the right origin for it? Justify from the Define-XML origin definitions rather than from convenience.\n(The trap) Regenerate everything and find what moved. Re-run R/build_adrg_components.R after your fix.\nSection 6.2 should now be clean. Check whether anything else changed, and explain each difference you find. In particular, look at the standards inventory. It reads the Define-XML version out of the regenerated file rather than restating it, which is either a safeguard or a trap depending on what you changed.\nThen answer: the session argues the ADRG’s generated tables should never be hand-maintained. You have just regenerated six tables from one workbook edit. What would have gone wrong if section 6.2 had been a paragraph someone typed?\n(Semi-guided) Write section 3.4. Visit windowing and record selection is a narrative section, and it is the one narrative section you have everything you need for, because ADLB established the facts and argued the decision.\nWrite it. Real prose, aimed at a reviewer who does not know this study. It must cover:\n\nWhether visit windowing was used, and what AVISIT actually is in GLPX-1\nHow the baseline record is selected, stated precisely enough that a reader could reproduce it\nThat ABLFL disagrees with SDTM’s LBLOBXFL on 342 subject-parameter pairs, why, and what it does to the headline result\n\nAim for 200–300 words. Then answer: which sentence in what you wrote could a script have generated, and which could not? That split is the whole session.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Exercise 10: The Analysis Data Reviewer's Guide</span>"
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Exercise 10: The Analysis Data Reviewer's Guide</span>"
     ]
   },
   {
     "objectID": "exercises/adrg.html#acceptance-criteria",
     "href": "exercises/adrg.html#acceptance-criteria",
-    "title": "26  Exercise 10: The Analysis Data Reviewer’s Guide",
-    "section": "26.4 Acceptance criteria",
-    "text": "26.4 Acceptance criteria\n\nAll thirteen COMPUTATION_METHOD entries added, each describing the actual derivation in R/build_sdtm.R\nRegenerated define.xml still validates against the 2.0 schema\nThe rule-73 check returns zero findings\nThe LBDRVFL origin question answered from the Define-XML origin definitions\nAll six ADRG component tables regenerated, with every change accounted for\nA 200–300 word section 3.4 covering windowing, baseline selection and the ABLFL/LBLOBXFL divergence with its numbers\nThe generated-versus-written sentence split identified\n\n\n\n\n\n\n\nTipHint\n\n\n\nTask 1: the thirteen are mostly DM reference dates and LB standardised results. R/build_sdtm.R has the logic; study_day() in particular is worth quoting rather than paraphrasing. For LBDRVFL, re-read what Findings established about why it is null, then check the Define-XML Type definitions - Derived means a value “calculated by an algorithm or reproducible rule”, and a variable with no values has not been calculated by anything.\nTask 2: R/build_adrg_components.R reads the Define-XML version from the MetaDataVersion element. If your regeneration changed it, the inventory changes with it and that is the safeguard working. If you edited DEFINE_HEADER_METADATA you may have changed something you did not intend.\nTask 3: the numbers are all in ADLB, the 342 pairs, the ADY &lt;= 1 rule, and the -1.116 versus -1.138 comparison. The Completion Guidelines section 3.4 lists the questions the section must answer; answer those, in order, in prose. Resist writing a paragraph about why baseline definitions matter in general: a reviewer wants this study’s rule, not a tutorial.\n\n\n\nSolutions are in the paid tier.",
+    "title": "29  Exercise 10: The Analysis Data Reviewer’s Guide",
+    "section": "29.4 Acceptance criteria",
+    "text": "29.4 Acceptance criteria\n\nAll thirteen COMPUTATION_METHOD entries added, each describing the actual derivation in R/build_sdtm.R\nRegenerated define.xml still validates against the 2.0 schema\nThe rule-73 check returns zero findings\nThe LBDRVFL origin question answered from the Define-XML origin definitions\nAll six ADRG component tables regenerated, with every change accounted for\nA 200–300 word section 3.4 covering windowing, baseline selection and the ABLFL/LBLOBXFL divergence with its numbers\nThe generated-versus-written sentence split identified\n\n\n\n\n\n\n\nTipHint\n\n\n\nTask 1: the thirteen are mostly DM reference dates and LB standardised results. R/build_sdtm.R has the logic; study_day() in particular is worth quoting rather than paraphrasing. For LBDRVFL, re-read what Findings established about why it is null, then check the Define-XML Type definitions - Derived means a value “calculated by an algorithm or reproducible rule”, and a variable with no values has not been calculated by anything.\nTask 2: R/build_adrg_components.R reads the Define-XML version from the MetaDataVersion element. If your regeneration changed it, the inventory changes with it and that is the safeguard working. If you edited DEFINE_HEADER_METADATA you may have changed something you did not intend.\nTask 3: the numbers are all in ADLB, the 342 pairs, the ADY &lt;= 1 rule, and the -1.116 versus -1.138 comparison. The Completion Guidelines section 3.4 lists the questions the section must answer; answer those, in order, in prose. Resist writing a paragraph about why baseline definitions matter in general: a reviewer wants this study’s rule, not a tutorial.\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>26</span>  <span class='chapter-title'>Exercise 10: The Analysis Data Reviewer's Guide</span>"
+      "<span class='chapter-number'>29</span>  <span class='chapter-title'>Exercise 10: The Analysis Data Reviewer's Guide</span>"
     ]
   },
   {
     "objectID": "exercises/dataset-json.html",
     "href": "exercises/dataset-json.html",
-    "title": "27  Exercise 11: Dataset-JSON",
+    "title": "30  Exercise 11: Dataset-JSON",
     "section": "",
-    "text": "27.1 Goal\nBreak the eight-character rule deliberately and watch two formats disagree about it, then settle the size question the session leaves open by testing it on lengths that were planned rather than observed.",
+    "text": "30.1 Goal\nBreak the eight-character rule deliberately and watch two formats disagree about it, then settle the size question the session leaves open by testing it on lengths that were planned rather than observed.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Exercise 11: Dataset-JSON</span>"
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exercise 11: Dataset-JSON</span>"
     ]
   },
   {
     "objectID": "exercises/dataset-json.html#setup",
     "href": "exercises/dataset-json.html#setup",
-    "title": "27  Exercise 11: Dataset-JSON",
-    "section": "27.2 Setup",
-    "text": "27.2 Setup\nWork from the project root:\n\nlibrary(tidyverse)\nlibrary(jsonlite)\nlibrary(haven)\nlibrary(xportr)\nlibrary(datasetjson)\n\nEverything you need is committed under data/xpt/, data/json/ and data/spec/. CDISC’s example files live in refs/DatasetJSON_v1.1/repo/examples/, which you cloned in the session.",
+    "title": "30  Exercise 11: Dataset-JSON",
+    "section": "30.2 Setup",
+    "text": "30.2 Setup\nWork from the project root:\n\nlibrary(tidyverse)\nlibrary(jsonlite)\nlibrary(haven)\nlibrary(xportr)\nlibrary(datasetjson)\n\nEverything you need is committed under data/xpt/, data/json/ and data/spec/. CDISC’s example files live in refs/DatasetJSON_v1.1/repo/examples/, which you cloned in the session.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Exercise 11: Dataset-JSON</span>"
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exercise 11: Dataset-JSON</span>"
     ]
   },
   {
     "objectID": "exercises/dataset-json.html#task",
     "href": "exercises/dataset-json.html#task",
-    "title": "27  Exercise 11: Dataset-JSON",
-    "section": "27.3 Task",
-    "text": "27.3 Task\n\n(Guided) Break the eight-character rule. Take data/sdtm/lb.csv and rename three variables to something a human could read: LBSTRESN to LAB_RESULT_NUMERIC, LBORRESU to ORIGINAL_UNITS, LBNRIND to REFERENCE_RANGE_INDICATOR.\nNow try to write the result both ways: as .xpt with xportr_write(), and as Dataset-JSON with write_dataset_json().\nReport exactly what each does. One of them will not simply refuse. Read its output carefully rather than assuming it failed. Then answer:\n\nWhat did the transport writer do with the long names, and would you have noticed in a pipeline that did not check?\nDataset-JSON accepted them. Does that make the renamed dataset submittable? Separate what the format permits from what the standard requires, and say which document settles it.\n\n(The trap) Settle the size question properly. The session found GLPX-1’s Dataset-JSON 1.3 times larger than its .xpt, and CDISC’s examples the other way round, and attributed the difference to declared lengths.\nTest that claim instead of accepting it. Take data/sdtm/lb.csv and write it to .xpt twice: once with the lengths from data/spec/SDTM_METADATA.xlsx as they are, and once with every character field declared at 200, the way a real study would. Compare all three files each time: .xpt, .json, .dsjc.\nReport the sizes and the ratios. Then answer:\n\nAt what declared length does Dataset-JSON stop losing and start winning? Find the approximate crossover rather than guessing.\nThe session claims .dsjc wins regardless. Does your data support that, and by how much?\nDefine-XML calls declared lengths planned lengths. Given what you just measured, what does that mean for a sponsor deciding how generous to be?\n\n(Semi-guided) Round-trip the whole study. Write all three ADaM datasets (ADSL, ADAE, ADLB) as Dataset-JSON, with itemOID values that would match an ItemGroupDef and ItemDef in a define.xml for the analysis data.\nValidate each with validate_dataset_json(). Then read them back and prove the round-trip is lossless: every value, every type, and in particular every null. ADAE has one record with a null ASTDT and a null TRTEMFL, and ADSL has four subjects with a null AGE. Check those specifically, not just the row counts.\nAnswer in one sentence each:\n\nWhich is harder to verify: that the values round-tripped, or that the types did? Why?\nYou have now written the same three datasets as CSV, as Dataset-JSON, and described them in define.xml. Which of the three could a reviewer reconstruct the study from with no other files, and what would still be missing?",
+    "title": "30  Exercise 11: Dataset-JSON",
+    "section": "30.3 Task",
+    "text": "30.3 Task\n\n(Guided) Break the eight-character rule. Take data/sdtm/lb.csv and rename three variables to something a human could read: LBSTRESN to LAB_RESULT_NUMERIC, LBORRESU to ORIGINAL_UNITS, LBNRIND to REFERENCE_RANGE_INDICATOR.\nNow try to write the result both ways: as .xpt with xportr_write(), and as Dataset-JSON with write_dataset_json().\nReport exactly what each does. One of them will not simply refuse. Read its output carefully rather than assuming it failed. Then answer:\n\nWhat did the transport writer do with the long names, and would you have noticed in a pipeline that did not check?\nDataset-JSON accepted them. Does that make the renamed dataset submittable? Separate what the format permits from what the standard requires, and say which document settles it.\n\n(The trap) Settle the size question properly. The session found GLPX-1’s Dataset-JSON 1.3 times larger than its .xpt, and CDISC’s examples the other way round, and attributed the difference to declared lengths.\nTest that claim instead of accepting it. Take data/sdtm/lb.csv and write it to .xpt twice: once with the lengths from data/spec/SDTM_METADATA.xlsx as they are, and once with every character field declared at 200, the way a real study would. Compare all three files each time: .xpt, .json, .dsjc.\nReport the sizes and the ratios. Then answer:\n\nAt what declared length does Dataset-JSON stop losing and start winning? Find the approximate crossover rather than guessing.\nThe session claims .dsjc wins regardless. Does your data support that, and by how much?\nDefine-XML calls declared lengths planned lengths. Given what you just measured, what does that mean for a sponsor deciding how generous to be?\n\n(Semi-guided) Round-trip the whole study. Write all three ADaM datasets (ADSL, ADAE, ADLB) as Dataset-JSON, with itemOID values that would match an ItemGroupDef and ItemDef in a define.xml for the analysis data.\nValidate each with validate_dataset_json(). Then read them back and prove the round-trip is lossless: every value, every type, and in particular every null. ADAE has one record with a null ASTDT and a null TRTEMFL, and ADSL has four subjects with a null AGE. Check those specifically, not just the row counts.\nAnswer in one sentence each:\n\nWhich is harder to verify: that the values round-tripped, or that the types did? Why?\nYou have now written the same three datasets as CSV, as Dataset-JSON, and described them in define.xml. Which of the three could a reviewer reconstruct the study from with no other files, and what would still be missing?",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Exercise 11: Dataset-JSON</span>"
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exercise 11: Dataset-JSON</span>"
     ]
   },
   {
     "objectID": "exercises/dataset-json.html#acceptance-criteria",
     "href": "exercises/dataset-json.html#acceptance-criteria",
-    "title": "27  Exercise 11: Dataset-JSON",
-    "section": "27.4 Acceptance criteria",
-    "text": "27.4 Acceptance criteria\n\nLong-named LB written both ways, with the transport writer’s actual behaviour reported, not assumed\nThe format-permits versus standard-requires distinction stated, with the governing document named\nLB written to .xpt under both length regimes, with all sizes and ratios reported\nAn approximate crossover length identified from measurement\nAll three ADaM datasets written as Dataset-JSON and validated\nNull preservation checked on the specific known records, not by row count\nBoth round-trip questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\nTask 1: xportr has validation controlled by strict_checks; the default is not what you might expect, which is the point of the task. For the second half, the eight-character limit is not in the Dataset-JSON specification at all. Ask yourself which document defines what an SDTM variable may be called, and note that a file can be perfectly valid JSON and still not be an SDTM dataset.\nTask 2: build the modified metadata frame by taking the VARIABLE_METADATA sheet and setting LENGTH to 200 wherever TYPE is text. For the crossover, you do not need a formula. Write the file at a handful of declared lengths (say 10, 25, 50, 100, 200) and plot or tabulate the ratio. The answer is more interesting than the number.\nTask 3: dataset_json() needs a columns tibble whose row order matches the dataset’s column order; building it with imap() over names(dat) is less error-prone than typing it. For null checking, sum(is.na(x)) before and after is a start, but compare the specific USUBJID values the session names, because a count can match while the nulls have moved.\n\n\n\nSolutions are in the paid tier.",
+    "title": "30  Exercise 11: Dataset-JSON",
+    "section": "30.4 Acceptance criteria",
+    "text": "30.4 Acceptance criteria\n\nLong-named LB written both ways, with the transport writer’s actual behaviour reported, not assumed\nThe format-permits versus standard-requires distinction stated, with the governing document named\nLB written to .xpt under both length regimes, with all sizes and ratios reported\nAn approximate crossover length identified from measurement\nAll three ADaM datasets written as Dataset-JSON and validated\nNull preservation checked on the specific known records, not by row count\nBoth round-trip questions answered\n\n\n\n\n\n\n\nTipHint\n\n\n\nTask 1: xportr has validation controlled by strict_checks; the default is not what you might expect, which is the point of the task. For the second half, the eight-character limit is not in the Dataset-JSON specification at all. Ask yourself which document defines what an SDTM variable may be called, and note that a file can be perfectly valid JSON and still not be an SDTM dataset.\nTask 2: build the modified metadata frame by taking the VARIABLE_METADATA sheet and setting LENGTH to 200 wherever TYPE is text. For the crossover, you do not need a formula. Write the file at a handful of declared lengths (say 10, 25, 50, 100, 200) and plot or tabulate the ratio. The answer is more interesting than the number.\nTask 3: dataset_json() needs a columns tibble whose row order matches the dataset’s column order; building it with imap() over names(dat) is less error-prone than typing it. For null checking, sum(is.na(x)) before and after is a start, but compare the specific USUBJID values the session names, because a count can match while the nulls have moved.\n\n\n\nSolutions are in the paid tier.",
     "crumbs": [
       "Exercises",
-      "<span class='chapter-number'>27</span>  <span class='chapter-title'>Exercise 11: Dataset-JSON</span>"
+      "<span class='chapter-number'>30</span>  <span class='chapter-title'>Exercise 11: Dataset-JSON</span>"
     ]
   }
 ]

@@ -138,7 +138,8 @@ release work, not content.
 | Order | Task | Note |
 |---|---|---|
 | 1 | Private-repo cleanup | See §6b. Two competing solution formats, stale directories |
-| 2 | Solutions for Exercises 7-11 | tlf, define-xml, define-from-specs, adrg, dataset-json |
+| 1b | Live delivery layer | **Done.** `overview/` in the public repo; `instructor/run-sheets/` and rewritten timings and facilitation notes in the private repo |
+| 2 | Solutions for Exercises 9-11 | define-from-specs, adrg, dataset-json. Ex 7 and 8 are written |
 | 3 | README / licensing changes from §3 | Small |
 | 4 | Cut a release and mint the Zenodo DOI | The book is content-complete, so this is now unblocked |
 

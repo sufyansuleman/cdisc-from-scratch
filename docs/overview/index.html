@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>25&nbsp; Exercise 6: ADLB – CDISC with R</title>
+<title>17&nbsp; The Live Course – CDISC with R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -65,8 +30,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercises/tlf.html" rel="next">
-<link href="../exercises/adae.html" rel="prev">
+<link href="../overview/course-a-sdtm.html" rel="next">
+<link href="../sessions/dataset-json.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -123,7 +88,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/adlb.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 6: ADLB</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../overview/index.html">Live Course</a></li><li class="breadcrumb-item"><a href="../overview/index.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Live Course</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -305,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../overview/index.html" class="sidebar-item-text sidebar-link">
+  <a href="../overview/index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Live Course</span></span></a>
   </div>
 </li>
@@ -364,7 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/adlb.html" class="sidebar-item-text sidebar-link active">
+  <a href="../exercises/adlb.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 6: ADLB</span></span></a>
   </div>
 </li>
@@ -410,19 +375,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#goal" id="toc-goal" class="nav-link active" data-scroll-target="#goal"><span class="header-section-number">25.1</span> Goal</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">25.2</span> Setup</a></li>
-  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task"><span class="header-section-number">25.3</span> Task</a></li>
-  <li><a href="#acceptance-criteria" id="toc-acceptance-criteria" class="nav-link" data-scroll-target="#acceptance-criteria"><span class="header-section-number">25.4</span> Acceptance criteria</a></li>
+  <li><a href="#the-two-courses" id="toc-the-two-courses" class="nav-link active" data-scroll-target="#the-two-courses"><span class="header-section-number">17.1</span> The two courses</a></li>
+  <li><a href="#who-this-works-for" id="toc-who-this-works-for" class="nav-link" data-scroll-target="#who-this-works-for"><span class="header-section-number">17.2</span> Who this works for</a></li>
+  <li><a href="#how-it-runs" id="toc-how-it-runs" class="nav-link" data-scroll-target="#how-it-runs"><span class="header-section-number">17.3</span> How it runs</a></li>
+  <li><a href="#what-you-need" id="toc-what-you-need" class="nav-link" data-scroll-target="#what-you-need"><span class="header-section-number">17.4</span> What you need</a></li>
+  <li><a href="#if-you-are-reading-this-on-your-own" id="toc-if-you-are-reading-this-on-your-own" class="nav-link" data-scroll-target="#if-you-are-reading-this-on-your-own"><span class="header-section-number">17.5</span> If you are reading this on your own</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/sdtm-dm.html">Exercises</a></li><li class="breadcrumb-item"><a href="../exercises/adlb.html"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 6: ADLB</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../overview/index.html">Live Course</a></li><li class="breadcrumb-item"><a href="../overview/index.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Live Course</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Exercise 6: ADLB</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">The Live Course</span></h1>
 </div>
 
 
@@ -439,79 +405,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="goal" class="level2" data-number="25.1">
-<h2 data-number="25.1" class="anchored" data-anchor-id="goal"><span class="header-section-number">25.1</span> Goal</h2>
-<p>Extend the ADLB from <a href="../sessions/adlb.html">the ADLB session</a> with a categorised change, then build the two things GLPX-1’s single baseline definition never forces you to build: a derived baseline that requires <code>DTYPE</code>, and a second baseline definition that requires <code>BASETYPE</code>.</p>
+<p>This book is free and self-paced. It is also taught live, in small cohorts, as two courses of two-hour evening sessions.</p>
+<p>The difference is not the material. It is that in a cohort you type the code while someone watches for the place you are about to get stuck, you argue about the duplicate subject with three other people instead of reading what I concluded, and you have a deadline.</p>
+<section id="the-two-courses" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="the-two-courses"><span class="header-section-number">17.1</span> The two courses</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th></th>
+<th><a href="../overview/course-a-sdtm.html">Course A: SDTM</a></th>
+<th><a href="../overview/course-b-adam-outputs.html">Course B: ADaM and Outputs</a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Evenings</td>
+<td>7</td>
+<td>8</td>
+</tr>
+<tr class="even">
+<td>Total</td>
+<td>14 hours</td>
+<td>16 hours</td>
+</tr>
+<tr class="odd">
+<td>You build</td>
+<td><code>dm</code>, <code>ae</code>, <code>lb</code>, <code>vs</code>, <code>define.xml</code></td>
+<td><code>adsl</code>, <code>adae</code>, <code>adlb</code>, TLFs, ADRG, Dataset-JSON</td>
+</tr>
+<tr class="even">
+<td>Prerequisite</td>
+<td>Setup only</td>
+<td>Course A or equivalent</td>
+</tr>
+</tbody>
+</table>
+<p>Course A stands on its own. You can stop after it having built a real SDTM and a valid Define-XML document, which is a complete piece of work.</p>
+<p>Course B assumes it. Together they run about <strong>30 hours of live teaching</strong> across fifteen weeks, plus roughly an hour a week between sessions.</p>
 </section>
-<section id="setup" class="level2" data-number="25.2">
-<h2 data-number="25.2" class="anchored" data-anchor-id="setup"><span class="header-section-number">25.2</span> Setup</h2>
-<p>Work from the project root. Both inputs are persisted:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sdtm.terminology)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>lb   <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/sdtm/lb.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">.default =</span> <span class="fu">col_character</span>()))</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>adlb <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/adam/adlb.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>adsl <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/adam/adsl.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Build the ADLB as in the session before starting, or read the persisted copy from <code>data/adam/adlb.csv</code>.</p>
+<section id="who-this-works-for" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="who-this-works-for"><span class="header-section-number">17.2</span> Who this works for</h2>
+<p>The same people the book is for: R users who can write <code>dplyr</code> but have never seen a submission, academics moving into pharma, statisticians who have been told to learn CDISC. No prior CDISC knowledge, no clinical trials background beyond knowing roughly what a randomised trial is.</p>
+<p>It works less well if you cannot commit to typing along. The sessions are built around running code, not watching it.</p>
 </section>
-<section id="task" class="level2" data-number="25.3">
-<h2 data-number="25.3" class="anchored" data-anchor-id="task"><span class="header-section-number">25.3</span> Task</h2>
-<ol type="1">
-<li><p><strong>(Guided) Categorised change.</strong> For <code>PARAMCD == "HBA1C"</code> at <code>AVISIT == "WEEK 26"</code>, add <code>CHGCAT1</code> grouping <code>CHG</code> into three bands: <code>"Reduction &gt;= 1%"</code>, <code>"Reduction 0 to &lt;1%"</code>, and <code>"No reduction"</code>. Add its numeric counterpart <code>CHGCAT1N</code>.</p>
-<p>Look up <code>CHGCATy</code> in ADaMIG v1.3 §3.3.4.1 before you start and note its Core designation. Then answer: which structural rule ties <code>CHGCAT1N</code> to <code>CHGCAT1</code>, and is <code>CHGCAT1</code> checkable against a CDISC codelist?</p>
-<p>Cross-tabulate the result by <code>TRTA</code>. The clinically meaningful number should be obvious.</p></li>
-<li><p><strong>(The trap) A derived baseline.</strong> Suppose the SAP is amended: for HbA1c only, baseline becomes the <strong>average of the screening and the last pre-dose value</strong>, rather than the single last pre-dose value.</p>
-<p>Re-derive <code>ABLFL</code>, <code>BASE</code> and <code>CHG</code> for HbA1c under this definition. Getting the arithmetic right is the easy part; the exercise is about what else must change.</p>
-<p>Two requirements, and both are the point:</p>
+<section id="how-it-runs" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="how-it-runs"><span class="header-section-number">17.3</span> How it runs</h2>
 <ul>
-<li>The averaged baseline is a <em>new record</em>, not an edit to an existing one. Add it as a row, and set <code>DTYPE</code> on it, choosing a value the ADaMIG itself gives as an example.</li>
-<li>State what <code>AVISIT</code> should be on that row, and why the answer is not obvious.</li>
-<li>Report how many subjects actually have two pre-dose HbA1c values. Not all of them do, and what you decide to do about the rest is part of the answer.</li>
+<li><strong>Two hours</strong>, one evening a week, with a ten-minute break</li>
+<li><strong>Small</strong>, so that everyone can be heard and nobody hides</li>
+<li><strong>Not recorded</strong>, so discussion is open. This is deliberate, and it has a cost: see the note on each course page about missing an evening</li>
+<li><strong>Code-along</strong>, with short group challenges and a discussion in every session</li>
+<li><strong>Homework</strong> between evenings, about an hour, reviewed at the start of the next session</li>
 </ul>
-<p>Then recompute the week-26 treatment difference and compare it with the session’s -1.116. Report the number you get, whatever it is.</p></li>
-<li><p><strong>(Semi-guided) Two baselines at once.</strong> Now suppose the study report needs <em>both</em> definitions side by side: the session’s last-pre-dose baseline and task 2’s averaged baseline, for the same parameter, in the same dataset.</p>
-<p>Restructure so both coexist, and answer in one sentence each:</p>
-<ul>
-<li>Which variable becomes required, and what exactly does it have to be populated on?</li>
-<li>Why can you not simply add a second column called <code>BASE2</code>?</li>
-<li>How many rows does HbA1c now have per subject, and what does that do to the “one row per subject per parameter per timepoint” description of BDS?</li>
-</ul></li>
-</ol>
 </section>
-<section id="acceptance-criteria" class="level2" data-number="25.4">
-<h2 data-number="25.4" class="anchored" data-anchor-id="acceptance-criteria"><span class="header-section-number">25.4</span> Acceptance criteria</h2>
-<ul class="task-list">
-<li><label><input type="checkbox"><code>CHGCAT1</code>/<code>CHGCAT1N</code> one-to-one, null on the same rows, with the no-codelist reasoning stated</label></li>
-<li><label><input type="checkbox">The averaged baseline exists as a <strong>new row</strong> with <code>DTYPE</code> populated, not as a modified original record</label></li>
-<li><label><input type="checkbox">The <code>AVISIT</code> decision for the derived row is stated and justified</label></li>
-<li><label><input type="checkbox">The recomputed week-26 difference is reported as obtained</label></li>
-<li><label><input type="checkbox"><code>BASETYPE</code> identified, with the scope of “must be non-null” stated precisely</label></li>
-<li><label><input type="checkbox">All three follow-up questions in task 3 answered</label></li>
+<section id="what-you-need" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="what-you-need"><span class="header-section-number">17.4</span> What you need</h2>
+<ul>
+<li>A laptop you can install software on</li>
+<li>R, RStudio and Quarto, set up per <a href="../sessions/setup.html">Before You Begin</a> <strong>before</strong> the first evening</li>
+<li>Willingness to be wrong in front of four other people in a breakout room, which is where most of the learning happens</li>
 </ul>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Hint
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Task 1: the structural rule for a category and its numeric counterpart is the one <code>AGEGR1</code>/<code>AGEGR1N</code> followed in <a href="../sessions/adsl.html">ADSL</a> and <code>SEVGR1</code> followed in <a href="../exercises/adae.html">Exercise 5</a>. For the codelist question, ask what kind of variable <code>CHGCATy</code> is rather than searching for a codelist name.</p>
-<p>Task 2: <code>DTYPE</code> is in ADaMIG v1.3 §3.3.5, which lists example values directly; one of them is exactly this case. Note that <code>sdtm.terminology</code> cannot help you here, because it packages <strong>SDTM</strong> controlled terminology and <code>DTYPE</code> is an <strong>ADaM</strong> codelist. Knowing which terminology a variable belongs to is part of the skill. For <code>AVISIT</code>, re-read the three precisions quoted in the session’s Timing section, especially the one about what <code>AVISIT</code> does <em>not</em> mean. There is no single right answer, but there is a wrong one: silently reusing <code>BASELINE</code> when a row belongs to no visit.</p>
-<p>Task 3: ADaMIG v1.3 §4.2.1.6, Rule 6 is the worked example for exactly this situation. Read it before restructuring. The answer to “why not <code>BASE2</code>” is in what BDS does with additional analysis concepts: it adds rows, not columns.</p>
-</div>
-</div>
-</div>
-<blockquote class="blockquote">
-<p>Solutions are in the paid tier.</p>
-</blockquote>
+</section>
+<section id="if-you-are-reading-this-on-your-own" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="if-you-are-reading-this-on-your-own"><span class="header-section-number">17.5</span> If you are reading this on your own</h2>
+<p>Everything the cohort works through is in this book, in order, with every code chunk executed against data that ships with the repository. The two schedule pages double as a self-paced study plan: work one session a week, do the homework exercise, and you will cover the same ground on the same timescale.</p>
+<p>What you will not get on your own is the argument. That is the part worth paying for.</p>
 
 
 </section>
@@ -919,13 +877,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/adae.html" class="pagination-link" aria-label="Exercise 5: ADAE">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Exercise 5: ADAE</span></span>
+      <a href="../sessions/dataset-json.html" class="pagination-link" aria-label="Dataset-JSON">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Dataset-JSON</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercises/tlf.html" class="pagination-link" aria-label="Exercise 7: Tables, Listings and Figures">
-        <span class="nav-page-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Exercise 7: Tables, Listings and Figures</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../overview/course-a-sdtm.html" class="pagination-link" aria-label="Course A: SDTM">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Course A: SDTM</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -38,6 +38,11 @@ book:
     - sessions/define-from-specs.qmd
     - sessions/adrg.qmd
     - sessions/dataset-json.qmd
+  - part: "Live Course"
+    chapters:
+    - overview/index.qmd
+    - overview/course-a-sdtm.qmd
+    - overview/course-b-adam-outputs.qmd
   - part: "Exercises"
     chapters:
     - exercises/sdtm-dm.qmd

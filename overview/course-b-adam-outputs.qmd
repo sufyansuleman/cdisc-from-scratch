@@ -1,0 +1,94 @@
+---
+title: "Course B: ADaM and Outputs"
+---
+
+Eight evenings, two hours each, one per week. You start from the SDTM
+datasets built in [Course A](course-a-sdtm.qmd) and build the analysis
+layer, the tables and figures on top of it, and the documents a
+regulator actually receives.
+
+::: {.callout-important}
+### Before Evening 1
+
+Course B assumes Course A, or equivalent experience. Specifically, it
+assumes you can read `data/sdtm/` and know why those datasets look the
+way they do.
+
+If you did not take Course A, work through [SDTM Concepts](../sessions/sdtm-concepts.qmd)
+and [The DM Domain](../sessions/sdtm-dm.qmd) first, and complete
+[Before You Begin: Setup](../sessions/setup.qmd). The SDTM datasets are
+committed in the repository, so you do not have to rebuild them.
+:::
+
+## The schedule
+
+| Ev | Session | What you build | Homework after |
+|---|---|---|---|
+| 1 | [ADaM Concepts](../sessions/adam-concepts.qmd) | Why analysis datasets are not SDTM rearranged; the two structures; traceability | Read [ADSL](../sessions/adsl.qmd) background |
+| 2 | [ADSL](../sessions/adsl.qmd) | `adsl`: one row per subject, population flags, treatment dates | [Exercise 4](../exercises/adsl.qmd) |
+| 3 | [ADAE](../sessions/adae.qmd) | `adae`: occurrence data, treatment emergence, incidence denominators | [Exercise 5](../exercises/adae.qmd) |
+| 4 | [ADLB](../sessions/adlb.qmd) | `adlb`: parameters, analysis values, and the baseline every change is measured from | [Exercise 6](../exercises/adlb.qmd) |
+| 5 | [Tables, Listings and Figures](../sessions/tlf.qmd) | A demographics table, an AE table, an SAE listing, an HbA1c figure | [Exercise 7](../exercises/tlf.qmd) |
+| 6 | [Define-XML from a Specification Workbook](../sessions/define-from-specs.qmd) | `define.xml` generated the way a sponsor does it, from a spec workbook | [Exercise 9](../exercises/define-from-specs.qmd) |
+| 7 | [The Analysis Data Reviewer's Guide](../sessions/adrg.qmd) | The ADRG's data-driven tables, and the conformance summary | [Exercise 10](../exercises/adrg.qmd) |
+| 8 | [Dataset-JSON](../sessions/dataset-json.qmd) | The same data as `.xpt` and as Dataset-JSON, and what each format destroys | [Exercise 11](../exercises/dataset-json.qmd) |
+
+## How an evening runs
+
+Identical to Course A. Two hours with a ten-minute break.
+
+| Time | What |
+|---|---|
+| 0:00 | Homework review and warm-up |
+| 0:10 | Code along, first block |
+| 0:45 | Short challenge in small groups |
+| 0:55 | Break |
+| 1:05 | Code along, second block |
+| 1:40 | Discussion |
+| 1:52 | Wrap and homework brief |
+
+::: {.callout-note}
+### Evenings 5 and 6 are the dense ones
+
+Tables, Listings and Figures and the specification workbook session both
+carry more worked examples than the others. Expect those two evenings to
+move faster, and expect me to cut a worked example rather than run over.
+The book has all of them, so nothing is lost, and the cut example is
+always flagged so you know what to read.
+:::
+
+## What is expected between evenings
+
+Roughly **45 to 75 minutes**. The Part 3 exercises are harder than
+Course A's, and Exercises 6 and 9 are the longest in the course.
+
+- The homework exercise from the table above
+- Reading the *Background* section of the next session beforehand
+
+::: {.callout-warning}
+### Sessions are not recorded
+
+As in Course A. Nothing is recorded. If you miss an evening, work the
+session yourself in the book before the next one and do the homework
+exercise as your check.
+:::
+
+## What you will have at the end
+
+- Three ADaM datasets built and defended: `adsl`, `adae`, `adlb`
+- A tables-and-figures workflow that produces submission-shaped output
+  from analysis data
+- A `define.xml` generated from a specification workbook, and a clear
+  view of what that production route decides on your behalf
+- The ADRG's generated tables, including a conformance summary with real
+  findings in it
+- The same datasets in both transport formats, and a demonstrated
+  distinction that one of them destroys
+
+## A word about what this course does not teach
+
+It does not teach submission strategy, agency interaction, or what a
+reviewer will look for. Those require experience of running a
+submission. Where a topic needs that, the sessions say so rather than
+inventing plausible prose. See the scope note in
+[The Analysis Data Reviewer's Guide](../sessions/adrg.qmd).
