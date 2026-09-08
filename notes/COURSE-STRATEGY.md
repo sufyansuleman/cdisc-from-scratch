@@ -1,6 +1,6 @@
 # Course Strategy — CDISC with R
 
-**Governs positioning, licensing and tiering.** Pair with `AGENT-CONTENT-PROMPT.md` (content). A separate scaffold spec was planned but never written; the session template in the repository serves that purpose instead.
+**Governs positioning, licensing and tiering.** A separate scaffold spec was planned but never written; the session template in the repository serves that purpose instead.
 
 Decided 31 July 2026. Supersedes any earlier instruction to keep the repository private.
 
@@ -110,7 +110,7 @@ These are already correct. Do not relax them.
 - **Never reproduce codelists or specification tables in bulk.** Check controlled terminology programmatically via the `sdtm.terminology` package, as the repo already does.
 - **Never imply CDISC endorsement, affiliation or certification.**
 - **All data synthetic, always.** GLPX-1 only.
-- **Keep the `VERIFY` callout discipline** from `AGENT-CONTENT-PROMPT.md`. It is the single most valuable safeguard in this project — a pharma audience will find any invented specific, and the author's credibility does not survive it.
+- **Keep the `VERIFY` callout discipline.** Every specific claim is cited before the prose around it is written. It is the single most valuable safeguard in this project — a pharma audience will find any invented specific, and the author's credibility does not survive it.
 
 FDA documents in the repo (Technical Conformance Guide, Electronic Submissions guidance) are US government works and carry no such restriction — but they are gitignored anyway, which is fine.
 
