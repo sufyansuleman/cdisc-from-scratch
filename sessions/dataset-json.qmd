@@ -41,12 +41,26 @@ Run R from the project root. Three new packages: **`datasetjson`** for
 reading and writing Dataset-JSON, **`xportr`** for writing SAS Transport
 v5, and **`haven`** for reading it back. All pinned in `renv.lock`.
 
-Everything below runs against artifacts committed in this repository:
-`data/xpt/` and `data/json/`, produced by `R/build_dataset_json.R`.
+Most of what follows runs against artifacts committed in this
+repository: `data/xpt/` and `data/json/`, produced by
+`R/build_dataset_json.R`.
 
-The specification, its JSON Schema and CDISC's own example files are all
-**public on GitHub**: no CDISC account needed, unlike Define-XML:
-<https://github.com/cdisc-org/DataExchange-DatasetJson>
+**Example 3 also compares our files against CDISC's own.** Those are
+**public on GitHub**, with no CDISC account needed, unlike Define-XML.
+Clone the repository into `refs/` before you start:
+
+```bash
+git clone --depth 1 https://github.com/cdisc-org/DataExchange-DatasetJson.git \
+  refs/DatasetJSON_v1.1/repo
+```
+
+That gives you the specification (as Markdown, in `doc/`), the JSON
+Schema (`schema/`), and CDISC's example datasets in every format
+(`examples/`). `refs/` is gitignored, so nothing you download is
+committed.
+
+Skip the clone and everything except the two comparison chunks in
+Example 3 still runs.
 :::
 
 ## When Do You Use This?

@@ -534,8 +534,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="callout-body-container callout-body">
 <p>Run R from the project root. Three new packages: <strong><code>datasetjson</code></strong> for reading and writing Dataset-JSON, <strong><code>xportr</code></strong> for writing SAS Transport v5, and <strong><code>haven</code></strong> for reading it back. All pinned in <code>renv.lock</code>.</p>
-<p>Everything below runs against artifacts committed in this repository: <code>data/xpt/</code> and <code>data/json/</code>, produced by <code>R/build_dataset_json.R</code>.</p>
-<p>The specification, its JSON Schema and CDISC’s own example files are all <strong>public on GitHub</strong>: no CDISC account needed, unlike Define-XML: <a href="https://github.com/cdisc-org/DataExchange-DatasetJson" class="uri">https://github.com/cdisc-org/DataExchange-DatasetJson</a></p>
+<p>Most of what follows runs against artifacts committed in this repository: <code>data/xpt/</code> and <code>data/json/</code>, produced by <code>R/build_dataset_json.R</code>.</p>
+<p><strong>Example 3 also compares our files against CDISC’s own.</strong> Those are <strong>public on GitHub</strong>, with no CDISC account needed, unlike Define-XML. Clone the repository into <code>refs/</code> before you start:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="at">--depth</span> 1 https://github.com/cdisc-org/DataExchange-DatasetJson.git <span class="dt">\</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  refs/DatasetJSON_v1.1/repo</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>That gives you the specification (as Markdown, in <code>doc/</code>), the JSON Schema (<code>schema/</code>), and CDISC’s example datasets in every format (<code>examples/</code>). <code>refs/</code> is gitignored, so nothing you download is committed.</p>
+<p>Skip the clone and everything except the two comparison chunks in Example 3 still runs.</p>
 </div>
 </div>
 <section id="when-do-you-use-this" class="level2" data-number="16.1">
@@ -590,15 +594,15 @@ Tip
 <section id="the-constraint-you-never-noticed" class="level3" data-number="16.3.1">
 <h3 data-number="16.3.1" class="anchored" data-anchor-id="the-constraint-you-never-noticed"><span class="header-section-number">16.3.1</span> The constraint you never noticed</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data/sdtm/dm.csv"</span>, <span class="st">"data/sdtm/lb.csv"</span>,</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">"data/adam/adsl.csv"</span>, <span class="st">"data/adam/adae.csv"</span>, <span class="st">"data/adam/adlb.csv"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>all_names <span class="ot">&lt;-</span> datasets <span class="sc">|&gt;</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">names</span>(<span class="fu">read_csv</span>(.x, <span class="at">n_max =</span> <span class="dv">0</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">variables =</span> <span class="fu">length</span>(all_names),</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">over_8_characters =</span> <span class="fu">sum</span>(<span class="fu">nchar</span>(all_names) <span class="sc">&gt;</span> <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>datasets <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"data/sdtm/dm.csv"</span>, <span class="st">"data/sdtm/lb.csv"</span>,</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>              <span class="st">"data/adam/adsl.csv"</span>, <span class="st">"data/adam/adae.csv"</span>, <span class="st">"data/adam/adlb.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>all_names <span class="ot">&lt;-</span> datasets <span class="sc">|&gt;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">names</span>(<span class="fu">read_csv</span>(.x, <span class="at">n_max =</span> <span class="dv">0</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unlist</span>()</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">variables =</span> <span class="fu">length</span>(all_names),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">over_8_characters =</span> <span class="fu">sum</span>(<span class="fu">nchar</span>(all_names) <span class="sc">&gt;</span> <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>        variables over_8_characters 
               131                 0 </code></pre>
@@ -624,9 +628,9 @@ Tip
 <p><em>Estimated time: ~20 minutes (worked example)</em></p>
 <p><code>R/build_dataset_json.R</code> writes DM and LB in both formats. Variable labels come from <code>data/spec/SDTM_METADATA.xlsx</code>: the same workbook <a href="../sessions/define-from-specs.html">the previous session</a> used to generate define.xml, so the transport file, the metadata document and the JSON all tell one story.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">directory =</span> <span class="fu">c</span>(<span class="st">"data/xpt"</span>, <span class="st">"data/json"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">files =</span> <span class="fu">map_chr</span>(directory, <span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">list.files</span>(.x), <span class="at">collapse =</span> <span class="st">", "</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">directory =</span> <span class="fu">c</span>(<span class="st">"data/xpt"</span>, <span class="st">"data/json"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">files =</span> <span class="fu">map_chr</span>(directory, <span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">list.files</span>(.x), <span class="at">collapse =</span> <span class="st">", "</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -651,11 +655,11 @@ Tip
 <section id="what-is-in-the-json" class="level3" data-number="16.4.1">
 <h3 data-number="16.4.1" class="anchored" data-anchor-id="what-is-in-the-json"><span class="header-section-number">16.4.1</span> What is in the JSON</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/json/dm.json"</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">attribute =</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(dm), <span class="fu">c</span>(<span class="st">"columns"</span>, <span class="st">"rows"</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">map_chr</span>(attribute, <span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">unlist</span>(dm[[.x]]), <span class="at">collapse =</span> <span class="st">" / "</span>))) <span class="sc">|&gt;</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dm <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/json/dm.json"</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">attribute =</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(dm), <span class="fu">c</span>(<span class="st">"columns"</span>, <span class="st">"rows"</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">value =</span> <span class="fu">map_chr</span>(attribute, <span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">unlist</span>(dm[[.x]]), <span class="at">collapse =</span> <span class="st">" / "</span>))) <span class="sc">|&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -747,7 +751,7 @@ Tip
 </table>
 <p><code>itemGroupOID</code> is <code>IG.DM</code>. That is not a Dataset-JSON invention. It is the OID from <a href="../sessions/define-xml.html">Define-XML</a>, the identifier the specification insisted has “no intrinsic meaning.” Here is what it is for. Every column carries one too:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dm<span class="sc">$</span>columns <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>) <span class="sc">|&gt;</span> <span class="fu">map_dfr</span>(as_tibble) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dm<span class="sc">$</span>columns <span class="sc">|&gt;</span> <span class="fu">head</span>(<span class="dv">4</span>) <span class="sc">|&gt;</span> <span class="fu">map_dfr</span>(as_tibble) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <colgroup>
@@ -804,9 +808,9 @@ Tip
 <section id="row-data" class="level3" data-number="16.4.2">
 <h3 data-number="16.4.2" class="anchored" data-anchor-id="row-data"><span class="header-section-number">16.4.2</span> Row data</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>dm<span class="sc">$</span>rows[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="sc">|&gt;</span> <span class="fu">map_chr</span>(<span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">map_chr</span>(.x, <span class="sc">~</span> <span class="fu">format</span>(.x <span class="sc">%||%</span> <span class="st">"null"</span>)),</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">collapse =</span> <span class="st">" | "</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trunc</span>(<span class="dv">78</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dm<span class="sc">$</span>rows[<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="sc">|&gt;</span> <span class="fu">map_chr</span>(<span class="sc">~</span> <span class="fu">paste</span>(<span class="fu">map_chr</span>(.x, <span class="sc">~</span> <span class="fu">format</span>(.x <span class="sc">%||%</span> <span class="st">"null"</span>)),</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>                                <span class="at">collapse =</span> <span class="st">" | "</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_trunc</span>(<span class="dv">78</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "GLPX1 | DM | GLPX1-101-010 | 101-010 | 2024-03-28 | 2024-09-26 | 2024-03-28..."
 [2] "GLPX1 | DM | GLPX1-101-012 | 101-012 | 2024-03-06 | 2024-09-04 | 2024-03-06..."</code></pre>
@@ -820,7 +824,7 @@ Tip
 <section id="does-it-conform" class="level3" data-number="16.4.3">
 <h3 data-number="16.4.3" class="anchored" data-anchor-id="does-it-conform"><span class="header-section-number">16.4.3</span> Does it conform?</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">validate_dataset_json</span>(<span class="st">"data/json/dm.json"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">validate_dataset_json</span>(<span class="st">"data/json/dm.json"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <pre><code>File is valid per the Dataset JSON v1.1.0 schema</code></pre>
 <p>Checked against the JSON Schema CDISC publishes in the same repository as the specification, exactly as <a href="../sessions/define-xml.html">Define-XML</a> checked against the XSD. Both of GLPX-1’s files pass.</p>
@@ -839,39 +843,39 @@ Tip
 <h3 data-number="16.5.1" class="anchored" data-anchor-id="run-it-yourself"><span class="header-section-number">16.5.1</span> Run It Yourself</h3>
 <p>Three values: a string, a genuine missing, and an empty string:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>probe <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">ID =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">VAL =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="cn">NA_character_</span>, <span class="st">""</span>))</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(probe<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>probe <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">ID =</span> <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>), <span class="at">VAL =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="cn">NA_character_</span>, <span class="st">""</span>))</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(probe<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE</code></pre>
 </div>
 </div>
 <p>Round-trip through SAS Transport v5:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>xpt_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"probe.xpt"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xpt</span>(probe, xpt_path, <span class="at">version =</span> <span class="dv">5</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>back_xpt <span class="ot">&lt;-</span> <span class="fu">read_xpt</span>(xpt_path)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(back_xpt<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>xpt_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"probe.xpt"</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xpt</span>(probe, xpt_path, <span class="at">version =</span> <span class="dv">5</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>back_xpt <span class="ot">&lt;-</span> <span class="fu">read_xpt</span>(xpt_path)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(back_xpt<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE FALSE FALSE</code></pre>
 </div>
 </div>
 <p>Round-trip through Dataset-JSON:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">itemOID =</span> <span class="fu">paste0</span>(<span class="st">"IT.PROBE."</span>, <span class="fu">names</span>(probe)), <span class="at">name =</span> <span class="fu">names</span>(probe),</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">label =</span> <span class="fu">names</span>(probe), <span class="at">dataType =</span> <span class="st">"string"</span>, <span class="at">length =</span> <span class="dv">8</span>L)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">dataset_json</span>(probe, <span class="at">item_oid =</span> <span class="st">"IG.PROBE"</span>, <span class="at">name =</span> <span class="st">"PROBE"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dataset_label =</span> <span class="st">"Missingness probe"</span>, <span class="at">columns =</span> cols)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>json_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"probe.json"</span>)</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_dataset_json</span>(ds, json_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">itemOID =</span> <span class="fu">paste0</span>(<span class="st">"IT.PROBE."</span>, <span class="fu">names</span>(probe)), <span class="at">name =</span> <span class="fu">names</span>(probe),</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">label =</span> <span class="fu">names</span>(probe), <span class="at">dataType =</span> <span class="st">"string"</span>, <span class="at">length =</span> <span class="dv">8</span>L)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">dataset_json</span>(probe, <span class="at">item_oid =</span> <span class="st">"IG.PROBE"</span>, <span class="at">name =</span> <span class="st">"PROBE"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">dataset_label =</span> <span class="st">"Missingness probe"</span>, <span class="at">columns =</span> cols)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>json_path <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">tempdir</span>(), <span class="st">"probe.json"</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="fu">write_dataset_json</span>(ds, json_path)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>NULL</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>back_json <span class="ot">&lt;-</span> <span class="fu">read_dataset_json</span>(json_path)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(back_json<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>back_json <span class="ot">&lt;-</span> <span class="fu">read_dataset_json</span>(json_path)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.na</span>(back_json<span class="sc">$</span>VAL)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE  TRUE FALSE</code></pre>
 </div>
@@ -884,9 +888,9 @@ Tip
 <p>After the Dataset-JSON round-trip: <code>FALSE TRUE FALSE</code>. Unchanged.</p>
 <p>Look at what is actually written to the file:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(json_path, <span class="at">warn =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract</span>(<span class="st">'"rows".*'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(json_path, <span class="at">warn =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">paste</span>(<span class="at">collapse =</span> <span class="st">""</span>) <span class="sc">|&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">str_extract</span>(<span class="st">'"rows".*'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "\"rows\":[[\"A\",\"x\"],[\"B\",null],[\"C\",\"\"]]}"</code></pre>
 </div>
@@ -900,7 +904,7 @@ Tip
 <p><em>Estimated time: ~15 minutes (worked example)</em></p>
 <p>Dataset-JSON’s stated aims include “the efficient use of storage space,” against transport format’s “up to 70% wasted space.” So the JSON should be smaller. Ours is not:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/json/size_comparison.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">"data/json/size_comparison.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -940,15 +944,15 @@ Tip
 <p><strong>Uncompressed Dataset-JSON is about 1.3 times larger than the <code>.xpt</code> for both domains.</strong> That is the opposite of the advertised result, and it is not a mistake in the build.</p>
 <p>Now the same comparison on CDISC’s own published example files, shipped in the specification repository:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="st">"refs/DatasetJSON_v1.1/repo/examples/adam"</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">dataset =</span> <span class="fu">c</span>(<span class="st">"adae"</span>, <span class="st">"adlbc"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">xpt  =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".xpt"</span>))),</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">json =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".json"</span>))),</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">dsjc =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".dsjc"</span>))),</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">json_vs_xpt =</span> <span class="fu">round</span>(json <span class="sc">/</span> xpt, <span class="dv">3</span>),</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">dsjc_vs_xpt =</span> <span class="fu">round</span>(dsjc <span class="sc">/</span> xpt, <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>ex <span class="ot">&lt;-</span> <span class="st">"refs/DatasetJSON_v1.1/repo/examples/adam"</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">dataset =</span> <span class="fu">c</span>(<span class="st">"adae"</span>, <span class="st">"adlbc"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">xpt  =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".xpt"</span>))),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">json =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".json"</span>))),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">dsjc =</span> <span class="fu">file.size</span>(<span class="fu">file.path</span>(ex, <span class="fu">paste0</span>(dataset, <span class="st">".dsjc"</span>))),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">json_vs_xpt =</span> <span class="fu">round</span>(json <span class="sc">/</span> xpt, <span class="dv">3</span>),</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">dsjc_vs_xpt =</span> <span class="fu">round</span>(dsjc <span class="sc">/</span> xpt, <span class="dv">3</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <thead>
@@ -987,15 +991,15 @@ Tip
 <h3 data-number="16.6.1" class="anchored" data-anchor-id="why-the-answer-differs"><span class="header-section-number">16.6.1</span> Why the answer differs</h3>
 <p>The difference is not the formats. It is the <strong>declared lengths</strong>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>our_len   <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/json/lb.json"</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>columns <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_int</span>(<span class="sc">~</span> .x<span class="sc">$</span>length <span class="sc">%||%</span> <span class="cn">NA_integer_</span>)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>cdisc_len <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">file.path</span>(<span class="st">"refs/DatasetJSON_v1.1/repo/examples/sdtm/lb.json"</span>),</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>columns <span class="sc">|&gt;</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_int</span>(<span class="sc">~</span> .x<span class="sc">$</span>length <span class="sc">%||%</span> <span class="cn">NA_integer_</span>)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">GLPX1 =</span> our_len, <span class="at">CDISC =</span> cdisc_len) <span class="sc">|&gt;</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">c</span>(<span class="at">n =</span> <span class="fu">length</span>(.x), <span class="at">max =</span> <span class="fu">max</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">at_200 =</span> <span class="fu">sum</span>(.x <span class="sc">==</span> <span class="dv">200</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>our_len   <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="st">"data/json/lb.json"</span>, <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>columns <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_int</span>(<span class="sc">~</span> .x<span class="sc">$</span>length <span class="sc">%||%</span> <span class="cn">NA_integer_</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>cdisc_len <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">file.path</span>(<span class="st">"refs/DatasetJSON_v1.1/repo/examples/sdtm/lb.json"</span>),</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">simplifyVector =</span> <span class="cn">FALSE</span>)<span class="sc">$</span>columns <span class="sc">|&gt;</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map_int</span>(<span class="sc">~</span> .x<span class="sc">$</span>length <span class="sc">%||%</span> <span class="cn">NA_integer_</span>)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">list</span>(<span class="at">GLPX1 =</span> our_len, <span class="at">CDISC =</span> cdisc_len) <span class="sc">|&gt;</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(<span class="sc">~</span> <span class="fu">c</span>(<span class="at">n =</span> <span class="fu">length</span>(.x), <span class="at">max =</span> <span class="fu">max</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>          <span class="at">at_200 =</span> <span class="fu">sum</span>(.x <span class="sc">==</span> <span class="dv">200</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$GLPX1
      n    max at_200 

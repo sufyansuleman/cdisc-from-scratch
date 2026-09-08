@@ -654,6 +654,15 @@ Errors of this shape do not announce themselves. They produce plausible
 numbers, slightly wrong, from code that runs cleanly. That is why the
 standard puts the decision in a variable with a name, and why "which
 flag did you use" is a reasonable question to be asked at a review.
+
+One note on the arithmetic, because it is the kind of thing worth
+checking. The code above rounds each mean to three decimals and then
+subtracts, so the difference you see equals the difference of the two
+means you see. Subtracting first and rounding afterwards gives -1.117
+rather than -1.116, because the unrounded difference is -1.1165. Both
+are defensible; a table whose displayed difference does not match its
+displayed means invites a reader to think you cannot subtract, which is
+why this one rounds first.
 :::
 
 ### One subject where the baseline choice really matters

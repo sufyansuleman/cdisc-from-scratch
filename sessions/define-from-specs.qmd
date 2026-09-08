@@ -211,6 +211,14 @@ write_define(
 )
 ```
 
+Note the `path`. `write_define()` writes its output **beside the
+workbook you hand it**, so `R/build_define.R` copies
+`data/spec/SDTM_METADATA.xlsx` into `data/define/` first, runs the
+generation, then deletes the copy. That is why the path above points at
+a file you will not find on disk: it exists only while the build runs.
+Hand it the workbook where it lives and your define.xml lands in
+`data/spec/` beside it.
+
 `R/build_define.R` runs exactly that, and the outputs are committed, so
 you can inspect them without rebuilding:
 

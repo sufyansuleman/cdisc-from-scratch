@@ -258,8 +258,9 @@ simulate_lb <- function(subjects, visits) {
     mutate(
       # treatment effect on HbA1c: GLPX falls ~1.4 points by week 26,
       # placebo drifts down ~0.3; other analytes stay flat around their
-      # physiological mean. TODO: refine trajectories when the TLF
-      # session needs specific table values.
+      # physiological mean. These trajectories were fixed before the TLF
+      # session was written and were not tuned to produce particular
+      # table values; the numbers in the sessions are whatever they are.
       frac   = pmax(visitday, 0) / 182,
       target = case_when(
         test == "HBA1C" & arm == "GLPX 10 mg" ~ hba1c_bl - 1.4 * frac,

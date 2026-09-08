@@ -704,6 +704,7 @@ Tip
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">view  =</span> <span class="cn">FALSE</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>Note the <code>path</code>. <code>write_define()</code> writes its output <strong>beside the workbook you hand it</strong>, so <code>R/build_define.R</code> copies <code>data/spec/SDTM_METADATA.xlsx</code> into <code>data/define/</code> first, runs the generation, then deletes the copy. That is why the path above points at a file you will not find on disk: it exists only while the build runs. Hand it the workbook where it lives and your define.xml lands in <code>data/spec/</code> beside it.</p>
 <p><code>R/build_define.R</code> runs exactly that, and the outputs are committed, so you can inspect them without rebuilding:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="st">"data/define"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>

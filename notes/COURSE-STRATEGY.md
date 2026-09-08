@@ -164,16 +164,31 @@ Where the material would require submission experience the author does not have,
 
 ---
 
-## 6b. Cleanup needed in `cdisc-with-r-solutions`
+## 6b. Cleanup in `cdisc-with-r-solutions`
 
-Real issues found on review, in priority order:
+Audited 2026-09-08. Most of this is now done.
 
-1. **Two competing solution formats coexist.** Every `solution.qmd` is a 19-line stub, while the actual content sits in `exercise-solution.md` / `exercise-1-solution.md` files (48–196 lines). **Pick one convention** — `.qmd` is the better choice, since it renders against the pinned library and can execute code — and migrate the `.md` content into it. This is internal drift and it will get worse with every session added.
-2. **`solutions/sdtm-events-findings/` is stale.** Left over from before the events/findings split; separate `sdtm-events/` and `sdtm-findings/` directories now hold the real content. Delete the combined directory.
-3. **`solutions/tlf/solution.qmd` exists but the public `sessions/tlf.qmd` is still a stub** — a solution to an exercise that has not been written. Write the public session first.
-4. **Empty placeholders:** `extra-exercises/`, `slides/`, `specs/adam/`, `specs/define-xml/`, `specs/tlf-shells/` are all `.gitkeep` only. Fine for now, but nothing can be sold as a "specs" tier until they exist.
-5. **`instructor/facilitation-notes.md` and `timings.md` are TODO skeletons.** These gate the workshop tier — no live delivery without them.
-6. **Harden `.gitignore`.** Unlike the public repo, this one does not exclude PDFs. Add the same PDF exclusions as a safety net: private today does not guarantee private forever.
+1. ~~**Two competing solution formats.**~~ **Done.** The five orphan
+   `solution.qmd` stubs (all 19-line TODO templates) were removed. The
+   convention is now one `exercise-solution.md` per exercise. The earlier
+   note preferred `.qmd`; in practice the `.md` files carry executed
+   numbers and marking guidance and never needed to render, so the
+   simpler format won.
+2. ~~**`solutions/sdtm-events-findings/` is stale.**~~ **Done**, deleted.
+3. ~~**`solutions/tlf/solution.qmd` precedes its session.**~~ **Done**,
+   the session and Exercise 7 are written and the stub is gone.
+4. **Empty placeholders remain:** `extra-exercises/`, `slides/`,
+   `specs/adam/`, `specs/define-xml/`, `specs/tlf-shells/` are `.gitkeep`
+   only. Nothing can be sold as a "specs" tier until they exist.
+5. ~~**`facilitation-notes.md` and `timings.md` are TODO skeletons.**~~
+   **Done.** Both rewritten for live delivery, plus 15 per-evening run
+   sheets in `instructor/run-sheets/`.
+6. ~~**Harden `.gitignore`.**~~ **Done.** PDFs, spreadsheets and `/refs/`
+   are now excluded, matching the public repo.
+
+Still outstanding: solutions for Exercises 9, 10 and 11
+(`define-from-specs`, `adrg`, `dataset-json`). These block Course B, not
+Course A, and are better written after Course A has run.
 
 ---
 
