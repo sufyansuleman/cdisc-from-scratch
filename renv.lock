@@ -4,7 +4,7 @@
     "Repositories": [
       {
         "Name": "P3M",
-        "URL": "https://packagemanager.posit.co/cran/latest"
+        "URL": "https://packagemanager.posit.co/cran/2026-09-01"
       },
       {
         "Name": "CRAN",

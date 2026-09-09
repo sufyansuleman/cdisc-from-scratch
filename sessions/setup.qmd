@@ -24,20 +24,41 @@ Four tools, in this order. If you already have one, skip it.
 
 | Tool | Why | Where |
 |---|---|---|
-| **R** (4.4.0 or later) | The language everything is written in | [cran.r-project.org](https://cran.r-project.org) |
+| **R 4.4.x** | The language everything is written in | [cran.r-project.org](https://cran.r-project.org) |
 | **RStudio** or **Positron** | An IDE. Either works; the course shows RStudio | [posit.co/downloads](https://posit.co/downloads/) |
 | **Quarto** | Renders the book and runs the code chunks | [quarto.org/docs/get-started](https://quarto.org/docs/get-started/) |
 | **Git** | Gets you the repository and its history | [git-scm.com](https://git-scm.com/downloads) |
 
 ::: {.callout-warning}
-### Windows: install Rtools too
+### Use R 4.4.x specifically, not the newest R
 
-On Windows, install **Rtools44** to match R 4.4.x, from
-[cran.r-project.org/bin/windows/Rtools](https://cran.r-project.org/bin/windows/Rtools/).
-Without it, any package that needs compiling will fail to install, and
-the error message will not obviously say why.
+`renv.lock` pins package versions that were built for R 4.4, and the
+package manager serves precompiled binaries per R version. On R 4.5 or
+newer, those binaries do not exist and every package is compiled from
+source instead: a fast setup becomes a slow and failure-prone one.
 
-macOS and Linux users do not need this step.
+If you already run a newer R, that is fine, but expect the restore to
+take substantially longer.
+:::
+
+::: {.callout-warning}
+### You may also need a compiler
+
+Only if something has to be built from source. With R 4.4.x this should
+not happen, but it is worth having in place before you start.
+
+- **Windows:** install **Rtools44**, matching R 4.4.x, from
+  [cran.r-project.org/bin/windows/Rtools](https://cran.r-project.org/bin/windows/Rtools/).
+  If you run a different R version, install the matching Rtools instead;
+  a mismatched Rtools is the same as having none.
+- **macOS:** install the Xcode Command Line Tools by running
+  `xcode-select --install` in Terminal.
+- **Linux:** you already have a compiler, but you may need system
+  development libraries. Your distribution's `r-base-dev` package (or
+  equivalent) covers most of them.
+
+Without these, a package that needs compiling fails with an error that
+does not obviously say why.
 :::
 
 ## Why This Course Pins Its Packages
@@ -97,12 +118,20 @@ renv::restore()
 
 renv lists what it is about to install and asks you to confirm. Say yes.
 
-**What to expect.** Several minutes, and a lot of output. Binaries make
-this fast on Windows and macOS by default, and on Linux via the
-`__linux__/jammy` P3M repository the `.Rprofile` selects. If it starts
-compiling packages from source and crawling, that is the signal
-something is off with the repository configuration rather than with
-you. See the troubleshooting section below.
+**What to expect.** Several minutes, and a lot of output. Precompiled
+binaries make this fast on Windows and macOS, and on Linux too: renv
+rewrites the repository URL to match your distribution automatically.
+
+The `.Rprofile` points at a **dated** snapshot of the package manager
+rather than at `latest`. That is deliberate, and it is the same idea as
+the lockfile. `latest` only serves binaries for whatever CRAN is
+shipping today, so a course pinned to older versions would quietly
+degrade into compiling everything from source as CRAN moved on. A dated
+snapshot keeps the pinned versions available as binaries indefinitely.
+
+If it does start compiling from source and crawling, that is a signal
+something is off with your configuration rather than with you. See the
+troubleshooting section below.
 
 A successful restore ends quietly, with no error, and:
 
@@ -141,12 +170,32 @@ will meet in [Why Standards](why-standards.qmd)), the codelist lookup
 returns the `SEX` codelist `C66731`, and `Sys.which()` returns a path
 rather than an empty string.
 
-To confirm the whole book builds, run this in a terminal at the project
-root:
+To confirm Quarto can execute a session end to end, render a single one
+in a terminal at the project root:
 
 ```bash
-quarto render
+quarto render sessions/why-standards.qmd
 ```
+
+That should finish without error and write an HTML file. It is the real
+test: it runs R code, reads the data and produces output.
+
+::: {.callout-important}
+### Do not run a bare `quarto render` yet
+
+Rendering the whole book will fail at this stage, and the failure is not
+your setup.
+
+Three sessions - [Define-XML](define-xml.qmd), [Define-XML from a
+Specification Workbook](define-from-specs.qmd) and
+[Dataset-JSON](dataset-json.qmd) - execute code against CDISC reference
+material that cannot be redistributed with this repository. You download
+it yourself when you reach those sessions, and each one tells you how.
+Until then a full-book render stops on the first of them.
+
+Everything up to Define-XML renders on a fresh clone with no extra
+downloads.
+:::
 
 ## If Something Went Wrong
 
@@ -154,10 +203,18 @@ quarto render
 Rtools44 is missing or does not match your R version. Install it, restart
 R, try again.
 
-**Packages compile from source and take forever.** Check that
-`.Rprofile` ran - `getOption("repos")` should show a
-`packagemanager.posit.co` entry. If it does not, you probably opened R
-somewhere other than the project root.
+**Packages compile from source and take forever.** Two causes, in order
+of likelihood. First, check you are on R 4.4.x with `R.version.string`;
+on a newer R there are no matching binaries and everything is built from
+source. Second, check the repository is set:
+
+```r
+getOption("repos")[["P3M"]]
+#> "https://packagemanager.posit.co/cran/2026-09-01"
+```
+
+If that is missing or says something else, you probably opened R
+somewhere other than the project root, so `.Rprofile` never ran.
 
 **`renv::restore()` reports nothing to do, but `library(tidyverse)`
 then fails.** The lockfile and your library disagree. Run
@@ -171,6 +228,11 @@ directory is not the project root. Run `getwd()` and, if needed, reopen
 **Everything installs but the book will not render.** Check Quarto is on
 your PATH with `quarto --version` in a terminal. RStudio bundles its own
 Quarto, which can differ from the one your terminal sees.
+
+**A render fails in Define-XML, Define-XML from a Specification
+Workbook, or Dataset-JSON.** Expected until you download the CDISC
+reference material those sessions use; each says how. Render individual
+sessions, or the ones before Define-XML, until then.
 
 ::: {.callout-tip}
 ### Still stuck?

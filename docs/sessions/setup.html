@@ -499,7 +499,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>R</strong> (4.4.0 or later)</td>
+<td><strong>R 4.4.x</strong></td>
 <td>The language everything is written in</td>
 <td><a href="https://cran.r-project.org">cran.r-project.org</a></td>
 </tr>
@@ -526,12 +526,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Windows: install Rtools too
+<span class="screen-reader-only">Warning</span>Use R 4.4.x specifically, not the newest R
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On Windows, install <strong>Rtools44</strong> to match R 4.4.x, from <a href="https://cran.r-project.org/bin/windows/Rtools/">cran.r-project.org/bin/windows/Rtools</a>. Without it, any package that needs compiling will fail to install, and the error message will not obviously say why.</p>
-<p>macOS and Linux users do not need this step.</p>
+<p><code>renv.lock</code> pins package versions that were built for R 4.4, and the package manager serves precompiled binaries per R version. On R 4.5 or newer, those binaries do not exist and every package is compiled from source instead: a fast setup becomes a slow and failure-prone one.</p>
+<p>If you already run a newer R, that is fine, but expect the restore to take substantially longer.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span>You may also need a compiler
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Only if something has to be built from source. With R 4.4.x this should not happen, but it is worth having in place before you start.</p>
+<ul>
+<li><strong>Windows:</strong> install <strong>Rtools44</strong>, matching R 4.4.x, from <a href="https://cran.r-project.org/bin/windows/Rtools/">cran.r-project.org/bin/windows/Rtools</a>. If you run a different R version, install the matching Rtools instead; a mismatched Rtools is the same as having none.</li>
+<li><strong>macOS:</strong> install the Xcode Command Line Tools by running <code>xcode-select --install</code> in Terminal.</li>
+<li><strong>Linux:</strong> you already have a compiler, but you may need system development libraries. Your distribution’s <code>r-base-dev</code> package (or equivalent) covers most of them.</li>
+</ul>
+<p>Without these, a package that needs compiling fails with an error that does not obviously say why.</p>
 </div>
 </div>
 </section>
@@ -556,7 +575,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Run this once, in the R console at the project root:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>renv lists what it is about to install and asks you to confirm. Say yes.</p>
-<p><strong>What to expect.</strong> Several minutes, and a lot of output. Binaries make this fast on Windows and macOS by default, and on Linux via the <code>__linux__/jammy</code> P3M repository the <code>.Rprofile</code> selects. If it starts compiling packages from source and crawling, that is the signal something is off with the repository configuration rather than with you. See the troubleshooting section below.</p>
+<p><strong>What to expect.</strong> Several minutes, and a lot of output. Precompiled binaries make this fast on Windows and macOS, and on Linux too: renv rewrites the repository URL to match your distribution automatically.</p>
+<p>The <code>.Rprofile</code> points at a <strong>dated</strong> snapshot of the package manager rather than at <code>latest</code>. That is deliberate, and it is the same idea as the lockfile. <code>latest</code> only serves binaries for whatever CRAN is shipping today, so a course pinned to older versions would quietly degrade into compiling everything from source as CRAN moved on. A dated snapshot keeps the pinned versions available as binaries indefinitely.</p>
+<p>If it does start compiling from source and crawling, that is a signal something is off with your configuration rather than with you. See the troubleshooting section below.</p>
 <p>A successful restore ends quietly, with no error, and:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">status</span>()</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; No issues found -- the project is in a consistent state.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -578,16 +599,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Quarto is on your PATH</span></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.which</span>(<span class="st">"quarto"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>You are ready when all three run without error: the read returns <strong>401 rows</strong> (yes, 401, 400 subjects and one duplicate enrolment, which you will meet in <a href="../sessions/why-standards.html">Why Standards</a>), the codelist lookup returns the <code>SEX</code> codelist <code>C66731</code>, and <code>Sys.which()</code> returns a path rather than an empty string.</p>
-<p>To confirm the whole book builds, run this in a terminal at the project root:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To confirm Quarto can execute a session end to end, render a single one in a terminal at the project root:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render sessions/why-standards.qmd</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>That should finish without error and write an HTML file. It is the real test: it runs R code, reads the data and produces output.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Do not run a bare <code>quarto render</code> yet
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rendering the whole book will fail at this stage, and the failure is not your setup.</p>
+<p>Three sessions - <a href="../sessions/define-xml.html">Define-XML</a>, <a href="../sessions/define-from-specs.html">Define-XML from a Specification Workbook</a> and <a href="../sessions/dataset-json.html">Dataset-JSON</a> - execute code against CDISC reference material that cannot be redistributed with this repository. You download it yourself when you reach those sessions, and each one tells you how. Until then a full-book render stops on the first of them.</p>
+<p>Everything up to Define-XML renders on a fresh clone with no extra downloads.</p>
+</div>
+</div>
 </section>
 <section id="if-something-went-wrong" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="if-something-went-wrong"><span class="header-section-number">1.6</span> If Something Went Wrong</h2>
 <p><strong><code>renv::restore()</code> fails on Windows, mentioning compilation.</strong> Rtools44 is missing or does not match your R version. Install it, restart R, try again.</p>
-<p><strong>Packages compile from source and take forever.</strong> Check that <code>.Rprofile</code> ran - <code>getOption("repos")</code> should show a <code>packagemanager.posit.co</code> entry. If it does not, you probably opened R somewhere other than the project root.</p>
+<p><strong>Packages compile from source and take forever.</strong> Two causes, in order of likelihood. First, check you are on R 4.4.x with <code>R.version.string</code>; on a newer R there are no matching binaries and everything is built from source. Second, check the repository is set:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">getOption</span>(<span class="st">"repos"</span>)[[<span class="st">"P3M"</span>]]</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; "https://packagemanager.posit.co/cran/2026-09-01"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If that is missing or says something else, you probably opened R somewhere other than the project root, so <code>.Rprofile</code> never ran.</p>
 <p><strong><code>renv::restore()</code> reports nothing to do, but <code>library(tidyverse)</code> then fails.</strong> The lockfile and your library disagree. Run <code>renv::status()</code> first and read what it says before installing anything by hand, that message is the diagnosis.</p>
 <p><strong>A code chunk says it cannot find <code>data/raw/dm_raw.csv</code>.</strong> Your working directory is not the project root. Run <code>getwd()</code> and, if needed, reopen <code>cdisc-with-r.Rproj</code>.</p>
 <p><strong>Everything installs but the book will not render.</strong> Check Quarto is on your PATH with <code>quarto --version</code> in a terminal. RStudio bundles its own Quarto, which can differ from the one your terminal sees.</p>
+<p><strong>A render fails in Define-XML, Define-XML from a Specification Workbook, or Dataset-JSON.</strong> Expected until you download the CDISC reference material those sessions use; each says how. Render individual sessions, or the ones before Define-XML, until then.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
